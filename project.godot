@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Entity",
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/entity.gd"
+}, {
+"base": "Entity",
+"class": "PlayerGhost",
+"language": "GDScript",
+"path": "res://assets/scripts/entities/ghost.gd"
 } ]
 _global_script_class_icons={
-"Entity": ""
+"Entity": "",
+"PlayerGhost": ""
 }
 
 [application]

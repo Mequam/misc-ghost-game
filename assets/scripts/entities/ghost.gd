@@ -40,10 +40,12 @@ func update_animation(event : InputEvent)->void:
 		$ghostSprite.flip_h = vel.x < 0
 	if vel == Vector2(0,0):
 		$ghostSprite.play("idle")
-	elif abs(vel.x) > abs(vel.y):
+	elif abs(vel.y) < abs(vel.x):
 		if running:
 			$ghostSprite.play("zoom")
 		else:
 			$ghostSprite.play("run")
+	elif vel.y < 0:
+		$ghostSprite.play("up")
 	
 	.update_animation(event)
