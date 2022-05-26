@@ -60,8 +60,12 @@ animations = [ {
 [node name="ghostSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
 animation = "down"
+frame = 1
 speed_scale = 1.75
 playing = true
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="frame_changed" from="." to="." method="_on_ghostSprite_frame_changed"]

@@ -82,9 +82,11 @@ func move_and_collide(rel_vec : Vector2,
 						exclude_raycast_shapes : bool = true,
 						test_only : bool = false)->KinematicCollision2D:
 	var col = .move_and_collide(rel_vec,infinite_inertia,exclude_raycast_shapes,test_only)
+	
 	if col:
 		on_col(col)
-	
+	elif rel_vec.y != 0:
+		self.onground = false #we are NOT on the ground if we are moving up and down
 	return col
 #this function is called at the end of perform_action
 #and updates the animation to match the action performed
@@ -93,7 +95,10 @@ func update_animation(event : InputEvent)->void:
 #called when we detect a collision
 func on_col(col):
 	if not onground and col.normal.distance_squared_to(Vector2(0,-1)) <= 0.1:
-		onground = true
+		self.onground = true
+	elif onground and col.normal.distance_squared_to(Vector2(0,-1)) >= 0.1:
+		self.onground = false
+	
 
 func _process(delta):
 	move_and_collide(speed*delta*compute_velocity(velocity))
