@@ -35,6 +35,10 @@ func on_action_released(act : String)->void:
 func _process(delta):
 	print("onground " + str(onground))
 	print("tired " + str(tired))
+func posses(entity)->void:
+	possesed = false
+	entity.possesed = true
+
 func compute_velocity(vel : Vector2)->Vector2:
 	for key in pressed_inputs:
 		if pressed_inputs[key]:
