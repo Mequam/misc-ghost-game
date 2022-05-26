@@ -44,7 +44,7 @@ animations = [ {
 
 [node name="ghostSprite" type="AnimatedSprite"]
 frames = SubResource( 1 )
-animation = "derp"
+animation = "idle"
 speed_scale = 1.75
 playing = true
 script = ExtResource( 12 )

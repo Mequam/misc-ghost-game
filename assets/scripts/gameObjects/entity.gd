@@ -4,29 +4,16 @@ class_name Entity
 
 #this is the generic entity script that all
 #collision game objects are inteanded to draw from
-enum Actions {
-	UP,
-	LEFT,
-	RIGHT,
-	DOWN,
-	ATTACK,
-	DEFEND
-}
-#posible states that all entities have
-enum State {
-	IDLE,
-	WALK,
-	RUN
-}
 
+#wether or not the entity can be possesed by the player
+var can_posses : bool = true
 
+#are we possesed by the ghost?
+var possesed : bool= true
 
-#indicates the state of the entity state machine
-var state : int  = State.IDLE setget set_state,get_state
-func set_state(val : int)->void:
-	state = val
-func get_state()->int:
-	return state
+#these two are self explanitory
+var velocity : Vector2 = Vector2(0,0)
+var speed : float = 50
 
 #indicates if we are on the ground
 var onground : bool = false setget set_onground,get_onground
@@ -35,17 +22,61 @@ func set_onground(val : bool)->void:
 func get_onground()->bool:
 	return onground
 
+#stores inputs that are pressed and will remain true
+#for as long as the input is not released
+var pressed_inputs : Dictionary = {
+	"RIGHT":false, #the first value indicates if we are pressed
+	"LEFT":false, #the second value indicates if we have been double pressed
+	"UP":false,
+	"DOWN":false
+}
 
-var velocity : Vector2 = Vector2(0,0)
-var speed : float = 50
+#used for computing double presses
+var last_pressed_action : String = ""
+var last_pressed_action_time : int = 0
 
-#do we listen for input from the game?
-var read_input : bool= true
-
-#performs the given action on the entity
-func perform_action(act : int,pressed : bool):
+#called when an action is double pressed
+func on_action_double_press(action : String)->void:
 	pass
-	
+#runs only when the action is just pressed
+func on_action_press(action : String)->void:
+	pass
+#runs only when the action is released
+func on_action_released(action : String)->void:
+	pass
+#performs the given action on the entity
+#inteanded to be overloaded by the individual class
+func perform_action(event : InputEvent)->void:
+	for key in pressed_inputs:
+		#yes this if statement is hideous, but it gaurds against
+		#echo events where event.is_aciton_pressed is false
+		#but we want move_right to be true
+		if event.is_action_pressed(key):
+			on_action_press(key)
+			pressed_inputs[key] = true
+			
+			var current_input_time = OS.get_ticks_msec()
+
+
+			if last_pressed_action == key and (current_input_time - last_pressed_action_time) < 300:
+				on_action_double_press(key)
+
+			#update the last pressed values
+			last_pressed_action = key
+			last_pressed_action_time = current_input_time
+				
+		elif event.is_action_released(key):
+			pressed_inputs[key] = false
+			on_action_released(key)
+
+	if not event.is_echo():
+		#only update animation on new events
+		update_animation(event)
+#this function is called when we are NOT possesed
+#and is inteanded to feed inputs into the perform_action function
+func AI()->void:
+	pass
+
 func move_and_collide(rel_vec : Vector2, 
 						infinite_inertia : bool = false, 
 						exclude_raycast_shapes : bool = true,
@@ -55,21 +86,35 @@ func move_and_collide(rel_vec : Vector2,
 		on_col(col)
 	
 	return col
+#this function is called at the end of perform_action
+#and updates the animation to match the action performed
+func update_animation(event : InputEvent)->void:
+	pass
 #called when we detect a collision
 func on_col(col):
 	if not onground and col.normal.distance_squared_to(Vector2(0,-1)) <= 0.1:
 		onground = true
 
 func _process(delta):
-	move_and_collide(speed*velocity*delta)
-
+	move_and_collide(speed*delta*compute_velocity(velocity))
+#computes this frames velocity
+func compute_velocity(child_velocity : Vector2)->Vector2:
+	return child_velocity
+#this is a utility function that converts an event into a direction
+#in the game
+func action2velocity(action : String)->Vector2:
+	match action:
+		"RIGHT":
+			return Vector2(1,0)
+		"LEFT":
+			return Vector2(-1,0)
+		"UP":
+			return Vector2(0,-1)
+		"DOWN":
+			return Vector2(0,1)
+	return Vector2(0,0)
 func _input(event):
-	if read_input and event is InputEvent:
-		var keys = Actions.keys()
-		for i in range(0,len(keys)):
-			if event.is_action_pressed(keys[i]):
-				perform_action(i,true)
-				break
-			elif event.is_action_released(keys[i]):
-				perform_action(i,false)
-				break
+	#we only care about inputs if we are possesed, otherwise we
+	#let the AI run
+	if possesed and event.is_action_type():
+		perform_action(event)
