@@ -15,18 +15,18 @@ curve = SubResource( 2 )
 [sub_resource type="ParticlesMaterial" id=4]
 lifetime_randomness = 0.68
 emission_shape = 1
-emission_sphere_radius = 82.67
+emission_sphere_radius = 30.93
 flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
-gravity = Vector3( 0, -10, 0 )
-initial_velocity = 42.55
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, -20, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.2
 scale_curve = SubResource( 3 )
 
 [sub_resource type="AnimatedTexture" id=1]
-frames = 10
+flags = 4
+frames = 6
 fps = 10.0
 frame_0/texture = ExtResource( 1 )
 frame_1/texture = ExtResource( 3 )
@@ -38,15 +38,12 @@ frame_3/delay_sec = 0.0
 frame_4/texture = ExtResource( 2 )
 frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 6 )
-frame_5/delay_sec = 0.0
-frame_6/delay_sec = 0.0
-frame_7/delay_sec = 0.0
-frame_8/delay_sec = 0.0
-frame_9/delay_sec = 0.0
+frame_5/delay_sec = 0.4
 
 [node name="Particles2D" type="Particles2D"]
-lifetime = 0.1
-speed_scale = 0.01
-randomness = 1.0
+amount = 4
+speed_scale = 0.5
+explosiveness = 1.0
+fixed_fps = 1
 process_material = SubResource( 4 )
 texture = SubResource( 1 )

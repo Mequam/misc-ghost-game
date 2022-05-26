@@ -10,7 +10,7 @@ func _ready():
 	#the ghost allways recives player input
 	#unless parralized, so it is "possesed"
 	possesed = true
-	speed = 80
+	speed = 100
 
 func on_action_double_press(act : String)->void:
 	if act == "LEFT" or act == "RIGHT":
@@ -26,7 +26,7 @@ func compute_velocity(vel : Vector2)->Vector2:
 		if pressed_inputs[key]:
 			vel += action2velocity(key)
 		if running:
-			vel.x *= 1.5
+			vel *= 1.3
 	return .compute_velocity(vel)
 
 func perform_action(event : InputEvent)->void:
@@ -47,5 +47,7 @@ func update_animation(event : InputEvent)->void:
 			$ghostSprite.play("run")
 	elif vel.y < 0:
 		$ghostSprite.play("up")
+	else:
+		$ghostSprite.play("down")
 	
 	.update_animation(event)
