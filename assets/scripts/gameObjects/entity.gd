@@ -35,10 +35,11 @@ var pressed_inputs : Dictionary = {
 	"ATTACK":false,
 }
 #used for making new enumerators in child classes
-const ENTITY_STATE_COUNT = 1
+const ENTITY_STATE_COUNT = 2
 #an enumerator of entity state
 enum EntityState {
-	DEFAULT = 0
+	DEFAULT = 0,
+	BRICK
 }
 
 #state variable used in all entities
@@ -125,7 +126,8 @@ func on_col(col):
 
 #process function that we can overload	
 func main_process(delta):
-	move_and_collide(speed*delta*compute_velocity(velocity))
+	if state != EntityState.BRICK:
+		move_and_collide(speed*delta*compute_velocity(velocity))
 
 func _process(delta):
 	main_process(delta)

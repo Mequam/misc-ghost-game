@@ -4,7 +4,7 @@ extends AnimatedSprite
 func _ready():
 	pass
 
-
+var ectoSplosion : PackedScene = load("res://scenes/animations/EctoSplosion.tscn")
 var ghost_run_counter : int = 0
 
 #how high up and down we go when running
@@ -16,6 +16,8 @@ var up : bool = false setget set_up,get_up
 func play(anim : String = "",backwords : bool = false)->void:
 	position = Vector2(0,0)
 	match anim:
+		"posses_col":
+			speed_scale = 3
 		"posses_launch":
 			speed_scale = 5
 		"posses_end":
@@ -39,10 +41,20 @@ func _on_ghostSprite_frame_changed():
 		self.up = !up
 		ghost_run_counter = -1
 	ghost_run_counter += 1
-
+#emits ectosplosion particles
+func emit_ectosplosion():
+	var to_spawn = ectoSplosion.instance()
+	if not flip_h:
+		to_spawn.scale.x *= -1
+	to_spawn.global_position = global_position
+	get_parent().get_parent().add_child(
+		to_spawn
+		)
 
 func _on_ghostSprite_animation_finished():
 	match animation:
+		"posses_col":
+			emit_ectosplosion()
 		"posses_launch":
 			play("posses")
 		"posses_end":

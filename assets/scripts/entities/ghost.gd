@@ -48,7 +48,6 @@ func on_action_released(act : String)->void:
 		running = false
 	.on_action_released(act)
 func on_action_press(act : String)->void:
-	print("action press! " + act)
 	if act == "ATTACK":
 		posses_attack(compute_velocity(velocity).normalized()*10)
 	.on_action_press(act)
@@ -58,6 +57,7 @@ func set_possesed(val : bool)->void:
 		visible = true
 		collision_layer = gen_col_layer()
 		collision_mask = gen_col_mask()
+		state = EntityState.DEFAULT
 	elif not val:
 		$ghostSprite.stop()
 		visible = false
@@ -92,8 +92,11 @@ func unposses()->void:
 	if possesed_entity:
 		possesed_entity.possesed = false
 	self.possesed = true
+	
 	position = possesed_entity.unposses_position()
 	possesed_entity = null
+	
+	$ghostSprite.emit_ectosplosion()
 
 #actually posses an entity
 func posses(entity)->void:
@@ -164,14 +167,27 @@ func main_process(delta):
 func main_input(event)->void:
 	perform_action(event)
 
-
+func on_col(col)->void:
+	match state:
+		LeniState.POSSESING:
+			if abs(col.normal.x) > abs(col.normal.y):
+				state = EntityState.BRICK
+				possesed_entity = col.collider
+				$ghostSprite.play("posses_col")
+	.on_col(col)
 
 func _on_flight_timer_timeout():
 	tired = true
 
 func _on_posses_timer_timeout():
 	posses_velocity = Vector2(0,0)
-	$ghostSprite.play("posses_end")
+	if state != EntityState.BRICK:
+		$ghostSprite.play("posses_end")
 
 func _on_ghostSprite_animation_finished():
-	state = EntityState.DEFAULT
+	print("finished " + str($ghostSprite.animation))
+	match $ghostSprite.animation:
+		"posses_col":
+			posses(possesed_entity)
+		_:
+			state = EntityState.DEFAULT

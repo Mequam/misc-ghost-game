@@ -26,7 +26,7 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
-[connection signal="animation_finished" from="ghostSprite" to="." method="_on_ghostSprite_animation_finished"]
 [connection signal="animation_finished" from="ghostSprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="animation_finished" from="ghostSprite" to="." method="_on_ghostSprite_animation_finished"]
 [connection signal="timeout" from="flight_timer" to="." method="_on_flight_timer_timeout"]
 [connection signal="timeout" from="posses_timer" to="." method="_on_posses_timer_timeout"]
