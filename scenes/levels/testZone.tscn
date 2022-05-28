@@ -11,14 +11,13 @@ extents = Vector2( 423.5, 10 )
 script = ExtResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 372, 374 )
+position = Vector2( 344, 360 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 2 )
 
+[node name="possesed_elevator" parent="." instance=ExtResource( 2 )]
+position = Vector2( 538, 97 )
+
 [node name="Leni" parent="." instance=ExtResource( 1 )]
 position = Vector2( 198, 157 )
-
-[node name="possesed_elevator" parent="." instance=ExtResource( 2 )]
-position = Vector2( 543, 270 )
-z_index = -1

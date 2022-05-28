@@ -28,9 +28,28 @@ var pressed_inputs : Dictionary = {
 	"RIGHT":false, #the first value indicates if we are pressed
 	"LEFT":false, #the second value indicates if we have been double pressed
 	"UP":false,
-	"DOWN":false
+	"DOWN":false,
+	"ATTACK":false,
+}
+#used for making new enumerators in child classes
+const ENTITY_STATE_COUNT = 1
+#an enumerator of entity state
+enum EntityState {
+	DEFAULT = 0
 }
 
+#state variable used in all entities
+var state : int = EntityState.DEFAULT setget set_state,get_state
+func set_state(val : int)->void:
+	state = val
+func get_state()->int:
+	return state
+
+#clears out the input store array
+#useful for resetting input
+func clear_stored_inputs():
+	for key in pressed_inputs:
+		pressed_inputs[key] = false
 #used for computing double presses
 var last_pressed_action : String = ""
 var last_pressed_action_time : int = 0
