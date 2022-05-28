@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Object",
+"class": "ColMath",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/col_math.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Entity",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/entities/ghost.gd"
 } ]
 _global_script_class_icons={
+"ColMath": "",
 "Entity": "",
 "Leni": ""
 }

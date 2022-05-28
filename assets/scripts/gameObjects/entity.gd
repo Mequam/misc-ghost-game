@@ -7,9 +7,12 @@ class_name Entity
 
 #wether or not the entity can be possesed by the player
 var can_posses : bool = true
-
 #are we possesed by the ghost?
-var possesed : bool= true
+var possesed : bool= true setget set_possesed,get_possesed
+func set_possesed(val : bool)->void:
+	possesed = val
+func get_possesed()->bool:
+	return possesed
 
 #these two are self explanitory
 var velocity : Vector2 = Vector2(0,0)
@@ -44,16 +47,18 @@ func set_state(val : int)->void:
 	state = val
 func get_state()->int:
 	return state
+#used for computing double presses
+var last_pressed_action : String = ""
+var last_pressed_action_time : int = 0
 
 #clears out the input store array
 #useful for resetting input
 func clear_stored_inputs():
 	for key in pressed_inputs:
 		pressed_inputs[key] = false
-#used for computing double presses
-var last_pressed_action : String = ""
-var last_pressed_action_time : int = 0
-
+func _ready():
+	collision_layer = gen_col_layer()
+	collision_mask = gen_col_mask()
 #called when an action is double pressed
 func on_action_double_press(action : String)->void:
 	pass
@@ -117,10 +122,14 @@ func on_col(col):
 		self.onground = true
 	elif onground and col.normal.distance_squared_to(Vector2(0,-1)) >= 0.1:
 		self.onground = false
-	
+
+#process function that we can overload	
+func main_process(delta):
+	move_and_collide(speed*delta*compute_velocity(velocity))
 
 func _process(delta):
-	move_and_collide(speed*delta*compute_velocity(velocity))
+	main_process(delta)
+
 #computes this frames velocity
 func compute_velocity(child_velocity : Vector2)->Vector2:
 	return child_velocity
@@ -137,8 +146,27 @@ func action2velocity(action : String)->Vector2:
 		"DOWN":
 			return Vector2(0,1)
 	return Vector2(0,0)
-func _input(event):
+	
+#default collision generators
+func gen_col_layer()->int:
+	return ColMath.Layer.NON_PLAYER_ENTITY
+func gen_col_mask()->int:
+	return ColMath.Layer.TERRAIN | ColMath.ConstLayer.TILE_BORDER
+
+func main_input(event)->void:
 	#we only care about inputs if we are possesed, otherwise we
 	#let the AI run
 	if possesed and event.is_action_type():
 		perform_action(event)
+
+#gets the position that Leni needs to go to when he
+#unposseses the entity
+#defaults to the entities position if no position
+#is given
+func unposses_position()->Vector2:
+	if $unposSpot:
+		return $unposSpot.position + position
+	return position
+
+func _input(event):
+	main_input(event)

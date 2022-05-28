@@ -1,5 +1,7 @@
 extends Object
 
+class_name ColMath
+
 #this function is used to shift collision bits to the right
 #by the number of items in one layer cylce
 
@@ -52,7 +54,7 @@ static func check_shifted(non_shifted : int,shifted : int,super_layer : int)->bo
 #These are the collision layers
 enum Layer {
 	PLAYER = 8,
-	ENEMY = 16,
+	NON_PLAYER_ENTITY = 16,
 	TERRAIN = 32,
 	PICKUPS = 64,
 	PROJECTILES = 128
