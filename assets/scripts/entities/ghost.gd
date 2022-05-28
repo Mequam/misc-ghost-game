@@ -94,6 +94,7 @@ func unposses()->void:
 	self.possesed = true
 	position = possesed_entity.unposses_position()
 	possesed_entity = null
+
 #actually posses an entity
 func posses(entity)->void:
 	#swap the possesion around
