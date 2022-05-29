@@ -15,7 +15,12 @@ enum LeniState {
 
 var running : bool = true
 #we can only fly for so long before we get tired
-var tired : bool = false
+var tired : bool = false setget set_tired,get_tired
+func set_tired(val : bool)->void:
+	tired = val
+	update_animation()
+func get_tired()->bool:
+	return tired
 #saved velocity for the possession attack
 var posses_velocity : Vector2 = Vector2(0,0)
 #reference to the entity we are currently possesing
@@ -177,7 +182,7 @@ func on_col(col)->void:
 	.on_col(col)
 
 func _on_flight_timer_timeout():
-	tired = true
+	self.tired = true
 
 func _on_posses_timer_timeout():
 	posses_velocity = Vector2(0,0)
@@ -185,7 +190,6 @@ func _on_posses_timer_timeout():
 		$ghostSprite.play("posses_end")
 
 func _on_ghostSprite_animation_finished():
-	print("finished " + str($ghostSprite.animation))
 	match $ghostSprite.animation:
 		"posses_col":
 			posses(possesed_entity)

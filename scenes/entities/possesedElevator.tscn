@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/animations/elevatorSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/entities/possesedElevator.gd" type="Script" id=2]
@@ -43,6 +43,9 @@ extents = Vector2( 42.1875, 39.375 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 39.75, 12 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 69.25, 10 )
+
 [node name="possesed_elevator" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -57,3 +60,9 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2( -37, -21 )
 shape = SubResource( 2 )
+
+[node name="GroundTester" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTester"]
+position = Vector2( -16, 89 )
+shape = SubResource( 5 )

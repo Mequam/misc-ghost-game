@@ -57,6 +57,9 @@ var last_pressed_action_time : int = 0
 func clear_stored_inputs():
 	for key in pressed_inputs:
 		pressed_inputs[key] = false
+func main_ready():
+	$GroundTester.connect("body_entered",self,"_on_GroundTester_body_entered")
+	$GroundTester.connect("body_exited",self,"_on_GroundTester_body_exited")
 func _ready():
 	collision_layer = gen_col_layer()
 	collision_mask = gen_col_mask()
@@ -110,8 +113,7 @@ func move_and_collide(rel_vec : Vector2,
 	
 	if col:
 		on_col(col)
-	elif rel_vec.y != 0:
-		self.onground = false #we are NOT on the ground if we are moving up and down
+
 	return col
 #this function is called at the end of perform_action
 #and updates the animation to match the action performed
@@ -119,10 +121,7 @@ func update_animation(event : InputEvent)->void:
 	pass
 #called when we detect a collision
 func on_col(col):
-	if not onground and col.normal.distance_squared_to(Vector2(0,-1)) <= 0.1:
-		self.onground = true
-	elif onground and col.normal.distance_squared_to(Vector2(0,-1)) >= 0.1:
-		self.onground = false
+	pass
 
 #process function that we can overload	
 func main_process(delta):
@@ -172,3 +171,8 @@ func unposses_position()->Vector2:
 
 func _input(event):
 	main_input(event)
+
+func _on_GroundTester_body_entered(body):
+	self.onground = true
+func _on_GroundTester_body_exited(body):
+	self.onground = false
