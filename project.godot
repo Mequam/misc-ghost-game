@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Leni",
 "language": "GDScript",
 "path": "res://assets/scripts/entities/ghost.gd"
+}, {
+"base": "Entity",
+"class": "Npc",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/npc.gd"
 } ]
 _global_script_class_icons={
 "ColMath": "",
 "Entity": "",
-"Leni": ""
+"Leni": "",
+"Npc": ""
 }
 
 [application]
