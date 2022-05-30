@@ -14,8 +14,9 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 26.67
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale = 0.2
 
-[sub_resource type="AnimatedTexture" id=2]
+[sub_resource type="AnimatedTexture" id=4]
 flags = 4
 frames = 3
 fps = 15.0
@@ -27,6 +28,7 @@ frame_2/delay_sec = 0.0
 
 [node name="flightThingParticles" type="Particles2D"]
 position = Vector2( 4, -2 )
+lifetime = 0.5
 local_coords = false
 process_material = SubResource( 1 )
-texture = SubResource( 2 )
+texture = SubResource( 4 )

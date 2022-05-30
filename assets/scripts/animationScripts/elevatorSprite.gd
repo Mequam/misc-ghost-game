@@ -19,3 +19,4 @@ func _on_elevatorSprite_animation_finished():
 			else:
 				backwords = false
 				stop()
+				frame = 0

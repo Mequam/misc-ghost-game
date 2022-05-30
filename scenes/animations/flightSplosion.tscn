@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/scripts/animationScripts/flightSplosion.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/flight_thing/0003.png" type="Texture" id=2]
 [ext_resource path="res://assets/animations/flight_thing/0002.png" type="Texture" id=3]
-[ext_resource path="res://assets/animations/flight_thing/0001.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/flight_thing/0002.png" type="Texture" id=4]
 
 [sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 1

@@ -19,6 +19,7 @@ animations = [ {
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "open"
+speed_scale = 4.0
 script = ExtResource( 6 )
 
 [connection signal="animation_finished" from="." to="." method="_on_elevatorSprite_animation_finished"]

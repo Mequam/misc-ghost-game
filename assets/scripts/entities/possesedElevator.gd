@@ -2,7 +2,6 @@ extends Npc
 
 #wooshes a given entity
 func woosh(body)->void:
-	print("wooshing " + body.name)
 	if body.has_method("move_and_collide"):
 		if body.position.x > position.x:
 			body.move_and_collide(Vector2(100,0))
@@ -26,12 +25,15 @@ func compute_velocity(vel : Vector2)->Vector2:
 	if pressed_inputs["DOWN"]:
 		vel.y += 1
 	return .compute_velocity(vel)
-
+var flipped : bool = false
 func on_action_press(act):
-	if act == "LEFT" and not $Sprite.flip_h:
-		$Sprite.flip_h = true
-	elif act == "RIGHT" and $Sprite.flip_h:
-		$Sprite.flip_h = false
+	print("recived action " + act)
+	if act == "LEFT" and not flipped:
+		self.scale.x = -1
+		flipped = not flipped
+	elif act == "RIGHT" and flipped:
+		self.scale.x = -1
+		flipped = not flipped
 	elif act == "ATTACK":
 		shoot_bird_things()
 
@@ -50,12 +52,19 @@ var bird_thing_packed = load("res://scenes/projectiles/flightThingProjectile.tsc
 
 func shoot_bird_things()->void:
 	pass
-	#var bd = bird_thing_packed.instance() as Projectile
-	#bd.global_position = global_position
-	#if $Sprite.flip_h:
-	#	bd.velocity = Vector2(1,0)
-	#else:
-#		bd.velocity = Vector2(-1,0)
+	var bd = bird_thing_packed.instance() as Projectile
 	
-#	get_parent().add_child(bd)
+	bd.global_position = $batSpawnPoint.global_position
+	
+	if not flipped:
+		bd.velocity = Vector2(1,0)
+	else:
+		bd.velocity = Vector2(-1,0)
+	
+	bd.collision_layer = 0
+	bd.collision_mask = 0
+	
+	
+	print("SHOOTING BIRD THING")
+	get_parent().add_child(bd)
 	$Sprite.play("open",false)
