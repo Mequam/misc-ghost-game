@@ -14,10 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/col_math.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "KinColObject",
 "class": "Entity",
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/entity.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "KinColObject",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/kinematic_col_object.gd"
 }, {
 "base": "Entity",
 "class": "Leni",
@@ -28,12 +33,25 @@ _global_script_classes=[ {
 "class": "Npc",
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/npc.gd"
+}, {
+"base": "KinColObject",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/projectile.gd"
+}, {
+"base": "Projectile",
+"class": "ProjectileFlightThing",
+"language": "GDScript",
+"path": "res://assets/scripts/projectiles/flightThingProjectile.gd"
 } ]
 _global_script_class_icons={
 "ColMath": "",
 "Entity": "",
+"KinColObject": "",
 "Leni": "",
-"Npc": ""
+"Npc": "",
+"Projectile": "",
+"ProjectileFlightThing": ""
 }
 
 [application]

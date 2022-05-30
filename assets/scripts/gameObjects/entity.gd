@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends KinColObject
 
 class_name Entity
 
@@ -14,9 +14,7 @@ func set_possesed(val : bool)->void:
 func get_possesed()->bool:
 	return possesed
 
-#these two are self explanitory
-var velocity : Vector2 = Vector2(0,0)
-var speed : float = 50
+
 
 #indicates if we are on the ground
 var onground : bool = false setget set_onground,get_onground
@@ -57,12 +55,11 @@ var last_pressed_action_time : int = 0
 func clear_stored_inputs():
 	for key in pressed_inputs:
 		pressed_inputs[key] = false
+
 func main_ready():
 	$GroundTester.connect("body_entered",self,"_on_GroundTester_body_entered")
 	$GroundTester.connect("body_exited",self,"_on_GroundTester_body_exited")
-func _ready():
-	collision_layer = gen_col_layer()
-	collision_mask = gen_col_mask()
+
 #called when an action is double pressed
 func on_action_double_press(action : String)->void:
 	pass
@@ -105,35 +102,19 @@ func perform_action(event : InputEvent)->void:
 func AI()->void:
 	pass
 
-func move_and_collide(rel_vec : Vector2, 
-						infinite_inertia : bool = false, 
-						exclude_raycast_shapes : bool = true,
-						test_only : bool = false)->KinematicCollision2D:
-	var col = .move_and_collide(rel_vec,infinite_inertia,exclude_raycast_shapes,test_only)
-	
-	if col:
-		on_col(col)
-
-	return col
 #this function is called at the end of perform_action
 #and updates the animation to match the action performed
 func update_animation(event : InputEvent)->void:
 	pass
-#called when we detect a collision
-func on_col(col):
-	pass
+
 
 #process function that we can overload	
 func main_process(delta):
 	if state != EntityState.BRICK:
 		move_and_collide(speed*delta*compute_velocity(velocity))
 
-func _process(delta):
-	main_process(delta)
 
-#computes this frames velocity
-func compute_velocity(child_velocity : Vector2)->Vector2:
-	return child_velocity
+
 #this is a utility function that converts an event into a direction
 #in the game
 func action2velocity(action : String)->Vector2:

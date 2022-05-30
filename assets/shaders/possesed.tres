@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+uniform float Size;
+uniform vec4 Spooky_Color : hint_color;
+
+void fragment() {
+    float offset = Size*abs(cos(TIME*2.0)/2.0);
+    vec2 uv_left = UV+vec2(1,0)*offset;
+    vec2 uv_right = UV+vec2(-1,0)*offset;
+    vec2 uv_up = UV+vec2(0,1)*offset;
+    vec2 uv_down = UV+vec2(0,-1)*offset;
+    
+    float alpha_left = texture(TEXTURE,uv_left).a;
+    float alpha_right = texture(TEXTURE,uv_right).a;
+    float alpha_up = texture(TEXTURE,uv_up).a;
+    float alpha_down = texture(TEXTURE,uv_down).a;
+    
+    vec4 main_image_colors = texture(TEXTURE, UV);
+    
+    COLOR.a = min(alpha_left+alpha_right+alpha_down+alpha_up,1.0);
+    COLOR.rgb = Spooky_Color.rgb;
+    
+    COLOR.rgb = mix(COLOR.rgb,main_image_colors.rgb,main_image_colors.a*2.3);
+}
+"
+
+[resource]
+shader = SubResource( 3 )
+shader_param/Size = 0.048
+shader_param/Spooky_Color = Color( 0, 1, 0.913725, 1 )

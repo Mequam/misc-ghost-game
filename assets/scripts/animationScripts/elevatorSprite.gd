@@ -9,9 +9,13 @@ extends AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
+var backwords : bool = false
 func _on_elevatorSprite_animation_finished():
 	match animation:
 		"open":
-			stop()
-			frame = 4
+			if not backwords:
+				backwords = true
+				play("open",true)
+			else:
+				backwords = false
+				stop()

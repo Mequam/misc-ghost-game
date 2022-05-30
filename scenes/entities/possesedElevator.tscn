@@ -2,40 +2,7 @@
 
 [ext_resource path="res://scenes/animations/elevatorSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/entities/possesedElevator.gd" type="Script" id=2]
-
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-
-uniform bool possesed = false;
-uniform float radius;
-uniform vec2 center;
-uniform vec4 color : hint_color;
-
-float distance_squared(vec2 a, vec2 b) {
-	vec2 vec_dist = (a-b);
-	return dot(vec_dist,vec_dist);	
-}
-void fragment() {
-	vec4 p1 = textureLod(TEXTURE, UV,0);
-	vec2 newV = vec2(UV.x + 0.0001,UV.y);
-	vec4 p2 = textureLod(TEXTURE, newV,0);
-	if (possesed && distance(p2,p1) > abs(cos(TIME))/100.0 + 0.01 //> 0.01 
-			&& distance_squared(UV+center,vec2(0,0)) > radius
-			) {
-		COLOR.rgb = color.rgb;
-		COLOR.a = abs(cos(TIME*2.0))/4.0;
-	}
-	else {
-		COLOR = p1;
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
-shader_param/possesed = false
-shader_param/radius = 0.091
-shader_param/center = Vector2( -0.406, -0.5 )
-shader_param/color = Color( 0, 1, 0.913725, 1 )
+[ext_resource path="res://scenes/animations/woosh.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.1875, 39.375 )
@@ -46,23 +13,44 @@ extents = Vector2( 39.75, 12 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 69.25, 10 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 167, 30.25 )
+
 [node name="possesed_elevator" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." instance=ExtResource( 1 )]
-material = SubResource( 4 )
-position = Vector2( 1, 30 )
+position = Vector2( 5, -7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -43, 34.375 )
+position = Vector2( -39, -2.625 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2( -37, -21 )
+position = Vector2( -33, -58 )
 shape = SubResource( 2 )
 
 [node name="GroundTester" type="Area2D" parent="."]
+position = Vector2( 4, -37 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTester"]
 position = Vector2( -16, 89 )
 shape = SubResource( 5 )
+
+[node name="wooshfect" type="Area2D" parent="."]
+position = Vector2( 4, -37 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wooshfect"]
+position = Vector2( -5, 80.25 )
+shape = SubResource( 6 )
+
+[node name="woosh" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( -10, -7 )
+scale = Vector2( 4, 4 )
+frame = 0
+speed_scale = 4.0
+playing = false
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="body_entered" from="wooshfect" to="." method="_on_wooshfect_body_entered"]
