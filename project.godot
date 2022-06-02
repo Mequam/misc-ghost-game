@@ -19,10 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/entity.gd"
 }, {
+"base": "Area2D",
+"class": "Hazzard",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/hazzard.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "KinColObject",
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/kinematic_col_object.gd"
+}, {
+"base": "Npc",
+"class": "LRJEntity",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/lrjEntity.gd"
 }, {
 "base": "Entity",
 "class": "Leni",
@@ -43,15 +53,29 @@ _global_script_classes=[ {
 "class": "ProjectileFlightThing",
 "language": "GDScript",
 "path": "res://assets/scripts/projectiles/flightThingProjectile.gd"
+}, {
+"base": "LRJEntity",
+"class": "Witch",
+"language": "GDScript",
+"path": "res://assets/scripts/entities/witch.gd"
+}, {
+"base": "Hazzard",
+"class": "WitchColumn",
+"language": "GDScript",
+"path": "res://assets/scripts/hazzards/WitchColumn.gd"
 } ]
 _global_script_class_icons={
 "ColMath": "",
 "Entity": "",
+"Hazzard": "",
 "KinColObject": "",
+"LRJEntity": "",
 "Leni": "",
 "Npc": "",
 "Projectile": "",
-"ProjectileFlightThing": ""
+"ProjectileFlightThing": "",
+"Witch": "",
+"WitchColumn": ""
 }
 
 [application]

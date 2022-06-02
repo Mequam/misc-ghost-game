@@ -13,13 +13,21 @@ extents = Vector2( 29, 6 )
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." instance=ExtResource( 1 )]
+position = Vector2( 9, 30 )
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -11, 1.5 )
+position = Vector2( -2, 31.5 )
 shape = SubResource( 1 )
 
 [node name="GroundTester" type="Area2D" parent="."]
+position = Vector2( 9, 30 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTester"]
 position = Vector2( -9, 61 )
 shape = SubResource( 2 )
+
+[node name="col_spawn_position" type="Node2D" parent="."]
+position = Vector2( 174, 29 )
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]

@@ -56,7 +56,7 @@ enum Layer {
 	PLAYER = 8,
 	NON_PLAYER_ENTITY = 16,
 	TERRAIN = 32,
-	PICKUPS = 64,
+	HAZARD = 64,
 	PROJECTILES = 128
 }
 #these are the layers that don't shift or have super classes

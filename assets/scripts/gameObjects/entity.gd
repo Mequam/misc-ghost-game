@@ -24,6 +24,21 @@ func set_onground(val : bool)->void:
 func get_onground()->bool:
 	return onground
 
+#health of the entity, if this hits zero we die
+var health : int = 7 setget set_health,get_health
+func set_health(val : int)->void:
+	if val <= 0:
+		die()
+	health = val
+func get_health()->int:
+	return health
+
+#used when we want do more than just remove ourselfs from the scene
+func die():
+	queue_free()
+#called when we take damage, inteanded to be overloaded
+func take_damage(dmg : int = 1, dmg_src = null)->void:
+	self.health -= dmg
 #stores inputs that are pressed and will remain true
 #for as long as the input is not released
 var pressed_inputs : Dictionary = {
@@ -159,3 +174,11 @@ func _on_GroundTester_body_entered(body):
 	self.onground = true
 func _on_GroundTester_body_exited(body):
 	self.onground = false
+
+#convinence function to spawn an object at a given position
+func spawn_object(pc : PackedScene,global_pos : Vector2):
+	var inst = pc.instance()
+	if inst is Node2D:
+		inst.global_position = global_pos
+		get_parent().add_child(inst)
+		return inst
