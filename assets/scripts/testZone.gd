@@ -6,14 +6,7 @@ extends Node2D
 # var b = "text"
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-	
-func _input(event):
-	if event is InputEventKey:
-		if event.scancode == KEY_SPACE:
-			$Leni.posses($possesed_elevator)
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func _input(event):
+	if event is InputEventKey and event.pressed and event.scancode == KEY_P:
+		$witch/Sprite.play("up")

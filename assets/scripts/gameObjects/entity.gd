@@ -20,6 +20,7 @@ func get_possesed()->bool:
 var onground : bool = false setget set_onground,get_onground
 func set_onground(val : bool)->void:
 	onground = val
+	update_animation(null)
 func get_onground()->bool:
 	return onground
 
@@ -31,6 +32,7 @@ var pressed_inputs : Dictionary = {
 	"UP":false,
 	"DOWN":false,
 	"ATTACK":false,
+	"JUMP":false
 }
 #used for making new enumerators in child classes
 const ENTITY_STATE_COUNT = 2
@@ -57,6 +59,7 @@ func clear_stored_inputs():
 		pressed_inputs[key] = false
 
 func main_ready():
+	self.onground = false
 	$GroundTester.connect("body_entered",self,"_on_GroundTester_body_entered")
 	$GroundTester.connect("body_exited",self,"_on_GroundTester_body_exited")
 
@@ -112,7 +115,6 @@ func update_animation(event : InputEvent)->void:
 func main_process(delta):
 	if state != EntityState.BRICK:
 		move_and_collide(speed*delta*compute_velocity(velocity))
-
 
 
 #this is a utility function that converts an event into a direction

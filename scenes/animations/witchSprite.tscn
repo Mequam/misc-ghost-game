@@ -1,0 +1,76 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://assets/animations/witch/witch0015.png" type="Texture" id=1]
+[ext_resource path="res://assets/animations/witch/witch0014.png" type="Texture" id=2]
+[ext_resource path="res://assets/animations/witch/witch0023.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/witch/witch0016.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/witch/witch0002.png" type="Texture" id=5]
+[ext_resource path="res://assets/animations/witch/witch0013.png" type="Texture" id=6]
+[ext_resource path="res://assets/animations/witch/witch0004.png" type="Texture" id=7]
+[ext_resource path="res://assets/animations/witch/witch0001.png" type="Texture" id=8]
+[ext_resource path="res://assets/animations/witch/witch0020.png" type="Texture" id=9]
+[ext_resource path="res://assets/animations/witch/witch0012.png" type="Texture" id=10]
+[ext_resource path="res://assets/animations/witch/witch0003.png" type="Texture" id=11]
+[ext_resource path="res://assets/animations/witch/witch0010.png" type="Texture" id=12]
+[ext_resource path="res://assets/animations/witch/witch0006.png" type="Texture" id=13]
+[ext_resource path="res://assets/animations/witch/witch0011.png" type="Texture" id=14]
+[ext_resource path="res://assets/animations/witch/witch0022.png" type="Texture" id=15]
+[ext_resource path="res://assets/animations/witch/witch0021.png" type="Texture" id=16]
+[ext_resource path="res://assets/animations/witch/witch0019.png" type="Texture" id=17]
+[ext_resource path="res://assets/animations/witch/witch0025.png" type="Texture" id=18]
+[ext_resource path="res://assets/animations/witch/witch0028.png" type="Texture" id=19]
+[ext_resource path="res://assets/animations/witch/witch0027.png" type="Texture" id=20]
+[ext_resource path="res://assets/animations/witch/witch0026.png" type="Texture" id=21]
+[ext_resource path="res://assets/animations/witch/witch0029.png" type="Texture" id=22]
+[ext_resource path="res://assets/animations/witch/witch0030.png" type="Texture" id=23]
+[ext_resource path="res://assets/animations/witch/witch0031.png" type="Texture" id=24]
+[ext_resource path="res://assets/animations/witch/witch0032.png" type="Texture" id=25]
+[ext_resource path="res://assets/scripts/animationScripts/witchSprite.gd" type="Script" id=26]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 9 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle_long",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "fall_start",
+"speed": 5.0
+} ]
+
+[node name="witchSprite" type="AnimatedSprite"]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 1 )
+animation = "up"
+speed_scale = 2.0
+playing = true
+script = ExtResource( 26 )
+
+[connection signal="animation_finished" from="." to="." method="_on_witchSprite_animation_finished"]
