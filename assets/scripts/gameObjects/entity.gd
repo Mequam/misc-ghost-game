@@ -77,6 +77,8 @@ func main_ready():
 	self.onground = false
 	$GroundTester.connect("body_entered",self,"_on_GroundTester_body_entered")
 	$GroundTester.connect("body_exited",self,"_on_GroundTester_body_exited")
+	$GroundTester.collision_layer = 0
+	$GroundTester.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.ConstLayer.ALL_ENEMIES
 
 #called when an action is double pressed
 func on_action_double_press(action : String)->void:
@@ -171,9 +173,11 @@ func _input(event):
 	main_input(event)
 
 func _on_GroundTester_body_entered(body):
-	self.onground = true
+	if body != self:
+		self.onground = true
 func _on_GroundTester_body_exited(body):
-	self.onground = false
+	if body != self:
+		self.onground = false
 
 #convinence function to spawn an object at a given position
 func spawn_object(pc : PackedScene,global_pos : Vector2):
@@ -182,3 +186,6 @@ func spawn_object(pc : PackedScene,global_pos : Vector2):
 		inst.global_position = global_pos
 		get_parent().add_child(inst)
 		return inst
+#convinence function for shooting projectiles
+func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
+	spawn_object(proj,global_pos).velocity = velocity

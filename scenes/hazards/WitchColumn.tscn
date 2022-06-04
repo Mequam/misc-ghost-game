@@ -10,7 +10,7 @@ extents = Vector2( 23, 88 )
 script = ExtResource( 2 )
 
 [node name="WitchColumnSprite" parent="." instance=ExtResource( 1 )]
-frame = 0
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

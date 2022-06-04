@@ -59,6 +59,6 @@ func update_animation(event : InputEvent)->void:
 
 #we fall when we are in the air
 func main_process(delta):
-	if not onground:
+	if not onground and not state == EntityState.BRICK:
 		velocity.y += gravity*delta
 	.main_process(delta)

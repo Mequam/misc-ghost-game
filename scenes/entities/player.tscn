@@ -23,7 +23,6 @@ position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
 [node name="flight_timer" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="posses_timer" type="Timer" parent="."]

@@ -5,7 +5,7 @@ extends LRJEntity
 class_name Witch
 
 var collumn = load("res://scenes/hazards/WitchColumn.tscn")
-
+var witchProjectile = load("res://scenes/projectiles/witchProjectile.tscn")
 
 func collumn_attack()->void:
 	$Sprite.play("attack")
@@ -13,11 +13,20 @@ func collumn_attack()->void:
 	if ($Sprite.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
 	var obj = spawn_object(collumn,$col_spawn_position.global_position)
-	
+
+func shoot_witch_projectile()->void:
+	if ($Sprite.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite.flip_h and $col_spawn_position.position.x < 0):
+		$col_spawn_position.position.x *= -1
+	shoot(witchProjectile,$col_spawn_position.global_position,compute_velocity(velocity))
+	$Sprite.play("attack")
+	state = EntityState.BRICK
 func on_action_press(act : String)->void:
 	match act:
 		"ATTACK":
-			collumn_attack()
+			if run:
+				shoot_witch_projectile()
+			else:
+				collumn_attack()
 	.on_action_press(act)
 
 func update_animation(event : InputEvent = null)->void:
