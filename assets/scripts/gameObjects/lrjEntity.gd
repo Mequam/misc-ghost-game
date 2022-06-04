@@ -42,9 +42,8 @@ func compute_velocity(velocity : Vector2)->Vector2:
 		velocity.x *= run_modifier
 	return .compute_velocity(velocity)
 
-func update_animation(event : InputEvent)->void:
+func update_animation()->void:
 	var computed_vel : Vector2 = compute_velocity(velocity)
-	print(computed_vel.x)
 	if computed_vel == Vector2(0,0):
 		$Sprite.play("idle")
 	elif computed_vel.y > 0:
@@ -55,10 +54,11 @@ func update_animation(event : InputEvent)->void:
 	if $Sprite.animation != "idle":
 		$Sprite.flip_h = computed_vel.x < 0
 	
-	.update_animation(event)
+	.update_animation()
 
 #we fall when we are in the air
 func main_process(delta):
 	if not onground and not state == EntityState.BRICK:
 		velocity.y += gravity*delta
+		update_animation()
 	.main_process(delta)

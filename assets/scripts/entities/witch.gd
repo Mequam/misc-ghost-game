@@ -7,6 +7,52 @@ class_name Witch
 var collumn = load("res://scenes/hazards/WitchColumn.tscn")
 var witchProjectile = load("res://scenes/projectiles/witchProjectile.tscn")
 
+func ai_look_at_player(player):
+	if player.position.x < position.x:
+		perform_action("RIGHT",false)
+		perform_action("LEFT",true)
+		perform_action("LEFT",false)
+	else:
+		perform_action("LEFT",false)
+		perform_action("RIGHT",true)
+		perform_action("RIGHT",false)
+
+func ai_fire_column():
+	perform_action("ATTACK",true)
+	perform_action("ATTACK",false)
+
+func ai_shoot_col(player):
+	ai_look_at_player(player)
+	ai_fire_column()
+func ai_shoot_projectile_dir(dir : String)->void:
+	perform_action(dir,true,true)
+	perform_action("ATTACK",true)
+	perform_action(dir,false)
+func ai_shoot_projectile(player):
+	if player.position.x < position.x:
+		ai_shoot_projectile_dir("LEFT")
+	else:
+		ai_shoot_projectile_dir("RIGHT")
+func ai_run_away(player):
+	if player.position.x < position.x:
+		perform_action("RIGHT",true,true)
+	else:
+		perform_action("LEFT",true,true)
+
+var ai_ticks : int = 0
+func AI(player)->void:
+	if run:
+		if abs(player.position.x - position.x) > 500:
+			perform_action("LEFT",false)
+			perform_action("RIGHT",false)
+	elif abs(player.position.x - position.x) < abs($col_spawn_position.position.x):
+		ai_shoot_col(player)
+		ai_run_away(player)
+	else:
+		if ai_ticks == 4:
+			ai_shoot_projectile(player)
+	ai_ticks += 1
+	ai_ticks = ai_ticks % 5
 func collumn_attack()->void:
 	$Sprite.play("attack")
 	state = EntityState.BRICK
@@ -20,6 +66,7 @@ func shoot_witch_projectile()->void:
 	shoot(witchProjectile,$col_spawn_position.global_position,compute_velocity(velocity))
 	$Sprite.play("attack")
 	state = EntityState.BRICK
+
 func on_action_press(act : String)->void:
 	match act:
 		"ATTACK":
@@ -31,8 +78,7 @@ func on_action_press(act : String)->void:
 
 func update_animation(event : InputEvent = null)->void:
 	if state != EntityState.BRICK:
-		.update_animation(event)
-
+		.update_animation()
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "attack":

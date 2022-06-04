@@ -8,6 +8,7 @@ var possesed_material : ShaderMaterial
 func main_ready():
 	possesed_material = ResourceLoader.load("res://assets/shaders/possesed.tres")
 	self.possesed = false
+	add_to_group("Npc")
 	.main_ready()
 func set_possesed(val : bool)->void:
 	if val:

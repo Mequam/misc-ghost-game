@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/entities/ghost.gd"
 }, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://assets/scripts/testZone.gd"
+}, {
 "base": "Entity",
 "class": "Npc",
 "language": "GDScript",
@@ -76,6 +81,7 @@ _global_script_class_icons={
 "KinColObject": "",
 "LRJEntity": "",
 "Leni": "",
+"Level": "",
 "Npc": "",
 "Projectile": "",
 "ProjectileFlightThing": "",

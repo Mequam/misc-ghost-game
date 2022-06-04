@@ -1,6 +1,7 @@
 extends Projectile
 
 class_name WitchProjectile
+
 # Called when the node enters the scene tree for the first time.
 var magic = load("res://scenes/animations/magicParticles.tscn")
 func _ready():

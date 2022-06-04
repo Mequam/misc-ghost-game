@@ -1,12 +1,16 @@
 extends Node2D
+#this script is the generic level class intenaded
+#to be given to any main level node that has entity nodes as children 
 
+class_name Level
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var cam_ref : Camera2D
 
+func _ready():
+	$AITimer.connect("timeout",self,"on_ai_timeout")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _input(event):
-	if event is InputEventKey and event.pressed and event.scancode == KEY_P:
-		$witch/Sprite.play("up")
+func on_ai_timeout():
+	if $Leni.possesed_entity:
+		get_tree().call_group("Npc","run_AI",$Leni.possesed_entity)
+	else:
+		get_tree().call_group("Npc","AI",$Leni)

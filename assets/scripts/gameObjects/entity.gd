@@ -5,12 +5,20 @@ class_name Entity
 #this is the generic entity script that all
 #collision game objects are inteanded to draw from
 
+#grabs the camera to follow this entity
+func grab_camera()->void:
+	var parent = get_parent() as Level
+	var cam_parent = parent.cam_ref.get_parent()
+	if cam_parent:
+		cam_parent.remove_child(parent.cam_ref)
+	add_child(parent.cam_ref)
 #wether or not the entity can be possesed by the player
 var can_posses : bool = true
 #are we possesed by the ghost?
 var possesed : bool= true setget set_possesed,get_possesed
 func set_possesed(val : bool)->void:
 	possesed = val
+	clear_stored_inputs()
 func get_possesed()->bool:
 	return possesed
 
@@ -20,7 +28,7 @@ func get_possesed()->bool:
 var onground : bool = false setget set_onground,get_onground
 func set_onground(val : bool)->void:
 	onground = val
-	update_animation(null)
+	update_animation()
 func get_onground()->bool:
 	return onground
 
@@ -72,6 +80,7 @@ var last_pressed_action_time : int = 0
 func clear_stored_inputs():
 	for key in pressed_inputs:
 		pressed_inputs[key] = false
+	update_animation()
 
 func main_ready():
 	self.onground = false
@@ -89,22 +98,35 @@ func on_action_press(action : String)->void:
 #runs only when the action is released
 func on_action_released(action : String)->void:
 	pass
+#takes as input an action and wether or not it is double pressed,
+#then performs the given action
+func perform_action(act : String,pressed : bool,double_press : bool = false,echo : bool = false)->void:
+	if pressed:
+		on_action_press(act)
+		pressed_inputs[act] = true
+		if double_press:
+			on_action_double_press(act)
+	else:
+		pressed_inputs[act] = false
+		on_action_released(act)
+	if not echo:
+		update_animation()
 #performs the given action on the entity
 #inteanded to be overloaded by the individual class
-func perform_action(event : InputEvent)->void:
+func compute_action(event : InputEvent)->void:
 	for key in pressed_inputs:
 		#yes this if statement is hideous, but it gaurds against
 		#echo events where event.is_aciton_pressed is false
 		#but we want move_right to be true
 		if event.is_action_pressed(key):
-			on_action_press(key)
-			pressed_inputs[key] = true
+			
+			perform_action(key,true,false,event.is_echo())
 			
 			var current_input_time = OS.get_ticks_msec()
 
 
 			if last_pressed_action == key and (current_input_time - last_pressed_action_time) < 300:
-				on_action_double_press(key)
+				perform_action(key,true,true,event.is_echo())
 
 			#update the last pressed values
 			last_pressed_action = key
@@ -112,19 +134,21 @@ func perform_action(event : InputEvent)->void:
 				
 		elif event.is_action_released(key):
 			pressed_inputs[key] = false
-			on_action_released(key)
+			perform_action(key,false,false,event.is_echo())
 
-	if not event.is_echo():
-		#only update animation on new events
-		update_animation(event)
+
 #this function is called when we are NOT possesed
 #and is inteanded to feed inputs into the perform_action function
-func AI()->void:
+#it takes as its inputs the player position 
+func AI(player_enemy)->void:
 	pass
-
+#runs the AI if acceptable
+func run_AI(player_enemy)->void:
+	if not possesed:
+		AI(player_enemy)
 #this function is called at the end of perform_action
 #and updates the animation to match the action performed
-func update_animation(event : InputEvent)->void:
+func update_animation()->void:
 	pass
 
 
@@ -158,7 +182,7 @@ func main_input(event)->void:
 	#we only care about inputs if we are possesed, otherwise we
 	#let the AI run
 	if possesed and event.is_action_type():
-		perform_action(event)
+		compute_action(event)
 
 #gets the position that Leni needs to go to when he
 #unposseses the entity
@@ -186,6 +210,7 @@ func spawn_object(pc : PackedScene,global_pos : Vector2):
 		inst.global_position = global_pos
 		get_parent().add_child(inst)
 		return inst
+
 #convinence function for shooting projectiles
 func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
 	spawn_object(proj,global_pos).velocity = velocity

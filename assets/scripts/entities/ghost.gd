@@ -26,11 +26,14 @@ var posses_velocity : Vector2 = Vector2(0,0)
 #reference to the entity we are currently possesing
 var possesed_entity : Entity = null
 
-func _ready():
+func main_ready():
 	#the ghost allways recives player input
 	#unless parralized, so it is "possesed"
 	possesed = true
-	speed = 150
+	speed = 400
+	(get_parent() as Level).cam_ref = $mainCam
+	.main_ready()
+	
 
 func set_onground(val : bool)->void:
 	if not onground and val:
@@ -54,7 +57,7 @@ func on_action_released(act : String)->void:
 	.on_action_released(act)
 func on_action_press(act : String)->void:
 	if act == "ATTACK":
-		posses_attack(compute_velocity(velocity).normalized()*10)
+		posses_attack(compute_velocity(velocity).normalized()*5)
 	.on_action_press(act)
 
 func set_possesed(val : bool)->void:
@@ -63,6 +66,7 @@ func set_possesed(val : bool)->void:
 		collision_layer = gen_col_layer()
 		collision_mask = gen_col_mask()
 		state = EntityState.DEFAULT
+		$mainCam.position = Vector2(0,0)
 	elif not val:
 		$ghostSprite.stop()
 		visible = false
@@ -122,8 +126,8 @@ func compute_velocity(vel : Vector2)->Vector2:
 			for key in pressed_inputs:
 				if pressed_inputs[key]:
 					vel += action2velocity(key)
-				if running:
-					vel *= 1.3
+			if running:
+				vel.x *= 2
 			if tired:
 				vel.y += 1.2
 			else:
@@ -132,16 +136,16 @@ func compute_velocity(vel : Vector2)->Vector2:
 			vel = posses_velocity
 	return .compute_velocity(vel)
 
-func perform_action(event : InputEvent)->void:
+func compute_action(event : InputEvent)->void:
 	match state:
 		LeniState.POSSESING:
 			#while we are possesing we do NOT
 			#update player input
 			pass
 		_:
-			.perform_action(event)
+			.compute_action(event)
 
-func update_animation(event : InputEvent = null)->void:
+func update_animation()->void:
 	match state:
 		EntityState.DEFAULT:
 			var vel : Vector2 = compute_velocity(velocity)	
@@ -160,17 +164,19 @@ func update_animation(event : InputEvent = null)->void:
 				$ghostSprite.play("up")
 			else:
 				$ghostSprite.play("down")
-	.update_animation(event)
+	.update_animation()
 
 func main_process(delta):
 	#Leni does NOTHING if he is not possesed
 	if possesed:
 		.main_process(delta)
+	if possesed_entity:
+		$mainCam.global_position = possesed_entity.global_position
 
 #overload the usual input
 #because Leni ALWAYS listens to input
 func main_input(event)->void:
-	perform_action(event)
+	compute_action(event)
 
 func on_col(col)->void:
 	match state:
@@ -193,5 +199,9 @@ func _on_ghostSprite_animation_finished():
 	match $ghostSprite.animation:
 		"posses_col":
 			posses(possesed_entity)
+		"posses":
+			pass
+		"posses_launch":
+			pass
 		_:
 			state = EntityState.DEFAULT
