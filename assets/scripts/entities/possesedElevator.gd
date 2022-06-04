@@ -8,6 +8,9 @@ func woosh(body)->void:
 		else:
 			body.move_and_collide(Vector2(-100,0))
 
+func gen_col_layer():
+	return .gen_col_layer() | ColMath.Layer.TERRAIN
+
 func set_onground(val : bool)->void:
 	if pressed_inputs["DOWN"] and not onground:
 		for body in entities_to_woosh:
@@ -46,8 +49,11 @@ var entities_to_woosh = []
 
 func _on_wooshfect_body_entered(body):
 	if body != self:
-		print("adding " + body.name + " to woosh")
 		entities_to_woosh.append(body)
+func _on_wooshfect_body_exited(body):
+	entities_to_woosh.erase(body)
+
+
 var bird_thing_packed = load("res://scenes/projectiles/flightThingProjectile.tscn")
 
 func shoot_bird_things()->void:
@@ -68,3 +74,5 @@ func shoot_bird_things()->void:
 	print("SHOOTING BIRD THING")
 	get_parent().add_child(bd)
 	$Sprite.play("open",false)
+
+

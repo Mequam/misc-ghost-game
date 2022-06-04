@@ -46,7 +46,7 @@ func update_animation()->void:
 	var computed_vel : Vector2 = compute_velocity(velocity)
 	if computed_vel == Vector2(0,0):
 		$Sprite.play("idle")
-	elif computed_vel.y > 0:
+	elif computed_vel.y > 0 and $Sprite.animation != "fall":
 		$Sprite.play("fall_start")
 	elif onground and not pressed_inputs["JUMP"] and abs(computed_vel.x) > 0:
 		$Sprite.play("walk_right")

@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/entities/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/entities/possesedElevator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scripts/testZone.gd" type="Script" id=3]
-[ext_resource path="res://scenes/entities/witch.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 589.5, 10 )
@@ -25,9 +23,3 @@ position = Vector2( 83, 239 )
 [node name="AITimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
-
-[node name="witch" parent="." instance=ExtResource( 4 )]
-position = Vector2( 597, 210 )
-
-[node name="possesed_elevator" parent="." instance=ExtResource( 2 )]
-position = Vector2( 374, 203 )

@@ -87,7 +87,7 @@ func main_ready():
 	$GroundTester.connect("body_entered",self,"_on_GroundTester_body_entered")
 	$GroundTester.connect("body_exited",self,"_on_GroundTester_body_exited")
 	$GroundTester.collision_layer = 0
-	$GroundTester.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.ConstLayer.ALL_ENEMIES
+	$GroundTester.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
 
 #called when an action is double pressed
 func on_action_double_press(action : String)->void:
