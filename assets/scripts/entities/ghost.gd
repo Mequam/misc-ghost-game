@@ -8,7 +8,7 @@ class_name Leni
 func gen_col_layer()->int:
 	return ColMath.Layer.PLAYER | ColMath.ConstLayer.PLAYER
 func gen_col_mask()->int:
-	return ColMath.Layer.NON_PLAYER_ENTITY | .gen_col_mask() 
+	return ColMath.Layer.NON_PLAYER_ENTITY | .gen_col_mask()
 enum LeniState {
 	POSSESING = ENTITY_STATE_COUNT #we are activly attempting to posses somthing
 }
@@ -68,7 +68,7 @@ func set_possesed(val : bool)->void:
 		state = EntityState.DEFAULT
 		$mainCam.position = Vector2(0,0)
 	elif not val:
-		$ghostSprite.stop()
+		$Sprite.stop()
 		visible = false
 		collision_layer = 0
 		collision_mask = 0
@@ -80,7 +80,7 @@ func set_state(val : int)->void:
 	match val:
 		LeniState.POSSESING:
 			$posses_timer.start()
-			$ghostSprite.play("posses_launch")
+			$Sprite.play("posses_launch")
 		LeniState.POSSESING_ENTITY:
 			#make us unexist
 			visible = false
@@ -105,28 +105,32 @@ func unposses()->void:
 	self.possesed = true
 	
 	position = possesed_entity.unposses_position()
+	possesed_entity.disconnect("die",self,"on_possesed_die")
 	possesed_entity = null
 	
-	$ghostSprite.emit_ectosplosion()
+	$Sprite.emit_ectosplosion()
 
 #actually posses an entity
 func posses(entity)->void:
+	#clear out the existing possesed entity
+	if possesed_entity:
+		unposses()
+	
 	#swap the possesion around
 	self.possesed = false
 	entity.possesed = true
+	
 	#update the collision layer and mask of the entity
 	entity.collision_layer = ColMath.strip_bits(entity.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
 	entity.collision_layer |= ColMath.Layer.PLAYER
 	
-	print("Leni")
-	print(entity.collision_layer)
-	
+	#update the collision mask of the entity
 	entity.collision_mask = ColMath.strip_bits(entity.collision_mask,ColMath.Layer.PLAYER)
 	entity.collision_mask |= ColMath.Layer.NON_PLAYER_ENTITY
 	
 	#save a reference to the possesed entity
 	possesed_entity = entity
-
+	possesed_entity.connect("die",self,"on_possesed_die")
 
 func compute_velocity(vel : Vector2)->Vector2:
 	if not possesed:
@@ -163,18 +167,18 @@ func update_animation()->void:
 			#we only change where we look when the player
 			#tells us to update, not when we release
 			if vel.x != 0:
-				$ghostSprite.flip_h = vel.x < 0
+				$Sprite.flip_h = vel.x < 0
 			if vel == Vector2(0,0):
-				$ghostSprite.play("idle")
+				$Sprite.play("idle")
 			elif abs(vel.y) < abs(vel.x):
 				if running:
-					$ghostSprite.play("zoom")
+					$Sprite.play("zoom")
 				else:
-					$ghostSprite.play("run")
+					$Sprite.play("run")
 			elif vel.y < 0:
-				$ghostSprite.play("up")
+				$Sprite.play("up")
 			else:
-				$ghostSprite.play("down")
+				$Sprite.play("down")
 	.update_animation()
 
 func main_process(delta):
@@ -192,10 +196,10 @@ func main_input(event)->void:
 func on_col(col)->void:
 	match state:
 		LeniState.POSSESING:
-			if abs(col.normal.x) > abs(col.normal.y):
+			if (col.collider is Entity) and (abs(col.normal.x) > abs(col.normal.y)):
 				state = EntityState.BRICK
 				possesed_entity = col.collider
-				$ghostSprite.play("posses_col")
+				$Sprite.play("posses_col")
 	.on_col(col)
 
 func _on_flight_timer_timeout():
@@ -204,10 +208,10 @@ func _on_flight_timer_timeout():
 func _on_posses_timer_timeout():
 	posses_velocity = Vector2(0,0)
 	if state != EntityState.BRICK:
-		$ghostSprite.play("posses_end")
+		$Sprite.play("posses_end")
 
 func _on_ghostSprite_animation_finished():
-	match $ghostSprite.animation:
+	match $Sprite.animation:
 		"posses_col":
 			posses(possesed_entity)
 		"posses":
@@ -216,3 +220,6 @@ func _on_ghostSprite_animation_finished():
 			pass
 		_:
 			state = EntityState.DEFAULT
+func on_possesed_die():
+	print("possesed_died!")
+	unposses()

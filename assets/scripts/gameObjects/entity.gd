@@ -5,6 +5,8 @@ class_name Entity
 #this is the generic entity script that all
 #collision game objects are inteanded to draw from
 
+signal die
+
 #grabs the camera to follow this entity
 func grab_camera()->void:
 	var parent = get_parent() as Level
@@ -35,14 +37,21 @@ func get_onground()->bool:
 #health of the entity, if this hits zero we die
 var health : int = 7 setget set_health,get_health
 func set_health(val : int)->void:
-	if val <= 0:
-		die()
-	health = val
+	if state != EntityState.DAMAGED:
+		if val <= 0:
+			die()
+		if val < health:
+			state = EntityState.DAMAGED
+			$Sprite.play("damage")
+			modulate = Color.lightcoral
+			$modulate_timer.start()
+		health = val
 func get_health()->int:
 	return health
 
 #used when we want do more than just remove ourselfs from the scene
 func die():
+	emit_signal("die")
 	queue_free()
 #called when we take damage, inteanded to be overloaded
 func take_damage(dmg : int = 1, dmg_src = null)->void:
@@ -58,11 +67,12 @@ var pressed_inputs : Dictionary = {
 	"JUMP":false
 }
 #used for making new enumerators in child classes
-const ENTITY_STATE_COUNT = 2
+const ENTITY_STATE_COUNT = 3
 #an enumerator of entity state
 enum EntityState {
 	DEFAULT = 0,
-	BRICK
+	BRICK,
+	DAMAGED
 }
 
 #state variable used in all entities
@@ -88,6 +98,11 @@ func main_ready():
 	$GroundTester.connect("body_exited",self,"_on_GroundTester_body_exited")
 	$GroundTester.collision_layer = 0
 	$GroundTester.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
+	
+	
+	$modulate_timer.connect("timeout",self,"on_modulate_timer_out")
+	$modulate_timer.wait_time = 0.3
+	$modulate_timer.one_shot = true
 
 #called when an action is double pressed
 func on_action_double_press(action : String)->void:
@@ -217,3 +232,12 @@ func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
 	obj.velocity = velocity
 	obj.collision_mask = collision_mask
 	return obj
+func on_modulate_timer_out():
+	modulate = Color.white
+	state = EntityState.DEFAULT
+	update_animation()
+
+
+#called when we detect a collision
+func on_col(col):
+	pass

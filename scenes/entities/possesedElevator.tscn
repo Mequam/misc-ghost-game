@@ -57,6 +57,8 @@ playing = false
 [node name="batSpawnPoint" type="Node2D" parent="."]
 position = Vector2( 38, -18 )
 
+[node name="modulate_timer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="body_entered" from="wooshfect" to="." method="_on_wooshfect_body_entered"]
 [connection signal="body_exited" from="wooshfect" to="." method="_on_wooshfect_body_exited"]

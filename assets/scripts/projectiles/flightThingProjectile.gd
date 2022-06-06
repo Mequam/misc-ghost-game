@@ -17,6 +17,7 @@ func main_ready():
 	print(collision_mask)
 	print("end flight thing col")
 	.main_ready()
+
 func on_col(collider):
 	print(collider.collider.name)
 	var inst = flightSplosion.instance()

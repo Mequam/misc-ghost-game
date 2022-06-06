@@ -10,8 +10,11 @@ func _ready():
 	get_parent().add_child(inst)
 	speed = 200
 	$AnimationPlayer.play("scale_up")
-func on_col(collider):
+func die():
 	var inst = magic.instance()
 	get_parent().add_child(inst)
 	inst.global_position = global_position
+	.die()
+
+func on_col(collider):
 	.on_col(collider)
