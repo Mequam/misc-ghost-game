@@ -176,7 +176,7 @@ func action2velocity(action : String)->Vector2:
 func gen_col_layer()->int:
 	return ColMath.Layer.NON_PLAYER_ENTITY
 func gen_col_mask()->int:
-	return ColMath.Layer.TERRAIN | ColMath.ConstLayer.TILE_BORDER
+	return ColMath.Layer.TERRAIN | ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.PLAYER
 
 func main_input(event)->void:
 	#we only care about inputs if we are possesed, otherwise we
@@ -213,4 +213,7 @@ func spawn_object(pc : PackedScene,global_pos : Vector2):
 
 #convinence function for shooting projectiles
 func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
-	spawn_object(proj,global_pos).velocity = velocity
+	var obj = spawn_object(proj,global_pos)
+	obj.velocity = velocity
+	obj.collision_mask = collision_mask
+	return obj

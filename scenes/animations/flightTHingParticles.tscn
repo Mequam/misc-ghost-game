@@ -28,7 +28,7 @@ frame_2/delay_sec = 0.0
 
 [node name="flightThingParticles" type="Particles2D"]
 position = Vector2( 4, -2 )
+amount = 2
 lifetime = 0.5
-local_coords = false
 process_material = SubResource( 1 )
 texture = SubResource( 4 )

@@ -100,6 +100,8 @@ func posses_attack(vel : Vector2)->void:
 func unposses()->void:
 	if possesed_entity:
 		possesed_entity.possesed = false
+		possesed_entity.collision_layer = possesed_entity.gen_col_layer()
+		possesed_entity.collision_mask = possesed_entity.gen_col_mask()
 	self.possesed = true
 	
 	position = possesed_entity.unposses_position()
@@ -112,6 +114,15 @@ func posses(entity)->void:
 	#swap the possesion around
 	self.possesed = false
 	entity.possesed = true
+	#update the collision layer and mask of the entity
+	entity.collision_layer = ColMath.strip_bits(entity.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
+	entity.collision_layer |= ColMath.Layer.PLAYER
+	
+	print("Leni")
+	print(entity.collision_layer)
+	
+	entity.collision_mask = ColMath.strip_bits(entity.collision_mask,ColMath.Layer.PLAYER)
+	entity.collision_mask |= ColMath.Layer.NON_PLAYER_ENTITY
 	
 	#save a reference to the possesed entity
 	possesed_entity = entity

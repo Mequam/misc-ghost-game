@@ -4,14 +4,14 @@
 [ext_resource path="res://assets/scripts/projectiles/flightThingProjectile.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 37.1214
+radius = 19.6023
 
 [node name="flightThingProjectile" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 9, -2 )
+position = Vector2( 1, -0.5 )
 shape = SubResource( 1 )
 
 [node name="flightThingGroup" parent="." instance=ExtResource( 1 )]

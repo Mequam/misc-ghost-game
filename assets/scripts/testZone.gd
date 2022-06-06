@@ -8,7 +8,6 @@ var cam_ref : Camera2D
 
 func _ready():
 	$AITimer.connect("timeout",self,"on_ai_timeout")
-
 func on_ai_timeout():
 	if $Leni.possesed_entity:
 		get_tree().call_group("Npc","run_AI",$Leni.possesed_entity)

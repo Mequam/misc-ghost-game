@@ -49,6 +49,13 @@ static func check_shifted(non_shifted : int,shifted : int,super_layer : int)->bo
 		shifted, #the layer we are on
 		shift_collision(non_shifted,super_layer)) #the layer that we input
 
+#zeros the bit at the given idx
+static func zero_bit(bits : int,idx : int)->int:
+	return (~(1 << idx)) & bits
+
+static func strip_bits(bits : int,to_strip : int)->int:
+	return bits & (~to_strip)
+
 #collision layer definitions
 
 #These are the collision layers

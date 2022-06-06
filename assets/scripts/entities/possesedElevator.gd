@@ -8,8 +8,6 @@ func woosh(body)->void:
 		else:
 			body.move_and_collide(Vector2(-100,0))
 
-func gen_col_layer():
-	return .gen_col_layer() | ColMath.Layer.TERRAIN
 
 func set_onground(val : bool)->void:
 	if pressed_inputs["DOWN"] and not onground:
@@ -57,22 +55,21 @@ func _on_wooshfect_body_exited(body):
 var bird_thing_packed = load("res://scenes/projectiles/flightThingProjectile.tscn")
 
 func shoot_bird_things()->void:
-	pass
-	var bd = bird_thing_packed.instance() as Projectile
 	
-	bd.global_position = $batSpawnPoint.global_position
-	
+	var to_shoot : Vector2
 	if not flipped:
-		bd.velocity = Vector2(1,0)
+		to_shoot = Vector2(1,0)
 	else:
-		bd.velocity = Vector2(-1,0)
+		to_shoot = Vector2(-1,0)
 	
-	bd.collision_layer = 0
-	bd.collision_mask = 0
+	var bt = shoot(bird_thing_packed,$batSpawnPoint.global_position,to_shoot)
 	
 	
-	print("SHOOTING BIRD THING")
-	get_parent().add_child(bd)
+	print("projectile layers")
+	print(bt.collision_layer)
+	print(bt.collision_mask)
+	print(collision_layer)
+	print(collision_mask)
 	$Sprite.play("open",false)
 
 
