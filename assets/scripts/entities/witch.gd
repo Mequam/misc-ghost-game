@@ -7,15 +7,7 @@ class_name Witch
 var collumn = load("res://scenes/hazards/WitchColumn.tscn")
 var witchProjectile = load("res://scenes/projectiles/witchProjectile.tscn")
 
-func ai_look_at_player(player):
-	if player.position.x < position.x:
-		perform_action("RIGHT",false)
-		perform_action("LEFT",true)
-		perform_action("LEFT",false)
-	else:
-		perform_action("LEFT",false)
-		perform_action("RIGHT",true)
-		perform_action("RIGHT",false)
+
 
 func ai_fire_column():
 	perform_action("ATTACK",true)
@@ -77,10 +69,11 @@ func on_action_press(act : String)->void:
 	.on_action_press(act)
 
 func update_animation(event : InputEvent = null)->void:
-	if state != EntityState.BRICK:
+	if state != EntityState.BRICK and state != EntityState.DAMAGED:
 		.update_animation()
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "attack":
-		state = EntityState.DEFAULT
-		update_animation()
+		if state != EntityState.DAMAGED:
+			state = EntityState.DEFAULT
+			update_animation()

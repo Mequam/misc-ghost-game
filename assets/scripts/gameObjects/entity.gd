@@ -67,20 +67,25 @@ var pressed_inputs : Dictionary = {
 	"JUMP":false
 }
 #used for making new enumerators in child classes
-const ENTITY_STATE_COUNT = 3
+const ENTITY_STATE_COUNT = 4
 #an enumerator of entity state
 enum EntityState {
 	DEFAULT = 0,
 	BRICK,
-	DAMAGED
+	DAMAGED,
+	DAZED
 }
 
 #state variable used in all entities
 var state : int = EntityState.DEFAULT setget set_state,get_state
 func set_state(val : int)->void:
+	match val:
+		EntityState.DAZED:
+			$dazed_timer.start()
 	state = val
 func get_state()->int:
 	return state
+
 #used for computing double presses
 var last_pressed_action : String = ""
 var last_pressed_action_time : int = 0
@@ -103,7 +108,14 @@ func main_ready():
 	$modulate_timer.connect("timeout",self,"on_modulate_timer_out")
 	$modulate_timer.wait_time = 0.3
 	$modulate_timer.one_shot = true
+	
+	
+	$dazed_timer.connect("timeout",self,"on_dazed_timer_out")
+	$dazed_timer.wait_time = 0.5
+	$dazed_timer.one_shot = true
 
+func on_dazed_timer_out():
+	self.state = EntityState.DEFAULT
 #called when an action is double pressed
 func on_action_double_press(action : String)->void:
 	pass
@@ -116,16 +128,17 @@ func on_action_released(action : String)->void:
 #takes as input an action and wether or not it is double pressed,
 #then performs the given action
 func perform_action(act : String,pressed : bool,double_press : bool = false,echo : bool = false)->void:
-	if pressed:
-		on_action_press(act)
-		pressed_inputs[act] = true
-		if double_press:
-			on_action_double_press(act)
-	else:
-		pressed_inputs[act] = false
-		on_action_released(act)
-	if not echo:
-		update_animation()
+	if state != EntityState.DAZED:
+		if pressed:
+			on_action_press(act)
+			pressed_inputs[act] = true
+			if double_press:
+				on_action_double_press(act)
+		else:
+			pressed_inputs[act] = false
+			on_action_released(act)
+		if not echo:
+			update_animation()
 #performs the given action on the entity
 #inteanded to be overloaded by the individual class
 func compute_action(event : InputEvent)->void:
@@ -161,6 +174,8 @@ func AI(player_enemy)->void:
 func run_AI(player_enemy)->void:
 	if not possesed:
 		AI(player_enemy)
+
+
 #this function is called at the end of perform_action
 #and updates the animation to match the action performed
 func update_animation()->void:

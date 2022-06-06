@@ -102,6 +102,7 @@ func unposses()->void:
 		possesed_entity.possesed = false
 		possesed_entity.collision_layer = possesed_entity.gen_col_layer()
 		possesed_entity.collision_mask = possesed_entity.gen_col_mask()
+		possesed_entity.state = EntityState.DAZED
 	self.possesed = true
 	
 	position = possesed_entity.unposses_position()

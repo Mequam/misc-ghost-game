@@ -44,3 +44,4 @@ position = Vector2( 830, 327 )
 position = Vector2( 1156, 316 )
 
 [node name="witch" parent="." instance=ExtResource( 5 )]
+position = Vector2( 316, 114 )

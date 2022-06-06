@@ -43,22 +43,24 @@ func compute_velocity(velocity : Vector2)->Vector2:
 	return .compute_velocity(velocity)
 
 func update_animation()->void:
-	var computed_vel : Vector2 = compute_velocity(velocity)
-	if computed_vel == Vector2(0,0):
-		$Sprite.play("idle")
-	elif computed_vel.y > 0 and $Sprite.animation != "fall":
-		$Sprite.play("fall_start")
-	elif onground and not pressed_inputs["JUMP"] and abs(computed_vel.x) > 0:
-		$Sprite.play("walk_right")
-	
-	if $Sprite.animation != "idle":
-		$Sprite.flip_h = computed_vel.x < 0
-	
+	if state != EntityState.DAMAGED:
+		var computed_vel : Vector2 = compute_velocity(velocity)
+		if computed_vel == Vector2(0,0):
+			$Sprite.play("idle")
+		elif computed_vel.y > 0 and $Sprite.animation != "fall":
+			$Sprite.play("fall_start")
+		elif onground and not pressed_inputs["JUMP"] and abs(computed_vel.x) > 0:
+			$Sprite.play("walk_right")
+		
+		if $Sprite.animation != "idle":
+			$Sprite.flip_h = computed_vel.x < 0
+		
 	.update_animation()
 
 #we fall when we are in the air
 func main_process(delta):
 	if not onground and not state == EntityState.BRICK:
 		velocity.y += gravity*delta
+		print("updating animation in the main process")
 		update_animation()
 	.main_process(delta)

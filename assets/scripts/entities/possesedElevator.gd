@@ -1,5 +1,35 @@
 extends Npc
 
+
+#used for the AI of the elevtor
+enum PossesedElevatorState {
+	FALLING = Entity.ENTITY_STATE_COUNT
+}
+var ai_vertical_shoot_range : float = 100
+var ai_horizontal_shoot_range : float = 500
+
+func set_state(val : int)->void:
+	match val:
+		PossesedElevatorState.FALLING:
+			clear_stored_inputs()
+	.set_state(val)
+
+var ai_counter : int = 0
+func AI(player):
+	if state != PossesedElevatorState.FALLING:
+		if ai_counter == 3 and abs(player.position.y - position.y) < ai_vertical_shoot_range and abs(player.position.x - position.x) < ai_horizontal_shoot_range:
+			ai_attack_at_player(player)
+		elif player.position.y > position.y:
+			#use ai_counter == 2 to induce an amount of random delay in this behavior
+			if ai_counter == 2 and (player.position.y - position.y) > 100 and abs(player.position.x - position.x) < 100:
+				self.state = PossesedElevatorState.FALLING
+			perform_action("UP",false)
+			perform_action("DOWN",true)
+		elif player.position.y < position.y:
+			perform_action("DOWN",false)
+			perform_action("UP",true)
+	ai_counter += 1
+	ai_counter %= 4
 #wooshes a given entity
 func woosh(body)->void:
 	if body.has_method("move_and_collide"):
@@ -15,6 +45,9 @@ func set_onground(val : bool)->void:
 			woosh(body)
 		$woosh.play("default")
 		entities_to_woosh = []
+		
+		if self.state == PossesedElevatorState.FALLING:
+			self.state = EntityState.DEFAULT
 	.set_onground(val)
 
 func compute_velocity(vel : Vector2)->Vector2:
@@ -26,6 +59,8 @@ func compute_velocity(vel : Vector2)->Vector2:
 	if pressed_inputs["DOWN"]:
 		vel.y += 1
 	return .compute_velocity(vel)
+	
+
 var flipped : bool = false
 func on_action_press(act):
 	print("recived action " + act)

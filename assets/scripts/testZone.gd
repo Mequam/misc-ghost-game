@@ -13,3 +13,6 @@ func on_ai_timeout():
 		get_tree().call_group("Npc","run_AI",$Leni.possesed_entity)
 	else:
 		get_tree().call_group("Npc","AI",$Leni)
+func _input(event):
+	if event is InputEventKey and event.scancode == KEY_P:
+		$witch/Sprite.play("damage")
