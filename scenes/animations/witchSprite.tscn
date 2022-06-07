@@ -85,6 +85,7 @@ animations = [ {
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "attack"
+frame = 2
 speed_scale = 2.0
 playing = true
 script = ExtResource( 26 )

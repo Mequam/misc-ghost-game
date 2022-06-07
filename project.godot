@@ -19,6 +19,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/entity.gd"
 }, {
+"base": "FlightEntity",
+"class": "EvilGhost",
+"language": "GDScript",
+"path": "res://assets/scripts/entities/ghostEnemy.gd"
+}, {
+"base": "Entity",
+"class": "FlightEntity",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/flightEntity.gd"
+}, {
 "base": "Area2D",
 "class": "Hazzard",
 "language": "GDScript",
@@ -34,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/lrjEntity.gd"
 }, {
-"base": "Entity",
+"base": "TiredFlightEntity",
 "class": "Leni",
 "language": "GDScript",
 "path": "res://assets/scripts/entities/ghost.gd"
@@ -59,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/projectiles/flightThingProjectile.gd"
 }, {
+"base": "FlightEntity",
+"class": "TiredFlightEntity",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/TiredFlightEntity.gd"
+}, {
 "base": "LRJEntity",
 "class": "Witch",
 "language": "GDScript",
@@ -77,6 +92,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "ColMath": "",
 "Entity": "",
+"EvilGhost": "",
+"FlightEntity": "",
 "Hazzard": "",
 "KinColObject": "",
 "LRJEntity": "",
@@ -85,6 +102,7 @@ _global_script_class_icons={
 "Npc": "",
 "Projectile": "",
 "ProjectileFlightThing": "",
+"TiredFlightEntity": "",
 "Witch": "",
 "WitchColumn": "",
 "WitchProjectile": ""

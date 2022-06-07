@@ -3,7 +3,7 @@
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 uniform float Size;
-uniform vec4 Spooky_Color : hint_color;
+uniform vec4 color : hint_color;
 
 void fragment() {
     float offset = Size*abs(cos(TIME*2.0)/2.0);
@@ -20,7 +20,7 @@ void fragment() {
     vec4 main_image_colors = texture(TEXTURE, UV);
     
     COLOR.a = min(alpha_left+alpha_right+alpha_down+alpha_up,1.0);
-    COLOR.rgb = Spooky_Color.rgb;
+    COLOR.rgb = color.rgb;
     
     COLOR.rgb = mix(COLOR.rgb,main_image_colors.rgb,main_image_colors.a*2.3);
 }
@@ -29,4 +29,4 @@ void fragment() {
 [resource]
 shader = SubResource( 3 )
 shader_param/Size = 0.048
-shader_param/Spooky_Color = Color( 0, 1, 0.913725, 1 )
+shader_param/color = Color( 0.286275, 1, 0.933333, 1 )

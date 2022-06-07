@@ -1,4 +1,4 @@
-extends Entity
+extends TiredFlightEntity
 #this class represents the player ghost
 #that posseses stuff
 
@@ -10,17 +10,8 @@ func gen_col_layer()->int:
 func gen_col_mask()->int:
 	return ColMath.Layer.NON_PLAYER_ENTITY | .gen_col_mask()
 enum LeniState {
-	POSSESING = ENTITY_STATE_COUNT #we are activly attempting to posses somthing
+	POSSESING = Entity.ENTITY_STATE_COUNT #we are activly attempting to posses somthing
 }
-
-var running : bool = true
-#we can only fly for so long before we get tired
-var tired : bool = false setget set_tired,get_tired
-func set_tired(val : bool)->void:
-	tired = val
-	update_animation()
-func get_tired()->bool:
-	return tired
 #saved velocity for the possession attack
 var posses_velocity : Vector2 = Vector2(0,0)
 #reference to the entity we are currently possesing
@@ -33,28 +24,11 @@ func main_ready():
 	speed = 400
 	(get_parent() as Level).cam_ref = $mainCam
 	.main_ready()
-	
-
-func set_onground(val : bool)->void:
-	if not onground and val:
-		tired = false
-		$flight_timer.stop()
-	if not val:
-		$flight_timer.start()
-	update_animation()
-	.set_onground(val)
 
 func on_action_double_press(act : String)->void:
-	print("DOUBLE PRESS " + act)
-	if act == "LEFT" or act == "RIGHT":
-		running = true
-	elif act == "UP" and not possesed:
+	if act == "UP":
 		unposses()
 	.on_action_double_press(act)
-func on_action_released(act : String)->void:
-	if act == "LEFT" or act == "RIGHT":
-		running = false
-	.on_action_released(act)
 func on_action_press(act : String)->void:
 	if act == "ATTACK":
 		posses_attack(compute_velocity(velocity).normalized()*5)
@@ -74,6 +48,7 @@ func set_possesed(val : bool)->void:
 		collision_mask = 0
 
 	.set_possesed(val)
+
 #runs whenever state is set and ensures the
 #state machine functions properly
 func set_state(val : int)->void:
@@ -103,13 +78,15 @@ func unposses()->void:
 		possesed_entity.collision_layer = possesed_entity.gen_col_layer()
 		possesed_entity.collision_mask = possesed_entity.gen_col_mask()
 		possesed_entity.state = EntityState.DAZED
+	
+	
+		position = possesed_entity.unposses_position()
+		possesed_entity.disconnect("die",self,"on_possesed_die")
+		$Sprite.emit_ectosplosion()
+		
+	possesed_entity = null
 	self.possesed = true
 	
-	position = possesed_entity.unposses_position()
-	possesed_entity.disconnect("die",self,"on_possesed_die")
-	possesed_entity = null
-	
-	$Sprite.emit_ectosplosion()
 
 #actually posses an entity
 func posses(entity)->void:
@@ -133,23 +110,14 @@ func posses(entity)->void:
 	possesed_entity = entity
 	possesed_entity.connect("die",self,"on_possesed_die")
 
-func compute_velocity(vel : Vector2)->Vector2:
-	if not possesed:
-		return Vector2(0,0)
-		
+func compute_velocity(vel : Vector2)->Vector2:	
 	match state:
 		EntityState.DEFAULT:
-			for key in pressed_inputs:
-				if pressed_inputs[key]:
-					vel += action2velocity(key)
-			if running:
-				vel.x *= 2
-			if tired:
-				vel.y += 1.2
-			else:
-				vel.y *= 1.5
+			return .compute_velocity(vel)
 		LeniState.POSSESING:
-			vel = posses_velocity
+			return posses_velocity
+	
+	#just in case
 	return .compute_velocity(vel)
 
 func compute_action(event : InputEvent)->void:
@@ -160,27 +128,6 @@ func compute_action(event : InputEvent)->void:
 			pass
 		_:
 			.compute_action(event)
-
-func update_animation()->void:
-	match state:
-		EntityState.DEFAULT:
-			var vel : Vector2 = compute_velocity(velocity)	
-			#we only change where we look when the player
-			#tells us to update, not when we release
-			if vel.x != 0:
-				$Sprite.flip_h = vel.x < 0
-			if vel == Vector2(0,0):
-				$Sprite.play("idle")
-			elif abs(vel.y) < abs(vel.x):
-				if running:
-					$Sprite.play("zoom")
-				else:
-					$Sprite.play("run")
-			elif vel.y < 0:
-				$Sprite.play("up")
-			else:
-				$Sprite.play("down")
-	.update_animation()
 
 func main_process(delta):
 	#Leni does NOTHING if he is not possesed
@@ -203,9 +150,6 @@ func on_col(col)->void:
 				$Sprite.play("posses_col")
 	.on_col(col)
 
-func _on_flight_timer_timeout():
-	self.tired = true
-
 func _on_posses_timer_timeout():
 	posses_velocity = Vector2(0,0)
 	if state != EntityState.BRICK:
@@ -222,5 +166,4 @@ func _on_ghostSprite_animation_finished():
 		_:
 			state = EntityState.DEFAULT
 func on_possesed_die():
-	print("possesed_died!")
 	unposses()

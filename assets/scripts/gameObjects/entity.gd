@@ -240,7 +240,13 @@ func spawn_object(pc : PackedScene,global_pos : Vector2):
 		inst.global_position = global_pos
 		get_parent().add_child(inst)
 		return inst
-
+#convinecne function that adds a given object as a child parent
+#at our global position
+func add_to_parent_at(obj,global_pos : Vector2):
+	if obj is Node2D:
+		obj.global_position = global_pos
+		get_parent().add_child(obj)
+		return obj
 #convinence function for shooting projectiles
 func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
 	var obj = spawn_object(proj,global_pos)
