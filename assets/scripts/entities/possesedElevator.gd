@@ -14,22 +14,29 @@ func set_state(val : int)->void:
 			clear_stored_inputs()
 	.set_state(val)
 
+func main_ready()->void:
+	var green_ghost = load("res://scenes/entities/ghosts/greenGhost.tscn").instance()
+	.main_ready()
+	self.evil_possesion = green_ghost
+
+
 var ai_counter : int = 0
 func AI(player):
-	if state != PossesedElevatorState.FALLING:
-		if ai_counter == 3 and abs(player.position.y - position.y) < ai_vertical_shoot_range and abs(player.position.x - position.x) < ai_horizontal_shoot_range:
-			ai_attack_at_player(player)
-		elif player.position.y > position.y:
-			#use ai_counter == 2 to induce an amount of random delay in this behavior
-			if ai_counter == 2 and (player.position.y - position.y) > 100 and abs(player.position.x - position.x) < 100:
-				self.state = PossesedElevatorState.FALLING
-			perform_action("UP",false)
-			perform_action("DOWN",true)
-		elif player.position.y < position.y:
-			perform_action("DOWN",false)
-			perform_action("UP",true)
-	ai_counter += 1
-	ai_counter %= 4
+	if evil_possesion != null:
+		if state != PossesedElevatorState.FALLING:
+			if ai_counter == 3 and abs(player.position.y - position.y) < ai_vertical_shoot_range and abs(player.position.x - position.x) < ai_horizontal_shoot_range:
+				ai_attack_at_player(player)
+			elif player.position.y > position.y:
+				#use ai_counter == 2 to induce an amount of random delay in this behavior
+				if ai_counter == 2 and (player.position.y - position.y) > 100 and abs(player.position.x - position.x) < 100:
+					self.state = PossesedElevatorState.FALLING
+				perform_action("UP",false)
+				perform_action("DOWN",true)
+			elif player.position.y < position.y:
+				perform_action("DOWN",false)
+				perform_action("UP",true)
+		ai_counter += 1
+		ai_counter %= 4
 #wooshes a given entity
 func woosh(body)->void:
 	if body.has_method("move_and_collide"):
@@ -90,21 +97,12 @@ func _on_wooshfect_body_exited(body):
 var bird_thing_packed = load("res://scenes/projectiles/flightThingProjectile.tscn")
 
 func shoot_bird_things()->void:
-	
 	var to_shoot : Vector2
 	if not flipped:
 		to_shoot = Vector2(1,0)
 	else:
 		to_shoot = Vector2(-1,0)
-	
 	var bt = shoot(bird_thing_packed,$batSpawnPoint.global_position,to_shoot)
-	
-	
-	print("projectile layers")
-	print(bt.collision_layer)
-	print(bt.collision_mask)
-	print(collision_layer)
-	print(collision_mask)
 	$Sprite.play("open",false)
 
 

@@ -19,7 +19,6 @@ func _ready():
 #that we finished the idle animation
 var idle_count : int = 0
 func play(anim : String="idle",val : bool=false)->void:
-	print("playing " + anim)
 	match anim:
 		"idle":
 			idle_count = 0

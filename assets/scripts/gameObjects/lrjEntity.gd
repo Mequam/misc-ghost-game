@@ -61,6 +61,5 @@ func update_animation()->void:
 func main_process(delta):
 	if not onground and not state == EntityState.BRICK:
 		velocity.y += gravity*delta
-		print("updating animation in the main process")
 		update_animation()
 	.main_process(delta)

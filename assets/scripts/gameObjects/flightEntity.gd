@@ -17,17 +17,13 @@ func on_action_released(act : String)->void:
 	.on_action_released(act)
 
 func compute_velocity(vel : Vector2)->Vector2:
-	if not possesed:
-		return Vector2(0,0)
-	match state:
-		EntityState.DEFAULT:
-			for key in pressed_inputs:
-				if pressed_inputs[key]:
-					vel += action2velocity(key)
-			if running:
-				vel.x *= 2
-			else:
-				vel.y *= 1.5
+	for key in pressed_inputs:
+		if pressed_inputs[key]:
+			vel += action2velocity(key)
+	if running:
+		vel.x *= 2
+	else:
+		vel.y *= 1.5
 	return .compute_velocity(vel)
 
 
@@ -41,7 +37,7 @@ func update_animation()->void:
 				$Sprite.flip_h = vel.x < 0
 			if vel == Vector2(0,0):
 				$Sprite.play("idle")
-			elif abs(vel.y) < abs(vel.x):
+			elif abs(vel.y) < abs(vel.x)*2:
 				if running:
 					$Sprite.play("zoom")
 				else:

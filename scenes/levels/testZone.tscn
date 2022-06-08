@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/entities/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/possesedElevator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scripts/testZone.gd" type="Script" id=3]
 [ext_resource path="res://scenes/animations/elevatorSprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/entities/witch.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/entities/ghosts/greenGhost.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 589.5, 10 )
@@ -32,20 +31,17 @@ rotation = 1.55362
 shape = SubResource( 2 )
 
 [node name="Leni" parent="." instance=ExtResource( 1 )]
-position = Vector2( 622, 271 )
+position = Vector2( 181, 64 )
 
 [node name="AITimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[node name="possesed_elevator" parent="." instance=ExtResource( 2 )]
-position = Vector2( 830, 327 )
-
 [node name="elevatorSprite" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1156, 316 )
 
-[node name="witch" parent="." instance=ExtResource( 5 )]
-position = Vector2( 316, 114 )
+[node name="possesed_elevator" parent="." instance=ExtResource( 2 )]
+position = Vector2( 815, 279 )
 
-[node name="greenGhost" parent="." instance=ExtResource( 6 )]
-position = Vector2( 431, 290 )
+[node name="witch" parent="." instance=ExtResource( 5 )]
+position = Vector2( 277, 212 )

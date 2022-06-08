@@ -20,10 +20,9 @@ func get_evil_possesion()->EvilGhost:
 	return evil_possesion
 
 func eject_evil_ghost():
-	print("ejecting possesion!")
 	if evil_possesion:
-		
 		add_to_parent_at(evil_possesion,global_position)
+		evil_possesion.state = EvilGhost.EvilGhostState.JUST_SPAWNED
 		evil_possesion = null
 		possesed_material.set_shader_param("color",Color(0,1,1))
 		if not possesed:

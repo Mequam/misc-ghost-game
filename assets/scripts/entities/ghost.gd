@@ -10,7 +10,8 @@ func gen_col_layer()->int:
 func gen_col_mask()->int:
 	return ColMath.Layer.NON_PLAYER_ENTITY | .gen_col_mask()
 enum LeniState {
-	POSSESING = Entity.ENTITY_STATE_COUNT #we are activly attempting to posses somthing
+	POSSESING = Entity.ENTITY_STATE_COUNT,
+	POSSESING_ENTITY #we are activly attempting to posses somthing
 }
 #saved velocity for the possession attack
 var posses_velocity : Vector2 = Vector2(0,0)
@@ -111,6 +112,8 @@ func posses(entity)->void:
 	possesed_entity.connect("die",self,"on_possesed_die")
 
 func compute_velocity(vel : Vector2)->Vector2:	
+	if not possesed:
+		return Vector2(0,0)
 	match state:
 		EntityState.DEFAULT:
 			return .compute_velocity(vel)

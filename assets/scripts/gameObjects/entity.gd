@@ -6,6 +6,9 @@ class_name Entity
 #collision game objects are inteanded to draw from
 
 signal die
+#collsiion layer and mask to return to after taking damage
+var saved_col_layer : int
+var saved_col_mask : int
 
 #grabs the camera to follow this entity
 func grab_camera()->void:
@@ -41,10 +44,8 @@ func set_health(val : int)->void:
 		if val <= 0:
 			die()
 		if val < health:
-			state = EntityState.DAMAGED
-			$Sprite.play("damage")
-			modulate = Color.lightcoral
-			$modulate_timer.start()
+			self.state = EntityState.DAMAGED
+
 		health = val
 func get_health()->int:
 	return health
@@ -82,6 +83,14 @@ func set_state(val : int)->void:
 	match val:
 		EntityState.DAZED:
 			$dazed_timer.start()
+		EntityState.DAMAGED:
+			saved_col_layer = collision_layer
+			saved_col_mask = collision_mask
+			collision_layer = 0
+			collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
+			$Sprite.play("damage")
+			modulate = Color.lightcoral
+			$modulate_timer.start()
 	state = val
 func get_state()->int:
 	return state
@@ -256,6 +265,8 @@ func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
 func on_modulate_timer_out():
 	modulate = Color.white
 	state = EntityState.DEFAULT
+	collision_layer = saved_col_layer
+	collision_mask = saved_col_mask
 	update_animation()
 
 
