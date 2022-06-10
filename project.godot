@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/flightEntity.gd"
 }, {
+"base": "StaticBody2D",
+"class": "Ground",
+"language": "GDScript",
+"path": "res://assets/scripts/hazzards/ground.gd"
+}, {
 "base": "Area2D",
 "class": "Hazzard",
 "language": "GDScript",
@@ -94,6 +99,7 @@ _global_script_class_icons={
 "Entity": "",
 "EvilGhost": "",
 "FlightEntity": "",
+"Ground": "",
 "Hazzard": "",
 "KinColObject": "",
 "LRJEntity": "",
@@ -113,6 +119,11 @@ _global_script_class_icons={
 config/name="ghost"
 run/main_scene="res://scenes/levels/testZone.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+backgorund=false
+color=false
 
 [input]
 
@@ -163,4 +174,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0784314, 0, 0.313726, 1 )
 environment/default_environment="res://default_env.tres"

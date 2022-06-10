@@ -113,7 +113,6 @@ func main_ready():
 	$GroundTester.collision_layer = 0
 	$GroundTester.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
 	
-	
 	$modulate_timer.connect("timeout",self,"on_modulate_timer_out")
 	$modulate_timer.wait_time = 0.3
 	$modulate_timer.one_shot = true
