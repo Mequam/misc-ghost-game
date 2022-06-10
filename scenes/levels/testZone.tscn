@@ -20,7 +20,7 @@ shader = ExtResource( 10 )
 shader = ExtResource( 10 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 567, 53.5 )
+extents = Vector2( 567, 65.5 )
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 10 )
@@ -54,10 +54,11 @@ texture = ExtResource( 8 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( -1, -1 )
+motion_scale = Vector2( 0.8, 1 )
 
 [node name="AppleTree" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 material = SubResource( 4 )
-position = Vector2( 77, 385 )
+position = Vector2( 215, 379 )
 texture = ExtResource( 6 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -83,7 +84,7 @@ position = Vector2( 18, 519 )
 z_index = -2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
-position = Vector2( 551, 22.5 )
+position = Vector2( 551, 10.5 )
 shape = SubResource( 7 )
 
 [node name="GroundOrchard" type="Sprite" parent="ground"]
@@ -93,7 +94,7 @@ texture = ExtResource( 11 )
 
 [node name="GroundOrchard2" type="Sprite" parent="ground"]
 material = SubResource( 6 )
-position = Vector2( 537, -120 )
+position = Vector2( 575, -117 )
 texture = ExtResource( 11 )
 
 [node name="GroundOrchard3" type="Sprite" parent="ground"]

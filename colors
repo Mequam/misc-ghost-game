@@ -1,0 +1,23 @@
+/* CSV */
+1b065e,00a878,d8f1a0,f3c178,bf211e
+
+/* With # */
+#1b065e, #00a878, #d8f1a0, #f3c178, #bf211e
+
+/* Array */
+["1b065e","00a878","d8f1a0","f3c178","bf211e"]
+
+/* Object */
+{"Midnight Blue":"1b065e","Green Munsell":"00a878","Yellow Green Crayola":"d8f1a0","Gold Crayola":"f3c178","Venetian Red":"bf211e"}
+
+/* Extended Array */
+[{"name":"Midnight Blue","hex":"1b065e","rgb":[27,6,94],"cmyk":[71,94,0,63],"hsb":[254,94,37],"hsl":[254,88,20],"lab":[10,36,-47]},{"name":"Green Munsell","hex":"00a878","rgb":[0,168,120],"cmyk":[100,0,29,34],"hsb":[163,100,66],"hsl":[163,100,33],"lab":[61,-48,15]},{"name":"Yellow Green Crayola","hex":"d8f1a0","rgb":[216,241,160],"cmyk":[10,0,34,5],"hsb":[79,34,95],"hsl":[79,74,79],"lab":[92,-21,36]},{"name":"Gold Crayola","hex":"f3c178","rgb":[243,193,120],"cmyk":[0,21,51,5],"hsb":[36,51,95],"hsl":[36,84,71],"lab":[81,9,43]},{"name":"Venetian Red","hex":"bf211e","rgb":[191,33,30],"cmyk":[0,83,84,25],"hsb":[1,84,75],"hsl":[1,73,43],"lab":[42,60,43]}]
+
+/* XML */
+<palette>
+  <color name="Midnight Blue" hex="1b065e" r="27" g="6" b="94" />
+  <color name="Green Munsell" hex="00a878" r="0" g="168" b="120" />
+  <color name="Yellow Green Crayola" hex="d8f1a0" r="216" g="241" b="160" />
+  <color name="Gold Crayola" hex="f3c178" r="243" g="193" b="120" />
+  <color name="Venetian Red" hex="bf211e" r="191" g="33" b="30" />
+</palette>
