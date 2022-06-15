@@ -4,6 +4,9 @@ extends TiredFlightEntity
 
 class_name Leni
 
+#a reference to the lamp that we respawn at
+var respawn_point : RespawnLamp
+
 #default collision layer for Leni
 func gen_col_layer()->int:
 	return ColMath.Layer.PLAYER | ColMath.ConstLayer.PLAYER
@@ -22,7 +25,7 @@ func main_ready():
 	#the ghost allways recives player input
 	#unless parralized, so it is "possesed"
 	possesed = true
-	speed = 400
+	speed = 200
 	(get_parent() as Level).cam_ref = $mainCam
 	.main_ready()
 
@@ -81,7 +84,7 @@ func unposses()->void:
 		possesed_entity.state = EntityState.DAZED
 	
 	
-		position = possesed_entity.unposses_position()
+		global_position = possesed_entity.unposses_position()
 		possesed_entity.disconnect("die",self,"on_possesed_die")
 		$Sprite.emit_ectosplosion()
 		
@@ -94,18 +97,19 @@ func posses(entity)->void:
 	#clear out the existing possesed entity
 	if possesed_entity:
 		unposses()
-	
 	#swap the possesion around
 	self.possesed = false
-	entity.possesed = true
+	entity.possesed = true	
+	if (entity is RespawnLamp):
+		respawn_point = entity
+	else:
+		#update the collision layer and mask of the entity
+		entity.collision_layer = ColMath.strip_bits(entity.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
+		entity.collision_layer |= ColMath.Layer.PLAYER
 	
-	#update the collision layer and mask of the entity
-	entity.collision_layer = ColMath.strip_bits(entity.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
-	entity.collision_layer |= ColMath.Layer.PLAYER
-	
-	#update the collision mask of the entity
-	entity.collision_mask = ColMath.strip_bits(entity.collision_mask,ColMath.Layer.PLAYER)
-	entity.collision_mask |= ColMath.Layer.NON_PLAYER_ENTITY
+		#update the collision mask of the entity
+		entity.collision_mask = ColMath.strip_bits(entity.collision_mask,ColMath.Layer.PLAYER)
+		entity.collision_mask |= ColMath.Layer.NON_PLAYER_ENTITY
 	
 	#save a reference to the possesed entity
 	possesed_entity = entity

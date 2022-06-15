@@ -10,13 +10,13 @@ var run : bool = false #wether or not we are running
 var run_modifier : float = 4
 
 func main_ready():
-	speed = 100
+	speed = 50
 	self.onground = false
 	.main_ready()
-func set_onground(val : bool)->void:
-	if val:
+func set_ground_counter(val : int)->void:
+	.set_ground_counter(val)
+	if self.onground:
 		self.velocity.y = 0
-	.set_onground(val)
 func on_action_double_press(act : String)->void:
 	if act == "LEFT" or act == "RIGHT":
 		run = true
@@ -28,7 +28,7 @@ func on_action_released(act : String)->void:
 func on_action_press(act : String)->void:
 	match act:
 		"JUMP":
-			if onground:
+			if self.onground:
 				self.velocity = Vector2(0,-9)
 				$Sprite.play("jump")
 			
@@ -49,7 +49,7 @@ func update_animation()->void:
 			$Sprite.play("idle")
 		elif computed_vel.y > 0 and $Sprite.animation != "fall":
 			$Sprite.play("fall_start")
-		elif onground and not pressed_inputs["JUMP"] and abs(computed_vel.x) > 0:
+		elif self.onground and not pressed_inputs["JUMP"] and abs(computed_vel.x) > 0:
 			$Sprite.play("walk_right")
 		
 		if $Sprite.animation != "idle":
@@ -59,7 +59,7 @@ func update_animation()->void:
 
 #we fall when we are in the air
 func main_process(delta):
-	if not onground and not state == EntityState.BRICK:
+	if not self.onground and not state == EntityState.BRICK:
 		velocity.y += gravity*delta
 		update_animation()
 	.main_process(delta)

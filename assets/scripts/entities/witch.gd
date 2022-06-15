@@ -8,7 +8,16 @@ var collumn = load("res://scenes/hazards/WitchColumn.tscn")
 var witchProjectile = load("res://scenes/projectiles/witchProjectile.tscn")
 
 
-
+func move_and_collide(rel_vec : Vector2, 
+						infinite_inertia : bool = false, 
+						exclude_raycast_shapes : bool = true,
+						test_only : bool = false)->KinematicCollision2D:
+	var col = .move_and_collide(rel_vec,infinite_inertia,exclude_raycast_shapes,test_only)
+	
+	if col:
+		.move_and_collide(rel_vec - rel_vec.project(col.normal))
+		
+	return col
 func ai_fire_column():
 	perform_action("ATTACK",true)
 	perform_action("ATTACK",false)

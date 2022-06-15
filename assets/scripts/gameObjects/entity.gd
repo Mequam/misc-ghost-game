@@ -28,6 +28,18 @@ func get_possesed()->bool:
 	return possesed
 
 
+var ground_counter : int = 0 setget set_ground_counter,get_ground_counter
+func set_ground_counter(val : int)->void:
+	ground_counter = val
+func get_ground_counter()->int:
+	return ground_counter
+func incriment_ground_counter():
+	self.ground_counter += 1
+	update_animation()
+func decriment_ground_counter():
+	if self.ground_counter > 0:
+		self.ground_counter -= 1
+	update_animation()
 
 #indicates if we are on the ground
 var onground : bool = false setget set_onground,get_onground
@@ -35,7 +47,7 @@ func set_onground(val : bool)->void:
 	onground = val
 	update_animation()
 func get_onground()->bool:
-	return onground
+	return ground_counter > 0
 
 #health of the entity, if this hits zero we die
 var health : int = 7 setget set_health,get_health
@@ -227,8 +239,8 @@ func main_input(event)->void:
 #defaults to the entities position if no position
 #is given
 func unposses_position()->Vector2:
-	if $unposSpot:
-		return $unposSpot.position + position
+	if $unposSpot is Node2D:
+		return $unposSpot.global_position
 	return position
 
 func _input(event):
@@ -236,10 +248,10 @@ func _input(event):
 
 func _on_GroundTester_body_entered(body):
 	if body != self:
-		self.onground = true
+		incriment_ground_counter()
 func _on_GroundTester_body_exited(body):
 	if body != self:
-		self.onground = false
+		decriment_ground_counter()
 
 #convinence function to spawn an object at a given position
 func spawn_object(pc : PackedScene,global_pos : Vector2):

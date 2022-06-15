@@ -17,14 +17,15 @@ func main_ready():
 	$flight_timer.connect("timeout",self,"_on_flight_timer_timeout")
 	.main_ready()
 
-func set_onground(val : bool)->void:
-	if not onground and val:
+func set_ground_counter(val : int)->void:
+	var old_on_ground = self.onground
+	.set_ground_counter(val)
+	if not old_on_ground and self.onground:
 		tired = false
 		$flight_timer.stop()
-	if not val:
+	if not self.onground:
 		$flight_timer.start()
 	update_animation()
-	.set_onground(val)
 
 func compute_velocity(vel : Vector2)->Vector2:
 	if not possesed:

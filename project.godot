@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/projectiles/flightThingProjectile.gd"
 }, {
+"base": "Npc",
+"class": "RespawnLamp",
+"language": "GDScript",
+"path": "res://assets/scripts/entities/spawn_lamp.gd"
+}, {
 "base": "FlightEntity",
 "class": "TiredFlightEntity",
 "language": "GDScript",
@@ -108,6 +113,7 @@ _global_script_class_icons={
 "Npc": "",
 "Projectile": "",
 "ProjectileFlightThing": "",
+"RespawnLamp": "",
 "TiredFlightEntity": "",
 "Witch": "",
 "WitchColumn": "",
@@ -174,5 +180,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0.105882, 0.0235294, 0.368627, 1 )
+environment/default_clear_color=Color( 0.0235294, 0, 0.101961, 1 )
 environment/default_environment="res://default_env.tres"
