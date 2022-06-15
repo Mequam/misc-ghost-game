@@ -35,7 +35,7 @@ tracks/0/keys = {
 [node name="pivot" type="Node2D"]
 material = ExtResource( 1 )
 position = Vector2( -2, 3.00002 )
-rotation = 0.8031
+rotation = 0.803099
 scale = Vector2( 0.795, 0.795 )
 
 [node name="LampTop" type="Sprite" parent="."]

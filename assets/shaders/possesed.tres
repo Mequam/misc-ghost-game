@@ -22,7 +22,7 @@ void fragment() {
     COLOR.a = min(alpha_left+alpha_right+alpha_down+alpha_up,1.0);
     COLOR.rgb = color.rgb;
     
-    COLOR.rgb = mix(COLOR.rgb,main_image_colors.rgb,main_image_colors.a*2.3);
+    COLOR.rgb = mix(COLOR.rgb,main_image_colors.rgb,main_image_colors.a);
 }
 "
 

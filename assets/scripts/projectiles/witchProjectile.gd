@@ -8,7 +8,7 @@ func _ready():
 	var inst = magic.instance()
 	inst.global_position = global_position
 	get_parent().add_child(inst)
-	speed = 200
+	speed = 100
 	$AnimationPlayer.play("scale_up")
 func die():
 	var inst = magic.instance()
