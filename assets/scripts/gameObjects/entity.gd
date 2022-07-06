@@ -70,7 +70,6 @@ func die():
 	queue_free()
 #called when we take damage, inteanded to be overloaded
 func take_damage(dmg : int = 1, dmg_src = null)->void:
-	print(dmg_src.name)
 	self.health -= dmg
 #stores inputs that are pressed and will remain true
 #for as long as the input is not released
