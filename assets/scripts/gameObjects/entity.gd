@@ -6,6 +6,7 @@ class_name Entity
 #collision game objects are inteanded to draw from
 
 signal die
+
 #collsiion layer and mask to return to after taking damage
 var saved_col_layer : int
 var saved_col_mask : int
@@ -55,10 +56,11 @@ func set_health(val : int)->void:
 	if state != EntityState.DAMAGED:
 		if val <= 0:
 			die()
-		if val < health:
-			self.state = EntityState.DAMAGED
+		else:
+			if val < health:
+				self.state = EntityState.DAMAGED
 
-		health = val
+			health = val
 func get_health()->int:
 	return health
 
@@ -68,6 +70,7 @@ func die():
 	queue_free()
 #called when we take damage, inteanded to be overloaded
 func take_damage(dmg : int = 1, dmg_src = null)->void:
+	print(dmg_src.name)
 	self.health -= dmg
 #stores inputs that are pressed and will remain true
 #for as long as the input is not released

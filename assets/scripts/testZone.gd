@@ -15,15 +15,22 @@ func set_cam_limit()->void:
 	cam_ref.limit_left = -908
 	cam_ref.limit_right = 828
 	cam_ref.limit_bottom = 192
+
+#level data loaded in from the disc when we load this level
+var level_data : Dictionary
+
 func _ready():
 	$AITimer.connect("timeout",self,"on_ai_timeout")
 	($Leni/mainCam as Camera2D).limit_left = cam_limit_left
+
 func call_ai(aggro_entity):
 	get_tree().call_group("Npc","run_AI",aggro_entity)
 	get_tree().call_group("EvilGhost","run_AI",aggro_entity)
+
 func _process(delta):
 	if Input.is_key_pressed(KEY_P):
 		print($Leni.onground)
+
 func on_ai_timeout():
 	if $Leni.possesed_entity:
 		call_ai($Leni.possesed_entity)

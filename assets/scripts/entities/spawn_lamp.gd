@@ -8,7 +8,9 @@ func move_and_collide(rel_vec : Vector2,
 						exclude_raycast_shapes : bool = true,
 						test_only : bool = false)->KinematicCollision2D:
 	return null
-
+#returns the name that we use to respawn
+func gen_respawn_name()->String:
+	return name
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

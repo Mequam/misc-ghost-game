@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/animations/spawn_lamp_orchard.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/scripts/entities/spawn_lamp.gd" type="Script" id=2]
+[ext_resource path="res://assets/scripts/entities/spawn_lights/orchard_light.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 27.5, 52 )

@@ -3,10 +3,26 @@ extends TiredFlightEntity
 #that posseses stuff
 
 class_name Leni
+#the hp that the player starts with, saved for when we die
+export var start_hp : int = 5
+
+#resets the player health for the level
+#as well as doing any other action that needs to be done
+#on health reset
+func reset_health()->void:
+	health = start_hp
 
 #a reference to the lamp that we respawn at
 var respawn_point : RespawnLamp
 
+func die()->void:
+	print("dieing!")
+	emit_signal("die")
+	reset_health()
+	print(health)
+	posses(respawn_point)
+
+	
 #default collision layer for Leni
 func gen_col_layer()->int:
 	return ColMath.Layer.PLAYER | ColMath.ConstLayer.PLAYER
@@ -90,8 +106,12 @@ func unposses()->void:
 		
 	possesed_entity = null
 	self.possesed = true
-	
-
+#convinence function that saves the game at the given ghost light
+func save_at_light(ghostLight : RespawnLamp)->void:
+	print("saving at a ghost light")
+	SaveUtils.save_game(Globals.game_name,
+						get_parent(),
+						ghostLight)
 #actually posses an entity
 func posses(entity)->void:
 	#clear out the existing possesed entity
@@ -102,6 +122,7 @@ func posses(entity)->void:
 	entity.possesed = true	
 	if (entity is RespawnLamp):
 		respawn_point = entity
+		save_at_light(entity)
 	else:
 		#update the collision layer and mask of the entity
 		entity.collision_layer = ColMath.strip_bits(entity.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)

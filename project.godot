@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/gameObjects/npc.gd"
 }, {
+"base": "RespawnLamp",
+"class": "OrchardLamp",
+"language": "GDScript",
+"path": "res://assets/scripts/entities/spawn_lights/orchard_light.gd"
+}, {
 "base": "KinColObject",
 "class": "Projectile",
 "language": "GDScript",
@@ -78,6 +83,16 @@ _global_script_classes=[ {
 "class": "RespawnLamp",
 "language": "GDScript",
 "path": "res://assets/scripts/entities/spawn_lamp.gd"
+}, {
+"base": "Resource",
+"class": "SaveResource",
+"language": "GDScript",
+"path": "res://assets/resources/save_resource.gd"
+}, {
+"base": "Node",
+"class": "SaveUtils",
+"language": "GDScript",
+"path": "res://assets/scripts/gameObjects/SaveUtils.gd"
 }, {
 "base": "FlightEntity",
 "class": "TiredFlightEntity",
@@ -111,9 +126,12 @@ _global_script_class_icons={
 "Leni": "",
 "Level": "",
 "Npc": "",
+"OrchardLamp": "",
 "Projectile": "",
 "ProjectileFlightThing": "",
 "RespawnLamp": "",
+"SaveResource": "",
+"SaveUtils": "",
 "TiredFlightEntity": "",
 "Witch": "",
 "WitchColumn": "",
@@ -123,8 +141,12 @@ _global_script_class_icons={
 [application]
 
 config/name="ghost"
-run/main_scene="res://scenes/levels/testZone.tscn"
+run/main_scene="res://scenes/UI/GameStart.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://scenes/singletons/Globals.tscn"
 
 [global]
 
