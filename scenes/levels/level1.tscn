@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/entities/orchard_spawn_light.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/level1_mid_ground.png" type="Texture" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/images/big_tree.png" type="Texture" id=10]
 [ext_resource path="res://scenes/entities/Leni.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/scripts/testZone.gd" type="Script" id=12]
-[ext_resource path="res://scenes/tools/JumpHelper.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/images/barn.png" type="Texture" id=14]
 
 [sub_resource type="Shader" id=3]
@@ -190,11 +189,6 @@ shape = SubResource( 1 )
 [node name="witch" parent="." instance=ExtResource( 4 )]
 position = Vector2( -375, -477 )
 jr = ExtResource( 5 )
-
-[node name="jumpHelper" parent="witch" instance=ExtResource( 13 )]
-position = Vector2( 270, -342 )
-scale = Vector2( 2, 2 )
-parabala_segments = 704
 
 [node name="spawn_light_orchard" parent="." instance=ExtResource( 1 )]
 position = Vector2( -588, -560 )
