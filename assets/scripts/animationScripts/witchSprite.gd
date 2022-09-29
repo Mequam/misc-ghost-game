@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
 
 # Declare member variables here. Examples:
@@ -27,7 +27,7 @@ func play(anim : String="idle",val : bool=false)->void:
 			speed_scale = 1.5
 		_:
 			speed_scale = 2
-	.play(anim,val)
+	super.play(anim,val)
 
 func _on_witchSprite_animation_finished():
 	match animation:

@@ -2,9 +2,9 @@ extends Resource
 
 class_name JumpResource
 
-export var jump_height : float
-export var jump_up_time : float
-export var jump_down_time : float
+@export var jump_height : float
+@export var jump_up_time : float
+@export var jump_down_time : float
 
 #returns the gravity that we need to be pulled at if we want
 #to stop at the given height in the given time

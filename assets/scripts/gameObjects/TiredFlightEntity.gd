@@ -6,7 +6,11 @@ extends FlightEntity
 class_name TiredFlightEntity
 
 #we can only fly for so long before we get tired
-var tired : bool = false setget set_tired,get_tired
+var tired : bool = false :
+	get:
+		return tired # TODOConverter40 Copy here content of get_tired
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_tired
 func set_tired(val : bool)->void:
 	tired = val
 	update_animation()
@@ -14,12 +18,12 @@ func get_tired()->bool:
 	return tired
 
 func main_ready():
-	$flight_timer.connect("timeout",self,"_on_flight_timer_timeout")
-	.main_ready()
+	$flight_timer.connect("timeout",Callable(self,"_on_flight_timer_timeout"))
+	super.main_ready()
 
 func set_ground_counter(val : int)->void:
 	var old_on_ground = self.onground
-	.set_ground_counter(val)
+	super.set_ground_counter(val)
 	if not old_on_ground and self.onground:
 		tired = false
 		$flight_timer.stop()
@@ -34,8 +38,8 @@ func compute_velocity(vel : Vector2)->Vector2:
 		EntityState.DEFAULT:
 			if tired:
 				vel.y += 1.2
-			return .compute_velocity(vel)
-	return .compute_velocity(vel)	
+			return super.compute_velocity(vel)
+	return super.compute_velocity(vel)	
 
 func _on_flight_timer_timeout():
 	self.tired = true

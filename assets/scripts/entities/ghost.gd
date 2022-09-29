@@ -4,11 +4,11 @@ extends TiredFlightEntity
 
 class_name Leni
 #the hp that the player starts with, saved for when we die
-export var start_hp : int = 5
+@export var start_hp : int = 5
 
 #resets the player health for the level
 #as well as doing any other action that needs to be done
-#on health reset
+#checked health reset
 func reset_health()->void:
 	health = start_hp
 
@@ -27,7 +27,7 @@ func die()->void:
 func gen_col_layer()->int:
 	return ColMath.Layer.PLAYER | ColMath.ConstLayer.PLAYER
 func gen_col_mask()->int:
-	return ColMath.Layer.NON_PLAYER_ENTITY | .gen_col_mask()
+	return ColMath.Layer.NON_PLAYER_ENTITY | super.gen_col_mask()
 enum LeniState {
 	POSSESING = Entity.ENTITY_STATE_COUNT,
 	POSSESING_ENTITY #we are activly attempting to posses somthing
@@ -43,16 +43,16 @@ func main_ready():
 	possesed = true
 	speed = 200
 	(get_parent() as Level).cam_ref = $mainCam
-	.main_ready()
+	super.main_ready()
 
 func on_action_double_press(act : String)->void:
 	if act == "UP":
 		unposses()
-	.on_action_double_press(act)
+	super.on_action_double_press(act)
 func on_action_press(act : String)->void:
 	if act == "ATTACK":
 		posses_attack(compute_velocity(velocity).normalized()*5)
-	.on_action_press(act)
+	super.on_action_press(act)
 
 func set_possesed(val : bool)->void:
 	if not possesed and val:
@@ -62,12 +62,12 @@ func set_possesed(val : bool)->void:
 		state = EntityState.DEFAULT
 		$mainCam.position = Vector2(0,0)
 	elif not val:
-		$Sprite.stop()
+		$Sprite2D.stop()
 		visible = false
 		collision_layer = 0
 		collision_mask = 0
 
-	.set_possesed(val)
+	super.set_possesed(val)
 
 #runs whenever state is set and ensures the
 #state machine functions properly
@@ -75,14 +75,14 @@ func set_state(val : int)->void:
 	match val:
 		LeniState.POSSESING:
 			$posses_timer.start()
-			$Sprite.play("posses_launch")
+			$Sprite2D.play("posses_launch")
 		LeniState.POSSESING_ENTITY:
 			#make us unexist
 			visible = false
 			collision_layer = 0
 			collision_mask = 0
 
-	.set_state(val)
+	super.set_state(val)
 
 #launch ourselfs and prepare to posses
 func posses_attack(vel : Vector2)->void:
@@ -101,8 +101,8 @@ func unposses()->void:
 	
 	
 		global_position = possesed_entity.unposses_position()
-		possesed_entity.disconnect("die",self,"on_possesed_die")
-		$Sprite.emit_ectosplosion()
+		possesed_entity.disconnect("die",Callable(self,"on_possesed_die"))
+		$Sprite2D.emit_ectosplosion()
 		
 	possesed_entity = null
 	self.possesed = true
@@ -134,19 +134,19 @@ func posses(entity)->void:
 	
 	#save a reference to the possesed entity
 	possesed_entity = entity
-	possesed_entity.connect("die",self,"on_possesed_die")
+	possesed_entity.connect("die",Callable(self,"on_possesed_die"))
 
 func compute_velocity(vel : Vector2)->Vector2:	
 	if not possesed:
 		return Vector2(0,0)
 	match state:
 		EntityState.DEFAULT:
-			return .compute_velocity(vel)
+			return super.compute_velocity(vel)
 		LeniState.POSSESING:
 			return posses_velocity
 	
 	#just in case
-	return .compute_velocity(vel)
+	return super.compute_velocity(vel)
 
 func compute_action(event : InputEvent)->void:
 	match state:
@@ -155,12 +155,12 @@ func compute_action(event : InputEvent)->void:
 			#update player input
 			pass
 		_:
-			.compute_action(event)
+			super.compute_action(event)
 
 func main_process(delta):
 	#Leni does NOTHING if he is not possesed
 	if possesed:
-		.main_process(delta)
+		super.main_process(delta)
 	if possesed_entity:
 		$mainCam.global_position = possesed_entity.global_position
 
@@ -175,16 +175,16 @@ func on_col(col)->void:
 			if (col.collider is Entity) and (abs(col.normal.x) > abs(col.normal.y)):
 				state = EntityState.BRICK
 				possesed_entity = col.collider
-				$Sprite.play("posses_col")
-	.on_col(col)
+				$Sprite2D.play("posses_col")
+	super.on_col(col)
 
 func _on_posses_timer_timeout():
 	posses_velocity = Vector2(0,0)
 	if state != EntityState.BRICK:
-		$Sprite.play("posses_end")
+		$Sprite2D.play("posses_end")
 
 func _on_ghostSprite_animation_finished():
-	match $Sprite.animation:
+	match $Sprite2D.animation:
 		"posses_col":
 			posses(possesed_entity)
 		"posses":

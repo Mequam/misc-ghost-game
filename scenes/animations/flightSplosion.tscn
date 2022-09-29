@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scripts/animationScripts/flightSplosion.gd" type="Script" id=1]
-[ext_resource path="res://assets/animations/flight_thing/0003.png" type="Texture" id=2]
-[ext_resource path="res://assets/animations/flight_thing/0002.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/flight_thing/0003.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/animations/flight_thing/0002.png" type="Texture2D" id=4]
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticleProcessMaterial" id=2]
 emission_shape = 1
 emission_sphere_radius = 26.6
 flag_disable_z = true
@@ -26,7 +26,7 @@ frame_1/delay_sec = 0.0
 frame_2/texture = ExtResource( 2 )
 frame_2/delay_sec = 0.0
 
-[node name="flightSplosion" type="Particles2D"]
+[node name="flightSplosion" type="GPUParticles2D"]
 speed_scale = 2.0
 explosiveness = 1.0
 process_material = SubResource( 2 )

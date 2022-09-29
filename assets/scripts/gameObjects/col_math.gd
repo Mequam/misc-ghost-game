@@ -12,7 +12,7 @@ class_name ColMath
 #	think of these as layers within layers, when we multiply by 2 we shift
 #	the bits to the right by the amount of times we multiply by 2
 
-#	the wierd & here is to remove the first bit (boundry tile)
+#	the wierd & here is to remove_at the first bit (boundry tile)
 #	before multiplication as it DOES NOT rotate with everything else
 
 #	we then add it back in at the end to make sure
@@ -46,7 +46,7 @@ static func in_layer_no_constants(testbits : int,layerbits : int)->bool:
 #determines if the shifted bits are the non shifted bitst
 static func check_shifted(non_shifted : int,shifted : int,super_layer : int)->bool:
 	return in_layer_no_constants(
-		shifted, #the layer we are on
+		shifted, #the layer we are checked
 		shift_collision(non_shifted,super_layer)) #the layer that we input
 
 #zeros the bit at the given idx

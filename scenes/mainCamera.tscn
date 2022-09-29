@@ -1,9 +1,9 @@
 [gd_scene format=2]
 
 [node name="mainCam" type="Camera2D"]
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 smoothing_enabled = true
 smoothing_speed = 10.0
-drag_margin_left = 0.41
-drag_margin_right = 0.41
+drag_left_margin = 0.41
+drag_right_margin = 0.41

@@ -21,7 +21,7 @@ static func new_game(game_name : String)->void:
 	savegame.saved_scene = "res://scenes/levels/level1.tscn"
 	savegame.spawn_light = "spawn_light_orchard"
 	
-	ResourceSaver.save(get_save_path(game_name), savegame)
+	ResourceSaver.save(savegame,get_save_path(game_name))
 
 #this script contains all of the functions used to save the game
 static func save_game(game_name : String,
@@ -65,7 +65,7 @@ static func load_level(game_name : String,
 	
 	
 	var next_lvl = load(get_level_path(scene_name))
-	var lvl = next_lvl.instance()
+	var lvl = next_lvl.instantiate()
 	
 	root.add_child(lvl)
 	var save_data : SaveResource = get_save_data(game_name)

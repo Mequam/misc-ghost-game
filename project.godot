@@ -6,119 +6,119 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
-_global_script_classes=[ {
+_global_script_classes=[{
 "base": "Object",
-"class": "ColMath",
-"language": "GDScript",
+"class": &"ColMath",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/col_math.gd"
 }, {
 "base": "KinColObject",
-"class": "Entity",
-"language": "GDScript",
+"class": &"Entity",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/entity.gd"
 }, {
 "base": "FlightEntity",
-"class": "EvilGhost",
-"language": "GDScript",
+"class": &"EvilGhost",
+"language": &"GDScript",
 "path": "res://assets/scripts/entities/ghostEnemy.gd"
 }, {
 "base": "Entity",
-"class": "FlightEntity",
-"language": "GDScript",
+"class": &"FlightEntity",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/flightEntity.gd"
 }, {
 "base": "StaticBody2D",
-"class": "Ground",
-"language": "GDScript",
+"class": &"Ground",
+"language": &"GDScript",
 "path": "res://assets/scripts/hazzards/ground.gd"
 }, {
 "base": "Area2D",
-"class": "Hazzard",
-"language": "GDScript",
+"class": &"Hazzard",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/hazzard.gd"
 }, {
 "base": "Resource",
-"class": "JumpResource",
-"language": "GDScript",
+"class": &"JumpResource",
+"language": &"GDScript",
 "path": "res://assets/resources/jump_resource.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "KinColObject",
-"language": "GDScript",
+"base": "CharacterBody2D",
+"class": &"KinColObject",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/kinematic_col_object.gd"
 }, {
 "base": "Npc",
-"class": "LRJEntity",
-"language": "GDScript",
+"class": &"LRJEntity",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/lrjEntity.gd"
 }, {
 "base": "TiredFlightEntity",
-"class": "Leni",
-"language": "GDScript",
+"class": &"Leni",
+"language": &"GDScript",
 "path": "res://assets/scripts/entities/ghost.gd"
 }, {
 "base": "Node2D",
-"class": "Level",
-"language": "GDScript",
+"class": &"Level",
+"language": &"GDScript",
 "path": "res://assets/scripts/testZone.gd"
 }, {
 "base": "Entity",
-"class": "Npc",
-"language": "GDScript",
+"class": &"Npc",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/npc.gd"
 }, {
 "base": "RespawnLamp",
-"class": "OrchardLamp",
-"language": "GDScript",
+"class": &"OrchardLamp",
+"language": &"GDScript",
 "path": "res://assets/scripts/entities/spawn_lights/orchard_light.gd"
 }, {
 "base": "KinColObject",
-"class": "Projectile",
-"language": "GDScript",
+"class": &"Projectile",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/projectile.gd"
 }, {
 "base": "Projectile",
-"class": "ProjectileFlightThing",
-"language": "GDScript",
+"class": &"ProjectileFlightThing",
+"language": &"GDScript",
 "path": "res://assets/scripts/projectiles/flightThingProjectile.gd"
 }, {
 "base": "Npc",
-"class": "RespawnLamp",
-"language": "GDScript",
+"class": &"RespawnLamp",
+"language": &"GDScript",
 "path": "res://assets/scripts/entities/spawn_lamp.gd"
 }, {
 "base": "Resource",
-"class": "SaveResource",
-"language": "GDScript",
+"class": &"SaveResource",
+"language": &"GDScript",
 "path": "res://assets/resources/save_resource.gd"
 }, {
 "base": "Node",
-"class": "SaveUtils",
-"language": "GDScript",
+"class": &"SaveUtils",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/SaveUtils.gd"
 }, {
 "base": "FlightEntity",
-"class": "TiredFlightEntity",
-"language": "GDScript",
+"class": &"TiredFlightEntity",
+"language": &"GDScript",
 "path": "res://assets/scripts/gameObjects/TiredFlightEntity.gd"
 }, {
 "base": "LRJEntity",
-"class": "Witch",
-"language": "GDScript",
+"class": &"Witch",
+"language": &"GDScript",
 "path": "res://assets/scripts/entities/witch.gd"
 }, {
 "base": "Hazzard",
-"class": "WitchColumn",
-"language": "GDScript",
+"class": &"WitchColumn",
+"language": &"GDScript",
 "path": "res://assets/scripts/hazzards/WitchColumn.gd"
 }, {
 "base": "Projectile",
-"class": "WitchProjectile",
-"language": "GDScript",
+"class": &"WitchProjectile",
+"language": &"GDScript",
 "path": "res://assets/scripts/projectiles/witchProjectile.gd"
-} ]
+}]
 _global_script_class_icons={
 "ColMath": "",
 "Entity": "",
@@ -148,6 +148,7 @@ _global_script_class_icons={
 
 config/name="ghost"
 run/main_scene="res://scenes/UI/GameStart.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [autoload]
@@ -163,43 +164,43 @@ color=false
 
 UP={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
- ]
+]
 }
 DOWN={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
- ]
+]
 }
 LEFT={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
- ]
+]
 }
 RIGHT={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
- ]
+]
 }
 ATTACK={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
- ]
+]
 }
 DEFEND={
 "deadzone": 0.5,
-"events": [  ]
+"events": []
 }
 JUMP={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
- ]
+]
 }
 
 [physics]
@@ -208,5 +209,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0.0235294, 0, 0.101961, 1 )
+environment/default_clear_color=Color(0.0235294, 0, 0.101961, 1)
 environment/default_environment="res://default_env.tres"

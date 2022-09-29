@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/shaders/possesed.tres" type="Material" id=1]
-[ext_resource path="res://assets/images/lamp_top.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/lamp_light.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/lamp_top.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/images/lamp_light.png" type="Texture2D" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -13,8 +13,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 46.0142, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"points": PackedFloat32Array( 46.0142, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -28,8 +28,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 10.6583, -0.25, 0, 0.25, 0, 27.2747, -0.25, 0, 0.25, 0, 10.6583, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2 )
+"points": PackedFloat32Array( 10.6583, -0.25, 0, 0.25, 0, 27.2747, -0.25, 0, 0.25, 0, 10.6583, -0.25, 0, 0.25, 0 ),
+"times": PackedFloat32Array( 0, 1, 2 )
 }
 
 [node name="pivot" type="Node2D"]
@@ -38,7 +38,7 @@ position = Vector2( -2, 3.00002 )
 rotation = 0.803099
 scale = Vector2( 0.795, 0.795 )
 
-[node name="LampTop" type="Sprite" parent="."]
+[node name="LampTop" type="Sprite2D" parent="."]
 position = Vector2( 46.0009, 77.5763 )
 rotation = -0.22654
 texture = ExtResource( 2 )
@@ -48,7 +48,7 @@ modulate = Color( 0.754136, 0.754136, 0.754136, 1 )
 position = Vector2( -11.7382, 11.3279 )
 rotation = 0.0272498
 
-[node name="LampLight" type="Sprite" parent="LampTop/parent_modulate"]
+[node name="LampLight" type="Sprite2D" parent="LampTop/parent_modulate"]
 position = Vector2( 154.073, 288.696 )
 rotation = -0.111624
 texture = ExtResource( 3 )

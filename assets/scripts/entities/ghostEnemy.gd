@@ -7,7 +7,7 @@ class_name EvilGhost
 enum EvilGhostState {
 	JUST_SPAWNED = Entity.ENTITY_STATE_COUNT
 }
-#flag used to indicate when we are off of the screen
+#flag used to indicate when we are unchecked of the screen
 var offscreen  : bool = false
 func ai_move_at_player(player):
 	if player.position.x < position.x:
@@ -31,7 +31,7 @@ func AI(player):
 			else:
 				perform_action("DOWN",false)
 				perform_action("UP",true)
-	.AI(player)
+	super.AI(player)
 #every ghost has a possesion color 
 #that the game uses to know when it is possesed
 var glow_color : Color = Color(0.5,1,0.58)
@@ -44,7 +44,7 @@ func main_ready():
 	speed = 300
 	add_to_group("EvilGhost")
 	self.possesed = false
-	.main_ready()
+	super.main_ready()
 	self.state = EvilGhostState.JUST_SPAWNED
 							#and enable normal movement as a result
 func gen_col_layer():
@@ -54,9 +54,9 @@ func gen_col_mask():
 func compute_velocity(vel):
 	match state:
 		EvilGhostState.JUST_SPAWNED:
-			return .compute_velocity(vel) * 0.5
+			return super.compute_velocity(vel) * 0.5
 	
-	var ret_val =  .compute_velocity(vel)
+	var ret_val =  super.compute_velocity(vel)
 	ret_val.y *= 0.5
 	
 	return ret_val
@@ -67,7 +67,7 @@ func set_state(val : int )->void:
 			collision_layer = 0
 			$dazed_timer.wait_time = 1
 			$dazed_timer.start() #when this finishes we change state to default
-	.set_state(val)
+	super.set_state(val)
 #overshadows the given entity
 #NOTE:
 #this is much less invasive than Lenis Possesion
@@ -76,10 +76,10 @@ func set_state(val : int )->void:
 func posses(entity_to_posses)->void:
 	pass
 func on_dazed_timer_out():
-	.on_dazed_timer_out()
+	super.on_dazed_timer_out()
 	collision_layer = gen_col_layer()
 	collision_mask = gen_col_mask()
-	$Sprite.play("run")
+	$Sprite2D.play("run")
 func on_col(obj):
 	if obj.collider is Entity and obj.collider.state != EntityState.DAMAGED:
 		obj.collider.take_damage(1)

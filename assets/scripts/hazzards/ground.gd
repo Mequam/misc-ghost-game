@@ -1,5 +1,5 @@
 extends StaticBody2D
-#simple collision script that ensures the ground is on
+#simple collision script that ensures the ground is checked
 #the poper layer
 
 class_name Ground

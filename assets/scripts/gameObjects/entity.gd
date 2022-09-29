@@ -5,7 +5,7 @@ class_name Entity
 #this is the generic entity script that all
 #collision game objects are inteanded to draw from
 
-signal die
+signal died
 
 #collsiion layer and mask to return to after taking damage
 var saved_col_layer : int
@@ -21,7 +21,11 @@ func grab_camera()->void:
 #wether or not the entity can be possesed by the player
 var can_posses : bool = true
 #are we possesed by the ghost?
-var possesed : bool= true setget set_possesed,get_possesed
+var possesed : bool= true :
+	get:
+		return possesed # TODOConverter40 Copy here content of get_possesed
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_possesed
 func set_possesed(val : bool)->void:
 	possesed = val
 	clear_stored_inputs()
@@ -29,7 +33,11 @@ func get_possesed()->bool:
 	return possesed
 
 
-var ground_counter : int = 0 setget set_ground_counter,get_ground_counter
+var ground_counter : int = 0 :
+	get:
+		return ground_counter # TODOConverter40 Copy here content of get_ground_counter
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_ground_counter
 func set_ground_counter(val : int)->void:
 	ground_counter = val
 func get_ground_counter()->int:
@@ -42,8 +50,12 @@ func decriment_ground_counter():
 		self.ground_counter -= 1
 	update_animation()
 
-#indicates if we are on the ground
-var onground : bool = false setget set_onground,get_onground
+#indicates if we are checked the ground
+var onground : bool = false :
+	get:
+		return onground # TODOConverter40 Copy here content of get_onground
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_onground
 func set_onground(val : bool)->void:
 	onground = val
 	update_animation()
@@ -51,7 +63,11 @@ func get_onground()->bool:
 	return ground_counter > 0
 
 #health of the entity, if this hits zero we die
-var health : int = 7 setget set_health,get_health
+var health : int = 7 :
+	get:
+		return health # TODOConverter40 Copy here content of get_health
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_health
 func set_health(val : int)->void:
 	if state != EntityState.DAMAGED:
 		if val <= 0:
@@ -64,7 +80,7 @@ func set_health(val : int)->void:
 func get_health()->int:
 	return health
 
-#used when we want do more than just remove ourselfs from the scene
+#used when we want do more than just remove_at ourselfs from the scene
 func die():
 	emit_signal("die")
 	queue_free()
@@ -92,7 +108,11 @@ enum EntityState {
 }
 
 #state variable used in all entities
-var state : int = EntityState.DEFAULT setget set_state,get_state
+var state : int = EntityState.DEFAULT :
+	get:
+		return state # TODOConverter40 Copy here content of get_state
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_state
 func set_state(val : int)->void:
 	match val:
 		EntityState.DAZED:
@@ -102,8 +122,8 @@ func set_state(val : int)->void:
 			saved_col_mask = collision_mask
 			collision_layer = 0
 			collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
-			$Sprite.play("damage")
-			modulate = Color.lightcoral
+			$Sprite2D.play("damage")
+			modulate = Color.LIGHT_CORAL
 			$modulate_timer.start()
 	state = val
 func get_state()->int:
@@ -122,17 +142,17 @@ func clear_stored_inputs():
 
 func main_ready():
 	self.onground = false
-	$GroundTester.connect("body_entered",self,"_on_GroundTester_body_entered")
-	$GroundTester.connect("body_exited",self,"_on_GroundTester_body_exited")
+	$GroundTester.connect("body_entered",Callable(self,"_on_GroundTester_body_entered"))
+	$GroundTester.connect("body_exited",Callable(self,"_on_GroundTester_body_exited"))
 	$GroundTester.collision_layer = 0
 	$GroundTester.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
 	
-	$modulate_timer.connect("timeout",self,"on_modulate_timer_out")
+	$modulate_timer.connect("timeout",Callable(self,"on_modulate_timer_out"))
 	$modulate_timer.wait_time = 0.3
 	$modulate_timer.one_shot = true
 	
 	
-	$dazed_timer.connect("timeout",self,"on_dazed_timer_out")
+	$dazed_timer.connect("timeout",Callable(self,"on_dazed_timer_out"))
 	$dazed_timer.wait_time = 0.5
 	$dazed_timer.one_shot = true
 
@@ -161,7 +181,7 @@ func perform_action(act : String,pressed : bool,double_press : bool = false,echo
 			on_action_released(act)
 		if not echo:
 			update_animation()
-#performs the given action on the entity
+#performs the given action checked the entity
 #inteanded to be overloaded by the individual class
 func compute_action(event : InputEvent)->void:
 	for key in pressed_inputs:
@@ -172,7 +192,7 @@ func compute_action(event : InputEvent)->void:
 			
 			perform_action(key,true,false,event.is_echo())
 			
-			var current_input_time = OS.get_ticks_msec()
+			var current_input_time = Time.get_ticks_msec()
 
 
 			if last_pressed_action == key and (current_input_time - last_pressed_action_time) < 300:
@@ -257,7 +277,7 @@ func _on_GroundTester_body_exited(body):
 
 #convinence function to spawn an object at a given position
 func spawn_object(pc : PackedScene,global_pos : Vector2):
-	var inst = pc.instance()
+	var inst = pc.instantiate()
 	if inst is Node2D:
 		inst.global_position = global_pos
 		get_parent().add_child(inst)
@@ -276,7 +296,7 @@ func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
 	obj.collision_mask = collision_mask
 	return obj
 func on_modulate_timer_out():
-	modulate = Color.white
+	modulate = Color.WHITE
 	state = EntityState.DEFAULT
 	collision_layer = saved_col_layer
 	collision_mask = saved_col_mask

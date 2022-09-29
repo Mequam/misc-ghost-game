@@ -3,7 +3,7 @@
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 uniform float Size;
-uniform vec4 color : hint_color;
+uniform vec4 color : source_color;
 
 void fragment() {
     float offset = Size*abs(cos(TIME*2.0)/2.0);

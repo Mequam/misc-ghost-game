@@ -4,7 +4,11 @@ extends Node2D
 
 class_name Level
 
-var cam_ref : Camera2D setget set_cam_ref,get_cam_ref
+var cam_ref : Camera2D :
+	get:
+		return cam_ref # TODOConverter40 Copy here content of get_cam_ref
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_cam_ref
 func set_cam_ref(ref : Camera2D)->void:
 	cam_ref = ref
 	set_cam_limit()
@@ -20,7 +24,7 @@ func set_cam_limit()->void:
 var level_data : Dictionary
 
 func _ready():
-	$AITimer.connect("timeout",self,"on_ai_timeout")
+	$AITimer.connect("timeout",Callable(self,"on_ai_timeout"))
 	($Leni/mainCam as Camera2D).limit_left = cam_limit_left
 
 func call_ai(aggro_entity):

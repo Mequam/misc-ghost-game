@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/animations/flight_thing/0003.png" type="Texture" id=1]
-[ext_resource path="res://assets/animations/flight_thing/0001.png" type="Texture" id=2]
-[ext_resource path="res://assets/animations/flight_thing_flock/0004.png" type="Texture" id=3]
-[ext_resource path="res://assets/animations/flight_thing/0002.png" type="Texture" id=4]
+[ext_resource path="res://assets/animations/flight_thing/0003.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/animations/flight_thing/0001.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/animations/flight_thing_flock/0004.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/animations/flight_thing/0002.png" type="Texture2D" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -13,7 +13,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="flightThingFlock" type="AnimatedSprite"]
+[node name="flightThingFlock" type="AnimatedSprite2D"]
 frames = SubResource( 1 )
 speed_scale = 4.0
 playing = true

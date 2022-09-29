@@ -3,11 +3,11 @@
 [ext_resource path="res://scenes/entities/Leni.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/possesedElevator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scripts/testZone.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/back_tree.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/back_tree.png" type="Texture2D" id=4]
 [ext_resource path="res://scenes/entities/witch.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/images/apple_tree.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/moon.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/apple_pile.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/apple_tree.png" type="Texture2D" id=6]
+[ext_resource path="res://assets/images/moon.png" type="Texture2D" id=7]
+[ext_resource path="res://assets/images/apple_pile.png" type="Texture2D" id=8]
 [ext_resource path="res://assets/shaders/possesed.tres" type="Material" id=9]
 [ext_resource path="res://assets/shaders/alphaKiller.gdshader" type="Shader" id=10]
 [ext_resource path="res://scenes/animations/twinkle.tscn" type="PackedScene" id=12]
@@ -44,7 +44,7 @@ position = Vector2( -144, 56 )
 [node name="witch2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 423, -110 )
 
-[node name="ApplePile" type="Sprite" parent="."]
+[node name="ApplePile" type="Sprite2D" parent="."]
 material = SubResource( 5 )
 position = Vector2( -44, 16 )
 texture = ExtResource( 8 )
@@ -55,17 +55,17 @@ texture = ExtResource( 8 )
 position = Vector2( -1, -1 )
 motion_scale = Vector2( 0.8, 1 )
 
-[node name="AppleTree" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+[node name="AppleTree" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 material = SubResource( 4 )
 position = Vector2( -153, 0 )
 texture = ExtResource( 6 )
 
-[node name="AppleTree2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+[node name="AppleTree2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 material = SubResource( 4 )
 position = Vector2( 125, -79 )
 texture = ExtResource( 6 )
 
-[node name="AppleTree3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+[node name="AppleTree3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 material = SubResource( 4 )
 position = Vector2( 404, -92 )
 texture = ExtResource( 6 )
@@ -74,7 +74,7 @@ texture = ExtResource( 6 )
 position = Vector2( -370, -230 )
 motion_scale = Vector2( 0.1, 0.1 )
 
-[node name="Moon" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Moon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 material = ExtResource( 9 )
 position = Vector2( -161, 150 )
 texture = ExtResource( 7 )
@@ -88,12 +88,12 @@ position = Vector2( 657, 139 )
 [node name="twinkle3" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource( 12 )]
 position = Vector2( 318, 158 )
 
-[node name="BackTree" type="Sprite" parent="."]
+[node name="BackTree" type="Sprite2D" parent="."]
 position = Vector2( -958.105, -422 )
 scale = Vector2( 0.167599, 0.161111 )
 texture = ExtResource( 4 )
 
-[node name="BackTree2" type="Sprite" parent="."]
+[node name="BackTree2" type="Sprite2D" parent="."]
 modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
 position = Vector2( 646, -275 )
 rotation = 0.00826849

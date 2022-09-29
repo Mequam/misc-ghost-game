@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +11,11 @@ var ghost_run_counter : int = 0
 var turbulance : float = 5
 #up is a boolean that determines if the sprite is 
 #elevated by turbulance from start position
-var up : bool = false setget set_up,get_up
+var up : bool = false :
+	get:
+		return up # TODOConverter40 Copy here content of get_up
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_up
 
 func play(anim : String = "",backwords : bool = false)->void:
 	position = Vector2(0,0)
@@ -25,7 +29,7 @@ func play(anim : String = "",backwords : bool = false)->void:
 			speed_scale = 2.5
 		_:
 			speed_scale = 1.5
-	.play(anim,backwords)
+	super.play(anim,backwords)
 
 func set_up(val : bool)->void:
 	if val:
@@ -43,7 +47,7 @@ func _on_ghostSprite_frame_changed():
 	ghost_run_counter += 1
 #emits ectosplosion particles
 func emit_ectosplosion():
-	var to_spawn = ectoSplosion.instance()
+	var to_spawn = ectoSplosion.instantiate()
 	if not flip_h:
 		to_spawn.scale.x *= -1
 	to_spawn.global_position = global_position

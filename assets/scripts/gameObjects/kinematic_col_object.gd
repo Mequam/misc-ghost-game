@@ -1,18 +1,16 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 #generic collision object class that all game objects
 #inherit from
 class_name KinColObject
 
 #these two are self explanitory
-var velocity : Vector2 = Vector2(0,0)
+
 var speed : float = 50
 
-func move_and_collide(rel_vec : Vector2, 
-						infinite_inertia : bool = false, 
-						exclude_raycast_shapes : bool = true,
-						test_only : bool = false)->KinematicCollision2D:
-	var col = .move_and_collide(rel_vec,infinite_inertia,exclude_raycast_shapes,test_only)
+
+func move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08)->KinematicCollision2D:
+	var col = super.move_and_collide(rel_vec,test_only,sm)
 	
 	if col:
 		on_col(col)

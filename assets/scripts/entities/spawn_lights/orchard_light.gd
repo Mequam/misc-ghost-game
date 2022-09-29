@@ -5,4 +5,4 @@ class_name OrchardLamp
 
 #this light uses the parents name as the respawn object in the main scene
 func gen_respawn_name()->String:
-	return get_parent().name + "/" + .gen_respawn_name()
+	return get_parent().name + "/" + super.gen_respawn_name()

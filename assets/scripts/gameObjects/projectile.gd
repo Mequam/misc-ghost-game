@@ -4,12 +4,12 @@ class_name Projectile
 var damage : int = 2
 
 func queue_free():
-	.queue_free()
+	super.queue_free()
 func main_ready():
-	$lifeTimer.connect("timeout",self,"die")
+	$lifeTimer.connect("timeout",Callable(self,"die"))
 	collision_layer = 0
-	$VisibilityNotifier2D.connect("screen_exited",self,"queue_free")
-	.main_ready()
+	$VisibleOnScreenNotifier2D.connect("screen_exited",Callable(self,"queue_free"))
+	super.main_ready()
 
 #it is a projectile layer
 func gen_col_layer():

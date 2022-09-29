@@ -12,11 +12,11 @@ func set_state(val : int)->void:
 	match val:
 		PossesedElevatorState.FALLING:
 			clear_stored_inputs()
-	.set_state(val)
+	super.set_state(val)
 
 func main_ready()->void:
-	var green_ghost = load("res://scenes/entities/ghosts/greenGhost.tscn").instance()
-	.main_ready()
+	var green_ghost = load("res://scenes/entities/ghosts/greenGhost.tscn").instantiate()
+	super.main_ready()
 	self.evil_possesion = green_ghost
 
 
@@ -55,7 +55,7 @@ func set_onground(val : bool)->void:
 		
 		if self.state == PossesedElevatorState.FALLING:
 			self.state = EntityState.DEFAULT
-	.set_onground(val)
+	super.set_onground(val)
 
 func compute_velocity(vel : Vector2)->Vector2:
 	if pressed_inputs["UP"]:
@@ -65,7 +65,7 @@ func compute_velocity(vel : Vector2)->Vector2:
 		
 	if pressed_inputs["DOWN"]:
 		vel.y += 1
-	return .compute_velocity(vel)
+	return super.compute_velocity(vel)
 	
 
 var flipped : bool = false
@@ -103,6 +103,6 @@ func shoot_bird_things()->void:
 	else:
 		to_shoot = Vector2(-1,0)
 	var bt = shoot(bird_thing_packed,$batSpawnPoint.global_position,to_shoot)
-	$Sprite.play("open",false)
+	$Sprite2D.play("open",false)
 
 

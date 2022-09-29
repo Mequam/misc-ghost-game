@@ -10,8 +10,8 @@ func gen_col_mask()->int:
 
 #called in the _ready class, inteanded to be overloaded
 func main_ready():
-	self.connect("body_entered",self,"on_body_entered")
-	self.connect("body_exited",self,"on_body_exited")
+	self.connect("body_entered",Callable(self,"on_body_entered"))
+	self.connect("body_exited",Callable(self,"on_body_exited"))
 
 func on_body_entered(body):
 	body.take_damage()

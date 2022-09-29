@@ -12,10 +12,10 @@ func move_and_collide(rel_vec : Vector2,
 						infinite_inertia : bool = false, 
 						exclude_raycast_shapes : bool = true,
 						test_only : bool = false)->KinematicCollision2D:
-	var col = .move_and_collide(rel_vec,infinite_inertia,exclude_raycast_shapes,test_only)
+	var col = super.move_and_collide(rel_vec,infinite_inertia,exclude_raycast_shapes,test_only)
 	
 	if col:
-		.move_and_collide(rel_vec - rel_vec.project(col.normal))
+		super.move_and_collide(rel_vec - rel_vec.project(col.normal))
 		
 	return col
 func ai_fire_column():
@@ -55,17 +55,17 @@ func AI(player)->void:
 	ai_ticks += 1
 	ai_ticks = ai_ticks % 5
 func collumn_attack()->void:
-	$Sprite.play("attack")
+	$Sprite2D.play("attack")
 	state = EntityState.BRICK
-	if ($Sprite.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite.flip_h and $col_spawn_position.position.x < 0):
+	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
 	var obj = spawn_object(collumn,$col_spawn_position.global_position - Vector2(0,50))
 
 func shoot_witch_projectile()->void:
-	if ($Sprite.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite.flip_h and $col_spawn_position.position.x < 0):
+	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
 	shoot(witchProjectile,$col_spawn_position.global_position,compute_velocity(velocity))
-	$Sprite.play("attack")
+	$Sprite2D.play("attack")
 	state = EntityState.BRICK
 
 func on_action_press(act : String)->void:
@@ -75,14 +75,14 @@ func on_action_press(act : String)->void:
 				shoot_witch_projectile()
 			else:
 				collumn_attack()
-	.on_action_press(act)
+	super.on_action_press(act)
 
 func update_animation(event : InputEvent = null)->void:
 	if state != EntityState.BRICK and state != EntityState.DAMAGED:
-		.update_animation()
+		super.update_animation()
 
 func _on_Sprite_animation_finished():
-	if $Sprite.animation == "attack":
+	if $Sprite2D.animation == "attack":
 		if state != EntityState.DAMAGED:
 			state = EntityState.DEFAULT
 			update_animation()

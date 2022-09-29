@@ -16,13 +16,13 @@ extents = Vector2( 69.25, 10 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 167, 30.25 )
 
-[node name="possesed_elevator" type="KinematicBody2D"]
+[node name="possesed_elevator" type="CharacterBody2D"]
 z_index = -1
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." instance=ExtResource( 1 )]
+[node name="Sprite2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 5, -7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -63,6 +63,6 @@ position = Vector2( 38, -18 )
 [node name="dazed_timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_Sprite_animation_finished"]
 [connection signal="body_entered" from="wooshfect" to="." method="_on_wooshfect_body_entered"]
 [connection signal="body_exited" from="wooshfect" to="." method="_on_wooshfect_body_exited"]
