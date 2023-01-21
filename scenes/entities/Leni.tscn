@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://da1lthymliys6"]
 
 [ext_resource type="Script" path="res://assets/scripts/entities/ghost.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/animations/GhostSprite.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://c22xqm54cs50" path="res://scenes/animations/GhostSprite.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/mainCamera.tscn" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -44,10 +44,7 @@ position = Vector2(0, 61.75)
 shape = SubResource("2")
 
 [node name="mainCam" parent="." instance=ExtResource("3")]
-scale = Vector2(0.5, 0.5)
 current = true
-zoom = Vector2(0.5, 0.5)
-limit_bottom = 691
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
