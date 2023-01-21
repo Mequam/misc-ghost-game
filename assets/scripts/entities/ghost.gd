@@ -3,6 +3,7 @@ extends TiredFlightEntity
 #that posseses stuff
 
 class_name Leni
+
 #the hp that the player starts with, saved for when we die
 @export var start_hp : int = 5
 
@@ -42,7 +43,6 @@ func main_ready():
 	#unless parralized, so it is "possesed"
 	possesed = true
 	speed = 200
-	(get_parent() as Level).cam_ref = $mainCam
 	super.main_ready()
 
 func on_action_double_press(act : String)->void:

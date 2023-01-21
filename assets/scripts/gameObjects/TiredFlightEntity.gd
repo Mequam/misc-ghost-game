@@ -10,10 +10,9 @@ var tired : bool = false :
 	get:
 		return tired # TODOConverter40 Copy here content of get_tired
 	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_tired
-func set_tired(val : bool)->void:
-	tired = val
-	update_animation()
+		tired = mod_value
+		update_animation()
+
 func get_tired()->bool:
 	return tired
 

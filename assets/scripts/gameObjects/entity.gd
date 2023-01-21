@@ -21,11 +21,8 @@ func grab_camera()->void:
 #wether or not the entity can be possesed by the player
 var can_posses : bool = true
 #are we possesed by the ghost?
-var possesed : bool= true :
-	get:
-		return possesed # TODOConverter40 Copy here content of get_possesed
-	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_possesed
+var possesed : bool= true : set = set_possesed,get = get_possesed
+
 func set_possesed(val : bool)->void:
 	possesed = val
 	clear_stored_inputs()
@@ -33,15 +30,12 @@ func get_possesed()->bool:
 	return possesed
 
 
-var ground_counter : int = 0 :
-	get:
-		return ground_counter # TODOConverter40 Copy here content of get_ground_counter
-	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_ground_counter
+var ground_counter : int = 0 : set = set_ground_counter,get = get_ground_counter
 func set_ground_counter(val : int)->void:
 	ground_counter = val
 func get_ground_counter()->int:
 	return ground_counter
+
 func incriment_ground_counter():
 	self.ground_counter += 1
 	update_animation()
@@ -51,11 +45,7 @@ func decriment_ground_counter():
 	update_animation()
 
 #indicates if we are checked the ground
-var onground : bool = false :
-	get:
-		return onground # TODOConverter40 Copy here content of get_onground
-	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_onground
+var onground : bool = false : set = set_onground,get = get_onground
 func set_onground(val : bool)->void:
 	onground = val
 	update_animation()
@@ -63,11 +53,7 @@ func get_onground()->bool:
 	return ground_counter > 0
 
 #health of the entity, if this hits zero we die
-var health : int = 7 :
-	get:
-		return health # TODOConverter40 Copy here content of get_health
-	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_health
+var health : int = 7 : set = set_health, get = get_health
 func set_health(val : int)->void:
 	if state != EntityState.DAMAGED:
 		if val <= 0:
@@ -87,6 +73,7 @@ func die():
 #called when we take damage, inteanded to be overloaded
 func take_damage(dmg : int = 1, dmg_src = null)->void:
 	self.health -= dmg
+
 #stores inputs that are pressed and will remain true
 #for as long as the input is not released
 var pressed_inputs : Dictionary = {
@@ -97,6 +84,7 @@ var pressed_inputs : Dictionary = {
 	"ATTACK":false,
 	"JUMP":false
 }
+
 #used for making new enumerators in child classes
 const ENTITY_STATE_COUNT = 4
 #an enumerator of entity state
@@ -108,11 +96,7 @@ enum EntityState {
 }
 
 #state variable used in all entities
-var state : int = EntityState.DEFAULT :
-	get:
-		return state # TODOConverter40 Copy here content of get_state
-	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_state
+var state : int = EntityState.DEFAULT : set = set_state, get = get_state
 func set_state(val : int)->void:
 	match val:
 		EntityState.DAZED:
@@ -181,6 +165,7 @@ func perform_action(act : String,pressed : bool,double_press : bool = false,echo
 			on_action_released(act)
 		if not echo:
 			update_animation()
+			
 #performs the given action checked the entity
 #inteanded to be overloaded by the individual class
 func compute_action(event : InputEvent)->void:
@@ -212,6 +197,7 @@ func compute_action(event : InputEvent)->void:
 #it takes as its inputs the player position 
 func AI(player_enemy)->void:
 	pass
+
 #runs the AI if acceptable
 func run_AI(player_enemy)->void:
 	if not possesed:

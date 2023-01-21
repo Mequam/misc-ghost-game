@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bulwc6eb24a1q"]
+
+[ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
+
+[node name="LeniTest" type="Node2D"]
+
+[node name="Leni" parent="." instance=ExtResource("1_1atnt")]
+position = Vector2(266, -92)

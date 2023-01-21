@@ -2,7 +2,7 @@ extends Node2D
 #this script is the generic level class intenaded
 #to be given to any main level node that has entity nodes as children 
 
-class_name UserLevel
+class_name Level
 
 var cam_ref : Camera2D :
 	get:
