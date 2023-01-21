@@ -6,8 +6,7 @@ class_name SaveUtils
 
 #builds a new file directory if one does not already exist
 static func generate_file_structure()->void:
-	var dir : Directory = Directory.new()
-	dir.open("user://")
+	var dir  = DirAccess.open("user://")
 	if not dir.dir_exists("./saves"):
 		dir.make_dir("saves")
 
@@ -37,13 +36,13 @@ static func save_game(game_name : String,
 	
 	print("saving at " + get_save_path(game_name))
 	#write the data to disc
-	ResourceSaver.save(get_save_path(game_name),savegame)
+	ResourceSaver.save(savegame,get_save_path(game_name))
 
 static func get_save_data(game_name : String)->SaveResource:
 	return (ResourceLoader.load(get_save_path(game_name)) as SaveResource)
 
 static func put_save_data(save_data : SaveResource,game_name : String):
-	return ResourceSaver.save(get_save_path(game_name),save_data)
+	return ResourceSaver.save(save_data,get_save_path(game_name))
 static func get_level_path(scene_name : String)->String:
 	return "res://scenes/levels/" + scene_name + ".tscn"
 

@@ -9,10 +9,10 @@ var witchProjectile = load("res://scenes/projectiles/witchProjectile.tscn")
 
 
 func move_and_collide(rel_vec : Vector2, 
-						infinite_inertia : bool = false, 
-						exclude_raycast_shapes : bool = true,
-						test_only : bool = false)->KinematicCollision2D:
-	var col = super.move_and_collide(rel_vec,infinite_inertia,exclude_raycast_shapes,test_only)
+						test_only : bool = false, 
+						safe_margin : float = 0.8,
+						recovery_as_collision : bool = false)->KinematicCollision2D:
+	var col = super.move_and_collide(rel_vec,test_only,safe_margin,recovery_as_collision)
 	
 	if col:
 		super.move_and_collide(rel_vec - rel_vec.project(col.normal))

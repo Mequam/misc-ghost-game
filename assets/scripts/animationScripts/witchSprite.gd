@@ -18,7 +18,7 @@ func _ready():
 #used to keep track of the number of times
 #that we finished the idle animation
 var idle_count : int = 0
-func play(anim : String="idle",val : bool=false)->void:
+func play(anim : StringName = "idle",val : bool=false)->void:
 	match anim:
 		"idle":
 			idle_count = 0

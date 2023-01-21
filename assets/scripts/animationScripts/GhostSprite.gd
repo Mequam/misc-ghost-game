@@ -17,7 +17,7 @@ var up : bool = false :
 	set(mod_value):
 		mod_value  # TODOConverter40 Copy here content of set_up
 
-func play(anim : String = "",backwords : bool = false)->void:
+func play(anim : StringName = "",backwords : bool = false)->void:
 	position = Vector2(0,0)
 	match anim:
 		"posses_col":

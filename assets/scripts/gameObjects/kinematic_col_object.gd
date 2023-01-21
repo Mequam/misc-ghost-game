@@ -9,8 +9,8 @@ class_name KinColObject
 var speed : float = 50
 
 
-func move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08)->KinematicCollision2D:
-	var col = super.move_and_collide(rel_vec,test_only,sm)
+func move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08,test : bool = false)->KinematicCollision2D:
+	var col = super.move_and_collide(rel_vec,test_only,sm,test)
 	
 	if col:
 		on_col(col)

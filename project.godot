@@ -8,142 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Object",
-"class": &"ColMath",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/col_math.gd"
-}, {
-"base": "KinColObject",
-"class": &"Entity",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/entity.gd"
-}, {
-"base": "FlightEntity",
-"class": &"EvilGhost",
-"language": &"GDScript",
-"path": "res://assets/scripts/entities/ghostEnemy.gd"
-}, {
-"base": "Entity",
-"class": &"FlightEntity",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/flightEntity.gd"
-}, {
-"base": "StaticBody2D",
-"class": &"Ground",
-"language": &"GDScript",
-"path": "res://assets/scripts/hazzards/ground.gd"
-}, {
-"base": "Area2D",
-"class": &"Hazzard",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/hazzard.gd"
-}, {
-"base": "Resource",
-"class": &"JumpResource",
-"language": &"GDScript",
-"path": "res://assets/resources/jump_resource.gd"
-}, {
-"base": "CharacterBody2D",
-"class": &"KinColObject",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/kinematic_col_object.gd"
-}, {
-"base": "Npc",
-"class": &"LRJEntity",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/lrjEntity.gd"
-}, {
-"base": "TiredFlightEntity",
-"class": &"Leni",
-"language": &"GDScript",
-"path": "res://assets/scripts/entities/ghost.gd"
-}, {
-"base": "Node2D",
-"class": &"Level",
-"language": &"GDScript",
-"path": "res://assets/scripts/testZone.gd"
-}, {
-"base": "Entity",
-"class": &"Npc",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/npc.gd"
-}, {
-"base": "RespawnLamp",
-"class": &"OrchardLamp",
-"language": &"GDScript",
-"path": "res://assets/scripts/entities/spawn_lights/orchard_light.gd"
-}, {
-"base": "KinColObject",
-"class": &"Projectile",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/projectile.gd"
-}, {
-"base": "Projectile",
-"class": &"ProjectileFlightThing",
-"language": &"GDScript",
-"path": "res://assets/scripts/projectiles/flightThingProjectile.gd"
-}, {
-"base": "Npc",
-"class": &"RespawnLamp",
-"language": &"GDScript",
-"path": "res://assets/scripts/entities/spawn_lamp.gd"
-}, {
-"base": "Resource",
-"class": &"SaveResource",
-"language": &"GDScript",
-"path": "res://assets/resources/save_resource.gd"
-}, {
-"base": "Node",
-"class": &"SaveUtils",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/SaveUtils.gd"
-}, {
-"base": "FlightEntity",
-"class": &"TiredFlightEntity",
-"language": &"GDScript",
-"path": "res://assets/scripts/gameObjects/TiredFlightEntity.gd"
-}, {
-"base": "LRJEntity",
-"class": &"Witch",
-"language": &"GDScript",
-"path": "res://assets/scripts/entities/witch.gd"
-}, {
-"base": "Hazzard",
-"class": &"WitchColumn",
-"language": &"GDScript",
-"path": "res://assets/scripts/hazzards/WitchColumn.gd"
-}, {
-"base": "Projectile",
-"class": &"WitchProjectile",
-"language": &"GDScript",
-"path": "res://assets/scripts/projectiles/witchProjectile.gd"
-}]
-_global_script_class_icons={
-"ColMath": "",
-"Entity": "",
-"EvilGhost": "",
-"FlightEntity": "",
-"Ground": "",
-"Hazzard": "",
-"JumpResource": "",
-"KinColObject": "",
-"LRJEntity": "",
-"Leni": "",
-"Level": "",
-"Npc": "",
-"OrchardLamp": "",
-"Projectile": "",
-"ProjectileFlightThing": "",
-"RespawnLamp": "",
-"SaveResource": "",
-"SaveUtils": "",
-"TiredFlightEntity": "",
-"Witch": "",
-"WitchColumn": "",
-"WitchProjectile": ""
-}
-
 [application]
 
 config/name="ghost"
@@ -154,6 +18,10 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://scenes/singletons/Globals.tscn"
+
+[editor]
+
+export/convert_text_resources_to_binary=true
 
 [global]
 
