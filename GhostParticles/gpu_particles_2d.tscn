@@ -1,0 +1,174 @@
+[gd_scene load_steps=19 format=3 uid="uid://sm30i1bf2ehe"]
+
+[ext_resource type="Texture2D" uid="uid://dtxgvd5ictoxl" path="res://GhostParticles/ParticleTextures/ghostBUbble.png" id="1_0q5j3"]
+[ext_resource type="Texture2D" uid="uid://f57kf8d4o01j" path="res://GhostParticles/ParticleTextures/ghostBUbble2.png" id="2_5ibmm"]
+[ext_resource type="Texture2D" uid="uid://vhj1vorym34t" path="res://GhostParticles/ParticleTextures/desatBUbble.png" id="3_g7vyo"]
+
+[sub_resource type="Curve" id="Curve_fbtfm"]
+_data = [Vector2(0.00533808, 0.98773), 0.0, 0.146717, 0, 0, Vector2(1, 0), -3.92342, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2oue5"]
+curve = SubResource("Curve_fbtfm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_01a38"]
+emission_shape = 1
+emission_sphere_radius = 10.52
+particle_flag_disable_z = true
+gravity = Vector3(2.5, -10, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_2oue5")
+sub_emitter_mode = 1
+sub_emitter_frequency = 17.32
+attractor_interaction_enabled = false
+
+[sub_resource type="Curve" id="Curve_eyxei"]
+_data = [Vector2(0, 0.423313), 0.0, 0.146717, 0, 0, Vector2(1, 0), -3.92342, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lr1c6"]
+curve = SubResource("Curve_eyxei")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q5gqr"]
+emission_shape = 1
+emission_sphere_radius = 15.76
+particle_flag_disable_z = true
+gravity = Vector3(0, -10, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 0.01
+scale_curve = SubResource("CurveTexture_lr1c6")
+
+[sub_resource type="Curve" id="Curve_cnwcu"]
+_data = [Vector2(0, 0.95092), 0.0, 0.146717, 0, 0, Vector2(1, 0), -3.92342, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m08md"]
+curve = SubResource("Curve_cnwcu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nplc0"]
+emission_shape = 1
+emission_sphere_radius = 8.81
+particle_flag_disable_z = true
+gravity = Vector3(2.5, -10, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_m08md")
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+
+[sub_resource type="Curve" id="Curve_i6oyt"]
+_data = [Vector2(0, 0.95092), 0.0, 0.146717, 0, 0, Vector2(1, 0), -3.92342, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7besj"]
+curve = SubResource("Curve_i6oyt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y1fun"]
+emission_shape = 1
+emission_sphere_radius = 23.32
+particle_flag_disable_z = true
+gravity = Vector3(0, -10, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 0.01
+scale_curve = SubResource("CurveTexture_7besj")
+
+[sub_resource type="Curve" id="Curve_f45la"]
+_data = [Vector2(0, 0.95092), 0.0, 0.146717, 0, 0, Vector2(1, 0), -3.92342, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xh361"]
+curve = SubResource("Curve_f45la")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hfcgq"]
+emission_shape = 1
+emission_sphere_radius = 15.64
+particle_flag_disable_z = true
+gravity = Vector3(2, -10, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 0.03
+scale_curve = SubResource("CurveTexture_xh361")
+sub_emitter_mode = 1
+sub_emitter_frequency = 4.0
+
+[node name="GhostParticles" type="Node2D"]
+
+[node name="yellow" type="GPUParticles2D" parent="."]
+position = Vector2(6, -10)
+sub_emitter = NodePath("red2")
+process_material = SubResource("ParticleProcessMaterial_01a38")
+texture = ExtResource("1_0q5j3")
+lifetime = 4.0
+explosiveness = 0.21
+
+[node name="red2" type="GPUParticles2D" parent="yellow"]
+position = Vector2(1, -2)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_q5gqr")
+texture = ExtResource("2_5ibmm")
+lifetime = 0.5
+explosiveness = 0.31
+
+[node name="red" type="GPUParticles2D" parent="."]
+position = Vector2(-6, -6)
+amount = 10
+sub_emitter = NodePath("GPUParticles2D")
+process_material = SubResource("ParticleProcessMaterial_nplc0")
+texture = ExtResource("2_5ibmm")
+lifetime = 2.5
+explosiveness = 0.62
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="red"]
+position = Vector2(-4, 0)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_y1fun")
+texture = ExtResource("1_0q5j3")
+lifetime = 0.5
+explosiveness = 0.31
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="red"]
+position = Vector2(-4, 0)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_y1fun")
+texture = ExtResource("1_0q5j3")
+lifetime = 0.5
+explosiveness = 0.31
+
+[node name="desatYellow" type="GPUParticles2D" parent="."]
+position = Vector2(6, -2)
+sub_emitter = NodePath("GPUParticles2D")
+process_material = SubResource("ParticleProcessMaterial_hfcgq")
+texture = ExtResource("3_g7vyo")
+lifetime = 2.5
+explosiveness = 0.08
+randomness = 0.35
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="desatYellow"]
+position = Vector2(-4, 0)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_y1fun")
+texture = ExtResource("2_5ibmm")
+lifetime = 0.5
+explosiveness = 0.31
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="desatYellow"]
+position = Vector2(-4, 0)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_y1fun")
+texture = ExtResource("2_5ibmm")
+lifetime = 0.5
+explosiveness = 0.31

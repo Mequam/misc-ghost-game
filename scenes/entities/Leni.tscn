@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://da1lthymliys6"]
+[gd_scene load_steps=8 format=3 uid="uid://da1lthymliys6"]
 
 [ext_resource type="Script" path="res://assets/scripts/entities/ghost.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c22xqm54cs50" path="res://scenes/animations/GhostSprite.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/mainCamera.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="4_akxb4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(48.25, 55.25)
@@ -14,53 +15,60 @@ size = Vector2(48, 72.5)
 adjustment_enabled = true
 adjustment_contrast = 8.0
 
-[node name="Leni" type="CharacterBody2D"]
+[node name="Positional" type="Node2D"]
+
+[node name="After Image Mesh" parent="." node_paths=PackedStringArray("the_sprite") instance=ExtResource("4_akxb4")]
+the_sprite = NodePath("../Leni/Sprite2D")
+after_image_frequency = 35.0
+after_image_count = 16
+
+[node name="Leni" type="CharacterBody2D" parent="."]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1")
 
-[node name="Sprite2D" parent="." instance=ExtResource("2")]
+[node name="Sprite2D" parent="Leni" instance=ExtResource("2")]
 scale = Vector2(0.5, 0.5)
 animation = &"idle"
 playing = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leni"]
 position = Vector2(0, -1)
 shape = SubResource("1")
 
-[node name="flight_timer" type="Timer" parent="."]
+[node name="flight_timer" type="Timer" parent="Leni"]
 wait_time = 0.5
 one_shot = true
 
-[node name="posses_timer" type="Timer" parent="."]
+[node name="posses_timer" type="Timer" parent="Leni"]
 wait_time = 0.2
 one_shot = true
 
-[node name="GroundTester" type="Area2D" parent="."]
+[node name="GroundTester" type="Area2D" parent="Leni"]
 collision_layer = 0
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTester"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leni/GroundTester"]
 position = Vector2(0, 61.75)
 shape = SubResource("2")
 
-[node name="mainCam" parent="." instance=ExtResource("3")]
+[node name="mainCam" parent="Leni" instance=ExtResource("3")]
 current = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="mainCam"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Leni/mainCam"]
 environment = SubResource("3")
 
-[node name="modulate_timer" type="Timer" parent="."]
+[node name="modulate_timer" type="Timer" parent="Leni"]
 one_shot = true
 
-[node name="dazed_timer" type="Timer" parent="."]
+[node name="dazed_timer" type="Timer" parent="Leni"]
 one_shot = true
 
-[connection signal="animation_finished" from="Sprite2D" to="." method="_on_ghostSprite_animation_finished"]
-[connection signal="animation_finished" from="Sprite2D" to="." method="_on_Sprite_animation_finished"]
-[connection signal="timeout" from="flight_timer" to="." method="_on_flight_timer_timeout"]
-[connection signal="timeout" from="posses_timer" to="." method="_on_posses_timer_timeout"]
-[connection signal="body_entered" from="GroundTester" to="." method="_on_GroundTester_body_entered"]
-[connection signal="body_exited" from="GroundTester" to="." method="_on_GroundTester_body_exited"]
-[connection signal="timeout" from="modulate_timer" to="." method="_on_modulate_timer_timeout"]
+[connection signal="animation_finished" from="Leni/Sprite2D" to="Leni" method="_on_ghostSprite_animation_finished"]
+[connection signal="animation_finished" from="Leni/Sprite2D" to="Leni" method="_on_Sprite_animation_finished"]
+[connection signal="timeout" from="Leni/flight_timer" to="Leni" method="_on_flight_timer_timeout"]
+[connection signal="timeout" from="Leni/posses_timer" to="Leni" method="_on_posses_timer_timeout"]
+[connection signal="body_entered" from="Leni/GroundTester" to="Leni" method="_on_GroundTester_body_entered"]
+[connection signal="body_exited" from="Leni/GroundTester" to="Leni" method="_on_GroundTester_body_exited"]
+[connection signal="timeout" from="Leni/modulate_timer" to="Leni" method="_on_modulate_timer_timeout"]
