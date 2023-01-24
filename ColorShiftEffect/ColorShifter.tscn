@@ -597,8 +597,8 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 6, 0, 5, 1, 10, 0, 11,
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t1q2u"]
 shader = SubResource("VisualShader_1ivqj")
 shader_parameter/active = true
-shader_parameter/ColorRotation = Color(1, 0, 0.533333, 1)
-shader_parameter/red_map = Color(0, 1, 1, 1)
+shader_parameter/ColorRotation = Color(1, 0, 0, 1)
+shader_parameter/red_map = Color(1, 0, 0, 1)
 shader_parameter/yg_map = Color(0.584314, 1, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
 shader_parameter/IC2 = Color(0.5, 1, 0, 1)

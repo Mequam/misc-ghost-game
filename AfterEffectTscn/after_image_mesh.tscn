@@ -273,8 +273,8 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 6, 0, 10, 0, 3, 0, 12,
 resource_local_to_scene = true
 shader = SubResource("VisualShader_mccn4")
 shader_parameter/Start_Time = 0.0
-shader_parameter/ColorA0 = Color(1, 0.388235, 0.388235, 1)
-shader_parameter/ColorB = Color(1, 0.5, 0.5, 1)
+shader_parameter/ColorA0 = Color(0.695, 1, 0.39, 1)
+shader_parameter/ColorB = Color(0.75, 1, 0.5, 1)
 shader_parameter/SlightDelay = null
 shader_parameter/Lifetime = null
 

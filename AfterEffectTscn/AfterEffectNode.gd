@@ -20,7 +20,8 @@ func set_the_after_image_count(n_count):
 		var new_node = after_image_mesh_scene.instantiate()
 		add_child(new_node)
 		mesh_array.append(new_node)
-		
+@export var after_scale : Vector2 = Vector2(1,1)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var time = 0.0
 var mesh_update_index = 0
@@ -61,7 +62,7 @@ func update_after_image():
 	the_mesh_instance.material.set_shader_parameter("Start_Time", Time.get_ticks_usec()/1e+6)
 	the_mesh_instance.texture = the_texture
 	the_mesh_instance.global_transform = the_global_transform
-	the_mesh_instance.scale = the_sprite.scale
+	the_mesh.size *= after_scale
 	if the_sprite.flip_h:
 		the_mesh_instance.scale.x *= -1
 

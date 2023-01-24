@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cdmh38e00r7pc"]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id="3"]
 code = "shader_type canvas_item;
 uniform float Size;
 uniform vec4 color : source_color;
@@ -27,6 +27,6 @@ void fragment() {
 "
 
 [resource]
-shader = SubResource( 3 )
-shader_param/Size = 0.048
-shader_param/color = Color( 0.286275, 1, 0.933333, 1 )
+shader = SubResource("3")
+shader_parameter/Size = 0.048
+shader_parameter/color = Color(0.286275, 1, 0.933333, 1)

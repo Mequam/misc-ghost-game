@@ -19,8 +19,9 @@ adjustment_contrast = 8.0
 
 [node name="After Image Mesh" parent="." node_paths=PackedStringArray("the_sprite") instance=ExtResource("4_akxb4")]
 the_sprite = NodePath("../Leni/Sprite2D")
-after_image_frequency = 35.0
+after_image_frequency = 30.0
 after_image_count = 16
+after_scale = Vector2(3, 3)
 
 [node name="Leni" type="CharacterBody2D" parent="."]
 scale = Vector2(0.5, 0.5)
