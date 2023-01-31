@@ -605,8 +605,8 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 6, 0, 5, 1, 10, 0, 11,
 shader = SubResource("VisualShader_wg5rt")
 shader_parameter/active = true
 shader_parameter/ColorRotation = Color(1, 0, 0, 1)
-shader_parameter/red_map = Color(0, 1, 1, 1)
-shader_parameter/yg_map = Color(1, 1, 1, 1)
+shader_parameter/red_map = Color(1, 0, 0, 1)
+shader_parameter/yg_map = Color(1, 0.384314, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
 shader_parameter/IC2 = Color(0.501961, 1, 0, 1)
 
