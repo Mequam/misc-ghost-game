@@ -1,93 +1,222 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=3 uid="uid://bvd2hb13cvw3d"]
 
-[ext_resource path="res://assets/animations/witch/witch0015.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/animations/witch/witch0014.png" type="Texture2D" id=2]
-[ext_resource path="res://assets/animations/witch/witch0023.png" type="Texture2D" id=3]
-[ext_resource path="res://assets/animations/witch/witch0016.png" type="Texture2D" id=4]
-[ext_resource path="res://assets/animations/witch/witch0002.png" type="Texture2D" id=5]
-[ext_resource path="res://assets/animations/witch/witch0013.png" type="Texture2D" id=6]
-[ext_resource path="res://assets/animations/witch/witch0004.png" type="Texture2D" id=7]
-[ext_resource path="res://assets/animations/witch/witch0001.png" type="Texture2D" id=8]
-[ext_resource path="res://assets/animations/witch/witch0020.png" type="Texture2D" id=9]
-[ext_resource path="res://assets/animations/witch/witch0012.png" type="Texture2D" id=10]
-[ext_resource path="res://assets/animations/witch/witch0003.png" type="Texture2D" id=11]
-[ext_resource path="res://assets/animations/witch/witch0010.png" type="Texture2D" id=12]
-[ext_resource path="res://assets/animations/witch/witch0006.png" type="Texture2D" id=13]
-[ext_resource path="res://assets/animations/witch/witch0011.png" type="Texture2D" id=14]
-[ext_resource path="res://assets/animations/witch/witch0022.png" type="Texture2D" id=15]
-[ext_resource path="res://assets/animations/witch/witch0021.png" type="Texture2D" id=16]
-[ext_resource path="res://assets/animations/witch/witch0019.png" type="Texture2D" id=17]
-[ext_resource path="res://assets/animations/witch/witch0025.png" type="Texture2D" id=18]
-[ext_resource path="res://assets/animations/witch/witch0028.png" type="Texture2D" id=19]
-[ext_resource path="res://assets/animations/witch/witch0027.png" type="Texture2D" id=20]
-[ext_resource path="res://assets/animations/witch/witch0026.png" type="Texture2D" id=21]
-[ext_resource path="res://assets/animations/witch/witch0029.png" type="Texture2D" id=22]
-[ext_resource path="res://assets/animations/witch/witch0030.png" type="Texture2D" id=23]
-[ext_resource path="res://assets/animations/witch/witch0031.png" type="Texture2D" id=24]
-[ext_resource path="res://assets/animations/witch/witch0032.png" type="Texture2D" id=25]
-[ext_resource path="res://assets/scripts/animationScripts/witchSprite.gd" type="Script" id=26]
-[ext_resource path="res://assets/animations/witch/attack/attack0034.png" type="Texture2D" id=27]
-[ext_resource path="res://assets/animations/witch/attack/attack0036.png" type="Texture2D" id=28]
-[ext_resource path="res://assets/animations/witch/attack/attack0037.png" type="Texture2D" id=29]
-[ext_resource path="res://assets/animations/witch/attack/attack0038.png" type="Texture2D" id=30]
-[ext_resource path="res://assets/animations/witch/attack/attack0035.png" type="Texture2D" id=31]
-[ext_resource path="res://assets/animations/witch/witch_damage.png" type="Texture2D" id=32]
+[ext_resource type="Texture2D" uid="uid://d1e5irqqnemtj" path="res://assets/animations/witch/attack_color/attack0034.png" id="1_b6k0w"]
+[ext_resource type="Texture2D" uid="uid://cf0j667k4pnpm" path="res://assets/animations/witch/attack_color/attack0035.png" id="2_0cqtb"]
+[ext_resource type="Texture2D" uid="uid://db8btnhxad2gu" path="res://assets/animations/witch/attack_color/attack0036.png" id="3_pl26t"]
+[ext_resource type="Texture2D" uid="uid://cjwut0ps1y1ho" path="res://assets/animations/witch/attack_color/attack0037.png" id="4_050ee"]
+[ext_resource type="Texture2D" uid="uid://dxiq8gpml76q" path="res://assets/animations/witch/attack_color/attack0038.png" id="5_bv6yi"]
+[ext_resource type="Texture2D" uid="uid://6ng2goryo6ax" path="res://assets/animations/witch/fall_color/fall0027.png" id="9_r252l"]
+[ext_resource type="Texture2D" uid="uid://bh1acjjnhsrhn" path="res://assets/animations/witch/fall_color/fall0028.png" id="10_d3kdc"]
+[ext_resource type="Texture2D" uid="uid://bevhv4sravff3" path="res://assets/animations/witch/fall_color/fall0029.png" id="11_68r3n"]
+[ext_resource type="Texture2D" uid="uid://bpmatk8w5gupq" path="res://assets/animations/witch/fall_color/fall0030.png" id="12_d6gy2"]
+[ext_resource type="Texture2D" uid="uid://d01vkfmfomh4p" path="res://assets/animations/witch/idle_color/idle0001.png" id="13_6llaw"]
+[ext_resource type="Texture2D" uid="uid://dkf5vb4frxlbv" path="res://assets/animations/witch/fall_color/fall0031.png" id="13_qonrp"]
+[ext_resource type="Texture2D" uid="uid://b2cpaterl13as" path="res://assets/animations/witch/idle_color/idle0002.png" id="14_b04n3"]
+[ext_resource type="Texture2D" uid="uid://57hkwxdy4r80" path="res://assets/animations/witch/fall_color/fall0032.png" id="14_i4c14"]
+[ext_resource type="Texture2D" uid="uid://byroys5gldjov" path="res://assets/animations/witch/idle_color/idle0003.png" id="15_rye2u"]
+[ext_resource type="Texture2D" uid="uid://bsotr1sxp7d0f" path="res://assets/animations/witch/idle_color/idle0004.png" id="16_1ryka"]
+[ext_resource type="Texture2D" uid="uid://wjjkeasf8d0k" path="res://assets/animations/witch/idle_color/idle0005.png" id="17_5dpqh"]
+[ext_resource type="Texture2D" uid="uid://c6vvd5ya7a0gx" path="res://assets/animations/witch/idle_color/idle0006.png" id="18_m3qlc"]
+[ext_resource type="Texture2D" uid="uid://dq6be7vhe3ve2" path="res://assets/animations/witch/idle_long_color/idle0010.png" id="19_hit70"]
+[ext_resource type="Texture2D" uid="uid://ds4wax54gq6wr" path="res://assets/animations/witch/idle_long_color/idle0011.png" id="20_hudrq"]
+[ext_resource type="Texture2D" uid="uid://d0batpcp0ji6y" path="res://assets/animations/witch/idle_long_color/idle0012.png" id="21_8vtd0"]
+[ext_resource type="Texture2D" uid="uid://daksa457guvhs" path="res://assets/animations/witch/idle_long_color/idle0013.png" id="22_ymhas"]
+[ext_resource type="Texture2D" uid="uid://ck1bi8yu0rg12" path="res://assets/animations/witch/idle_long_color/idle0014.png" id="23_87ox1"]
+[ext_resource type="Texture2D" uid="uid://wamb0pdvcpf3" path="res://assets/animations/witch/idle_long_color/idle0015.png" id="24_ydj35"]
+[ext_resource type="Texture2D" uid="uid://dn65pieqcjg64" path="res://assets/animations/witch/idle_long_color/idle0016.png" id="25_1klm7"]
+[ext_resource type="Script" path="res://assets/scripts/animationScripts/witchSprite.gd" id="26"]
+[ext_resource type="Texture2D" uid="uid://bdag00qwgy6av" path="res://assets/animations/witch/jump_color/0025.png" id="26_1w5ic"]
+[ext_resource type="Texture2D" uid="uid://uqq7h1qeve4u" path="res://assets/animations/witch/walk_color/idle0019.png" id="28_qi1he"]
+[ext_resource type="Texture2D" uid="uid://cat2om7bcbgy3" path="res://assets/animations/witch/jump_color/0026.png" id="28_rgb2i"]
+[ext_resource type="Texture2D" uid="uid://bn7fx8okvdct6" path="res://assets/animations/witch/walk_color/idle0020.png" id="29_ug520"]
+[ext_resource type="Texture2D" uid="uid://cj5ae1mhwrnm" path="res://assets/animations/witch/walk_color/idle0021.png" id="30_l2o1k"]
+[ext_resource type="Texture2D" uid="uid://fol4n4yjebud" path="res://assets/animations/witch/walk_color/idle0022.png" id="31_hc2pb"]
+[ext_resource type="Texture2D" uid="uid://8nynsptgphxg" path="res://assets/animations/witch/witch_damage.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://rcxgk2cfpml" path="res://assets/animations/witch/walk_color/idle0023.png" id="32_8cc5l"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 21 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b6k0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0cqtb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pl26t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_050ee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bv6yi")
+}],
 "loop": true,
-"name": "up",
+"name": &"attack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32")
+}],
 "loop": true,
-"name": "idle",
+"name": &"damage",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 32 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_qonrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_i4c14")
+}],
 "loop": true,
-"name": "damage",
+"name": &"fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 9 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 3 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_r252l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d3kdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_68r3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_d6gy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qonrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_i4c14")
+}],
 "loop": true,
-"name": "walk_right",
+"name": &"fall_start",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 21 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_6llaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_b04n3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rye2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1ryka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rye2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5dpqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6llaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6llaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6llaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_m3qlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6llaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_m3qlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6llaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6llaw")
+}],
 "loop": true,
-"name": "jump",
+"name": &"idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_hit70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hudrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_8vtd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ymhas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_87ox1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ydj35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1klm7")
+}],
 "loop": true,
-"name": "idle_long",
+"name": &"idle_long",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_1w5ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_rgb2i")
+}],
 "loop": true,
-"name": "fall_start",
+"name": &"jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 24 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_rgb2i")
+}],
 "loop": true,
-"name": "fall",
+"name": &"up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 27 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_qi1he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ug520")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_l2o1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hc2pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8cc5l")
+}],
 "loop": true,
-"name": "attack",
+"name": &"walk_right",
 "speed": 5.0
-} ]
+}]
 
 [node name="witchSprite" type="AnimatedSprite2D"]
-scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 1 )
-animation = "attack"
-frame = 3
+scale = Vector2(0.4, 0.4)
+frames = SubResource("1")
+animation = &"idle_long"
 speed_scale = 2.0
 playing = true
-script = ExtResource( 26 )
+script = ExtResource("26")
 
 [connection signal="animation_finished" from="." to="." method="_on_witchSprite_animation_finished"]

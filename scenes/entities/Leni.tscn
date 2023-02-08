@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/entities/ghost.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c22xqm54cs50" path="res://scenes/animations/GhostSprite.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/mainCamera.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="4_akxb4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -18,10 +18,10 @@ adjustment_contrast = 8.0
 [node name="Positional" type="Node2D"]
 
 [node name="After Image Mesh" parent="." node_paths=PackedStringArray("the_sprite") instance=ExtResource("4_akxb4")]
+scale = Vector2(5, 5)
 the_sprite = NodePath("../Leni/Sprite2D")
 after_image_frequency = 30.0
 after_image_count = 16
-after_scale = Vector2(3, 3)
 
 [node name="Leni" type="CharacterBody2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -66,10 +66,12 @@ one_shot = true
 [node name="dazed_timer" type="Timer" parent="Leni"]
 one_shot = true
 
-[connection signal="animation_finished" from="Leni/Sprite2D" to="Leni" method="_on_ghostSprite_animation_finished"]
 [connection signal="animation_finished" from="Leni/Sprite2D" to="Leni" method="_on_Sprite_animation_finished"]
+[connection signal="animation_finished" from="Leni/Sprite2D" to="Leni" method="_on_ghostSprite_animation_finished"]
 [connection signal="timeout" from="Leni/flight_timer" to="Leni" method="_on_flight_timer_timeout"]
 [connection signal="timeout" from="Leni/posses_timer" to="Leni" method="_on_posses_timer_timeout"]
 [connection signal="body_entered" from="Leni/GroundTester" to="Leni" method="_on_GroundTester_body_entered"]
 [connection signal="body_exited" from="Leni/GroundTester" to="Leni" method="_on_GroundTester_body_exited"]
 [connection signal="timeout" from="Leni/modulate_timer" to="Leni" method="_on_modulate_timer_timeout"]
+
+[editable path="After Image Mesh"]

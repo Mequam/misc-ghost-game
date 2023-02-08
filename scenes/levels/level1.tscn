@@ -1,20 +1,20 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=18 format=3 uid="uid://dmn8qohtbwffu"]
 
-[ext_resource path="res://scenes/entities/orchard_spawn_light.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/images/level1_mid_ground.png" type="Texture2D" id=2]
-[ext_resource path="res://assets/images/level_1_background.png" type="Texture2D" id=3]
-[ext_resource path="res://scenes/entities/witch.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/resources/witchJump.tres" type="Resource" id=5]
-[ext_resource path="res://assets/images/moon.png" type="Texture2D" id=6]
-[ext_resource path="res://scenes/animations/twinkle.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/tiles/main.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/images/rock.png" type="Texture2D" id=9]
-[ext_resource path="res://assets/images/big_tree.png" type="Texture2D" id=10]
-[ext_resource path="res://scenes/entities/Leni.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/scripts/testZone.gd" type="Script" id=12]
-[ext_resource path="res://assets/images/barn.png" type="Texture2D" id=14]
+[ext_resource type="PackedScene" path="res://scenes/entities/orchard_spawn_light.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cyxbkxf1trtk8" path="res://assets/images/level1_mid_ground.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://duv42sxweufr6" path="res://assets/images/level_1_background.png" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/entities/witch.tscn" id="4"]
+[ext_resource type="Resource" path="res://assets/resources/witchJump.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://ca7ii48ege7kj" path="res://assets/images/moon.png" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/animations/twinkle.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/tiles/main.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://camf0trk6vqod" path="res://assets/images/rock.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dpsxj66v0p51a" path="res://assets/images/big_tree.png" id="10"]
+[ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="11"]
+[ext_resource type="Script" path="res://assets/scripts/testZone.gd" id="12"]
+[ext_resource type="Texture2D" uid="uid://ry26rk7ploqg" path="res://assets/images/barn.png" id="14"]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id="3"]
 code = "shader_type canvas_item;
 uniform float Size;
 uniform vec4 color : source_color;
@@ -40,57 +40,56 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id="4"]
 resource_local_to_scene = true
-shader = SubResource( 3 )
-shader_param/Size = 0.048
-shader_param/color = Color( 1, 1, 1, 1 )
+shader = SubResource("3")
+shader_parameter/Size = 0.048
+shader_parameter/color = Color(1, 1, 1, 1)
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 164.25, 10 )
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(328.5, 20)
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 38, 177.976 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(76, 355.952)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_horizontal_guides_": [  ]
-}
+script = ExtResource("12")
 
 [node name="Level1MidGround" type="Sprite2D" parent="."]
-position = Vector2( 41, -324 )
 z_index = -1
-texture = ExtResource( 2 )
+position = Vector2(41, -324)
+texture = ExtResource("2")
 
 [node name="Rock" type="Sprite2D" parent="."]
-position = Vector2( 111, -311 )
-scale = Vector2( 0.503704, 0.503704 )
 z_index = -1
-texture = ExtResource( 9 )
+position = Vector2(111, -311)
+scale = Vector2(0.503704, 0.503704)
+texture = ExtResource("9")
 
 [node name="BigTree" type="Sprite2D" parent="."]
-position = Vector2( 115, -457 )
-rotation = -0.0949657
-scale = Vector2( 0.465427, 0.465427 )
 z_index = -1
-texture = ExtResource( 10 )
+position = Vector2(115, -457)
+rotation = -0.0949657
+scale = Vector2(0.465427, 0.465427)
+texture = ExtResource("10")
 
 [node name="Barn" type="Sprite2D" parent="."]
-position = Vector2( -715, -538 )
-scale = Vector2( 0.225926, 0.225926 )
-texture = ExtResource( 14 )
+position = Vector2(-715, -538)
+scale = Vector2(0.225926, 0.225926)
+texture = ExtResource("14")
 
 [node name="AITimer" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
 
-[node name="TileMap2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 7, 29 )
-tile_data = PackedInt32Array( -262148, 1, 0, -262147, 2, 0, -262146, 0, 0, -262145, 2, 0, -327680, 0, 0 )
+[node name="TileMap2" parent="." instance=ExtResource("8")]
+position = Vector2(7, 29)
+format = 2
+layer_0/tile_data = PackedInt32Array(-262148, 1, 0, -262147, 2, 0, -262146, 0, 0, -262145, 2, 0, -327680, 0, 0)
 
-[node name="TileMap" parent="." instance=ExtResource( 8 )]
-tile_data = PackedInt32Array( -327687, 1, 0, -327686, 2, 0, -327685, 2, 0, -327684, 1, 0, -131078, 2, 0, -131077, 1, 0, -131076, 2, 0, -131075, 1, 0, -131074, 1, 0, -196605, 0, 0, -196604, 0, 0, -196603, 1, 0, -196602, 0, 0, -196601, 0, 0 )
+[node name="TileMap" parent="." instance=ExtResource("8")]
+format = 2
+layer_0/tile_data = PackedInt32Array(-327687, 1, 0, -327686, 2, 0, -327685, 2, 0, -327684, 1, 0, -131078, 2, 0, -131077, 1, 0, -131076, 2, 0, -131075, 1, 0, -131074, 1, 0, -196605, 0, 0, -196604, 0, 0, -196603, 1, 0, -196602, 0, 0, -196601, 0, 0)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -101,101 +100,101 @@ offset_left = -920.0
 offset_top = -274.0
 offset_right = 961.0
 offset_bottom = 398.0
-color = Color( 0.207843, 0.290196, 0.219608, 1 )
+color = Color(0.207843, 0.290196, 0.219608, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_left = -421.0
 offset_top = -459.0
 offset_right = 89.0
 offset_bottom = -188.0
-color = Color( 0, 0, 0, 1 )
+color = Color(0, 0, 0, 1)
 
 [node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.1, 1 )
+motion_scale = Vector2(0.1, 1)
 
 [node name="Moon" type="Sprite2D" parent="ParallaxBackground/sky"]
-material = SubResource( 4 )
-position = Vector2( -290, -693 )
-texture = ExtResource( 6 )
+material = SubResource("4")
+position = Vector2(-290, -693)
+texture = ExtResource("6")
 
-[node name="twinkle" parent="ParallaxBackground/sky" instance=ExtResource( 7 )]
-position = Vector2( -282, -860 )
+[node name="twinkle" parent="ParallaxBackground/sky" instance=ExtResource("7")]
+position = Vector2(-282, -860)
 
-[node name="twinkle2" parent="ParallaxBackground/sky" instance=ExtResource( 7 )]
-position = Vector2( 134, -974 )
+[node name="twinkle2" parent="ParallaxBackground/sky" instance=ExtResource("7")]
+position = Vector2(134, -974)
 
-[node name="twinkle3" parent="ParallaxBackground/sky" instance=ExtResource( 7 )]
-position = Vector2( 356, -760 )
+[node name="twinkle3" parent="ParallaxBackground/sky" instance=ExtResource("7")]
+position = Vector2(356, -760)
 
-[node name="twinkle4" parent="ParallaxBackground/sky" instance=ExtResource( 7 )]
-position = Vector2( -60, -636 )
+[node name="twinkle4" parent="ParallaxBackground/sky" instance=ExtResource("7")]
+position = Vector2(-60, -636)
 
-[node name="twinkle5" parent="ParallaxBackground/sky" instance=ExtResource( 7 )]
-position = Vector2( -536, -692 )
+[node name="twinkle5" parent="ParallaxBackground/sky" instance=ExtResource("7")]
+position = Vector2(-536, -692)
 
 [node name="back far" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.8, 1 )
+motion_scale = Vector2(0.8, 1)
 
 [node name="BigTree3" type="Sprite2D" parent="ParallaxBackground/back far"]
-modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
-position = Vector2( -414, -599 )
+modulate = Color(0.572549, 0.572549, 0.572549, 1)
+position = Vector2(-414, -599)
 rotation = 0.0736397
-scale = Vector2( -0.139, 0.139 )
-texture = ExtResource( 10 )
+scale = Vector2(-0.139, 0.139)
+texture = ExtResource("10")
 
 [node name="BigTree4" type="Sprite2D" parent="ParallaxBackground/back far"]
-modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
-position = Vector2( 443, -525 )
+modulate = Color(0.572549, 0.572549, 0.572549, 1)
+position = Vector2(443, -525)
 rotation = -0.116684
-scale = Vector2( -0.139, 0.139 )
-texture = ExtResource( 10 )
+scale = Vector2(-0.139, 0.139)
+texture = ExtResource("10")
 
 [node name="back" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.9, 1 )
+motion_scale = Vector2(0.9, 1)
 
 [node name="Level1Background" type="Sprite2D" parent="ParallaxBackground/back"]
-modulate = Color( 0.647059, 0.647059, 0.647059, 1 )
-position = Vector2( 14, -234 )
-texture = ExtResource( 3 )
+modulate = Color(0.647059, 0.647059, 0.647059, 1)
+position = Vector2(14, -234)
+texture = ExtResource("3")
 
 [node name="BigTree2" type="Sprite2D" parent="ParallaxBackground/back"]
-modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
-position = Vector2( -118, -576 )
+modulate = Color(0.572549, 0.572549, 0.572549, 1)
+position = Vector2(-118, -576)
 rotation = -0.0949657
-scale = Vector2( 0.221663, 0.221663 )
-texture = ExtResource( 10 )
+scale = Vector2(0.221663, 0.221663)
+texture = ExtResource("10")
 
 [node name="BigTree3" type="Sprite2D" parent="ParallaxBackground/back"]
-modulate = Color( 0.572549, 0.572549, 0.572549, 1 )
-position = Vector2( 354, -473 )
+modulate = Color(0.572549, 0.572549, 0.572549, 1)
+position = Vector2(354, -473)
 rotation = 0.0770843
-scale = Vector2( -0.222, 0.222 )
-texture = ExtResource( 10 )
+scale = Vector2(-0.222, 0.222)
+texture = ExtResource("10")
 
 [node name="ground" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
-position = Vector2( -751, -428 )
-shape = SubResource( 2 )
+position = Vector2(-751, -428)
+shape = SubResource("2")
 
 [node name="tree" type="StaticBody2D" parent="."]
-position = Vector2( -791, -458 )
+position = Vector2(-791, -458)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="tree"]
-position = Vector2( 876.444, -45.8225 )
+position = Vector2(876.444, -45.8225)
 rotation = -0.231164
-shape = SubResource( 1 )
+shape = SubResource("1")
 
-[node name="witch" parent="." instance=ExtResource( 4 )]
-position = Vector2( -375, -477 )
-jr = ExtResource( 5 )
+[node name="witch" parent="." instance=ExtResource("4")]
+position = Vector2(-375, -477)
+jr = ExtResource("5")
 
-[node name="spawn_light_orchard" parent="." instance=ExtResource( 1 )]
-position = Vector2( -588, -560 )
+[node name="spawn_light_orchard" parent="." instance=ExtResource("1")]
 z_index = -1
+position = Vector2(-588, -560)
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 10, 192 )
+position = Vector2(10, 192)
 
-[node name="Leni" parent="." instance=ExtResource( 11 )]
-position = Vector2( -571, -489 )
+[node name="Leni" parent="." instance=ExtResource("11")]
+position = Vector2(-571, -489)
