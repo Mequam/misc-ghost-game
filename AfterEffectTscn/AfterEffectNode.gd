@@ -47,7 +47,7 @@ func _process(delta):
 	pass
 
 func update_after_image():
-	var the_texture : Texture2D = the_sprite.frames.get_frame_texture(the_sprite.animation,the_sprite.frame)
+	var the_texture : Texture2D = the_sprite.sprite_frames.get_frame_texture(the_sprite.animation,the_sprite.frame)
 	var the_size = the_texture.get_size()
 	var the_mesh_instance = mesh_array[mesh_update_index]
 	var the_mesh = the_mesh_instance.mesh

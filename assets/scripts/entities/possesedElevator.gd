@@ -39,11 +39,11 @@ func AI(player):
 		ai_counter %= 4
 #wooshes a given entity
 func woosh(body)->void:
-	if body.has_method("move_and_collide"):
+	if body.has_method("singal_move_and_collide"):
 		if body.position.x > position.x:
-			body.move_and_collide(Vector2(100,0))
+			body.singal_move_and_collide(Vector2(100,0))
 		else:
-			body.move_and_collide(Vector2(-100,0))
+			body.singal_move_and_collide(Vector2(-100,0))
 
 
 func set_onground(val : bool)->void:

@@ -9,8 +9,8 @@ class_name KinColObject
 var speed : float = 50
 
 
-func move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08,test : bool = false)->KinematicCollision2D:
-	var col = super.move_and_collide(rel_vec,test_only,sm,test)
+func singal_move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08,test : bool = false)->KinematicCollision2D:
+	var col = move_and_collide(rel_vec,test_only,sm,test)
 	
 	if col:
 		on_col(col)
@@ -41,7 +41,7 @@ func compute_velocity(child_velocity : Vector2)->Vector2:
 
 #inteanded to be overidden, runs in the process function
 func main_process(delta):
-	move_and_collide(speed*delta*compute_velocity(velocity))
+	singal_move_and_collide(speed*delta*compute_velocity(velocity))
 func _process(delta):
 	main_process(delta)
 

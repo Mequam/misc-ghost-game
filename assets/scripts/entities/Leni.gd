@@ -75,7 +75,7 @@ func set_state(val : int)->void:
 	match val:
 		LeniState.POSSESING:
 			$posses_timer.start()
-			$Sprite2D.play("posses_launch")
+			$Sprite2D.custom_play("posses_launch")
 		LeniState.POSSESING_ENTITY:
 			#make us unexist
 			visible = false
@@ -106,20 +106,24 @@ func unposses()->void:
 		
 	possesed_entity = null
 	self.possesed = true
+
 #convinence function that saves the game at the given ghost light
 func save_at_light(ghostLight : RespawnLamp)->void:
 	print("saving at a ghost light")
 	SaveUtils.save_game(Globals.game_name,
 						get_parent(),
 						ghostLight)
+
 #actually posses an entity
 func posses(entity)->void:
 	#clear out the existing possesed entity
 	if possesed_entity:
 		unposses()
+	
 	#swap the possesion around
 	self.possesed = false
-	entity.possesed = true	
+	entity.possesed = true
+
 	if (entity is RespawnLamp):
 		respawn_point = entity
 		save_at_light(entity)
@@ -175,13 +179,13 @@ func on_col(col)->void:
 			if (col.collider is Entity) and (abs(col.normal.x) > abs(col.normal.y)):
 				state = EntityState.BRICK
 				possesed_entity = col.collider
-				$Sprite2D.play("posses_col")
+				$Sprite2D.custom_play("posses_col")
 	super.on_col(col)
 
 func _on_posses_timer_timeout():
 	posses_velocity = Vector2(0,0)
 	if state != EntityState.BRICK:
-		$Sprite2D.play("posses_end")
+		$Sprite2D.custom_play("posses_end")
 
 func _on_ghostSprite_animation_finished():
 	match $Sprite2D.animation:

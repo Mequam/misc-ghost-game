@@ -3,7 +3,7 @@ extends Npc
 class_name RespawnLamp
 
 #we do NOT move
-func move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08,test : bool = false)->KinematicCollision2D:
+func singal_move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08,test : bool = false)->KinematicCollision2D:
 	return null
 
 #returns the name that we use to respawn

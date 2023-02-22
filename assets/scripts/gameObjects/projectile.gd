@@ -3,8 +3,6 @@ extends KinColObject
 class_name Projectile
 var damage : int = 2
 
-func queue_free():
-	super.queue_free()
 func main_ready():
 	$lifeTimer.connect("timeout",Callable(self,"die"))
 	collision_layer = 0

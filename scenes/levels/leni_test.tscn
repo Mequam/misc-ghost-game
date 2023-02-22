@@ -1,11 +1,8 @@
 [gd_scene load_steps=60 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
-[ext_resource type="PackedScene" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
+[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://ColorShiftEffect/ColorShifter.tscn" id="3_8xg4c"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
-size = Vector2(1052, 20)
 
 [sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_m8c1d"]
 function = 2
@@ -377,9 +374,13 @@ void fragment() {
 	vec2 n_out4p0 = SCREEN_UV;
 
 
+// Input:2
+	float n_out2p0 = 0.0;
+
+
 	vec4 n_out3p0;
 // Texture2D:3
-	n_out3p0 = texture(SCREEN_TEXTURE, n_out4p0);
+	n_out3p0 = vec4(0.0);
 
 
 	vec3 n_out10p0;
@@ -474,14 +475,7 @@ void fragment() {
 
 	vec3 n_out24p0;
 // Switch:24
-	if(n_out25p0)
-	{
-		n_out24p0 = n_out22p0;
-	}
-	else
-	{
-		n_out24p0 = vec3(n_out3p0.xyz);
-	}
+	n_out24p0 = mix(vec3(n_out3p0.xyz), n_out22p0, float(n_out25p0));
 
 
 // Output:0
@@ -610,6 +604,9 @@ shader_parameter/yg_map = Color(0.5, 1, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
 shader_parameter/IC2 = Color(0.501961, 1, 0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
+size = Vector2(1052, 20)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -631,6 +628,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
+material = SubResource("ShaderMaterial_rba3l")
+layout_mode = 1
+offset_left = -27.0
+offset_top = -104.0
+offset_right = -27.0
+offset_bottom = -104.0
+
 [node name="LeniTest" type="Node2D" parent="."]
 position = Vector2(22, 420)
 
@@ -651,12 +656,5 @@ shape = SubResource("RectangleShape2D_nk62p")
 position = Vector2(353, -126)
 scale = Vector2(1, 1)
 
-[node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
-material = SubResource("ShaderMaterial_rba3l")
-layout_mode = 1
-offset_left = -27.0
-offset_top = -104.0
-offset_right = -27.0
-offset_bottom = -104.0
-
 [editable path="LeniTest/Leni"]
+[editable path="LeniTest/Leni/After Image Mesh"]

@@ -1,11 +1,16 @@
-[gd_scene load_steps=35 format=3 uid="uid://bvd2hb13cvw3d"]
+[gd_scene load_steps=39 format=3 uid="uid://bvd2hb13cvw3d"]
 
 [ext_resource type="Texture2D" uid="uid://d1e5irqqnemtj" path="res://assets/animations/witch/attack_color/attack0034.png" id="1_b6k0w"]
 [ext_resource type="Texture2D" uid="uid://cf0j667k4pnpm" path="res://assets/animations/witch/attack_color/attack0035.png" id="2_0cqtb"]
 [ext_resource type="Texture2D" uid="uid://db8btnhxad2gu" path="res://assets/animations/witch/attack_color/attack0036.png" id="3_pl26t"]
 [ext_resource type="Texture2D" uid="uid://cjwut0ps1y1ho" path="res://assets/animations/witch/attack_color/attack0037.png" id="4_050ee"]
 [ext_resource type="Texture2D" uid="uid://dxiq8gpml76q" path="res://assets/animations/witch/attack_color/attack0038.png" id="5_bv6yi"]
+[ext_resource type="Texture2D" uid="uid://chlffy6hwujh2" path="res://assets/animations/witch/witch_color_damage/0039.png" id="6_q0nid"]
+[ext_resource type="Texture2D" uid="uid://duxdmgdyk0dxq" path="res://assets/animations/witch/witch_color_damage/0040.png" id="7_gf4hd"]
+[ext_resource type="Texture2D" uid="uid://dd5gqrfcvjjth" path="res://assets/animations/witch/witch_color_damage/0041.png" id="8_h7dcl"]
+[ext_resource type="Texture2D" uid="uid://cl63b88aqxbc5" path="res://assets/animations/witch/witch_color_damage/0042.png" id="9_58ymw"]
 [ext_resource type="Texture2D" uid="uid://6ng2goryo6ax" path="res://assets/animations/witch/fall_color/fall0027.png" id="9_r252l"]
+[ext_resource type="Texture2D" uid="uid://dov7ja5sb24fe" path="res://assets/animations/witch/witch_color_damage/0043.png" id="10_5es8k"]
 [ext_resource type="Texture2D" uid="uid://bh1acjjnhsrhn" path="res://assets/animations/witch/fall_color/fall0028.png" id="10_d3kdc"]
 [ext_resource type="Texture2D" uid="uid://bevhv4sravff3" path="res://assets/animations/witch/fall_color/fall0029.png" id="11_68r3n"]
 [ext_resource type="Texture2D" uid="uid://bpmatk8w5gupq" path="res://assets/animations/witch/fall_color/fall0030.png" id="12_d6gy2"]
@@ -31,7 +36,6 @@
 [ext_resource type="Texture2D" uid="uid://bn7fx8okvdct6" path="res://assets/animations/witch/walk_color/idle0020.png" id="29_ug520"]
 [ext_resource type="Texture2D" uid="uid://cj5ae1mhwrnm" path="res://assets/animations/witch/walk_color/idle0021.png" id="30_l2o1k"]
 [ext_resource type="Texture2D" uid="uid://fol4n4yjebud" path="res://assets/animations/witch/walk_color/idle0022.png" id="31_hc2pb"]
-[ext_resource type="Texture2D" uid="uid://8nynsptgphxg" path="res://assets/animations/witch/witch_damage.png" id="32"]
 [ext_resource type="Texture2D" uid="uid://rcxgk2cfpml" path="res://assets/animations/witch/walk_color/idle0023.png" id="32_8cc5l"]
 
 [sub_resource type="SpriteFrames" id="1"]
@@ -58,7 +62,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("32")
+"texture": ExtResource("6_q0nid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gf4hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_h7dcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_58ymw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5es8k")
 }],
 "loop": true,
 "name": &"damage",
@@ -213,10 +229,10 @@ animations = [{
 
 [node name="witchSprite" type="AnimatedSprite2D"]
 scale = Vector2(0.4, 0.4)
-frames = SubResource("1")
-animation = &"idle_long"
+sprite_frames = SubResource("1")
+animation = &"idle"
+frame_progress = 0.04006
 speed_scale = 2.0
-playing = true
 script = ExtResource("26")
 
 [connection signal="animation_finished" from="." to="." method="_on_witchSprite_animation_finished"]

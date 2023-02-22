@@ -18,6 +18,7 @@ func grab_camera()->void:
 	if cam_parent:
 		cam_parent.remove_child(parent.cam_ref)
 	add_child(parent.cam_ref)
+
 #wether or not the entity can be possesed by the player
 var can_posses : bool = true
 #are we possesed by the ghost?
@@ -106,8 +107,8 @@ func set_state(val : int)->void:
 			saved_col_mask = collision_mask
 			collision_layer = 0
 			collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
-			$Sprite2D.play("damage")
-			modulate = Color.LIGHT_CORAL
+			$Sprite2D.custom_play("damage")
+			modulate = Color.LIGHT_GRAY
 			$modulate_timer.start()
 	state = val
 func get_state()->int:
@@ -151,6 +152,7 @@ func on_action_press(action : String)->void:
 #runs only when the action is released
 func on_action_released(action : String)->void:
 	pass
+
 #takes as input an action and wether or not it is double pressed,
 #then performs the given action
 func perform_action(act : String,pressed : bool,double_press : bool = false,echo : bool = false)->void:

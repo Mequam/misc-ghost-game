@@ -9,6 +9,7 @@ var ghost_run_counter : int = 0
 
 #how high up and down we go when running
 var turbulance : float = 5
+
 #up is a boolean that determines if the sprite is 
 #elevated by turbulance from start position
 var up : bool = false :
@@ -17,7 +18,7 @@ var up : bool = false :
 	set(mod_value):
 		mod_value  # TODOConverter40 Copy here content of set_up
 
-func play(anim : StringName = "",backwords : bool = false)->void:
+func custom_play(anim : StringName = "",backwords : bool = false)->void:
 	position = Vector2(0,0)
 	match anim:
 		"posses_col":
@@ -60,6 +61,6 @@ func _on_ghostSprite_animation_finished():
 		"posses_col":
 			emit_ectosplosion()
 		"posses_launch":
-			play("posses")
+			custom_play("posses")
 		"posses_end":
-			play("idle")
+			custom_play("idle")

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/orchard_spawn_light.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cyxbkxf1trtk8" path="res://assets/images/level1_mid_ground.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://duv42sxweufr6" path="res://assets/images/level_1_background.png" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/entities/witch.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="4"]
 [ext_resource type="Resource" path="res://assets/resources/witchJump.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://ca7ii48ege7kj" path="res://assets/images/moon.png" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/animations/twinkle.tscn" id="7"]
