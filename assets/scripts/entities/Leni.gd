@@ -187,7 +187,14 @@ func _on_posses_timer_timeout():
 	if state != EntityState.BRICK:
 		$Sprite2D.custom_play("posses_end")
 
-func _on_ghostSprite_animation_finished():
+func on_possesed_die():
+	unposses()
+
+
+
+
+func _on_sprite_2d_animation_finished():
+	print("finished animation "  + $Sprite.animation)
 	match $Sprite2D.animation:
 		"posses_col":
 			posses(possesed_entity)
@@ -197,5 +204,3 @@ func _on_ghostSprite_animation_finished():
 			pass
 		_:
 			state = EntityState.DEFAULT
-func on_possesed_die():
-	unposses()

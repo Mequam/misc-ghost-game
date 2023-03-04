@@ -261,6 +261,7 @@ script = ExtResource("2_fsw83")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("1")
 animation = &"idle"
+frame_progress = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leni"]
 position = Vector2(0, -1)
@@ -295,8 +296,8 @@ one_shot = true
 [node name="dazed_timer" type="Timer" parent="Leni"]
 one_shot = true
 
-[connection signal="animation_finished" from="Leni/Sprite2D" to="Leni" method="_on_Sprite_animation_finished"]
-[connection signal="animation_finished" from="Leni/Sprite2D" to="Leni" method="_on_ghostSprite_animation_finished"]
+[connection signal="animation_finished" from="Leni/Sprite2D" to="Leni" method="_on_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="Leni/Sprite2D" to="Leni" method="_on_sprite_2d_frame_changed"]
 [connection signal="timeout" from="Leni/flight_timer" to="Leni" method="_on_flight_timer_timeout"]
 [connection signal="timeout" from="Leni/posses_timer" to="Leni" method="_on_posses_timer_timeout"]
 [connection signal="body_entered" from="Leni/GroundTester" to="Leni" method="_on_GroundTester_body_entered"]

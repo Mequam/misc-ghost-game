@@ -41,11 +41,6 @@ func set_up(val : bool)->void:
 func get_up()->bool:
 	return up
 
-func _on_ghostSprite_frame_changed():
-	if animation == "run" and ghost_run_counter == 2:
-		self.up = !up
-		ghost_run_counter = -1
-	ghost_run_counter += 1
 #emits ectosplosion particles
 func emit_ectosplosion():
 	var to_spawn = ectoSplosion.instantiate()
@@ -56,7 +51,18 @@ func emit_ectosplosion():
 		to_spawn
 		)
 
-func _on_ghostSprite_animation_finished():
+
+
+
+
+
+func _on_frame_changed():
+	if animation == "run" and ghost_run_counter == 2:
+		self.up = !up
+		ghost_run_counter = -1
+	ghost_run_counter += 1
+
+func _on_animation_finished():
 	match animation:
 		"posses_col":
 			emit_ectosplosion()

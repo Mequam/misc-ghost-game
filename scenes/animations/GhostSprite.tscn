@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c22xqm54cs50"]
+[gd_scene load_steps=44 format=3 uid="uid://c22xqm54cs50"]
 
 [ext_resource type="Texture2D" uid="uid://cw7vv7hopuieh" path="res://assets/animations/ghost/ghost_down_color/0040.png" id="3_r3h7f"]
 [ext_resource type="Texture2D" uid="uid://dpgs48vjp6hbt" path="res://assets/animations/ghost/ghost_down_color/0041.png" id="4_3yqra"]
@@ -17,14 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://cnhmo2wos3na7" path="res://assets/animations/ghost/color_ghost_posses/0089.png" id="21_w8sq1"]
 [ext_resource type="Texture2D" uid="uid://dsaf7pcaqihjg" path="res://assets/animations/ghost/color_ghost_posses/0090.png" id="22_t4qcj"]
 [ext_resource type="Texture2D" uid="uid://bhs4cuirjrvh4" path="res://assets/animations/ghost/color_ghost_posses/0091.png" id="23_735lv"]
-[ext_resource type="Texture2D" uid="uid://tx5wngfchi86" path="res://assets/animations/ghost/posses/crop-pos0088.png" id="24"]
 [ext_resource type="Texture2D" uid="uid://c8yu1beictv57" path="res://assets/animations/ghost/color_ghost_posses/0092.png" id="24_l1b5i"]
 [ext_resource type="Texture2D" uid="uid://d1i0fjs7h5uhq" path="res://assets/animations/ghost/color_ghost_posses/0093.png" id="25_p823d"]
 [ext_resource type="Texture2D" uid="uid://3j2iqq72e7ts" path="res://assets/animations/ghost/color_ghost_posses/0084.png" id="26_0h4g4"]
 [ext_resource type="Texture2D" uid="uid://hqend0r2og06" path="res://assets/animations/ghost/color_ghost_posses/0094.png" id="26_eo2go"]
 [ext_resource type="Texture2D" uid="uid://c0rwlk711je4v" path="res://assets/animations/ghost/color_ghost_posses/0095.png" id="27_8ss7t"]
 [ext_resource type="Texture2D" uid="uid://dlpfa8pv314ix" path="res://assets/animations/ghost/color_ghost_posses/0085.png" id="27_ukf47"]
-[ext_resource type="Texture2D" uid="uid://cj1pxye4txm2g" path="res://assets/animations/ghost/posses/crop-pos0087.png" id="28"]
 [ext_resource type="Texture2D" uid="uid://b43mllwg2tjk3" path="res://assets/animations/ghost/color_ghost_posses/0086.png" id="28_ec2ol"]
 [ext_resource type="Texture2D" uid="uid://dkci4q6b85hki" path="res://assets/animations/ghost/color_ghost_posses/0087.png" id="29_bwmtx"]
 [ext_resource type="Texture2D" uid="uid://cv3ndmovygh2q" path="res://assets/animations/ghost/run_color/0059.png" id="29_o3wqf"]
@@ -111,10 +109,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("28")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24")
+"texture": ExtResource("30_agtnp")
 }],
 "loop": true,
 "name": &"posses",
@@ -233,11 +228,11 @@ animations = [{
 }]
 
 [node name="ghostSprite" type="AnimatedSprite2D"]
-frames = SubResource("1")
-animation = &"damage"
+sprite_frames = SubResource("1")
+animation = &"posses_end"
+frame_progress = 0.72131
 speed_scale = 1.5
-playing = true
 script = ExtResource("12")
 
-[connection signal="animation_finished" from="." to="." method="_on_ghostSprite_animation_finished"]
-[connection signal="frame_changed" from="." to="." method="_on_ghostSprite_frame_changed"]
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
