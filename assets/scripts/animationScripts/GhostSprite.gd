@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	custom_play("posses_end")
 
 var ectoSplosion : PackedScene = load("res://scenes/animations/EctoSplosion.tscn")
 var ghost_run_counter : int = 0
@@ -19,6 +19,7 @@ var up : bool = false :
 		mod_value  # TODOConverter40 Copy here content of set_up
 
 func custom_play(anim : StringName = "",backwords : bool = false)->void:
+	print("playing " + anim)
 	position = Vector2(0,0)
 	match anim:
 		"posses_col":
@@ -30,7 +31,7 @@ func custom_play(anim : StringName = "",backwords : bool = false)->void:
 			speed_scale = 2.5
 		_:
 			speed_scale = 1.5
-	super.play(anim,backwords)
+	play(anim,1,backwords)
 
 func set_up(val : bool)->void:
 	if val:
@@ -54,7 +55,8 @@ func emit_ectosplosion():
 
 
 
-
+func _on_animation_looped():
+	pass
 
 func _on_frame_changed():
 	if animation == "run" and ghost_run_counter == 2:
@@ -63,6 +65,7 @@ func _on_frame_changed():
 	ghost_run_counter += 1
 
 func _on_animation_finished():
+	print("hello from sprite2d animation finished")
 	match animation:
 		"posses_col":
 			emit_ectosplosion()

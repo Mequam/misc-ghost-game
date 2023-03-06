@@ -157,7 +157,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_8ss7t")
 }],
-"loop": true,
+"loop": false,
 "name": &"posses_end",
 "speed": 5.0
 }, {
@@ -230,9 +230,8 @@ animations = [{
 [node name="ghostSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("1")
 animation = &"posses_end"
-frame_progress = 0.72131
 speed_scale = 1.5
 script = ExtResource("12")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
-[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
+[connection signal="animation_looped" from="." to="." method="_on_animation_looped"]

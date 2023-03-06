@@ -193,14 +193,17 @@ func on_possesed_die():
 
 
 
+
+
+
 func _on_sprite_2d_animation_finished():
-	print("finished animation "  + $Sprite.animation)
+	print($Sprite2D.animation)
 	match $Sprite2D.animation:
 		"posses_col":
 			posses(possesed_entity)
 		"posses":
-			pass
+			pass #this is handled in the sprite2d
 		"posses_launch":
-			pass
+			pass #handled in sprite2d
 		_:
-			state = EntityState.DEFAULT
+			self.state = EntityState.DEFAULT

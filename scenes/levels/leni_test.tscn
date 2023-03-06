@@ -642,10 +642,6 @@ position = Vector2(22, 420)
 [node name="Leni" parent="LeniTest" instance=ExtResource("1_1atnt")]
 position = Vector2(266, -92)
 
-[node name="After Image Mesh" parent="LeniTest/Leni" index="0"]
-after_image_count = 30
-after_scale = Vector2(2.5, 2.5)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="LeniTest"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeniTest/StaticBody2D"]
@@ -655,6 +651,3 @@ shape = SubResource("RectangleShape2D_nk62p")
 [node name="witch" parent="LeniTest" instance=ExtResource("2_bfjq6")]
 position = Vector2(353, -126)
 scale = Vector2(1, 1)
-
-[editable path="LeniTest/Leni"]
-[editable path="LeniTest/Leni/After Image Mesh"]

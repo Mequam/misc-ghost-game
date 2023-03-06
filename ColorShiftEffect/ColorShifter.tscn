@@ -24,9 +24,6 @@ operator = 8
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_rv7wm"]
 
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jsthp"]
-input_name = "screen_texture"
-
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_vpopk"]
 default_input_values = [1, -3.142, 2, 3.142, 3, 0.0, 4, 1.0]
 
@@ -145,6 +142,10 @@ operator = 2
 default_input_values = [0, 0.0, 1, 1.0, 2, 0.0]
 op_type = 0
 
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_6dr5i"]
+parameter_name = "Texture2DParameter"
+texture_source = 1
+
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_k7ui8"]
 default_input_values = [0, 0.0, 1, 1.0, 2, 0.0]
 
@@ -162,6 +163,7 @@ uniform vec4 red_map : source_color;
 uniform vec4 yg_map : source_color;
 uniform vec4 IC1 : source_color;
 uniform vec4 IC2 : source_color;
+uniform sampler2D Texture2DParameter : hint_screen_texture;
 
 
 
@@ -372,7 +374,7 @@ void fragment() {
 
 	vec4 n_out3p0;
 // Texture2D:3
-	n_out3p0 = texture(SCREEN_TEXTURE, n_out4p0);
+	n_out3p0 = texture(Texture2DParameter, n_out4p0);
 
 
 	vec3 n_out10p0;
@@ -467,14 +469,7 @@ void fragment() {
 
 	vec3 n_out24p0;
 // Switch:24
-	if(n_out25p0)
-	{
-		n_out24p0 = n_out22p0;
-	}
-	else
-	{
-		n_out24p0 = vec3(n_out3p0.xyz);
-	}
+	n_out24p0 = mix(vec3(n_out3p0.xyz), n_out22p0, float(n_out25p0));
 
 
 // Output:0
@@ -483,11 +478,10 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-217.365, -145.632)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2960, 20)
-nodes/fragment/2/node = SubResource("VisualShaderNodeInput_jsthp")
-nodes/fragment/2/position = Vector2(-40, 80)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_1733s")
 nodes/fragment/3/position = Vector2(300, -60)
 nodes/fragment/4/node = SubResource("VisualShaderNodeInput_m1map")
@@ -592,7 +586,9 @@ nodes/fragment/56/node = SubResource("VisualShaderNodeFloatOp_xq7t4")
 nodes/fragment/56/position = Vector2(-280, 360)
 nodes/fragment/57/node = SubResource("VisualShaderNodeVectorCompose_y01au")
 nodes/fragment/57/position = Vector2(240, 340)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 6, 0, 5, 1, 10, 0, 11, 0, 11, 0, 12, 1, 12, 0, 14, 0, 14, 0, 15, 0, 12, 0, 13, 0, 13, 0, 15, 1, 5, 0, 16, 0, 19, 1, 17, 0, 17, 0, 20, 0, 11, 1, 21, 1, 11, 2, 21, 2, 21, 0, 22, 0, 8, 0, 6, 1, 3, 0, 24, 2, 25, 0, 24, 0, 3, 0, 10, 0, 22, 0, 24, 1, 7, 0, 6, 0, 19, 0, 17, 1, 16, 0, 26, 0, 26, 0, 19, 0, 20, 0, 27, 1, 28, 0, 29, 0, 29, 0, 27, 0, 27, 0, 21, 0, 30, 0, 31, 0, 31, 0, 32, 0, 32, 0, 33, 0, 33, 0, 7, 0, 33, 0, 8, 0, 34, 0, 35, 0, 35, 0, 36, 0, 39, 0, 40, 0, 40, 0, 41, 0, 36, 0, 44, 0, 44, 0, 37, 0, 44, 0, 43, 0, 41, 0, 45, 0, 45, 0, 42, 0, 45, 0, 38, 0, 42, 0, 47, 0, 38, 0, 47, 1, 37, 0, 48, 0, 43, 0, 48, 1, 48, 0, 46, 0, 47, 0, 46, 1, 46, 0, 49, 0, 15, 0, 50, 1, 49, 0, 50, 0, 50, 0, 16, 1, 52, 0, 57, 1, 51, 0, 57, 0, 53, 0, 54, 0, 54, 0, 55, 0, 55, 0, 56, 0, 56, 0, 51, 0, 56, 0, 52, 0, 57, 0, 5, 0, 4, 0, 3, 0, 24, 0, 0, 0)
+nodes/fragment/58/node = SubResource("VisualShaderNodeTexture2DParameter_6dr5i")
+nodes/fragment/58/position = Vector2(-180, -20)
+nodes/fragment/connections = PackedInt32Array(6, 0, 5, 1, 10, 0, 11, 0, 11, 0, 12, 1, 12, 0, 14, 0, 14, 0, 15, 0, 12, 0, 13, 0, 13, 0, 15, 1, 5, 0, 16, 0, 19, 1, 17, 0, 17, 0, 20, 0, 11, 1, 21, 1, 11, 2, 21, 2, 21, 0, 22, 0, 8, 0, 6, 1, 3, 0, 24, 2, 25, 0, 24, 0, 3, 0, 10, 0, 22, 0, 24, 1, 7, 0, 6, 0, 19, 0, 17, 1, 16, 0, 26, 0, 26, 0, 19, 0, 20, 0, 27, 1, 28, 0, 29, 0, 29, 0, 27, 0, 27, 0, 21, 0, 30, 0, 31, 0, 31, 0, 32, 0, 32, 0, 33, 0, 33, 0, 7, 0, 33, 0, 8, 0, 34, 0, 35, 0, 35, 0, 36, 0, 39, 0, 40, 0, 40, 0, 41, 0, 36, 0, 44, 0, 44, 0, 37, 0, 44, 0, 43, 0, 41, 0, 45, 0, 45, 0, 42, 0, 45, 0, 38, 0, 42, 0, 47, 0, 38, 0, 47, 1, 37, 0, 48, 0, 43, 0, 48, 1, 48, 0, 46, 0, 47, 0, 46, 1, 46, 0, 49, 0, 15, 0, 50, 1, 49, 0, 50, 0, 50, 0, 16, 1, 52, 0, 57, 1, 51, 0, 57, 0, 53, 0, 54, 0, 54, 0, 55, 0, 55, 0, 56, 0, 56, 0, 51, 0, 56, 0, 52, 0, 57, 0, 5, 0, 24, 0, 0, 0, 4, 0, 3, 0, 58, 0, 3, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t1q2u"]
 shader = SubResource("VisualShader_1ivqj")
