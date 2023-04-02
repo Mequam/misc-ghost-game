@@ -6,7 +6,6 @@ func _ready():
 
 var idle_count : int = 0
 func custom_play(anim : StringName = "idle",val : bool=false)->void:
-	print("playing witch animation " + anim + " with speed " + str(speed_scale))
 	match anim:
 		"idle":
 			idle_count = 0

@@ -66,6 +66,9 @@ func update_animation()->void:
 #we fall when we are in the air
 func main_process(delta):
 	if not self.onground and not state == EntityState.BRICK:
+		if abs(velocity.y) < 0.1: #if we reach peak height, fall down
+			print("changing to down gravity!")
+			gravity = jr.get_down_gravity()
 		velocity.y += gravity*delta
 		update_animation()
 	super.main_process(delta)

@@ -5,3 +5,4 @@ res://scenes/entities/Leni.tscn
 res://assets/scripts/animationScripts/witchSprite.gd
 res://assets/scripts/entities/witch.gd
 res://assets/resources/jump_resource.gd
+res://assets/scripts/gameObjects/lrjEntity.gd

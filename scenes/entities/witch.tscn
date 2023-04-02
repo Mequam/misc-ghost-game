@@ -43,9 +43,9 @@
 
 [sub_resource type="Resource" id="4"]
 script = ExtResource("4")
-jump_height = 10.0
-jump_up_time = 1.0
-jump_down_time = 0.0
+jump_height = 3.0
+jump_up_time = 0.1
+jump_down_time = 0.08
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("3")
