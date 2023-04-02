@@ -15,9 +15,10 @@ func singal_move_and_collide(rel_vec : Vector2,
 	var col = super.singal_move_and_collide(rel_vec,test_only,safe_margin,recovery_as_collision)
 	
 	if col:
-		super.singal_move_and_collide(rel_vec - rel_vec.project(col.normal))
+		super.singal_move_and_collide(rel_vec - rel_vec.project(col.get_normal()))
 		
 	return col
+
 func ai_fire_column():
 	perform_action("ATTACK",true)
 	perform_action("ATTACK",false)
@@ -58,6 +59,7 @@ func AI(player)->void:
 			ai_shoot_projectile(player)
 	ai_ticks += 1
 	ai_ticks = ai_ticks % 5
+
 func collumn_attack()->void:
 	$Sprite2D.play("attack")
 	state = EntityState.BRICK

@@ -215,7 +215,7 @@ func update_animation()->void:
 #process function that we can overload	
 func main_process(delta):
 	if state != EntityState.BRICK:
-		move_and_collide(speed*delta*compute_velocity(velocity))
+		singal_move_and_collide(speed*delta*compute_velocity(velocity))
 
 
 #this is a utility function that converts an event into a direction

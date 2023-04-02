@@ -16,7 +16,7 @@ var up : bool = false :
 	get:
 		return up # TODOConverter40 Copy here content of get_up
 	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_up
+		up = mod_value  # TODOConverter40 Copy here content of set_up
 
 func custom_play(anim : StringName = "",backwords : bool = false)->void:
 	print("playing " + anim)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=60 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=61 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://ColorShiftEffect/ColorShifter.tscn" id="3_8xg4c"]
+[ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="4_h8fsu"]
 
 [sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_m8c1d"]
 function = 2
@@ -636,6 +637,13 @@ offset_top = -104.0
 offset_right = -27.0
 offset_bottom = -104.0
 
+[node name="After Image Mesh" parent="." node_paths=PackedStringArray("the_sprite") instance=ExtResource("4_h8fsu")]
+position = Vector2(22, 420)
+the_sprite = NodePath("../LeniTest/witch/Sprite2D")
+after_image_frequency = 45.0
+after_image_count = 30
+after_scale = Vector2(3.8, 3.8)
+
 [node name="LeniTest" type="Node2D" parent="."]
 position = Vector2(22, 420)
 
@@ -651,3 +659,6 @@ shape = SubResource("RectangleShape2D_nk62p")
 [node name="witch" parent="LeniTest" instance=ExtResource("2_bfjq6")]
 position = Vector2(353, -126)
 scale = Vector2(1, 1)
+
+[editable path="LeniTest/Leni"]
+[editable path="LeniTest/witch"]

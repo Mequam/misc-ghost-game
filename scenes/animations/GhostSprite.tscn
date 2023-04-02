@@ -131,7 +131,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("37")
 }],
-"loop": true,
+"loop": false,
 "name": &"posses_col",
 "speed": 5.0
 }, {
@@ -229,7 +229,7 @@ animations = [{
 
 [node name="ghostSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("1")
-animation = &"posses_end"
+animation = &"posses_col"
 speed_scale = 1.5
 script = ExtResource("12")
 
