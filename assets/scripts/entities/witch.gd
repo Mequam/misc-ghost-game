@@ -61,7 +61,7 @@ func AI(player)->void:
 	ai_ticks = ai_ticks % 5
 
 func collumn_attack()->void:
-	$Sprite2D.play("attack")
+	$Sprite2D.custom_play("attack")
 	state = EntityState.BRICK
 	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
@@ -71,7 +71,7 @@ func shoot_witch_projectile()->void:
 	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
 	shoot(witchProjectile,$col_spawn_position.global_position,compute_velocity(velocity))
-	$Sprite2D.play("attack")
+	$Sprite2D.custom_play("attack")
 	state = EntityState.BRICK
 
 func on_action_press(act : String)->void:

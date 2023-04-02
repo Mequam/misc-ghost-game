@@ -34,7 +34,7 @@ func on_action_press(act : String)->void:
 			if self.onground:
 				self.velocity = Vector2(0,-(jr as JumpResource).get_initial_up_speed())
 				self.gravity = (jr as JumpResource).get_up_gravity()
-				$Sprite2D.play("jump")
+				$Sprite2D.custom_play("jump")
 			
 	super.on_action_press(act)
 
@@ -51,11 +51,12 @@ func update_animation()->void:
 	if state != EntityState.DAMAGED:
 		var computed_vel : Vector2 = compute_velocity(velocity)
 		if computed_vel == Vector2(0,0):
-			$Sprite2D.play("idle")
+			$Sprite2D.custom_play("idle")
+
 		elif computed_vel.y > 0 and $Sprite2D.animation != "fall":
-			$Sprite2D.play("fall_start")
+			$Sprite2D.custom_play("fall_start")
 		elif self.onground and not pressed_inputs["JUMP"] and abs(computed_vel.x) > 0:
-			$Sprite2D.play("walk_right")
+			$Sprite2D.custom_play("walk_right")
 		
 		if $Sprite2D.animation != "idle":
 			$Sprite2D.flip_h = computed_vel.x < 0

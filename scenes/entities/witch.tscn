@@ -68,7 +68,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_135j1")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -88,7 +88,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_81vd3")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage",
 "speed": 5.0
 }, {
@@ -195,7 +195,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("33_ie8t3")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_long",
 "speed": 5.0
 }, {
@@ -214,7 +214,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("35_xcsnl")
 }],
-"loop": true,
+"loop": false,
 "name": &"up",
 "speed": 5.0
 }, {
@@ -254,7 +254,9 @@ jr = SubResource("4")
 material = SubResource("3")
 position = Vector2(9, 30)
 sprite_frames = SubResource("1")
-animation = &"fall"
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 46.5)

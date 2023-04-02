@@ -663,7 +663,7 @@ nodes/fragment/connections = PackedInt32Array(6, 0, 5, 1, 10, 0, 11, 0, 11, 0, 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rba3l"]
 shader = SubResource("VisualShader_wg5rt")
 shader_parameter/active = true
-shader_parameter/ColorRotation = Color(1, 0.121569, 0.913725, 1)
+shader_parameter/ColorRotation = Color(0.298039, 0, 1, 1)
 shader_parameter/red_map = Color(1, 0, 0, 1)
 shader_parameter/yg_map = Color(0.501961, 1, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
@@ -688,7 +688,7 @@ offset_right = 1189.0
 offset_bottom = 937.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.129412, 0, 0.258824, 1)
 
 [node name="LeniTest" type="Node2D" parent="."]
 position = Vector2(22, 420)
@@ -708,11 +708,11 @@ sprite_frames = SubResource("1")
 animation = &"run"
 
 [node name="witch" parent="LeniTest" instance=ExtResource("2_bfjq6")]
-position = Vector2(388, -71)
+position = Vector2(382, -100)
+scale = Vector2(1, 1)
 
 [node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
 material = SubResource("ShaderMaterial_rba3l")
 layout_mode = 1
-color = Color(0, 0.682353, 1, 1)
 
 [editable path="LeniTest/Leni"]

@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcfmd"]
-size = Vector2(48.25, 55.25)
+size = Vector2(27.125, 29.625)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(48, 72.5)
+size = Vector2(27, 72.5)
 
 [sub_resource type="Environment" id="3"]
 adjustment_enabled = true
@@ -20,10 +20,9 @@ script = ExtResource("2_fsw83")
 [node name="Sprite2D" parent="." instance=ExtResource("2")]
 position = Vector2(-2, 6)
 scale = Vector2(0.3, 0.3)
-animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_lcfmd")
 
 [node name="flight_timer" type="Timer" parent="."]
@@ -39,7 +38,7 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTester"]
-position = Vector2(0, 61.75)
+position = Vector2(-0.5, 55)
 shape = SubResource("2")
 
 [node name="mainCam" parent="." instance=ExtResource("3")]

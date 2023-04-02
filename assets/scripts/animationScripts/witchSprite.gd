@@ -6,6 +6,7 @@ func _ready():
 
 var idle_count : int = 0
 func custom_play(anim : StringName = "idle",val : bool=false)->void:
+	print("playing witch animation " + anim + " with speed " + str(speed_scale))
 	match anim:
 		"idle":
 			idle_count = 0
@@ -14,11 +15,9 @@ func custom_play(anim : StringName = "idle",val : bool=false)->void:
 			speed_scale = 1.5
 		_:
 			speed_scale = 2
-	print(anim + " " + str(speed_scale))
-	super.play(anim,val)
+	play(anim,1,val)
 
 func _on_witchSprite_animation_finished():
-	print("the finished animation is " + animation)
 	match animation:
 		"fall_start":
 			custom_play("fall")
