@@ -20,8 +20,7 @@ script = ExtResource("2_fsw83")
 [node name="Sprite2D" parent="." instance=ExtResource("2")]
 position = Vector2(-2, 6)
 scale = Vector2(0.3, 0.3)
-frame = 6
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

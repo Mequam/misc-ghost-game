@@ -70,7 +70,8 @@ func update_after_image():
 	the_mesh_instance.material.set_shader_parameter("Lifetime", the_lifetime)
 	the_mesh_instance.material.set_shader_parameter("SlightDelay", Globals.rendering_start_time)
 
-func _input(event):
-	if event is InputEventKey:
-		if event.keycode == KEY_SPACE:
-			get_tree().paused = !get_tree().paused
+#uncomment for debugging pauses ;)
+#func _input(event):
+#	if event is InputEventKey:
+#		if event.keycode == KEY_SPACE:
+#			get_tree().paused = !get_tree().paused

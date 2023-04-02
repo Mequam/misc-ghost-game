@@ -17,10 +17,8 @@ func reset_health()->void:
 var respawn_point : RespawnLamp
 
 func die()->void:
-	print("dieing!")
 	emit_signal("die")
 	reset_health()
-	print(health)
 	posses(respawn_point)
 	
 
@@ -73,7 +71,6 @@ func set_possesed(val : bool)->void:
 #runs whenever state is set and ensures the
 #state machine functions properly
 func set_state(val : int)->void:
-	print("setting state to " + str(val))
 	match val:
 		LeniState.POSSESING:
 			$posses_timer.start()
@@ -92,7 +89,6 @@ func posses_attack(vel : Vector2)->void:
 		posses_velocity = vel
 		posses_velocity.y /= 2
 		clear_stored_inputs()
-		print("attack is setting velocity!")
 		self.state = LeniState.POSSESING
 #clears our possesion	
 func unposses()->void:
@@ -112,14 +108,12 @@ func unposses()->void:
 
 #convinence function that saves the game at the given ghost light
 func save_at_light(ghostLight : RespawnLamp)->void:
-	print("saving at a ghost light")
 	SaveUtils.save_game(Globals.game_name,
 						get_parent(),
 						ghostLight)
 
 #actually posses an entity
 func posses(entity)->void:
-	print("\n\n\ncalling possesed_entity!") 
 
 	#clear out the existing possesed entity
 	if possesed_entity:
@@ -179,14 +173,8 @@ func main_input(event)->void:
 	compute_action(event)
 
 func on_col(col)->void:
-	print("------")
-	print("collision detected!")
-#	print("collided with " + str(col))
-#	print("had a state " + str(state))
-
 	match state:
 		LeniState.POSSESING:
-			print("possesion request!")
 			if (col.get_collider() is Entity) and (abs(col.get_normal().x) > abs(col.get_normal().y)):
 				state = EntityState.BRICK
 				possesed_entity = col.get_collider()
@@ -201,14 +189,7 @@ func _on_posses_timer_timeout():
 func on_possesed_die():
 	unposses()
 
-
-
-
-
-
-
 func _on_sprite_2d_animation_finished():
-	print($Sprite2D.animation)
 	match $Sprite2D.animation:
 		"posses_col":
 			posses(possesed_entity)

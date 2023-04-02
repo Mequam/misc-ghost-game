@@ -42,6 +42,7 @@ func compute_velocity(child_velocity : Vector2)->Vector2:
 #inteanded to be overidden, runs in the process function
 func main_process(delta):
 	singal_move_and_collide(speed*delta*compute_velocity(velocity))
+
 func _process(delta):
 	main_process(delta)
 

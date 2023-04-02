@@ -110,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_i4c14")
 }],
-"loop": true,
+"loop": false,
 "name": &"fall_start",
 "speed": 5.0
 }, {
@@ -194,7 +194,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("28_rgb2i")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -230,8 +230,7 @@ animations = [{
 [node name="witchSprite" type="AnimatedSprite2D"]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("1")
-animation = &"idle"
-frame_progress = 0.04006
+animation = &"fall_start"
 speed_scale = 2.0
 script = ExtResource("26")
 

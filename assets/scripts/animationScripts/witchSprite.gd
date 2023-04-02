@@ -14,9 +14,11 @@ func custom_play(anim : StringName = "idle",val : bool=false)->void:
 			speed_scale = 1.5
 		_:
 			speed_scale = 2
+	print(anim + " " + str(speed_scale))
 	super.play(anim,val)
 
 func _on_witchSprite_animation_finished():
+	print("the finished animation is " + animation)
 	match animation:
 		"fall_start":
 			custom_play("fall")

@@ -4,7 +4,7 @@ class_name LRJEntity #Left Right Jump Entity
 
 #this is a class of entity that is moved around ising left right and jump
 
-@export var jr : Resource
+@export var jr : JumpResource
 
 #how fast we fall to the ground
 var gravity : float = speed/2
@@ -27,6 +27,7 @@ func on_action_released(act : String)->void:
 	if act == "LEFT" or act == "RIGHT":
 		run = false
 	super.on_action_released(act)
+
 func on_action_press(act : String)->void:
 	match act:
 		"JUMP":
@@ -36,6 +37,7 @@ func on_action_press(act : String)->void:
 				$Sprite2D.play("jump")
 			
 	super.on_action_press(act)
+
 func compute_velocity(velocity : Vector2)->Vector2:
 	if pressed_inputs["RIGHT"]:
 		velocity += Vector2(1,0)

@@ -229,7 +229,7 @@ animations = [{
 
 [node name="ghostSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("1")
-animation = &"posses_col"
+animation = &"idle"
 speed_scale = 1.5
 script = ExtResource("12")
 

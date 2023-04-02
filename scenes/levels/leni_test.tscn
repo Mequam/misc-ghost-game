@@ -1,9 +1,74 @@
-[gd_scene load_steps=61 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=73 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://ColorShiftEffect/ColorShifter.tscn" id="3_8xg4c"]
-[ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="4_h8fsu"]
+[ext_resource type="PackedScene" path="res://scenes/animations/greenGhostSprite.tscn" id="5_v3psd"]
+[ext_resource type="Texture2D" uid="uid://botuossyc08wa" path="res://assets/animations/green_ghost/green_ghost0007.png" id="6_7hrq2"]
+[ext_resource type="Texture2D" uid="uid://mu5ubm62jqsv" path="res://assets/animations/green_ghost/green_ghost0008.png" id="7_xu534"]
+[ext_resource type="Texture2D" uid="uid://d3krea88pquon" path="res://assets/animations/green_ghost/green_ghost0009.png" id="8_k6ftt"]
+[ext_resource type="Texture2D" uid="uid://drtkjlfau15i2" path="res://assets/animations/green_ghost/green_ghost0010.png" id="9_lxgi6"]
+[ext_resource type="Texture2D" uid="uid://c3auctewf22ia" path="res://assets/animations/green_ghost/green_ghost0011.png" id="10_cthid"]
+[ext_resource type="Texture2D" uid="uid://dy82m3kvuxvle" path="res://assets/animations/green_ghost/green_ghost0001.png" id="11_v6lgn"]
+[ext_resource type="Texture2D" uid="uid://bmo0ol6jlfgex" path="res://assets/animations/green_ghost/green_ghost0002.png" id="12_rvccj"]
+[ext_resource type="Texture2D" uid="uid://d0bccm6l3i08p" path="res://assets/animations/green_ghost/green_ghost0003.png" id="13_wnsvg"]
+[ext_resource type="Texture2D" uid="uid://bra2vr3egpwth" path="res://assets/animations/green_ghost/green_ghost0004.png" id="14_0x4ds"]
+[ext_resource type="Texture2D" uid="uid://dc2opbfbq5bh0" path="res://assets/animations/green_ghost/green_ghost0005.png" id="15_vtu0s"]
+[ext_resource type="Texture2D" uid="uid://bc8q7uc34cild" path="res://assets/animations/green_ghost/green_ghost0006.png" id="16_8vaga"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
+size = Vector2(1052, 20)
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7hrq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xu534")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k6ftt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lxgi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cthid")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_v6lgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rvccj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wnsvg")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_0x4ds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vtu0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8vaga")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_m8c1d"]
 function = 2
@@ -28,9 +93,6 @@ function = 1
 operator = 8
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_2phjt"]
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_81egv"]
-input_name = "screen_texture"
 
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_mp5la"]
 default_input_values = [1, -3.142, 2, 3.142, 3, 0.0, 4, 1.0]
@@ -150,6 +212,10 @@ operator = 2
 default_input_values = [0, 0.0, 1, 1.0, 2, 0.0]
 op_type = 0
 
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_qawyi"]
+parameter_name = "SCREEN_TEXTURE"
+texture_source = 1
+
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_2jv3h"]
 default_input_values = [0, 0.0, 1, 1.0, 2, 0.0]
 
@@ -167,6 +233,7 @@ uniform vec4 red_map : source_color;
 uniform vec4 yg_map : source_color;
 uniform vec4 IC1 : source_color;
 uniform vec4 IC2 : source_color;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 
 
 
@@ -375,13 +442,9 @@ void fragment() {
 	vec2 n_out4p0 = SCREEN_UV;
 
 
-// Input:2
-	float n_out2p0 = 0.0;
-
-
 	vec4 n_out3p0;
 // Texture2D:3
-	n_out3p0 = vec4(0.0);
+	n_out3p0 = texture(SCREEN_TEXTURE, n_out4p0);
 
 
 	vec3 n_out10p0;
@@ -485,15 +548,14 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(5122.18, -70.883)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2960, 20)
-nodes/fragment/2/node = SubResource("VisualShaderNodeInput_81egv")
-nodes/fragment/2/position = Vector2(-40, 80)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_pwv7w")
-nodes/fragment/3/position = Vector2(300, -60)
+nodes/fragment/3/position = Vector2(120, -180)
 nodes/fragment/4/node = SubResource("VisualShaderNodeInput_ivvec")
-nodes/fragment/4/position = Vector2(-40, 20)
+nodes/fragment/4/position = Vector2(-160, -200)
 nodes/fragment/5/node = SubResource("VisualShaderNodeTransformCompose_w3oty")
 nodes/fragment/5/position = Vector2(1220, 340)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorCompose_2jv3h")
@@ -535,7 +597,7 @@ nodes/fragment/26/position = Vector2(1640, 160)
 nodes/fragment/27/node = SubResource("VisualShaderNodeFloatOp_k087t")
 nodes/fragment/27/position = Vector2(2240, 160)
 nodes/fragment/28/node = SubResource("VisualShaderNodeColorParameter_7014o")
-nodes/fragment/28/position = Vector2(1660, -80)
+nodes/fragment/28/position = Vector2(1700, -120)
 nodes/fragment/29/node = SubResource("VisualShaderNodeColorFunc_x8wsi")
 nodes/fragment/29/position = Vector2(1920, 0)
 nodes/fragment/30/node = SubResource("VisualShaderNodeColorParameter_rvv01")
@@ -594,19 +656,18 @@ nodes/fragment/56/node = SubResource("VisualShaderNodeFloatOp_am4yr")
 nodes/fragment/56/position = Vector2(-280, 360)
 nodes/fragment/57/node = SubResource("VisualShaderNodeVectorCompose_ngpu2")
 nodes/fragment/57/position = Vector2(240, 340)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 6, 0, 5, 1, 10, 0, 11, 0, 11, 0, 12, 1, 12, 0, 14, 0, 14, 0, 15, 0, 12, 0, 13, 0, 13, 0, 15, 1, 5, 0, 16, 0, 19, 1, 17, 0, 17, 0, 20, 0, 11, 1, 21, 1, 11, 2, 21, 2, 21, 0, 22, 0, 8, 0, 6, 1, 3, 0, 24, 2, 25, 0, 24, 0, 3, 0, 10, 0, 22, 0, 24, 1, 7, 0, 6, 0, 19, 0, 17, 1, 16, 0, 26, 0, 26, 0, 19, 0, 20, 0, 27, 1, 28, 0, 29, 0, 29, 0, 27, 0, 27, 0, 21, 0, 30, 0, 31, 0, 31, 0, 32, 0, 32, 0, 33, 0, 33, 0, 7, 0, 33, 0, 8, 0, 34, 0, 35, 0, 35, 0, 36, 0, 39, 0, 40, 0, 40, 0, 41, 0, 36, 0, 44, 0, 44, 0, 37, 0, 44, 0, 43, 0, 41, 0, 45, 0, 45, 0, 42, 0, 45, 0, 38, 0, 42, 0, 47, 0, 38, 0, 47, 1, 37, 0, 48, 0, 43, 0, 48, 1, 48, 0, 46, 0, 47, 0, 46, 1, 46, 0, 49, 0, 15, 0, 50, 1, 49, 0, 50, 0, 50, 0, 16, 1, 52, 0, 57, 1, 51, 0, 57, 0, 53, 0, 54, 0, 54, 0, 55, 0, 55, 0, 56, 0, 56, 0, 51, 0, 56, 0, 52, 0, 57, 0, 5, 0, 4, 0, 3, 0, 24, 0, 0, 0)
+nodes/fragment/58/node = SubResource("VisualShaderNodeTexture2DParameter_qawyi")
+nodes/fragment/58/position = Vector2(-300, -120)
+nodes/fragment/connections = PackedInt32Array(6, 0, 5, 1, 10, 0, 11, 0, 11, 0, 12, 1, 12, 0, 14, 0, 14, 0, 15, 0, 12, 0, 13, 0, 13, 0, 15, 1, 5, 0, 16, 0, 19, 1, 17, 0, 17, 0, 20, 0, 11, 1, 21, 1, 11, 2, 21, 2, 21, 0, 22, 0, 8, 0, 6, 1, 3, 0, 24, 2, 25, 0, 24, 0, 3, 0, 10, 0, 22, 0, 24, 1, 7, 0, 6, 0, 19, 0, 17, 1, 16, 0, 26, 0, 26, 0, 19, 0, 20, 0, 27, 1, 28, 0, 29, 0, 29, 0, 27, 0, 27, 0, 21, 0, 30, 0, 31, 0, 31, 0, 32, 0, 32, 0, 33, 0, 33, 0, 7, 0, 33, 0, 8, 0, 34, 0, 35, 0, 35, 0, 36, 0, 39, 0, 40, 0, 40, 0, 41, 0, 36, 0, 44, 0, 44, 0, 37, 0, 44, 0, 43, 0, 41, 0, 45, 0, 45, 0, 42, 0, 45, 0, 38, 0, 42, 0, 47, 0, 38, 0, 47, 1, 37, 0, 48, 0, 43, 0, 48, 1, 48, 0, 46, 0, 47, 0, 46, 1, 46, 0, 49, 0, 15, 0, 50, 1, 49, 0, 50, 0, 50, 0, 16, 1, 52, 0, 57, 1, 51, 0, 57, 0, 53, 0, 54, 0, 54, 0, 55, 0, 55, 0, 56, 0, 56, 0, 51, 0, 56, 0, 52, 0, 57, 0, 5, 0, 24, 0, 0, 0, 4, 0, 3, 0, 58, 0, 3, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rba3l"]
 shader = SubResource("VisualShader_wg5rt")
 shader_parameter/active = true
-shader_parameter/ColorRotation = Color(0.341176, 0.121569, 1, 1)
-shader_parameter/red_map = Color(0.368627, 1, 0, 1)
-shader_parameter/yg_map = Color(0.5, 1, 0, 1)
+shader_parameter/ColorRotation = Color(1, 0.121569, 0.913725, 1)
+shader_parameter/red_map = Color(1, 0, 0, 1)
+shader_parameter/yg_map = Color(0.501961, 1, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
 shader_parameter/IC2 = Color(0.501961, 1, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
-size = Vector2(1052, 20)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -629,21 +690,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
-material = SubResource("ShaderMaterial_rba3l")
-layout_mode = 1
-offset_left = -27.0
-offset_top = -104.0
-offset_right = -27.0
-offset_bottom = -104.0
-
-[node name="After Image Mesh" parent="." node_paths=PackedStringArray("the_sprite") instance=ExtResource("4_h8fsu")]
-position = Vector2(22, 420)
-the_sprite = NodePath("../LeniTest/witch/Sprite2D")
-after_image_frequency = 45.0
-after_image_count = 30
-after_scale = Vector2(3.8, 3.8)
-
 [node name="LeniTest" type="Node2D" parent="."]
 position = Vector2(22, 420)
 
@@ -656,9 +702,17 @@ position = Vector2(266, -92)
 position = Vector2(516, 0)
 shape = SubResource("RectangleShape2D_nk62p")
 
+[node name="greenGhostSprite" parent="LeniTest" instance=ExtResource("5_v3psd")]
+position = Vector2(536, -57)
+sprite_frames = SubResource("1")
+animation = &"run"
+
 [node name="witch" parent="LeniTest" instance=ExtResource("2_bfjq6")]
-position = Vector2(353, -126)
-scale = Vector2(1, 1)
+position = Vector2(388, -71)
+
+[node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
+material = SubResource("ShaderMaterial_rba3l")
+layout_mode = 1
+color = Color(0, 0.682353, 1, 1)
 
 [editable path="LeniTest/Leni"]
-[editable path="LeniTest/witch"]
