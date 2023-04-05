@@ -8,7 +8,7 @@ var cam_ref : Camera2D :
 	get:
 		return cam_ref # TODOConverter40 Copy here content of get_cam_ref
 	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_cam_ref
+		cam_ref = mod_value  # TODOConverter40 Copy here content of set_cam_ref
 func set_cam_ref(ref : Camera2D)->void:
 	cam_ref = ref
 	set_cam_limit()

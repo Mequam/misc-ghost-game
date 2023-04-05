@@ -23,6 +23,7 @@ func frame_draw_pre():
 	var frame_time_us = Time.get_ticks_usec()
 	var frame_time_s = frame_time_us / 1.0e+6
 	# print(frame_time_s)
+	RenderingServer.global_shader_parameter_set("ShaderTime",Time.get_ticks_usec()/1.0e+6)
 	if first_frame:
 		rendering_start_time = frame_time_s
 		first_frame = false

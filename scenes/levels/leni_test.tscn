@@ -696,7 +696,9 @@ position = Vector2(22, 420)
 
 [node name="After Image Mesh" parent="LeniTest" node_paths=PackedStringArray("the_sprite") instance=ExtResource("15_vbd5h")]
 the_sprite = NodePath("../Leni/Sprite2D")
-after_scale = Vector2(2, 2)
+after_image_frequency = 30.0
+after_image_count = 12
+after_scale = Vector2(1.3, 1.3)
 
 [node name="Leni" parent="LeniTest" instance=ExtResource("1_1atnt")]
 position = Vector2(266, -92)
