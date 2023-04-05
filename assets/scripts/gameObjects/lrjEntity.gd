@@ -26,6 +26,8 @@ func on_action_double_press(act : String)->void:
 func on_action_released(act : String)->void:
 	if act == "LEFT" or act == "RIGHT":
 		run = false
+	if act == "JUMP":
+		gravity = jr.get_down_gravity()
 	super.on_action_released(act)
 
 func on_action_press(act : String)->void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=74 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bmo0ol6jlfgex" path="res://assets/animations/green_ghost/green_ghost0002.png" id="12_rvccj"]
 [ext_resource type="Texture2D" uid="uid://d0bccm6l3i08p" path="res://assets/animations/green_ghost/green_ghost0003.png" id="13_wnsvg"]
 [ext_resource type="Texture2D" uid="uid://bra2vr3egpwth" path="res://assets/animations/green_ghost/green_ghost0004.png" id="14_0x4ds"]
+[ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="15_vbd5h"]
 [ext_resource type="Texture2D" uid="uid://dc2opbfbq5bh0" path="res://assets/animations/green_ghost/green_ghost0005.png" id="15_vtu0s"]
 [ext_resource type="Texture2D" uid="uid://bc8q7uc34cild" path="res://assets/animations/green_ghost/green_ghost0006.png" id="16_8vaga"]
 
@@ -692,6 +693,10 @@ color = Color(0.129412, 0, 0.258824, 1)
 
 [node name="LeniTest" type="Node2D" parent="."]
 position = Vector2(22, 420)
+
+[node name="After Image Mesh" parent="LeniTest" node_paths=PackedStringArray("the_sprite") instance=ExtResource("15_vbd5h")]
+the_sprite = NodePath("../Leni/Sprite2D")
+after_scale = Vector2(2, 2)
 
 [node name="Leni" parent="LeniTest" instance=ExtResource("1_1atnt")]
 position = Vector2(266, -92)
