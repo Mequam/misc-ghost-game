@@ -67,8 +67,6 @@ func _on_frame_changed():
 func _on_animation_finished():
 	print("hello from sprite2d animation finished")
 	match animation:
-		"posses_col":
-			emit_ectosplosion()
 		"posses_launch":
 			custom_play("posses")
 		"posses_end":

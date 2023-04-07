@@ -19,6 +19,12 @@ var respawn_point : RespawnLamp
 var ghost_after_effect : GhostAfterEffectNode
 
 
+#called on the entity we exorcize when removing it
+func on_unposses(host)->void:
+	print("LENI IS FREEEEEEE")
+	self.state = EntityState.DEFAULT
+	super.on_unposses(host)
+
 func die()->void:
 	emit_signal("die")
 	reset_health()

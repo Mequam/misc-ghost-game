@@ -232,19 +232,26 @@ func posses_by(entity)->void:
 	#save a reference to the possesed entity
 	self.possesed_entity = entity
 	
+	get_parent().remove_child(entity)
 	#prevent the entity from processing anything
 	entity.process_mode = Node.PROCESS_MODE_DISABLED
 
+#called on the entity we exorcize when removing it
+func on_unposses(host)->void:
+	update_animation()
 
 #clears our possesion	
 func exorcize()->void:
 	if self.possesed:
 		if self.possesed_entity != null:
-			possesed_entity.global_position  = unposses_position()
 			if self.possesed_entity.ghost_after_effect:
 				self.possesed_entity.ghost_after_effect.the_sprite = self.possesed_entity.get_node("Sprite2D")
-			
+
+			get_parent().add_child(self.possesed_entity)	
+
+			possesed_entity.global_position  = unposses_position()
 			self.possesed_entity.process_mode = Node.PROCESS_MODE_INHERIT
+			self.possesed_entity.on_unposses(self)
 			self.possesed_entity = null
 
 		self.collision_layer = gen_col_layer()
