@@ -4,6 +4,10 @@ extends Node2D
 
 class_name Level
 
+@export 
+var ai_timeout : float = 20
+
+@export
 var cam_ref : Camera2D :
 	get:
 		return cam_ref # TODOConverter40 Copy here content of get_cam_ref
@@ -24,16 +28,19 @@ func set_cam_limit()->void:
 var level_data : Dictionary
 
 func _ready():
-	$AITimer.connect("timeout",Callable(self,"on_ai_timeout"))
-	($Leni/mainCam as Camera2D).limit_left = cam_limit_left
+	var ai_timer = Timer.new()
+	ai_timer.connect("timeout",Callable(self,"on_ai_timeout"))
+	cam_ref.limit_left = cam_limit_left
 
+	if $Leni:
+		$Leni.grab_camera()
 func call_ai(aggro_entity):
 	get_tree().call_group("Npc","run_AI",aggro_entity)
 	get_tree().call_group("EvilGhost","run_AI",aggro_entity)
 
 func _process(delta):
 	if Input.is_key_pressed(KEY_P):
-		print($Leni.onground)
+		$Leni.grab_camera()
 
 func on_ai_timeout():
 	if $Leni.possesed_entity:

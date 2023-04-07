@@ -21,11 +21,8 @@ var saved_col_mask : int
 
 #grabs the camera to follow this entity
 func grab_camera()->void:
-	var parent = get_parent() as Level
-	var cam_parent = parent.cam_ref.get_parent()
-	if cam_parent:
-		cam_parent.remove_child(parent.cam_ref)
-	add_child(parent.cam_ref)
+	var lvlParent = get_parent() as Level
+	lvlParent.cam_ref.target = self
 
 #wether or not the entity can be possesed by the player
 var can_posses : bool = true
@@ -235,6 +232,8 @@ func posses_by(entity)->void:
 	get_parent().remove_child(entity)
 	#prevent the entity from processing anything
 	entity.process_mode = Node.PROCESS_MODE_DISABLED
+
+	grab_camera()
 
 #called on the entity we exorcize when removing it
 func on_unposses(host)->void:

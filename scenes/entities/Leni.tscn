@@ -1,18 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://da1lthymliys6"]
+[gd_scene load_steps=5 format=3 uid="uid://da1lthymliys6"]
 
 [ext_resource type="PackedScene" uid="uid://c22xqm54cs50" path="res://scenes/animations/GhostSprite.tscn" id="2"]
 [ext_resource type="Script" path="res://assets/scripts/entities/Leni.gd" id="2_fsw83"]
-[ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcfmd"]
 size = Vector2(27.125, 29.625)
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(27, 72.5)
-
-[sub_resource type="Environment" id="3"]
-adjustment_enabled = true
-adjustment_contrast = 8.0
 
 [node name="Leni" type="CharacterBody2D"]
 script = ExtResource("2_fsw83")
@@ -40,13 +35,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTester"]
 position = Vector2(-0.5, 55)
 shape = SubResource("2")
-
-[node name="mainCam" parent="." instance=ExtResource("3")]
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="mainCam"]
-environment = SubResource("3")
 
 [node name="modulate_timer" type="Timer" parent="."]
 one_shot = true

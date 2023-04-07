@@ -1,5 +1,6 @@
-[gd_scene load_steps=76 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=78 format=3 uid="uid://bulwc6eb24a1q"]
 
+[ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_0w4ds"]
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://ColorShiftEffect/ColorShifter.tscn" id="3_8xg4c"]
@@ -17,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dc2opbfbq5bh0" path="res://assets/animations/green_ghost/green_ghost0005.png" id="15_vtu0s"]
 [ext_resource type="Texture2D" uid="uid://bc8q7uc34cild" path="res://assets/animations/green_ghost/green_ghost0006.png" id="16_8vaga"]
 [ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="16_layxt"]
+[ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="17_3bvt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(1052, 20)
@@ -698,12 +700,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.129412, 0, 0.258824, 1)
 
-[node name="LeniTest" type="Node2D" parent="."]
+[node name="LeniTest" type="Node2D" parent="." node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 420)
+script = ExtResource("1_0w4ds")
+cam_ref = NodePath("mainCam")
 
 [node name="After Image Mesh" parent="LeniTest" node_paths=PackedStringArray("the_sprite") instance=ExtResource("15_vbd5h")]
-the_sprite = NodePath("../Leni/Sprite2D")
-after_image_frequency = 60.0
+the_sprite = NodePath("../witch/Sprite2D")
+after_image_frequency = 50.0
 after_image_count = 12
 after_scale = Vector2(1.1, 1.1)
 
@@ -726,6 +730,8 @@ animation = &"run"
 position = Vector2(346, -17)
 scale = Vector2(1, 1)
 jr = SubResource("Resource_ekmuq")
+
+[node name="mainCam" parent="LeniTest" instance=ExtResource("17_3bvt2")]
 
 [node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
 material = SubResource("ShaderMaterial_rba3l")

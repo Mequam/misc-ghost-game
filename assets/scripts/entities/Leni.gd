@@ -23,6 +23,7 @@ var ghost_after_effect : GhostAfterEffectNode
 func on_unposses(host)->void:
 	print("LENI IS FREEEEEEE")
 	self.state = EntityState.DEFAULT
+	grab_camera()
 	super.on_unposses(host)
 
 func die()->void:
@@ -47,7 +48,10 @@ func main_ready():
 	#unless parralized, so it is "possesed"
 	possesed = true
 	speed = 200
+	print("grabing camera")
+	grab_camera()
 	super.main_ready()
+
 
 func on_action_press(act : String)->void:
 	if act == "ATTACK":
