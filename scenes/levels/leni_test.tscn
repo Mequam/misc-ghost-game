@@ -695,13 +695,14 @@ color = Color(0.129412, 0, 0.258824, 1)
 position = Vector2(22, 420)
 
 [node name="After Image Mesh" parent="LeniTest" node_paths=PackedStringArray("the_sprite") instance=ExtResource("15_vbd5h")]
-the_sprite = NodePath("../witch/Sprite2D")
+the_sprite = NodePath("../Leni/Sprite2D")
 after_image_frequency = 60.0
 after_image_count = 12
 after_scale = Vector2(1.1, 1.1)
 
-[node name="Leni" parent="LeniTest" instance=ExtResource("1_1atnt")]
+[node name="Leni" parent="LeniTest" node_paths=PackedStringArray("ghost_after_effect") instance=ExtResource("1_1atnt")]
 position = Vector2(266, -92)
+ghost_after_effect = NodePath("../After Image Mesh")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LeniTest"]
 

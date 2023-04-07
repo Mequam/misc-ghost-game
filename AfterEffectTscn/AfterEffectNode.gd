@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name GhostAfterEffectNode
+
 @export var the_sprite : AnimatedSprite2D
 @export var after_image_frequency = 4.0
 @export var after_image_mesh_scene : PackedScene

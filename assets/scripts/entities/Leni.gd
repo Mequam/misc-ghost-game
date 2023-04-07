@@ -15,6 +15,9 @@ func reset_health()->void:
 
 #a reference to the lamp that we respawn at
 var respawn_point : RespawnLamp
+@export
+var ghost_after_effect : GhostAfterEffectNode
+
 
 func die()->void:
 	emit_signal("die")
@@ -105,6 +108,8 @@ func unposses()->void:
 		
 	possesed_entity = null
 	self.possesed = true
+	process_mode = Node.PROCESS_MODE_INHERIT
+	ghost_after_effect.the_sprite = $Sprite2D
 
 #convinence function that saves the game at the given ghost light
 func save_at_light(ghostLight : RespawnLamp)->void:
@@ -123,6 +128,8 @@ func posses(entity)->void:
 	self.possesed = false
 	entity.possesed = true
 
+	ghost_after_effect.the_sprite = entity.get_node("Sprite2D")
+
 	if (entity is RespawnLamp):
 		respawn_point = entity
 		save_at_light(entity)
@@ -138,6 +145,7 @@ func posses(entity)->void:
 	#save a reference to the possesed entity
 	possesed_entity = entity
 	possesed_entity.connect("die",Callable(self,"on_possesed_die"))
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 func compute_velocity(vel : Vector2)->Vector2:	
 	if not possesed:
