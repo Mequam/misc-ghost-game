@@ -10,3 +10,4 @@ func _ready():
 	mp.global_position = global_position+Vector2(0,20)
 	get_parent().add_child(mp)
 	$WitchColumnSprite.connect("animation_finished",Callable(self,"queue_free"))
+	$WitchColumnSprite.play("default")

@@ -1,24 +1,51 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://d4cweoxfkbmgr"]
 
-[ext_resource path="res://assets/animations/witch/witch_in_place_attack/0003.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/animations/witch/witch_in_place_attack/0006.png" type="Texture2D" id=2]
-[ext_resource path="res://assets/animations/witch/witch_in_place_attack/0001.png" type="Texture2D" id=3]
-[ext_resource path="res://assets/animations/witch/witch_in_place_attack/0005.png" type="Texture2D" id=4]
-[ext_resource path="res://assets/animations/witch/witch_in_place_attack/0007.png" type="Texture2D" id=5]
-[ext_resource path="res://assets/animations/witch/witch_in_place_attack/0002.png" type="Texture2D" id=7]
-[ext_resource path="res://assets/animations/witch/witch_in_place_attack/0008.png" type="Texture2D" id=8]
-[ext_resource path="res://assets/animations/witch/witch_in_place_attack/0004.png" type="Texture2D" id=9]
+[ext_resource type="Texture2D" uid="uid://bp4qfm3n2ajh5" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0001.png" id="1_w7tkv"]
+[ext_resource type="Texture2D" uid="uid://ds1kaofaf6is2" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0002.png" id="2_l4fc8"]
+[ext_resource type="Texture2D" uid="uid://s4moxcuf2h5j" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0003.png" id="3_4shie"]
+[ext_resource type="Texture2D" uid="uid://b6n8n7w081chi" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0004.png" id="4_gou7m"]
+[ext_resource type="Texture2D" uid="uid://dmvcj1fnnvywl" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0005.png" id="5_25jc2"]
+[ext_resource type="Texture2D" uid="uid://dfivsg3d88wu0" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0006.png" id="6_a8m4v"]
+[ext_resource type="Texture2D" uid="uid://bgklxlkckgnm2" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0007.png" id="7_6l0ww"]
+[ext_resource type="Texture2D" uid="uid://cngrhalgek30o" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0008.png" id="8_epwv2"]
+[ext_resource type="Texture2D" uid="uid://cyt8undffyhjr" path="res://assets/animations/woosh/spiral_woosh/spiral_attack0009.png" id="9_xkcyk"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "default",
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w7tkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_l4fc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4shie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gou7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_25jc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a8m4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6l0ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_epwv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xkcyk")
+}],
+"loop": false,
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
 [node name="WitchColumnSprite" type="AnimatedSprite2D"]
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 1 )
-frame = 4
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("1")
 speed_scale = 4.0
