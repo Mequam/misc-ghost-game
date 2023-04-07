@@ -1,16 +1,13 @@
-res://assets/scripts/animationScripts/witchSprite.gd
+res://assets/scripts/gameObjects/lrjEntity.gd
+res://assets/scripts/gameObjects/entity.gd
+res://assets/scripts/entities/Leni.gd
+res://assets/scripts/gameObjects/npc.gd
 res://scenes/levels/leni_test.tscn
+res://random     test/lol    cope  clock test  .tres
 res://scenes/entities/witch.tscn
 res://scenes/entities/Leni.tscn
-res://assets/scripts/entities/witch.gd
-res://assets/scripts/gameObjects/lrjEntity.gd
-res://assets/scripts/gameObjects/npc.gd
-res://assets/scripts/gameObjects/entity.gd
-res://AfterEffectTscn/AfterEffectNode.gd
 res://AfterEffectTscn/AfterEffectNode.tscn
-res://assets/scripts/singletons/Globals.gd
 res://AfterEffectTscn/after_image_mesh.tscn
-res://assets/scripts/level.gd
 res://random     test/lol    cope   .tscn
-res://random     test/lol    cope  clock test  .tres
-res://assets/scripts/entities/Leni.gd
+res://scenes/hazards/WitchColumn.tscn
+res://assets/scripts/animationScripts/GhostSprite.gd
