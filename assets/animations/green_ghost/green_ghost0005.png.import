@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/green_ghost0005.png-8140ca9773d75bbc67dff0c71
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

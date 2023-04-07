@@ -68,6 +68,7 @@ func collumn_attack()->void:
 	var obj = spawn_object(collumn,$col_spawn_position.global_position - Vector2(0,50))
 
 func shoot_witch_projectile()->void:
+	print("shooting witch projectile!")
 	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
 	shoot(witchProjectile,$col_spawn_position.global_position,compute_velocity(velocity))

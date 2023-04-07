@@ -17,6 +17,6 @@ func gen_col_mask():
 
 func on_col(col):
 	print("COLLISION")
-	if col.collider.has_method("take_damage"):
-		col.collider.take_damage(damage,self)
+	if col.get_collider().has_method("take_damage"):
+		col.get_collider().take_damage(damage,self)
 	die()

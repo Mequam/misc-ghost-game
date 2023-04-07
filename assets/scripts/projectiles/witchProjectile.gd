@@ -10,6 +10,7 @@ func _ready():
 	get_parent().add_child(inst)
 	speed = 100
 	$AnimationPlayer.play("scale_up")
+	$witchProjSprite.play("default")
 func die():
 	var inst = magic.instantiate()
 	get_parent().add_child(inst)

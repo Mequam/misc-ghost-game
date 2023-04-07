@@ -706,7 +706,7 @@ script = ExtResource("1_0w4ds")
 cam_ref = NodePath("mainCam")
 
 [node name="After Image Mesh" parent="LeniTest" node_paths=PackedStringArray("the_sprite") instance=ExtResource("15_vbd5h")]
-the_sprite = NodePath("../witch/Sprite2D")
+the_sprite = NodePath("../Leni/Sprite2D")
 after_image_frequency = 50.0
 after_image_count = 12
 after_scale = Vector2(1.1, 1.1)

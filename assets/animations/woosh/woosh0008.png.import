@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/woosh0008.png-0179a50d02567f5fe13a2883ea2a41c
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

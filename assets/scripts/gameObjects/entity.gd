@@ -326,8 +326,8 @@ func _on_GroundTester_body_exited(body):
 func spawn_object(pc : PackedScene,global_pos : Vector2):
 	var inst = pc.instantiate()
 	if inst is Node2D:
-		inst.global_position = global_pos
 		get_parent().add_child(inst)
+		inst.global_position = global_pos
 		return inst
 #convinecne function that adds a given object as a child parent
 #at our global position

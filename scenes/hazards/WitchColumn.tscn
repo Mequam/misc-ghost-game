@@ -54,5 +54,5 @@ sprite_frames = SubResource("1")
 frame = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 8)
+position = Vector2(-17, -328)
 shape = SubResource("RectangleShape2D_77v83")

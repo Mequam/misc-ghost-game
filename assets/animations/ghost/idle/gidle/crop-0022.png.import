@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/crop-0022.png-5faac7189192eec5d1d8b85ab3ecb2b
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/witch0002.png-866ee32ca2fe767a75a814fbd6ceb3d
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

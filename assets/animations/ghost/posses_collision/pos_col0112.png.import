@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/pos_col0112.png-97b0b0b5155dd1ca11206503f1bef
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

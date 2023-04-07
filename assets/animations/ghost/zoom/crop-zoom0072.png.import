@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/crop-zoom0072.png-9d23408d83e3e259fe66cce1eaa
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
