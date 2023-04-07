@@ -7,6 +7,14 @@ class_name Entity
 
 signal died
 
+#reference to the entity we are currently possesing
+var possesed_entity : Entity = null :
+	set(val):
+		possesed_entity = val
+		clear_stored_inputs()
+	get:
+		return possesed_entity
+
 #collsiion layer and mask to return to after taking damage
 var saved_col_layer : int
 var saved_col_mask : int
@@ -21,14 +29,14 @@ func grab_camera()->void:
 
 #wether or not the entity can be possesed by the player
 var can_posses : bool = true
-#are we possesed by the ghost?
-var possesed : bool= true : set = set_possesed,get = get_possesed
 
+#are we possesed by the ghost?
+#flag that overrules the test possesion
+var possesed : bool = true : set = set_possesed,get = get_possesed
 func set_possesed(val : bool)->void:
 	possesed = val
-	clear_stored_inputs()
 func get_possesed()->bool:
-	return possesed
+	return (self.possesed_entity != null) || possesed
 
 
 var ground_counter : int = 0 : set = set_ground_counter,get = get_ground_counter
@@ -145,7 +153,9 @@ func on_dazed_timer_out():
 	self.state = EntityState.DEFAULT
 #called when an action is double pressed
 func on_action_double_press(action : String)->void:
-	pass
+	if self.possesed and action == "UP":
+		exorcize()
+
 #runs only when the action is just pressed
 func on_action_press(action : String)->void:
 	pass
@@ -200,9 +210,52 @@ func compute_action(event : InputEvent)->void:
 func AI(player_enemy)->void:
 	pass
 
+#something wants to posses us
+func posses_by(entity)->void:
+
+	#clear out the existing possesed entity
+	if self.possesed:
+		exorcize()
+
+	#if the entity has an after effect, apply it to ourselfs
+	if entity.ghost_after_effect:
+		entity.ghost_after_effect.the_sprite = get_node("Sprite2D")
+
+	#update the collision layer and mask of the self
+	self.collision_layer = ColMath.strip_bits(self.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
+	self.collision_layer |= ColMath.Layer.PLAYER
+
+	#update the collision mask of the self
+	self.collision_mask = ColMath.strip_bits(self.collision_mask,ColMath.Layer.PLAYER)
+	self.collision_mask |= ColMath.Layer.NON_PLAYER_ENTITY
+	
+	#save a reference to the possesed entity
+	self.possesed_entity = entity
+	
+	#prevent the entity from processing anything
+	entity.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+#clears our possesion	
+func exorcize()->void:
+	if self.possesed:
+		if self.possesed_entity != null:
+			possesed_entity.global_position  = unposses_position()
+			if self.possesed_entity.ghost_after_effect:
+				self.possesed_entity.ghost_after_effect.the_sprite = self.possesed_entity.get_node("Sprite2D")
+			
+			self.possesed_entity.process_mode = Node.PROCESS_MODE_INHERIT
+			self.possesed_entity = null
+
+		self.collision_layer = gen_col_layer()
+		self.collision_mask = gen_col_mask()
+
+		self.state = EntityState.DAZED
+		self.possesed = false
+
 #runs the AI if acceptable
 func run_AI(player_enemy)->void:
-	if not possesed:
+	if not self.possesed:
 		AI(player_enemy)
 
 

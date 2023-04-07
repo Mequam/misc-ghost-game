@@ -22,8 +22,6 @@ var ghost_after_effect : GhostAfterEffectNode
 func die()->void:
 	emit_signal("die")
 	reset_health()
-	posses(respawn_point)
-	
 
 	
 #default collision layer for Leni
@@ -37,8 +35,6 @@ enum LeniState {
 }
 #saved velocity for the possession attack
 var posses_velocity : Vector2 = Vector2(0,0)
-#reference to the entity we are currently possesing
-var possesed_entity : Entity = null
 
 func main_ready():
 	#the ghost allways recives player input
@@ -47,29 +43,25 @@ func main_ready():
 	speed = 200
 	super.main_ready()
 
-func on_action_double_press(act : String)->void:
-	if act == "UP":
-		unposses()
-	super.on_action_double_press(act)
 func on_action_press(act : String)->void:
 	if act == "ATTACK":
 		posses_attack(compute_velocity(velocity).normalized()*5)
 	super.on_action_press(act)
 
-func set_possesed(val : bool)->void:
-	if not possesed and val:
-		visible = true
-		collision_layer = gen_col_layer()
-		collision_mask = gen_col_mask()
-		state = EntityState.DEFAULT
-		$mainCam.position = Vector2(0,0)
-	elif not val:
-		$Sprite2D.stop()
-		visible = false
-		collision_layer = 0
-		collision_mask = 0
-
-	super.set_possesed(val)
+#func set_possesed(val : bool)->void:
+#	if not possesed and val:
+#		visible = true
+#		collision_layer = gen_col_layer()
+#		collision_mask = gen_col_mask()
+#		state = EntityState.DEFAULT
+#		$mainCam.position = Vector2(0,0)
+#	elif not val:
+#		$Sprite2D.stop()
+#		visible = false
+#		collision_layer = 0
+#		collision_mask = 0
+#
+#	super.set_possesed(val)
 
 #runs whenever state is set and ensures the
 #state machine functions properly
@@ -93,23 +85,13 @@ func posses_attack(vel : Vector2)->void:
 		posses_velocity.y /= 2
 		clear_stored_inputs()
 		self.state = LeniState.POSSESING
-#clears our possesion	
-func unposses()->void:
-	if possesed_entity:
-		possesed_entity.possesed = false
-		possesed_entity.collision_layer = possesed_entity.gen_col_layer()
-		possesed_entity.collision_mask = possesed_entity.gen_col_mask()
-		possesed_entity.state = EntityState.DAZED
-	
-	
-		global_position = possesed_entity.unposses_position()
-		possesed_entity.disconnect("die",Callable(self,"on_possesed_die"))
-		$Sprite2D.emit_ectosplosion()
-		
-	possesed_entity = null
-	self.possesed = true
-	process_mode = Node.PROCESS_MODE_INHERIT
-	ghost_after_effect.the_sprite = $Sprite2D
+
+#leni is a ghost, you cant posses a ghost (at least until I get around to adding it :p)
+func exorcize():
+	pass
+func posses_by(entity):
+	pass
+
 
 #convinence function that saves the game at the given ghost light
 func save_at_light(ghostLight : RespawnLamp)->void:
@@ -118,34 +100,34 @@ func save_at_light(ghostLight : RespawnLamp)->void:
 						ghostLight)
 
 #actually posses an entity
-func posses(entity)->void:
-
-	#clear out the existing possesed entity
-	if possesed_entity:
-		unposses()
-	
-	#swap the possesion around
-	self.possesed = false
-	entity.possesed = true
-
-	ghost_after_effect.the_sprite = entity.get_node("Sprite2D")
-
-	if (entity is RespawnLamp):
-		respawn_point = entity
-		save_at_light(entity)
-	else:
-		#update the collision layer and mask of the entity
-		entity.collision_layer = ColMath.strip_bits(entity.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
-		entity.collision_layer |= ColMath.Layer.PLAYER
-	
-		#update the collision mask of the entity
-		entity.collision_mask = ColMath.strip_bits(entity.collision_mask,ColMath.Layer.PLAYER)
-		entity.collision_mask |= ColMath.Layer.NON_PLAYER_ENTITY
+#func posses(entity)->void:
+#
+#	#clear out the existing possesed entity
+#	if possesed_entity:
+#		unposses()
+#	
+#	#swap the possesion around
+#	self.possesed = false
+#	entity.possesed = true
+#
+#	ghost_after_effect.the_sprite = entity.get_node("Sprite2D")
+#
+#	if (entity is RespawnLamp):
+#		respawn_point = entity
+#		save_at_light(entity)
+#	else:
+#		#update the collision layer and mask of the entity
+#		entity.collision_layer = ColMath.strip_bits(entity.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
+#		entity.collision_layer |= ColMath.Layer.PLAYER
+#	
+#		#update the collision mask of the entity
+#		entity.collision_mask = ColMath.strip_bits(entity.collision_mask,ColMath.Layer.PLAYER)
+#		entity.collision_mask |= ColMath.Layer.NON_PLAYER_ENTITY
 	
 	#save a reference to the possesed entity
-	possesed_entity = entity
-	possesed_entity.connect("die",Callable(self,"on_possesed_die"))
-	process_mode = Node.PROCESS_MODE_DISABLED
+#	possesed_entity = entity
+#	possesed_entity.connect("die",Callable(self,"on_possesed_die"))
+#	process_mode = Node.PROCESS_MODE_DISABLED
 
 func compute_velocity(vel : Vector2)->Vector2:	
 	if not possesed:
@@ -172,8 +154,8 @@ func main_process(delta):
 	#Leni does NOTHING if he is not possesed
 	if possesed:
 		super.main_process(delta)
-	if possesed_entity:
-		$mainCam.global_position = possesed_entity.global_position
+	#if possesed_entity:
+	#	$mainCam.global_position = possesed_entity.global_position
 
 #overload the usual input
 #because Leni ALWAYS listens to input
@@ -194,13 +176,10 @@ func _on_posses_timer_timeout():
 	if state != EntityState.BRICK:
 		$Sprite2D.custom_play("posses_end")
 
-func on_possesed_die():
-	unposses()
-
 func _on_sprite_2d_animation_finished():
 	match $Sprite2D.animation:
 		"posses_col":
-			posses(possesed_entity)
+			possesed_entity.posses_by(self)
 		"posses":
 			pass #this is handled in the sprite2d
 		"posses_launch":

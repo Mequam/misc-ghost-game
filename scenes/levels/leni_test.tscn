@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=76 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="15_vbd5h"]
 [ext_resource type="Texture2D" uid="uid://dc2opbfbq5bh0" path="res://assets/animations/green_ghost/green_ghost0005.png" id="15_vtu0s"]
 [ext_resource type="Texture2D" uid="uid://bc8q7uc34cild" path="res://assets/animations/green_ghost/green_ghost0006.png" id="16_8vaga"]
+[ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="16_layxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(1052, 20)
@@ -70,6 +71,12 @@ animations = [{
 "name": &"up",
 "speed": 5.0
 }]
+
+[sub_resource type="Resource" id="Resource_ekmuq"]
+script = ExtResource("16_layxt")
+jump_height = 2.0
+jump_up_time = 0.18
+jump_down_time = 0.1
 
 [sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_m8c1d"]
 function = 2
@@ -664,11 +671,11 @@ nodes/fragment/connections = PackedInt32Array(6, 0, 5, 1, 10, 0, 11, 0, 11, 0, 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rba3l"]
 shader = SubResource("VisualShader_wg5rt")
 shader_parameter/active = true
-shader_parameter/ColorRotation = Color(0.298039, 0, 1, 1)
+shader_parameter/ColorRotation = Color(1, 0, 0.482353, 1)
 shader_parameter/red_map = Color(1, 0, 0, 1)
-shader_parameter/yg_map = Color(0.501961, 1, 0, 1)
+shader_parameter/yg_map = Color(0.5, 1, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
-shader_parameter/IC2 = Color(0.501961, 1, 0, 1)
+shader_parameter/IC2 = Color(0, 0.968627, 1, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -716,8 +723,9 @@ sprite_frames = SubResource("1")
 animation = &"run"
 
 [node name="witch" parent="LeniTest" instance=ExtResource("2_bfjq6")]
-position = Vector2(382, -100)
+position = Vector2(346, -17)
 scale = Vector2(1, 1)
+jr = SubResource("Resource_ekmuq")
 
 [node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
 material = SubResource("ShaderMaterial_rba3l")
