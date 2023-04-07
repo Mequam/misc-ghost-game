@@ -11,3 +11,7 @@ res://AfterEffectTscn/after_image_mesh.tscn
 res://random     test/lol    cope   .tscn
 res://scenes/hazards/WitchColumn.tscn
 res://assets/scripts/animationScripts/GhostSprite.gd
+res://assets/scripts/gameObjects/projectile.gd
+res://scenes/mainCamera.tscn
+res://assets/scripts/level.gd
+res://assets/scripts/gameObjects/mainCamera.gd
