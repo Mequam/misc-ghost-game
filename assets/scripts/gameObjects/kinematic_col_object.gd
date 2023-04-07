@@ -11,9 +11,11 @@ var speed : float = 50
 
 func singal_move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08,test : bool = false)->KinematicCollision2D:
 	var col = move_and_collide(rel_vec,test_only,sm,test)
-	
+		
 	if col:
 		on_col(col)
+		rel_vec -= rel_vec.project(col.get_normal())
+		move_and_collide(rel_vec,test_only,sm,test)
 
 	return col
 
