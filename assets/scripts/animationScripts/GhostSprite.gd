@@ -19,7 +19,6 @@ var up : bool = false :
 		up = mod_value  # TODOConverter40 Copy here content of set_up
 
 func custom_play(anim : StringName = "",backwords : bool = false)->void:
-	print("playing " + anim)
 	position = Vector2(0,0)
 	match anim:
 		"posses_col":
@@ -31,6 +30,8 @@ func custom_play(anim : StringName = "",backwords : bool = false)->void:
 			speed_scale = 2.5
 		_:
 			speed_scale = 1.5
+	
+	print("playing " + anim + " " + str(speed_scale))
 	play(anim,1,backwords)
 
 func set_up(val : bool)->void:

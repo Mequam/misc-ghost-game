@@ -36,14 +36,14 @@ func update_animation()->void:
 			if vel.x != 0:
 				$Sprite2D.flip_h = vel.x < 0
 			if vel == Vector2(0,0):
-				$Sprite2D.play("idle")
+				$Sprite2D.custom_play("idle")
 			elif abs(vel.y) < abs(vel.x)*2:
 				if running:
-					$Sprite2D.play("zoom")
+					$Sprite2D.custom_play("zoom")
 				else:
-					$Sprite2D.play("run")
+					$Sprite2D.custom_play("run")
 			elif vel.y < 0:
-				$Sprite2D.play("up")
+				$Sprite2D.custom_play("up")
 			else:
-				$Sprite2D.play("down")
+				$Sprite2D.custom_play("down")
 	super.update_animation()
