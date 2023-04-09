@@ -1,8 +1,12 @@
 extends AnimatedSprite2D
 
+var initial_scale : Vector2
+
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	custom_play("posses_end")
+	initial_scale = scale
 
 var ectoSplosion : PackedScene = load("res://scenes/animations/EctoSplosion.tscn")
 var ghost_run_counter : int = 0
@@ -23,6 +27,7 @@ func custom_play(anim : StringName = "",backwords : bool = false)->void:
 	match anim:
 		"posses_col":
 			speed_scale = 3
+			scale = initial_scale*2
 		"posses_launch":
 			speed_scale = 5
 		"posses_end":
@@ -30,6 +35,7 @@ func custom_play(anim : StringName = "",backwords : bool = false)->void:
 			speed_scale = 2.5
 		_:
 			speed_scale = 1.5
+			scale = initial_scale
 	
 	print("playing " + anim + " " + str(speed_scale))
 	play(anim,1,backwords)
