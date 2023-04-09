@@ -14,6 +14,7 @@ func main_ready():
 	self.connect("body_exited",Callable(self,"on_body_exited"))
 
 func on_body_entered(body):
+	print("hazard hit!")
 	body.take_damage()
 func on_body_exited(body):
 	pass

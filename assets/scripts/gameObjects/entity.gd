@@ -236,11 +236,12 @@ func posses_by(entity)->void:
 	get_parent().remove_child(entity)
 	#prevent the entity from processing anything
 	entity.process_mode = Node.PROCESS_MODE_DISABLED
+	clear_stored_inputs() #clear up the stored inputs
 
 	grab_camera()
 
 #called on the entity we exorcize when removing it
-func on_unposses(host)->void:
+func on_unposses(_host)->void:
 	update_animation()
 
 #clears our possesion	

@@ -15,6 +15,11 @@ func main_ready():
 	speed = 50
 	self.onground = false
 	super.main_ready()
+
+func clear_stored_inputs():
+	run = false
+	super.clear_stored_inputs()
+
 func set_ground_counter(val : int)->void:
 	super.set_ground_counter(val)
 	if self.onground:

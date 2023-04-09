@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://assets/scripts/hazzards/WitchColumn.gd" id="2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77v83"]
-size = Vector2(26, 220)
+size = Vector2(43, 220)
 
 [node name="WitchColumn" type="Area2D"]
 script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -118)
+position = Vector2(-1, -110)
 shape = SubResource("RectangleShape2D_77v83")
 
 [node name="WitchColumnSprite" parent="." instance=ExtResource("1")]
