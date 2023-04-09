@@ -18,14 +18,28 @@ var respawn_point : RespawnLamp
 @export
 var ghost_after_effect : GhostAfterEffectNode
 
+#simple conviennce function to store the current
+#entity as one the game should target
+func store_aggro(host):
+	get_parent().player_entity = host 
+
+#convinence function to ensure that we are the object
+#that the game targets
+func grab_aggro():
+	store_aggro(self)
 
 #called on the entity we exorcize when removing it
 func on_unposses(host)->void:
 	print("LENI IS FREEEEEEE")
 	self.state = EntityState.DEFAULT
 	grab_camera()
+	grab_aggro() #ensure that leni is targeted
 	super.on_unposses(host)
 
+func on_posses(host)->void:
+	print("LENI IS POSSESING!")
+	store_aggro(host) #ensure that we are the targeted entity
+	
 func die()->void:
 	emit_signal("die")
 	reset_health()

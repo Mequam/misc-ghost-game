@@ -207,6 +207,9 @@ func compute_action(event : InputEvent)->void:
 func AI(player_enemy)->void:
 	pass
 
+#called when we posses another entity
+func on_posses(posesee):
+	pass
 #something wants to posses us
 func posses_by(entity)->void:
 
@@ -217,7 +220,8 @@ func posses_by(entity)->void:
 	#if the entity has an after effect, apply it to ourselfs
 	if entity.ghost_after_effect:
 		entity.ghost_after_effect.the_sprite = get_node("Sprite2D")
-
+	if entity.has_method("on_posses"):
+		entity.on_posses(self)
 	#update the collision layer and mask of the self
 	self.collision_layer = ColMath.strip_bits(self.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
 	self.collision_layer |= ColMath.Layer.PLAYER

@@ -1,78 +1,15 @@
-[gd_scene load_steps=78 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=65 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_0w4ds"]
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://ColorShiftEffect/ColorShifter.tscn" id="3_8xg4c"]
-[ext_resource type="PackedScene" path="res://scenes/animations/greenGhostSprite.tscn" id="5_v3psd"]
-[ext_resource type="Texture2D" uid="uid://botuossyc08wa" path="res://assets/animations/green_ghost/green_ghost0007.png" id="6_7hrq2"]
-[ext_resource type="Texture2D" uid="uid://mu5ubm62jqsv" path="res://assets/animations/green_ghost/green_ghost0008.png" id="7_xu534"]
-[ext_resource type="Texture2D" uid="uid://d3krea88pquon" path="res://assets/animations/green_ghost/green_ghost0009.png" id="8_k6ftt"]
-[ext_resource type="Texture2D" uid="uid://drtkjlfau15i2" path="res://assets/animations/green_ghost/green_ghost0010.png" id="9_lxgi6"]
-[ext_resource type="Texture2D" uid="uid://c3auctewf22ia" path="res://assets/animations/green_ghost/green_ghost0011.png" id="10_cthid"]
-[ext_resource type="Texture2D" uid="uid://dy82m3kvuxvle" path="res://assets/animations/green_ghost/green_ghost0001.png" id="11_v6lgn"]
-[ext_resource type="Texture2D" uid="uid://bmo0ol6jlfgex" path="res://assets/animations/green_ghost/green_ghost0002.png" id="12_rvccj"]
-[ext_resource type="Texture2D" uid="uid://d0bccm6l3i08p" path="res://assets/animations/green_ghost/green_ghost0003.png" id="13_wnsvg"]
-[ext_resource type="Texture2D" uid="uid://bra2vr3egpwth" path="res://assets/animations/green_ghost/green_ghost0004.png" id="14_0x4ds"]
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="15_vbd5h"]
-[ext_resource type="Texture2D" uid="uid://dc2opbfbq5bh0" path="res://assets/animations/green_ghost/green_ghost0005.png" id="15_vtu0s"]
-[ext_resource type="Texture2D" uid="uid://bc8q7uc34cild" path="res://assets/animations/green_ghost/green_ghost0006.png" id="16_8vaga"]
 [ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="16_layxt"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="17_3bvt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(1052, 20)
-
-[sub_resource type="SpriteFrames" id="1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_7hrq2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_xu534")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_k6ftt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_lxgi6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_cthid")
-}],
-"loop": true,
-"name": &"die",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_v6lgn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_rvccj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_wnsvg")
-}],
-"loop": true,
-"name": &"run",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_0x4ds")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_vtu0s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_8vaga")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
 
 [sub_resource type="Resource" id="Resource_ekmuq"]
 script = ExtResource("16_layxt")
@@ -698,11 +635,12 @@ offset_right = 1189.0
 offset_bottom = 937.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.129412, 0, 0.258824, 1)
+color = Color(0.215, 0.43, 0, 1)
 
 [node name="LeniTest" type="Node2D" parent="." node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 420)
 script = ExtResource("1_0w4ds")
+ai_timeout = 0.25
 cam_ref = NodePath("mainCam")
 
 [node name="After Image Mesh" parent="LeniTest" node_paths=PackedStringArray("the_sprite") instance=ExtResource("15_vbd5h")]
@@ -720,11 +658,6 @@ ghost_after_effect = NodePath("../After Image Mesh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeniTest/StaticBody2D"]
 position = Vector2(516, 0)
 shape = SubResource("RectangleShape2D_nk62p")
-
-[node name="greenGhostSprite" parent="LeniTest" instance=ExtResource("5_v3psd")]
-position = Vector2(536, -57)
-sprite_frames = SubResource("1")
-animation = &"run"
 
 [node name="witch" parent="LeniTest" instance=ExtResource("2_bfjq6")]
 position = Vector2(346, -17)
