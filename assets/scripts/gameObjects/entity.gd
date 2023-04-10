@@ -107,15 +107,19 @@ var state : int = EntityState.DEFAULT : set = set_state, get = get_state
 func set_state(val : int)->void:
 	match val:
 		EntityState.DAZED:
-			$dazed_timer.start()
+			if $dazed_timer:
+				$dazed_timer.start()
+			else:
+				state = EntityState.DEFAULT
 		EntityState.DAMAGED:
 			saved_col_layer = collision_layer
 			saved_col_mask = collision_mask
 			collision_layer = 0
 			collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
 			$Sprite2D.custom_play("damage")
-			modulate = Color.LIGHT_GRAY
-			$modulate_timer.start()
+			if $modulate_timer:
+				modulate = Color.LIGHT_GRAY
+				$modulate_timer.start()
 	state = val
 func get_state()->int:
 	return state
@@ -133,19 +137,20 @@ func clear_stored_inputs():
 
 func main_ready():
 	self.onground = false
-	$GroundTester.connect("body_entered",Callable(self,"_on_GroundTester_body_entered"))
-	$GroundTester.connect("body_exited",Callable(self,"_on_GroundTester_body_exited"))
-	$GroundTester.collision_layer = 0
-	$GroundTester.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
-	
-	$modulate_timer.connect("timeout",Callable(self,"on_modulate_timer_out"))
-	$modulate_timer.wait_time = 0.3
-	$modulate_timer.one_shot = true
-	
-	
-	$dazed_timer.connect("timeout",Callable(self,"on_dazed_timer_out"))
-	$dazed_timer.wait_time = 0.5
-	$dazed_timer.one_shot = true
+	if $GroundTester:
+		$GroundTester.connect("body_entered",Callable(self,"_on_GroundTester_body_entered"))
+		$GroundTester.connect("body_exited",Callable(self,"_on_GroundTester_body_exited"))
+		$GroundTester.collision_layer = 0
+		$GroundTester.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
+	if $modulate_timer:	
+		$modulate_timer.connect("timeout",Callable(self,"on_modulate_timer_out"))
+		$modulate_timer.wait_time = 0.3
+		$modulate_timer.one_shot = true
+		
+	if $dazed_timer:	
+		$dazed_timer.connect("timeout",Callable(self,"on_dazed_timer_out"))
+		$dazed_timer.wait_time = 0.5
+		$dazed_timer.one_shot = true
 
 func on_dazed_timer_out():
 	self.state = EntityState.DEFAULT
@@ -262,7 +267,8 @@ func exorcize()->void:
 		self.collision_layer = gen_col_layer()
 		self.collision_mask = gen_col_mask()
 
-		self.state = EntityState.DAZED
+		if $dazed_timer:
+			self.state = EntityState.DAZED
 		self.possesed = false
 
 #runs the AI if acceptable

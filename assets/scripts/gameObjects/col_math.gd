@@ -62,9 +62,10 @@ static func strip_bits(bits : int,to_strip : int)->int:
 enum Layer {
 	PLAYER = 8,
 	NON_PLAYER_ENTITY = 16,
-	TERRAIN = 32,
-	HAZARD = 64,
-	PROJECTILES = 128
+	PICKUP = 32,
+	TERRAIN = 64,
+	HAZARD = 128,
+	PROJECTILES = 256
 }
 #these are the layers that don't shift or have super classes
 enum ConstLayer {

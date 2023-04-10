@@ -49,7 +49,7 @@ func on_posses(host)->void:
 func gen_col_layer()->int:
 	return ColMath.Layer.PLAYER | ColMath.ConstLayer.PLAYER
 func gen_col_mask()->int:
-	return ColMath.Layer.NON_PLAYER_ENTITY | super.gen_col_mask()
+	return ColMath.Layer.PICKUP | ColMath.Layer.NON_PLAYER_ENTITY | super.gen_col_mask()
 enum LeniState {
 	POSSESING = Entity.ENTITY_STATE_COUNT,
 	POSSESING_ENTITY #we are activly attempting to posses somthing

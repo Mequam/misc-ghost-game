@@ -1,22 +1,15 @@
-[gd_scene load_steps=66 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=64 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_0w4ds"]
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
-[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="2_bfjq6"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://ColorShiftEffect/ColorShifter.tscn" id="3_8xg4c"]
+[ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/ghostLight.tscn" id="8_alqtg"]
 [ext_resource type="PackedScene" uid="uid://dortu7m7hqkvb" path="res://scenes/animations/ghostLightSprite.tscn" id="8_bvnru"]
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="15_vbd5h"]
-[ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="16_layxt"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="17_3bvt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(1052, 20)
-
-[sub_resource type="Resource" id="Resource_ekmuq"]
-script = ExtResource("16_layxt")
-jump_height = 2.0
-jump_up_time = 0.18
-jump_down_time = 0.1
 
 [sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_m8c1d"]
 function = 2
@@ -664,12 +657,11 @@ ghost_after_effect = NodePath("../After Image Mesh")
 position = Vector2(516, 0)
 shape = SubResource("RectangleShape2D_nk62p")
 
-[node name="witch" parent="LeniTest" instance=ExtResource("2_bfjq6")]
-position = Vector2(346, -17)
-scale = Vector2(1, 1)
-jr = SubResource("Resource_ekmuq")
-
 [node name="mainCam" parent="LeniTest" instance=ExtResource("17_3bvt2")]
+
+[node name="ghostLight" parent="LeniTest" instance=ExtResource("8_alqtg")]
+position = Vector2(159, -142)
+scale = Vector2(0.5, 0.5)
 
 [node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
 material = SubResource("ShaderMaterial_rba3l")
@@ -678,4 +670,3 @@ offset_left = -1.0
 offset_right = -1.0
 
 [editable path="LeniTest/Leni"]
-[editable path="LeniTest/witch"]
