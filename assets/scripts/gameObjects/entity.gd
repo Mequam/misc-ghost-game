@@ -59,6 +59,7 @@ func get_onground()->bool:
 	return ground_counter > 0
 
 #health of the entity, if this hits zero we die
+@export
 var health : int = 7 : set = set_health, get = get_health
 func set_health(val : int)->void:
 	if state != EntityState.DAMAGED:

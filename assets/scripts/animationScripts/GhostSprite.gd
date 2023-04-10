@@ -33,6 +33,8 @@ func custom_play(anim : StringName = "",backwords : bool = false)->void:
 		"posses_end":
 			position = Vector2(55,0) if flip_h	else Vector2(-55,0) 
 			speed_scale = 2.5
+		"die":
+			scale = initial_scale*1.5
 		_:
 			speed_scale = 1.5
 			scale = initial_scale

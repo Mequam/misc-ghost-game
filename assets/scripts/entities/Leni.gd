@@ -23,6 +23,11 @@ var ghost_after_effect : GhostAfterEffectNode
 func store_aggro(host):
 	get_parent().player_entity = host 
 
+#leni dies AFTER we finish the die animation
+#so hijak die and call super.die when the anim finishes
+func die():
+	$Sprite2D.custom_play("die")
+
 #convinence function to ensure that we are the object
 #that the game targets
 func grab_aggro():
@@ -39,11 +44,6 @@ func on_unposses(host)->void:
 func on_posses(host)->void:
 	print("LENI IS POSSESING!")
 	store_aggro(host) #ensure that we are the targeted entity
-	
-func die()->void:
-	emit_signal("die")
-	reset_health()
-
 	
 #default collision layer for Leni
 func gen_col_layer()->int:
@@ -208,5 +208,8 @@ func _on_sprite_2d_animation_finished():
 			pass #this is handled in the sprite2d
 		"posses_launch":
 			pass #handled in sprite2d
+		"die":
+			ghost_after_effect.queue_free()
+			super.die()
 		_:
 			self.state = EntityState.DEFAULT

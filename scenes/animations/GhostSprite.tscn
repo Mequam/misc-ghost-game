@@ -1,18 +1,29 @@
-[gd_scene load_steps=44 format=3 uid="uid://c22xqm54cs50"]
+[gd_scene load_steps=55 format=3 uid="uid://c22xqm54cs50"]
 
 [ext_resource type="Texture2D" uid="uid://cw7vv7hopuieh" path="res://assets/animations/ghost/ghost_down_color/0040.png" id="3_r3h7f"]
+[ext_resource type="Texture2D" uid="uid://cy8ihpit5skdv" path="res://assets/animations/ghost/pain/pain0120.png" id="3_tgu3h"]
 [ext_resource type="Texture2D" uid="uid://dpgs48vjp6hbt" path="res://assets/animations/ghost/ghost_down_color/0041.png" id="4_3yqra"]
+[ext_resource type="Texture2D" uid="uid://cadvtsn2h16bo" path="res://assets/animations/ghost/pain/pain0121.png" id="4_x5daj"]
+[ext_resource type="Texture2D" uid="uid://0qw1vcfww3rk" path="res://assets/animations/ghost/pain/pain0122.png" id="5_3ycfu"]
 [ext_resource type="Texture2D" uid="uid://bhgnnx6owe6qs" path="res://assets/animations/ghost/ghost_down_color/0042.png" id="5_qanxy"]
+[ext_resource type="Texture2D" uid="uid://8715p1hx7t6s" path="res://assets/animations/ghost/pain/pain0123.png" id="6_e74v2"]
 [ext_resource type="Texture2D" uid="uid://4g1w4ku53da8" path="res://assets/animations/ghost/ghost_color_idle/0021.png" id="6_sumr7"]
 [ext_resource type="Texture2D" uid="uid://deqs8fu78hm4w" path="res://assets/animations/ghost/ghost_color_idle/0022.png" id="7_k4dd2"]
+[ext_resource type="Texture2D" uid="uid://um34f5d83mk3" path="res://assets/animations/ghost/pain/pain0124.png" id="7_mashm"]
+[ext_resource type="Texture2D" uid="uid://bwd0auxddemq2" path="res://assets/animations/ghost/pain/pain0125.png" id="8_8d6im"]
 [ext_resource type="Texture2D" uid="uid://bqvjmik4e4mom" path="res://assets/animations/ghost/ghost_color_idle/0023.png" id="8_gtyhx"]
 [ext_resource type="Texture2D" uid="uid://dic5pjvg01wt2" path="res://assets/animations/ghost/ghost_color_idle/0024.png" id="9_7nw7i"]
+[ext_resource type="Texture2D" uid="uid://sfsv7j0wgq56" path="res://assets/animations/ghost/pain/pain0126.png" id="9_a3asj"]
 [ext_resource type="Texture2D" uid="uid://cultltaok48lw" path="res://assets/animations/ghost/ghost_color_idle/0025.png" id="10_ges4u"]
+[ext_resource type="Texture2D" uid="uid://dqfeqni603t68" path="res://assets/animations/ghost/pain/pain0127.png" id="10_gpyvb"]
 [ext_resource type="Texture2D" uid="uid://blaixs6kj7rkt" path="res://assets/animations/ghost/crop-derp.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://8c4dau2oxvn2" path="res://assets/animations/ghost/ghost_color_idle/0026.png" id="11_knhbp"]
+[ext_resource type="Texture2D" uid="uid://lhykt0e13k4x" path="res://assets/animations/ghost/pain/pain0128.png" id="11_ygkf4"]
 [ext_resource type="Script" path="res://assets/scripts/animationScripts/GhostSprite.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://conqiwfur48xl" path="res://assets/animations/ghost/ghost_color_idle/0027.png" id="12_wn2nn"]
+[ext_resource type="Texture2D" uid="uid://cj5nany7id2s7" path="res://assets/animations/ghost/pain/pain0129.png" id="12_xxpi7"]
 [ext_resource type="Texture2D" uid="uid://k4maefudk4kg" path="res://assets/animations/ghost/ghost_color_idle/0028.png" id="13_1eayx"]
+[ext_resource type="Texture2D" uid="uid://ca3alcbii5uc8" path="res://assets/animations/ghost/pain/pain0130.png" id="13_hw85f"]
 [ext_resource type="Texture2D" uid="uid://dgh3bx3qib2mf" path="res://assets/animations/ghost/ghost_color_idle/0029.png" id="14_dcmi5"]
 [ext_resource type="Texture2D" uid="uid://d04cmog6odt8q" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0113.png" id="16_ts8l6"]
 [ext_resource type="Texture2D" uid="uid://d10pbm4x5xkkq" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0114.png" id="17_0bh3i"]
@@ -60,6 +71,44 @@ animations = [{
 "loop": true,
 "name": &"derp",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tgu3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x5daj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3ycfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e74v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mashm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8d6im")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a3asj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gpyvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ygkf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xxpi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hw85f")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -229,7 +278,7 @@ animations = [{
 
 [node name="ghostSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("1")
-animation = &"posses_col"
+animation = &"die"
 speed_scale = 1.5
 script = ExtResource("12")
 
