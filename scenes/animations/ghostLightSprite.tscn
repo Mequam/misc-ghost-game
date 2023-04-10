@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://dortu7m7hqkvb"]
+
+[ext_resource type="Texture2D" uid="uid://c3y5xf778qm2t" path="res://assets/animations/ghost_light/ghost_light0003.png" id="1_opcq5"]
+[ext_resource type="Texture2D" uid="uid://bo16n8cvtrgvb" path="res://assets/animations/ghost_light/ghost_light0004.png" id="2_fa3uu"]
+[ext_resource type="Texture2D" uid="uid://cvnj8cldjmsos" path="res://assets/animations/ghost_light/ghost_light0005.png" id="3_nbm5l"]
+[ext_resource type="Texture2D" uid="uid://cdsgfytc8egg7" path="res://assets/animations/ghost_light/ghost_light0006.png" id="4_fjwky"]
+[ext_resource type="Texture2D" uid="uid://pqn3nqwe75ds" path="res://assets/animations/ghost_light/ghost_light0007.png" id="5_218e6"]
+[ext_resource type="Texture2D" uid="uid://cp2risrq7srhh" path="res://assets/animations/ghost_light/ghost_light0008.png" id="6_2t8gp"]
+[ext_resource type="Texture2D" uid="uid://b1kevgm2835qh" path="res://assets/animations/ghost_light/ghost_light0009.png" id="7_a0mck"]
+[ext_resource type="Texture2D" uid="uid://crtr8ysssxj03" path="res://assets/animations/ghost_light/ghost_light0010.png" id="8_qvpui"]
+[ext_resource type="Script" path="res://assets/scripts/animationScripts/ghostLightSprite.gd" id="9_o674s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aip55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_opcq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fa3uu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nbm5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fjwky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_218e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2t8gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a0mck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qvpui")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_aip55")
+frame_progress = 0.583569
+script = ExtResource("9_o674s")
