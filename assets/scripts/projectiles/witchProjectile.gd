@@ -4,13 +4,16 @@ class_name WitchProjectile
 
 # Called when the node enters the scene tree for the first time.
 var magic = load("res://scenes/animations/magicParticles.tscn")
-func _ready():
+func main_ready():
 	var inst = magic.instantiate()
 	inst.global_position = global_position
 	get_parent().add_child(inst)
 	speed = 100
 	$AnimationPlayer.play("scale_up")
 	$witchProjSprite.play("default")
+	
+	#make sure that the previous class gets to run its ready function
+	super.main_ready()
 func die():
 	var inst = magic.instantiate()
 	get_parent().add_child(inst)

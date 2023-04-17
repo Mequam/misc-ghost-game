@@ -7,4 +7,5 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.41
 drag_right_margin = 0.41
+drag_bottom_margin = 0.89
 script = ExtResource("1_sqm8o")

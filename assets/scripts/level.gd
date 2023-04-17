@@ -53,8 +53,11 @@ func call_ai(aggro_entity):
 
 func _process(_delta):
 	if Input.is_key_pressed(KEY_P):
-		$Leni.grab_camera()
+		GameLoader.load_level(
+			load("res://scenes/levels/leni_load_test.tscn"),
+			self,
+			[$mainCam,$Leni,$witch]
+			)	
 
 func on_ai_timeout():
-	print("the ai is timeing out!")
 	call_ai(player_entity)

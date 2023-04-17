@@ -1,13 +1,30 @@
 extends KinColObject
 
 class_name Projectile
+
+@export
 var damage : int = 2
+@export
+var terminal_velocity : int = 10
+
+#called when we leave the screen
+#simple function to remove us
+func screen_exited()->void:
+	queue_free()
 
 func main_ready():
+	print("inside of main_ready projectile")
 	$lifeTimer.connect("timeout",Callable(self,"die"))
 	collision_layer = 0
-	$VisibleOnScreenNotifier2D.connect("screen_exited",Callable(self,"queue_free"))
+	#make sure that we remove ourselfs from the game
+	#when not visible
+	$VisibleOnScreenNotifier2D.screen_exited.connect(screen_exited)
 	super.main_ready()
+
+func main_process(_delta):
+	if velocity.length_squared() > 	terminal_velocity*terminal_velocity:
+		velocity = velocity.normalized()*terminal_velocity
+	super.main_process(_delta)
 
 #it is a projectile layer
 func gen_col_layer():

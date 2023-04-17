@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://scenes/singletons/Globals.tscn"
+GameLoader="*res://assets/scripts/singletons/GameLoader.gd"
 
 [global]
 

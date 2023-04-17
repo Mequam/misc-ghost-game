@@ -1,15 +1,23 @@
-[gd_scene load_steps=64 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=67 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_0w4ds"]
 [ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1_1atnt"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://ColorShiftEffect/ColorShifter.tscn" id="3_8xg4c"]
+[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="7_nb4cj"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/ghostLight.tscn" id="8_alqtg"]
 [ext_resource type="PackedScene" uid="uid://dortu7m7hqkvb" path="res://scenes/animations/ghostLightSprite.tscn" id="8_bvnru"]
+[ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="8_phbgp"]
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="15_vbd5h"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="17_3bvt2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(1052, 20)
+
+[sub_resource type="Resource" id="Resource_k4uth"]
+script = ExtResource("8_phbgp")
+jump_height = 1.5
+jump_up_time = 0.1
+jump_down_time = 0.07
 
 [sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_m8c1d"]
 function = 2
@@ -610,7 +618,7 @@ shader_parameter/yg_map = Color(0.941176, 0.988235, 0.572549, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
 shader_parameter/IC2 = Color(0.5, 1, 0, 1)
 
-[node name="Control" type="Control"]
+[node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -631,37 +639,45 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.501961, 1, 0, 1)
 
-[node name="LeniTest" type="Node2D" parent="." node_paths=PackedStringArray("cam_ref")]
-position = Vector2(22, 420)
+[node name="LevelContainer" type="Node2D" parent="."]
+
+[node name="LeniTest" type="Node2D" parent="LevelContainer" node_paths=PackedStringArray("cam_ref")]
+position = Vector2(22, 419)
 script = ExtResource("1_0w4ds")
 ai_timeout = 0.25
 cam_ref = NodePath("mainCam")
 
-[node name="AnimatedSprite2D" parent="LeniTest" instance=ExtResource("8_bvnru")]
+[node name="AnimatedSprite2D" parent="LevelContainer/LeniTest" instance=ExtResource("8_bvnru")]
 position = Vector2(458, -109)
 scale = Vector2(0.5, 0.5)
 
-[node name="After Image Mesh" parent="LeniTest" node_paths=PackedStringArray("the_sprite") instance=ExtResource("15_vbd5h")]
+[node name="After Image Mesh" parent="LevelContainer/LeniTest" node_paths=PackedStringArray("the_sprite") instance=ExtResource("15_vbd5h")]
 the_sprite = NodePath("../Leni/Sprite2D")
 after_image_frequency = 50.0
 after_image_count = 12
 after_scale = Vector2(1.1, 1.1)
 
-[node name="Leni" parent="LeniTest" node_paths=PackedStringArray("ghost_after_effect") instance=ExtResource("1_1atnt")]
+[node name="Leni" parent="LevelContainer/LeniTest" node_paths=PackedStringArray("ghost_after_effect") instance=ExtResource("1_1atnt")]
 position = Vector2(266, -92)
 ghost_after_effect = NodePath("../After Image Mesh")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="LeniTest"]
+[node name="StaticBody2D" type="StaticBody2D" parent="LevelContainer/LeniTest"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeniTest/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelContainer/LeniTest/StaticBody2D"]
 position = Vector2(516, 0)
 shape = SubResource("RectangleShape2D_nk62p")
 
-[node name="mainCam" parent="LeniTest" instance=ExtResource("17_3bvt2")]
+[node name="mainCam" parent="LevelContainer/LeniTest" instance=ExtResource("17_3bvt2")]
+position = Vector2(0, 1)
 
-[node name="ghostLight" parent="LeniTest" instance=ExtResource("8_alqtg")]
+[node name="ghostLight" parent="LevelContainer/LeniTest" instance=ExtResource("8_alqtg")]
 position = Vector2(159, -142)
 scale = Vector2(0.5, 0.5)
+
+[node name="witch" parent="LevelContainer/LeniTest" instance=ExtResource("7_nb4cj")]
+position = Vector2(389, -43)
+scale = Vector2(1, 1)
+jr = SubResource("Resource_k4uth")
 
 [node name="ColorRect" parent="." instance=ExtResource("3_8xg4c")]
 material = SubResource("ShaderMaterial_rba3l")
@@ -669,4 +685,4 @@ layout_mode = 1
 offset_left = -1.0
 offset_right = -1.0
 
-[editable path="LeniTest/Leni"]
+[editable path="LevelContainer/LeniTest/Leni"]
