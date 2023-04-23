@@ -3,7 +3,7 @@ extends Node
 #game levels and objects
 
 #global game flags
-var game_data
+var game_data : GameSaveResource
 
 func remove_objects_from_tree(persist_obj):
 	#remove all persistant objects from the game

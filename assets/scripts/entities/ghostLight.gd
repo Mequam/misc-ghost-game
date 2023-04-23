@@ -13,7 +13,6 @@ func on_action_double_press(action):
 			$unposSpot.position = Vector2(0,-150)+Vector2(0,100)
 	exorcize()
 func exorcize()->void:
-	print("FREE LENI!")
 	super.exorcize()
 #we function on the same layer as a pickup
 func gen_col_layer()->int:
@@ -21,8 +20,9 @@ func gen_col_layer()->int:
 #we do not collide with anything ourselfs
 func gen_col_mask()->int:
 	return 0
+#the ghost lamp saves when possesed
 func posses_by(entity):
-	print("ghost light detects posses!")
+	GameLoader.game_data.save_game()
 	super.posses_by(entity)
 	collision_mask = gen_col_mask()
 	collision_layer = gen_col_layer()
