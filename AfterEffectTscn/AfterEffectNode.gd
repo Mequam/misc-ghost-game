@@ -57,9 +57,7 @@ func get_texture()->Texture2D:
 	return null
 func update_after_image():
 	var the_texture : Texture2D = get_texture()
-	print(the_texture)
 	if the_texture != null:
-		print("updating the after effects!")
 		var the_size = the_texture.get_size()
 		var the_mesh_instance = mesh_array[mesh_update_index]
 		var the_mesh = the_mesh_instance.mesh
