@@ -34,6 +34,8 @@ func on_anim_finished():
 		"posses":
 			visible = false 
 			after_effect_node.the_sprite = target
+			#ensure that the possesion effect indicates focus
+			target.grab_focus()
 
 #gets the position that we are aiming for
 func get_target_position()->Vector2:
