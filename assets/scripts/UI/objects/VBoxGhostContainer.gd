@@ -6,7 +6,8 @@ extends VBoxContainer
 func _ready():
 	for n in get_children():
 		if n is Button or n is TextureButton:
-			n.pressed.connect(move_leni.bindv([n]))
+			n.focus_entered.connect(move_leni.bindv([n]))
+			n.mouse_entered.connect(move_leni.bindv([n]))
 
 			
 func move_leni(btn)->void:
