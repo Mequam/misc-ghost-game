@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bacdulpgcb7ik"]
+[gd_scene load_steps=4 format=3 uid="uid://bacdulpgcb7ik"]
 
 [ext_resource type="Script" path="res://assets/scripts/GameStart.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://assets/ui/misc/leni_garnish.tscn" id="2_o0eyq"]
-[ext_resource type="Texture2D" uid="uid://ckoseeg5rrsoo" path="res://assets/ui/buttons/start_button/start.png" id="3_wd6gi"]
-[ext_resource type="Texture2D" uid="uid://51qoa8kn6oyp" path="res://assets/ui/buttons/start_button/start_hover.png" id="4_3gj7r"]
-[ext_resource type="Texture2D" uid="uid://c6yusfmdtcc74" path="res://assets/ui/buttons/start_button/start_pressed.png" id="4_gh0nw"]
+[ext_resource type="PackedScene" uid="uid://dtrrpcifoy0hk" path="res://scenes/UI/buttons/start_button.tscn" id="3_l3epg"]
 
 [node name="GameStart" type="Control"]
 layout_mode = 3
@@ -28,20 +26,11 @@ grow_vertical = 2
 [node name="VBoxGhostContainer" parent="CenterContainer" instance=ExtResource("2_o0eyq")]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxGhostContainer"]
+[node name="TextureButton" parent="CenterContainer/VBoxGhostContainer" instance=ExtResource("3_l3epg")]
 layout_mode = 2
-texture_normal = ExtResource("3_wd6gi")
-texture_pressed = ExtResource("4_gh0nw")
-texture_hover = ExtResource("4_3gj7r")
 
-[node name="TextureButton2" type="TextureButton" parent="CenterContainer/VBoxGhostContainer"]
+[node name="TextureButton2" parent="CenterContainer/VBoxGhostContainer" instance=ExtResource("3_l3epg")]
 layout_mode = 2
-texture_normal = ExtResource("3_wd6gi")
-texture_pressed = ExtResource("4_gh0nw")
-texture_hover = ExtResource("4_3gj7r")
 
-[node name="TextureButton3" type="TextureButton" parent="CenterContainer/VBoxGhostContainer"]
+[node name="TextureButton3" parent="CenterContainer/VBoxGhostContainer" instance=ExtResource("3_l3epg")]
 layout_mode = 2
-texture_normal = ExtResource("3_wd6gi")
-texture_pressed = ExtResource("4_gh0nw")
-texture_hover = ExtResource("4_3gj7r")

@@ -2,7 +2,7 @@ extends Node2D
 
 class_name GhostAfterEffectNode
 
-@export var the_sprite : AnimatedSprite2D
+@export var the_sprite : Node
 @export var after_image_frequency = 4.0
 @export var after_image_mesh_scene : PackedScene
 @export_range(1,100,1) var after_image_count = 4:
@@ -48,32 +48,46 @@ func _process(delta):
 	# time = mod(delta+time,1.0/after_image_frequency)
 	pass
 
+#gets a texture from the target
+func get_texture()->Texture2D:
+	if the_sprite is AnimatedSprite2D:
+		return the_sprite.sprite_frames.get_frame_texture(the_sprite.animation,the_sprite.frame)
+	elif the_sprite is TextureButton:
+		return the_sprite.texture_normal
+	return null
 func update_after_image():
-	var the_texture : Texture2D = the_sprite.sprite_frames.get_frame_texture(the_sprite.animation,the_sprite.frame)
-	var the_size = the_texture.get_size()
-	var the_mesh_instance = mesh_array[mesh_update_index]
-	var the_mesh = the_mesh_instance.mesh
-	
-	the_mesh.size = the_size
-	the_mesh.size.y *= -1
-	
-	var the_global_transform = the_sprite.global_transform
+	var the_texture : Texture2D = get_texture()
+	print(the_texture)
+	if the_texture != null:
+		print("updating the after effects!")
+		var the_size = the_texture.get_size()
+		var the_mesh_instance = mesh_array[mesh_update_index]
+		var the_mesh = the_mesh_instance.mesh
+		
+		the_mesh.size = the_size
+		the_mesh.size.y *= -1
+		
+		var the_global_transform = Transform2D()
+		if the_sprite is Node2D:
+			the_global_transform = the_sprite.global_transform 
+			the_mesh_instance.global_transform = the_global_transform 
+		else:
+			the_mesh_instance.global_position = the_sprite.global_position+the_sprite.size/2
 
-	mesh_update_index = (1+mesh_update_index)%len(mesh_array)
+		mesh_update_index = (1+mesh_update_index)%len(mesh_array)
 
-	the_mesh_instance.material.set_shader_parameter("Start_Time", Time.get_ticks_usec()/1e+6)
-	the_mesh_instance.texture = the_texture
-	the_mesh_instance.global_transform = the_global_transform
-	the_mesh.size *= after_scale
-	if the_sprite.flip_h:
-		the_mesh_instance.scale.x *= -1
+		the_mesh_instance.material.set_shader_parameter("Start_Time", Time.get_ticks_usec()/1e+6)
+		the_mesh_instance.texture = the_texture
+		the_mesh.size *= after_scale
+		if the_sprite.flip_h:
+			the_mesh_instance.scale.x *= -1
 
-	var the_lifetime = after_image_count * 1.0/after_image_frequency
-	the_mesh_instance.material.set_shader_parameter("Lifetime", the_lifetime)
-	the_mesh_instance.material.set_shader_parameter("SlightDelay", Globals.rendering_start_time)
+		var the_lifetime = after_image_count * 1.0/after_image_frequency
+		the_mesh_instance.material.set_shader_parameter("Lifetime", the_lifetime)
+		the_mesh_instance.material.set_shader_parameter("SlightDelay", Globals.rendering_start_time)
 
-#uncomment for debugging pauses ;)
-#func _input(event):
-#	if event is InputEventKey:
-#		if event.keycode == KEY_SPACE:
-#			get_tree().paused = !get_tree().paused
+	#uncomment for debugging pauses ;)
+	#func _input(event):
+	#	if event is InputEventKey:
+	#		if event.keycode == KEY_SPACE:
+	#			get_tree().paused = !get_tree().paused

@@ -1,15 +1,21 @@
 extends AnimatedSprite2D
+
+@export 
+var after_effect_node : GhostAfterEffectNode 
+
 @export 
 var noise_strength :float= 10
 
 #we aim for this when moving
 var target : Control :
 	set (val):
-		target = val 
-		velocity = Vector2(12*cos(randf()*2*PI),sin(randf()*2*PI))*noise_strength 
-		play("run")
-		seek = true 
-		visible = true
+		if val != target:
+			target = val 
+			velocity = Vector2(12*cos(randf()*2*PI),sin(randf()*2*PI))*noise_strength 
+			play("run")
+			seek = true 
+			visible = true
+			after_effect_node.the_sprite = null
 	get:
 		return target 
 var seek : bool = false 
@@ -26,7 +32,9 @@ func _ready():
 func on_anim_finished():
 	match animation:
 		"posses":
-			visible = false
+			visible = false 
+			after_effect_node.the_sprite = target
+
 #gets the position that we are aiming for
 func get_target_position()->Vector2:
 	return target.position+target.size/2

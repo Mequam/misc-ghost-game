@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://de0o3d0tigk40"]
+[gd_scene load_steps=19 format=3 uid="uid://de0o3d0tigk40"]
 
 [ext_resource type="Texture2D" uid="uid://8sjqjlvbhc07" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0112.png" id="1_c7sjm"]
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/VBoxGhostContainer.gd" id="1_k4ce4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d24n8p807ger4" path="res://assets/animations/ghost/zoom_color/0075.png" id="11_vxu7e"]
 [ext_resource type="Texture2D" uid="uid://bt5uq53rr4y8t" path="res://assets/animations/ghost/zoom_color/0076.png" id="12_p06nf"]
 [ext_resource type="Script" path="res://assets/ui/misc/LeniGarnish.gd" id="14_m7l7r"]
+[ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://AfterEffectTscn/AfterEffectNode.tscn" id="16_orfry"]
 
 [sub_resource type="Theme" id="Theme_bsc5w"]
 
@@ -81,7 +82,8 @@ theme_override_constants/separation = 50
 alignment = 1
 script = ExtResource("1_k4ce4")
 
-[node name="LeniGarnish" type="AnimatedSprite2D" parent="."]
+[node name="LeniGarnish" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("after_effect_node")]
+visible = false
 z_index = 1
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_4dk7m")
@@ -89,6 +91,12 @@ animation = &"posses"
 frame = 6
 frame_progress = 1.0
 script = ExtResource("14_m7l7r")
+after_effect_node = NodePath("../After Image Mesh")
 noise_strength = 200.0
+
+[node name="After Image Mesh" parent="." instance=ExtResource("16_orfry")]
+position = Vector2(0, -1)
+after_image_frequency = 10.0
+after_image_count = 20
 
 [connection signal="animation_finished" from="LeniGarnish" to="LeniGarnish" method="_on_animation_finished"]
