@@ -14,7 +14,7 @@ grow_vertical = 2
 theme = ExtResource("1_wlj1j")
 script = ExtResource("2_koahu")
 btnStart = NodePath("VBoxContainer2/Control/Button")
-txtGameName = NodePath("VBoxContainer2/Control2/CenteredTextBox")
+txtGameName = NodePath("VBoxContainer2/Control2/CenteredTextBox/CenteredTextBox")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -52,3 +52,6 @@ grow_vertical = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 text = "this is a test button"
+
+[editable path="VBoxContainer2/Control2/CenteredTextBox"]
+[editable path="VBoxContainer2/Control2/CenteredTextBox/lblBtnBack"]

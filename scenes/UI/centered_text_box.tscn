@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlo35ftubtrii"]
+[gd_scene load_steps=6 format=3 uid="uid://dlo35ftubtrii"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/centered_text_box.gd" id="1_k6oqm"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_h1trr"]
+[ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/lblBtnBack.tscn" id="3_a1r18"]
+[ext_resource type="Texture2D" uid="uid://wkwntoaalhpf" path="res://assets/ui/buttons/empty_button/button_outline_focus.png" id="4_ek10y"]
+[ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="5_yu3cx"]
 
-[node name="CenteredTextBox" type="TextEdit" node_paths=PackedStringArray("txtlbl")]
+[node name="CenteredTextBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lblBtnBack" parent="." instance=ExtResource("3_a1r18")]
+layout_mode = 1
+
+[node name="CenteredTextBox" type="TextEdit" parent="." node_paths=PackedStringArray("txtlbl", "textureRect")]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,27 +27,22 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_h1trr")
+theme_override_colors/background_color = Color(0, 0, 0, 0)
 theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 0)
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 0)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_colors/selection_color = Color(0, 0, 0, 0)
 theme_override_colors/current_line_color = Color(0, 0, 0, 0)
 theme_override_colors/caret_color = Color(0, 0, 0, 0)
 theme_override_colors/caret_background_color = Color(0, 0, 0, 0)
 theme_override_colors/word_highlighted_color = Color(0, 0, 0, 0)
+placeholder_text = "Type Here"
 script = ExtResource("1_k6oqm")
-txtlbl = NodePath("CenterContainer/Label")
+txtlbl = NodePath("../lblBtnBack/CenterContainer/Label")
+textureRect = NodePath("../lblBtnBack/TextureRect")
+focus_texture = ExtResource("4_ek10y")
+normal_texture = ExtResource("5_yu3cx")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_h1trr")
-
-[node name="Label" type="Label" parent="CenterContainer"]
-layout_mode = 2
-theme = ExtResource("2_h1trr")
-text = "this is the centered text mwhahahaa"
+[editable path="lblBtnBack"]
