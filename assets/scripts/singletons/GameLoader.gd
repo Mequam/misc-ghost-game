@@ -23,6 +23,10 @@ func clear_level()->void:
 	var old_lvl = get_level_node()
 	if old_lvl:
 		old_lvl.queue_free()
+
+#returns a list of saved games
+func list_game_saves():
+	pass
 func load_level(level,_caller,persist_obj=[])->void:
 	remove_objects_from_tree(persist_obj)
 	clear_level()

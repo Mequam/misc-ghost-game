@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bplh0qhuaiirg"]
+
+[ext_resource type="FontFile" uid="uid://kb8f7eqsn27" path="res://assets/ui/fonts/yakin/Yakin.ttf" id="1_px1oa"]
+
+[resource]
+base_font = ExtResource("1_px1oa")
+spacing_glyph = 1

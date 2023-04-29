@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlo35ftubtrii"]
+
+[ext_resource type="Script" path="res://assets/scripts/UI/objects/centered_text_box.gd" id="1_k6oqm"]
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_h1trr"]
+
+[node name="CenteredTextBox" type="TextEdit" node_paths=PackedStringArray("txtlbl")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_h1trr")
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/selection_color = Color(0, 0, 0, 0)
+theme_override_colors/current_line_color = Color(0, 0, 0, 0)
+theme_override_colors/caret_color = Color(0, 0, 0, 0)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 0)
+theme_override_colors/word_highlighted_color = Color(0, 0, 0, 0)
+script = ExtResource("1_k6oqm")
+txtlbl = NodePath("CenterContainer/Label")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_h1trr")
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme = ExtResource("2_h1trr")
+text = "this is the centered text mwhahahaa"

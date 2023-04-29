@@ -1,4 +1,5 @@
 extends Resource 
+#contains functions for interacting with a save
 
 class_name GameSaveResource 
 
@@ -17,29 +18,31 @@ var game_variables : Dictionary
 
 #save number that we use
 @export 
-var game_number : int = 0
+var game_name : String = "game 0"
+
+
+#returns a list of all game directories stored in our saves folder
+static func list_game_saves():
+	return DirAccess.get_directories_at("user://saves/")
 
 func get_save_folder_path()->String:
-	return get_save_folder_path_gn(game_number)
+	return get_save_folder_path_gn(game_name)
 #gets the save folder for the given game number
-func get_save_folder_path_gn(gameNumber : int)->String:
-	return "user://saves/game" + str(gameNumber)
-
-
-
+func get_save_folder_path_gn(gameName : String)->String:
+	return "user://saves/game_" + str(gameName)
 func get_save_path()->String:
-	return get_save_path_gn(game_number)
-#returns the path that we would save this game at given a game_number
-func get_save_path_gn(gameNumber : int)->String:
-	return get_save_folder_path_gn(gameNumber) + "/save" + str(gameNumber) + ".res" 
+	return get_save_path_gn(game_name)
+#returns the path that we would save this game at given a game_name
+func get_save_path_gn(gameName : String)->String:
+	return get_save_folder_path_gn(gameName) + "/save_" + str(gameName) + ".res" 
 
 func ensure_save_dir()->void:
-	return ensure_save_dir_gn(game_number)
+	return ensure_save_dir_gn(game_name)
 
 #creates the save directory structure if it does not exist
-func ensure_save_dir_gn(gameNumber : int)->void:
-	if not DirAccess.dir_exists_absolute(get_save_folder_path_gn(gameNumber)):
-		DirAccess.make_dir_recursive_absolute(get_save_folder_path_gn(gameNumber))
+func ensure_save_dir_gn(gameName : String)->void:
+	if not DirAccess.dir_exists_absolute(get_save_folder_path_gn(gameName)):
+		DirAccess.make_dir_recursive_absolute(get_save_folder_path_gn(gameName))
 
 
 #saves this game resource

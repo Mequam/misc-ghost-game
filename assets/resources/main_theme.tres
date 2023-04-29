@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bdxsba1gjh45"]
+
+[ext_resource type="FontVariation" uid="uid://bplh0qhuaiirg" path="res://assets/ui/fonts/yakin/yakin_font_variation.tres" id="1_ycvbc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bylj6"]
+bg_color = Color(0.32, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xq6hp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flufw"]
+bg_color = Color(0.575, 1, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6870"]
+bg_color = Color(0, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_detail = 10
+
+[resource]
+default_font = ExtResource("1_ycvbc")
+default_font_size = 21
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/normal = SubResource("StyleBoxFlat_bylj6")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/styles/normal = SubResource("StyleBoxEmpty_xq6hp")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_flufw")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_g6870")

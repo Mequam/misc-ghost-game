@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://ul0g1bvpxw6d"]
+
+[ext_resource type="PackedScene" uid="uid://dlo35ftubtrii" path="res://scenes/UI/centered_text_box.tscn" id="1_v64un"]
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_wlj1j"]
+[ext_resource type="Script" path="res://assets/scripts/UI/newGameUI.gd" id="2_koahu"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("btnStart", "txtGameName")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wlj1j")
+script = ExtResource("2_koahu")
+btnStart = NodePath("VBoxContainer2/Control/Button")
+txtGameName = NodePath("VBoxContainer2/Control2/CenteredTextBox")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenteredTextBox" parent="VBoxContainer2/Control2" instance=ExtResource("1_v64un")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.75
+anchor_bottom = 0.75
+
+[node name="Control" type="Control" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+text = "this is a test button"
