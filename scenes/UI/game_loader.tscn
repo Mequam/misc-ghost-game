@@ -8,51 +8,42 @@
 bg_color = Color(0.28, 0.1148, 0.1148, 1)
 
 [node name="GameLoader" type="Control" node_paths=PackedStringArray("btnContainer")]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_e2c5f")
 script = ExtResource("1_4uavq")
-btnContainer = NodePath("background/HBoxContainer/ScrollContainer/VBoxGhostContainer")
+btnContainer = NodePath("Control/ScrollContainer/VBoxGhostContainer")
 
-[node name="background" type="Panel" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchor_left = 0.2
+anchor_right = 0.8
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Control2" type="Control" parent="background/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="background/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 clip_contents = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_omijd")
 follow_focus = true
 vertical_scroll_mode = 2
 scroll_deadzone = 1
 
-[node name="VBoxGhostContainer" parent="background/HBoxContainer/ScrollContainer" instance=ExtResource("2_dua60")]
+[node name="VBoxGhostContainer" parent="Control/ScrollContainer" instance=ExtResource("2_dua60")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Control" type="Control" parent="background/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3

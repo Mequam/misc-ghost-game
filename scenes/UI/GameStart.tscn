@@ -1,13 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://bacdulpgcb7ik"]
+[gd_scene load_steps=16 format=3 uid="uid://bacdulpgcb7ik"]
 
-[ext_resource type="Script" path="res://assets/scripts/GameStart.gd" id="1"]
+[ext_resource type="Script" path="res://assets/scripts/UI/objects/backStackControl.gd" id="1_1gvup"]
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_g4o6m"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://assets/ui/misc/leni_garnish.tscn" id="2_o0eyq"]
 [ext_resource type="PackedScene" uid="uid://dtrrpcifoy0hk" path="res://scenes/UI/buttons/start_button.tscn" id="3_l3epg"]
+[ext_resource type="Texture2D" uid="uid://cq206pugf3j6n" path="res://assets/ui/buttons/btn_load_game/btnLoadGame0000.png" id="4_bl2b7"]
 [ext_resource type="Texture2D" uid="uid://bb1acrlcdqjru" path="res://assets/ui/buttons/new_game_button/btnNewGame0000.png" id="4_jpwgf"]
+[ext_resource type="Texture2D" uid="uid://cinsrgm4mjbi5" path="res://assets/ui/buttons/btn_load_game/btnLoadGame0001.png" id="5_fjnpc"]
 [ext_resource type="Texture2D" uid="uid://b4v3nfkrk8hem" path="res://assets/ui/buttons/new_game_button/btnNewGame0001.png" id="5_y4hg6"]
+[ext_resource type="Texture2D" uid="uid://bwlrfflne8nxe" path="res://assets/ui/buttons/btn_load_game/btnLoadGame0003.png" id="6_2g6de"]
 [ext_resource type="Texture2D" uid="uid://p5f07kd41nh" path="res://assets/ui/buttons/new_game_button/btnNewGame0003.png" id="6_831u5"]
+[ext_resource type="PackedScene" uid="uid://ul0g1bvpxw6d" path="res://scenes/UI/newGameScene.tscn" id="7_it326"]
+[ext_resource type="PackedScene" uid="uid://ccdtgmoqo74mv" path="res://scenes/UI/game_loader.tscn" id="7_q6whe"]
+[ext_resource type="Texture2D" uid="uid://crldgyy432px4" path="res://assets/ui/buttons/btn_back/btnLoadGame0000.png" id="12_sglce"]
+[ext_resource type="Texture2D" uid="uid://b22jpa8lcusbr" path="res://assets/ui/buttons/btn_back/btnLoadGame0001.png" id="13_v6pd0"]
+[ext_resource type="Texture2D" uid="uid://dvk0x6onr4m8h" path="res://assets/ui/buttons/btn_back/btnLoadGame0003.png" id="14_cdsrn"]
 
-[node name="GameStart" type="Control" node_paths=PackedStringArray("replacement")]
+[node name="GameStart" type="Control" node_paths=PackedStringArray("back_button", "container", "replacement")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,28 +25,75 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1")
-replacement = NodePath(".")
+script = ExtResource("1_1gvup")
+back_button = NodePath("Control/HBoxContainer/TextureButton")
+container = NodePath("Control")
+replacement = NodePath("SceneContainer")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="SceneContainer" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_g4o6m")
 
-[node name="VBoxGhostContainer" parent="CenterContainer" instance=ExtResource("2_o0eyq")]
+[node name="CustomCenter" type="Control" parent="SceneContainer"]
+layout_mode = 1
+anchor_left = 0.25
+anchor_right = 0.75
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SceneContainer/CustomCenter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxGhostContainer" parent="SceneContainer/CustomCenter/HBoxContainer" instance=ExtResource("2_o0eyq")]
 layout_mode = 2
 
-[node name="TextureButton" parent="CenterContainer/VBoxGhostContainer" instance=ExtResource("3_l3epg")]
+[node name="TextureButton" parent="SceneContainer/CustomCenter/HBoxContainer/VBoxGhostContainer" node_paths=PackedStringArray("destination", "backstack") instance=ExtResource("3_l3epg")]
 layout_mode = 2
+texture_normal = ExtResource("4_bl2b7")
+texture_pressed = ExtResource("5_fjnpc")
+texture_hover = ExtResource("6_2g6de")
+destination = NodePath("../..")
+target = ExtResource("7_q6whe")
+backstack = NodePath("../../../../..")
 
-[node name="TextureButton2" parent="CenterContainer/VBoxGhostContainer" instance=ExtResource("3_l3epg")]
+[node name="TextureButton2" parent="SceneContainer/CustomCenter/HBoxContainer/VBoxGhostContainer" node_paths=PackedStringArray("destination", "backstack") instance=ExtResource("3_l3epg")]
 layout_mode = 2
 texture_normal = ExtResource("4_jpwgf")
 texture_pressed = ExtResource("5_y4hg6")
 texture_hover = ExtResource("6_831u5")
+destination = NodePath("../..")
+target = ExtResource("7_it326")
+backstack = NodePath("../../../../..")
 
-[node name="TextureButton3" parent="CenterContainer/VBoxGhostContainer" instance=ExtResource("3_l3epg")]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.188
+anchor_bottom = 1.123
+offset_right = 0.423996
+offset_bottom = 0.229591
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("12_sglce")
+texture_pressed = ExtResource("13_v6pd0")
+texture_hover = ExtResource("14_cdsrn")
