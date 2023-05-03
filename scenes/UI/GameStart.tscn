@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bacdulpgcb7ik"]
+[gd_scene load_steps=7 format=3 uid="uid://bacdulpgcb7ik"]
 
 [ext_resource type="Script" path="res://assets/scripts/GameStart.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://assets/ui/misc/leni_garnish.tscn" id="2_o0eyq"]
 [ext_resource type="PackedScene" uid="uid://dtrrpcifoy0hk" path="res://scenes/UI/buttons/start_button.tscn" id="3_l3epg"]
+[ext_resource type="Texture2D" uid="uid://bb1acrlcdqjru" path="res://assets/ui/buttons/new_game_button/btnNewGame0000.png" id="4_jpwgf"]
+[ext_resource type="Texture2D" uid="uid://b4v3nfkrk8hem" path="res://assets/ui/buttons/new_game_button/btnNewGame0001.png" id="5_y4hg6"]
+[ext_resource type="Texture2D" uid="uid://p5f07kd41nh" path="res://assets/ui/buttons/new_game_button/btnNewGame0003.png" id="6_831u5"]
 
-[node name="GameStart" type="Control"]
+[node name="GameStart" type="Control" node_paths=PackedStringArray("replacement")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +17,7 @@ offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
+replacement = NodePath(".")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -31,6 +35,9 @@ layout_mode = 2
 
 [node name="TextureButton2" parent="CenterContainer/VBoxGhostContainer" instance=ExtResource("3_l3epg")]
 layout_mode = 2
+texture_normal = ExtResource("4_jpwgf")
+texture_pressed = ExtResource("5_y4hg6")
+texture_hover = ExtResource("6_831u5")
 
 [node name="TextureButton3" parent="CenterContainer/VBoxGhostContainer" instance=ExtResource("3_l3epg")]
 layout_mode = 2
