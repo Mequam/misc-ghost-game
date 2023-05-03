@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjkvvlt2vndoq"]
+[gd_scene load_steps=6 format=3 uid="uid://bjkvvlt2vndoq"]
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_d3fo6"]
-[ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="1_uqhr0"]
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/lblHandDrawn.gd" id="2_fjas6"]
+[ext_resource type="Texture2D" uid="uid://wkwntoaalhpf" path="res://assets/ui/buttons/empty_button/button_outline_focus.png" id="3_bm4q4"]
+[ext_resource type="Texture2D" uid="uid://b8rihxqhgl3pd" path="res://assets/ui/buttons/empty_button/cyan.png" id="3_ev6rw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7nsn0"]
 
@@ -21,6 +22,8 @@ flat = true
 script = ExtResource("2_fjas6")
 texture_rect = NodePath("TextureRect")
 label = NodePath("CenterContainer/Label")
+hover_texture = ExtResource("3_bm4q4")
+default_texture = ExtResource("3_ev6rw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -29,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_uqhr0")
+texture = ExtResource("3_ev6rw")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
