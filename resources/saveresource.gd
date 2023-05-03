@@ -23,7 +23,12 @@ var game_name : String = "game 0"
 
 #returns a list of all game directories stored in our saves folder
 static func list_game_saves():
-	return DirAccess.get_directories_at("user://saves/")
+	var tmp = DirAccess.get_directories_at("user://saves/") 
+	var ret_val = []
+	#game saves are stored at game_<name>, we only want the name!
+	for word in tmp:
+		ret_val.append(word.split("_")[1])
+	return ret_val
 
 func get_save_folder_path()->String:
 	return get_save_folder_path_gn(game_name)

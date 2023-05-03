@@ -2,7 +2,11 @@ extends Node2D
 
 class_name GhostAfterEffectNode
 
-@export var the_sprite : Node
+@export var the_sprite : Node :
+	set (val):
+		the_sprite = val 
+	get:
+		return the_sprite
 @export var after_image_frequency = 4.0
 @export var after_image_mesh_scene : PackedScene
 @export_range(1,100,1) var after_image_count = 4:
@@ -50,10 +54,15 @@ func _process(delta):
 
 #gets a texture from the target
 func get_texture()->Texture2D:
+	if the_sprite == null:
+		return 
+	
 	if the_sprite is AnimatedSprite2D:
 		return the_sprite.sprite_frames.get_frame_texture(the_sprite.animation,the_sprite.frame)
 	elif the_sprite is TextureButton:
-		return the_sprite.texture_normal
+		return the_sprite.texture_normal 
+	elif the_sprite is BtnHandDrawn:
+		return the_sprite.texture_rect.texture
 	return null
 func update_after_image():
 	var the_texture : Texture2D = get_texture()
@@ -69,6 +78,12 @@ func update_after_image():
 		if the_sprite is Node2D:
 			the_global_transform = the_sprite.global_transform 
 			the_mesh_instance.global_transform = the_global_transform 
+		elif the_sprite is BtnHandDrawn:
+			the_global_transform = the_sprite.get_global_transform ()
+			the_mesh_instance.global_transform = the_global_transform 
+			the_mesh_instance.scale = the_sprite.size/the_texture.get_size()
+			the_mesh_instance.scale.y*=1.5
+			the_mesh_instance.global_position = the_sprite.global_position+the_sprite.size/2
 		else:
 			the_mesh_instance.global_position = the_sprite.global_position+the_sprite.size/2
 
@@ -77,7 +92,7 @@ func update_after_image():
 		the_mesh_instance.material.set_shader_parameter("Start_Time", Time.get_ticks_usec()/1e+6)
 		the_mesh_instance.texture = the_texture
 		the_mesh.size *= after_scale
-		if the_sprite.flip_h:
+		if the_sprite is AnimatedSprite2D and the_sprite.flip_h:
 			the_mesh_instance.scale.x *= -1
 
 		var the_lifetime = after_image_count * 1.0/after_image_frequency

@@ -33,7 +33,7 @@ func on_anim_finished():
 	match animation:
 		"posses":
 			visible = false 
-			after_effect_node.the_sprite = target
+			after_effect_node.the_sprite = target 
 			#ensure that the possesion effect indicates focus
 			target.grab_focus()
 

@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjkvvlt2vndoq"]
+[gd_scene load_steps=5 format=3 uid="uid://bjkvvlt2vndoq"]
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_d3fo6"]
 [ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="1_uqhr0"]
+[ext_resource type="Script" path="res://assets/scripts/UI/objects/lblHandDrawn.gd" id="2_fjas6"]
 
-[node name="lblBtnBack" type="Control"]
-layout_mode = 3
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7nsn0"]
+
+[node name="handDrawnLabel" type="Button" node_paths=PackedStringArray("texture_rect", "label")]
+custom_minimum_size = Vector2(0, 100)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_d3fo6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7nsn0")
+flat = true
+script = ExtResource("2_fjas6")
+texture_rect = NodePath("TextureRect")
+label = NodePath("CenterContainer/Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

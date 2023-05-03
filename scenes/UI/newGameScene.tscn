@@ -54,4 +54,4 @@ size_flags_stretch_ratio = 0.2
 text = "this is a test button"
 
 [editable path="VBoxContainer2/Control2/CenteredTextBox"]
-[editable path="VBoxContainer2/Control2/CenteredTextBox/lblBtnBack"]
+[editable path="VBoxContainer2/Control2/CenteredTextBox/handDrawnLabel"]

@@ -84,7 +84,7 @@ script = ExtResource("1_k4ce4")
 
 [node name="LeniGarnish" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("after_effect_node")]
 visible = false
-z_index = 1
+z_index = 2
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_4dk7m")
 animation = &"posses"
