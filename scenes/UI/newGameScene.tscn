@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ul0g1bvpxw6d"]
+[gd_scene load_steps=6 format=3 uid="uid://ul0g1bvpxw6d"]
 
 [ext_resource type="PackedScene" uid="uid://dlo35ftubtrii" path="res://scenes/UI/centered_text_box.tscn" id="1_v64un"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_wlj1j"]
 [ext_resource type="Script" path="res://assets/scripts/UI/newGameUI.gd" id="2_koahu"]
+[ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="4_orob1"]
+[ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="4_u45er"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("btnStart", "txtGameName")]
 layout_mode = 3
@@ -11,9 +13,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_wlj1j")
 script = ExtResource("2_koahu")
-btnStart = NodePath("VBoxContainer2/Control/Button")
+btnStart = NodePath("VBoxContainer2/Control/handDrawnLabel")
 txtGameName = NodePath("VBoxContainer2/Control2/CenteredTextBox/CenteredTextBox")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
@@ -32,26 +36,29 @@ size_flags_vertical = 3
 [node name="CenteredTextBox" parent="VBoxContainer2/Control2" instance=ExtResource("1_v64un")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.5
-anchor_right = 0.75
-anchor_bottom = 0.75
+anchor_top = 0.564
+
+[node name="handDrawnLabel" parent="VBoxContainer2/Control2/CenteredTextBox" index="0"]
+default_texture = ExtResource("4_orob1")
+
+[node name="TextureRect" parent="VBoxContainer2/Control2/CenteredTextBox/handDrawnLabel" index="0"]
+texture = ExtResource("4_orob1")
+
+[node name="Label" parent="VBoxContainer2/Control2/CenteredTextBox/handDrawnLabel/CenterContainer" index="0"]
+text = "Game Name"
 
 [node name="Control" type="Control" parent="VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="VBoxContainer2/Control"]
+[node name="handDrawnLabel" parent="VBoxContainer2/Control" instance=ExtResource("4_u45er")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.25
-anchor_right = 0.75
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
-text = "this is a test button"
+anchor_bottom = 0.451
+
+[node name="Label" parent="VBoxContainer2/Control/handDrawnLabel/CenterContainer" index="0"]
+text = "Start Game!"
 
 [editable path="VBoxContainer2/Control2/CenteredTextBox"]
 [editable path="VBoxContainer2/Control2/CenteredTextBox/handDrawnLabel"]
+[editable path="VBoxContainer2/Control/handDrawnLabel"]

@@ -17,7 +17,7 @@ grow_vertical = 2
 [node name="handDrawnLabel" parent="." instance=ExtResource("5_ololw")]
 layout_mode = 1
 
-[node name="CenteredTextBox" type="TextEdit" parent="." node_paths=PackedStringArray("txtlbl", "textureRect")]
+[node name="CenteredTextBox" type="TextEdit" parent="." node_paths=PackedStringArray("txtlbl", "textureRect", "cursor_timer")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,7 +42,12 @@ placeholder_text = "Type Here"
 script = ExtResource("1_k6oqm")
 txtlbl = NodePath("../handDrawnLabel/CenterContainer/Label")
 textureRect = NodePath("../handDrawnLabel/TextureRect")
+cursor_timer = NodePath("../Curser Timer")
 focus_texture = ExtResource("4_ek10y")
 normal_texture = ExtResource("5_yu3cx")
+
+[node name="Curser Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
 
 [editable path="handDrawnLabel"]
