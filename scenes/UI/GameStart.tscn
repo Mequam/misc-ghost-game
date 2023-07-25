@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/backStackControl.gd" id="1_1gvup"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_g4o6m"]
-[ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://assets/ui/misc/leni_garnish.tscn" id="2_o0eyq"]
+[ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="2_o0eyq"]
 [ext_resource type="PackedScene" uid="uid://dtrrpcifoy0hk" path="res://scenes/UI/buttons/start_button.tscn" id="3_l3epg"]
 [ext_resource type="Texture2D" uid="uid://cq206pugf3j6n" path="res://assets/ui/buttons/btn_load_game/btnLoadGame0000.png" id="4_bl2b7"]
 [ext_resource type="Texture2D" uid="uid://bb1acrlcdqjru" path="res://assets/ui/buttons/new_game_button/btnNewGame0000.png" id="4_jpwgf"]

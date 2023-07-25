@@ -3,7 +3,9 @@
 [ext_resource type="Script" path="res://scenes/effects/AfterEffectTscn/AfterEffectNode.gd" id="1_q0pmo"]
 [ext_resource type="PackedScene" uid="uid://c5os6o1jg21ls" path="res://scenes/effects/AfterEffectTscn/after_image_mesh.tscn" id="2_uav7m"]
 
-[node name="After Image Mesh" type="Node2D" node_paths=PackedStringArray("the_sprite")]
+[node name="After Image Mesh" type="Node2D"]
 script = ExtResource("1_q0pmo")
-the_sprite = NodePath("")
+after_image_frequency = 50.0
 after_image_mesh_scene = ExtResource("2_uav7m")
+after_image_count = 12
+after_scale = Vector2(1.1, 1.1)

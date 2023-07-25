@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="4_orob1"]
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="4_u45er"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("btnStart", "txtGameName")]
+[node name="NewGameDialog" type="Control" node_paths=PackedStringArray("btnStart", "txtGameName")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

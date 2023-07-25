@@ -15,6 +15,8 @@ func reset_health()->void:
 
 #a reference to the lamp that we respawn at
 var respawn_point : RespawnLamp
+
+
 @export
 var ghost_after_effect : GhostAfterEffectNode
 
@@ -35,14 +37,12 @@ func grab_aggro():
 
 #called on the entity we exorcize when removing it
 func on_unposses(host)->void:
-	print("LENI IS FREEEEEEE")
 	self.state = EntityState.DEFAULT
 	grab_camera()
 	grab_aggro() #ensure that leni is targeted
 	super.on_unposses(host)
 
 func on_posses(host)->void:
-	print("LENI IS POSSESING!")
 	store_aggro(host) #ensure that we are the targeted entity
 	
 #default collision layer for Leni

@@ -13,6 +13,7 @@ func btn_start_pressed():
 	var gsr = GameSaveResource.new()
 	gsr.game_name = txtGameName.text 
 	gsr.save_game()
+	GameLoader.bootstrap(gsr)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

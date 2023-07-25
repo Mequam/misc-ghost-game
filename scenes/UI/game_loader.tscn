@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/LevelLoader.gd" id="1_4uavq"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_e2c5f"]
-[ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://assets/ui/misc/leni_garnish.tscn" id="2_dua60"]
+[ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="2_dua60"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omijd"]
 bg_color = Color(0.28, 0.1148, 0.1148, 1)
