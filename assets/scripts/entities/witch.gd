@@ -4,8 +4,9 @@ extends LRJEntity
 
 class_name Witch
 
-var collumn = load("res://scenes/hazards/WitchColumn.tscn")
-var witchProjectile = load("res://scenes/projectiles/witchProjectile.tscn")
+@export var collumn : PackedScene
+@export var witchProjectile : PackedScene
+
 
 
 func singal_move_and_collide(rel_vec : Vector2, 

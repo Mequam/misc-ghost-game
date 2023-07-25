@@ -3,7 +3,7 @@ extends Projectile
 class_name WitchProjectile
 
 # Called when the node enters the scene tree for the first time.
-var magic = load("res://scenes/animations/magicParticles.tscn")
+@export var magic : PackedScene 
 func main_ready():
 	var inst = magic.instantiate()
 	inst.global_position = global_position

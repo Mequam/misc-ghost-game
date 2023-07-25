@@ -3,7 +3,7 @@ extends Hazzard
 #and removes itself from the tree after one animation
 
 class_name WitchColumn
-var magic_particles = load("res://scenes/animations/magicParticles.tscn")
+@export var magic_particles : PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var mp = magic_particles.instantiate()

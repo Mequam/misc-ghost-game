@@ -20,9 +20,13 @@ func gen_col_layer()->int:
 #we do not collide with anything ourselfs
 func gen_col_mask()->int:
 	return 0
+
+
+
 #the ghost lamp saves when possesed
 func posses_by(entity):
-	GameLoader.game_data.save_game()
+	#TODO:
+	#GameLoader.save_game()
 	super.posses_by(entity)
 	collision_mask = gen_col_mask()
 	collision_layer = gen_col_layer()

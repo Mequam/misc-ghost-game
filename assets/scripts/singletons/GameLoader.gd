@@ -23,7 +23,9 @@ func clear_level()->void:
 	var old_lvl = get_level_node()
 	if old_lvl:
 		old_lvl.queue_free()
-
+	
+func save_game()->void:
+	print("todo: save game")
 #returns a list of saved games
 func list_game_saves():
 	pass
