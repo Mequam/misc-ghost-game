@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bvpbw3o3ud6bc"]
 
-[ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://da1lthymliys6" path="res://scenes/entities/Leni/Leni.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/entities/possesedElevator.tscn" id="2"]
 [ext_resource type="Script" path="res://assets/scripts/testZone.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://ctlmjr1gdguck" path="res://assets/images/back_tree.png" id="4"]

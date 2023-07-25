@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://de0o3d0tigk40"]
+
+[ext_resource type="Script" path="res://assets/scripts/UI/objects/VBoxGhostContainer.gd" id="1_t6iq4"]
+[ext_resource type="Texture2D" uid="uid://iii54nk8h4e5" path="res://assets/animations/ghost/color_ghost_posses/0088.png" id="2_jg120"]
+[ext_resource type="Texture2D" uid="uid://8sjqjlvbhc07" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0112.png" id="3_o5b4g"]
+[ext_resource type="Texture2D" uid="uid://d04cmog6odt8q" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0113.png" id="4_urnj7"]
+[ext_resource type="Texture2D" uid="uid://d10pbm4x5xkkq" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0114.png" id="5_kk0k4"]
+[ext_resource type="Texture2D" uid="uid://c8om7iix2wcrg" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0115.png" id="6_uq4sf"]
+[ext_resource type="Texture2D" uid="uid://d333b8fjtir1w" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0116.png" id="7_w3hrg"]
+[ext_resource type="Texture2D" uid="uid://dx4jnafnerql3" path="res://assets/animations/ghost/posses_collision/posses_col_color/posses_collision0117.png" id="8_drsvr"]
+[ext_resource type="Texture2D" uid="uid://cow68xklvlox5" path="res://assets/animations/ghost/zoom_color/0071.png" id="9_f7iia"]
+[ext_resource type="Texture2D" uid="uid://dtwxo4o3dyw1m" path="res://assets/animations/ghost/zoom_color/0072.png" id="10_3fvln"]
+[ext_resource type="Texture2D" uid="uid://6fsh2qo5feg7" path="res://assets/animations/ghost/zoom_color/0073.png" id="11_i2srq"]
+[ext_resource type="Texture2D" uid="uid://d36j3tuqewt8v" path="res://assets/animations/ghost/zoom_color/0074.png" id="12_ajaf1"]
+[ext_resource type="Texture2D" uid="uid://d24n8p807ger4" path="res://assets/animations/ghost/zoom_color/0075.png" id="13_b0dsl"]
+[ext_resource type="Texture2D" uid="uid://bt5uq53rr4y8t" path="res://assets/animations/ghost/zoom_color/0076.png" id="14_tq0nd"]
+[ext_resource type="Script" path="res://scenes/UI/LeniGarnish/LeniGarnish.gd" id="15_irbvv"]
+[ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://scenes/effects/AfterEffectTscn/AfterEffectNode.tscn" id="16_8qbne"]
+
+[sub_resource type="Theme" id="Theme_bsc5w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4dk7m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jg120")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o5b4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_urnj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kk0k4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uq4sf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w3hrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_drsvr")
+}],
+"loop": false,
+"name": &"posses",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_f7iia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3fvln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i2srq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ajaf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_b0dsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tq0nd")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[node name="VBoxGhostContainer" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_bsc5w")
+theme_override_constants/separation = 50
+alignment = 1
+script = ExtResource("1_t6iq4")
+
+[node name="LeniGarnish" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("after_effect_node")]
+visible = false
+z_index = 2
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_4dk7m")
+animation = &"posses"
+frame = 6
+frame_progress = 1.0
+script = ExtResource("15_irbvv")
+after_effect_node = NodePath("../After Image Mesh")
+noise_strength = 200.0
+
+[node name="After Image Mesh" parent="." instance=ExtResource("16_8qbne")]
+position = Vector2(0, -1)
+after_image_frequency = 10.0
+after_image_count = 20
+
+[connection signal="animation_finished" from="LeniGarnish" to="LeniGarnish" method="_on_animation_finished"]
