@@ -47,7 +47,7 @@ animations = [{
 "texture": ExtResource("2_j7dsd")
 }],
 "loop": true,
-"name": &"Fly",
+"name": &"fly",
 "speed": 10.0
 }, {
 "frames": [{
@@ -82,7 +82,7 @@ animations = [{
 "texture": ExtResource("11_oxhoa")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 12.0
 }, {
 "frames": [{
@@ -111,7 +111,7 @@ animations = [{
 "texture": ExtResource("18_hh78r")
 }],
 "loop": true,
-"name": &"Idle_Down",
+"name": &"idle_down",
 "speed": 12.0
 }, {
 "frames": [{
@@ -137,7 +137,7 @@ animations = [{
 "texture": ExtResource("1_23c7t")
 }],
 "loop": true,
-"name": &"Launch",
+"name": &"launch",
 "speed": 13.0
 }, {
 "frames": [{
@@ -172,6 +172,6 @@ animations = [{
 
 [node name="CiderSpiritSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_uvigh")
-animation = &"Idle"
-frame_progress = 0.653116
+animation = &"idle"
+frame_progress = 0.958969
 script = ExtResource("36_r35r1")

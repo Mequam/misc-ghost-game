@@ -6,7 +6,7 @@ class_name KinColObject
 
 #these two are self explanitory
 
-var speed : float = 50
+@export var speed : float = 50
 
 
 func singal_move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08,test : bool = false)->KinematicCollision2D:

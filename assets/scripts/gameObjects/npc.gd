@@ -16,8 +16,8 @@ func set_evil_possesion(val : EvilGhost)->void:
 		if evil_possesion:
 			eject_evil_ghost()
 		evil_possesion = val
-		$Sprite2D.material = possesed_material
-		$Sprite2D.material.set_shader_parameter("color",val.glow_color)
+		get_sprite2D().material = possesed_material
+		get_sprite2D().material.set_shader_parameter("color",val.glow_color)
 		if val.get_parent():
 			val.get_parent().remove_child(val)
 func get_evil_possesion()->EvilGhost:
@@ -30,7 +30,7 @@ func eject_evil_ghost():
 		evil_possesion = null
 		possesed_material.set_shader_parameter("color",Color(0,1,1))
 		if not possesed:
-			$Sprite2D.material = null
+			get_sprite2D().material = null
 
 #convinence functions for the AI of an NPC
 #these obviously wont be used everywhere, but they
@@ -60,9 +60,9 @@ func main_ready():
 	super.main_ready()
 func set_possesed(val : bool)->void:
 	if val:
-		$Sprite2D.material = possesed_material
+		get_sprite2D().material = possesed_material
 	else:
-		$Sprite2D.material = null
+		get_sprite2D().material = null
 	super.set_possesed(val)
 	
 	if val:

@@ -9,10 +9,9 @@ class_name LRJEntity #Left Right Jump Entity
 #how fast we fall to the ground
 var gravity : float = speed/2
 var run : bool = false #wether or not we are running
-var run_modifier : float = 4
+@export var run_modifier : float = 4
 
 func main_ready():
-	speed = 50
 	self.onground = false
 	super.main_ready()
 
@@ -41,7 +40,7 @@ func on_action_press(act : String)->void:
 			if self.onground:
 				self.velocity = Vector2(0,-(jr as JumpResource).get_initial_up_speed())
 				self.gravity = (jr as JumpResource).get_up_gravity()
-				$Sprite2D.custom_play("jump")
+				get_sprite2D().custom_play("jump")
 			
 	super.on_action_press(act)
 
@@ -58,15 +57,15 @@ func update_animation()->void:
 	if state != EntityState.DAMAGED:
 		var computed_vel : Vector2 = compute_velocity(velocity)
 		if computed_vel == Vector2(0,0):
-			$Sprite2D.custom_play("idle")
+			get_sprite2D().custom_play("idle")
 
-		elif computed_vel.y > 0 and $Sprite2D.animation != "fall":
-			$Sprite2D.custom_play("fall_start")
+		elif computed_vel.y > 0 and get_sprite2D().animation != "fall":
+			get_sprite2D().custom_play("fall_start")
 		elif self.onground and not pressed_inputs["JUMP"] and abs(computed_vel.x) > 0:
-			$Sprite2D.custom_play("walk_right")
+			get_sprite2D().custom_play("walk_right")
 		
-		if $Sprite2D.animation != "idle":
-			$Sprite2D.flip_h = computed_vel.x < 0
+		if get_sprite2D().animation != "idle":
+			get_sprite2D().flip_h = computed_vel.x < 0
 		
 	super.update_animation()
 

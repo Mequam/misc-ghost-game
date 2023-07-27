@@ -34,16 +34,16 @@ func update_animation()->void:
 			#we only change where we look when the player
 			#tells us to update, not when we release
 			if vel.x != 0:
-				$Sprite2D.flip_h = vel.x < 0
+				get_sprite2D().flip_h = vel.x < 0
 			if vel == Vector2(0,0):
-				$Sprite2D.custom_play("idle")
+				get_sprite2D().custom_play("idle")
 			elif abs(vel.y) < abs(vel.x)*2:
 				if running:
-					$Sprite2D.custom_play("zoom")
+					get_sprite2D().custom_play("zoom")
 				else:
-					$Sprite2D.custom_play("run")
+					get_sprite2D().custom_play("run")
 			elif vel.y < 0:
-				$Sprite2D.custom_play("up")
+				get_sprite2D().custom_play("up")
 			else:
-				$Sprite2D.custom_play("down")
+				get_sprite2D().custom_play("down")
 	super.update_animation()

@@ -5,7 +5,14 @@ class_name Entity
 #this is the generic entity script that all
 #collision game objects are inteanded to draw from
 
+@export var sprite : AnimatedSprite2D = null
+
 signal died
+
+func get_sprite2D()->AnimatedSprite2D:
+	if sprite != null: return sprite 
+	return $Sprite2D
+	
 
 #reference to the entity we are currently possesing
 var possesed_entity : Entity = null :
@@ -116,7 +123,7 @@ func set_state(val : int)->void:
 			saved_col_mask = collision_mask
 			collision_layer = 0
 			collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
-			$Sprite2D.custom_play("damage")
+			get_sprite2D().custom_play("damage")
 			if $modulate_timer:
 				modulate = Color.LIGHT_GRAY
 				$modulate_timer.start()
@@ -225,7 +232,7 @@ func posses_by(entity)->void:
 
 	#if the entity has an after effect, apply it to ourselfs
 	if entity.ghost_after_effect:
-		entity.ghost_after_effect.the_sprite = get_node("Sprite2D")
+		entity.ghost_after_effect.the_sprite = get_sprite2D()
 	if entity.has_method("on_posses"):
 		entity.on_posses(self)
 	#update the collision layer and mask of the self
@@ -255,7 +262,7 @@ func exorcize()->void:
 	if self.possesed:
 		if self.possesed_entity != null:
 			if self.possesed_entity.ghost_after_effect:
-				self.possesed_entity.ghost_after_effect.the_sprite = self.possesed_entity.get_node("Sprite2D")
+				self.possesed_entity.ghost_after_effect.the_sprite = self.possesed_entity.get_sprite2D()
 
 			get_parent().add_child(self.possesed_entity)	
 
