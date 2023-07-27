@@ -37,4 +37,4 @@ func _ready():
 	btnContainer.register_buttons()
 
 func on_save_selected(btn):
-	print(btn.label.text)
+	GameLoader.bootstrap_gn(btn.label.text)

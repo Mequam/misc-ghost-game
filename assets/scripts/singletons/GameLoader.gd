@@ -25,6 +25,10 @@ func clear_level()->void:
 	if old_lvl:
 		old_lvl.queue_free()
 
+
+func bootstrap_gn(game_name : String)->void:
+	bootstrap(GameSaveResource.load_game_gn(game_name))
+
 #sets up the allways loaded arcitecture into the game and prepares for future loads
 func bootstrap(gsr)->void:
 	game_data = gsr #store the game save resource
@@ -34,7 +38,6 @@ func bootstrap(gsr)->void:
 func load_save()->void:
 	#load the level into the game
 	var scn = self.game_data.get_packed_scene()
-	print(scn)
 	var lvl = load_level(scn,self,[])
 	#instance leni
 
@@ -46,7 +49,6 @@ func load_save()->void:
 
 	leni.respawn_point = lamp 
 	leni.ghost_after_effect = get_level_container().get_node("AfterImageMesh")
-	print(leni.ghost_after_effect)
 
 	lvl.add_child(leni) #add leni as a child of the level
 	lamp.posses_by(leni) #ensure that we are possesing the lamp

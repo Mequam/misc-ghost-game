@@ -43,7 +43,7 @@ func get_save_path()->String:
 	return GameSaveResource.get_save_path_gn(game_name)
 #returns the path that we would save this game at given a game_name
 static func get_save_path_gn(gameName : String)->String:
-	return get_save_folder_path_gn(gameName) + "/save_" + str(gameName) + ".res" 
+	return get_save_folder_path_gn(gameName) + "/save_" + str(gameName) + ".tres" 
 
 func ensure_save_dir()->void:
 	return GameSaveResource.ensure_save_dir_gn(game_name)

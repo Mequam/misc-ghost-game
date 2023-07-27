@@ -1,4 +1,6 @@
-extends AnimatedSprite2D
+extends CustomAnimationChain 
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +16,7 @@ func custom_play(anim : StringName = "idle",val : bool=false)->void:
 			speed_scale = 1.5
 		_:
 			speed_scale = 2
-	play(anim,1,val)
+	super.custom_play(anim,val)
 
 func _on_witchSprite_animation_finished():
 	match animation:

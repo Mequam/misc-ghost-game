@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/possesedElevator.tscn" id="2"]
 [ext_resource type="Script" path="res://assets/scripts/testZone.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://ctlmjr1gdguck" path="res://assets/images/back_tree.png" id="4"]
-[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch/witch.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://conc8ed4pvlcv" path="res://assets/images/apple_tree.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://ca7ii48ege7kj" path="res://assets/images/moon.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://e5ci3efoj3ln" path="res://assets/images/apple_pile.png" id="8"]
