@@ -39,7 +39,6 @@ func custom_play(anim : StringName = "",backwords : bool = false)->void:
 			speed_scale = 1.5
 			scale = initial_scale
 	
-	print("playing " + anim + " " + str(speed_scale))
 	play(anim,1,backwords)
 
 func set_up(val : bool)->void:
@@ -74,7 +73,6 @@ func _on_frame_changed():
 	ghost_run_counter += 1
 
 func _on_animation_finished():
-	print("hello from sprite2d animation finished")
 	match animation:
 		"posses_launch":
 			custom_play("posses")

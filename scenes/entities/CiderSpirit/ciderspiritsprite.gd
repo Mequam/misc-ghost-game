@@ -4,6 +4,12 @@ extends CustomAnimationChain
 @export var transform_animator : AnimationPlayer
 func _ready():
 	transform_animator.animation_finished.connect(on_transform_anim_finished)
+	animation_finished.connect(on_anim_finished)
+func on_anim_finished():
+	match animation:
+		"launch":
+			custom_play("fly")
+
 func on_transform_anim_finished(anim)->void:
 	match anim:
 		"walk_right":

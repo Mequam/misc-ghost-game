@@ -1,20 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=9 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://dortu7m7hqkvb" path="res://scenes/entities/GhostLight/ghostLightSprite.tscn" id="2_g2paq"]
+[ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="2_yg6ni"]
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://scenes/effects/AfterEffectTscn/AfterEffectNode.tscn" id="3_8p742"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
 [ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/CiderSpirit/ciderspirit.tscn" id="8_kyc7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
-size = Vector2(1052, 20)
+size = Vector2(3110, 40)
 
 [node name="LeniTest" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 419)
 script = ExtResource("1_skwwk")
 ai_timeout = 0.25
 cam_ref = NodePath("mainCam")
+
+[node name="DebugTexture" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(491, -525)
+texture = ExtResource("2_yg6ni")
+
+[node name="DebugTexture2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1519, -523)
+texture = ExtResource("2_yg6ni")
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_g2paq")]
 position = Vector2(458, -109)
@@ -25,7 +36,7 @@ scale = Vector2(0.5, 0.5)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(516, 0)
+position = Vector2(587, 10)
 shape = SubResource("RectangleShape2D_nk62p")
 
 [node name="mainCam" parent="." instance=ExtResource("5_pwvrf")]
@@ -36,9 +47,9 @@ position = Vector2(159, -142)
 scale = Vector2(0.5, 0.5)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -10.0
+offset_left = -970.0
 offset_top = -9.0
-offset_right = 1041.0
+offset_right = 2141.0
 offset_bottom = 31.0
 color = Color(0.352941, 0.380392, 0.321569, 1)
 

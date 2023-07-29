@@ -1,7 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://byekeag2ch0em"]
+[gd_scene load_steps=33 format=3 uid="uid://byekeag2ch0em"]
 
 [ext_resource type="Texture2D" uid="uid://cj6qhmswtg3tg" path="res://assets/animations/cider spirit/0002.png" id="1_13c3b"]
-[ext_resource type="Texture2D" uid="uid://c6exd52hj6o22" path="res://assets/animations/cider spirit/0001.png" id="1_23c7t"]
 [ext_resource type="Texture2D" uid="uid://yw5xsmwfmmdy" path="res://assets/animations/cider spirit/launch/launch10026.png" id="1_puy01"]
 [ext_resource type="Texture2D" uid="uid://dg3cj3uva2ryy" path="res://assets/animations/cider spirit/launch/launch10027.png" id="2_j7dsd"]
 [ext_resource type="Texture2D" uid="uid://ho1kpylkh0dt" path="res://assets/animations/cider spirit/0003.png" id="2_psrry"]
@@ -18,13 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://ba08dtdway5o8" path="res://assets/animations/cider spirit/0019.png" id="12_jvbha"]
 [ext_resource type="Texture2D" uid="uid://dmftkny0n0kjc" path="res://assets/animations/cider spirit/0013.png" id="12_m6go8"]
 [ext_resource type="Texture2D" uid="uid://bt8dqgm6amorg" path="res://assets/animations/cider spirit/0020.png" id="13_lw320"]
-[ext_resource type="Texture2D" uid="uid://p6pb35drirkv" path="res://assets/animations/cider spirit/0014.png" id="13_wgbx6"]
 [ext_resource type="Texture2D" uid="uid://b6jnx88ollehp" path="res://assets/animations/cider spirit/0021.png" id="14_fugfe"]
-[ext_resource type="Texture2D" uid="uid://ba6waaaajf5qf" path="res://assets/animations/cider spirit/0015.png" id="14_ifr8o"]
 [ext_resource type="Texture2D" uid="uid://dylumon400u2i" path="res://assets/animations/cider spirit/0022.png" id="15_irm7t"]
-[ext_resource type="Texture2D" uid="uid://v38fo13nel1w" path="res://assets/animations/cider spirit/0016.png" id="15_qn1i3"]
 [ext_resource type="Texture2D" uid="uid://crcer0b545ip1" path="res://assets/animations/cider spirit/0023.png" id="16_4f6my"]
-[ext_resource type="Texture2D" uid="uid://beym8ib0pok5a" path="res://assets/animations/cider spirit/0017.png" id="16_4lfh2"]
 [ext_resource type="Texture2D" uid="uid://bch8vrp2fgbjf" path="res://assets/animations/cider spirit/0024.png" id="17_78lsf"]
 [ext_resource type="Texture2D" uid="uid://ijnasgq5nvr3" path="res://assets/animations/cider spirit/0025.png" id="18_hh78r"]
 [ext_resource type="Texture2D" uid="uid://xheexd60qem5" path="res://assets/animations/cider spirit/launch/launch10028.png" id="28_4hx2d"]
@@ -120,25 +115,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("12_m6go8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_wgbx6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_ifr8o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_qn1i3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_4lfh2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_23c7t")
 }],
-"loop": true,
+"loop": false,
 "name": &"launch",
-"speed": 13.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,

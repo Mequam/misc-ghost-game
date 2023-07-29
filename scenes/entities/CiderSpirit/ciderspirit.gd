@@ -14,6 +14,14 @@ class_name CiderSpirit
 #controls how many different segments of the parabola that we draw
 @export var parabala_segments : int = 4
 
+#used when computing the time it takes us to travel a given distance via jump parabola
+@export var jump_speed : float = 10
+
+
+enum CiderSpiritState {
+	PARABALA = Entity.ENTITY_STATE_COUNT,
+	LAUNCHED
+}
 
 var jump_time : float = 0
 var jump_distance : float = 0
@@ -23,50 +31,84 @@ var do_jump_parabola : bool = false  :
 	set(val):
 		do_jump_parabola = val 
 		jump_time = 0
+		self.state = CiderSpiritState.PARABALA
+		queue_redraw()
 	get:
 		return do_jump_parabola
 
+#when we would normaly jump, we prepare to
+#parabala leep
 func jump()->void:
-	print("calling the jump function")
-	self.do_jump_parabola = true
+	self.do_jump_parabola = true 
 
+#this function launches us along the trajectory indicated by the parabala that we drew
+func follow_trajectory()->void:
+	if self.do_jump_parabola:
+		self.do_jump_parabola = false
+		var total_jump_time : float = jump_distance / jump_speed
+		self.gravity = jump_height*4/(total_jump_time**2)/(2*speed.y)
+		self.velocity.y = -4*jump_height/abs(total_jump_time)/(2*speed.y)
+		self.velocity.x = jump_speed /(2*speed.x)
+
+		if jump_distance < 0:
+			self.velocity.x *= -1
+		
+		#indicate that we are FLYING
+		self.state = CiderSpiritState.LAUNCHED
 func on_action_released(act : String)->void:
-	if do_jump_parabola:
-		super.jump()
-	super.on_action_released(act)
+	#super.on_action_released(act)
+	if do_jump_parabola and act == "JUMP":
+		#prepare to follow trajectory
+		get_sprite2D().custom_play("launch")
+
 
 func on_transform_animation_finished(anim):
 	if anim == "walk_right":
 		hop()
+		
+
+func on_col(col : KinematicCollision2D)->void:
+	if self.state == CiderSpiritState.LAUNCHED:
+		self.state = EntityState.DEFAULT 
+
+		var normal = col.get_normal()
+		if 5*abs(normal.y) > abs(normal.x): #we hit the ground
+			self.velocity.x = 0 #we hit the ground
+	super.on_col(col)
+func on_anim_finished():
+	match get_sprite2D().animation:
+		"fly":
+			self.follow_trajectory()
 
 func main_ready()->void:
+	get_sprite2D().animation_finished.connect(self.on_anim_finished)
 	transform_animation.animation_finished.connect(self.on_transform_animation_finished)
 	super.main_ready()
+
 var hop_dir : String = ""
 func hop()->void:
 	match hop_dir:
 		"LEFT":
 			singal_move_and_collide(Vector2(-hop_distance,0))
+			get_sprite2D().flip_h = true
 		"RIGHT":
 			singal_move_and_collide(Vector2(hop_distance,0))
+			get_sprite2D().flip_h = false
 			
-#func draw_parabala_from_parent()->void:
-#	var xfinal = 2*position[0] #the final position of the parabala
-#	var last_point : float = 0
-#	for i in range(0,parabala_segments):
-#		#half our required computation by caching each point as apposed to recomputing
-#		var current_point = float(i)*xfinal/float(parabala_segments)
-#		draw_line_at_parent(Vector2(last_point,jump_parabala_path(last_point)),Vector2(current_point,jump_parabala_path(current_point)),Color.RED)
-#		last_point = current_point
 func sigmoid(x)->float:
 	var ex = exp(x)
 	return ex / (ex+1)
 func main_process(delta):
 	if do_jump_parabola:
 		jump_time += self.parabala_target_speed*delta 
-		jump_distance = cos(jump_time)*max_jump.x
+		jump_distance = sin(-jump_time if get_sprite2D().flip_h else jump_time)*max_jump.x
 		jump_height = (sigmoid(jump_distance*jump_distance/90000)-0.5)**2*max_jump.y*4
 		self.queue_redraw()
+	if self.state == CiderSpiritState.LAUNCHED:
+		var sprite_parent = get_sprite2D().get_parent()
+		print(self.velocity.angle())
+		print(sprite_parent.rotation)
+		sprite_parent.look_at(sprite_parent.global_position + self.velocity)
 	super.main_process(delta)
 		
 		
@@ -97,7 +139,6 @@ func draw_parabala(
 		offset.x += distance
 		distance = -distance
 	var seg_length = distance / segments 
-	print(seg_length)
 	for i in range(segments):
 		if  abs(fmod(i*seg_length-window,w_size))  < w_size/5:
 			var current_point : Vector2 = Vector2(i*seg_length,get_parabola_height(i,distance,height)) + offset
@@ -113,11 +154,16 @@ func draw_parabala(
 				)
 
 func _draw():
-	draw_parabala(
-			jump_height,
-			jump_distance,
-			parabola_position.position,
-			abs(floor(jump_distance)),
-			abs(cos(jump_time))*jump_distance,
-			10,
+	if do_jump_parabola:
+		draw_parabala(
+				jump_height,
+				jump_distance,
+				parabola_position.position,
+				abs(floor(jump_distance)),
+				abs(sin(jump_time))*jump_distance,
+				10,
 			)
+func update_animation()->void:
+	if self.state != CiderSpiritState.PARABALA:
+		super.update_animation()
+	pass

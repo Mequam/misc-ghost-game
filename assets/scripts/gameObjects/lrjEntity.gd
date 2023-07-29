@@ -10,6 +10,7 @@ class_name LRJEntity #Left Right Jump Entity
 var gravity : float = speed.y/2
 var run : bool = false #wether or not we are running
 @export var run_modifier : float = 4
+@export var do_fast_fall : bool = true
 
 func main_ready():
 	self.onground = false
@@ -73,9 +74,8 @@ func update_animation()->void:
 
 #we fall when we are in the air
 func main_process(delta):
-	if not self.onground and not state == EntityState.BRICK:
-		if abs(velocity.y) < 0.1: #if we reach peak height, fall down
-			print("changing to down gravity!")
+	if not self.onground and not state == EntityState.BRICK: 
+		if do_fast_fall and abs(velocity.y) < 0.1: #if we reach peak height, fall down
 			gravity = jr.get_down_gravity()
 		velocity.y += gravity*delta
 		update_animation()

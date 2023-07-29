@@ -627,7 +627,7 @@ offset_right = 1189.0
 offset_bottom = 943.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.701961, 1, 0, 1)
+color = Color(0.4752, 0.66, 0.66, 1)
 
 [node name="LevelContainer" type="Node2D" parent="."]
 
