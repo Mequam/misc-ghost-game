@@ -9,8 +9,6 @@ func draw_line_at_parent(p1 : Vector2, p2 : Vector2, color : Color):
 #that starts with the left leg checked the parent and x is distance
 #from the parent
 func jump_parabala_path(x)->float:
-	var posy = position[1]
-	var posx = position[0]
 	return (-position[1]/(position[0]*position[0]))*((x-position[0])*(x-position[0]))+position[1]
 	#return (-posy/(posx*posx)) * ((x - posx)*(x - posx)+posy)
 

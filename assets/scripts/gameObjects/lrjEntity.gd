@@ -7,7 +7,7 @@ class_name LRJEntity #Left Right Jump Entity
 @export var jr : JumpResource
 
 #how fast we fall to the ground
-var gravity : float = speed/2
+var gravity : float = speed.y/2
 var run : bool = false #wether or not we are running
 @export var run_modifier : float = 4
 
@@ -34,14 +34,16 @@ func on_action_released(act : String)->void:
 		gravity = jr.get_down_gravity()
 	super.on_action_released(act)
 
+func jump()->void:
+	if self.onground:
+		self.velocity = Vector2(0,-(jr as JumpResource).get_initial_up_speed())
+		self.gravity = (jr as JumpResource).get_up_gravity()
+		get_sprite2D().custom_play("jump")
+
 func on_action_press(act : String)->void:
 	match act:
 		"JUMP":
-			if self.onground:
-				self.velocity = Vector2(0,-(jr as JumpResource).get_initial_up_speed())
-				self.gravity = (jr as JumpResource).get_up_gravity()
-				get_sprite2D().custom_play("jump")
-			
+			jump()
 	super.on_action_press(act)
 
 func compute_velocity(velocity : Vector2)->Vector2:

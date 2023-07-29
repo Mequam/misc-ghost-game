@@ -41,7 +41,7 @@ func set_possesed(val : bool)->void:
 	possesed = false
 func main_ready():
 	print("ghost main ready")
-	speed = 300
+	speed = 300*Vector2.ONE
 	add_to_group("EvilGhost")
 	self.possesed = false
 	super.main_ready()

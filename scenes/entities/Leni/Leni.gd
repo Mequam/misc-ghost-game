@@ -61,7 +61,7 @@ func main_ready():
 	#the ghost allways recives player input
 	#unless parralized, so it is "possesed"
 	possesed = true
-	speed = 200
+	speed = 200*Vector2.ONE
 	print("grabing camera")
 	grab_camera()
 	super.main_ready()

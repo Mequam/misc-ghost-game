@@ -16,4 +16,6 @@ func custom_play(anim_name : StringName = "idle", backwoards : bool = false)->vo
 		_:
 			transform_animator.stop()
 			transform_animator.play("RESET")
+	if anim_name == "walk_right":
+		print('playing walk right cider sprite')
 	super.custom_play(anim_name,backwoards)

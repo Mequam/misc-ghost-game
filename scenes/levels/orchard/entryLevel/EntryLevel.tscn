@@ -40,7 +40,7 @@ offset_left = -10.0
 offset_top = -9.0
 offset_right = 1041.0
 offset_bottom = 31.0
-color = Color(0.19, 0.38, 0, 1)
+color = Color(0.352941, 0.380392, 0.321569, 1)
 
 [node name="CiderSpirit" parent="." instance=ExtResource("8_kyc7k")]
-position = Vector2(250, -11)
+position = Vector2(249, -25)

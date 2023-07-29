@@ -8,7 +8,7 @@ func main_ready():
 	var inst = magic.instantiate()
 	inst.global_position = global_position
 	get_parent().add_child(inst)
-	speed = 100
+	speed = 100*Vector2.ONE
 	$AnimationPlayer.play("scale_up")
 	$witchProjSprite.play("default")
 	
