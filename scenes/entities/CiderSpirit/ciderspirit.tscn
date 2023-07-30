@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://01fi2eykheye"]
+[gd_scene load_steps=11 format=3 uid="uid://01fi2eykheye"]
 
 [ext_resource type="PackedScene" uid="uid://byekeag2ch0em" path="res://scenes/entities/CiderSpirit/ciderspiritsprite.tscn" id="1_475h8"]
 [ext_resource type="Script" path="res://scenes/entities/CiderSpirit/ciderspirit.gd" id="1_bdf4i"]
 [ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="2_7o5to"]
+[ext_resource type="PackedScene" uid="uid://bkfoptt80pgom" path="res://scenes/entities/CiderSpirit/mugFollower/follwer_mug.tscn" id="2_rsnis"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="4_pd0ci"]
 
 [sub_resource type="Resource" id="Resource_475e5"]
@@ -77,12 +78,17 @@ _data = {
 }
 
 [node name="CiderSpirit" type="CharacterBody2D" node_paths=PackedStringArray("transform_animation", "parabola_position", "sprite")]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_bdf4i")
+combination_threshold = 50.0
 max_jump = Vector2(600, 300)
 transform_animation = NodePath("AnimationPlayer")
 parabola_position = NodePath("parabola_position")
 parabala_target_speed = 1.0
 jump_speed = 800.0
+follower_mug_ps = ExtResource("2_rsnis")
 jr = SubResource("Resource_475e5")
 run_modifier = 1.0
 do_fast_fall = false
@@ -94,8 +100,9 @@ speed = Vector2(0.1, 1)
 [node name="Sprite2D" parent="bone" node_paths=PackedStringArray("transform_animator") instance=ExtResource("1_475h8")]
 position = Vector2(5, -51)
 scale = Vector2(0.21975, 0.21975)
-animation = &"fly"
-frame_progress = 0.0
+animation = &"launch"
+frame = 1
+frame_progress = 1.0
 transform_animator = NodePath("../../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

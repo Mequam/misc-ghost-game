@@ -3,6 +3,7 @@ extends LRJEntity
 class_name CiderSpirit
 
 
+@export var combination_threshold : float = 0.5
 @export var hop_distance : float = 10
 @export var max_jump : Vector2 = Vector2(40,30)
 
@@ -17,6 +18,9 @@ class_name CiderSpirit
 #used when computing the time it takes us to travel a given distance via jump parabola
 @export var jump_speed : float = 10
 
+
+@export var follower_mug_ps : PackedScene 
+var follower_mug : FollowerMug
 
 enum CiderSpiritState {
 	PARABALA = Entity.ENTITY_STATE_COUNT,
@@ -38,8 +42,13 @@ var do_jump_parabola : bool = false  :
 
 #when we would normaly jump, we prepare to
 #parabala leep
+var wants_to_combine = false
 func jump()->void:
-	self.do_jump_parabola = true 
+	if self.state != CiderSpiritState.LAUNCHED:
+		self.do_jump_parabola = true 
+	else:
+		wants_to_combine = true 
+		summon_mug()
 
 #this function launches us along the trajectory indicated by the parabala that we drew
 func follow_trajectory()->void:
@@ -52,14 +61,20 @@ func follow_trajectory()->void:
 
 		if jump_distance < 0:
 			self.velocity.x *= -1
+
 		
 		#indicate that we are FLYING
 		self.state = CiderSpiritState.LAUNCHED
+
+		follower_mug.global_position = global_position + Vector2(0,-5)
+		follower_mug.visible = true
 func on_action_released(act : String)->void:
 	#super.on_action_released(act)
 	if do_jump_parabola and act == "JUMP":
 		#prepare to follow trajectory
 		get_sprite2D().custom_play("launch")
+	if self.state == CiderSpiritState.LAUNCHED and act == "JUMP":
+		wants_to_combine = false
 
 
 func on_transform_animation_finished(anim):
@@ -70,6 +85,8 @@ func on_transform_animation_finished(anim):
 func on_col(col : KinematicCollision2D)->void:
 	if self.state == CiderSpiritState.LAUNCHED:
 		self.state = EntityState.DEFAULT 
+		#zero out the rotation from jumping
+		get_sprite2D().rotation = 0
 
 		var normal = col.get_normal()
 		if 5*abs(normal.y) > abs(normal.x): #we hit the ground
@@ -80,10 +97,45 @@ func on_anim_finished():
 		"fly":
 			self.follow_trajectory()
 
+
+func hide_follower_mug()->void:
+	follower_mug.freeze = true
+	follower_mug.visible = false
+	follower_mug.collision_mask = 0
+	follower_mug.global_position = global_position + Vector2(0,-20)
+
+func summon_mug()->void:
+	if not follower_mug.freeze: return 
+	follower_mug.collision_layer = collision_layer 
+	follower_mug.collision_mask = collision_mask
+	follower_mug.linear_velocity = (self.global_position-follower_mug.global_position).normalized()*follower_mug.initial_speed
+	follower_mug.freeze = false
+
 func main_ready()->void:
 	get_sprite2D().animation_finished.connect(self.on_anim_finished)
 	transform_animation.animation_finished.connect(self.on_transform_animation_finished)
 	super.main_ready()
+	follower_mug = self.follower_mug_ps.instantiate()
+	follower_mug.ciderSpirit = self
+	await get_tree().physics_frame 
+	sync_mug_collision()
+	add_sibling(follower_mug)
+	hide_follower_mug()
+	print(follower_mug)
+
+#ensures that the follower mug has the proper collision layers
+func sync_mug_collision()->void:
+	follower_mug.collision_layer = self.collision_layer 
+	follower_mug.collision_mask  = self.collision_mask
+
+
+#ensure that we snyc the collision of the mug when leni posseses in and out
+func posses_by(other):
+	super.posses_by(other)
+	sync_mug_collision()
+func exorcize()->void:
+	super.exorcize() 
+	sync_mug_collision()
 
 var hop_dir : String = ""
 func hop()->void:
@@ -98,17 +150,23 @@ func hop()->void:
 func sigmoid(x)->float:
 	var ex = exp(x)
 	return ex / (ex+1)
+
 func main_process(delta):
+	print(wants_to_combine)
+
+	if wants_to_combine and follower_mug.position.distance_squared_to(position) < combination_threshold**2:
+		hide_follower_mug()
+	
 	if do_jump_parabola:
 		jump_time += self.parabala_target_speed*delta 
 		jump_distance = sin(-jump_time if get_sprite2D().flip_h else jump_time)*max_jump.x
 		jump_height = (sigmoid(jump_distance*jump_distance/90000)-0.5)**2*max_jump.y*4
 		self.queue_redraw()
 	if self.state == CiderSpiritState.LAUNCHED:
-		var sprite_parent = get_sprite2D().get_parent()
-		print(self.velocity.angle())
-		print(sprite_parent.rotation)
-		sprite_parent.look_at(sprite_parent.global_position + self.velocity)
+			
+		get_sprite2D().rotation = atan2(self.velocity.y,
+											self.velocity.x*self.speed.x) + (PI if get_sprite2D().flip_h else 0.0)
+		#get_sprite2D().look_at(Vector2(0,
 	super.main_process(delta)
 		
 		

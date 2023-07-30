@@ -84,6 +84,7 @@ func get_health()->int:
 func die():
 	emit_signal("die")
 	queue_free()
+
 #called when we take damage, inteanded to be overloaded
 func take_damage(dmg : int = 1, dmg_src = null)->void:
 	self.health -= dmg

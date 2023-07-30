@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=10 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://dortu7m7hqkvb" path="res://scenes/entities/GhostLight/ghostLightSprite.tscn" id="2_g2paq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://scenes/effects/AfterEffectTscn/AfterEffectNode.tscn" id="3_8p742"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
+[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch/witch.tscn" id="8_0f4ps"]
 [ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/CiderSpirit/ciderspirit.tscn" id="8_kyc7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
@@ -55,3 +56,6 @@ color = Color(0.352941, 0.380392, 0.321569, 1)
 
 [node name="CiderSpirit" parent="." instance=ExtResource("8_kyc7k")]
 position = Vector2(249, -25)
+
+[node name="witch" parent="." instance=ExtResource("8_0f4ps")]
+position = Vector2(1772, -37)
