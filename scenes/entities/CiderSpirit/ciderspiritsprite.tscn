@@ -145,13 +145,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("35_rvd5s")
 }],
-"loop": true,
+"loop": false,
 "name": &"splash",
 "speed": 13.0
 }]
 
 [node name="CiderSpiritSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_uvigh")
-animation = &"idle"
-frame_progress = 0.958969
+animation = &"splash"
 script = ExtResource("36_r35r1")

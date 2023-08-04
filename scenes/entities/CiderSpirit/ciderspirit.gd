@@ -24,7 +24,8 @@ var follower_mug : FollowerMug
 
 enum CiderSpiritState {
 	PARABALA = Entity.ENTITY_STATE_COUNT,
-	LAUNCHED
+	LAUNCHED,
+	SPLASHED
 }
 
 var jump_time : float = 0
@@ -44,10 +45,9 @@ var do_jump_parabola : bool = false  :
 #parabala leep
 var wants_to_combine = false
 func jump()->void:
-	if self.state != CiderSpiritState.LAUNCHED:
+	if not (self.state == CiderSpiritState.LAUNCHED or self.state == CiderSpiritState.SPLASHED):
 		self.do_jump_parabola = true 
 	else:
-		wants_to_combine = true 
 		summon_mug()
 
 #this function launches us along the trajectory indicated by the parabala that we drew
@@ -67,13 +67,15 @@ func follow_trajectory()->void:
 		self.state = CiderSpiritState.LAUNCHED
 
 		follower_mug.global_position = global_position + Vector2(0,-5)
+		if follower_mug:
+			follower_mug.rotation = self.get_sprite2D().rotation
 		follower_mug.visible = true
 func on_action_released(act : String)->void:
 	#super.on_action_released(act)
 	if do_jump_parabola and act == "JUMP":
 		#prepare to follow trajectory
 		get_sprite2D().custom_play("launch")
-	if self.state == CiderSpiritState.LAUNCHED and act == "JUMP":
+	if (self.state == CiderSpiritState.LAUNCHED or self.state == CiderSpiritState.SPLASHED) and act == "JUMP":
 		wants_to_combine = false
 
 
@@ -84,14 +86,15 @@ func on_transform_animation_finished(anim):
 
 func on_col(col : KinematicCollision2D)->void:
 	if self.state == CiderSpiritState.LAUNCHED:
-		self.state = EntityState.DEFAULT 
-		#zero out the rotation from jumping
-		get_sprite2D().rotation = 0
-
+		self.state = CiderSpiritState.SPLASHED 
 		var normal = col.get_normal()
+		self.get_sprite2D().rotation = normal.angle() + (PI if self.velocity.x > 0 else 0)
+
 		if 5*abs(normal.y) > abs(normal.x): #we hit the ground
 			self.velocity.x = 0 #we hit the ground
+			update_animation()
 	super.on_col(col)
+
 func on_anim_finished():
 	match get_sprite2D().animation:
 		"fly":
@@ -104,12 +107,24 @@ func hide_follower_mug()->void:
 	follower_mug.collision_mask = 0
 	follower_mug.global_position = global_position + Vector2(0,-20)
 
+	wants_to_combine = false
+	self.state = EntityState.DEFAULT 
+	self.velocity = Vector2(0,0)
+	self.update_animation()
+func set_state(val)->void:
+	if val == EntityState.DEFAULT:
+		#reset the sprite rotation when we default our state
+		self.get_sprite2D().rotation = 0
+	super.set_state(val)
 func summon_mug()->void:
+	wants_to_combine = true 
 	if not follower_mug.freeze: return 
 	follower_mug.collision_layer = collision_layer 
 	follower_mug.collision_mask = collision_mask
-	follower_mug.linear_velocity = (self.global_position-follower_mug.global_position).normalized()*follower_mug.initial_speed
-	follower_mug.freeze = false
+	follower_mug.linear_velocity = (self.global_position-follower_mug.global_position).normalized()*follower_mug.initial_speed 
+	var old_position = follower_mug.global_position
+	follower_mug.freeze = false 
+	follower_mug.global_position = old_position
 
 func main_ready()->void:
 	get_sprite2D().animation_finished.connect(self.on_anim_finished)
@@ -152,8 +167,6 @@ func sigmoid(x)->float:
 	return ex / (ex+1)
 
 func main_process(delta):
-	print(wants_to_combine)
-
 	if wants_to_combine and follower_mug.position.distance_squared_to(position) < combination_threshold**2:
 		hide_follower_mug()
 	
@@ -222,6 +235,7 @@ func _draw():
 				10,
 			)
 func update_animation()->void:
-	if self.state != CiderSpiritState.PARABALA:
+	if self.state == CiderSpiritState.SPLASHED:
+		self.get_sprite2D().play("splash")
+	elif self.state != CiderSpiritState.PARABALA:
 		super.update_animation()
-	pass
