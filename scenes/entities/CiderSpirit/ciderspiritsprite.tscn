@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://byekeag2ch0em"]
+[gd_scene load_steps=37 format=3 uid="uid://byekeag2ch0em"]
 
 [ext_resource type="Texture2D" uid="uid://cj6qhmswtg3tg" path="res://assets/animations/cider spirit/0002.png" id="1_13c3b"]
 [ext_resource type="Texture2D" uid="uid://yw5xsmwfmmdy" path="res://assets/animations/cider spirit/launch/launch10026.png" id="1_puy01"]
@@ -22,6 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://crcer0b545ip1" path="res://assets/animations/cider spirit/0023.png" id="16_4f6my"]
 [ext_resource type="Texture2D" uid="uid://bch8vrp2fgbjf" path="res://assets/animations/cider spirit/0024.png" id="17_78lsf"]
 [ext_resource type="Texture2D" uid="uid://ijnasgq5nvr3" path="res://assets/animations/cider spirit/0025.png" id="18_hh78r"]
+[ext_resource type="Texture2D" uid="uid://dqi5fx0bkp3xx" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0026.png" id="23_7fsk7"]
+[ext_resource type="Texture2D" uid="uid://dub2obsb5nywa" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0027.png" id="24_o5fd0"]
+[ext_resource type="Texture2D" uid="uid://bgm5lwb4dsbjy" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0028.png" id="25_w1w7h"]
+[ext_resource type="Texture2D" uid="uid://dky6xyof3trwd" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0029.png" id="26_eo684"]
 [ext_resource type="Texture2D" uid="uid://xheexd60qem5" path="res://assets/animations/cider spirit/launch/launch10028.png" id="28_4hx2d"]
 [ext_resource type="Texture2D" uid="uid://dsyfaywusrqc3" path="res://assets/animations/cider spirit/launch/launch10029.png" id="29_yx3kf"]
 [ext_resource type="Texture2D" uid="uid://dvcaoinohsber" path="res://assets/animations/cider spirit/launch/launch10030.png" id="30_ghcri"]
@@ -118,7 +122,24 @@ animations = [{
 }],
 "loop": false,
 "name": &"launch",
-"speed": 30.0
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_7fsk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_o5fd0")
+}, {
+"duration": 1.2,
+"texture": ExtResource("25_w1w7h")
+}, {
+"duration": 1.3,
+"texture": ExtResource("26_eo684")
+}],
+"loop": false,
+"name": &"launch_down",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -152,5 +173,7 @@ animations = [{
 
 [node name="CiderSpiritSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_uvigh")
-animation = &"splash"
+animation = &"launch_down"
+frame = 3
+frame_progress = 1.0
 script = ExtResource("36_r35r1")

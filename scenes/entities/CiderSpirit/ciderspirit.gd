@@ -66,10 +66,10 @@ func follow_trajectory()->void:
 		#indicate that we are FLYING
 		self.state = CiderSpiritState.LAUNCHED
 
-		follower_mug.global_position = global_position + Vector2(0,-5)
+		follower_mug.global_position = global_position 
 		if follower_mug:
 			follower_mug.rotation = self.get_sprite2D().rotation
-		follower_mug.visible = true
+		follower_mug.unhide_self(self.get_sprite2D().tail)
 func on_action_released(act : String)->void:
 	#super.on_action_released(act)
 	if do_jump_parabola and act == "JUMP":
@@ -81,6 +81,7 @@ func on_action_released(act : String)->void:
 
 func on_transform_animation_finished(anim):
 	if anim == "walk_right":
+		print("hopping")
 		hop()
 		
 
@@ -108,6 +109,8 @@ func hide_follower_mug()->void:
 	follower_mug.global_position = global_position + Vector2(0,-20)
 
 	wants_to_combine = false
+	if self.global_transform.y.dot(follower_mug.global_transform.y) < 0:
+		self.get_sprite2D().tail = "_down"
 	self.state = EntityState.DEFAULT 
 	self.velocity = Vector2(0,0)
 	self.update_animation()
@@ -154,6 +157,7 @@ func exorcize()->void:
 
 var hop_dir : String = ""
 func hop()->void:
+	print("hopping with direction " + hop_dir)
 	match hop_dir:
 		"LEFT":
 			singal_move_and_collide(Vector2(-hop_distance,0))
@@ -239,3 +243,4 @@ func update_animation()->void:
 		self.get_sprite2D().play("splash")
 	elif self.state != CiderSpiritState.PARABALA:
 		super.update_animation()
+		self.get_sprite2D().flip_h = self.hop_dir == "LEFT"

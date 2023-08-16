@@ -8,6 +8,9 @@ class_name FollowerMug
 var ciderSpirit : CiderSpirit
 
 
+func unhide_self(tail : String)->void:
+	visible = true
+	$AnimatedSprite2D.play("after_launch" + tail)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
