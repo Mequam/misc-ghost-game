@@ -19,12 +19,10 @@ ai_timeout = 0.25
 cam_ref = NodePath("mainCam")
 
 [node name="DebugTexture" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(491, -525)
 texture = ExtResource("2_yg6ni")
 
 [node name="DebugTexture2" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(1519, -523)
 texture = ExtResource("2_yg6ni")
 
@@ -47,6 +45,14 @@ offset_right = 2141.0
 offset_bottom = 31.0
 color = Color(0.352941, 0.380392, 0.321569, 1)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -673.715
+offset_top = 242.291
+offset_right = 2437.29
+offset_bottom = 282.291
+rotation = -0.219431
+color = Color(0.352941, 0.380392, 0.321569, 1)
+
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(275, 40)
 rotation = -0.219358
@@ -54,13 +60,6 @@ rotation = -0.219358
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(587, 10)
 shape = SubResource("RectangleShape2D_nk62p")
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
-offset_left = -970.0
-offset_top = -9.0
-offset_right = 2141.0
-offset_bottom = 31.0
-color = Color(0.352941, 0.380392, 0.321569, 1)
 
 [node name="mainCam" parent="." instance=ExtResource("5_pwvrf")]
 position = Vector2(0, 1)
@@ -70,7 +69,7 @@ position = Vector2(159, -142)
 scale = Vector2(0.5, 0.5)
 
 [node name="CiderSpirit" parent="." instance=ExtResource("8_kyc7k")]
-position = Vector2(249, -25)
+position = Vector2(56, -13)
 
 [node name="witch" parent="." instance=ExtResource("8_0f4ps")]
 position = Vector2(1772, -37)

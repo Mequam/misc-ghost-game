@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://01fi2eykheye"]
+[gd_scene load_steps=12 format=3 uid="uid://01fi2eykheye"]
 
 [ext_resource type="PackedScene" uid="uid://byekeag2ch0em" path="res://scenes/entities/CiderSpirit/ciderspiritsprite.tscn" id="1_475h8"]
 [ext_resource type="Script" path="res://scenes/entities/CiderSpirit/ciderspirit.gd" id="1_bdf4i"]
 [ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="2_7o5to"]
 [ext_resource type="PackedScene" uid="uid://bkfoptt80pgom" path="res://scenes/entities/CiderSpirit/mugFollower/follwer_mug.tscn" id="2_rsnis"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="4_pd0ci"]
+[ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="5_ku25j"]
 
 [sub_resource type="Resource" id="Resource_475e5"]
 script = ExtResource("2_7o5to")
@@ -110,7 +111,12 @@ position = Vector2(3, -26)
 shape = SubResource("RectangleShape2D_t5r8p")
 
 [node name="GroundTester" parent="." instance=ExtResource("4_pd0ci")]
-visible = false
+position = Vector2(15, -55)
+
+[node name="Sprite2D" type="Sprite2D" parent="GroundTester"]
+position = Vector2(-11, 55)
+scale = Vector2(1, 0.0625)
+texture = ExtResource("5_ku25j")
 
 [node name="unposSpot" type="Node2D" parent="."]
 position = Vector2(0, -79)

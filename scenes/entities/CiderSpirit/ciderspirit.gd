@@ -40,7 +40,10 @@ var do_jump_parabola : bool = false  :
 		queue_redraw()
 	get:
 		return do_jump_parabola
-
+func set_ground_counter(val : int)->void:
+	super.set_ground_counter(val) 
+	if self.onground and self.state == CiderSpiritState.LAUNCHED:
+		self.on_col(null)
 #when we would normaly jump, we prepare to
 #parabala leep
 var wants_to_combine = false
@@ -49,6 +52,24 @@ func jump()->void:
 		self.do_jump_parabola = true 
 	else:
 		summon_mug()
+
+#trys to jump past the player
+func ai_jump_past_player(player,error : float=100)->void:
+	if not self.pressed_inputs["JUMP"]: 
+		print("jumping!")
+		self.perform_action("JUMP",true)
+	var target = (player.position.x - self.position.x)*2
+	print(jump_distance)
+	if (jump_distance  < target + error and jump_distance > target - error):
+		#we are at a valid distance, jump!
+		self.perform_action("JUMP",false)
+func AI(player)->void:
+	if position.distance_squared_to(player.position) < 600**2:
+		self.ai_look_at_player(player)
+		if self.state != CiderSpiritState.LAUNCHED:
+			self.ai_jump_past_player(player)
+	if self.state == CiderSpiritState.SPLASHED:
+		self.perform_action("jump",true)
 
 #this function launches us along the trajectory indicated by the parabala that we drew
 func follow_trajectory()->void:
@@ -81,19 +102,19 @@ func on_action_released(act : String)->void:
 
 func on_transform_animation_finished(anim):
 	if anim == "walk_right":
-		print("hopping")
 		hop()
 		
 
 func on_col(col : KinematicCollision2D)->void:
 	if self.state == CiderSpiritState.LAUNCHED:
 		self.state = CiderSpiritState.SPLASHED 
-		var normal = col.get_normal()
-		self.get_sprite2D().rotation = normal.angle() + (PI if self.velocity.x > 0 else 0)
-
-		if 5*abs(normal.y) > abs(normal.x): #we hit the ground
-			self.velocity.x = 0 #we hit the ground
-			update_animation()
+		if col:
+			var normal = col.get_normal()
+			self.get_sprite2D().rotation = normal.angle() + (PI if self.velocity.x > 0 else 0.0)
+		else:
+			self.get_sprite2D().rotation = PI/2 if self.velocity.x > 0 else -PI /2
+		self.velocity.x = 0 #we hit the ground
+		update_animation()
 	super.on_col(col)
 
 func on_anim_finished():
@@ -118,6 +139,7 @@ func set_state(val)->void:
 	if val == EntityState.DEFAULT:
 		#reset the sprite rotation when we default our state
 		self.get_sprite2D().rotation = 0
+		self.velocity.x = 0
 	super.set_state(val)
 func summon_mug()->void:
 	wants_to_combine = true 
@@ -157,7 +179,6 @@ func exorcize()->void:
 
 var hop_dir : String = ""
 func hop()->void:
-	print("hopping with direction " + hop_dir)
 	match hop_dir:
 		"LEFT":
 			singal_move_and_collide(Vector2(-hop_distance,0))

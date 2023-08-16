@@ -13,7 +13,6 @@ func screen_exited()->void:
 	queue_free()
 
 func main_ready():
-	print("inside of main_ready projectile")
 	$lifeTimer.connect("timeout",Callable(self,"die"))
 	collision_layer = 0
 	#make sure that we remove ourselfs from the game

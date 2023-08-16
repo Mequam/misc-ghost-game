@@ -62,7 +62,6 @@ func main_ready():
 	#unless parralized, so it is "possesed"
 	possesed = true
 	speed = 200*Vector2.ONE
-	print("grabing camera")
 	grab_camera()
 	super.main_ready()
 
