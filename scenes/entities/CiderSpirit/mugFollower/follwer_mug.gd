@@ -7,6 +7,13 @@ class_name FollowerMug
 
 var ciderSpirit : CiderSpirit
 
+func _ready()->void:
+	self.body_entered.connect(self.on_body_entered)
+
+func on_body_entered(body : Node)->void:
+	print("collided with " + body.name)
+	if body.has_method("take_damage"): body.take_damage(2)
+
 
 func unhide_self(tail : String)->void:
 	visible = true

@@ -97,6 +97,7 @@ func follow_trajectory()->void:
 		if follower_mug:
 			follower_mug.rotation = self.get_sprite2D().rotation
 		follower_mug.unhide_self(self.get_sprite2D().tail)
+		follower_mug.collision_layer = self.collision_layer
 func on_action_released(act : String)->void:
 	#super.on_action_released(act)
 	if do_jump_parabola and act == "JUMP":
@@ -115,6 +116,9 @@ func on_col(col : KinematicCollision2D)->void:
 	if self.state == CiderSpiritState.LAUNCHED:
 		self.state = CiderSpiritState.SPLASHED 
 		if col:
+
+			if col.get_collider().has_method("take_damage"):
+				col.get_collider().take_damage(1)
 			var normal = col.get_normal()
 			self.get_sprite2D().rotation = normal.angle() + (PI if self.velocity.x > 0 else 0.0)
 		else:
@@ -131,7 +135,8 @@ func on_anim_finished():
 
 func hide_follower_mug()->void:
 	follower_mug.freeze = true
-	follower_mug.visible = false
+	follower_mug.visible = false 
+	follower_mug.collision_layer = 0
 	follower_mug.collision_mask = 0
 	follower_mug.global_position = global_position + Vector2(0,-20)
 
@@ -178,6 +183,10 @@ func sync_mug_collision()->void:
 #ensure that we snyc the collision of the mug when leni posseses in and out
 func posses_by(other):
 	super.posses_by(other)
+	if self.state == CiderSpiritState.PARABALA:
+		self.do_jump_parabola = false
+		self.state = EntityState.DEFAULT
+	self.clear_stored_inputs()
 	sync_mug_collision()
 func exorcize()->void:
 	super.exorcize() 
