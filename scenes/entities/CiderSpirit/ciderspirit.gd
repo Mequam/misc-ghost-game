@@ -18,6 +18,8 @@ class_name CiderSpirit
 #used when computing the time it takes us to travel a given distance via jump parabola
 @export var jump_speed : float = 10
 
+#controls the frequency that we jump at the player
+@export var ai_timer_jump : Timer
 
 @export var follower_mug_ps : PackedScene 
 var follower_mug : FollowerMug
@@ -56,20 +58,24 @@ func jump()->void:
 #trys to jump past the player
 func ai_jump_past_player(player,error : float=100)->void:
 	if not self.pressed_inputs["JUMP"]: 
-		print("jumping!")
 		self.perform_action("JUMP",true)
 	var target = (player.position.x - self.position.x)*2
-	print(jump_distance)
 	if (jump_distance  < target + error and jump_distance > target - error):
 		#we are at a valid distance, jump!
 		self.perform_action("JUMP",false)
 func AI(player)->void:
-	if position.distance_squared_to(player.position) < 600**2:
-		self.ai_look_at_player(player)
-		if self.state != CiderSpiritState.LAUNCHED:
-			self.ai_jump_past_player(player)
-	if self.state == CiderSpiritState.SPLASHED:
-		self.perform_action("jump",true)
+	if not ai_timer_jump.wait_time <= 0 and self.pressed_inputs["JUMP"] and self.state == EntityState.DEFAULT:
+		self.perform_action("JUMP",false)
+	else:
+		if position.distance_squared_to(player.position) < 600**2 and self.state != CiderSpiritState.LAUNCHED:
+				self.ai_look_at_player(player)
+				self.ai_jump_past_player(player)
+
+		if self.state == CiderSpiritState.SPLASHED:
+			#start the timer for the next time that we can jump
+			ai_timer_jump.start()
+			self.perform_action("JUMP",true)
+		
 
 #this function launches us along the trajectory indicated by the parabala that we drew
 func follow_trajectory()->void:
@@ -135,6 +141,7 @@ func hide_follower_mug()->void:
 	self.state = EntityState.DEFAULT 
 	self.velocity = Vector2(0,0)
 	self.update_animation()
+	
 func set_state(val)->void:
 	if val == EntityState.DEFAULT:
 		#reset the sprite rotation when we default our state
@@ -161,7 +168,6 @@ func main_ready()->void:
 	sync_mug_collision()
 	add_sibling(follower_mug)
 	hide_follower_mug()
-	print(follower_mug)
 
 #ensures that the follower mug has the proper collision layers
 func sync_mug_collision()->void:

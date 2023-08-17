@@ -19,10 +19,12 @@ ai_timeout = 0.25
 cam_ref = NodePath("mainCam")
 
 [node name="DebugTexture" type="Sprite2D" parent="."]
-position = Vector2(491, -525)
+z_index = -2
+position = Vector2(491, -523)
 texture = ExtResource("2_yg6ni")
 
 [node name="DebugTexture2" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(1519, -523)
 texture = ExtResource("2_yg6ni")
 
@@ -69,7 +71,7 @@ position = Vector2(159, -142)
 scale = Vector2(0.5, 0.5)
 
 [node name="CiderSpirit" parent="." instance=ExtResource("8_kyc7k")]
-position = Vector2(56, -13)
+position = Vector2(274, -16)
 
 [node name="witch" parent="." instance=ExtResource("8_0f4ps")]
 position = Vector2(1772, -37)
