@@ -24,6 +24,14 @@ class_name CiderSpirit
 @export var follower_mug_ps : PackedScene 
 var follower_mug : FollowerMug
 
+func die()->void:
+	follower_mug.queue_free() 
+	await follower_mug.tree_exited
+	self.queue_free()
+func set_health(val : int)->void:
+	if val <= 0:
+		die()
+	health = val
 enum CiderSpiritState {
 	PARABALA = Entity.ENTITY_STATE_COUNT,
 	LAUNCHED,
@@ -98,6 +106,7 @@ func follow_trajectory()->void:
 			follower_mug.rotation = self.get_sprite2D().rotation
 		follower_mug.unhide_self(self.get_sprite2D().tail)
 		follower_mug.collision_layer = self.collision_layer
+		if self.gravity < 5: self.gravity = 5
 func on_action_released(act : String)->void:
 	#super.on_action_released(act)
 	if do_jump_parabola and act == "JUMP":
@@ -113,11 +122,13 @@ func on_transform_animation_finished(anim):
 		
 
 func on_col(col : KinematicCollision2D)->void:
+	if col : print("hit by " + col.get_collider().name )
 	if self.state == CiderSpiritState.LAUNCHED:
 		self.state = CiderSpiritState.SPLASHED 
 		if col:
 
 			if col.get_collider().has_method("take_damage"):
+				print("damageing " + col.get_collider().name)
 				col.get_collider().take_damage(1)
 			var normal = col.get_normal()
 			self.get_sprite2D().rotation = normal.angle() + (PI if self.velocity.x > 0 else 0.0)
@@ -263,7 +274,6 @@ func draw_parabala(
 				clamp(abs(2*squishification),1,3) #scale the width by the derivative
 				,true
 				)
-
 func _draw():
 	if do_jump_parabola:
 		draw_parabala(

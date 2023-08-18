@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://byekeag2ch0em"]
+[gd_scene load_steps=38 format=3 uid="uid://byekeag2ch0em"]
 
 [ext_resource type="Texture2D" uid="uid://cj6qhmswtg3tg" path="res://assets/animations/cider spirit/0002.png" id="1_13c3b"]
+[ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="1_g3kxg"]
 [ext_resource type="Texture2D" uid="uid://yw5xsmwfmmdy" path="res://assets/animations/cider spirit/launch/launch10026.png" id="1_puy01"]
 [ext_resource type="Texture2D" uid="uid://dg3cj3uva2ryy" path="res://assets/animations/cider spirit/launch/launch10027.png" id="2_j7dsd"]
 [ext_resource type="Texture2D" uid="uid://ho1kpylkh0dt" path="res://assets/animations/cider spirit/0003.png" id="2_psrry"]
@@ -38,6 +39,14 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uvigh"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g3kxg")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_puy01")
@@ -173,7 +182,5 @@ animations = [{
 
 [node name="CiderSpiritSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_uvigh")
-animation = &"launch_down"
-frame = 3
-frame_progress = 1.0
+animation = &"die"
 script = ExtResource("36_r35r1")

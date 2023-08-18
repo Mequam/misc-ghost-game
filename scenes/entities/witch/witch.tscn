@@ -46,9 +46,9 @@
 
 [sub_resource type="Resource" id="Resource_6ohhy"]
 script = ExtResource("4_kjh21")
-jump_height = 1.0
-jump_up_time = 1.0
-jump_down_time = 0.5
+jump_height = 1.5
+jump_up_time = 0.2
+jump_down_time = 0.1
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("3")
@@ -246,11 +246,13 @@ animations = [{
 size = Vector2(74, 77)
 
 [node name="witch" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("2")
 collumn = ExtResource("2_ugqig")
 witchProjectile = ExtResource("3_8y0ab")
 jr = SubResource("Resource_6ohhy")
+run_modifier = 8.0
+speed = Vector2(100, 50)
 
 [node name="Sprite2D" parent="." instance=ExtResource("1")]
 material = SubResource("3")

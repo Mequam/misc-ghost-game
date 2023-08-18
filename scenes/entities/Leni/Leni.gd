@@ -7,6 +7,8 @@ class_name Leni
 #the hp that the player starts with, saved for when we die
 @export var start_hp : int = 5
 
+@export var invensible_timer : Timer
+
 #resets the player health for the level
 #as well as doing any other action that needs to be done
 #checked health reset
@@ -34,12 +36,15 @@ func die():
 #that the game targets
 func grab_aggro():
 	store_aggro(self)
-
+func take_damage(dmg : int = 1, src = null)->void:
+	if invensible_timer.time_left <= 0 and self.get_sprite2D().animation != "posses": #we take no damage while possesing
+		super.take_damage(dmg,src)
 #called on the entity we exorcize when removing it
 func on_unposses(host)->void:
 	self.state = EntityState.DEFAULT
 	grab_camera()
 	grab_aggro() #ensure that leni is targeted
+	invensible_timer.start()
 	super.on_unposses(host)
 
 func on_posses(host)->void:
