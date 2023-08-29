@@ -1,0 +1,5 @@
+- fix unshoot animation + animation transitions
+- knockback on shoot + shoot animation
+- pick mechanic
+	- apple pile sprite / animation
+- up animation on ghost apple picker

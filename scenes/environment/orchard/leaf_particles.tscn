@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjpuwdaqpylkx"]
+
+[ext_resource type="Texture2D" uid="uid://bgbrrc05d0qam" path="res://assets/images/orchard/leaf_particle.png" id="1_pylyb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i0ldq"]
+emission_shape = 1
+emission_sphere_radius = 41.85
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 42.45
+gravity = Vector3(0, 400, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -180.0
+angle_max = 180.0
+scale_min = 0.5
+scale_max = 0.89
+
+[node name="leaf particles" type="GPUParticles2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_i0ldq")
+texture = ExtResource("1_pylyb")
+lifetime = 2.0
+speed_scale = 1.5
+explosiveness = 1.0

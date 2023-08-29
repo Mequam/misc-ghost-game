@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://djvn0yobbhdsf"]
+
+[ext_resource type="Texture2D" uid="uid://cysqmivaja0mo" path="res://assets/images/orchard/apple_particle.png" id="1_03m74"]
+[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/appleProjectile/single_apple_proj.gd" id="1_btxab"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8sexf"]
+
+[node name="single_apple_proj" type="CharacterBody2D"]
+script = ExtResource("1_btxab")
+apple_gravity = Vector2(0, 30)
+
+[node name="AppleParticle" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_03m74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_8sexf")
+
+[node name="lifeTimer" type="Timer" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 1)

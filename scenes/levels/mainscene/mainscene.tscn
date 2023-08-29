@@ -484,7 +484,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(5122.18, -70.883)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2960, 20)
@@ -617,6 +616,7 @@ grow_vertical = 2
 script = ExtResource("1_vb6le")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -4096
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

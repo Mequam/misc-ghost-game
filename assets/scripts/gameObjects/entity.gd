@@ -36,7 +36,7 @@ var can_posses : bool = true
 
 #are we possesed by the ghost?
 #flag that overrules the test possesion
-var possesed : bool = true : set = set_possesed,get = get_possesed
+var possesed : bool = false : set = set_possesed,get = get_possesed
 func set_possesed(val : bool)->void:
 	possesed = val
 func get_possesed()->bool:

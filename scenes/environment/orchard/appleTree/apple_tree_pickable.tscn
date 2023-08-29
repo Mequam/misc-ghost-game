@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkc06wd8bb777"]
+
+[ext_resource type="Script" path="res://scenes/environment/orchard/pickable_apple/pickable_apple.gd" id="1_a8kuv"]
+[ext_resource type="PackedScene" uid="uid://b831a6omwkdev" path="res://scenes/environment/orchard/apple_splosion.tscn" id="2_v8j4j"]
+[ext_resource type="PackedScene" uid="uid://bjpuwdaqpylkx" path="res://scenes/environment/orchard/leaf_particles.tscn" id="3_iid7j"]
+
+[node name="apple_tree_pickable" type="Area2D" node_paths=PackedStringArray("particles", "forever_particles")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_a8kuv")
+particles = NodePath("particles")
+forever_particles = NodePath("forever particles")
+
+[node name="particles" type="Node2D" parent="."]
+
+[node name="apple particles" parent="particles" instance=ExtResource("2_v8j4j")]
+emitting = false
+one_shot = true
+
+[node name="forever particles" type="Node2D" parent="."]
+
+[node name="leaf particles" parent="forever particles" instance=ExtResource("3_iid7j")]
+one_shot = true

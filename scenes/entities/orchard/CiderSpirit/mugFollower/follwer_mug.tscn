@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkfoptt80pgom"]
+
+[ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/mugFollower/follwer_mug.gd" id="1_kkrs1"]
+[ext_resource type="Texture2D" uid="uid://p6pb35drirkv" path="res://assets/animations/cider spirit/0014.png" id="2_roe8b"]
+[ext_resource type="Texture2D" uid="uid://ba6waaaajf5qf" path="res://assets/animations/cider spirit/0015.png" id="3_7y1a2"]
+[ext_resource type="Texture2D" uid="uid://v38fo13nel1w" path="res://assets/animations/cider spirit/0016.png" id="4_u1h7w"]
+[ext_resource type="Texture2D" uid="uid://beym8ib0pok5a" path="res://assets/animations/cider spirit/0017.png" id="5_ia4y7"]
+[ext_resource type="Texture2D" uid="uid://c6exd52hj6o22" path="res://assets/animations/cider spirit/0001.png" id="6_appuv"]
+[ext_resource type="Texture2D" uid="uid://4ybpvw8xjcaa" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0030.png" id="7_yc1ay"]
+[ext_resource type="Texture2D" uid="uid://drmv0rfsy5xvd" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0031.png" id="8_sxv0d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qn0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_roe8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7y1a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u1h7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ia4y7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_appuv")
+}],
+"loop": false,
+"name": &"after_launch",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yc1ay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sxv0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_appuv")
+}],
+"loop": false,
+"name": &"after_launch_down",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty6yg"]
+size = Vector2(32, 44.5)
+
+[node name="FollowerMug" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+max_contacts_reported = 100
+contact_monitor = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_kkrs1")
+attaction = 5000.0
+initial_speed = 500.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -52)
+scale = Vector2(0.22, 0.22)
+sprite_frames = SubResource("SpriteFrames_3qn0w")
+animation = &"after_launch_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_ty6yg")

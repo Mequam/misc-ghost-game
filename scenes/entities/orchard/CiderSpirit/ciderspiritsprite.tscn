@@ -1,0 +1,186 @@
+[gd_scene load_steps=38 format=3 uid="uid://byekeag2ch0em"]
+
+[ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="1_yhr28"]
+[ext_resource type="Texture2D" uid="uid://yw5xsmwfmmdy" path="res://assets/animations/cider spirit/launch/launch10026.png" id="2_72cy2"]
+[ext_resource type="Texture2D" uid="uid://dg3cj3uva2ryy" path="res://assets/animations/cider spirit/launch/launch10027.png" id="3_4o2tv"]
+[ext_resource type="Texture2D" uid="uid://cj6qhmswtg3tg" path="res://assets/animations/cider spirit/0002.png" id="4_8vttn"]
+[ext_resource type="Texture2D" uid="uid://ho1kpylkh0dt" path="res://assets/animations/cider spirit/0003.png" id="5_dpu86"]
+[ext_resource type="Texture2D" uid="uid://sl68mv1ehm6j" path="res://assets/animations/cider spirit/0004.png" id="6_bxpvk"]
+[ext_resource type="Texture2D" uid="uid://wj4rxhwy2wvl" path="res://assets/animations/cider spirit/0005.png" id="7_xhh05"]
+[ext_resource type="Texture2D" uid="uid://cadiswusln4x" path="res://assets/animations/cider spirit/0006.png" id="8_sj03h"]
+[ext_resource type="Texture2D" uid="uid://bckof316omeia" path="res://assets/animations/cider spirit/0007.png" id="9_qpbij"]
+[ext_resource type="Texture2D" uid="uid://deat7ado6x6aq" path="res://assets/animations/cider spirit/0008.png" id="10_w2d2k"]
+[ext_resource type="Texture2D" uid="uid://by6kdx4fw8f23" path="res://assets/animations/cider spirit/0009.png" id="11_v7jf5"]
+[ext_resource type="Texture2D" uid="uid://cn2b5a1l58q4u" path="res://assets/animations/cider spirit/0010.png" id="12_6ao2f"]
+[ext_resource type="Texture2D" uid="uid://dgeeukh5m8v3u" path="res://assets/animations/cider spirit/0011.png" id="13_gv4j7"]
+[ext_resource type="Texture2D" uid="uid://56i7qctrfiq4" path="res://assets/animations/cider spirit/0018.png" id="14_wfx2e"]
+[ext_resource type="Texture2D" uid="uid://ba08dtdway5o8" path="res://assets/animations/cider spirit/0019.png" id="15_1xvr6"]
+[ext_resource type="Texture2D" uid="uid://bt8dqgm6amorg" path="res://assets/animations/cider spirit/0020.png" id="16_06cqk"]
+[ext_resource type="Texture2D" uid="uid://b6jnx88ollehp" path="res://assets/animations/cider spirit/0021.png" id="17_kwowp"]
+[ext_resource type="Texture2D" uid="uid://dylumon400u2i" path="res://assets/animations/cider spirit/0022.png" id="18_1na1q"]
+[ext_resource type="Texture2D" uid="uid://crcer0b545ip1" path="res://assets/animations/cider spirit/0023.png" id="19_2o5w1"]
+[ext_resource type="Texture2D" uid="uid://bch8vrp2fgbjf" path="res://assets/animations/cider spirit/0024.png" id="20_mgu77"]
+[ext_resource type="Texture2D" uid="uid://ijnasgq5nvr3" path="res://assets/animations/cider spirit/0025.png" id="21_1ms0s"]
+[ext_resource type="Texture2D" uid="uid://dsqmvdhnvohaf" path="res://assets/animations/cider spirit/0012.png" id="22_qodjb"]
+[ext_resource type="Texture2D" uid="uid://dmftkny0n0kjc" path="res://assets/animations/cider spirit/0013.png" id="23_h0lla"]
+[ext_resource type="Texture2D" uid="uid://dqi5fx0bkp3xx" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0026.png" id="24_x24hm"]
+[ext_resource type="Texture2D" uid="uid://dub2obsb5nywa" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0027.png" id="25_85crv"]
+[ext_resource type="Texture2D" uid="uid://bgm5lwb4dsbjy" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0028.png" id="26_cwvhk"]
+[ext_resource type="Texture2D" uid="uid://dky6xyof3trwd" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0029.png" id="27_tivmp"]
+[ext_resource type="Texture2D" uid="uid://xheexd60qem5" path="res://assets/animations/cider spirit/launch/launch10028.png" id="28_kf53n"]
+[ext_resource type="Texture2D" uid="uid://dsyfaywusrqc3" path="res://assets/animations/cider spirit/launch/launch10029.png" id="29_tobo0"]
+[ext_resource type="Texture2D" uid="uid://dvcaoinohsber" path="res://assets/animations/cider spirit/launch/launch10030.png" id="30_7bj36"]
+[ext_resource type="Texture2D" uid="uid://bhd67g2r7qst2" path="res://assets/animations/cider spirit/launch/launch10031.png" id="31_f4skc"]
+[ext_resource type="Texture2D" uid="uid://dqcauefios6d" path="res://assets/animations/cider spirit/launch/launch10032.png" id="32_8jmxj"]
+[ext_resource type="Texture2D" uid="uid://cw5tajtig0ox" path="res://assets/animations/cider spirit/launch/launch10033.png" id="33_enid0"]
+[ext_resource type="Texture2D" uid="uid://c2wkvi6aoou1p" path="res://assets/animations/cider spirit/launch/launch10034.png" id="34_n2i5p"]
+[ext_resource type="Texture2D" uid="uid://36kuv8hetdtb" path="res://assets/animations/cider spirit/launch/launch10035.png" id="35_i35c7"]
+[ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/ciderspiritsprite.gd" id="36_v652m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvigh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yhr28")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_72cy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4o2tv")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8vttn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dpu86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bxpvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xhh05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sj03h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qpbij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_w2d2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_v7jf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6ao2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gv4j7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 10.0,
+"texture": ExtResource("14_wfx2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1xvr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_06cqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kwowp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1na1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_2o5w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mgu77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1ms0s")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_qodjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_h0lla")
+}],
+"loop": false,
+"name": &"launch",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_x24hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_85crv")
+}, {
+"duration": 1.2,
+"texture": ExtResource("26_cwvhk")
+}, {
+"duration": 1.3,
+"texture": ExtResource("27_tivmp")
+}],
+"loop": false,
+"name": &"launch_down",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_kf53n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_tobo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_7bj36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_f4skc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8jmxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_enid0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_n2i5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_i35c7")
+}],
+"loop": false,
+"name": &"splash",
+"speed": 13.0
+}]
+
+[node name="CiderSpiritSprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_uvigh")
+animation = &"fly"
+script = ExtResource("36_v652m")

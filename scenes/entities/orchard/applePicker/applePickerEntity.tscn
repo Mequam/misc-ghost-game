@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cotdsdtg0th0l"]
+
+[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/applePickerEntity.gd" id="1_7awqf"]
+[ext_resource type="PackedScene" uid="uid://cv1ocywmuqlwo" path="res://scenes/entities/orchard/applePicker/applePickerSprite.tscn" id="1_mohwp"]
+[ext_resource type="PackedScene" uid="uid://djfoqtks0nlpg" path="res://scenes/entities/orchard/applePicker/appleProjectile/apple_shotgun_blast.tscn" id="2_5wg2i"]
+[ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="3_0sj1q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppar1"]
+size = Vector2(150.5, 301)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhfdn"]
+radius = 233.684
+
+[node name="applePicker" type="CharacterBody2D" node_paths=PackedStringArray("apple_detector")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_7awqf")
+apple_detector = NodePath("apple_detector")
+apple_shotgun_projectile = ExtResource("2_5wg2i")
+run_speed = Vector2(5, 1.5)
+speed = Vector2(100, 100)
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_mohwp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_ppar1")
+
+[node name="GroundTester" parent="." instance=ExtResource("3_0sj1q")]
+
+[node name="CollisionShape2D" parent="GroundTester" index="0"]
+position = Vector2(-9, 242)
+
+[node name="unposSpot" type="Node2D" parent="."]
+position = Vector2(0, -272)
+
+[node name="flight_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="apple_detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="apple_detector"]
+shape = SubResource("CircleShape2D_bhfdn")
+
+[editable path="GroundTester"]

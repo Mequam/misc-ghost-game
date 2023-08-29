@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://djfoqtks0nlpg"]
+
+[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/appleProjectile/apple_shotgun_blast.gd" id="1_k22kx"]
+[ext_resource type="PackedScene" uid="uid://djvn0yobbhdsf" path="res://scenes/entities/orchard/applePicker/appleProjectile/single_apple_proj.tscn" id="2_d4cca"]
+
+[node name="apple_shotgun_blast" type="Node2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_k22kx")
+spread_angle = 0.785
+noise = 1.0
+projectile_scene = ExtResource("2_d4cca")
+velocity = Vector2(10, 0)
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

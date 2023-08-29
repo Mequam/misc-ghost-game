@@ -158,6 +158,8 @@ function = 0
 
 [resource]
 code = "shader_type canvas_item;
+render_mode blend_mix;
+
 uniform bool active;
 uniform vec4 ColorRotation : source_color;
 uniform vec4 red_map : source_color;
@@ -479,7 +481,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-406.314, -126.328)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2960, 20)

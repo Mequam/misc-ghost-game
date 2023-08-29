@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://ds1ye8pl5xns3"]
+
+[ext_resource type="Texture2D" uid="uid://0xga64wkruoe" path="res://assets/images/orchard/apple_tree.png" id="1_8svli"]
+[ext_resource type="Texture2D" uid="uid://5jluggcl2p8n" path="res://assets/images/orchard/apple_tree_apples.png" id="2_woqtr"]
+[ext_resource type="PackedScene" uid="uid://bkc06wd8bb777" path="res://scenes/environment/orchard/appleTree/apple_tree_pickable.tscn" id="3_c2r64"]
+[ext_resource type="PackedScene" uid="uid://dv88b02qfe8qy" path="res://scenes/environment/orchard/leaf_falling_particles.tscn" id="3_dv7h7"]
+[ext_resource type="Texture2D" uid="uid://c05l1geqagimw" path="res://assets/images/orchard/apple_bottom_left.png" id="4_ryge8"]
+[ext_resource type="Texture2D" uid="uid://i5jdmg06er77" path="res://assets/images/orchard/apple_top_left.png" id="5_ns3km"]
+[ext_resource type="Texture2D" uid="uid://bj7h8usdpikvd" path="res://assets/images/orchard/apple_top_right.png" id="6_3gd2u"]
+[ext_resource type="Texture2D" uid="uid://dv5t1nrg1wunp" path="res://assets/images/orchard/top_middle_apples.png" id="7_1i4cn"]
+[ext_resource type="Texture2D" uid="uid://cqwpot22t62iv" path="res://assets/images/orchard/apple_right.png" id="8_w3t1l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2v3m"]
+size = Vector2(447, 301)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2gioq"]
+radius = 46.0977
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cls12"]
+size = Vector2(69, 176.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhs35"]
+size = Vector2(68, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emrkj"]
+size = Vector2(50, 133)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bw5mg"]
+radius = 68.884
+
+[node name="StaticBody2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, -226)
+shape = SubResource("RectangleShape2D_v2v3m")
+
+[node name="tree" type="Node2D" parent="."]
+z_index = -1
+
+[node name="AppleTree" type="Sprite2D" parent="tree"]
+position = Vector2(4, -150)
+texture = ExtResource("1_8svli")
+
+[node name="AppleTreeApples" type="Sprite2D" parent="tree"]
+visible = false
+position = Vector2(4, -151)
+texture = ExtResource("2_woqtr")
+
+[node name="apples" type="Node2D" parent="."]
+
+[node name="apple_tree_pickable" parent="apples" node_paths=PackedStringArray("sprite") instance=ExtResource("3_c2r64")]
+position = Vector2(-163, -116)
+sprite = NodePath("AppleBottomLeft")
+
+[node name="AppleBottomLeft" type="Sprite2D" parent="apples/apple_tree_pickable"]
+position = Vector2(164, -29)
+texture = ExtResource("4_ryge8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="apples/apple_tree_pickable"]
+position = Vector2(4, -4)
+shape = SubResource("CircleShape2D_2gioq")
+
+[node name="apple_tree_pickable2" parent="apples" node_paths=PackedStringArray("sprite") instance=ExtResource("3_c2r64")]
+position = Vector2(-123, -225)
+sprite = NodePath("AppleTopLeft")
+
+[node name="AppleTopLeft" type="Sprite2D" parent="apples/apple_tree_pickable2"]
+position = Vector2(125, 71)
+texture = ExtResource("5_ns3km")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="apples/apple_tree_pickable2"]
+position = Vector2(-22, -36)
+shape = SubResource("RectangleShape2D_cls12")
+
+[node name="apple_tree_pickable3" parent="apples" node_paths=PackedStringArray("sprite") instance=ExtResource("3_c2r64")]
+position = Vector2(111, -225)
+sprite = NodePath("AppleTopRight")
+
+[node name="AppleTopRight" type="Sprite2D" parent="apples/apple_tree_pickable3"]
+position = Vector2(-103, 77)
+texture = ExtResource("6_3gd2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="apples/apple_tree_pickable3"]
+position = Vector2(7, -42)
+shape = SubResource("RectangleShape2D_qhs35")
+
+[node name="apple_tree_pickable4" parent="apples" node_paths=PackedStringArray("sprite") instance=ExtResource("3_c2r64")]
+position = Vector2(12, -183)
+sprite = NodePath("TopMiddleApples")
+
+[node name="TopMiddleApples" type="Sprite2D" parent="apples/apple_tree_pickable4"]
+position = Vector2(-5, 30)
+texture = ExtResource("7_1i4cn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="apples/apple_tree_pickable4"]
+position = Vector2(7, -56.5)
+shape = SubResource("RectangleShape2D_emrkj")
+
+[node name="apple_tree_pickable5" parent="apples" node_paths=PackedStringArray("sprite") instance=ExtResource("3_c2r64")]
+position = Vector2(171, -130)
+sprite = NodePath("AppleRight")
+
+[node name="AppleRight" type="Sprite2D" parent="apples/apple_tree_pickable5"]
+position = Vector2(-163, -27)
+texture = ExtResource("8_w3t1l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="apples/apple_tree_pickable5"]
+position = Vector2(11, -13)
+shape = SubResource("CircleShape2D_bw5mg")
+
+[node name="falling_leafs" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
+position = Vector2(171, -101)
+emitting = true
+
+[node name="GPUParticles2D2" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
+position = Vector2(-156, -100)
+emitting = true
+
+[node name="GPUParticles2D3" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
+position = Vector2(-133, -251)
+emitting = true
+
+[node name="GPUParticles2D4" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
+position = Vector2(14, -285)
+emitting = true
+
+[node name="GPUParticles2D5" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
+position = Vector2(119, -257)
+emitting = true

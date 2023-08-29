@@ -12,6 +12,7 @@ size = Vector2(27, 72.5)
 [node name="Leni" type="CharacterBody2D" node_paths=PackedStringArray("invensible_timer")]
 script = ExtResource("1_v1hk0")
 invensible_timer = NodePath("invencible_timer")
+speed = Vector2(200, 200)
 
 [node name="Sprite2D" parent="." instance=ExtResource("2")]
 position = Vector2(-2, 6)

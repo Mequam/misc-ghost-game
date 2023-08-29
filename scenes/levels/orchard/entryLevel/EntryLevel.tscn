@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=12 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://dortu7m7hqkvb" path="res://scenes/entities/GhostLight/ghostLightSprite.tscn" id="2_g2paq"]
+[ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="2_yg6ni"]
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://scenes/effects/AfterEffectTscn/AfterEffectNode.tscn" id="3_8p742"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/witch/witch.tscn" id="8_0f4ps"]
-[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/CiderSpirit/ciderspirit.tscn" id="8_kyc7k"]
+[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="8_kyc7k"]
+[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="9_dgpko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(3110, 40)
@@ -17,6 +19,9 @@ position = Vector2(22, 419)
 script = ExtResource("1_skwwk")
 ai_timeout = 0.25
 cam_ref = NodePath("mainCam")
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_jx3ls")]
+position = Vector2(-423, -3)
 
 [node name="DebugTexture" type="Sprite2D" parent="."]
 z_index = -2
@@ -67,11 +72,14 @@ shape = SubResource("RectangleShape2D_nk62p")
 position = Vector2(0, 1)
 
 [node name="firstLight" parent="." instance=ExtResource("6_5g2bp")]
-position = Vector2(-138, -392)
+position = Vector2(-249, -262)
 scale = Vector2(0.5, 0.5)
 
 [node name="CiderSpirit" parent="." instance=ExtResource("8_kyc7k")]
-position = Vector2(274, -16)
+position = Vector2(1293, -15)
 
 [node name="witch" parent="." instance=ExtResource("8_0f4ps")]
-position = Vector2(1324, -32)
+position = Vector2(1549, -12)
+
+[node name="applePicker" parent="." instance=ExtResource("9_dgpko")]
+position = Vector2(-27, -78)

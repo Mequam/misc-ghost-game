@@ -6,6 +6,7 @@ class_name FlightEntity
 
 var running : bool = true
 
+@export var run_speed : Vector2 = Vector2(2,1.5)
 func on_action_double_press(act : String)->void:
 	if act == "LEFT" or act == "RIGHT":
 		running = true
@@ -21,9 +22,9 @@ func compute_velocity(vel : Vector2)->Vector2:
 		if pressed_inputs[key]:
 			vel += action2velocity(key)
 	if running:
-		vel.x *= 2
+		vel.x *= run_speed.x
 	else:
-		vel.y *= 1.5
+		vel.y *= run_speed.y
 	return super.compute_velocity(vel)
 
 
