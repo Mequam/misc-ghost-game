@@ -65,9 +65,10 @@ var posses_velocity : Vector2 = Vector2(0,0)
 func main_ready():
 	#the ghost allways recives player input
 	#unless parralized, so it is "possesed"
-	possesed = true
 	grab_camera()
 	super.main_ready()
+
+	possesed = true #make sure we start as possesed
 
 
 func on_action_press(act : String)->void:

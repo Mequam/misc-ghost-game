@@ -31,8 +31,6 @@ func set_ground_counter(val : int)->void:
 	update_animation()
 
 func compute_velocity(vel : Vector2)->Vector2:
-	if not possesed:
-		return Vector2(0,0)
 	match state:
 		EntityState.DEFAULT:
 			if tired:

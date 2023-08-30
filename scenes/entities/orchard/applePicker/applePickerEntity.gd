@@ -53,6 +53,7 @@ func on_action_press(act : String)->void:
 	print("action press detected with " + act)
 	super.on_action_press(act)
 	if act == "ATTACK":
+		print("starting to shoot apples")
 		self.start_shooting_apples()
 
 func on_action_released(act : String)->void:
@@ -83,6 +84,29 @@ func compute_velocity(vel : Vector2)->Vector2:
 	return super.compute_velocity(vel*int(self.state != ApplePickerState.PICKING))
 
 func main_ready()->void:
-	print(get_sprite2D().get_node("AnimationTree").animation_started)
 	get_sprite2D().get_node("AnimationTree").animation_finished.connect(self.on_anim_finished)
 	super.main_ready()
+	self.possesed = false
+#AI code
+
+var shoot_threshold = 300
+
+func AI(player)->void:
+	if self.apple_count > 0:
+		var distance_squared_to_player = self.position.distance_squared_to(player.position)
+		if  distance_squared_to_player < shoot_threshold**2 and not self.pressed_inputs["ATTACK"]:
+			#shoot the apples at the player
+			self.perform_action("ATTACK",true)
+		elif distance_squared_to_player > shoot_threshold**2:
+			if self.pressed_inputs["ATTACK"]:
+				self.perform_action("ATTACK",false)
+				await get_tree().process_frame
+
+			if player.position.x < self.position.x and not self.pressed_inputs["LEFT"]:
+				self.perform_action("RIGHT",false)
+				self.perform_action("LEFT",true)
+			elif player.position.x > self.position.x and not self.pressed_inputs["RIGHT"]:
+				self.perform_action("LEFT",false)
+				self.perform_action("RIGHT",true)
+
+

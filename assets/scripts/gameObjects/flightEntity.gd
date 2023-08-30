@@ -1,4 +1,4 @@
-extends Entity
+extends Npc
 #this is a genric entity class for entities that go up right left and down
 #basically entities that can fly
 
