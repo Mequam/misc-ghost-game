@@ -21,15 +21,17 @@ run_speed = Vector2(5, 1.5)
 speed = Vector2(100, 100)
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_mohwp")]
+frame = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_ppar1")
 
 [node name="GroundTester" parent="." instance=ExtResource("3_0sj1q")]
+position = Vector2(10, -50)
 
 [node name="CollisionShape2D" parent="GroundTester" index="0"]
-position = Vector2(-9, 242)
+position = Vector2(-9, 215)
 
 [node name="unposSpot" type="Node2D" parent="."]
 position = Vector2(0, -272)

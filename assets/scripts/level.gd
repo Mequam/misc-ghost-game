@@ -49,7 +49,6 @@ func _ready():
 	
 func call_ai(aggro_entity):
 	get_tree().call_group("Npc","run_AI",aggro_entity)
-	get_tree().call_group("EvilGhost","run_AI",aggro_entity)
 
 func _process(_delta):
 	if Input.is_key_pressed(KEY_P):

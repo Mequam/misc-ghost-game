@@ -6,7 +6,7 @@ extends FlightEntity
 class_name TiredFlightEntity
 
 #we can only fly for so long before we get tired
-var tired : bool = false :
+var tired : bool = true :
 	get:
 		return tired # TODOConverter40 Copy here content of get_tired
 	set(mod_value):

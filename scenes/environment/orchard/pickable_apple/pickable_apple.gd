@@ -6,6 +6,8 @@ class_name PickableApple
 @export var forever_particles : Node2D
 @export var sprite : Node2D 
 
+func is_harvestable()->bool:
+	return sprite.visible
 func pick()->int:
 	if sprite.visible:
 		sprite.visible = false 
@@ -26,4 +28,4 @@ func unpick()->void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	add_to_group("pickable_apples")
