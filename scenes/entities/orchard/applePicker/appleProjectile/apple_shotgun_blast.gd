@@ -14,12 +14,15 @@ var collision_mask : int = 0
 
 
 func _ready()->void:
-	var rotation_step = spread_angle / projectile_count 
-	var start_vector = velocity.rotated(-spread_angle / 2)
-	
+
 	#make sure we are inside of the game BEFORE we spam it
 	#with our global position
 	await get_tree().process_frame 
+
+	print(self.velocity)
+	var rotation_step = spread_angle / projectile_count 
+	var start_vector = velocity.rotated(-spread_angle / 2)
+	
 
 	#make sure that we are inside the tree when we call these	
 	for i in range(self.projectile_count):

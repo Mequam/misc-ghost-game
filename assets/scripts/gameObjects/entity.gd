@@ -342,13 +342,16 @@ func _on_GroundTester_body_exited(body):
 	if body != self:
 		decriment_ground_counter()
 
-#convinence function to spawn an object at a given position
-func spawn_object(pc : PackedScene,global_pos : Vector2):
-	var inst = pc.instantiate()
+#convinence function to spawn an instance
+func spawn_instance(inst, global_pos : Vector2):
 	if inst is Node2D:
 		get_parent().add_child(inst)
 		inst.global_position = global_pos
 		return inst
+#convinence function to spawn an object at a given position
+func spawn_object(pc : PackedScene,global_pos : Vector2):
+	var inst = pc.instantiate()
+	return spawn_instance(inst,global_pos)
 #convinecne function that adds a given object as a child parent
 #at our global position
 func add_to_parent_at(obj,global_pos : Vector2):
@@ -358,10 +361,12 @@ func add_to_parent_at(obj,global_pos : Vector2):
 		return obj
 #convinence function for shooting projectiles
 func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
-	var obj = spawn_object(proj,global_pos)
+	var obj = proj.instantiate()
+	
 	obj.velocity = velocity
-	obj.collision_mask = collision_mask
-	return obj
+	obj.collision_mask = collision_mask 
+	
+	return spawn_instance(obj,global_pos)
 func on_modulate_timer_out():
 	modulate = Color.WHITE
 	state = EntityState.DEFAULT

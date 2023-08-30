@@ -16,6 +16,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_7awqf")
 apple_detector = NodePath("apple_detector")
 apple_shotgun_projectile = ExtResource("2_5wg2i")
+apple_projectile_speed = Vector2(20, 2)
 run_speed = Vector2(5, 1.5)
 speed = Vector2(100, 100)
 
