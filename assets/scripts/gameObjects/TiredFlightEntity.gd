@@ -23,7 +23,10 @@ func main_ready():
 func set_ground_counter(val : int)->void:
 	var old_on_ground = self.onground
 	super.set_ground_counter(val)
-	if not old_on_ground and self.onground:
+	print(old_on_ground)
+	print(self.onground)
+#not old_on_ground
+	if self.onground:
 		tired = false
 		$flight_timer.stop()
 	if not self.onground:

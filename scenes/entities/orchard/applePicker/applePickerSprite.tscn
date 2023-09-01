@@ -1160,7 +1160,6 @@ _data = {
 [node name="ApplePickerSprite" type="AnimatedSprite2D" node_paths=PackedStringArray("anim_tree")]
 sprite_frames = SubResource("SpriteFrames_bfouf")
 animation = &"idle"
-frame = 4
 script = ExtResource("31_yx5v0")
 anim_tree = NodePath("AnimationTree")
 
@@ -1183,4 +1182,3 @@ libraries = {
 }
 
 [node name="apples" type="Sprite2D" parent="."]
-texture = ExtResource("35_jxipf")

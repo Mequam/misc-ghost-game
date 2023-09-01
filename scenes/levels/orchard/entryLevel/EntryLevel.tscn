@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=10 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="2_yg6ni"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
+[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="7_q3e3m"]
 [ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="11_s7tpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
@@ -79,3 +80,6 @@ texture = ExtResource("11_s7tpd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="test collision"]
 position = Vector2(32, 34)
 shape = SubResource("RectangleShape2D_wiu6m")
+
+[node name="applePicker" parent="." instance=ExtResource("7_q3e3m")]
+position = Vector2(194, -126)

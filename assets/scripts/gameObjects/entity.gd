@@ -66,7 +66,7 @@ func get_onground()->bool:
 	#print("testing ground")
 	#for b in $GroundTester.get_overlapping_bodies():
 	#	print(b.name)
-	return ground_counter > 0
+	return $GroundTester.has_overlapping_bodies()#ground_counter > 0
 
 #health of the entity, if this hits zero we die
 @export
