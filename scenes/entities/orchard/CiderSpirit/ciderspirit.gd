@@ -50,8 +50,8 @@ var do_jump_parabola : bool = false  :
 		queue_redraw()
 	get:
 		return do_jump_parabola
-func set_ground_counter(val : int)->void:
-	super.set_ground_counter(val) 
+func on_ground_changed(val : int)->void:
+	super.on_ground_changed(val) 
 	if self.onground and self.state == CiderSpiritState.LAUNCHED:
 		self.on_col(null)
 #when we would normaly jump, we prepare to

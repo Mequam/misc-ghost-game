@@ -43,19 +43,9 @@ func get_possesed()->bool:
 	return (self.possesed_entity != null) || possesed
 
 
-var ground_counter : int = 0 : set = set_ground_counter,get = get_ground_counter
-func set_ground_counter(val : int)->void:
-	ground_counter = val
-func get_ground_counter()->int:
-	return ground_counter
+func on_ground_changed(val : int)->void:
+	pass
 
-func incriment_ground_counter():
-	self.ground_counter += 1
-	update_animation()
-func decriment_ground_counter():
-	if self.ground_counter > 0:
-		self.ground_counter -= 1
-	update_animation()
 
 #indicates if we are checked the ground
 var onground : bool = false : set = set_onground,get = get_onground
@@ -312,6 +302,8 @@ func action2velocity(action : String)->Vector2:
 			return Vector2(0,-1)
 		"DOWN":
 			return Vector2(0,1)
+		"JUMP":
+			return Vector2(0,-1)
 	return Vector2(0,0)
 	
 #default collision generators
@@ -340,10 +332,11 @@ func _input(event):
 
 func _on_GroundTester_body_entered(body):
 	if body != self:
-		incriment_ground_counter()
+		self.on_ground_changed(1)
+
 func _on_GroundTester_body_exited(body):
 	if body != self:
-		decriment_ground_counter()
+		self.on_ground_changed(0)
 
 #convinence function to spawn an instance
 func spawn_instance(inst, global_pos : Vector2):

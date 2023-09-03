@@ -9,6 +9,7 @@ class_name LRJEntity #Left Right Jump Entity
 #how fast we fall to the ground
 var gravity : float = speed.y/2
 var run : bool = false #wether or not we are running
+
 @export var run_modifier : float = 4
 @export var do_fast_fall : bool = true
 
@@ -20,10 +21,11 @@ func clear_stored_inputs():
 	run = false
 	super.clear_stored_inputs()
 
-func set_ground_counter(val : int)->void:
-	super.set_ground_counter(val)
+func on_ground_changed(val : int)->void:
+	super.on_ground_changed(val)
 	if self.onground:
 		self.velocity.y = 0
+
 func on_action_double_press(act : String)->void:
 	if act == "LEFT" or act == "RIGHT":
 		run = true

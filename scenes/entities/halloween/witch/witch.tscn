@@ -1,10 +1,10 @@
 [gd_scene load_steps=48 format=3 uid="uid://k48him1e0fcp"]
 
-[ext_resource type="PackedScene" uid="uid://bvd2hb13cvw3d" path="res://scenes/entities/witch/witchSprite/witchSprite.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bvd2hb13cvw3d" path="res://scenes/entities/halloween/witch/witchSprite/witchSprite.tscn" id="1"]
 [ext_resource type="Script" path="res://assets/scripts/entities/witch.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://llaqtg2l3s0s" path="res://scenes/entities/witch/columnAttack/WitchColumn.tscn" id="2_ugqig"]
+[ext_resource type="PackedScene" uid="uid://llaqtg2l3s0s" path="res://scenes/entities/halloween/witch/columnAttack/WitchColumn.tscn" id="2_ugqig"]
 [ext_resource type="Shader" path="res://assets/shaders/alphaKiller.gdshader" id="3"]
-[ext_resource type="PackedScene" uid="uid://icrh4nsgwpee" path="res://scenes/entities/witch/projectileAttack/witchProjectile.tscn" id="3_8y0ab"]
+[ext_resource type="PackedScene" uid="uid://icrh4nsgwpee" path="res://scenes/entities/halloween/witch/projectileAttack/witchProjectile.tscn" id="3_8y0ab"]
 [ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="4_kjh21"]
 [ext_resource type="Texture2D" uid="uid://d1e5irqqnemtj" path="res://assets/animations/witch/attack_color/attack0034.png" id="5_rjses"]
 [ext_resource type="Texture2D" uid="uid://cf0j667k4pnpm" path="res://assets/animations/witch/attack_color/attack0035.png" id="6_ldjw2"]
@@ -267,6 +267,8 @@ position = Vector2(0, -39.5)
 shape = SubResource("RectangleShape2D_ptuu7")
 
 [node name="GroundTester" parent="." instance=ExtResource("43_dliy4")]
+position = Vector2(6.25, 1.25)
+scale = Vector2(0.5, 0.02)
 
 [node name="col_spawn_position" type="Node2D" parent="."]
 position = Vector2(88, -38)

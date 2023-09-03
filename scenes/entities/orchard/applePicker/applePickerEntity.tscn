@@ -21,7 +21,6 @@ run_speed = Vector2(5, 1.5)
 speed = Vector2(100, 100)
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_mohwp")]
-frame = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12.5)

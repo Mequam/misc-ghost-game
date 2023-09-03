@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnoukjnux3vku"]
+
+[ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.gd" id="1_qvm8x"]
+[ext_resource type="PackedScene" uid="uid://c7m0xnxd6um22" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumkion_sprite.tscn" id="1_wm434"]
+[ext_resource type="Script" path="res://scenes/tools/linked_list.gd" id="3_aforn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dcq2"]
+radius = 102.24
+
+[node name="rollingPumpkinEntity" type="CharacterBody2D" node_paths=PackedStringArray("impulse_data", "sprite")]
+position = Vector2(0, -2)
+script = ExtResource("1_qvm8x")
+impulse_delta = 1000.0
+impulse_data = NodePath("impulse_data")
+sprite = NodePath("Sprite2D/rollingPumkinRoot/rollingPumkionSprite")
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_wm434")]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -103)
+shape = SubResource("CircleShape2D_8dcq2")
+
+[node name="impulse_data" type="Node" parent="."]
+script = ExtResource("3_aforn")
+
+[editable path="Sprite2D"]

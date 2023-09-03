@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://llaqtg2l3s0s"]
 
-[ext_resource type="PackedScene" uid="uid://d4cweoxfkbmgr" path="res://scenes/entities/witch/columnAttack/WitchColumnSprite.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://d4cweoxfkbmgr" path="res://scenes/entities/halloween/witch/columnAttack/WitchColumnSprite.tscn" id="1"]
 [ext_resource type="Script" path="res://assets/scripts/hazzards/WitchColumn.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://dtp3n4hd6m41c" path="res://scenes/animations/magicParticles.tscn" id="2_1rkdj"]
 

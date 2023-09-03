@@ -1,0 +1,89 @@
+[gd_scene load_steps=19 format=3 uid="uid://cjj04dmtykhtj"]
+
+[ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.gd" id="1_8habe"]
+[ext_resource type="Texture2D" uid="uid://ce8ql01ng2vc4" path="res://assets/animations/rolling_pumpkin/empty_plant.png" id="2_ms2pa"]
+[ext_resource type="Texture2D" uid="uid://b1uy2p05kphao" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0001.png" id="3_bnut4"]
+[ext_resource type="Texture2D" uid="uid://du1xbxxgjhdou" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0002.png" id="4_8v0fl"]
+[ext_resource type="Texture2D" uid="uid://dpa1bwuaajaxi" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0003.png" id="5_4qwa1"]
+[ext_resource type="Texture2D" uid="uid://lca6kxxcnor5" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0004.png" id="6_xpv08"]
+[ext_resource type="Texture2D" uid="uid://c3m8m3tsr04pq" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0005.png" id="7_cuobf"]
+[ext_resource type="Texture2D" uid="uid://c3sw5xko2agkf" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0006.png" id="8_slg8b"]
+[ext_resource type="Texture2D" uid="uid://bfajtepukqcfh" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0007.png" id="9_e02fp"]
+[ext_resource type="Texture2D" uid="uid://7qhj84wop5wb" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0008.png" id="10_xlayy"]
+[ext_resource type="Texture2D" uid="uid://dum8gro7s7cmq" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0009.png" id="11_s8wlq"]
+[ext_resource type="Texture2D" uid="uid://348hmiobq1so" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0010.png" id="12_5hqrh"]
+[ext_resource type="Texture2D" uid="uid://bbf1g7tjl4rdl" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0011.png" id="13_3mxh7"]
+[ext_resource type="Texture2D" uid="uid://bt2pyu5cmhs0m" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0012.png" id="14_qe0te"]
+[ext_resource type="Texture2D" uid="uid://cxrjjv4ep0isq" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0013.png" id="15_qop2y"]
+[ext_resource type="Texture2D" uid="uid://c6of7fi033l8s" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0014.png" id="16_kl52j"]
+[ext_resource type="Texture2D" uid="uid://ct0dua2lp7dfi" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0015.png" id="17_dayjg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_injjl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ms2pa")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bnut4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8v0fl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4qwa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xpv08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cuobf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_slg8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e02fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xlayy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s8wlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5hqrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3mxh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qe0te")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qop2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kl52j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_dayjg")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 10.0
+}]
+
+[node name="pumpkin_tree_spawner" type="Node2D"]
+z_index = -1
+script = ExtResource("1_8habe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(34, -215)
+sprite_frames = SubResource("SpriteFrames_injjl")
+animation = &"die"

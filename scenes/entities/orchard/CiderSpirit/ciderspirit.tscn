@@ -110,7 +110,8 @@ position = Vector2(3, -26)
 shape = SubResource("RectangleShape2D_t5r8p")
 
 [node name="GroundTester" parent="." instance=ExtResource("5_d5wc2")]
-position = Vector2(15, -55)
+position = Vector2(5, 0)
+scale = Vector2(0.21, 0.03)
 
 [node name="unposSpot" type="Node2D" parent="."]
 position = Vector2(0, -73)

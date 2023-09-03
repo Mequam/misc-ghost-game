@@ -20,12 +20,9 @@ func main_ready():
 	$flight_timer.connect("timeout",Callable(self,"_on_flight_timer_timeout"))
 	super.main_ready()
 
-func set_ground_counter(val : int)->void:
-	var old_on_ground = self.onground
-	super.set_ground_counter(val)
-	print(old_on_ground)
-	print(self.onground)
-#not old_on_ground
+func on_ground_changed(val : int)->void:
+	super.on_ground_changed(val)
+	#not old_on_ground
 	if self.onground:
 		tired = false
 		$flight_timer.stop()
