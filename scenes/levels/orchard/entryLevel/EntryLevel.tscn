@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="2_yg6ni"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
-[ext_resource type="PackedScene" uid="uid://cnoukjnux3vku" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn" id="7_smn10"]
+[ext_resource type="PackedScene" uid="uid://cjj04dmtykhtj" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn" id="7_al2pr"]
 [ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="11_s7tpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
@@ -81,8 +81,5 @@ texture = ExtResource("11_s7tpd")
 position = Vector2(32, 34)
 shape = SubResource("RectangleShape2D_wiu6m")
 
-[node name="rollingPumpkinEntity" parent="." instance=ExtResource("7_smn10")]
-position = Vector2(195, -52)
-gravity = Vector2(0, 1)
-player_control = Vector2(50, 2)
-impulse_delta = 1.0
+[node name="pumpkin_tree_spawner" parent="." instance=ExtResource("7_al2pr")]
+position = Vector2(170, 0)
