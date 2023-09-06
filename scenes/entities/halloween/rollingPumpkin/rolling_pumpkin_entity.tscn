@@ -12,14 +12,18 @@ radius = 102.24
 position = Vector2(0, -2)
 script = ExtResource("1_qvm8x")
 gravity = Vector2(0, 50)
-player_control = Vector2(10, 1)
-terminal_velocity = 10.0
-friction = Vector2(0.8, 0)
-jump_speed = 20.0
-sprite = NodePath("Sprite2D/rollingPumkinRoot/rollingPumkionSprite")
+player_control = Vector2(5, 0)
+terminal_velocity = Vector2(30, 30)
+friction = Vector2(0.2, 0)
+jump_speed = 5.0
+sprite = NodePath("Sprite2D/body_prop/rotation_bone/rollingPumkinRoot/rollingPumkionSprite")
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_wm434")]
+position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
+
+[node name="rollingPumkionSprite" parent="Sprite2D/body_prop/rotation_bone/rollingPumkinRoot" index="0"]
+position = Vector2(34, -193)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -103)
