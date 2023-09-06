@@ -23,6 +23,9 @@ var rolling : bool = false
 
 func custom_play(animation : StringName  = "idle",backwards : bool = false)->void:
 	match animation:
+		"expload":
+			stop()
+			animation_player.play("expload")
 		"roll":
 			if not rolling:
 				stop()

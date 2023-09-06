@@ -104,6 +104,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(34, -193)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../..:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_5a6tw"]
 resource_name = "expload"
@@ -143,6 +155,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(2, 2), Vector2(2, 2), Vector2(8, 8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../..:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_vssec"]
@@ -383,7 +407,7 @@ position = Vector2(20, -172)
 position = Vector2(-16, 219)
 
 [node name="rollingPumkionSprite" type="AnimatedSprite2D" parent="body_prop/rotation_bone/rollingPumkinRoot" node_paths=PackedStringArray("animation_player", "rotation_bone")]
-position = Vector2(31, -186)
+position = Vector2(34, -193)
 sprite_frames = SubResource("SpriteFrames_v3j7j")
 animation = &"idle"
 script = ExtResource("1_no3md")

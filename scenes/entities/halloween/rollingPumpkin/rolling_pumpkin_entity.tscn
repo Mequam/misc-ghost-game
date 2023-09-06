@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="4_lg7dy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8dcq2"]
-radius = 102.24
+radius = 95.1893
 
 [node name="rollingPumpkinEntity" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 position = Vector2(0, -2)
@@ -15,18 +15,20 @@ gravity = Vector2(0, 50)
 player_control = Vector2(5, 0)
 terminal_velocity = Vector2(30, 30)
 friction = Vector2(0.2, 0)
-jump_speed = 5.0
+jump_speed = 2.0
+jump_max = 20.0
+jump_min = 5.0
 sprite = NodePath("Sprite2D/body_prop/rotation_bone/rollingPumkinRoot/rollingPumkionSprite")
+
+[node name="unposSpot" type="Node2D" parent="."]
+position = Vector2(1, -224)
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_wm434")]
 position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
 
-[node name="rollingPumkionSprite" parent="Sprite2D/body_prop/rotation_bone/rollingPumkinRoot" index="0"]
-position = Vector2(34, -193)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -103)
+position = Vector2(-2, -97)
 shape = SubResource("CircleShape2D_8dcq2")
 
 [node name="impulse_data" type="Node" parent="."]

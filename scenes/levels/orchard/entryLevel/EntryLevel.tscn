@@ -46,21 +46,22 @@ offset_right = 2141.0
 offset_bottom = 31.0
 color = Color(0.352941, 0.380392, 0.321569, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -381.0
-offset_top = 798.0
-offset_right = 2730.01
-offset_bottom = 838.0
-rotation = -0.219431
-color = Color(0.352941, 0.380392, 0.321569, 1)
-
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(514, 585)
+position = Vector2(1496, -229)
 rotation = -0.219358
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(587, 10)
+position = Vector2(590.26, -303.838)
+rotation = -0.218565
 shape = SubResource("RectangleShape2D_nk62p")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
+offset_left = -919.903
+offset_top = 13.1412
+offset_right = 2191.11
+offset_bottom = 53.1412
+rotation = -0.219431
+color = Color(0.352941, 0.380392, 0.321569, 1)
 
 [node name="mainCam" parent="." instance=ExtResource("5_pwvrf")]
 position = Vector2(0, 1)
@@ -83,3 +84,4 @@ shape = SubResource("RectangleShape2D_wiu6m")
 
 [node name="pumpkin_tree_spawner" parent="." instance=ExtResource("7_al2pr")]
 position = Vector2(170, 0)
+scale = Vector2(0.5, 0.5)

@@ -6,6 +6,7 @@ func on_animation_finished()->void:
 	$AnimatedSprite2D.play("die")
 	var inst = pumpkin_scene.instantiate()
 	get_parent().add_child(inst)
+	inst.scale = self.scale
 	inst.global_position = self.global_position
 # Called when the node enters the scene tree for the first time.
 func _ready():
