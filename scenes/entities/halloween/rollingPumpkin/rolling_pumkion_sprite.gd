@@ -47,8 +47,10 @@ func custom_play(animation : StringName  = "idle",backwards : bool = false)->voi
 				animation_player.play(animation)
 func _ready()->void:
 	animation_player.animation_finished.connect(self.anim_finished)
+
 func anim_finished(anim : StringName)->void:
-	print("animation finished on sprite2D " + anim )
+	animation_finished.emit(anim) #make sure that the rolling pumkin is aware of the signal
+	#print("animation finished on sprite2D " + anim )
 	match anim:
 		"roll_prep":
 			animation_finished.emit("roll_prep")

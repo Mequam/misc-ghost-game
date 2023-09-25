@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c7m0xnxd6um22"]
+[gd_scene load_steps=28 format=3 uid="uid://c7m0xnxd6um22"]
 
 [ext_resource type="Texture2D" uid="uid://djliw41u8h0us" path="res://assets/animations/rolling_pumpkin/rolly pumpkin explosion/rolinsplosin0001.png" id="1_6upgp"]
 [ext_resource type="Texture2D" uid="uid://d3dtmbevp4jbl" path="res://assets/animations/rolling_pumpkin/rolly pumpkin explosion/rolinsplosin0002.png" id="1_ijke2"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://wx1ug2faxm2m" path="res://assets/animations/rolling_pumpkin/eye roll/eye roll0019.png" id="12_bhxdd"]
 [ext_resource type="Texture2D" uid="uid://cnvw0by4fywqw" path="res://assets/animations/rolling_pumpkin/squish/squish0020.png" id="15_64gat"]
 [ext_resource type="Texture2D" uid="uid://d3ce7msb33ury" path="res://assets/animations/rolling_pumpkin/squish/squish0021.png" id="16_kjiua"]
+[ext_resource type="Texture2D" uid="uid://bwkf4duv1816o" path="res://assets/animations/rolling_pumpkin/seed.png" id="17_m0jla"]
 
 [sub_resource type="Animation" id="Animation_syh4o"]
 length = 0.001
@@ -119,6 +120,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_5a6tw"]
 resource_name = "expload"
+length = 0.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -197,6 +199,34 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1, 0.78)]
 }
 
+[sub_resource type="Animation" id="Animation_li26k"]
+resource_name = "ouch"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"damage"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_vwoj4"]
 resource_name = "roll_prep"
 length = 0.2
@@ -266,9 +296,8 @@ tracks/2/keys = {
 "values": [Vector2(0.75, 1.2), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_li26k"]
-resource_name = "ouch"
-length = 0.1
+[sub_resource type="Animation" id="Animation_e3wu0"]
+resource_name = "seed"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -279,19 +308,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"damage"]
+"values": [&"seed"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a0hxi"]
@@ -301,7 +342,8 @@ _data = {
 "idle": SubResource("Animation_vssec"),
 "ouch": SubResource("Animation_li26k"),
 "roll_prep": SubResource("Animation_vwoj4"),
-"roll_prep_recover": SubResource("Animation_goebx")
+"roll_prep_recover": SubResource("Animation_goebx"),
+"seed": SubResource("Animation_e3wu0")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3j7j"]
@@ -386,6 +428,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"roll_prep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_m0jla")
+}],
+"loop": true,
+"name": &"seed",
 "speed": 5.0
 }]
 
