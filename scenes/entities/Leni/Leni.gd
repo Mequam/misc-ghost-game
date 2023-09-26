@@ -39,12 +39,21 @@ func grab_aggro():
 func take_damage(dmg : int = 1, src = null)->void:
 	if invensible_timer.time_left <= 0 and self.get_sprite2D().animation != "posses": #we take no damage while possesing
 		super.take_damage(dmg,src)
+
+func on_unpos_buff_timer_stop():
+	super.on_ground_changed(0) #indicate that we need to check if we are flying
+
 #called on the entity we exorcize when removing it
 func on_unposses(host)->void:
 	self.state = EntityState.DEFAULT
 	grab_camera()
 	grab_aggro() #ensure that leni is targeted
 	invensible_timer.start()
+
+	self.tired = false #we get fly even higher after coming out of possesion
+	
+	$unpos_buff_timer.start() #we get buffed for a time after we posses something
+	
 	super.on_unposses(host)
 
 func on_posses(host)->void:
@@ -69,6 +78,7 @@ func main_ready():
 	super.main_ready()
 
 	possesed = true #make sure we start as possesed
+	$unpos_buff_timer.timeout.connect(self.on_unpos_buff_timer_stop)
 
 
 func on_action_press(act : String)->void:
