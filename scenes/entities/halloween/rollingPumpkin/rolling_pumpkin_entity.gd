@@ -72,8 +72,9 @@ func on_action_press(action : String)->void:
 			#give up control for height
 			self.velocity.y = -clamp(self.jump_speed*abs(self.velocity.x),jump_min,jump_max) 
 		elif action == "ATTACK":
-			self.state = RotatingPumkinState.EXPLOADING
 			self.get_sprite2D().custom_play("expload")
+			self.state = RotatingPumkinState.EXPLOADING
+			self.velocity *= 0
 		super.on_action_press(action)
 
 #uses player input to compute net force on the body
@@ -165,7 +166,15 @@ func launch()->void:
 	get_sprite2D().custom_play("seed")
 	
 	self.velocity.y = -10
-	self.velocity.x = 50
+	self.velocity.x = 0
+
+	if self.pressed_inputs["LEFT"]:
+		self.velocity.x -= 50
+	if self.pressed_inputs["RIGHT"]:
+		self.velocity.x += 50
+
+	#we can go UP if we have to
+	if self.velocity.x == 0: self.velocity.y *= 4
 
 func anim_finished(anim : StringName)->void:
 	match anim:
