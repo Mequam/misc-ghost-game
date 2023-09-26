@@ -15,13 +15,47 @@ class_name RotatingPumpkin
 @export var jump_max : float  
 @export var jump_min : float 
 
-#this is the tree spawner that we place when colliding as a seed
-var tree_spawner_packed_scene  : PackedScene = preload("res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn")
+
+@export var size : Size = Size.MEDIUM :
+	set (val):
+		size = val 
+		self.scale = get_size_scale(size)
+	get:
+		return size
+
+@export var size_scales : Array[Vector2]
+
+
+#rotation radius used to indicate our approximate radius when computing rotation speed
+var rotation_radius : float = 1
+
+
+#this is a reference to the glow effect that covers us when we are possesed
+#it is set on possesion and recorded for our use
+var ghost_after_effect : GhostAfterEffectNode = null
+
+enum Size {
+	SMALL,
+	MEDIUM,
+	BIG
+}
 
 enum RotatingPumkinState {
 	EXPLOADING = Entity.ENTITY_STATE_COUNT,
 	LAUNCHING
 }
+
+
+func get_size_scale(size : Size)->Vector2:
+	return self.size_scales[size]
+
+func posses_by(entity)->void:
+	super.posses_by(entity)
+	if entity.ghost_after_effect:
+		self.ghost_after_effect = entity.ghost_after_effect 
+func exorcize():
+	super.exorcize()
+	self.ghost_after_effect = null #clear out the reference to the after effect
 
 #adds a force to the object
 func add_impulse(force : Vector2)->void:
@@ -73,22 +107,55 @@ func _physics_process(delta)->void:
 			self.singal_move_and_collide(self.velocity*delta) #slide after colliding
 			
 			#updtae the rotation speed and send normal information to the animation system
-			self.get_sprite2D().rotation_speed = self.velocity.length()*(-1 if self.velocity.x < 0 else 1)
+			self.get_sprite2D().rotation_speed = self.velocity.length()*(-1 if self.velocity.x < 0 else 1)/self.rotation_radius
 			if self.get_sprite2D().ouch_threshold < projection.length():
 				self.get_sprite2D().custom_play("ouch")
 
 			if self.state == RotatingPumkinState.LAUNCHING:
 				self.plant_tree(normal)
 
+#goes from one size to the next size
+func cycle_size()->void:
+	size = ((size + 1) % len(Size.values()))
+	self.rotation_radius = sqrt(self.scale.x*self.scale.y)*2
 func plant_tree(normal)->void:
-	print("TEAM TREES!")
-	print(self.tree_spawner_packed_scene)
-	var obj : Node2D = self.spawn_object(self.tree_spawner_packed_scene,self.global_position)
-	obj.rotation = normal.angle()
+#var tree_spawner_packed_scene  : PackedScene = 
+	var inst = load("res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn").instantiate()
+
+	cycle_size()
+	
+	inst.scale = self.scale
+
+	if self.possesed and self.ghost_after_effect:
+		self.ghost_after_effect.visible = false
+
+	#just to be safe clear the currently stored inputs
+	self.clear_stored_inputs()
+
+	get_parent().add_child(inst)
+	inst.global_position = self.global_position
+	inst.pumpkin_reference = self 
+
+	#reset our velocity and animations
+	self.state = EntityState.DEFAULT 
+	self.velocity*=0
+
+	get_parent().remove_child(self)
+	inst.rotation = normal.angle()+PI/2
+
+	self.update_animation()
+
 
 func main_ready()->void:
 	self.get_sprite2D().animation_finished.connect(self.anim_finished)
 	super.main_ready()
+
+	self.tree_entered.connect(on_tree_entered)
+
+func on_tree_entered()->void:
+	if self.possesed and self.ghost_after_effect:
+		self.ghost_after_effect.visible = true
+
 
 #enter the launch mode where we go flying!
 func launch()->void:
