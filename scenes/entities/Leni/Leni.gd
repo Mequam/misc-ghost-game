@@ -156,7 +156,7 @@ func posses_attack(vel : Vector2)->void:
 		self.state = LeniState.POSSESING
 
 #leni is a ghost, you cant posses a ghost (at least until I get around to adding it :p)
-func exorcize():
+func exorcize(offset : Vector2 = Vector2(0,0)):
 	pass
 func posses_by(entity):
 	pass

@@ -5,7 +5,10 @@ class_name Entity
 #this is the generic entity script that all
 #collision game objects are inteanded to draw from
 
-@export var sprite : AnimatedSprite2D = null
+@export var sprite : AnimatedSprite2D = null 
+
+#how far away from the unpos spot can we move up down left or right
+@export var unposses_radius : float = 100
 
 signal died
 
@@ -90,7 +93,8 @@ var pressed_inputs : Dictionary = {
 	"UP":false,
 	"DOWN":false,
 	"ATTACK":false,
-	"JUMP":false
+	"JUMP":false,
+	"UNPOSSES":false
 }
 
 #used for making new enumerators in child classes
@@ -162,7 +166,9 @@ func on_action_double_press(action : String)->void:
 
 #runs only when the action is just pressed
 func on_action_press(action : String)->void:
-	pass
+	if self.possesed and pressed_inputs["UNPOSSES"]:
+		exorcize(action2velocity(action))
+
 #runs only when the action is released
 func on_action_released(action : String)->void:
 	pass
@@ -252,7 +258,7 @@ func on_unposses(_host)->void:
 	update_animation()
 
 #clears our possesion	
-func exorcize()->void:
+func exorcize(offset : Vector2 = Vector2(0,0))->void:
 	if self.possesed:
 		if self.possesed_entity != null:
 			if self.possesed_entity.ghost_after_effect:
@@ -260,7 +266,7 @@ func exorcize()->void:
 
 			get_parent().add_child(self.possesed_entity)	
 
-			possesed_entity.global_position  = unposses_position()
+			possesed_entity.global_position  = unposses_position()+offset*unposses_radius
 			self.possesed_entity.process_mode = Node.PROCESS_MODE_INHERIT
 			self.possesed_entity.on_unposses(self)
 			self.possesed_entity = null

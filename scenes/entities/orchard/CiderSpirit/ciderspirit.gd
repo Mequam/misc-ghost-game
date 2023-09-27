@@ -199,8 +199,8 @@ func posses_by(other):
 		self.state = EntityState.DEFAULT
 	self.clear_stored_inputs()
 	sync_mug_collision()
-func exorcize()->void:
-	super.exorcize() 
+func exorcize(offset : Vector2 = Vector2(0,0))->void:
+	super.exorcize(offset) 
 	sync_mug_collision()
 
 var hop_dir : String = ""

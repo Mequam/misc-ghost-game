@@ -1,6 +1,8 @@
 extends Entity
 
-func on_action_double_press(action):
+class_name RespawnLamp
+
+func handle_action(action)->void:
 	match action:
 		"LEFT":
 			$unposSpot.position = Vector2(-150,0)+Vector2(0,100)
@@ -12,8 +14,12 @@ func on_action_double_press(action):
 		"UP":
 			$unposSpot.position = Vector2(0,-150)+Vector2(0,100)
 	exorcize()
-func exorcize()->void:
-	super.exorcize()
+
+func on_action_double_press(action):
+	handle_action(action)
+func on_action_press(action):
+	handle_action(action)
+
 #we function on the same layer as a pickup
 func gen_col_layer()->int:
 	return ColMath.Layer.PICKUP

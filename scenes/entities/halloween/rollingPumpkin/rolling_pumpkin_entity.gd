@@ -53,8 +53,8 @@ func posses_by(entity)->void:
 	super.posses_by(entity)
 	if entity.ghost_after_effect:
 		self.ghost_after_effect = entity.ghost_after_effect 
-func exorcize():
-	super.exorcize()
+func exorcize(offset : Vector2 = Vector2(0,0)):
+	super.exorcize(offset)
 	self.ghost_after_effect = null #clear out the reference to the after effect
 
 #adds a force to the object
