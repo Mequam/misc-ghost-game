@@ -18,7 +18,7 @@ friction = Vector2(0.2, 0)
 jump_speed = 2.0
 jump_max = 20.0
 jump_min = 5.0
-size_scales = Array[Vector2]([Vector2(0.25, 0.25), Vector2(0.5, 0.5), Vector2(1, 1)])
+size_scales = Array[Vector2]([Vector2(0.1, 0.1), Vector2(0.5, 0.5), Vector2(1, 1)])
 sprite = NodePath("Sprite2D/body_prop/rotation_bone/rollingPumkinRoot/rollingPumkionSprite")
 
 [node name="unposSpot" type="Node2D" parent="."]

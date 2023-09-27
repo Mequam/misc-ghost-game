@@ -1,4 +1,5 @@
 extends TiredFlightEntity
+
 #this class represents the player ghost
 #that posseses stuff
 
@@ -21,6 +22,7 @@ var respawn_point : RespawnLamp
 
 @export
 var ghost_after_effect : GhostAfterEffectNode
+
 
 #simple conviennce function to store the current
 #entity as one the game should target
@@ -53,6 +55,7 @@ func on_unposses(host)->void:
 	self.tired = false #we get fly even higher after coming out of possesion
 	
 	$unpos_buff_timer.start() #we get buffed for a time after we posses something
+	$flight_timer.stop() #no need to worry about flight for the time bieng
 	
 	super.on_unposses(host)
 
@@ -81,9 +84,37 @@ func main_ready():
 	$unpos_buff_timer.timeout.connect(self.on_unpos_buff_timer_stop)
 
 
+func can_jump()->bool:
+	return $jump_timer.time_left == 0 #we can jump if the timer is NOT running
+
+#performs the jump gaurenteed
+#no questions ask, teleport go brrrr
+func jump()->void:
+	#we teleport VERY far after unpossesing
+	var computed_vel = (self.compute_velocity(self.velocity))
+	computed_vel *= (Vector2(100,40) if $unpos_buff_timer.time_left == 0 else Vector2(100,80))
+
+	
+	#breifly change our collision mask for the teleport
+	self.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
+	self.singal_move_and_collide(computed_vel)
+	self.collision_mask = self.gen_col_mask()
+	
+	#self.global_position = result.
+
+
+
+#jumps if it is possible to jump
+func safe_jump()->void:
+	if self.can_jump():
+		self.jump()
+		$jump_timer.start()	
+
 func on_action_press(act : String)->void:
 	if act == "ATTACK":
 		posses_attack(compute_velocity(velocity).normalized()*5)
+	if act == "JUMP":
+		self.safe_jump()	
 	super.on_action_press(act)
 
 #func set_possesed(val : bool)->void:

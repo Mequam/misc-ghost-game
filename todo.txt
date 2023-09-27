@@ -1,5 +1,35 @@
-- fix unshoot animation + animation transitions
-- knockback on shoot + shoot animation
-- pick mechanic
-	- apple pile sprite / animation
-- up animation on ghost apple picker
+Apple Picker Entity
+	- Animation System is buggy
+	- AI could probably use a re work, at the very least perhaps slower?
+	- Need to make the projectiles deal damage
+	- feels clunky to move, perhaps a speed boost? See ai tho :/, mby more horizontal?
+
+Witch
+	- Movement is crappy
+	- projectiles deal no damage
+	- teleport swap with projectile?
+
+Pumpkin Entity
+	- AI
+	- Spawning the pumpkin sometimes results in a tiny pumpkin bug
+	- seeds should probably only collide with env
+	- knocnback on explosion?
+	- damage entities on collision
+
+Cider Spirit
+	- Mug Can become trapped < featuer?
+
+Leni
+	- bit painful to control, perhaps update possesion speed
+	- more speed?
+	- teleport sound effect?
+	- needs to be easier to unposses entities, perhaps a new input?
+	- omni-directional possesion
+	- launch unposses?
+	- replace teleport with intangibility + speed boost? < makes more since for a ghost
+	^ we can't do intagibility with the art style, mby its ok how it is?
+
+ALL
+	- re-vamped AI system, perhaps one using resources so we can have more than one AI per entity?
+
+PLAYTESTING

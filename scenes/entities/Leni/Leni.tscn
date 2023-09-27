@@ -52,6 +52,10 @@ one_shot = true
 [node name="unpos_buff_timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="jump_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="flight_timer" to="." method="_on_flight_timer_timeout"]
 [connection signal="timeout" from="posses_timer" to="." method="_on_posses_timer_timeout"]
