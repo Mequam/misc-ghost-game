@@ -166,8 +166,8 @@ func on_action_double_press(action : String)->void:
 
 #runs only when the action is just pressed
 func on_action_press(action : String)->void:
-	if self.possesed and pressed_inputs["UNPOSSES"]:
-		exorcize(action2velocity(action))
+	if self.possesed and action == "UNPOSSES":
+		exorcize(get_stored_action_velocity())
 
 #runs only when the action is released
 func on_action_released(action : String)->void:
@@ -295,6 +295,14 @@ func main_process(delta):
 	if state != EntityState.BRICK:
 		singal_move_and_collide(speed*delta*compute_velocity(velocity))
 
+
+#returns the velocity represented by currently pressed inputs
+func get_stored_action_velocity()->Vector2:
+	var ret_val : Vector2 = Vector2(0,0)
+	for act in self.pressed_inputs:
+		if self.pressed_inputs[act]:
+			ret_val += self.action2velocity(act)
+	return ret_val
 
 #this is a utility function that converts an event into a direction
 #in the game
