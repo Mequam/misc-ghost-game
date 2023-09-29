@@ -28,6 +28,11 @@ enum ApplePickerState {
 	PICKING
 }
 
+func gen_col_mask()->int:
+	return ColMath.Layer.PLAYER | ColMath.Layer.TERRAIN | ColMath.ConstLayer.TILE_BORDER 
+func gen_col_layer()->int:
+	return ColMath.ConstLayer.ALL_ENEMIES | ColMath.Layer.NON_PLAYER_ENTITY
+
 #fills the apple basket if there are apple baskets around
 func pick()->void:
 	var areas = apple_detector.get_overlapping_areas()
@@ -50,10 +55,8 @@ func stop_shooting_apples()->void:
 	self.update_animation()
 
 func on_action_press(act : String)->void:
-	print("action press detected with " + act)
 	super.on_action_press(act)
 	if act == "ATTACK":
-		print("starting to shoot apples")
 		self.start_shooting_apples()
 
 func on_action_released(act : String)->void:
@@ -96,6 +99,7 @@ func on_col(col)->void:
 		var norm = col.get_normal()
 		if norm.x > norm.y*2:
 			self.perform_action("UP",true)
+	super.on_col(col)
 
 var shoot_threshold = 300
 

@@ -123,7 +123,6 @@ func set_state(val : int)->void:
 			collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
 			get_sprite2D().custom_play("damage")
 			if $modulate_timer:
-				modulate = Color.LIGHT_GRAY
 				$modulate_timer.start()
 	state = val
 func get_state()->int:
@@ -374,11 +373,14 @@ func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
 	var obj = proj.instantiate()
 	
 	obj.velocity = velocity
-	obj.collision_mask = collision_mask 
 	
-	return spawn_instance(obj,global_pos)
+	var ret_val =  spawn_instance(obj,global_pos)
+	
+	ret_val.collision_mask = collision_mask 
+	
+	return ret_val
+
 func on_modulate_timer_out():
-	modulate = Color.WHITE
 	state = EntityState.DEFAULT
 	collision_layer = saved_col_layer
 	collision_mask = saved_col_mask

@@ -19,8 +19,13 @@ func on_anim_started(anim : StringName)->void:
 	pass
 	#print("reseting the animations!")
 	#if self.animation != "shoot_prep" and self.animation != "walk": reset_animation()
+func on_anim_finished(anim):
+	self.animation_finished.emit(anim)
+	if anim_tree.get("parameters/conditions/damage"):
+		reset_animation()
 func _ready()->void:
 	anim_tree.animation_started.connect(self.on_anim_started)
+	anim_tree.animation_finished.connect(self.on_anim_finished)
 func reset_animation()->void:
 	anim_tree.set("parameters/conditions/fly_up",false)
 	anim_tree.set("parameters/conditions/walk",false)
@@ -29,6 +34,7 @@ func reset_animation()->void:
 	anim_tree.set("parameters/conditions/fall",false)
 	anim_tree.set("parameters/conditions/pick",false)
 	anim_tree.set("parameters/conditions/run",false)
+	anim_tree.set("parameters/conditions/damage",false)
 
 
 	

@@ -1,6 +1,8 @@
-[gd_scene load_steps=159 format=3 uid="uid://cv1ocywmuqlwo"]
+[gd_scene load_steps=175 format=3 uid="uid://cv1ocywmuqlwo"]
 
+[ext_resource type="Texture2D" uid="uid://7g7lmdt0amb3" path="res://assets/animations/apple picker ghost/up/damage_frames/damage0074.png" id="1_5hjcs"]
 [ext_resource type="Texture2D" uid="uid://j1isaho6s5pr" path="res://assets/animations/apple picker ghost/applePicker0025.png" id="1_rj2cv"]
+[ext_resource type="Texture2D" uid="uid://dcpxlslpwapta" path="res://assets/animations/apple picker ghost/up/damage_frames/damage0075.png" id="2_d0u5h"]
 [ext_resource type="Texture2D" uid="uid://chweo5vbng5wk" path="res://assets/animations/apple picker ghost/applePicker0026.png" id="2_eksat"]
 [ext_resource type="Texture2D" uid="uid://cftiyyfq7p2oy" path="res://assets/animations/apple picker ghost/applePicker0022.png" id="3_ixsl5"]
 [ext_resource type="Texture2D" uid="uid://mkr8bc5aakd7" path="res://assets/animations/apple picker ghost/applePicker0023.png" id="4_c1i5b"]
@@ -61,6 +63,20 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bfouf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5hjcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d0u5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i8w01")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_rj2cv")
@@ -230,6 +246,9 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_81lcc"]
+animation = &"damage"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgkay"]
 animation = &"fall"
@@ -565,14 +584,64 @@ advance_condition = &"walk"
 advance_mode = 2
 advance_condition = &"walk"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_07feu"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjtap"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fcp6x"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cnd3l"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ewa3o"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkx0r"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mrx2n"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a0emk"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tybs4"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d8pe6"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_586on"]
+advance_mode = 2
+advance_condition = &"damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xnlwb"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5jx8o"]
 states/Start/position = Vector2(-489.333, 18.6666)
+states/damage/node = SubResource("AnimationNodeAnimation_81lcc")
+states/damage/position = Vector2(-1045.91, -323.963)
 states/fall/node = SubResource("AnimationNodeStateMachine_6c68r")
 states/fall/position = Vector2(457.333, -933.666)
 "states/fly up/node" = SubResource("AnimationNodeStateMachine_1ihp1")
 "states/fly up/position" = Vector2(-527.75, -510.5)
 states/idle/node = SubResource("AnimationNodeAnimation_3ayp8")
-states/idle/position = Vector2(-188, -42.2592)
+states/idle/position = Vector2(-209.333, -26.2592)
 states/pick/node = SubResource("AnimationNodeAnimation_ch678")
 states/pick/position = Vector2(-194.333, -341.333)
 states/run/node = SubResource("AnimationNodeAnimation_kgn07")
@@ -591,8 +660,8 @@ states/shoot_prep_back/position = Vector2(365.666, 206.166)
 "states/shoot_prep_back 2/position" = Vector2(569.333, 371.278)
 states/walk/node = SubResource("AnimationNodeAnimation_nodcf")
 states/walk/position = Vector2(357.667, -370.436)
-transitions = ["run_prep", "run", SubResource("AnimationNodeStateMachineTransition_3kuhp"), "idle", "run_prep", SubResource("AnimationNodeStateMachineTransition_bv0tw"), "run_prep", "idle", SubResource("AnimationNodeStateMachineTransition_lt1wl"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_17lqo"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6on4a"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_jdv04"), "walk", "run_prep", SubResource("AnimationNodeStateMachineTransition_j25kt"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_qq064"), "idle", "shoot_prep", SubResource("AnimationNodeStateMachineTransition_pphn8"), "shoot_prep_back", "idle", SubResource("AnimationNodeStateMachineTransition_6iip1"), "run", "shoot_prep", SubResource("AnimationNodeStateMachineTransition_ok1t7"), "walk", "shoot_prep", SubResource("AnimationNodeStateMachineTransition_3t5xk"), "shoot_prep_back 2", "run_prep", SubResource("AnimationNodeStateMachineTransition_6b43l"), "idle", "pick", SubResource("AnimationNodeStateMachineTransition_q8oi1"), "pick", "idle", SubResource("AnimationNodeStateMachineTransition_8bisw"), "run", "pick", SubResource("AnimationNodeStateMachineTransition_b7suq"), "run_prep", "pick", SubResource("AnimationNodeStateMachineTransition_lyhap"), "shoot_prep_back", "pick", SubResource("AnimationNodeStateMachineTransition_6s6j1"), "shoot_prep_back 2", "pick", SubResource("AnimationNodeStateMachineTransition_q7g1s"), "shoot_prep", "pick", SubResource("AnimationNodeStateMachineTransition_f1rkf"), "walk", "pick", SubResource("AnimationNodeStateMachineTransition_fn26b"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_wngk7"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_fvix7"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_puhb8"), "run_prep", "fall", SubResource("AnimationNodeStateMachineTransition_hv4su"), "pick", "fall", SubResource("AnimationNodeStateMachineTransition_n7m7x"), "shoot_prep", "fall", SubResource("AnimationNodeStateMachineTransition_wdmmw"), "shoot_prep_back", "fall", SubResource("AnimationNodeStateMachineTransition_3x8dt"), "shoot_prep_back 2", "fall", SubResource("AnimationNodeStateMachineTransition_jhgp8"), "fall", "pick", SubResource("AnimationNodeStateMachineTransition_eg7c7"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_fddfk"), "fall", "run_prep", SubResource("AnimationNodeStateMachineTransition_gxcb0"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_il0pj"), "shoot_prep", "shoot state machine", SubResource("AnimationNodeStateMachineTransition_w0u47"), "shoot state machine", "shoot state mah", SubResource("AnimationNodeStateMachineTransition_ymr4a"), "shoot state mah", "shoot state machine", SubResource("AnimationNodeStateMachineTransition_6dnwd"), "shoot state machine", "shoot_prep_back 2", SubResource("AnimationNodeStateMachineTransition_vtms6"), "shoot state machine", "shoot_prep_back", SubResource("AnimationNodeStateMachineTransition_i32u0"), "shoot state mah", "shoot_prep_back 2", SubResource("AnimationNodeStateMachineTransition_0g133"), "shoot state mah", "shoot_prep_back", SubResource("AnimationNodeStateMachineTransition_wk3s3"), "fly up", "pick", SubResource("AnimationNodeStateMachineTransition_hfjye"), "fly up", "fall", SubResource("AnimationNodeStateMachineTransition_fkxab"), "pick", "fly up", SubResource("AnimationNodeStateMachineTransition_tusfx"), "idle", "fly up", SubResource("AnimationNodeStateMachineTransition_fpxtq"), "fly up", "idle", SubResource("AnimationNodeStateMachineTransition_jgqct"), "fly up", "walk", SubResource("AnimationNodeStateMachineTransition_rqj8q"), "walk", "fly up", SubResource("AnimationNodeStateMachineTransition_1fb5d"), "run_prep", "fly up", SubResource("AnimationNodeStateMachineTransition_grxbl"), "fly up", "run_prep", SubResource("AnimationNodeStateMachineTransition_arv45"), "shoot state machine", "walk", SubResource("AnimationNodeStateMachineTransition_v0mqr"), "shoot state mah", "walk", SubResource("AnimationNodeStateMachineTransition_4lna0"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_nujo7")]
-graph_offset = Vector2(-191.75, -466)
+transitions = ["run_prep", "run", SubResource("AnimationNodeStateMachineTransition_3kuhp"), "idle", "run_prep", SubResource("AnimationNodeStateMachineTransition_bv0tw"), "run_prep", "idle", SubResource("AnimationNodeStateMachineTransition_lt1wl"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_17lqo"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_6on4a"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_jdv04"), "walk", "run_prep", SubResource("AnimationNodeStateMachineTransition_j25kt"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_qq064"), "idle", "shoot_prep", SubResource("AnimationNodeStateMachineTransition_pphn8"), "shoot_prep_back", "idle", SubResource("AnimationNodeStateMachineTransition_6iip1"), "run", "shoot_prep", SubResource("AnimationNodeStateMachineTransition_ok1t7"), "walk", "shoot_prep", SubResource("AnimationNodeStateMachineTransition_3t5xk"), "shoot_prep_back 2", "run_prep", SubResource("AnimationNodeStateMachineTransition_6b43l"), "idle", "pick", SubResource("AnimationNodeStateMachineTransition_q8oi1"), "pick", "idle", SubResource("AnimationNodeStateMachineTransition_8bisw"), "run", "pick", SubResource("AnimationNodeStateMachineTransition_b7suq"), "run_prep", "pick", SubResource("AnimationNodeStateMachineTransition_lyhap"), "shoot_prep_back", "pick", SubResource("AnimationNodeStateMachineTransition_6s6j1"), "shoot_prep_back 2", "pick", SubResource("AnimationNodeStateMachineTransition_q7g1s"), "shoot_prep", "pick", SubResource("AnimationNodeStateMachineTransition_f1rkf"), "walk", "pick", SubResource("AnimationNodeStateMachineTransition_fn26b"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_wngk7"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_fvix7"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_puhb8"), "run_prep", "fall", SubResource("AnimationNodeStateMachineTransition_hv4su"), "pick", "fall", SubResource("AnimationNodeStateMachineTransition_n7m7x"), "shoot_prep", "fall", SubResource("AnimationNodeStateMachineTransition_wdmmw"), "shoot_prep_back", "fall", SubResource("AnimationNodeStateMachineTransition_3x8dt"), "shoot_prep_back 2", "fall", SubResource("AnimationNodeStateMachineTransition_jhgp8"), "fall", "pick", SubResource("AnimationNodeStateMachineTransition_eg7c7"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_fddfk"), "fall", "run_prep", SubResource("AnimationNodeStateMachineTransition_gxcb0"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_il0pj"), "shoot_prep", "shoot state machine", SubResource("AnimationNodeStateMachineTransition_w0u47"), "shoot state machine", "shoot state mah", SubResource("AnimationNodeStateMachineTransition_ymr4a"), "shoot state mah", "shoot state machine", SubResource("AnimationNodeStateMachineTransition_6dnwd"), "shoot state machine", "shoot_prep_back 2", SubResource("AnimationNodeStateMachineTransition_vtms6"), "shoot state machine", "shoot_prep_back", SubResource("AnimationNodeStateMachineTransition_i32u0"), "shoot state mah", "shoot_prep_back 2", SubResource("AnimationNodeStateMachineTransition_0g133"), "shoot state mah", "shoot_prep_back", SubResource("AnimationNodeStateMachineTransition_wk3s3"), "fly up", "pick", SubResource("AnimationNodeStateMachineTransition_hfjye"), "fly up", "fall", SubResource("AnimationNodeStateMachineTransition_fkxab"), "pick", "fly up", SubResource("AnimationNodeStateMachineTransition_tusfx"), "idle", "fly up", SubResource("AnimationNodeStateMachineTransition_fpxtq"), "fly up", "idle", SubResource("AnimationNodeStateMachineTransition_jgqct"), "fly up", "walk", SubResource("AnimationNodeStateMachineTransition_rqj8q"), "walk", "fly up", SubResource("AnimationNodeStateMachineTransition_1fb5d"), "run_prep", "fly up", SubResource("AnimationNodeStateMachineTransition_grxbl"), "fly up", "run_prep", SubResource("AnimationNodeStateMachineTransition_arv45"), "shoot state machine", "walk", SubResource("AnimationNodeStateMachineTransition_v0mqr"), "shoot state mah", "walk", SubResource("AnimationNodeStateMachineTransition_4lna0"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_nujo7"), "fly up", "damage", SubResource("AnimationNodeStateMachineTransition_07feu"), "fall", "damage", SubResource("AnimationNodeStateMachineTransition_vjtap"), "walk", "damage", SubResource("AnimationNodeStateMachineTransition_fcp6x"), "pick", "damage", SubResource("AnimationNodeStateMachineTransition_cnd3l"), "idle", "damage", SubResource("AnimationNodeStateMachineTransition_ewa3o"), "run", "damage", SubResource("AnimationNodeStateMachineTransition_wkx0r"), "run_prep", "damage", SubResource("AnimationNodeStateMachineTransition_mrx2n"), "shoot_prep_back 2", "damage", SubResource("AnimationNodeStateMachineTransition_a0emk"), "shoot_prep_back", "damage", SubResource("AnimationNodeStateMachineTransition_tybs4"), "shoot state machine", "damage", SubResource("AnimationNodeStateMachineTransition_d8pe6"), "shoot_prep", "damage", SubResource("AnimationNodeStateMachineTransition_586on"), "damage", "idle", SubResource("AnimationNodeStateMachineTransition_xnlwb")]
+graph_offset = Vector2(-440, -611)
 
 [sub_resource type="Animation" id="Animation_76nk8"]
 length = 0.001
@@ -619,6 +688,47 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("apples:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_nlxpi"]
+resource_name = "damage"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"damage"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1142,6 +1252,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jpafj"]
 _data = {
 "RESET": SubResource("Animation_76nk8"),
+"damage": SubResource("Animation_nlxpi"),
 "fall": SubResource("Animation_c66bv"),
 "fall_prep": SubResource("Animation_3qrch"),
 "fly_up": SubResource("Animation_6n6p6"),
@@ -1158,6 +1269,7 @@ _data = {
 }
 
 [node name="ApplePickerSprite" type="AnimatedSprite2D" node_paths=PackedStringArray("anim_tree")]
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_bfouf")
 animation = &"idle"
 script = ExtResource("31_yx5v0")
@@ -1167,6 +1279,7 @@ anim_tree = NodePath("AnimationTree")
 tree_root = SubResource("AnimationNodeStateMachine_5jx8o")
 anim_player = NodePath("../AnimationPlayer")
 active = true
+parameters/conditions/damage = false
 parameters/conditions/fall = false
 parameters/conditions/fly_up = false
 parameters/conditions/idle = false

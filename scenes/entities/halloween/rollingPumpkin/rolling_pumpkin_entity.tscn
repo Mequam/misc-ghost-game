@@ -39,5 +39,7 @@ script = ExtResource("3_aforn")
 position = Vector2(9, -8)
 scale = Vector2(0.5, 0.08)
 
+[node name="modulate_timer" type="Timer" parent="."]
+
 [editable path="Sprite2D"]
 [editable path="GroundTester"]

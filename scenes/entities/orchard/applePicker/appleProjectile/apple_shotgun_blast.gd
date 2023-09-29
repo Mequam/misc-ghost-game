@@ -28,11 +28,10 @@ func _ready()->void:
 	for i in range(self.projectile_count):
 		var to_shoot = self.projectile_scene.instantiate()
 		to_shoot.velocity = start_vector 
-		to_shoot.collision_mask = self.collision_mask
 
 		get_parent().add_child(to_shoot)
 	
-		print(self.global_position)
+		to_shoot.collision_mask = self.collision_mask
 		
 		to_shoot.global_position = self.global_position
 		start_vector = start_vector.rotated(rotation_step + (randf()-0.5)*self.noise*2)

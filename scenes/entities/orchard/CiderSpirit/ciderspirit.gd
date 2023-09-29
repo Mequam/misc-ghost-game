@@ -122,13 +122,11 @@ func on_transform_animation_finished(anim):
 		
 
 func on_col(col : KinematicCollision2D)->void:
-	if col : print("hit by " + col.get_collider().name )
 	if self.state == CiderSpiritState.LAUNCHED:
 		self.state = CiderSpiritState.SPLASHED 
 		if col:
 
 			if col.get_collider().has_method("take_damage"):
-				print("damageing " + col.get_collider().name)
 				col.get_collider().take_damage(1)
 			var normal = col.get_normal()
 			self.get_sprite2D().rotation = normal.angle() + (PI if self.velocity.x > 0 else 0.0)
