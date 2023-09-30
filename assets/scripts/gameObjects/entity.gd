@@ -175,21 +175,22 @@ func on_action_released(action : String)->void:
 #takes as input an action and wether or not it is double pressed,
 #then performs the given action
 func perform_action(act : String,pressed : bool,double_press : bool = false,echo : bool = false)->void:
-	if state != EntityState.DAZED:
-		if pressed:
-			on_action_press(act)
-			pressed_inputs[act] = true
-			if double_press:
-				on_action_double_press(act)
-		else:
-			pressed_inputs[act] = false
-			on_action_released(act)
-		if not echo:
-			update_animation()
+	if state == EntityState.DAZED: return
+	if pressed:
+		on_action_press(act)
+		pressed_inputs[act] = true
+		if double_press:
+			on_action_double_press(act)
+	else:
+		pressed_inputs[act] = false
+		on_action_released(act)
+	if not echo:
+		update_animation()
 			
 #performs the given action checked the entity
 #inteanded to be overloaded by the individual class
 func compute_action(event : InputEvent)->void:
+	print(event)
 	for key in pressed_inputs:
 		#yes this if statement is hideous, but it gaurds against
 		#echo events where event.is_aciton_pressed is false

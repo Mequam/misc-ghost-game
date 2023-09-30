@@ -66,16 +66,16 @@ func shouldBlockInput()->bool:
 	return self.state == RotatingPumkinState.EXPLOADING or self.state == RotatingPumkinState.LAUNCHING
 
 func on_action_press(action : String)->void:
-	if not (self.shouldBlockInput()): #we are a brick in the exploading state
-		if action == "JUMP" and self.onground:
-			#we jump higher if we move FASTER
-			#give up control for height
-			self.velocity.y = -clamp(self.jump_speed*abs(self.velocity.x),jump_min,jump_max) 
-		elif action == "ATTACK":
-			self.get_sprite2D().custom_play("expload")
-			self.state = RotatingPumkinState.EXPLOADING
-			self.velocity *= 0
-		super.on_action_press(action)
+	if (self.shouldBlockInput()): return #we are a brick in the exploading state
+	if action == "JUMP" and self.onground:
+		#we jump higher if we move FASTER
+		#give up control for height
+		self.velocity.y = -clamp(self.jump_speed*abs(self.velocity.x),jump_min,jump_max) 
+	elif action == "ATTACK":
+		self.get_sprite2D().custom_play("expload")
+		self.state = RotatingPumkinState.EXPLOADING
+		self.velocity *= 0
+	super.on_action_press(action)
 
 #uses player input to compute net force on the body
 func compute_force()->Vector2:
@@ -89,31 +89,32 @@ func compute_force()->Vector2:
 		
 
 func _physics_process(delta)->void:
-	if not self.state == RotatingPumkinState.EXPLOADING:
-		self.velocity += (compute_force() + gravity-self.velocity*friction)*delta 
+	if self.state == RotatingPumkinState.EXPLOADING: return
+	self.velocity += (compute_force() + gravity-self.velocity*friction)*delta 
 
-		#have x and y terminal velocity seperate to avoid oddities on jump
-		if abs(velocity.x) > self.terminal_velocity.x:
-			self.velocity.x = self.terminal_velocity.x * (-1 if self.velocity.x < 0 else 1)
-		if abs(self.velocity.y) > self.terminal_velocity.y:
-			self.velocity.y = self.terminal_velocity.y * (-1 if self.velocity.y < 0 else 1)
-		
-		#since we need the delta on the collision, were a bit hard pressed to use the on_col funciton here
-		var col = self.singal_move_and_collide(self.velocity*delta)
-		
-		if col:	
-			var normal : Vector2 = col.get_normal()
-			var projection : Vector2 = self.velocity.project(normal)
-			self.velocity -= projection
-			self.singal_move_and_collide(self.velocity*delta) #slide after colliding
-			
-			#updtae the rotation speed and send normal information to the animation system
-			self.get_sprite2D().rotation_speed = self.velocity.length()*(-1 if self.velocity.x < 0 else 1)/self.rotation_radius
-			if self.get_sprite2D().ouch_threshold < projection.length():
-				self.get_sprite2D().custom_play("ouch")
+	#have x and y terminal velocity seperate to avoid oddities on jump
+	if abs(velocity.x) > self.terminal_velocity.x:
+		self.velocity.x = self.terminal_velocity.x * (-1 if self.velocity.x < 0 else 1)
+	if abs(self.velocity.y) > self.terminal_velocity.y:
+		self.velocity.y = self.terminal_velocity.y * (-1 if self.velocity.y < 0 else 1)
+	
+	#since we need the delta on the collision, were a bit hard pressed to use the on_col funciton here
+	var col = self.singal_move_and_collide(self.velocity*delta)
+	
+	if not col:	 return
 
-			if self.state == RotatingPumkinState.LAUNCHING:
-				self.plant_tree(normal)
+	var normal : Vector2 = col.get_normal()
+	var projection : Vector2 = self.velocity.project(normal)
+	self.velocity -= projection
+	self.singal_move_and_collide(self.velocity*delta) #slide after colliding
+	
+	#updtae the rotation speed and send normal information to the animation system
+	self.get_sprite2D().rotation_speed = self.velocity.length()*(-1 if self.velocity.x < 0 else 1)/self.rotation_radius
+	if self.get_sprite2D().ouch_threshold < projection.length():
+		self.get_sprite2D().custom_play("ouch")
+
+	if self.state == RotatingPumkinState.LAUNCHING:
+		self.plant_tree(normal)
 
 #goes from one size to the next size
 func cycle_size()->void:
@@ -154,6 +155,9 @@ func main_ready()->void:
 	self.tree_entered.connect(on_tree_entered)
 
 func on_tree_entered()->void:
+	self.clear_stored_inputs()
+	self.update_animation()
+	self.get_sprite2D().play("idle")
 	if self.possesed and self.ghost_after_effect:
 		self.ghost_after_effect.visible = true
 

@@ -6,6 +6,7 @@ extends AnimatedSprite2D
 
 @export var eye_rotation_sensativity : float 
 @export var ouch_threshold : float #when we collide harder than this, indicate ouch
+@export var pumkin_entity : RotatingPumpkin
 
 var rotation_speed : float :
 	set (val):
@@ -27,7 +28,7 @@ func custom_play(animation : StringName  = "idle",backwards : bool = false)->voi
 			stop()
 			animation_player.play("expload")
 		"roll":
-			if not rolling:
+			if not rolling and self.pumkin_entity.pressed_inputs["UP"]: 
 				stop()
 				animation_player.play("roll_prep")
 			self.rolling = true 

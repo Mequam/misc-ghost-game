@@ -14,6 +14,7 @@ func on_animation_finished()->void:
 		var pumpkin_scene = load("res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn") 
 		inst = pumpkin_scene.instantiate()
 	get_parent().add_child(inst)
+	inst.on_tree_entered()
 	
 	inst.scale = self.scale
 	inst.global_position = self.global_position

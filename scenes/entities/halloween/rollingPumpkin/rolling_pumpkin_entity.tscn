@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnoukjnux3vku"]
+[gd_scene load_steps=5 format=3 uid="uid://cnoukjnux3vku"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.gd" id="1_qvm8x"]
 [ext_resource type="PackedScene" uid="uid://c7m0xnxd6um22" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumkion_sprite.tscn" id="1_wm434"]
-[ext_resource type="Script" path="res://scenes/tools/linked_list.gd" id="3_aforn"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="4_lg7dy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8dcq2"]
@@ -28,12 +27,12 @@ position = Vector2(1, -224)
 position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
 
+[node name="rollingPumkionSprite" parent="Sprite2D/body_prop/rotation_bone/rollingPumkinRoot" index="0" node_paths=PackedStringArray("pumkin_entity")]
+pumkin_entity = NodePath("../../../../..")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -97)
 shape = SubResource("CircleShape2D_8dcq2")
-
-[node name="impulse_data" type="Node" parent="."]
-script = ExtResource("3_aforn")
 
 [node name="GroundTester" parent="." instance=ExtResource("4_lg7dy")]
 position = Vector2(9, -8)
