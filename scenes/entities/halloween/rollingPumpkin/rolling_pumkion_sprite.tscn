@@ -457,7 +457,7 @@ position = Vector2(20, -172)
 position = Vector2(-16, 219)
 
 [node name="rollingPumkionSprite" type="AnimatedSprite2D" parent="body_prop/rotation_bone/rollingPumkinRoot" node_paths=PackedStringArray("animation_player", "rotation_bone")]
-position = Vector2(34, -193)
+position = Vector2(37, -192)
 sprite_frames = SubResource("SpriteFrames_v3j7j")
 animation = &"idle"
 script = ExtResource("1_no3md")

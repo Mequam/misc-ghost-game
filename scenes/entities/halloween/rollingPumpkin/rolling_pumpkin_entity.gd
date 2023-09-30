@@ -115,6 +115,12 @@ func _physics_process(delta)->void:
 
 	if self.state == RotatingPumkinState.LAUNCHING:
 		self.plant_tree(normal)
+	
+	if self.velocity.length() < 50: return 
+
+	var collider = col.get_collider()
+	if collider.has_method("take_damage"):
+		collider.take_damage()
 
 #goes from one size to the next size
 func cycle_size()->void:
