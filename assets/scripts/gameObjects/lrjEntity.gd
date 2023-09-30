@@ -10,6 +10,8 @@ class_name LRJEntity #Left Right Jump Entity
 var gravity : float = speed.y/2
 var run : bool = false #wether or not we are running
 
+#controls how fast we walk
+@export var walk_speed : Vector2 = Vector2(50,50)
 @export var run_modifier : float = 4
 @export var do_fast_fall : bool = true
 
@@ -25,6 +27,9 @@ func on_ground_changed(val : int)->void:
 	super.on_ground_changed(val)
 	if self.onground:
 		self.velocity.y = 0
+	
+	#trigger an animation update
+	self.update_animation()
 
 func on_action_double_press(act : String)->void:
 	if act == "LEFT" or act == "RIGHT":
@@ -55,7 +60,8 @@ func compute_velocity(velocity : Vector2)->Vector2:
 	if pressed_inputs["LEFT"]:
 		velocity -= Vector2(1,0)
 	if run:
-		velocity.x *= run_modifier
+		velocity.x *= run_modifier 
+	velocity *= walk_speed
 	return super.compute_velocity(velocity)
 
 func update_animation()->void:

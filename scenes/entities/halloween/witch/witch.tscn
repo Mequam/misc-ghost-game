@@ -46,8 +46,8 @@
 
 [sub_resource type="Resource" id="Resource_6ohhy"]
 script = ExtResource("4_kjh21")
-jump_height = 1.5
-jump_up_time = 0.2
+jump_height = 2.0
+jump_up_time = 0.1
 jump_down_time = 0.1
 
 [sub_resource type="ShaderMaterial" id="3"]
@@ -243,7 +243,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptuu7"]
-size = Vector2(74, 77)
+size = Vector2(74, 122.75)
 
 [node name="witch" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
@@ -253,8 +253,9 @@ script = ExtResource("2")
 collumn = ExtResource("2_ugqig")
 witchProjectile = ExtResource("3_8y0ab")
 jr = SubResource("Resource_6ohhy")
-run_modifier = 8.0
-speed = Vector2(100, 50)
+walk_speed = Vector2(10, 1)
+run_modifier = 2.0
+speed = Vector2(40, 40)
 
 [node name="Sprite2D" parent="." instance=ExtResource("1")]
 material = SubResource("3")
@@ -265,12 +266,13 @@ frame = 4
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -39.5)
+position = Vector2(0, -62.375)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ptuu7")
 
 [node name="GroundTester" parent="." instance=ExtResource("43_dliy4")]
-position = Vector2(6.25, 1.25)
-scale = Vector2(0.5, 0.02)
+position = Vector2(5, -1.25)
+scale = Vector2(0.48, 0.04)
 
 [node name="col_spawn_position" type="Node2D" parent="."]
 position = Vector2(88, -38)

@@ -2,6 +2,10 @@ extends Projectile
 
 class_name WitchProjectile
 
+#reference to the witch that shot us
+#used to enable the teleport
+var witch = null
+
 # Called when the node enters the scene tree for the first time.
 @export var magic : PackedScene 
 func main_ready():
@@ -21,4 +25,13 @@ func die():
 	super.die()
 
 func on_col(collider):
+
+	var entity = collider.get_collider()
+	
+	#we can teleport entities and players, that is IT
+	if entity.collision_layer & (ColMath.Layer.NON_PLAYER_ENTITY | ColMath.Layer.PLAYER) != 0: 
+		#swap the position of us and the entitiy on collision
+		var old_pos : Vector2 = witch.global_position 
+		witch.global_position = entity.global_position 
+		entity.global_position = old_pos 
 	super.on_col(collider)

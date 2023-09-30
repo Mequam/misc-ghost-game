@@ -20,6 +20,6 @@ func on_body_exited(body):
 	pass
 
 func _ready():
-	collision_layer = gen_col_layer()
-	collision_mask = gen_col_mask()
+	#collision_layer |= gen_col_layer()
+	#collision_mask |= gen_col_mask()
 	main_ready()

@@ -9,20 +9,23 @@ class_name Witch
 
 
 
-func singal_move_and_collide(rel_vec : Vector2, 
-						test_only : bool = false, 
-						safe_margin : float = 0.8,
-						recovery_as_collision : bool = false)->KinematicCollision2D:
-	var col = super.singal_move_and_collide(rel_vec,test_only,safe_margin,recovery_as_collision)
-	
-	if col:
-		super.singal_move_and_collide(rel_vec - rel_vec.project(col.get_normal()))
-		
-	return col
+#func singal_move_and_collide(rel_vec : Vector2, 
+#						test_only : bool = false, 
+#						safe_margin : float = 0.8,
+#						recovery_as_collision : bool = false)->KinematicCollision2D:
+#	var col = super.singal_move_and_collide(rel_vec,test_only,safe_margin,recovery_as_collision)
+#	
+#	if col:
+#		super.singal_move_and_collide(rel_vec - rel_vec.project(col.get_normal()))
+#		
+#	return col
 
 func ai_fire_column():
+
+	perform_action("UP",true)
 	perform_action("ATTACK",true)
 	perform_action("ATTACK",false)
+	perform_action("UP",false)
 
 func ai_shoot_col(player):
 	ai_look_at_player(player)
@@ -67,22 +70,25 @@ func collumn_attack()->void:
 	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
 	var obj = spawn_object(collumn,$col_spawn_position.global_position + Vector2(0,50))
+	print("my collision " + str(self.collision_mask))
+	obj.collision_mask = self.collision_mask
 
 #fires the witch projectile using our velocity as direction
 func shoot_witch_projectile()->void:
 	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
-	shoot(witchProjectile,$col_spawn_position.global_position,compute_velocity(velocity))
+	var proj = shoot(witchProjectile,$col_spawn_position.global_position,compute_velocity(velocity))
+	proj.witch = self
 	$Sprite2D.custom_play("attack")
 	state = EntityState.BRICK
 
 func on_action_press(act : String)->void:
 	match act:
 		"ATTACK":
-			if run:
-				shoot_witch_projectile()
-			else:
+			if self.pressed_inputs["UP"]:
 				collumn_attack()
+			else:
+				shoot_witch_projectile()
 	super.on_action_press(act)
 
 func update_animation(event : InputEvent = null)->void:
