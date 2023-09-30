@@ -157,7 +157,8 @@ func main_ready()->void:
 func on_tree_entered()->void:
 	self.clear_stored_inputs()
 	self.update_animation()
-	self.get_sprite2D().play("idle")
+	self.get_sprite2D().play("RESET")
+	self.get_sprite2D().reset_scale()
 	if self.possesed and self.ghost_after_effect:
 		self.ghost_after_effect.visible = true
 

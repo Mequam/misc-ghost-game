@@ -190,7 +190,7 @@ func perform_action(act : String,pressed : bool,double_press : bool = false,echo
 #performs the given action checked the entity
 #inteanded to be overloaded by the individual class
 func compute_action(event : InputEvent)->void:
-	print(event)
+	#print(event)
 	for key in pressed_inputs:
 		#yes this if statement is hideous, but it gaurds against
 		#echo events where event.is_aciton_pressed is false

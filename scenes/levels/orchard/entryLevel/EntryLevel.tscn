@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=12 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
 [ext_resource type="PackedScene" uid="uid://cjj04dmtykhtj" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn" id="7_al2pr"]
-[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="8_hu8qs"]
-[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="9_s1jqs"]
 [ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="10_a41p6"]
 [ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="11_s7tpd"]
 
@@ -92,12 +90,6 @@ shape = SubResource("RectangleShape2D_wiu6m")
 position = Vector2(170, 0)
 scale = Vector2(0.5, 0.5)
 
-[node name="applePicker" parent="." instance=ExtResource("8_hu8qs")]
-position = Vector2(1583, -681)
-
-[node name="witch" parent="." instance=ExtResource("9_s1jqs")]
-position = Vector2(1257, -17)
-
 [node name="CiderSpirit" parent="." instance=ExtResource("10_a41p6")]
 position = Vector2(-795, -27)
 
@@ -140,6 +132,3 @@ offset_left = -103.0
 offset_top = -13.0
 offset_right = 480.0
 offset_bottom = 9.0
-
-[node name="witch2" parent="." instance=ExtResource("9_s1jqs")]
-position = Vector2(281, -410)

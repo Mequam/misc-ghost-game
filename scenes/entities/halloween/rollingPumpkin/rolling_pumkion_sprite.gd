@@ -20,10 +20,16 @@ var rotation_speed : float :
 		return rotation_speed
 var rolling : bool = false 
 
-
+#convinence setup to reset the scale after spawn and clear any and all
+#scale modifications
+func reset_scale()->void:
+	self.scale = Vector2(1,1)
 
 func custom_play(animation : StringName  = "idle",backwards : bool = false)->void:
 	match animation:
+		"RESET":
+			stop()
+			animation_player.play("RESET")
 		"expload":
 			stop()
 			animation_player.play("expload")
