@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyopds84d0uy4"]
+[gd_scene load_steps=13 format=3 uid="uid://cyopds84d0uy4"]
 
+[ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_6imxg"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="1_ii7jq"]
 [ext_resource type="PackedScene" uid="uid://bvd2hb13cvw3d" path="res://scenes/entities/halloween/witch/witchSprite/witchSprite.tscn" id="2_canb3"]
 [ext_resource type="PackedScene" uid="uid://c22xqm54cs50" path="res://scenes/entities/Leni/GhostSprite/GhostSprite.tscn" id="3_s0718"]
+[ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_jeipo"]
+[ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="6_7sncg"]
+[ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="7_yn8hi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr7ku"]
 texture = ExtResource("1_ii7jq")
@@ -392,7 +396,13 @@ terrain_set_0/terrain_0/name = "lol"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_gf0pq")
 
-[node name="load_test2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bx8c"]
+size = Vector2(123, 125)
+
+[node name="load_test2" type="Node2D" node_paths=PackedStringArray("cam_ref")]
+script = ExtResource("1_6imxg")
+load_path = "res://scenes/levels/debug/leni_load_test.tscn"
+cam_ref = NodePath("mainCam")
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -415,3 +425,16 @@ position = Vector2(574, 325)
 
 [node name="ghostSprite" parent="." instance=ExtResource("3_s0718")]
 position = Vector2(170, 151)
+
+[node name="mainCam" parent="." instance=ExtResource("5_jeipo")]
+
+[node name="load_zone_door_a" parent="." instance=ExtResource("6_7sncg")]
+position = Vector2(895, 670)
+target_level = "res://scenes/levels/orchard/entryLevel/EntryLevel.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_a"]
+position = Vector2(-8, 5)
+shape = SubResource("RectangleShape2D_2bx8c")
+
+[node name="spawn_light" parent="." instance=ExtResource("7_yn8hi")]
+position = Vector2(724, 605)

@@ -13,4 +13,5 @@ var target : Node2D = null
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	position = position.lerp(target.position,0.5)
+	if target:
+		position = position.lerp(target.position,0.5)

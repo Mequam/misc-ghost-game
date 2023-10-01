@@ -1,0 +1,38 @@
+extends Area2D
+
+
+@export var target_level : String
+
+var used : bool = false 
+@export var disabled : bool = false 
+@export var do_disable_toggle : bool = true
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.body_entered.connect(on_body_entered)
+	self.body_exited.connect(on_body_exited)
+
+func on_body_exited(_body):
+	disabled = disabled and not do_disable_toggle
+func on_body_entered(body):
+	if used or disabled: return 
+	used = true
+	GameLoader.load_level(load(target_level),self,[body])
+
+#lets us interact with the load AFTER the game object loads them
+func update_load(loaded_lvl : Level ,persist_obj):
+	loaded_lvl.player_entity = persist_obj[0]
+	persist_obj[0].grab_camera()
+	var sibling_door = loaded_lvl.get_node(NodePath(self.name)) 
+	if sibling_door:
+		sibling_door.disabled = true
+		persist_obj[0].global_position = sibling_door.global_position
+
+
+
+		
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass

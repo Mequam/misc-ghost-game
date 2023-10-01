@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn7oskg4r226c"]
+
+[ext_resource type="Script" path="res://scenes/environment/zone_changer/zone_changer.gd" id="1_tlho7"]
+
+[node name="zoneChanger" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_tlho7")

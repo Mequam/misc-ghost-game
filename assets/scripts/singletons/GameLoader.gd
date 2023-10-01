@@ -75,12 +75,16 @@ func load_level(level,_caller,persist_obj=[]):
 
 	#load and add the objects to the new level
 	var loaded_lvl = level.instantiate()
-	for obj in persist_obj:
-		loaded_lvl.add_child(obj)
 
 	
 	#add the level node
 	var container = get_level_container()
 	container.add_child(loaded_lvl)
+
+
+	for obj in persist_obj:
+		loaded_lvl.add_child(obj)
 	
+	if _caller.has_method("update_load"):
+		_caller.update_load(loaded_lvl,persist_obj)
 	return loaded_lvl
