@@ -79,6 +79,7 @@ func get_health()->int:
 #used when we want do more than just remove_at ourselfs from the scene
 func die():
 	emit_signal("die")
+	exorcize()
 	queue_free()
 
 #called when we take damage, inteanded to be overloaded

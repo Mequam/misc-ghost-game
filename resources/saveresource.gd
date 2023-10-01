@@ -59,6 +59,11 @@ func save_game()->void:
 	ensure_save_dir()
 	ResourceSaver.save(self,self.get_save_path())
 
+func save_game_from_lamp(ghost_light : RespawnLamp)->void:
+	self.load_lvl = ghost_light.get_level_path()
+	self.lvl_lamp = ghost_light.name 
+	self.save_game()
+
 #loads a game save resource from the given name
 static func load_game_gn(gameName : String)->GameSaveResource:
 	GameSaveResource.ensure_save_dir_gn(gameName)

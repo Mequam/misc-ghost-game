@@ -7,6 +7,8 @@ class_name Level
 @export 
 var ai_timeout : float = 20
 
+@export var load_path : String
+
 @export
 var cam_ref : Camera2D :
 	get:

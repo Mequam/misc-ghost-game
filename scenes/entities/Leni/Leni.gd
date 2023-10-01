@@ -254,7 +254,6 @@ func _on_sprite_2d_animation_finished():
 		"posses_launch":
 			pass #handled in sprite2d
 		"die":
-			ghost_after_effect.queue_free()
-			super.die()
+			GameLoader.load_save()
 		_:
 			self.state = EntityState.DEFAULT

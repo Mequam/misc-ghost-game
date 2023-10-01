@@ -56,7 +56,9 @@ func load_save()->void:
 
 
 func save_game()->void:
-	print("todo: save game")
+	self.game_data.save_game()
+func save_game_from_lamp(lamp : RespawnLamp)->void:
+	self.game_data.save_game_from_lamp(lamp)
 
 #returns a list of saved games
 func list_game_saves():

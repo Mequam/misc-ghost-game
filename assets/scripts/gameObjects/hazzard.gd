@@ -15,11 +15,13 @@ func main_ready():
 
 func on_body_entered(body):
 	print("hazard hit!")
-	body.take_damage()
+	if body.has_method("take_damage"):
+		body.take_damage()
+
 func on_body_exited(body):
 	pass
 
 func _ready():
-	#collision_layer |= gen_col_layer()
-	#collision_mask |= gen_col_mask()
+	collision_layer = gen_col_layer()
+	collision_mask = gen_col_mask()
 	main_ready()

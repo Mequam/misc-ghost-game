@@ -69,9 +69,7 @@ func collumn_attack()->void:
 	state = EntityState.BRICK
 	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
-	var obj = spawn_object(collumn,$col_spawn_position.global_position + Vector2(0,50))
-	print("my collision " + str(self.collision_mask))
-	obj.collision_mask = self.collision_mask
+	spawn_object(collumn,$col_spawn_position.global_position + Vector2(0,50))
 
 #fires the witch projectile using our velocity as direction
 func shoot_witch_projectile()->void:

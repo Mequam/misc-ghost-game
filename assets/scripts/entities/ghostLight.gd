@@ -28,11 +28,14 @@ func gen_col_mask()->int:
 	return 0
 
 
+#gets the load path from the parent of the respawn lamp
+func get_level_path()->String:
+	return self.get_parent().load_path
 
 #the ghost lamp saves when possesed
 func posses_by(entity):
 	#TODO:
-	#GameLoader.save_game()
+	GameLoader.save_game_from_lamp(self)
 	super.posses_by(entity)
 	collision_mask = gen_col_mask()
 	collision_layer = gen_col_layer()

@@ -22,6 +22,7 @@ size = Vector2(587, 20)
 position = Vector2(22, 419)
 script = ExtResource("1_skwwk")
 ai_timeout = 0.25
+load_path = "res://scenes/levels/orchard/entryLevel/EntryLevel.tscn"
 cam_ref = NodePath("mainCam")
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_jx3ls")]
@@ -72,7 +73,6 @@ position = Vector2(0, 1)
 
 [node name="firstLight" parent="." instance=ExtResource("6_5g2bp")]
 position = Vector2(-285, -217)
-scale = Vector2(0.5, 0.5)
 
 [node name="test collision" type="RigidBody2D" parent="."]
 position = Vector2(-2, -73)
@@ -87,7 +87,7 @@ position = Vector2(32, 34)
 shape = SubResource("RectangleShape2D_wiu6m")
 
 [node name="pumpkin_tree_spawner" parent="." instance=ExtResource("7_al2pr")]
-position = Vector2(170, 0)
+position = Vector2(-150, 1)
 scale = Vector2(0.5, 0.5)
 
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
@@ -131,4 +131,7 @@ offset_right = 480.0
 offset_bottom = 9.0
 
 [node name="witch" parent="." instance=ExtResource("9_s1jqs")]
-position = Vector2(492, -62)
+position = Vector2(328, -62)
+
+[node name="spawn_light" parent="." instance=ExtResource("6_5g2bp")]
+position = Vector2(-295, -708)
