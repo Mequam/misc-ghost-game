@@ -10,6 +10,11 @@ class_name Entity
 #how far away from the unpos spot can we move up down left or right
 @export var unposses_radius : float = 100
 
+#this is a variable to an AI resource
+#that tells us how to run when not possesed
+#null indicates no action
+@export var entity_ai : EntityAI
+
 signal died
 
 func get_sprite2D()->AnimatedSprite2D:
@@ -155,7 +160,10 @@ func main_ready():
 	if $dazed_timer:	
 		$dazed_timer.connect("timeout",Callable(self,"on_dazed_timer_out"))
 		$dazed_timer.wait_time = 0.5
-		$dazed_timer.one_shot = true
+		$dazed_timer.one_shot = true 
+	
+	if entity_ai:
+		entity_ai.setup(self)
 
 func on_dazed_timer_out():
 	self.state = EntityState.DEFAULT
@@ -175,7 +183,10 @@ func on_action_released(action : String)->void:
 
 #takes as input an action and wether or not it is double pressed,
 #then performs the given action
-func perform_action(act : String,pressed : bool,double_press : bool = false,echo : bool = false)->void:
+func perform_action(act : String,
+pressed : bool,
+double_press : bool = false,
+echo : bool = false)->void:
 	if state == EntityState.DAZED: return
 	if pressed:
 		on_action_press(act)
@@ -213,13 +224,6 @@ func compute_action(event : InputEvent)->void:
 		elif event.is_action_released(key):
 			pressed_inputs[key] = false
 			perform_action(key,false,false,event.is_echo())
-
-
-#this function is called when we are NOT possesed
-#and is inteanded to feed inputs into the perform_action function
-#it takes as its inputs the player position 
-func AI(player_enemy)->void:
-	pass
 
 #called when we posses another entity
 func on_posses(posesee):
@@ -281,8 +285,8 @@ func exorcize(offset : Vector2 = Vector2(0,0))->void:
 
 #runs the AI if acceptable
 func run_AI(player_enemy)->void:
-	if not self.possesed:
-		AI(player_enemy)
+	if not self.possesed and entity_ai:
+		entity_ai.tick(player_enemy)
 
 
 #this function is called at the end of perform_action
