@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=15 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cjj04dmtykhtj" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn" id="7_al2pr"]
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="9_5xj7r"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="9_s1jqs"]
+[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="10_3nb5x"]
 [ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="11_s7tpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
@@ -135,7 +136,11 @@ offset_right = 480.0
 offset_bottom = 9.0
 
 [node name="witch" parent="." instance=ExtResource("9_s1jqs")]
-position = Vector2(328, -62)
+position = Vector2(790, -16)
+
+[node name="witch2" parent="." instance=ExtResource("9_s1jqs")]
+position = Vector2(205, -410)
+entity_ai = null
 
 [node name="spawn_light" parent="." instance=ExtResource("6_5g2bp")]
 position = Vector2(-295, -708)
@@ -147,3 +152,6 @@ target_level = "res://scenes/levels/debug/leni_load_test.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_a"]
 position = Vector2(40.25, 19)
 shape = SubResource("RectangleShape2D_o10wt")
+
+[node name="CiderSpirit" parent="." instance=ExtResource("10_3nb5x")]
+position = Vector2(-503, -14)

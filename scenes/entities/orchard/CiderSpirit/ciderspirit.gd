@@ -18,9 +18,6 @@ class_name CiderSpirit
 #used when computing the time it takes us to travel a given distance via jump parabola
 @export var jump_speed : float = 10
 
-#controls the frequency that we jump at the player
-@export var ai_timer_jump : Timer
-
 @export var follower_mug_ps : PackedScene 
 var follower_mug : FollowerMug
 
@@ -28,6 +25,7 @@ func die()->void:
 	follower_mug.queue_free() 
 	await follower_mug.tree_exited
 	self.queue_free()
+
 func set_health(val : int)->void:
 	if val <= 0:
 		die()
@@ -45,45 +43,29 @@ var jump_height : float = 0
 var do_jump_parabola : bool = false  :
 	set(val):
 		do_jump_parabola = val 
-		jump_time = 0
-		self.state = CiderSpiritState.PARABALA
+		jump_time        = 0
+		self.state       = CiderSpiritState.PARABALA
 		queue_redraw()
 	get:
 		return do_jump_parabola
+
 func on_ground_changed(val : int)->void:
 	super.on_ground_changed(val) 
 	if self.onground and self.state == CiderSpiritState.LAUNCHED:
 		self.on_col(null)
+
 #when we would normaly jump, we prepare to
 #parabala leep
 var wants_to_combine = false
+
 func jump()->void:
 	if not (self.state == CiderSpiritState.LAUNCHED or self.state == CiderSpiritState.SPLASHED):
 		self.do_jump_parabola = true 
 	else:
 		summon_mug()
 
-#trys to jump past the player
-func ai_jump_past_player(player,error : float=100)->void:
-	if not self.pressed_inputs["JUMP"]: 
-		self.perform_action("JUMP",true)
-	var target = (player.position.x - self.position.x)*2
-	if (jump_distance  < target + error and jump_distance > target - error):
-		#we are at a valid distance, jump!
-		self.perform_action("JUMP",false)
-func AI(player)->void:
-	if not ai_timer_jump.wait_time <= 0 and self.pressed_inputs["JUMP"] and self.state == EntityState.DEFAULT:
-		self.perform_action("JUMP",false)
-	else:
-		if position.distance_squared_to(player.position) < 600**2 and self.state != CiderSpiritState.LAUNCHED:
-				self.ai_look_at_player(player)
-				self.ai_jump_past_player(player)
-
-		if self.state == CiderSpiritState.SPLASHED:
-			#start the timer for the next time that we can jump
-			ai_timer_jump.start()
-			self.perform_action("JUMP",true)
-		
+func on_level_load(lvl)->void:
+	pass
 
 #this function launches us along the trajectory indicated by the parabala that we drew
 func follow_trajectory()->void:
@@ -107,12 +89,13 @@ func follow_trajectory()->void:
 		follower_mug.unhide_self(self.get_sprite2D().tail)
 		follower_mug.collision_layer = self.collision_layer
 		if self.gravity < 5: self.gravity = 5
+
 func on_action_released(act : String)->void:
 	#super.on_action_released(act)
-	if do_jump_parabola and act == "JUMP":
+	if do_jump_parabola and (act == "JUMP" or act == "ATTACK"):
 		#prepare to follow trajectory
 		get_sprite2D().custom_play("launch")
-	if (self.state == CiderSpiritState.LAUNCHED or self.state == CiderSpiritState.SPLASHED) and act == "JUMP":
+	if (self.state == CiderSpiritState.LAUNCHED or self.state == CiderSpiritState.SPLASHED) and (act == "JUMP" or act == "ATTACK"):
 		wants_to_combine = false
 
 
@@ -143,11 +126,11 @@ func on_anim_finished():
 
 
 func hide_follower_mug()->void:
-	follower_mug.freeze = true
-	follower_mug.visible = false 
-	follower_mug.collision_layer = 0
-	follower_mug.collision_mask = 0
-	follower_mug.global_position = global_position + Vector2(0,-20)
+	follower_mug.freeze           = true
+	follower_mug.visible          = false 
+	follower_mug.collision_layer  = 0
+	follower_mug.collision_mask   = 0
+	follower_mug.global_position  = global_position + Vector2(0,-20)
 
 	wants_to_combine = false
 	if self.global_transform.y.dot(follower_mug.global_transform.y) < 0:
@@ -166,11 +149,12 @@ func summon_mug()->void:
 	wants_to_combine = true 
 	if not follower_mug.freeze: return 
 	follower_mug.collision_layer = collision_layer 
-	follower_mug.collision_mask = collision_mask
+	follower_mug.collision_mask  = collision_mask
 	follower_mug.linear_velocity = (self.global_position-follower_mug.global_position).normalized()*follower_mug.initial_speed 
-	var old_position = follower_mug.global_position
-	follower_mug.freeze = false 
+	var old_position             = follower_mug.global_position
+	follower_mug.freeze          = false 
 	follower_mug.global_position = old_position
+
 
 func main_ready()->void:
 	get_sprite2D().animation_finished.connect(self.on_anim_finished)
@@ -245,6 +229,8 @@ func get_parabola_derivative(x,distance,max_height)->float:
 func on_action_press(action : String)->void:
 	if action == "LEFT" or action == "RIGHT":
 		hop_dir = action 	
+	if action == "ATTACK":
+		self.jump()
 	super.on_action_press(action)
 
 func draw_parabala(

@@ -22,6 +22,13 @@ func get_sprite2D()->AnimatedSprite2D:
 	return $Sprite2D
 	
 
+#this function is inteanded to be overloaded
+#and is called any time that an entity is moved into a loaded level
+#via door code
+func on_level_load(_lvl)->void:
+	pass 
+
+
 #reference to the entity we are currently possesing
 var possesed_entity : Entity = null :
 	set(val):
