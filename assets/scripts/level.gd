@@ -91,5 +91,7 @@ func display_hp(
 		max_hp : int,
 		heart_texture : Array[Texture2D] = [])->void:
 	var main = get_main()
-	if len(heart_texture) > 0: main.heart_tracker.heart_texture = heart_texture
+	if len(heart_texture) > 0:
+		for i in range(len(heart_texture)):
+			main.heart_tracker.heart_texture[i] = heart_texture[i]
 	get_main().heart_tracker.update_display(current_hp,max_hp)

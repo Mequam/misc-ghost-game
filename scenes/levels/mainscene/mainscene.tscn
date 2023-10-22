@@ -656,7 +656,7 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
-anchor_bottom = 0.07
+anchor_bottom = 0.122
 
 [node name="ColorRect" parent="UILayer" instance=ExtResource("10_p30ux")]
 material = SubResource("ShaderMaterial_l1mui")

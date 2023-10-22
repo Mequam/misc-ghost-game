@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://k48him1e0fcp"]
+[gd_scene load_steps=53 format=3 uid="uid://k48him1e0fcp"]
 
 [ext_resource type="PackedScene" uid="uid://bvd2hb13cvw3d" path="res://scenes/entities/halloween/witch/witchSprite/witchSprite.tscn" id="1"]
 [ext_resource type="Script" path="res://assets/scripts/entities/witch.gd" id="2"]
@@ -8,9 +8,12 @@
 [ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="4_kjh21"]
 [ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/witchAI_shoot_run.gd" id="5_ji8a8"]
 [ext_resource type="Texture2D" uid="uid://d1e5irqqnemtj" path="res://assets/animations/witch/attack_color/attack0034.png" id="5_rjses"]
+[ext_resource type="Texture2D" uid="uid://6wl2vxdoucp1" path="res://assets/ui/hearts/witch/witchHeart0003.png" id="6_kdcru"]
 [ext_resource type="Texture2D" uid="uid://cf0j667k4pnpm" path="res://assets/animations/witch/attack_color/attack0035.png" id="6_ldjw2"]
+[ext_resource type="Texture2D" uid="uid://dmyjiaewbe8ss" path="res://assets/ui/hearts/witch/witchHeart0002.png" id="7_32k8t"]
 [ext_resource type="Texture2D" uid="uid://db8btnhxad2gu" path="res://assets/animations/witch/attack_color/attack0036.png" id="7_s5kgu"]
 [ext_resource type="Texture2D" uid="uid://cjwut0ps1y1ho" path="res://assets/animations/witch/attack_color/attack0037.png" id="8_hnsv1"]
+[ext_resource type="Texture2D" uid="uid://cixvie4gb20gc" path="res://assets/ui/hearts/witch/witchHeart0001.png" id="8_mttl6"]
 [ext_resource type="Texture2D" uid="uid://dxiq8gpml76q" path="res://assets/animations/witch/attack_color/attack0038.png" id="9_135j1"]
 [ext_resource type="Texture2D" uid="uid://chlffy6hwujh2" path="res://assets/animations/witch/witch_color_damage/0039.png" id="10_bp7pb"]
 [ext_resource type="Texture2D" uid="uid://duxdmgdyk0dxq" path="res://assets/animations/witch/witch_color_damage/0040.png" id="11_30ygo"]
@@ -260,6 +263,7 @@ jr = SubResource("Resource_6ohhy")
 walk_speed = Vector2(10, 1)
 run_modifier = 2.0
 entity_ai = SubResource("Resource_w1do7")
+heart_text = Array[Texture2D]([ExtResource("6_kdcru"), ExtResource("7_32k8t"), ExtResource("8_mttl6")])
 speed = Vector2(40, 40)
 
 [node name="Sprite2D" parent="." instance=ExtResource("1")]

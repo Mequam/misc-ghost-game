@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnoukjnux3vku"]
+[gd_scene load_steps=8 format=3 uid="uid://cnoukjnux3vku"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.gd" id="1_qvm8x"]
 [ext_resource type="PackedScene" uid="uid://c7m0xnxd6um22" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumkion_sprite.tscn" id="1_wm434"]
+[ext_resource type="Texture2D" uid="uid://cenbxj5f6h4kh" path="res://assets/ui/hearts/rolly_pumpkin/dead.png" id="2_slbf4"]
+[ext_resource type="Texture2D" uid="uid://dd5fto68b43ov" path="res://assets/ui/hearts/rolly_pumpkin/small.png" id="3_lw1q3"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="4_lg7dy"]
+[ext_resource type="Texture2D" uid="uid://51m4y68yahht" path="res://assets/ui/hearts/rolly_pumpkin/big.png" id="4_s7mky"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8dcq2"]
 radius = 95.1893
@@ -19,6 +22,7 @@ jump_max = 20.0
 jump_min = 5.0
 size_scales = Array[Vector2]([Vector2(0.1, 0.1), Vector2(0.5, 0.5), Vector2(1, 1)])
 sprite = NodePath("Sprite2D/body_prop/rotation_bone/rollingPumkinRoot/rollingPumkionSprite")
+heart_text = Array[Texture2D]([ExtResource("2_slbf4"), ExtResource("3_lw1q3"), ExtResource("4_s7mky")])
 
 [node name="unposSpot" type="Node2D" parent="."]
 position = Vector2(1, -224)
