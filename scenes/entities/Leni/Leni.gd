@@ -48,6 +48,10 @@ func on_unpos_buff_timer_stop():
 #called on the entity we exorcize when removing it
 func on_unposses(host)->void:
 	self.state = EntityState.DEFAULT
+	
+	#ensure we have no lingering rotation
+	$Sprite2D.rotation = 0
+	
 	grab_camera()
 	grab_aggro() #ensure that leni is targeted
 	invensible_timer.start()
@@ -138,6 +142,12 @@ func set_state(val : int)->void:
 	match val:
 		LeniState.POSSESING:
 			$posses_timer.start()
+			
+			if $Sprite2D.flip_h:
+				$Sprite2D.rotation = (-posses_velocity).angle()
+			else:
+				$Sprite2D.rotation = posses_velocity.angle()
+
 			$Sprite2D.custom_play("posses_launch")
 		LeniState.POSSESING_ENTITY:
 			#make us unexist
@@ -149,11 +159,10 @@ func set_state(val : int)->void:
 
 #launch ourselfs and prepare to posses
 func posses_attack(vel : Vector2)->void:
-	if vel.x != 0:
-		posses_velocity = vel
-		posses_velocity.y /= 2
-		clear_stored_inputs()
-		self.state = LeniState.POSSESING
+	posses_velocity = vel
+	posses_velocity.y /= 2
+	clear_stored_inputs()
+	self.state = LeniState.POSSESING
 
 #leni is a ghost, you cant posses a ghost (at least until I get around to adding it :p)
 func exorcize(offset : Vector2 = Vector2(0,0)):
@@ -234,7 +243,7 @@ func main_input(event)->void:
 func on_col(col)->void:
 	match state:
 		LeniState.POSSESING:
-			if (col.get_collider() is Entity) and (abs(col.get_normal().x) > abs(col.get_normal().y)):
+			if (col.get_collider() is Entity):
 				state = EntityState.BRICK
 				possesed_entity = col.get_collider()
 				$Sprite2D.custom_play("posses_col")

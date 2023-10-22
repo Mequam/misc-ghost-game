@@ -32,9 +32,11 @@ func custom_play(anim : StringName = "",backwords : bool = false)->void:
 			speed_scale = 5
 		"posses_end":
 			speed_scale = 2.5
+			self.rotation = 0
 		"die":
 			scale = initial_scale*1.5
 		"damage":
+			self.rotation = 0
 			scale = initial_scale * 1.5
 		_:
 			speed_scale = 1.5
