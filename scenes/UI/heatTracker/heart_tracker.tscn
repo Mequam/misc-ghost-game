@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcj4qmam5qoqf"]
+
+[ext_resource type="Script" path="res://scenes/UI/heatTracker/heart_tracker.gd" id="1_mopul"]
+[ext_resource type="Texture2D" uid="uid://d1ijavcsugyxu" path="res://assets/ui/hearts/basic ghost/dead.png" id="2_180ji"]
+[ext_resource type="Texture2D" uid="uid://ccpts3yanytgf" path="res://assets/ui/hearts/basic ghost/ghost_heart0002.png" id="3_u6tdr"]
+[ext_resource type="Texture2D" uid="uid://ds4f8equvmpwn" path="res://assets/ui/hearts/basic ghost/ghost_heart0001.png" id="4_d707i"]
+
+[node name="HeartTracker" type="Control" node_paths=PackedStringArray("heart_container")]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -1.0
+offset_bottom = -1.0
+script = ExtResource("1_mopul")
+heart_container = NodePath("HBoxContainer")
+heart_texture = Array[Texture]([ExtResource("2_180ji"), ExtResource("3_u6tdr"), ExtResource("4_d707i")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
