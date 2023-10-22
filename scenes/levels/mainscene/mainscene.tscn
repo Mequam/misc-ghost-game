@@ -1,6 +1,7 @@
-[gd_scene load_steps=59 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=60 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="Script" path="res://scenes/levels/mainscene/mainscene.gd" id="1_vb6le"]
+[ext_resource type="PackedScene" uid="uid://bcj4qmam5qoqf" path="res://scenes/UI/heatTracker/heart_tracker.tscn" id="3_kkthe"]
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://scenes/effects/AfterEffectTscn/AfterEffectNode.tscn" id="4_t8ld4"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://scenes/effects/ColorShiftEffect/ColorShifter.tscn" id="10_p30ux"]
 
@@ -604,7 +605,7 @@ shader_parameter/yg_map = Color(0.5, 1, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
 shader_parameter/IC2 = Color(0.5, 1, 0, 1)
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" node_paths=PackedStringArray("heart_tracker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -616,6 +617,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_vb6le")
+heart_tracker = NodePath("UILayer/hud/HeartTracker")
 
 [node name="background" type="ColorRect" parent="."]
 z_index = -4096
@@ -641,6 +643,20 @@ editor_description = "This is a \"level\" that is here so the unload phase of ma
 otherwise it would unload afterimage mesh and cause all sorts of problems"
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="hud" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeartTracker" parent="UILayer/hud" instance=ExtResource("3_kkthe")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.07
 
 [node name="ColorRect" parent="UILayer" instance=ExtResource("10_p30ux")]
 material = SubResource("ShaderMaterial_l1mui")

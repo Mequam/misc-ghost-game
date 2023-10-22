@@ -16,6 +16,10 @@ class_name Entity
 @export var entity_ai : EntityAI
 
 
+#we can store values in this array to indicate what images the game
+#should use for hearts of this entity when loading hp from an entity,
+#empty array means no objects
+@export var heart_text : Array[Texture2D] = []
 
 #this is a string representing the level that we originaly came from
 var home_level : String 
@@ -87,6 +91,10 @@ func get_onground()->bool:
 	return $GroundTester.has_overlapping_bodies()#ground_counter > 0
 
 #health of the entity, if this hits zero we die
+
+@export 
+var max_health : int = 7
+
 @export
 var health : int = 7 : set = set_health, get = get_health
 func set_health(val : int)->void:
@@ -96,8 +104,11 @@ func set_health(val : int)->void:
 		else:
 			if val < health:
 				self.state = EntityState.DAMAGED
-
-			health = val
+			elif val > max_health:
+				val = max_health
+			health = val 
+	if self.possesed:
+		get_parent().display_hp(self.health,self.max_health,self.heart_text)
 func get_health()->int:
 	return health
 
@@ -190,6 +201,9 @@ func main_ready():
 	#to store it so that it remains constant
 	self.home_name = self.name
 
+	#update the hp display
+	self.health = self.health
+
 func on_dazed_timer_out():
 	self.state = EntityState.DEFAULT
 #called when an action is double pressed
@@ -281,10 +295,15 @@ func posses_by(entity)->void:
 	entity.process_mode = Node.PROCESS_MODE_DISABLED
 	clear_stored_inputs() #clear up the stored inputs
 
+	#update the health dispaly
+	self.health = self.health
+
 	grab_camera()
 
 #called on the entity we exorcize when removing it
 func on_unposses(_host)->void:
+	#update the health display
+	self.health = self.health
 	update_animation()
 
 #clears our possesion	

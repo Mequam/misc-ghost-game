@@ -79,3 +79,17 @@ func on_load(persist_objects,caller)->void:
 	await get_tree().create_timer(0.5).timeout
 	self.allow_escape = true
 	pass
+
+#returns a reference to the root node of the main scene
+func get_main()->MainScene:
+	return get_parent().get_parent()
+
+#displays the indicated hp onto the hp display, uses the given texture 2d if one is provided
+#that way different entities can have different display textures for the hp
+func display_hp(
+		current_hp : int,
+		max_hp : int,
+		heart_texture : Array[Texture2D] = [])->void:
+	var main = get_main()
+	if len(heart_texture) > 0: main.heart_tracker.heart_texture = heart_texture
+	get_main().heart_tracker.update_display(current_hp,max_hp)

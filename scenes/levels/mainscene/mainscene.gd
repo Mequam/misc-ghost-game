@@ -7,6 +7,7 @@ extends Control
 
 class_name MainScene
 
+@export var heart_tracker : HeartTracker
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

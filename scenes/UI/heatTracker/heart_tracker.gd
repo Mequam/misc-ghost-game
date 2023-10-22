@@ -23,6 +23,7 @@ func update_display( hp : int,max_hp : int)->void:
 	while max_hp > 0:
 
 		var text = TextureRect.new()
+		text.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 		var life = hp
 		if hp >= len(heart_texture):
 			life = len(heart_texture) - 1
