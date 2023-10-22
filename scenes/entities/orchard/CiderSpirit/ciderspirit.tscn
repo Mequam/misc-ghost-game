@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://01fi2eykheye"]
+[gd_scene load_steps=16 format=3 uid="uid://01fi2eykheye"]
 
 [ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.gd" id="1_xb488"]
 [ext_resource type="PackedScene" uid="uid://bkfoptt80pgom" path="res://scenes/entities/orchard/CiderSpirit/mugFollower/follwer_mug.tscn" id="2_aqgfs"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://byekeag2ch0em" path="res://scenes/entities/orchard/CiderSpirit/ciderspiritsprite.tscn" id="4_bi3ix"]
 [ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/AICiderSpiritJumpOver/AICiderSpirit_JumpOver.gd" id="4_v6oxr"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="5_d5wc2"]
+[ext_resource type="Texture2D" uid="uid://7vlb75eg46do" path="res://assets/animations/cider spirit/hearts/dead.png" id="5_of1oy"]
+[ext_resource type="Texture2D" uid="uid://cebqy7m83b3t6" path="res://assets/animations/cider spirit/hearts/empty.png" id="6_snwuv"]
+[ext_resource type="Texture2D" uid="uid://d00etvbqa8b54" path="res://assets/animations/cider spirit/hearts/full.png" id="7_ytv73"]
 
 [sub_resource type="Resource" id="Resource_475e5"]
 script = ExtResource("3_3awvy")
@@ -100,6 +103,7 @@ run_modifier = 1.0
 do_fast_fall = false
 sprite = NodePath("bone/Sprite2D")
 entity_ai = SubResource("Resource_hsb7e")
+heart_text = Array[Texture2D]([ExtResource("5_of1oy"), ExtResource("6_snwuv"), ExtResource("7_ytv73")])
 speed = Vector2(0.1, 1)
 
 [node name="bone" type="Marker2D" parent="."]

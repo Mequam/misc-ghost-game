@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cotdsdtg0th0l"]
+[gd_scene load_steps=12 format=3 uid="uid://cotdsdtg0th0l"]
 
 [ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/applePickerEntity.gd" id="1_7awqf"]
 [ext_resource type="PackedScene" uid="uid://cv1ocywmuqlwo" path="res://scenes/entities/orchard/applePicker/applePickerSprite.tscn" id="1_mohwp"]
 [ext_resource type="PackedScene" uid="uid://djfoqtks0nlpg" path="res://scenes/entities/orchard/applePicker/appleProjectile/apple_shotgun_blast.tscn" id="2_5wg2i"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="3_0sj1q"]
+[ext_resource type="Texture2D" uid="uid://cp4uro1xgae0m" path="res://assets/animations/apple picker ghost/hearts/dead.png" id="3_51mym"]
+[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/ai/AIApplePicker.gd" id="3_bjqf2"]
+[ext_resource type="Texture2D" uid="uid://byvi3g8ub66je" path="res://assets/animations/apple picker ghost/hearts/eaten.png" id="4_hqwjl"]
+[ext_resource type="Texture2D" uid="uid://cdoq5b7xnrm5i" path="res://assets/animations/apple picker ghost/hearts/full_apple.png" id="5_7f7f0"]
+
+[sub_resource type="Resource" id="Resource_gg8tm"]
+script = ExtResource("3_bjqf2")
+shoot_threshold = 300
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppar1"]
 size = Vector2(150.5, 301)
@@ -20,6 +28,8 @@ apple_detector = NodePath("apple_detector")
 apple_shotgun_projectile = ExtResource("2_5wg2i")
 apple_projectile_speed = Vector2(20, 2)
 run_speed = Vector2(5, 1.5)
+entity_ai = SubResource("Resource_gg8tm")
+heart_text = Array[Texture2D]([ExtResource("3_51mym"), ExtResource("4_hqwjl"), ExtResource("5_7f7f0")])
 speed = Vector2(100, 100)
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_mohwp")]

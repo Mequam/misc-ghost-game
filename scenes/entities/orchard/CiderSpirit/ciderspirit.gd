@@ -26,10 +26,6 @@ func die()->void:
 	await follower_mug.tree_exited
 	super.die()
 
-func set_health(val : int)->void:
-	if val <= 0:
-		die()
-	health = val
 enum CiderSpiritState {
 	PARABALA = Entity.ENTITY_STATE_COUNT,
 	LAUNCHED,
@@ -147,11 +143,13 @@ func hide_follower_mug()->void:
 	self.update_animation()
 	
 func set_state(val)->void:
+	if val == EntityState.DAMAGED: return
 	if val == EntityState.DEFAULT:
 		#reset the sprite rotation when we default our state
 		self.get_sprite2D().rotation = 0
 		self.velocity.x = 0
 	super.set_state(val)
+
 
 func summon_mug()->void:
 	wants_to_combine = true 
