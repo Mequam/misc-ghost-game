@@ -346,8 +346,6 @@ func action2velocity(action : String)->Vector2:
 			return Vector2(0,-1)
 		"DOWN":
 			return Vector2(0,1)
-		"JUMP":
-			return Vector2(0,-1)
 	return Vector2(0,0)
 	
 #default collision generators

@@ -53,21 +53,11 @@ func ai_attack_at_player(player):
 	perform_action("ATTACK",true)
 	perform_action("ATTACK",false)
 
-var possesed_material : ShaderMaterial
 func main_ready():
-	possesed_material = ResourceLoader.load("res://assets/shaders/possesed.tres").duplicate()
 	self.possesed = false
 	add_to_group("Npc")
 	super.main_ready()
 func set_possesed(val : bool)->void:
-	if val:
-		get_sprite2D().material = possesed_material
-	else:
-		get_sprite2D().material = null
 	super.set_possesed(val)
-	
-	#if val:
-	#	eject_evil_ghost()
 func die():
-	#eject_evil_ghost()
 	super.die()
