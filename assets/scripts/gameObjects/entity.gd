@@ -15,21 +15,34 @@ class_name Entity
 #null indicates no action
 @export var entity_ai : EntityAI
 
+
+
+#this is a string representing the level that we originaly came from
+var home_level : String 
+var home_name : String
+
 signal died
 
 func get_sprite2D()->AnimatedSprite2D:
 	if sprite != null: return sprite 
 	return $Sprite2D
-	
+
+
+				
+#called when we are loaded into the scene
+func on_load(level)->void:
+	grab_camera()
+	if entity_ai:
+		entity_ai.caller = self
 
 #this function is inteanded to be overloaded
 #and is called any time that an entity is moved into a loaded level
 #via door code
 func on_level_load(_lvl)->void:
 	#make sure that the entity_ai still knows who it's calling from
-	while _lvl.get_node(NodePath(self.name)):
-		self.name = "g" + self.name #g for ghost version!
-	pass 
+	if _lvl.load_path == self.home_level:
+		var node = _lvl.get_node(NodePath(self.home_name)) 
+		if node: node.queue_free() #THERE MAY ONLY BE ONE 💀
 
 
 #reference to the entity we are currently possesing
@@ -171,6 +184,11 @@ func main_ready():
 	
 	if entity_ai:
 		entity_ai.setup(self)
+	
+	self.home_level = get_parent().load_path 
+	#name can get changed between loading, so we need
+	#to store it so that it remains constant
+	self.home_name = self.name
 
 func on_dazed_timer_out():
 	self.state = EntityState.DEFAULT
@@ -240,6 +258,7 @@ func posses_by(entity)->void:
 	#clear out the existing possesed entity
 	if self.possesed:
 		exorcize()
+
 
 	#if the entity has an after effect, apply it to ourselfs
 	if entity.ghost_after_effect:

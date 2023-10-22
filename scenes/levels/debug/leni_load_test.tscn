@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyopds84d0uy4"]
+[gd_scene load_steps=10 format=3 uid="uid://cyopds84d0uy4"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_6imxg"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="1_ii7jq"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_jeipo"]
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="6_7sncg"]
-[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="6_nuccj"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="7_yn8hi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0pq"]
@@ -325,8 +324,5 @@ shape = SubResource("RectangleShape2D_wksji")
 
 [node name="spawn_light" parent="." instance=ExtResource("7_yn8hi")]
 position = Vector2(1180, 386)
-
-[node name="CiderSpirit" parent="." instance=ExtResource("6_nuccj")]
-position = Vector2(82, 543)
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

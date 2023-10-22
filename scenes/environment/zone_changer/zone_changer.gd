@@ -26,7 +26,11 @@ func on_body_entered(body):
 #lets us interact with the load AFTER the game object loads them
 func update_load(loaded_lvl : Level ,persist_obj):
 	loaded_lvl.player_entity = persist_obj[0]
-	persist_obj[0].grab_camera()
+	
+	#tell the loaded object that it needs to update
+	if persist_obj[0].has_method("on_load"):
+		persist_obj[0].on_load(loaded_lvl)
+
 	var sibling_door = loaded_lvl.get_node(NodePath(self.name)) 
 
 	print( self.name + " selected sibling door: " + str(sibling_door.name))
