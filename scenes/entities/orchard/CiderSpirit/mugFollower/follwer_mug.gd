@@ -11,7 +11,7 @@ func _ready()->void:
 	self.body_entered.connect(self.on_body_entered)
 
 func on_body_entered(body : Node)->void:
-	print("collided with " + body.name)
+	#print("collided with " + body.name)
 	if body.has_method("take_damage"): body.take_damage(2)
 
 

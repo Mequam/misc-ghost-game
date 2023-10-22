@@ -7,6 +7,7 @@ class_name AICiderSpirit_JumpOver
 @export var ai_timer_jump : Timer 
 
 func tick(player)->void:
+	#print("running cider spirit AI for " + str(self.caller.position))
 	if not ai_timer_jump.wait_time <= 0 and caller.pressed_inputs["JUMP"] and caller.state == caller.EntityState.DEFAULT:
 		caller.perform_action("JUMP",false)
 	else:

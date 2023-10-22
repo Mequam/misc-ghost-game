@@ -24,7 +24,7 @@ var follower_mug : FollowerMug
 func die()->void:
 	follower_mug.queue_free() 
 	await follower_mug.tree_exited
-	self.queue_free()
+	super.die()
 
 func set_health(val : int)->void:
 	if val <= 0:
@@ -65,7 +65,13 @@ func jump()->void:
 		summon_mug()
 
 func on_level_load(lvl)->void:
-	pass
+	print("hello from cider spirit loading the level")
+
+	#ensure the follower mug follows us
+	self.follower_mug.get_parent().remove_child(self.follower_mug)
+	lvl.add_child(follower_mug)
+	self.hide_follower_mug()
+	super.on_level_load(lvl)
 
 #this function launches us along the trajectory indicated by the parabala that we drew
 func follow_trajectory()->void:
@@ -87,7 +93,8 @@ func follow_trajectory()->void:
 		if follower_mug:
 			follower_mug.rotation = self.get_sprite2D().rotation
 		follower_mug.unhide_self(self.get_sprite2D().tail)
-		follower_mug.collision_layer = self.collision_layer
+		#the follower mug is NOT the player, so they do not get the player bit if that bit is set
+		self.sync_mug_collision()
 		if self.gravity < 5: self.gravity = 5
 
 func on_action_released(act : String)->void:
@@ -145,11 +152,13 @@ func set_state(val)->void:
 		self.get_sprite2D().rotation = 0
 		self.velocity.x = 0
 	super.set_state(val)
+
 func summon_mug()->void:
 	wants_to_combine = true 
 	if not follower_mug.freeze: return 
-	follower_mug.collision_layer = collision_layer 
-	follower_mug.collision_mask  = collision_mask
+
+	#had a bit too much fun with vim multi curson on = :)
+	self.sync_mug_collision()
 	follower_mug.linear_velocity = (self.global_position-follower_mug.global_position).normalized()*follower_mug.initial_speed 
 	var old_position             = follower_mug.global_position
 	follower_mug.freeze          = false 
@@ -169,7 +178,7 @@ func main_ready()->void:
 
 #ensures that the follower mug has the proper collision layers
 func sync_mug_collision()->void:
-	follower_mug.collision_layer = self.collision_layer 
+	follower_mug.collision_layer = ColMath.strip_bits(self.collision_layer,ColMath.ConstLayer.PLAYER) 
 	follower_mug.collision_mask  = self.collision_mask
 
 

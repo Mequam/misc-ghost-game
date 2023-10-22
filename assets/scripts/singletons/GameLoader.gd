@@ -79,7 +79,10 @@ func load_level(level,_caller,persist_obj=[]):
 	
 	#add the level node
 	var container = get_level_container()
+	
+
 	container.add_child(loaded_lvl)
+
 
 
 	for obj in persist_obj:
@@ -89,4 +92,7 @@ func load_level(level,_caller,persist_obj=[]):
 	
 	if _caller.has_method("update_load"):
 		_caller.update_load(loaded_lvl,persist_obj)
+
+	#call a little bit later to ensure that the level knows AFTER everything has been loaded
+	loaded_lvl.call_deferred("on_load",persist_obj,_caller)
 	return loaded_lvl

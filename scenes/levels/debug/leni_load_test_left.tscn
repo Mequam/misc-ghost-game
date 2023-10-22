@@ -1,14 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyopds84d0uy4"]
+[gd_scene load_steps=10 format=3 uid="uid://bxxagsads1p0r"]
 
-[ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_6imxg"]
-[ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="1_ii7jq"]
-[ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_jeipo"]
-[ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="6_7sncg"]
-[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="6_nuccj"]
-[ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="7_yn8hi"]
+[ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ivt8b"]
+[ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="2_g3kmq"]
+[ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="3_0iecr"]
+[ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="4_diuxi"]
+[ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="5_sarvu"]
+[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="6_e0g54"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0pq"]
-texture = ExtResource("1_ii7jq")
+texture = ExtResource("2_g3kmq")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -279,24 +279,21 @@ sources/0 = SubResource("TileSetAtlasSource_gf0pq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bx8c"]
 size = Vector2(123, 125)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wksji"]
-size = Vector2(126, 126)
-
-[node name="load_test2" type="Node2D" node_paths=PackedStringArray("cam_ref")]
-script = ExtResource("1_6imxg")
+[node name="load_testleft" type="Node2D" node_paths=PackedStringArray("cam_ref")]
+script = ExtResource("1_ivt8b")
 ai_timeout = 0.25
-load_path = "res://scenes/levels/debug/leni_load_test.tscn"
+load_path = "res://scenes/levels/debug/leni_load_test_left.tscn"
 cam_ref = NodePath("mainCam")
 
 [node name="DebugTexture" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(1025, 122)
-texture = ExtResource("1_ii7jq")
+texture = ExtResource("2_g3kmq")
 
 [node name="DebugTexture2" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(1, 122)
-texture = ExtResource("1_ii7jq")
+texture = ExtResource("2_g3kmq")
 
 [node name="TileMap2" type="TileMap" parent="."]
 position = Vector2(-2, -2)
@@ -305,28 +302,18 @@ format = 2
 layer_0/name = "lol"
 layer_0/tile_data = PackedInt32Array(393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, -65543, 0, 0, -7, 0, 0, 65529, 0, 0, 131065, 0, 0, 196601, 0, 0, 262137, 0, 0, 327673, 0, 0, 393209, 0, 0, -196596, 0, 0, -131060, 0, 0, -65524, 0, 0, 12, 0, 0, 65548, 0, 0, 131084, 0, 0, 196620, 0, 0, 262156, 0, 0, -262151, 0, 0, -196615, 0, 0, -131079, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0)
 
-[node name="mainCam" parent="." instance=ExtResource("5_jeipo")]
+[node name="mainCam" parent="." instance=ExtResource("3_0iecr")]
 
-[node name="load_zone_door_a" parent="." instance=ExtResource("6_7sncg")]
+[node name="load_zone_door_b" parent="." instance=ExtResource("4_diuxi")]
 position = Vector2(1470, 436)
-target_level = "res://scenes/levels/orchard/entryLevel/EntryLevel.tscn"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_a"]
-position = Vector2(2, 4)
-shape = SubResource("RectangleShape2D_2bx8c")
-
-[node name="load_zone_door_b" parent="." instance=ExtResource("6_7sncg")]
-position = Vector2(446, 441)
-target_level = "res://scenes/levels/debug/leni_load_test_left.tscn"
+target_level = "res://scenes/levels/debug/leni_load_test.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_b"]
-position = Vector2(3, 0)
-shape = SubResource("RectangleShape2D_wksji")
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2bx8c")
 
-[node name="spawn_light" parent="." instance=ExtResource("7_yn8hi")]
-position = Vector2(1180, 386)
+[node name="spawn_light" parent="." instance=ExtResource("5_sarvu")]
+position = Vector2(68, 293)
 
-[node name="CiderSpirit" parent="." instance=ExtResource("6_nuccj")]
+[node name="CiderSpirit" parent="." instance=ExtResource("6_e0g54")]
 position = Vector2(82, 543)
-
-[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

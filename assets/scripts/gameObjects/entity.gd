@@ -26,6 +26,9 @@ func get_sprite2D()->AnimatedSprite2D:
 #and is called any time that an entity is moved into a loaded level
 #via door code
 func on_level_load(_lvl)->void:
+	#make sure that the entity_ai still knows who it's calling from
+	while _lvl.get_node(NodePath(self.name)):
+		self.name = "g" + self.name #g for ghost version!
 	pass 
 
 
@@ -68,9 +71,6 @@ func set_onground(val : bool)->void:
 	onground = val
 	update_animation()
 func get_onground()->bool:
-	#print("testing ground")
-	#for b in $GroundTester.get_overlapping_bodies():
-	#	print(b.name)
 	return $GroundTester.has_overlapping_bodies()#ground_counter > 0
 
 #health of the entity, if this hits zero we die
@@ -209,7 +209,6 @@ echo : bool = false)->void:
 #performs the given action checked the entity
 #inteanded to be overloaded by the individual class
 func compute_action(event : InputEvent)->void:
-	#print(event)
 	for key in pressed_inputs:
 		#yes this if statement is hideous, but it gaurds against
 		#echo events where event.is_aciton_pressed is false
@@ -249,7 +248,7 @@ func posses_by(entity)->void:
 		entity.on_posses(self)
 	#update the collision layer and mask of the self
 	self.collision_layer = ColMath.strip_bits(self.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
-	self.collision_layer |= ColMath.Layer.PLAYER
+	self.collision_layer |= ColMath.Layer.PLAYER | ColMath.ConstLayer.PLAYER
 
 	#update the collision mask of the self
 	self.collision_mask = ColMath.strip_bits(self.collision_mask,ColMath.Layer.PLAYER)

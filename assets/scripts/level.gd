@@ -4,11 +4,14 @@ extends Node2D
 
 class_name Level
 
+#the "speed" of the ai
 @export 
 var ai_timeout : float = 20
 
+#the load path for this level, used for saving stuff
 @export var load_path : String
 
+#reference to the main camera for the level
 @export
 var cam_ref : Camera2D :
 	get:
@@ -20,6 +23,10 @@ func set_cam_ref(ref : Camera2D)->void:
 	set_cam_limit()
 func get_cam_ref()->Camera2D:
 	return cam_ref 
+
+#dertermines if the player is allowed to leave the level
+@export 
+var allow_escape : bool = false
 
 var cam_limit_left = -908
 func set_cam_limit()->void:
@@ -47,8 +54,11 @@ func _ready():
 	#start out grabbing Leni if he is in the tree
 	if $Leni:
 		$Leni.grab_camera()
-		player_entity = $Leni
-	
+		player_entity = $Leni 
+
+func _on_tree_entered()->void:
+	print("level entered tree!")
+
 func call_ai(aggro_entity):
 	get_tree().call_group("Npc","run_AI",aggro_entity)
 
@@ -62,3 +72,10 @@ func _process(_delta):
 
 func on_ai_timeout():
 	call_ai(player_entity)
+
+#after we finish loading, allow the player to escape
+func on_load(persist_objects,caller)->void:
+	#make sure to wait for the game to update positions
+	await get_tree().create_timer(0.5).timeout
+	self.allow_escape = true
+	pass

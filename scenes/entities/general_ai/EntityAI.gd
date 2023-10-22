@@ -8,7 +8,7 @@ func perform_action(act : String,
 pressed : bool,
 double_press : bool = false,
 echo : bool = false)->void:
-	print("ENTITY AI CALLING")
+	#print("ENTITY AI CALLING")
 	caller.perform_action(act,pressed,double_press,echo)
 #convinence reference to the parent that is using us, we could
 #make this a node, but the convinence of recourses for AI makes it easaier

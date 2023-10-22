@@ -33,12 +33,6 @@ func ai_shoot_projectile(player):
 		ai_shoot_projectile_dir("RIGHT")
 	
 func tick(player : Entity)->void:
-
-	print("")
-	print("AI_TICK")
-	print(player.position)
-	print("")
-
 	if caller.run:
 		if abs(player.position.x - caller.position.x) > 200:
 			perform_action("LEFT",false)

@@ -53,6 +53,7 @@ static func check_shifted(non_shifted : int,shifted : int,super_layer : int)->bo
 static func zero_bit(bits : int,idx : int)->int:
 	return (~(1 << idx)) & bits
 
+#strips a given layer out of a set of bits
 static func strip_bits(bits : int,to_strip : int)->int:
 	return bits & (~to_strip)
 
