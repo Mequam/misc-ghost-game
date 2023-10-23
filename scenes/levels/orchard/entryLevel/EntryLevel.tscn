@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=19 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
-[ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/images/debug_texture.png" id="2_yg6ni"]
+[ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_yg6ni"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
 [ext_resource type="PackedScene" uid="uid://cjj04dmtykhtj" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn" id="7_al2pr"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/AIwitch_shoot.gd" id="9_c4kbk"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="9_s1jqs"]
 [ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="11_s7tpd"]
+[ext_resource type="PackedScene" uid="uid://dr1c6twv8ln1k" path="res://scenes/pickups/candy/chocolate/chocolate.tscn" id="11_ug8qb"]
+[ext_resource type="PackedScene" uid="uid://kd3f4rg6axyb" path="res://scenes/pickups/candy/watermelcandycorn/watermeloncandycorn.tscn" id="12_cr4xh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(3110, 40)
@@ -149,12 +151,29 @@ entity_ai = SubResource("Resource_ubktf")
 position = Vector2(-295, -708)
 
 [node name="load_zone_door_a" parent="." instance=ExtResource("9_5xj7r")]
-position = Vector2(-745, -109)
+position = Vector2(-419, -640)
 target_level = "res://scenes/levels/debug/leni_load_test.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_a"]
-position = Vector2(40.25, 19)
 shape = SubResource("RectangleShape2D_o10wt")
 
 [node name="pumpkin_tree_spawner" parent="." instance=ExtResource("7_al2pr")]
 position = Vector2(139, -385)
+
+[node name="Candy" parent="." instance=ExtResource("11_ug8qb")]
+position = Vector2(-113, -37)
+scale = Vector2(0.25, 0.25)
+
+[node name="Candy2" parent="." instance=ExtResource("12_cr4xh")]
+position = Vector2(-360, -25)
+scale = Vector2(0.1, 0.1)
+
+[node name="Candy3" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("12_cr4xh")]
+position = Vector2(-340, -25)
+scale = Vector2(0.1, 0.1)
+animation_player = NodePath("../Candy2/AnimationPlayer")
+
+[node name="Candy4" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("12_cr4xh")]
+position = Vector2(-319, -25)
+scale = Vector2(0.1, 0.1)
+animation_player = NodePath("../Candy2/AnimationPlayer")

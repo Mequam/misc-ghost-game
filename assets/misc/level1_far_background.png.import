@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ry26rk7ploqg"
-path="res://.godot/imported/barn.png-fc1490029e68372a12e05ba7849c8464.ctex"
+uid="uid://bejmrswnp4hig"
+path="res://.godot/imported/level1_far_background.png-f2b8068e21b44ef0ff832ad3edb2e103.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/barn.png"
-dest_files=["res://.godot/imported/barn.png-fc1490029e68372a12e05ba7849c8464.ctex"]
+source_file="res://assets/misc/level1_far_background.png"
+dest_files=["res://.godot/imported/level1_far_background.png-f2b8068e21b44ef0ff832ad3edb2e103.ctex"]
 
 [params]
 

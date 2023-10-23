@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duv42sxweufr6"
-path="res://.godot/imported/level_1_background.png-c56ff510ca3d17cf94ff2f6008a0208a.ctex"
+uid="uid://e5ci3efoj3ln"
+path="res://.godot/imported/apple_pile.png-6fb94d87a73642dd7c641d5a3d149f22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/level_1_background.png"
-dest_files=["res://.godot/imported/level_1_background.png-c56ff510ca3d17cf94ff2f6008a0208a.ctex"]
+source_file="res://assets/misc/apple_pile.png"
+dest_files=["res://.godot/imported/apple_pile.png-6fb94d87a73642dd7c641d5a3d149f22.ctex"]
 
 [params]
 

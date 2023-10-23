@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://camf0trk6vqod"
-path="res://.godot/imported/rock.png-da0040f602a75df399f0976f4213e1ce.ctex"
+uid="uid://dbifxbcy126sy"
+path="res://.godot/imported/godot beat u up cuz u wanted onready set getter    space  .png-387900da7b4ae453226d6cdbaef13074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/rock.png"
-dest_files=["res://.godot/imported/rock.png-da0040f602a75df399f0976f4213e1ce.ctex"]
+source_file="res://assets/misc/godot beat u up cuz u wanted onready set getter    space  .png"
+dest_files=["res://.godot/imported/godot beat u up cuz u wanted onready set getter    space  .png-387900da7b4ae453226d6cdbaef13074.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csdbu33b51nfr"
-path="res://.godot/imported/lamp_top.png-46b2e5c7257fa834036f28c01f4d4d92.ctex"
+uid="uid://dqk8i1cejbwiw"
+path="res://.godot/imported/ground_orchard_loop_reference.png-5dcb10339dc29ab16bdada93d34be78b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/lamp_top.png"
-dest_files=["res://.godot/imported/lamp_top.png-46b2e5c7257fa834036f28c01f4d4d92.ctex"]
+source_file="res://assets/misc/ground_orchard_loop_reference.png"
+dest_files=["res://.godot/imported/ground_orchard_loop_reference.png-5dcb10339dc29ab16bdada93d34be78b.ctex"]
 
 [params]
 

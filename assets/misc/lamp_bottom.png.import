@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxoh425eg3wwu"
-path="res://.godot/imported/rock2.png-87efbe7f71e0e1f9086b1dad08afdfc3.ctex"
+uid="uid://ckpruw2gm1gfn"
+path="res://.godot/imported/lamp_bottom.png-043a4456d570c169058cdb9724d98dde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/rock2.png"
-dest_files=["res://.godot/imported/rock2.png-87efbe7f71e0e1f9086b1dad08afdfc3.ctex"]
+source_file="res://assets/misc/lamp_bottom.png"
+dest_files=["res://.godot/imported/lamp_bottom.png-043a4456d570c169058cdb9724d98dde.ctex"]
 
 [params]
 

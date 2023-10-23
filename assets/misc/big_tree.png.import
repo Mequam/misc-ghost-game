@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbifxbcy126sy"
-path="res://.godot/imported/godot beat u up cuz u wanted onready set getter    space  .png-6d22b8460b0f00e357e2eafa0ef0d3c3.ctex"
+uid="uid://dpsxj66v0p51a"
+path="res://.godot/imported/big_tree.png-6dfd4a73d5f2cfef78c74a81964f1dbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/godot beat u up cuz u wanted onready set getter    space  .png"
-dest_files=["res://.godot/imported/godot beat u up cuz u wanted onready set getter    space  .png-6d22b8460b0f00e357e2eafa0ef0d3c3.ctex"]
+source_file="res://assets/misc/big_tree.png"
+dest_files=["res://.godot/imported/big_tree.png-6dfd4a73d5f2cfef78c74a81964f1dbc.ctex"]
 
 [params]
 

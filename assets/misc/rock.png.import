@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2yxjyy7sse2"
-path="res://.godot/imported/leaf_pile.png-12c1cd2644ae7a9b6a64846b71967523.ctex"
+uid="uid://camf0trk6vqod"
+path="res://.godot/imported/rock.png-e4f16bbf79b8d22d283924fc8afae99e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/leaf_pile.png"
-dest_files=["res://.godot/imported/leaf_pile.png-12c1cd2644ae7a9b6a64846b71967523.ctex"]
+source_file="res://assets/misc/rock.png"
+dest_files=["res://.godot/imported/rock.png-e4f16bbf79b8d22d283924fc8afae99e.ctex"]
 
 [params]
 

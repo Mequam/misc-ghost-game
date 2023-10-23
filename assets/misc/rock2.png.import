@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dan101y0lvps1"
-path="res://.godot/imported/ground_orchard.png-8e3949314f42ead48c3db86479dd4fce.ctex"
+uid="uid://bxoh425eg3wwu"
+path="res://.godot/imported/rock2.png-55311fd4a60b884ce748a49eac914835.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ground_orchard.png"
-dest_files=["res://.godot/imported/ground_orchard.png-8e3949314f42ead48c3db86479dd4fce.ctex"]
+source_file="res://assets/misc/rock2.png"
+dest_files=["res://.godot/imported/rock2.png-55311fd4a60b884ce748a49eac914835.ctex"]
 
 [params]
 

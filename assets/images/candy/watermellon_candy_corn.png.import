@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpsxj66v0p51a"
-path="res://.godot/imported/big_tree.png-1370c16bbf77ea84939c2241d2ee7e47.ctex"
+uid="uid://8linr0yqyyoj"
+path="res://.godot/imported/watermellon_candy_corn.png-04d3ce168cda0dfc47bf3c0671baf1d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/big_tree.png"
-dest_files=["res://.godot/imported/big_tree.png-1370c16bbf77ea84939c2241d2ee7e47.ctex"]
+source_file="res://assets/images/candy/watermellon_candy_corn.png"
+dest_files=["res://.godot/imported/watermellon_candy_corn.png-04d3ce168cda0dfc47bf3c0671baf1d4.ctex"]
 
 [params]
 

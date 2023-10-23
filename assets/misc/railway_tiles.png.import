@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bejmrswnp4hig"
-path="res://.godot/imported/level1_far_background.png-ebdb82dfe15f8524c0e59a9b55fd023b.ctex"
+uid="uid://byp6ufdqgpufl"
+path="res://.godot/imported/railway_tiles.png-59a72c94460621dcd0b5dd24b3ebc7e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/level1_far_background.png"
-dest_files=["res://.godot/imported/level1_far_background.png-ebdb82dfe15f8524c0e59a9b55fd023b.ctex"]
+source_file="res://assets/misc/railway_tiles.png"
+dest_files=["res://.godot/imported/railway_tiles.png-59a72c94460621dcd0b5dd24b3ebc7e8.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource path="res://assets/images/railway_tiles.png" type="Texture2D" id=2]
+[ext_resource type="Texture2D" uid="uid://byp6ufdqgpufl" path="res://assets/misc/railway_tiles.png" id="2"]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PackedVector2Array( 360, 260, 0, 260, 0, 190, 360, 190 )

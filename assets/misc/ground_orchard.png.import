@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byp6ufdqgpufl"
-path="res://.godot/imported/railway_tiles.png-159645491d7694a3d456de5b3e39cb55.ctex"
+uid="uid://dan101y0lvps1"
+path="res://.godot/imported/ground_orchard.png-8e720fe5fc8dc96296a250e500eb5ceb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/railway_tiles.png"
-dest_files=["res://.godot/imported/railway_tiles.png-159645491d7694a3d456de5b3e39cb55.ctex"]
+source_file="res://assets/misc/ground_orchard.png"
+dest_files=["res://.godot/imported/ground_orchard.png-8e720fe5fc8dc96296a250e500eb5ceb.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e5ci3efoj3ln"
-path="res://.godot/imported/apple_pile.png-9c4a3b3fa8deca94ddc5d1b923bba58f.ctex"
+uid="uid://5eyffcf4v3ou"
+path="res://.godot/imported/rock3.png-6387fe4537bac0c7b81f3e48855442b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/apple_pile.png"
-dest_files=["res://.godot/imported/apple_pile.png-9c4a3b3fa8deca94ddc5d1b923bba58f.ctex"]
+source_file="res://assets/misc/rock3.png"
+dest_files=["res://.godot/imported/rock3.png-6387fe4537bac0c7b81f3e48855442b5.ctex"]
 
 [params]
 
