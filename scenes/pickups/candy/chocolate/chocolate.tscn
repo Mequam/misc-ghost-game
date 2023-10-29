@@ -3,6 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://d3qqb3b5pmjr8" path="res://assets/images/candy/chocolet.png" id="1_fpy2n"]
 [ext_resource type="Script" path="res://scenes/pickups/candy/chocolate/chocolate.gd" id="1_yxjt7"]
 
+[sub_resource type="Animation" id="Animation_3dp3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_56h4u"]
 resource_name = "default"
 length = 0.75
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 9)]
-}
-
-[sub_resource type="Animation" id="Animation_3dp3k"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qhb6u"]
