@@ -4,8 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_fvbsk"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_jeipo"]
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="6_7sncg"]
-[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="6_nuccj"]
-[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="7_wxx4m"]
+[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="6_g1mlr"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="7_yn8hi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0pq"]
@@ -283,6 +282,9 @@ size = Vector2(123, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wksji"]
 size = Vector2(126, 126)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdrc2"]
+size = Vector2(128, 33)
+
 [node name="load_test2" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 script = ExtResource("1_6imxg")
 ai_timeout = 0.25
@@ -327,10 +329,55 @@ shape = SubResource("RectangleShape2D_wksji")
 [node name="spawn_light" parent="." instance=ExtResource("7_yn8hi")]
 position = Vector2(1180, 386)
 
-[node name="CiderSpirit" parent="." instance=ExtResource("6_nuccj")]
-position = Vector2(-717, 634)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1092, 585)
 
-[node name="applePicker" parent="." instance=ExtResource("7_wxx4m")]
-position = Vector2(901, 496)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_tdrc2")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 63.0
+offset_bottom = 16.0
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(953, 522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_tdrc2")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 63.0
+offset_bottom = 16.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(715, 454)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("RectangleShape2D_tdrc2")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 63.0
+offset_bottom = 16.0
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(582, 397)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("RectangleShape2D_tdrc2")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D4"]
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 63.0
+offset_bottom = 16.0
+
+[node name="applePicker" parent="." instance=ExtResource("6_g1mlr")]
+position = Vector2(-499, 499)
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

@@ -5,10 +5,10 @@ class_name Entity
 #this is the generic entity script that all
 #collision game objects are inteanded to draw from
 
-@export var sprite : AnimatedSprite2D = null 
+@export var sprite : AnimatedSprite2D  = null 
 
 #how far away from the unpos spot can we move up down left or right
-@export var unposses_radius : float = 100
+@export var unposses_radius : float  = 100
 
 #this is a variable to an AI resource
 #that tells us how to run when not possesed
