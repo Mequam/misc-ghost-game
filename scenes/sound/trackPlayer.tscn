@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://wdbrbhyu6qfy"]
+
+[ext_resource type="Script" path="res://scenes/sound/trackPlayer.gd" id="1_gef7q"]
+[ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="2_psclh"]
+
+[node name="trackPlayer" type="Node2D"]
+script = ExtResource("1_gef7q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_psclh")
+volume_db = 24.0
