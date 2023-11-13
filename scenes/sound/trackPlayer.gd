@@ -15,7 +15,7 @@ func unset_flag(flag : String)->void:
 @export var flags : Array[String]
 
 func _ready()->void:
-	$background.play()
+	$orchard.play()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("JUMP"):

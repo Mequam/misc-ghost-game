@@ -1,5 +1,9 @@
 extends Node
 
+#this class is inteanded to hold many different audio tracks
+
+class_name AudioTrackContainer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -17,9 +17,15 @@ var stop_previous : bool = true
 @export 
 var clear_transition_flags : bool
 
+@export var match_flags : bool = true
+
 #list of flags when we transition
 @export 
 var flags : Array[String]
+
+#list of flags that we set on transition out
+@export 
+var set_flags : Array[String]
 
 #the next audio stream player
 #we need to use node path so the resource is referencing the tree, NOT loading a new node
@@ -44,16 +50,22 @@ func check_flags(sound_tree : SoundTree)->bool:
 	if len(self.flags) == 0: return true
 
 	for flag in self.flags:
-		if flag in sound_tree.flags:
-			
-			if self.clear_transition_flags: 
-				sound_tree.unset_flag(flag)
-
-			return true
-	return false
+		if not (flag in sound_tree.flags):
+			return false == self.match_flags
+	
+	#every flag must be in the tree		
+	if self.clear_transition_flags:
+		for flag in self.flags:
+			sound_tree.unset_flag(flag)
+		
+	return true == self.match_flags
 
 #transitions to the next song based on the type of transition
 func transition_to_next(sound_tree : SoundTree,track : SoundTrack)->void:
+	#set all of the indicated flags
+	for sf in self.set_flags:
+		sound_tree.set_flag(sf)
+	
 	for nt in self.next:
 		var next_track = track.get_node(nt)
 
@@ -83,15 +95,10 @@ func apply_transition(sound_tree : SoundTree, track : SoundTrack,measure_break :
 	#only run if the caller is finished with their animation
 	var test = (self.on_finish or self.on_loop) and not (measure_break and (track.play_amount == 0 or self.on_loop))
 
-	if (measure_break):
-		print(test)
-		print(track.play_amount)
 	if (test): return
 
 
-	print(sound_tree.flags)
 	if self.check_flags(sound_tree):
-		print("transitioning!")
 		self.transition_to_next(sound_tree,track)
 		return 
 	
