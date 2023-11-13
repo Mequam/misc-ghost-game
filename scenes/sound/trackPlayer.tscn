@@ -1,11 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://wdbrbhyu6qfy"]
+[gd_scene load_steps=10 format=3 uid="uid://wdbrbhyu6qfy"]
 
 [ext_resource type="Script" path="res://scenes/sound/trackPlayer.gd" id="1_gef7q"]
-[ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="2_psclh"]
+[ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="2_4v34j"]
+[ext_resource type="Script" path="res://scenes/sound/audioTrack.gd" id="3_66xlv"]
+[ext_resource type="Script" path="res://scenes/sound/transition.gd" id="3_83il0"]
+[ext_resource type="AudioStream" uid="uid://bey1qsv57v1iy" path="res://assets/sound/music/orchard/dynamic_battle/windy_march.wav" id="5_wi2r8"]
+[ext_resource type="AudioStream" uid="uid://vetss66w51pw" path="res://assets/sound/music/orchard/dynamic_battle/chilly_wind.wav" id="6_8p3q8"]
 
-[node name="trackPlayer" type="Node2D"]
+[sub_resource type="Resource" id="Resource_dvt4p"]
+script = ExtResource("3_83il0")
+on_finish = false
+on_loop = false
+stop_previous = true
+clear_transition_flags = true
+flags = Array[String](["battle"])
+next = Array[NodePath]([NodePath("../Battle/wind march")])
+type = 2
+
+[sub_resource type="Resource" id="Resource_4gws6"]
+script = ExtResource("3_83il0")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = false
+flags = Array[String]([])
+next = Array[NodePath]([NodePath("../chilly wind")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_of408"]
+script = ExtResource("3_83il0")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = false
+flags = Array[String]([])
+next = Array[NodePath]([NodePath("../wind march")])
+type = 0
+
+[node name="trackPlayer" type="Node"]
 script = ExtResource("1_gef7q")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_psclh")
-volume_db = 24.0
+[node name="background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4v34j")
+volume_db = 5.122
+script = ExtResource("3_66xlv")
+transitions = Array[ExtResource("3_83il0")]([SubResource("Resource_dvt4p")])
+
+[node name="Battle" type="Node" parent="."]
+
+[node name="wind march" type="AudioStreamPlayer" parent="Battle"]
+stream = ExtResource("5_wi2r8")
+volume_db = 7.0
+script = ExtResource("3_66xlv")
+play_amount = 3
+reset_play = true
+transitions = Array[ExtResource("3_83il0")]([SubResource("Resource_4gws6")])
+
+[node name="chilly wind" type="AudioStreamPlayer" parent="Battle"]
+stream = ExtResource("6_8p3q8")
+volume_db = 15.0
+script = ExtResource("3_66xlv")
+transitions = Array[ExtResource("3_83il0")]([SubResource("Resource_of408")])

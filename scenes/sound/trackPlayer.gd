@@ -1,19 +1,22 @@
-extends Node2D
+extends Node
 
-signal finished_measure
-signal finished_beat
+#this class represents the root of a sound tree
+#where we contain all of the different tracks that we want to run
 
-var flags : Dictionary
+class_name SoundTree
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$AudioStreamPlayer.playing = true
+func set_flag(flag : String)->void:
+	if not (flag in flags):
+		flags.append(flag)
+func unset_flag(flag : String)->void:
+	flags.erase(flag)
 
-func on_tween_end():
-	$AudioStreamPlayer.playing = false
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+#these are the flags that the tree is using for transitions
+@export var flags : Array[String]
+
+func _ready()->void:
+	$background.play()
+
+func _process(_delta):
 	if Input.is_action_just_pressed("JUMP"):
-		var tween = get_tree().create_tween()
-		tween.tween_property($AudioStreamPlayer,"volume_db",-10,1)
-		tween.tween_callback(on_tween_end)
+		self.set_flag("battle")
