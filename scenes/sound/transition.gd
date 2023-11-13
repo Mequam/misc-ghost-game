@@ -58,15 +58,18 @@ func transition_to_next(sound_tree : SoundTree,track : SoundTrack)->void:
 		var next_track = track.get_node(nt)
 
 		next_track.playing = true
+		next_track.play_amount = next_track.initial_play_amount
 		match type:
 			TransitionType.IMEDIATE:
 				#stop the current track from playing
-				track.stop()
+				if self.stop_previous:
+					track.stop()
 			TransitionType.FADE:
 				#fade out the old track
-				var tween = track.get_tree().create_tween()
-				tween.tween_property(track,"volume_db",-30,0.25)
-				tween.tween_callback(track.stop)
+				if self.stop_previous:
+					var tween = track.get_tree().create_tween()
+					tween.tween_property(track,"volume_db",-30,0.25)
+					tween.tween_callback(track.stop)
 
 				#fade in the new track
 				next_track.volume_db = -30
@@ -78,11 +81,15 @@ func transition_to_next(sound_tree : SoundTree,track : SoundTrack)->void:
 #measure_break is true if we are checking at the end of a measure
 func apply_transition(sound_tree : SoundTree, track : SoundTrack,measure_break : bool = false)->void:
 	#only run if the caller is finished with their animation
-	var test =(self.on_finish or self.on_loop) and not measure_break and not (track.play_amount == 0) 
-	print(test)
+	var test = (self.on_finish or self.on_loop) and not (measure_break and (track.play_amount == 0 or self.on_loop))
+
+	if (measure_break):
+		print(test)
+		print(track.play_amount)
 	if (test): return
 
 
+	print(sound_tree.flags)
 	if self.check_flags(sound_tree):
 		print("transitioning!")
 		self.transition_to_next(sound_tree,track)

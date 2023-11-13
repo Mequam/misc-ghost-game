@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wdbrbhyu6qfy"]
+[gd_scene load_steps=12 format=3 uid="uid://wdbrbhyu6qfy"]
 
 [ext_resource type="Script" path="res://scenes/sound/trackPlayer.gd" id="1_gef7q"]
 [ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="2_4v34j"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/sound/transition.gd" id="3_83il0"]
 [ext_resource type="AudioStream" uid="uid://bey1qsv57v1iy" path="res://assets/sound/music/orchard/dynamic_battle/windy_march.wav" id="5_wi2r8"]
 [ext_resource type="AudioStream" uid="uid://vetss66w51pw" path="res://assets/sound/music/orchard/dynamic_battle/chilly_wind.wav" id="6_8p3q8"]
+[ext_resource type="AudioStream" uid="uid://gncoljnfdepb" path="res://assets/sound/music/orchard/dynamic_battle/orchard_battle_whisk.wav" id="7_hrcbk"]
 
 [sub_resource type="Resource" id="Resource_dvt4p"]
 script = ExtResource("3_83il0")
@@ -17,7 +18,17 @@ flags = Array[String](["battle"])
 next = Array[NodePath]([NodePath("../Battle/wind march")])
 type = 2
 
-[sub_resource type="Resource" id="Resource_4gws6"]
+[sub_resource type="Resource" id="Resource_nsigq"]
+script = ExtResource("3_83il0")
+on_finish = false
+on_loop = true
+stop_previous = false
+clear_transition_flags = true
+flags = Array[String](["battle"])
+next = Array[NodePath]([NodePath("../leave swish")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_8ed0i"]
 script = ExtResource("3_83il0")
 on_finish = true
 on_loop = false
@@ -54,10 +65,15 @@ volume_db = 7.0
 script = ExtResource("3_66xlv")
 play_amount = 3
 reset_play = true
-transitions = Array[ExtResource("3_83il0")]([SubResource("Resource_4gws6")])
+transitions = Array[ExtResource("3_83il0")]([SubResource("Resource_nsigq"), SubResource("Resource_8ed0i")])
 
 [node name="chilly wind" type="AudioStreamPlayer" parent="Battle"]
 stream = ExtResource("6_8p3q8")
 volume_db = 15.0
 script = ExtResource("3_66xlv")
 transitions = Array[ExtResource("3_83il0")]([SubResource("Resource_of408")])
+
+[node name="leave swish" type="AudioStreamPlayer" parent="Battle"]
+stream = ExtResource("7_hrcbk")
+volume_db = 11.606
+script = ExtResource("3_66xlv")
