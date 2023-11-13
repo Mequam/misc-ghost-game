@@ -20,22 +20,23 @@ var initial_play_amount : int
 #reference to the audio stream that we play
 @export var audio_stream : AudioStreamPlayer
 #wrapper for setting the volume of this track
-var volume_db : float :
-	set (val):
-		if self.audio_stream == null:
-			volume_db = val 
-		else:
-			print("setting the audio volume of the child")
-			self.audio_stream.volume_db = val 
-	get:
-		if self.audio_stream == null: return volume_db
-		return self.audio_stream.volume_db
+var volume_db : float : set = set_vol_db, get = get_vol_db
 
-var playing : bool :
-	set(val):
-		self.audio_stream.playing = val 
-	get:
-		return self.audio_stream.playing
+func set_vol_db (val)->void:
+	if self.audio_stream == null:
+		volume_db = val 
+	else:
+		print("setting the audio volume of the child")
+		self.audio_stream.volume_db = val 
+func get_vol_db():
+	if self.audio_stream == null: return volume_db
+	return self.audio_stream.volume_db
+
+var playing : bool : set = set_playing, get = get_playing
+func set_playing(val)->void:
+	self.audio_stream.playing = val 
+func get_playing()->bool:
+	return self.audio_stream.playing
 
 #used to set the initial sound of the audio stream
 
@@ -48,7 +49,6 @@ func play()->void:
 	self.audio_stream.play()
 
 func on_finished()->void:
-	print("finished!")
 	play_amount -= 1
 
 
@@ -62,6 +62,10 @@ func on_finished()->void:
 		play_amount = initial_play_amount
 		self.play()
 
+	#parent
+	if self.get_parent() is AudioTrackContainer:
+		self.get_parent().child_finished()
+
 
 
 func _ready()->void:
@@ -70,10 +74,6 @@ func _ready()->void:
 		self.audio_stream = self.get_child(0)
 
 	self.volume_db = initial_db
-	print(self.name)
-	print(volume_db)
-	print(self.audio_stream.volume_db)
-	print("-")
 	self.audio_stream.volume_db = volume_db
 
 
@@ -87,9 +87,6 @@ func _ready()->void:
 
 	#set up the finished function
 	self.audio_stream.finished.connect(self.on_finished)
-
-	print(self.volume_db)
-	print("-----------------")
 
 #returns the root of the sound tree
 func get_sound_tree_root()->SoundTree:

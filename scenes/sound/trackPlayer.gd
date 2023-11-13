@@ -20,3 +20,5 @@ func _ready()->void:
 func _process(_delta):
 	if Input.is_action_just_pressed("JUMP"):
 		self.set_flag("battle")
+	if Input.is_action_just_pressed("ATTACK"):
+		$Battle.volume_db = -10
