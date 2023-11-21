@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=21 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dr1c6twv8ln1k" path="res://scenes/pickups/candy/chocolate/chocolate.tscn" id="11_ug8qb"]
 [ext_resource type="PackedScene" uid="uid://kd3f4rg6axyb" path="res://scenes/pickups/candy/watermelcandycorn/watermeloncandycorn.tscn" id="12_cr4xh"]
 [ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="13_weggt"]
+[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="14_spr6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(3110, 40)
@@ -182,3 +183,6 @@ animation_player = NodePath("../Candy2/AnimationPlayer")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_weggt")
 bus = &"Music"
+
+[node name="applePicker" parent="." instance=ExtResource("14_spr6l")]
+position = Vector2(3, -127)

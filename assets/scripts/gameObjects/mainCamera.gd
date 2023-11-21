@@ -53,9 +53,7 @@ func _process(_delta):
 
 		
 		if result:
-			print(result["position"])
 			target_points = target_points + [[5,result["position"]]]
-			print(target_points)
 
 		
 		var new_target = get_weighted_sum(target_points)-Vector2.DOWN*200

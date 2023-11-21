@@ -9,6 +9,7 @@ class_name PickableApple
 func is_harvestable()->bool:
 	return sprite.visible
 func pick()->int:
+	$leaf_crunchies.play()
 	if sprite.visible:
 		sprite.visible = false 
 		for node in particles.get_children():
@@ -19,6 +20,7 @@ func pick()->int:
 	for node in forever_particles.get_children():
 		if node is GPUParticles2D:
 			node.emitting = true 
+	
 	return 0
 func unpick()->void:
 	sprite.visible = true

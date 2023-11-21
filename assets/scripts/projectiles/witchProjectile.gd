@@ -34,4 +34,7 @@ func on_col(collider):
 		var old_pos : Vector2 = witch.global_position 
 		witch.global_position = entity.global_position 
 		entity.global_position = old_pos 
+		
+		#play the bwingwing teleport noise
+		witch.bwingwing.play()
 	super.on_col(collider)

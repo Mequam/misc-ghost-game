@@ -93,6 +93,7 @@ func can_jump()->bool:
 
 #performs the jump gaurenteed
 #no questions ask, teleport go brrrr
+#teleports leni if it is acceptable
 func jump()->void:
 	#we teleport VERY far after unpossesing
 	var computed_vel = (self.compute_velocity(self.velocity))
@@ -103,6 +104,7 @@ func jump()->void:
 	self.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
 	self.singal_move_and_collide(computed_vel)
 	self.collision_mask = self.gen_col_mask()
+	$TeleportSound.play()
 	
 	#self.global_position = result.
 
@@ -163,6 +165,7 @@ func posses_attack(vel : Vector2)->void:
 	posses_velocity.y /= 2
 	clear_stored_inputs()
 	self.state = LeniState.POSSESING
+	$possesSound.play()
 
 #leni is a ghost, you cant posses a ghost (at least until I get around to adding it :p)
 func exorcize(offset : Vector2 = Vector2(0,0)):

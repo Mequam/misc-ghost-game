@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjgd74u33a2ee"]
+
+[ext_resource type="AudioStream" uid="uid://bq3bg3rk8lnxi" path="res://assets/sound/effects/Misc/witch_ping.wav" id="1_mvtdj"]
+
+[node name="Bwingwing" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_mvtdj")
+max_distance = 600.0

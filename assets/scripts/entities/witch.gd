@@ -7,10 +7,11 @@ class_name Witch
 @export var collumn : PackedScene
 @export var witchProjectile : PackedScene
 
+@export var bwingwing : AudioStreamPlayer2D
+
 var ai_ticks : int = 0
 
 func perform_action(act : String,pressed : bool,double_press : bool = false,echo : bool = false)->void:
-	print("performing action!")
 	super.perform_action(act,
 		pressed,
 		double_press,
@@ -30,6 +31,7 @@ func shoot_witch_projectile()->void:
 	proj.witch = self
 	$Sprite2D.custom_play("attack")
 	state = EntityState.BRICK
+	$shoot_sound.play()
 
 func on_action_press(act : String)->void:
 	match act:

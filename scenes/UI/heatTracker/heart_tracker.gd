@@ -29,10 +29,6 @@ func update_display( hp : int,max_hp : int)->void:
 			life = len(heart_texture) - 1
 	
 		hp -= life
-		print(life)
-		print(hp)
-		print(max_hp)
-		print("-")
 
 		text.texture = heart_texture[life] #store the appropriate 
 		max_hp -= len(heart_texture) - 1 

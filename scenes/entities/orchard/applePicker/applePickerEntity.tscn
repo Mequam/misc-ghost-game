@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cotdsdtg0th0l"]
+[gd_scene load_steps=13 format=3 uid="uid://cotdsdtg0th0l"]
 
 [ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/applePickerEntity.gd" id="1_7awqf"]
 [ext_resource type="PackedScene" uid="uid://cv1ocywmuqlwo" path="res://scenes/entities/orchard/applePicker/applePickerSprite.tscn" id="1_mohwp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/ai/AIApplePicker.gd" id="3_bjqf2"]
 [ext_resource type="Texture2D" uid="uid://byvi3g8ub66je" path="res://assets/animations/apple picker ghost/hearts/eaten.png" id="4_hqwjl"]
 [ext_resource type="Texture2D" uid="uid://cdoq5b7xnrm5i" path="res://assets/animations/apple picker ghost/hearts/full_apple.png" id="5_7f7f0"]
+[ext_resource type="AudioStream" uid="uid://cg1h8032cc88x" path="res://assets/sound/effects/Misc/gong.wav" id="9_e0ahr"]
 
 [sub_resource type="Resource" id="Resource_gg8tm"]
 script = ExtResource("3_bjqf2")
@@ -60,5 +61,8 @@ shape = SubResource("CircleShape2D_bhfdn")
 [node name="dazed_timer" type="Timer" parent="."]
 
 [node name="modulate_timer" type="Timer" parent="."]
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_e0ahr")
 
 [editable path="GroundTester"]

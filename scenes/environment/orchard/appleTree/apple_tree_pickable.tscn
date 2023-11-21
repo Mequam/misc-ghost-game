@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkc06wd8bb777"]
+[gd_scene load_steps=8 format=3 uid="uid://bkc06wd8bb777"]
 
 [ext_resource type="Script" path="res://scenes/environment/orchard/pickable_apple/pickable_apple.gd" id="1_a8kuv"]
 [ext_resource type="PackedScene" uid="uid://b831a6omwkdev" path="res://scenes/environment/orchard/apple_splosion.tscn" id="2_v8j4j"]
 [ext_resource type="PackedScene" uid="uid://bjpuwdaqpylkx" path="res://scenes/environment/orchard/leaf_particles.tscn" id="3_iid7j"]
+[ext_resource type="Script" path="res://scenes/sound/random_sound_player/random_sound_player.gd" id="4_ecvav"]
+[ext_resource type="AudioStream" uid="uid://b1bxjxhhbtsjq" path="res://assets/sound/effects/Leafs/leaf_crunchie1.wav" id="5_bbnpp"]
+[ext_resource type="AudioStream" uid="uid://yxd7d1y7lcr0" path="res://assets/sound/effects/Leafs/leaf_crunchies2.wav" id="6_0ou1v"]
+[ext_resource type="AudioStream" uid="uid://km833hgysbi5" path="res://assets/sound/effects/Leafs/leaf_crunchies3.wav" id="7_vwuwt"]
 
 [node name="apple_tree_pickable" type="Area2D" node_paths=PackedStringArray("particles", "forever_particles")]
 collision_layer = 16
@@ -21,3 +25,18 @@ one_shot = true
 
 [node name="leaf particles" parent="forever particles" instance=ExtResource("3_iid7j")]
 one_shot = true
+
+[node name="leaf_crunchies" type="Node2D" parent="."]
+script = ExtResource("4_ecvav")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="leaf_crunchies"]
+stream = ExtResource("5_bbnpp")
+bus = &"Sound Effects"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="leaf_crunchies"]
+stream = ExtResource("6_0ou1v")
+bus = &"Sound Effects"
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="leaf_crunchies"]
+stream = ExtResource("7_vwuwt")
+bus = &"Sound Effects"
