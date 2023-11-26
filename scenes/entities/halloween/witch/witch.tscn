@@ -58,6 +58,7 @@ jump_down_time = 0.1
 
 [sub_resource type="Resource" id="Resource_w1do7"]
 script = ExtResource("5_ji8a8")
+danger_level = 1
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("3")
@@ -298,9 +299,12 @@ one_shot = true
 position = Vector2(0, -176)
 
 [node name="Bwingwing" parent="." instance=ExtResource("48_45rfs")]
+volume_db = 24.0
+bus = &"Sound Effects"
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("49_c4tqi")
+volume_db = -20.0
 bus = &"Sound Effects"
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_Sprite_animation_finished"]

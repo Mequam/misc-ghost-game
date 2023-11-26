@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkfoptt80pgom"]
+[gd_scene load_steps=14 format=3 uid="uid://bkfoptt80pgom"]
 
 [ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/mugFollower/follwer_mug.gd" id="1_kkrs1"]
 [ext_resource type="Texture2D" uid="uid://p6pb35drirkv" path="res://assets/animations/cider spirit/0014.png" id="2_roe8b"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c6exd52hj6o22" path="res://assets/animations/cider spirit/0001.png" id="6_appuv"]
 [ext_resource type="Texture2D" uid="uid://4ybpvw8xjcaa" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0030.png" id="7_yc1ay"]
 [ext_resource type="Texture2D" uid="uid://drmv0rfsy5xvd" path="res://assets/animations/cider spirit/upside_down_launch/ulaunch0031.png" id="8_sxv0d"]
+[ext_resource type="Script" path="res://scenes/sound/random_sound_player/random_sound_player.gd" id="9_2qlnu"]
+[ext_resource type="AudioStream" uid="uid://dgxrwajqtlfmd" path="res://assets/sound/effects/cup_collision/cup_bang1.wav" id="10_y2u03"]
+[ext_resource type="AudioStream" uid="uid://bwaetg3ktuotp" path="res://assets/sound/effects/cup_collision/cup_bang2.wav" id="11_vaic5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3qn0w"]
 animations = [{
@@ -70,3 +73,14 @@ animation = &"after_launch_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -21)
 shape = SubResource("RectangleShape2D_ty6yg")
+
+[node name="collision_sounds" type="Node2D" parent="."]
+script = ExtResource("9_2qlnu")
+
+[node name="collision1" type="AudioStreamPlayer2D" parent="collision_sounds"]
+stream = ExtResource("10_y2u03")
+bus = &"Sound Effects"
+
+[node name="collision2" type="AudioStreamPlayer2D" parent="collision_sounds"]
+stream = ExtResource("11_vaic5")
+bus = &"Sound Effects"

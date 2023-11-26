@@ -24,6 +24,12 @@ func custom_play(anim_name : StringName = "idle", backwoards : bool = false)->vo
 		"walk_right":
 			stop()
 			transform_animator.play("walk_right")
+		"splash":
+			#play the sound
+			if self.animation != "splash":
+				$splash.play()
+			transform_animator.stop()
+			transform_animator.play("RESET")
 		_:
 			transform_animator.stop()
 			transform_animator.play("RESET")

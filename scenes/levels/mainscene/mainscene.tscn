@@ -1,8 +1,11 @@
-[gd_scene load_steps=60 format=3 uid="uid://bulwc6eb24a1q"]
+[gd_scene load_steps=63 format=3 uid="uid://bulwc6eb24a1q"]
 
 [ext_resource type="Script" path="res://scenes/levels/mainscene/mainscene.gd" id="1_vb6le"]
 [ext_resource type="PackedScene" uid="uid://bcj4qmam5qoqf" path="res://scenes/UI/heatTracker/heart_tracker.tscn" id="3_kkthe"]
 [ext_resource type="PackedScene" uid="uid://bt81ygteptyn1" path="res://scenes/effects/AfterEffectTscn/AfterEffectNode.tscn" id="4_t8ld4"]
+[ext_resource type="AudioStream" uid="uid://haevrc0hn2mu" path="res://assets/sound/effects/Misc/on_posses.wav" id="5_uej0b"]
+[ext_resource type="Script" path="res://scenes/sound/trackPlayer.gd" id="5_wt4qo"]
+[ext_resource type="PackedScene" uid="uid://wdbrbhyu6qfy" path="res://scenes/sound/orchard/trackPlayer.tscn" id="6_b6nl1"]
 [ext_resource type="PackedScene" uid="uid://d16mwsqs5vbws" path="res://scenes/effects/ColorShiftEffect/ColorShifter.tscn" id="10_p30ux"]
 
 [sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_3bla4"]
@@ -605,7 +608,7 @@ shader_parameter/yg_map = Color(0.5, 1, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
 shader_parameter/IC2 = Color(0.5, 1, 0, 1)
 
-[node name="Main" type="Control" node_paths=PackedStringArray("heart_tracker")]
+[node name="Main" type="Control" node_paths=PackedStringArray("heart_tracker", "music_system")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -618,6 +621,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_vb6le")
 heart_tracker = NodePath("UILayer/hud/HeartTracker")
+music_system = NodePath("SoundSystem/Music")
 
 [node name="background" type="ColorRect" parent="."]
 z_index = -4096
@@ -664,3 +668,16 @@ offset_left = 1.0
 offset_right = 1.0
 
 [node name="SoundSystem" type="Node" parent="."]
+
+[node name="Music" type="Node" parent="SoundSystem"]
+script = ExtResource("5_wt4qo")
+
+[node name="orchard" parent="SoundSystem/Music" instance=ExtResource("6_b6nl1")]
+
+[node name="Effects" type="Node" parent="SoundSystem"]
+editor_description = "This is the place to put global sound effects that need to be called all
+throughout the game"
+
+[node name="on_posses" type="AudioStreamPlayer" parent="SoundSystem/Effects"]
+stream = ExtResource("5_uej0b")
+pitch_scale = 1.5

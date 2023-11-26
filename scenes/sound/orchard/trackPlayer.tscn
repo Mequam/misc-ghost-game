@@ -1,0 +1,208 @@
+[gd_scene load_steps=24 format=3 uid="uid://wdbrbhyu6qfy"]
+
+[ext_resource type="Script" path="res://scenes/sound/AudioTrackContainer.gd" id="1_ldjmi"]
+[ext_resource type="Script" path="res://scenes/sound/audioTrack.gd" id="2_thmwg"]
+[ext_resource type="Script" path="res://scenes/sound/transition.gd" id="3_u2brb"]
+[ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="4_tahjm"]
+[ext_resource type="AudioStream" uid="uid://bey1qsv57v1iy" path="res://assets/sound/music/orchard/dynamic_battle/windy_march.wav" id="5_3s5bx"]
+[ext_resource type="Script" path="res://scenes/sound/orchard/Battle.gd" id="5_bd2ff"]
+[ext_resource type="AudioStream" uid="uid://vetss66w51pw" path="res://assets/sound/music/orchard/dynamic_battle/chilly_wind.wav" id="6_xncjr"]
+[ext_resource type="AudioStream" uid="uid://cmrhwwysrtmio" path="res://assets/sound/music/orchard/dynamic_battle/souls_initial_song.wav" id="7_g7cu6"]
+[ext_resource type="AudioStream" uid="uid://26231yeilhht" path="res://assets/sound/music/orchard/dynamic_battle/souls_warning.wav" id="8_d3v0g"]
+[ext_resource type="AudioStream" uid="uid://mg85pf5v43tr" path="res://assets/sound/music/orchard/dynamic_battle/spooky_wind.wav" id="9_rr21p"]
+[ext_resource type="AudioStream" uid="uid://c3c4vcro10eay" path="res://assets/sound/music/orchard/dynamic_battle/battle_drum.wav" id="10_3chq3"]
+[ext_resource type="AudioStream" uid="uid://daluuts6o5nfh" path="res://assets/sound/music/orchard/dynamic_battle/wind_gust.wav" id="11_xes4f"]
+[ext_resource type="AudioStream" uid="uid://gncoljnfdepb" path="res://assets/sound/music/orchard/dynamic_battle/orchard_battle_whisk.wav" id="12_8p1gy"]
+
+[sub_resource type="Resource" id="Resource_eeww6"]
+script = ExtResource("3_u2brb")
+on_finish = false
+on_loop = false
+stop_previous = true
+clear_transition_flags = true
+match_flags = true
+flags = Array[String](["battle"])
+set_flags = Array[String](["simple"])
+next = Array[NodePath]([NodePath("../Battle/wind march")])
+type = 2
+
+[sub_resource type="Resource" id="Resource_pq0ir"]
+script = ExtResource("3_u2brb")
+on_finish = false
+on_loop = true
+stop_previous = false
+clear_transition_flags = true
+match_flags = true
+flags = Array[String](["hit"])
+set_flags = Array[String]([])
+next = Array[NodePath]([NodePath("wisk")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_4i2vk"]
+script = ExtResource("3_u2brb")
+on_finish = false
+on_loop = false
+stop_previous = true
+clear_transition_flags = true
+match_flags = true
+flags = Array[String](["safe"])
+set_flags = Array[String]([])
+next = Array[NodePath]([NodePath("../Default")])
+type = 2
+
+[sub_resource type="Resource" id="Resource_3bmsl"]
+script = ExtResource("3_u2brb")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = false
+match_flags = true
+flags = Array[String](["simple"])
+set_flags = Array[String]([])
+next = Array[NodePath]([NodePath("../chilly wind")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_lwlyh"]
+script = ExtResource("3_u2brb")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = false
+match_flags = false
+flags = Array[String](["simple"])
+set_flags = Array[String](["simple"])
+next = Array[NodePath]([NodePath("../wind gust")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_v27m3"]
+script = ExtResource("3_u2brb")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = false
+match_flags = true
+flags = Array[String](["chilled"])
+set_flags = Array[String]([])
+next = Array[NodePath]([NodePath("../scarry wind")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_0k8ua"]
+script = ExtResource("3_u2brb")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = false
+match_flags = true
+flags = Array[String]([])
+set_flags = Array[String](["chilled"])
+next = Array[NodePath]([NodePath("../wind march"), NodePath("../souls song")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_kpyxr"]
+script = ExtResource("3_u2brb")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = false
+match_flags = true
+flags = Array[String]([])
+set_flags = Array[String]([])
+next = Array[NodePath]([NodePath("../souls warning")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_a5pyr"]
+script = ExtResource("3_u2brb")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = true
+match_flags = true
+flags = Array[String](["chilled", "simple"])
+set_flags = Array[String]([])
+next = Array[NodePath]([NodePath("../battle drums")])
+type = 0
+
+[sub_resource type="Resource" id="Resource_j2tp3"]
+script = ExtResource("3_u2brb")
+on_finish = true
+on_loop = false
+stop_previous = true
+clear_transition_flags = false
+match_flags = true
+flags = Array[String]([])
+set_flags = Array[String](["simple"])
+next = Array[NodePath]([NodePath("../chilly wind"), NodePath("../souls song")])
+type = 0
+
+[node name="orchard" type="Node"]
+script = ExtResource("1_ldjmi")
+
+[node name="Default" type="Node" parent="." node_paths=PackedStringArray("audio_stream")]
+script = ExtResource("2_thmwg")
+transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_eeww6")])
+audio_stream = NodePath("AudioStreamPlayer")
+initial_db = 12.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Default"]
+stream = ExtResource("4_tahjm")
+
+[node name="Battle" type="Node" parent="."]
+script = ExtResource("5_bd2ff")
+transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_pq0ir"), SubResource("Resource_4i2vk")])
+
+[node name="wind march" type="Node" parent="Battle" node_paths=PackedStringArray("audio_stream")]
+script = ExtResource("2_thmwg")
+play_amount = 2
+transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_3bmsl"), SubResource("Resource_lwlyh")])
+audio_stream = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/wind march"]
+stream = ExtResource("5_3s5bx")
+
+[node name="chilly wind" type="Node" parent="Battle"]
+script = ExtResource("2_thmwg")
+transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_v27m3"), SubResource("Resource_0k8ua")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/chilly wind"]
+stream = ExtResource("6_xncjr")
+
+[node name="souls song" type="Node" parent="Battle"]
+script = ExtResource("2_thmwg")
+transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_kpyxr")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/souls song"]
+stream = ExtResource("7_g7cu6")
+
+[node name="souls warning" type="Node" parent="Battle"]
+script = ExtResource("2_thmwg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/souls warning"]
+stream = ExtResource("8_d3v0g")
+
+[node name="scarry wind" type="Node" parent="Battle"]
+script = ExtResource("2_thmwg")
+transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_a5pyr")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/scarry wind"]
+stream = ExtResource("9_rr21p")
+
+[node name="battle drums" type="Node" parent="Battle"]
+script = ExtResource("2_thmwg")
+play_amount = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/battle drums"]
+stream = ExtResource("10_3chq3")
+
+[node name="wind gust" type="Node" parent="Battle"]
+script = ExtResource("2_thmwg")
+transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_j2tp3")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/wind gust"]
+stream = ExtResource("11_xes4f")
+
+[node name="wisk" type="Node" parent="Battle"]
+script = ExtResource("2_thmwg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/wisk"]
+stream = ExtResource("12_8p1gy")
+volume_db = 7.2

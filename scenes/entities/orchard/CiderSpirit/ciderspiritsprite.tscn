@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://byekeag2ch0em"]
+[gd_scene load_steps=39 format=3 uid="uid://byekeag2ch0em"]
 
 [ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="1_yhr28"]
 [ext_resource type="Texture2D" uid="uid://yw5xsmwfmmdy" path="res://assets/animations/cider spirit/launch/launch10026.png" id="2_72cy2"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://c2wkvi6aoou1p" path="res://assets/animations/cider spirit/launch/launch10034.png" id="34_n2i5p"]
 [ext_resource type="Texture2D" uid="uid://36kuv8hetdtb" path="res://assets/animations/cider spirit/launch/launch10035.png" id="35_i35c7"]
 [ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/ciderspiritsprite.gd" id="36_v652m"]
+[ext_resource type="AudioStream" uid="uid://yn5o0vpx6cs6" path="res://assets/sound/effects/Misc/small_splash.wav" id="37_p6y6n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uvigh"]
 animations = [{
@@ -182,5 +183,8 @@ animations = [{
 
 [node name="CiderSpiritSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_uvigh")
-animation = &"fly"
+animation = &"splash"
 script = ExtResource("36_v652m")
+
+[node name="splash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("37_p6y6n")

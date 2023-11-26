@@ -13,6 +13,7 @@
 [sub_resource type="Resource" id="Resource_gg8tm"]
 script = ExtResource("3_bjqf2")
 shoot_threshold = 300
+danger_level = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppar1"]
 size = Vector2(150.5, 301)
@@ -64,5 +65,7 @@ shape = SubResource("CircleShape2D_bhfdn")
 
 [node name="shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_e0ahr")
+volume_db = 13.0
+bus = &"Sound Effects"
 
 [editable path="GroundTester"]

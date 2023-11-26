@@ -63,12 +63,22 @@ func call_ai(aggro_entity):
 	get_tree().call_group("Npc","run_AI",aggro_entity)
 
 func _process(_delta):
-	if Input.is_key_pressed(KEY_P):
-		GameLoader.load_level(
-			load("res://scenes/levels/leni_load_test.tscn"),
-			self,
-			[$mainCam,$Leni,$witch]
-			)	
+	var safe = true
+	var danger_amount : int = 0
+	for node in get_tree().get_nodes_in_group("Npc"):
+		if not node.possesed and node.global_position.distance_squared_to(player_entity.global_position) < 1500*1500:
+			danger_amount += node.get_danger_level()
+			if danger_amount > 0:
+				safe = false 
+				break
+		print_debug(node.name + str(node.global_position.distance_to(player_entity.global_position)))
+	if safe:
+		get_main().music_system.set_flag("safe")
+		get_main().music_system.unset_flag("battle")
+	else:
+		get_main().music_system.set_flag("battle")
+		get_main().music_system.unset_flag("safe")
+
 
 func on_ai_timeout():
 	call_ai(player_entity)

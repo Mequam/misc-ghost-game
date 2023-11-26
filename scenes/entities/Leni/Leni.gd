@@ -262,7 +262,7 @@ func _on_sprite_2d_animation_finished():
 		"posses_col":
 			possesed_entity.posses_by(self)
 		"posses":
-			pass #this is handled in the sprite2d
+			pass
 		"posses_launch":
 			pass #handled in sprite2d
 		"die":

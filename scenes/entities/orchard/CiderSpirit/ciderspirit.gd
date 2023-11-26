@@ -84,6 +84,8 @@ func follow_trajectory()->void:
 		
 		#indicate that we are FLYING
 		self.state = CiderSpiritState.LAUNCHED
+		
+		$big_splash.play()
 
 		follower_mug.global_position = global_position 
 		if follower_mug:
@@ -277,7 +279,7 @@ func _draw():
 			)
 func update_animation()->void:
 	if self.state == CiderSpiritState.SPLASHED:
-		self.get_sprite2D().play("splash")
+		self.get_sprite2D().custom_play("splash")
 	elif self.state != CiderSpiritState.PARABALA:
 		super.update_animation()
 		self.get_sprite2D().flip_h = self.hop_dir == "LEFT"

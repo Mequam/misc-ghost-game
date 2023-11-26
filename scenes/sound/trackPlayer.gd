@@ -14,11 +14,10 @@ func unset_flag(flag : String)->void:
 #these are the flags that the tree is using for transitions
 @export var flags : Array[String]
 
-func _ready()->void:
-	$orchard.play()
+#plays the first available song 
+func play(name = null)->void:
+	if name == null:
+		get_child(0).play()
+	else:
+		get_node(name).play()
 
-func _process(_delta):
-	if Input.is_action_just_pressed("JUMP"):
-		self.set_flag("battle")
-	if Input.is_action_just_pressed("ATTACK"):
-		$Battle.volume_db = -10

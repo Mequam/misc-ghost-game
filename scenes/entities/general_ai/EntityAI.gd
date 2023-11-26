@@ -1,6 +1,14 @@
 extends Resource
 
+#this class represents an AI that some entity will use
+#in order to perform how to move without the player
+
 class_name EntityAI 
+
+@export var danger_level = 1
+
+func get_danger_level()->int:
+	return danger_level
 
 #convinence function to match the perform action in the entity class
 #see entity.gd

@@ -31,7 +31,12 @@ func get_sprite2D()->AnimatedSprite2D:
 	if sprite != null: return sprite 
 	return $Sprite2D
 
-
+#returns a measure of how dangerous this entity is,
+#used for dynamic music and threat detection
+func get_danger_level()->int:
+	if not self.possesed and self.entity_ai != null:
+		return self.entity_ai.danger_level
+	return 0
 				
 #called when we are loaded into the scene
 func on_load(level)->void:
@@ -118,10 +123,14 @@ func die():
 	exorcize()
 	queue_free()
 
+#gets the entity to request battle music be played
+
 #called when we take damage, inteanded to be overloaded
 func take_damage(dmg : int = 1, dmg_src = null)->void:
 	self.health -= dmg
-
+	if self.possesed:
+		self.get_parent().get_main().music_system.set_flag("hit")
+	#if we were hit, enable the battle music
 #stores inputs that are pressed and will remain true
 #for as long as the input is not released
 var pressed_inputs : Dictionary = {

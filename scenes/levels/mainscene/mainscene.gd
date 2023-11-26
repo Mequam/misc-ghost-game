@@ -7,13 +7,16 @@ extends Control
 
 class_name MainScene
 
+#displays the hearts that the currently possesed entity has
 @export var heart_tracker : HeartTracker
+#contains the sound system for the game
+@export var music_system : SoundTree
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#we need to load the last save if this is our first time loading the main scene
 	GameLoader.load_save()
+	
+	#start the sound system playing
+	music_system.play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

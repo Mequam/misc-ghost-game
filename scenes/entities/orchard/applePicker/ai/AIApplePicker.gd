@@ -1,11 +1,16 @@
 extends EntityAI 
+#this AI runs to pick apples, 
+#and then walks to the player to shoot them
 
 class_name AIApplePickerFindShoot
 
 var ai_apple_target = null 
 @export var shoot_threshold = 300
 
-
+func get_danger_level()->int:
+	if caller.apple_count == 0:
+		return 0
+	return self.get_danger_level()
 func ai_on_col(col)->void:
 	var norm = col.get_normal()
 	if norm.x > norm.y*2:

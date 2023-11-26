@@ -11,8 +11,10 @@ func _ready()->void:
 	self.body_entered.connect(self.on_body_entered)
 
 func on_body_entered(body : Node)->void:
-	#print("collided with " + body.name)
 	if body.has_method("take_damage"): body.take_damage(2)
+	#make a BANG
+	if not $collision_sounds.get_playing():
+		$collision_sounds.play()
 
 
 func unhide_self(tail : String)->void:

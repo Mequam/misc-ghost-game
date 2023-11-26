@@ -9,6 +9,7 @@ func set_vol_db(val)->void:
 	volume_db = val
 	for child in self.get_children():
 		child.volume_db = child.initial_db * self.volume_db	
+
 func get_vol_db()->float:
 	return volume_db 
 
@@ -17,6 +18,7 @@ func get_playing()->bool:
 		if child.get_playing():
 			return true
 	return false  
+
 func set_playing(val : bool)->void:
 	if val:
 		self.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjj04dmtykhtj"]
+[gd_scene load_steps=21 format=3 uid="uid://cjj04dmtykhtj"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.gd" id="1_8habe"]
 [ext_resource type="Texture2D" uid="uid://ce8ql01ng2vc4" path="res://assets/animations/rolling_pumpkin/empty_plant.png" id="2_ms2pa"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cxrjjv4ep0isq" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0013.png" id="15_qop2y"]
 [ext_resource type="Texture2D" uid="uid://c6of7fi033l8s" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0014.png" id="16_kl52j"]
 [ext_resource type="Texture2D" uid="uid://ct0dua2lp7dfi" path="res://assets/animations/rolling_pumpkin/tree spawn/tree_spawn0015.png" id="17_dayjg"]
+[ext_resource type="AudioStream" uid="uid://dx38tkx1ylp85" path="res://assets/sound/effects/Misc/creaky_grow.wav" id="18_whgir"]
+[ext_resource type="AudioStream" uid="uid://b21gaax7mltuk" path="res://assets/sound/effects/Misc/stick_break.wav" id="19_ck5dv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_injjl"]
 animations = [{
@@ -27,6 +29,20 @@ animations = [{
 "loop": true,
 "name": &"die",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_qop2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kl52j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_dayjg")
+}],
+"loop": false,
+"name": &"snap",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -64,15 +80,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("14_qe0te")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_qop2y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_kl52j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_dayjg")
 }],
 "loop": false,
 "name": &"spawn",
@@ -84,6 +91,19 @@ z_index = -1
 script = ExtResource("1_8habe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(34, -215)
+position = Vector2(57, -211)
 sprite_frames = SubResource("SpriteFrames_injjl")
 animation = &"die"
+
+[node name="grow_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_whgir")
+volume_db = 20.0
+bus = &"Sound Effects"
+
+[node name="snap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_ck5dv")
+volume_db = 6.0
+bus = &"Sound Effects"
+
+[node name="pumpkin_spawn_location" type="Node2D" parent="."]
+position = Vector2(-6, -410)
