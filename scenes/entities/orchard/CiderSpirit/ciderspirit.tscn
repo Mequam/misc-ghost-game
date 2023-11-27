@@ -12,18 +12,21 @@
 [ext_resource type="AudioStream" uid="uid://b78cwufee84rm" path="res://assets/sound/effects/Misc/big_splash.wav" id="10_audu5"]
 
 [sub_resource type="Resource" id="Resource_475e5"]
+resource_local_to_scene = true
 script = ExtResource("3_3awvy")
 jump_height = 101.01
 jump_up_time = 0.01
 jump_down_time = 0.01
 
-[sub_resource type="Resource" id="Resource_hsb7e"]
+[sub_resource type="Resource" id="Resource_bwvf3"]
+resource_local_to_scene = true
 script = ExtResource("4_v6oxr")
 ai_timer_jump = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":5.0,"one_shot":true,"autostart":false,"script":null)
 
 danger_level = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5r8p"]
+resource_local_to_scene = true
 size = Vector2(35, 50.5)
 
 [sub_resource type="Animation" id="Animation_m07p3"]
@@ -104,7 +107,7 @@ walk_speed = Vector2(1, 1)
 run_modifier = 1.0
 do_fast_fall = false
 sprite = NodePath("bone/Sprite2D")
-entity_ai = SubResource("Resource_hsb7e")
+entity_ai = SubResource("Resource_bwvf3")
 heart_text = Array[Texture2D]([ExtResource("5_of1oy"), ExtResource("6_snwuv"), ExtResource("7_ytv73")])
 speed = Vector2(0.1, 1)
 

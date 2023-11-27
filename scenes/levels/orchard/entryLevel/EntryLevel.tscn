@@ -1,20 +1,17 @@
-[gd_scene load_steps=26 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=19 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_yg6ni"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
-[ext_resource type="PackedScene" uid="uid://cjj04dmtykhtj" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn" id="7_al2pr"]
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="9_5xj7r"]
 [ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="11_s7tpd"]
 [ext_resource type="PackedScene" uid="uid://dr1c6twv8ln1k" path="res://scenes/pickups/candy/chocolate/chocolate.tscn" id="11_ug8qb"]
 [ext_resource type="PackedScene" uid="uid://kd3f4rg6axyb" path="res://scenes/pickups/candy/watermelcandycorn/watermeloncandycorn.tscn" id="12_cr4xh"]
-[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="13_nsy1k"]
+[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="12_ybcmh"]
+[ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="13_bhsbd"]
 [ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="13_weggt"]
-[ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/AIwitch_shoot.gd" id="14_jp5i1"]
-[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="16_lq4mv"]
-[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/ai/AIApplePicker.gd" id="17_oy8cy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
 size = Vector2(3110, 40)
@@ -28,32 +25,19 @@ size = Vector2(587, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
 size = Vector2(90.5, 157)
 
-[sub_resource type="Resource" id="Resource_gg6m4"]
-script = ExtResource("14_jp5i1")
-danger_level = 1
+[sub_resource type="Resource" id="Resource_hsq4u"]
+resource_local_to_scene = true
+script = ExtResource("13_bhsbd")
+jump_height = 101.01
+jump_up_time = 0.01
+jump_down_time = 0.01
 
-[sub_resource type="Resource" id="Resource_b73et"]
-script = ExtResource("14_jp5i1")
-danger_level = 1
-
-[sub_resource type="Resource" id="Resource_00613"]
-script = ExtResource("14_jp5i1")
-danger_level = 1
-
-[sub_resource type="Resource" id="Resource_pjmdf"]
-script = ExtResource("17_oy8cy")
-shoot_threshold = 300
-danger_level = 1
-
-[sub_resource type="Resource" id="Resource_voul4"]
-script = ExtResource("17_oy8cy")
-shoot_threshold = 300
-danger_level = 1
-
-[sub_resource type="Resource" id="Resource_0pneq"]
-script = ExtResource("17_oy8cy")
-shoot_threshold = 300
-danger_level = 1
+[sub_resource type="Resource" id="Resource_ew7iv"]
+resource_local_to_scene = true
+script = ExtResource("13_bhsbd")
+jump_height = 101.01
+jump_up_time = 0.01
+jump_down_time = 0.01
 
 [node name="LeniTest" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 419)
@@ -173,13 +157,6 @@ target_level = "res://scenes/levels/debug/leni_load_test.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_a"]
 shape = SubResource("RectangleShape2D_o10wt")
 
-[node name="pumpkin_tree_spawner" parent="." instance=ExtResource("7_al2pr")]
-position = Vector2(-178, -530)
-
-[node name="pumpkin_tree_spawner2" parent="." instance=ExtResource("7_al2pr")]
-position = Vector2(1333, -217)
-rotation = -0.685289
-
 [node name="Candy" parent="." instance=ExtResource("11_ug8qb")]
 position = Vector2(-113, -37)
 scale = Vector2(0.25, 0.25)
@@ -202,30 +179,10 @@ animation_player = NodePath("../Candy2/AnimationPlayer")
 stream = ExtResource("13_weggt")
 bus = &"Music"
 
-[node name="witch" parent="." instance=ExtResource("13_nsy1k")]
-position = Vector2(452, -64)
-entity_ai = SubResource("Resource_gg6m4")
+[node name="CiderSpirit" parent="." instance=ExtResource("12_ybcmh")]
+position = Vector2(282, -15)
+jr = SubResource("Resource_hsq4u")
 
-[node name="witch2" parent="." node_paths=PackedStringArray("bwingwing") instance=ExtResource("13_nsy1k")]
-position = Vector2(894, -55)
-bwingwing = NodePath("../witch/Bwingwing")
-entity_ai = SubResource("Resource_b73et")
-
-[node name="witch3" parent="." node_paths=PackedStringArray("bwingwing") instance=ExtResource("13_nsy1k")]
-position = Vector2(270, -452)
-bwingwing = NodePath("../witch/Bwingwing")
-entity_ai = SubResource("Resource_00613")
-
-[node name="applePicker" parent="." instance=ExtResource("16_lq4mv")]
-position = Vector2(-103, -189)
-entity_ai = SubResource("Resource_pjmdf")
-
-[node name="applePicker2" parent="." node_paths=PackedStringArray("apple_detector") instance=ExtResource("16_lq4mv")]
-position = Vector2(227, -187)
-apple_detector = NodePath("../applePicker/apple_detector")
-entity_ai = SubResource("Resource_voul4")
-
-[node name="applePicker3" parent="." node_paths=PackedStringArray("apple_detector") instance=ExtResource("16_lq4mv")]
-position = Vector2(480, -510)
-apple_detector = NodePath("../applePicker/apple_detector")
-entity_ai = SubResource("Resource_0pneq")
+[node name="CiderSpirit2" parent="." instance=ExtResource("12_ybcmh")]
+position = Vector2(550, -26)
+jr = SubResource("Resource_ew7iv")

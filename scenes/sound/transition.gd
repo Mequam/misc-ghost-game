@@ -77,8 +77,6 @@ func transition_to_next(sound_tree : SoundTree,track : SoundTrack)->void:
 				if self.stop_previous:
 					track.stop()
 			TransitionType.FADE:
-				print("transitioning out " + track.name)
-				print("transitioning in " + next_track.name)
 				#fade out the old track
 				if self.stop_previous:
 					var tween = track.get_tree().create_tween()

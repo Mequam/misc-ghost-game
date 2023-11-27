@@ -71,7 +71,6 @@ func _process(_delta):
 			if danger_amount > 0:
 				safe = false 
 				break
-		print_debug(node.name + str(node.global_position.distance_to(player_entity.global_position)))
 	if safe:
 		get_main().music_system.set_flag("safe")
 		get_main().music_system.unset_flag("battle")

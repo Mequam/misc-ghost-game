@@ -26,7 +26,6 @@ func set_vol_db (val)->void:
 	if self.audio_stream == null:
 		volume_db = val 
 	else:
-		print("setting the audio volume of the child")
 		self.audio_stream.volume_db = val 
 func get_vol_db():
 	if self.audio_stream == null: return volume_db

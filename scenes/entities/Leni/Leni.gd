@@ -39,7 +39,11 @@ func die():
 func grab_aggro():
 	store_aggro(self)
 func take_damage(dmg : int = 1, src = null)->void:
-	if invensible_timer.time_left <= 0 and self.get_sprite2D().animation != "posses": #we take no damage while possesing
+	
+	print_debug(src)
+	print_debug(str(src))
+
+	if (invensible_timer.time_left <= 0 and self.get_sprite2D().animation != "posses") or str(src) == "exorcize": #we take no damage while possesing
 		super.take_damage(dmg,src)
 
 func on_unpos_buff_timer_stop():

@@ -120,7 +120,19 @@ func get_health()->int:
 #used when we want do more than just remove_at ourselfs from the scene
 func die():
 	emit_signal("die")
+	var damage_entity = null
+	
+	if self.possesed:
+		damage_entity = self.possesed_entity
+	
 	exorcize()
+
+	#we need to do this after exorcize in order for the health to
+	#update and display properly
+	#as such we need to cache a few variables that will be unset when exorcizing
+	if damage_entity != null:
+		damage_entity.take_damage(1,"exorcize")
+
 	queue_free()
 
 #gets the entity to request battle music be played

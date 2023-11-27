@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1it1sqxelhs5"]
 
 [sub_resource type="RectangleShape2D" id="2"]
+resource_local_to_scene = true
 size = Vector2(150, 134)
 
 [node name="GroundTester" type="Area2D"]

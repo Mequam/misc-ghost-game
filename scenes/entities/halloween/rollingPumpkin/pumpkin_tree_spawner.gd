@@ -7,7 +7,6 @@ class_name PumkinSpawner
 var pumpkin_reference : RotatingPumpkin = null
 
 func on_animation_finished()->void:
-	print_debug($AnimatedSprite2D.animation)
 	match $AnimatedSprite2D.animation:
 		"snap":
 			$AnimatedSprite2D.play("die")
