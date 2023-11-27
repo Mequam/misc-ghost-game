@@ -35,6 +35,8 @@ func gen_col_layer()->int:
 
 #fills the apple basket if there are apple baskets around
 func pick()->void:
+	if not apple_detector: return
+	print_debug("we have a detector")
 	var areas = apple_detector.get_overlapping_areas()
 	for pickable in areas:
 		if pickable is PickableApple:

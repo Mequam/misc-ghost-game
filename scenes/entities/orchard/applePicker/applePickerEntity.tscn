@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cotdsdtg0th0l"]
+[gd_scene load_steps=14 format=3 uid="uid://cotdsdtg0th0l"]
 
 [ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/applePickerEntity.gd" id="1_7awqf"]
 [ext_resource type="PackedScene" uid="uid://cv1ocywmuqlwo" path="res://scenes/entities/orchard/applePicker/applePickerSprite.tscn" id="1_mohwp"]
@@ -17,6 +17,10 @@ danger_level = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppar1"]
 size = Vector2(150.5, 301)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l15j4"]
+resource_local_to_scene = true
+size = Vector2(150, 134)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhfdn"]
 radius = 233.684
@@ -45,6 +49,7 @@ position = Vector2(10, -50)
 
 [node name="CollisionShape2D" parent="GroundTester" index="0"]
 position = Vector2(-9, 215)
+shape = SubResource("RectangleShape2D_l15j4")
 
 [node name="unposSpot" type="Node2D" parent="."]
 position = Vector2(0, -272)

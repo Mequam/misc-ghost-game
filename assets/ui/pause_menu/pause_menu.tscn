@@ -1,0 +1,74 @@
+[gd_scene load_steps=14 format=3 uid="uid://clhg1a3i8b2ty"]
+
+[ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_gmv6b"]
+[ext_resource type="Script" path="res://assets/scripts/UI/objects/backStackControl.gd" id="1_jluuo"]
+[ext_resource type="Script" path="res://assets/scripts/UI/objects/btnLoadUI.gd" id="3_tgdab"]
+[ext_resource type="Texture2D" uid="uid://deqift6sk1orr" path="res://assets/ui/buttons/options_button/btnOptions0000.png" id="3_urhh7"]
+[ext_resource type="PackedScene" uid="uid://b2ii50rt12ywk" path="res://scenes/UI/back_header/back_header.tscn" id="3_voycp"]
+[ext_resource type="Texture2D" uid="uid://n33bf6fxcn1w" path="res://assets/ui/buttons/btnResume/btnResume0001.png" id="4_kad02"]
+[ext_resource type="Texture2D" uid="uid://d2h24vixdpftv" path="res://assets/ui/buttons/btnResume/btnResume0003.png" id="5_q1uvl"]
+[ext_resource type="Texture2D" uid="uid://270vf38bw4rt" path="res://assets/ui/buttons/options_button/btnOptions0001.png" id="7_aihg4"]
+[ext_resource type="Texture2D" uid="uid://stvw72k6f0c7" path="res://assets/ui/buttons/btnResume/btnResume0000.png" id="7_gdqxy"]
+[ext_resource type="Texture2D" uid="uid://dc2pf7rnem3rt" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0000.png" id="8_cf6pb"]
+[ext_resource type="Texture2D" uid="uid://bc1s3sl4th81p" path="res://assets/ui/buttons/options_button/btnOptions0003.png" id="8_fvajr"]
+[ext_resource type="Texture2D" uid="uid://8rufa4hdd46n" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0001.png" id="9_6xee2"]
+[ext_resource type="Texture2D" uid="uid://dhunsmg6uf4wp" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0003.png" id="10_y2f0p"]
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("back_button", "container", "replacement")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jluuo")
+back_button = NodePath("back_header/HBoxContainer/TextureButton")
+container = NodePath("back_header")
+replacement = NodePath("Panel")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxGhostContainer" parent="Panel/HBoxContainer" instance=ExtResource("1_gmv6b")]
+layout_mode = 2
+
+[node name="btnResume" type="TextureButton" parent="Panel/HBoxContainer/VBoxGhostContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_gdqxy")
+texture_pressed = ExtResource("4_kad02")
+texture_hover = ExtResource("5_q1uvl")
+
+[node name="btnOptions" type="TextureButton" parent="Panel/HBoxContainer/VBoxGhostContainer" node_paths=PackedStringArray("destination", "backstack")]
+layout_mode = 2
+texture_normal = ExtResource("3_urhh7")
+texture_pressed = ExtResource("7_aihg4")
+texture_hover = ExtResource("8_fvajr")
+script = ExtResource("3_tgdab")
+destination = NodePath("../..")
+backstack = NodePath("../../../..")
+
+[node name="btnQuit" type="TextureButton" parent="Panel/HBoxContainer/VBoxGhostContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_cf6pb")
+texture_pressed = ExtResource("9_6xee2")
+texture_hover = ExtResource("10_y2f0p")
+
+[node name="back_header" parent="." instance=ExtResource("3_voycp")]
+layout_mode = 1
+
+[editable path="back_header"]

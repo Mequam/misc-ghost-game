@@ -36,5 +36,6 @@ func on_col(collider):
 		entity.global_position = old_pos 
 		
 		#play the bwingwing teleport noise
-		witch.bwingwing.play()
+		if witch != null and witch.bwingwing != null:
+			witch.bwingwing.play()
 	super.on_col(collider)
