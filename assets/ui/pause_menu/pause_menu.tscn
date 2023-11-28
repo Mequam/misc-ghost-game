@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clhg1a3i8b2ty"]
+[gd_scene load_steps=15 format=3 uid="uid://clhg1a3i8b2ty"]
 
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_gmv6b"]
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/backStackControl.gd" id="1_jluuo"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bc1s3sl4th81p" path="res://assets/ui/buttons/options_button/btnOptions0003.png" id="8_fvajr"]
 [ext_resource type="Texture2D" uid="uid://8rufa4hdd46n" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0001.png" id="9_6xee2"]
 [ext_resource type="Texture2D" uid="uid://dhunsmg6uf4wp" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0003.png" id="10_y2f0p"]
+[ext_resource type="PackedScene" uid="uid://d4d4qebutmeqf" path="res://scenes/UI/options/options_menu.tscn" id="10_yrvl3"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("back_button", "container", "replacement")]
 layout_mode = 3
@@ -59,7 +60,8 @@ texture_normal = ExtResource("3_urhh7")
 texture_pressed = ExtResource("7_aihg4")
 texture_hover = ExtResource("8_fvajr")
 script = ExtResource("3_tgdab")
-destination = NodePath("../..")
+destination = NodePath("../../..")
+target = ExtResource("10_yrvl3")
 backstack = NodePath("../../../..")
 
 [node name="btnQuit" type="TextureButton" parent="Panel/HBoxContainer/VBoxGhostContainer"]

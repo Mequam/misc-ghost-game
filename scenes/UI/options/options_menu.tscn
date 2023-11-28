@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4d4qebutmeqf"]
+
+[ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_cuur1"]
+[ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_il8sc"]
+[ext_resource type="Script" path="res://assets/ui/BackStackSwitcher.gd" id="3_66s20"]
+[ext_resource type="PackedScene" uid="uid://4vgx3apyifiv" path="res://scenes/UI/options/action_map/action_options.tscn" id="4_7sgl8"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxGhostContainer" parent="." instance=ExtResource("1_il8sc")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.2
+anchor_right = 0.66
+anchor_bottom = 0.8
+
+[node name="btnGamePlay" parent="VBoxGhostContainer" instance=ExtResource("1_cuur1")]
+layout_mode = 2
+
+[node name="Label" parent="VBoxGhostContainer/btnGamePlay/CenterContainer" index="0"]
+text = "Game Play"
+
+[node name="BackStackSwitcher" type="Node" parent="VBoxGhostContainer/btnGamePlay" node_paths=PackedStringArray("replace_container")]
+script = ExtResource("3_66s20")
+next = ExtResource("4_7sgl8")
+replace_container = NodePath("../../..")
+
+[node name="btnSound" parent="VBoxGhostContainer" instance=ExtResource("1_cuur1")]
+layout_mode = 2
+
+[node name="Label" parent="VBoxGhostContainer/btnSound/CenterContainer" index="0"]
+text = "Music And Sound"
+
+[node name="btnGraphics" parent="VBoxGhostContainer" instance=ExtResource("1_cuur1")]
+layout_mode = 2
+
+[node name="Label" parent="VBoxGhostContainer/btnGraphics/CenterContainer" index="0"]
+text = "Graphics"
+
+[editable path="VBoxGhostContainer/btnGamePlay"]
+[editable path="VBoxGhostContainer/btnSound"]
+[editable path="VBoxGhostContainer/btnGraphics"]

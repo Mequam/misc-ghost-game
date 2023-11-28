@@ -15,9 +15,9 @@ func replace(c : Control, r : Control = replacement)->void:
 
 #loads the next scene and prepares the stack for back
 #behavior
-func next(c : Control,r : Control = replacement)->void:
-	stack.append([r.get_child(0),r])
-	replace(c,r)
+func next(next_control : Control,replace : Control = replacement)->void:
+	stack.append([replace.get_child(0),replace])
+	replace(next_control,replace)
 
 #moves back to the last scene in the stack
 func back()->void:

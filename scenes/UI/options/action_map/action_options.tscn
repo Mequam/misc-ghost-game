@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://4vgx3apyifiv"]
+
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_efhkh"]
+[ext_resource type="Script" path="res://scenes/UI/options/action_map/action_options.gd" id="1_ngt8y"]
+[ext_resource type="PackedScene" uid="uid://c4k26j2whhg3i" path="res://scenes/UI/options/action_map/ActionReMapper/action_re_mapper.tscn" id="2_n31fg"]
+
+[node name="Action Options" type="Control" node_paths=PackedStringArray("reMapperContainer", "padding")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_efhkh")
+script = ExtResource("1_ngt8y")
+actionReMapper = ExtResource("2_n31fg")
+reMapperContainer = NodePath("Panel/Padding/VBoxContainer")
+padding = NodePath("Panel/Padding")
+
+[node name="Panel" type="ScrollContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Padding" type="Control" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Padding"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.01
+anchor_right = 0.9
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

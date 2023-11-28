@@ -78,7 +78,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_bsc5w")
-theme_override_constants/separation = 50
 alignment = 1
 script = ExtResource("1_t6iq4")
 

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://llaqtg2l3s0s" path="res://scenes/entities/halloween/witch/columnAttack/WitchColumn.tscn" id="2_ugqig"]
 [ext_resource type="Shader" path="res://assets/shaders/alphaKiller.gdshader" id="3"]
 [ext_resource type="PackedScene" uid="uid://icrh4nsgwpee" path="res://scenes/entities/halloween/witch/projectileAttack/witchProjectile.tscn" id="3_8y0ab"]
-[ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="4_kjh21"]
+[ext_resource type="Script" path="res://assets/resources/resource_scripts/jump_resource.gd" id="4_kjh21"]
 [ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/witchAI_shoot_run.gd" id="5_ji8a8"]
 [ext_resource type="Texture2D" uid="uid://d1e5irqqnemtj" path="res://assets/animations/witch/attack_color/attack0034.png" id="5_rjses"]
 [ext_resource type="Texture2D" uid="uid://6wl2vxdoucp1" path="res://assets/ui/hearts/witch/witchHeart0003.png" id="6_kdcru"]

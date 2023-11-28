@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4k26j2whhg3i"]
+
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_7ca0d"]
+[ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_vgrsw"]
+[ext_resource type="Script" path="res://scenes/UI/options/action_map/ActionReMapper/action_re_mapper.gd" id="2_nayfu"]
+[ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="4_4pb0q"]
+
+[node name="ActionReMapper" type="Control" node_paths=PackedStringArray("lblActionName", "btnActionEvent")]
+editor_description = "this is a one stop shop to re map and display a SINGLE action from the games UI"
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_7ca0d")
+script = ExtResource("2_nayfu")
+lblActionName = NodePath("Label")
+btnActionEvent = NodePath("handDrawnLabel")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.25
+anchor_right = 0.197
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+text = "Action Name"
+vertical_alignment = 1
+
+[node name="handDrawnLabel" parent="." instance=ExtResource("1_vgrsw")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197
+anchor_top = 0.33
+anchor_right = 0.686
+anchor_bottom = 0.66
+
+[node name="handDrawnLabel2" parent="." instance=ExtResource("1_vgrsw")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.686
+anchor_top = 0.33
+anchor_bottom = 0.661
+default_texture = ExtResource("4_4pb0q")
+
+[node name="TextureRect" parent="handDrawnLabel2" index="0"]
+texture = ExtResource("4_4pb0q")
+
+[node name="Label" parent="handDrawnLabel2/CenterContainer" index="0"]
+text = "reset"
+
+[editable path="handDrawnLabel2"]

@@ -53,7 +53,7 @@ static func load_level(game_name : String,
 						ghost,
 						spawn_object_name : String)->void:
 	
-
+	breakpoint
 	
 	if ghost.get_parent():
 		ghost.get_parent().remove_child(ghost)
