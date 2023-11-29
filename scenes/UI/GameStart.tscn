@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bacdulpgcb7ik"]
+[gd_scene load_steps=15 format=3 uid="uid://bacdulpgcb7ik"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/backStackControl.gd" id="1_1gvup"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_g4o6m"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://p5f07kd41nh" path="res://assets/ui/buttons/new_game_button/btnNewGame0003.png" id="6_831u5"]
 [ext_resource type="PackedScene" uid="uid://ul0g1bvpxw6d" path="res://scenes/UI/newGameScene.tscn" id="7_it326"]
 [ext_resource type="PackedScene" uid="uid://ccdtgmoqo74mv" path="res://scenes/UI/game_loader.tscn" id="7_q6whe"]
+[ext_resource type="PackedScene" uid="uid://cjv61agvk3nih" path="res://scenes/UI/buttons/btn_options.tscn" id="13_dijyx"]
 [ext_resource type="PackedScene" uid="uid://b2ii50rt12ywk" path="res://scenes/UI/back_header/back_header.tscn" id="13_rmr37"]
 
 [node name="GameStart" type="Control" node_paths=PackedStringArray("back_button", "container", "replacement")]
@@ -73,6 +74,11 @@ texture_pressed = ExtResource("5_y4hg6")
 texture_hover = ExtResource("6_831u5")
 destination = NodePath("../..")
 target = ExtResource("7_it326")
+backstack = NodePath("../../../../..")
+
+[node name="btnOptions" parent="SceneContainer/CustomCenter/HBoxContainer/VBoxGhostContainer" node_paths=PackedStringArray("destination", "backstack") instance=ExtResource("13_dijyx")]
+layout_mode = 2
+destination = NodePath("../../../..")
 backstack = NodePath("../../../../..")
 
 [node name="back_header" parent="." instance=ExtResource("13_rmr37")]

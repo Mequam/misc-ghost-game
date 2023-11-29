@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjv61agvk3nih"]
+
+[ext_resource type="Texture2D" uid="uid://deqift6sk1orr" path="res://assets/ui/buttons/options_button/btnOptions0000.png" id="1_wjasl"]
+[ext_resource type="Texture2D" uid="uid://270vf38bw4rt" path="res://assets/ui/buttons/options_button/btnOptions0001.png" id="2_wiqhq"]
+[ext_resource type="Texture2D" uid="uid://bc1s3sl4th81p" path="res://assets/ui/buttons/options_button/btnOptions0003.png" id="3_ylrwl"]
+[ext_resource type="Script" path="res://assets/scripts/UI/objects/btnLoadUI.gd" id="4_gv7p4"]
+[ext_resource type="PackedScene" uid="uid://d4d4qebutmeqf" path="res://scenes/UI/options/options_menu.tscn" id="5_ex05g"]
+
+[node name="btnOptions" type="TextureButton" node_paths=PackedStringArray("destination", "backstack")]
+texture_normal = ExtResource("1_wjasl")
+texture_pressed = ExtResource("2_wiqhq")
+texture_hover = ExtResource("3_ylrwl")
+script = ExtResource("4_gv7p4")
+destination = NodePath("")
+target = ExtResource("5_ex05g")
+backstack = NodePath("")

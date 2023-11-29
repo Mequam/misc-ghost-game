@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scenes/UI/options/action_map/ActionReMapper/action_re_mapper.gd" id="2_nayfu"]
 [ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="4_4pb0q"]
 
-[node name="ActionReMapper" type="Control" node_paths=PackedStringArray("lblActionName", "btnActionEvent")]
+[node name="ActionReMapper" type="Control" node_paths=PackedStringArray("lblActionName", "btnActionEvent", "btnReset")]
 editor_description = "this is a one stop shop to re map and display a SINGLE action from the games UI"
 layout_mode = 3
 anchors_preset = 15
@@ -18,6 +18,7 @@ theme = ExtResource("1_7ca0d")
 script = ExtResource("2_nayfu")
 lblActionName = NodePath("Label")
 btnActionEvent = NodePath("handDrawnLabel")
+btnReset = NodePath("handDrawnLabel2")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

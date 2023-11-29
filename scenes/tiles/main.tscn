@@ -1,85 +1,167 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://d0lq0sc3ltmux"]
 
 [ext_resource type="Texture2D" uid="uid://byp6ufdqgpufl" path="res://assets/misc/railway_tiles.png" id="2"]
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PackedVector2Array( 360, 260, 0, 260, 0, 190, 360, 190 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_doh7g"]
+texture = ExtResource("2")
+margins = Vector2i(0, 360)
+texture_region_size = Vector2i(360, 360)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(180, 80, -180, 80, -180, 10, 180, 10)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-180, 80, 180, 80, 180, 10, -180, 10)
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/2/physics_layer_0/angular_velocity = 0.0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(180, -80, -180, -80, -180, -10, 180, -10)
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/3/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/3/physics_layer_0/angular_velocity = 0.0
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-180, -80, 180, -80, 180, -10, -180, -10)
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/4/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/4/physics_layer_0/angular_velocity = 0.0
+0:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(80, 180, 80, -180, 10, -180, 10, 180)
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/5/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/5/physics_layer_0/angular_velocity = 0.0
+0:0/5/physics_layer_0/polygon_0/points = PackedVector2Array(-80, 180, -80, -180, -10, -180, -10, 180)
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/6/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/6/physics_layer_0/angular_velocity = 0.0
+0:0/6/physics_layer_0/polygon_0/points = PackedVector2Array(80, -180, 80, 180, 10, 180, 10, -180)
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+0:0/7/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/7/physics_layer_0/angular_velocity = 0.0
+0:0/7/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -180, -80, 180, -10, 180, -10, -180)
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PackedVector2Array( 360, 260, 0, 260, 0, 190, 360, 190 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2u3lw"]
+texture = ExtResource("2")
+margins = Vector2i(360, 360)
+texture_region_size = Vector2i(360, 360)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(180, 80, -180, 80, -180, 10, 180, 10)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-180, 80, 180, 80, 180, 10, -180, 10)
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/2/physics_layer_0/angular_velocity = 0.0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(180, -80, -180, -80, -180, -10, 180, -10)
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/3/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/3/physics_layer_0/angular_velocity = 0.0
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-180, -80, 180, -80, 180, -10, -180, -10)
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/4/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/4/physics_layer_0/angular_velocity = 0.0
+0:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(80, 180, 80, -180, 10, -180, 10, 180)
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/5/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/5/physics_layer_0/angular_velocity = 0.0
+0:0/5/physics_layer_0/polygon_0/points = PackedVector2Array(-80, 180, -80, -180, -10, -180, -10, 180)
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/6/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/6/physics_layer_0/angular_velocity = 0.0
+0:0/6/physics_layer_0/polygon_0/points = PackedVector2Array(80, -180, 80, 180, 10, 180, 10, -180)
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+0:0/7/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/7/physics_layer_0/angular_velocity = 0.0
+0:0/7/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -180, -80, 180, -10, 180, -10, -180)
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PackedVector2Array( 360, 260, 0, 260, 0, 190, 360, 190 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_po3as"]
+texture = ExtResource("2")
+margins = Vector2i(720, 360)
+texture_region_size = Vector2i(360, 360)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(180, 80, -180, 80, -180, 10, 180, 10)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-180, 80, 180, 80, 180, 10, -180, 10)
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/2/physics_layer_0/angular_velocity = 0.0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(180, -80, -180, -80, -180, -10, 180, -10)
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/3/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/3/physics_layer_0/angular_velocity = 0.0
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-180, -80, 180, -80, 180, -10, -180, -10)
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/4/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/4/physics_layer_0/angular_velocity = 0.0
+0:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(80, 180, 80, -180, 10, -180, 10, 180)
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/5/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/5/physics_layer_0/angular_velocity = 0.0
+0:0/5/physics_layer_0/polygon_0/points = PackedVector2Array(-80, 180, -80, -180, -10, -180, -10, 180)
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/6/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/6/physics_layer_0/angular_velocity = 0.0
+0:0/6/physics_layer_0/polygon_0/points = PackedVector2Array(80, -180, 80, 180, 10, 180, 10, -180)
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+0:0/7/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/7/physics_layer_0/angular_velocity = 0.0
+0:0/7/physics_layer_0/polygon_0/points = PackedVector2Array(-80, -180, -80, 180, -10, 180, -10, -180)
 
-[sub_resource type="TileSet" id=1]
-0/name = "railway_tiles.png 0"
-0/texture = ExtResource( 2 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 360, 360, 360 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 2 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-1/name = "railway_tiles.png 1"
-1/texture = ExtResource( 2 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 360, 360, 360, 360 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 3 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 3 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-1/z_index = 0
-2/name = "railway_tiles.png 2"
-2/texture = ExtResource( 2 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 720, 360, 360, 360 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 4 )
-2/shape_one_way = false
-2/shape_one_way_margin = 1.0
-2/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 4 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-2/z_index = 0
+[sub_resource type="TileSet" id="1"]
+tile_size = Vector2i(360, 360)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_doh7g")
+sources/1 = SubResource("TileSetAtlasSource_2u3lw")
+sources/2 = SubResource("TileSetAtlasSource_po3as")
 
 [node name="TileMap" type="TileMap"]
-scale = Vector2( 0.25, 0.25 )
 z_index = -1
-tile_set = SubResource( 1 )
-cell_size = Vector2( 334, 327 )
+scale = Vector2(0.25, 0.25)
+tile_set = SubResource("1")
 cell_quadrant_size = 100
-format = 1
+format = 2

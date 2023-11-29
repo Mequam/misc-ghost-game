@@ -2,11 +2,24 @@ extends Control
 
 @export var lblActionName : Label
 @export var btnActionEvent : BtnHandDrawn
+@export var btnReset : BtnHandDrawn
+
+#true if we are activly scanning for input to overide the action with
+var change_input : bool = false
+
+#the action that this control might go about changing
+var action : StringName
+
+func get_game_settings()->GlobalGameSettings:
+	return GlobalGameSettings.load_settings()
 
 #displays the given action name on the control,
 #and returns true if the action has keys to map,
 #and false if the action is unmapped
 func set_action(action : StringName)->bool:
+
+
+	self.action = action
 
 	var events : Array[InputEvent] = InputMap.action_get_events(action)
 
@@ -17,11 +30,50 @@ func set_action(action : StringName)->bool:
 		return false
 	btnActionEvent.label.text = events[0].as_text()
 
-	return true
+	return true  
+
 #called when the button to re map controls
 #is pressed
-func on_click()->void:
+func on_set_click()->void:
+	#make sure that the other nodes are not listening in for input
+	get_tree().call_group("action_mappers","stop_listening")
+
+	self.change_input = true
+
 	btnActionEvent.label.text = "press any key..."
 
+func on_reset_click()->void:
+	#update the action display
+	var settings : GlobalGameSettings = get_game_settings()
+	settings.remove_remap(self.action)
+
+	self.set_action(self.action)
+
 func _ready()->void:
-	btnActionEvent.pressed.connect(self.on_click)
+	self.add_to_group("action_mappers")
+	btnActionEvent.pressed.connect(self.on_set_click)
+	btnReset.pressed.connect(self.on_reset_click)
+
+#used in a group call to stop all other input changers
+#from changing the input when we are selected
+func stop_listening()->void:
+	self.change_input = false
+
+	#re-set the action 
+	#in case we need to re-update the display
+	self.set_action(self.action)
+func _input(event : InputEvent)->void:
+	if change_input and not (event is InputEventMouse) and event is InputEventKey:
+		change_input = false
+
+	
+		var settings : GlobalGameSettings = self.get_game_settings()
+		settings.add_remap(self.action,event)
+		settings.save_settings()
+
+		#re-update the action
+		self.set_action(self.action)
+
+
+
+
