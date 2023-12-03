@@ -13,3 +13,19 @@ class_name InputNamer
 #map containing translations from input map names into names the user
 #can see
 @export var name_map : Dictionary
+
+#maps over the event to a string
+func event2string(event : InputEvent)->String:
+	for key in name_map:
+		if event.as_text().contains(key):
+			return name_map[key]
+	return event.as_text()
+
+#converts from an action to a pretty printed user string
+func action_name2string(name : StringName)->String:
+	var split_str = name.split("_")
+	if split_str[0] == "ui": #if the name is a UI control
+		return " ".join(split_str.slice(1))
+	return name
+
+

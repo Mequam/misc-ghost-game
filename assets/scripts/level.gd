@@ -55,6 +55,7 @@ func _ready():
 	if $Leni:
 		$Leni.grab_camera()
 		player_entity = $Leni 
+	RenderingServer.set_default_clear_color(Color.from_hsv(0,100,100))
 
 func _on_tree_entered()->void:
 	print("level entered tree!")

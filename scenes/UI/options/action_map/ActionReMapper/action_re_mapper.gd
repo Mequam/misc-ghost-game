@@ -4,6 +4,8 @@ extends Control
 @export var btnActionEvent : BtnHandDrawn
 @export var btnReset : BtnHandDrawn
 
+var action_renamer : InputNamer
+
 #true if we are activly scanning for input to overide the action with
 var change_input : bool = false
 
@@ -16,19 +18,23 @@ func get_game_settings()->GlobalGameSettings:
 #displays the given action name on the control,
 #and returns true if the action has keys to map,
 #and false if the action is unmapped
-func set_action(action : StringName)->bool:
+func set_action(action : StringName,action_remapper : InputNamer)->bool:
+	self.action_renamer = action_remapper
 
 
 	self.action = action
 
 	var events : Array[InputEvent] = InputMap.action_get_events(action)
 
-	lblActionName.text = action
+	lblActionName.text = action_renamer.action_name2string(action)
 
 	if len(events) < 1:
 		btnActionEvent.label.text = "unset"
 		return false
-	btnActionEvent.label.text = events[0].as_text()
+	btnActionEvent.label.text = action_renamer.event2string(events[0])
+
+
+	self.action_renamer = action_renamer
 
 	return true  
 
@@ -47,7 +53,7 @@ func on_reset_click()->void:
 	var settings : GlobalGameSettings = get_game_settings()
 	settings.remove_remap(self.action)
 
-	self.set_action(self.action)
+	self.set_action(self.action,self.action_renamer)
 
 func _ready()->void:
 	self.add_to_group("action_mappers")
@@ -61,7 +67,7 @@ func stop_listening()->void:
 
 	#re-set the action 
 	#in case we need to re-update the display
-	self.set_action(self.action)
+	self.set_action(self.action,self.action_renamer)
 func _input(event : InputEvent)->void:
 	if change_input and not (event is InputEventMouse) and event is InputEventKey:
 		change_input = false
@@ -72,7 +78,7 @@ func _input(event : InputEvent)->void:
 		settings.save_settings()
 
 		#re-update the action
-		self.set_action(self.action)
+		self.set_action(self.action,self.action_renamer)
 
 
 

@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://4vgx3apyifiv"]
+[gd_scene load_steps=6 format=3 uid="uid://4vgx3apyifiv"]
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_efhkh"]
 [ext_resource type="Script" path="res://scenes/UI/options/action_map/action_options.gd" id="1_ngt8y"]
 [ext_resource type="PackedScene" uid="uid://c4k26j2whhg3i" path="res://scenes/UI/options/action_map/ActionReMapper/action_re_mapper.tscn" id="2_n31fg"]
+[ext_resource type="Script" path="res://assets/resources/resource_scripts/input_namer.gd" id="4_0pq7r"]
+
+[sub_resource type="Resource" id="Resource_ar4oi"]
+script = ExtResource("4_0pq7r")
+name_map = {
+"Joypad Button 3": "Sony Triangle"
+}
 
 [node name="Action Options" type="Control" node_paths=PackedStringArray("reMapperContainer", "padding")]
 layout_mode = 3
@@ -16,13 +23,13 @@ script = ExtResource("1_ngt8y")
 actionReMapper = ExtResource("2_n31fg")
 reMapperContainer = NodePath("Panel/Padding/VBoxContainer")
 padding = NodePath("Panel/Padding")
+action_renamer = SubResource("Resource_ar4oi")
 
 [node name="Panel" type="ScrollContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_right = 0.9
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
