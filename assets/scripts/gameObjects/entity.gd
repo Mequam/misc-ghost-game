@@ -34,6 +34,7 @@ func get_sprite2D()->AnimatedSprite2D:
 #returns a measure of how dangerous this entity is,
 #used for dynamic music and threat detection
 func get_danger_level()->int:
+	print_debug(self.entity_ai)
 	if not self.possesed and self.entity_ai != null:
 		return self.entity_ai.danger_level
 	return 0

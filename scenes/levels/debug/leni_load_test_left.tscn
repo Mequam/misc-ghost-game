@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxxagsads1p0r"]
+[gd_scene load_steps=25 format=3 uid="uid://bxxagsads1p0r"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ivt8b"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_g3kmq"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="3_0iecr"]
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="4_diuxi"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="5_sarvu"]
+[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="6_nksad"]
+[ext_resource type="Script" path="res://assets/resources/resource_scripts/jump_resource.gd" id="7_m0lhs"]
+[ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/AICiderSpiritJumpOver/AICiderSpirit_JumpOver.gd" id="8_ochgg"]
+[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="9_drguv"]
+[ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/AIwitch_shoot.gd" id="11_56rs4"]
+[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="11_g0hcb"]
+[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/ai/AIApplePicker.gd" id="12_l6cq1"]
+[ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="13_aeggs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0pq"]
 texture = ExtResource("2_g3kmq")
@@ -278,6 +286,50 @@ sources/0 = SubResource("TileSetAtlasSource_gf0pq")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bx8c"]
 size = Vector2(123, 125)
 
+[sub_resource type="Resource" id="Resource_g87gl"]
+resource_local_to_scene = true
+script = ExtResource("7_m0lhs")
+jump_height = 101.01
+jump_up_time = 0.01
+jump_down_time = 0.01
+
+[sub_resource type="Resource" id="Resource_j6o4m"]
+resource_local_to_scene = true
+script = ExtResource("8_ochgg")
+ai_timer_jump = NodePath("AI_Reset_Timer")
+danger_level = 1
+
+[sub_resource type="Resource" id="Resource_j4lca"]
+resource_local_to_scene = true
+script = ExtResource("7_m0lhs")
+jump_height = 101.01
+jump_up_time = 0.01
+jump_down_time = 0.01
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w86s"]
+resource_local_to_scene = true
+size = Vector2(35, 50.5)
+
+[sub_resource type="Resource" id="Resource_dwoqs"]
+script = ExtResource("11_56rs4")
+danger_level = 1
+
+[sub_resource type="Resource" id="Resource_l3mhk"]
+script = ExtResource("11_56rs4")
+danger_level = 1
+
+[sub_resource type="Resource" id="Resource_4g717"]
+resource_local_to_scene = true
+script = ExtResource("12_l6cq1")
+shoot_threshold = 300
+danger_level = 1
+
+[sub_resource type="Resource" id="Resource_e8i1m"]
+resource_local_to_scene = true
+script = ExtResource("12_l6cq1")
+shoot_threshold = 300
+danger_level = 1
+
 [node name="load_testleft" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 script = ExtResource("1_ivt8b")
 ai_timeout = 0.25
@@ -313,3 +365,36 @@ shape = SubResource("RectangleShape2D_2bx8c")
 
 [node name="spawn_light" parent="." instance=ExtResource("5_sarvu")]
 position = Vector2(68, 293)
+
+[node name="CiderSpirit" parent="." instance=ExtResource("6_nksad")]
+position = Vector2(584, 556)
+jr = SubResource("Resource_g87gl")
+entity_ai = SubResource("Resource_j6o4m")
+
+[node name="CiderSpirit2" parent="." instance=ExtResource("6_nksad")]
+position = Vector2(-300, 572)
+jr = SubResource("Resource_j4lca")
+
+[node name="CollisionShape2D" parent="CiderSpirit2" index="1"]
+shape = SubResource("RectangleShape2D_0w86s")
+
+[node name="witch" parent="." instance=ExtResource("9_drguv")]
+position = Vector2(980, 572)
+entity_ai = SubResource("Resource_dwoqs")
+
+[node name="witch2" parent="." instance=ExtResource("9_drguv")]
+position = Vector2(-674, 542)
+entity_ai = SubResource("Resource_l3mhk")
+
+[node name="applePicker" parent="." instance=ExtResource("11_g0hcb")]
+position = Vector2(352, 473)
+entity_ai = SubResource("Resource_4g717")
+
+[node name="applePicker2" parent="." instance=ExtResource("11_g0hcb")]
+position = Vector2(-95, 459)
+entity_ai = SubResource("Resource_e8i1m")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("13_aeggs")]
+position = Vector2(-393, 649)
+
+[editable path="CiderSpirit2"]

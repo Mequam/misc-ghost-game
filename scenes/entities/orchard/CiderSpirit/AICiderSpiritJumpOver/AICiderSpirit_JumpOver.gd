@@ -4,11 +4,13 @@ class_name AICiderSpirit_JumpOver
 
 
 #controls the frequency that we jump at the player
-@export var ai_timer_jump : Timer 
+@export var ai_timer_jump : NodePath 
+func get_ai_timer()->Timer:
+	return self.caller.get_node(ai_timer_jump)
 
 func tick(player)->void:
 	#print("running cider spirit AI for " + str(self.caller.position))
-	if not ai_timer_jump.wait_time <= 0 and caller.pressed_inputs["JUMP"] and caller.state == caller.EntityState.DEFAULT:
+	if not self.get_ai_timer().wait_time <= 0 and caller.pressed_inputs["JUMP"] and caller.state == caller.EntityState.DEFAULT:
 		caller.perform_action("JUMP",false)
 	else:
 		if caller.position.distance_squared_to(player.position) < 600**2 and caller.state != caller.CiderSpiritState.LAUNCHED:
@@ -16,7 +18,7 @@ func tick(player)->void:
 				ai_jump_past_player(player)
 		if caller.state == caller.CiderSpiritState.SPLASHED:
 			#start the timer for the next time that we can jump
-			ai_timer_jump.start()
+			self.get_ai_timer().start()
 			caller.perform_action("JUMP",true)
 
 

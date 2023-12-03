@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=28 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -23,35 +23,7 @@
 size = Vector2(58, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
-size = Vector2(90.5, 157)
-
-[sub_resource type="Resource" id="Resource_dvanr"]
-resource_local_to_scene = true
-script = ExtResource("13_bhsbd")
-jump_height = 101.01
-jump_up_time = 0.01
-jump_down_time = 0.01
-
-[sub_resource type="Resource" id="Resource_muq6e"]
-resource_local_to_scene = true
-script = ExtResource("13_oajbv")
-ai_timer_jump = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":5.0,"one_shot":true,"autostart":false,"script":null)
-
-danger_level = 1
-
-[sub_resource type="Resource" id="Resource_g2rme"]
-resource_local_to_scene = true
-script = ExtResource("13_bhsbd")
-jump_height = 101.01
-jump_up_time = 0.01
-jump_down_time = 0.01
-
-[sub_resource type="Resource" id="Resource_3si0w"]
-resource_local_to_scene = true
-script = ExtResource("13_oajbv")
-ai_timer_jump = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":5.0,"one_shot":true,"autostart":false,"script":null)
-
-danger_level = 1
+size = Vector2(678, 157)
 
 [sub_resource type="Resource" id="Resource_virpu"]
 resource_local_to_scene = true
@@ -246,6 +218,19 @@ sources/0 = SubResource("TileSetAtlasSource_sbbgl")
 sources/1 = SubResource("TileSetAtlasSource_vqdyp")
 sources/2 = SubResource("TileSetAtlasSource_wrnlm")
 
+[sub_resource type="Resource" id="Resource_4cwac"]
+resource_local_to_scene = true
+script = ExtResource("13_bhsbd")
+jump_height = 101.01
+jump_up_time = 0.01
+jump_down_time = 0.01
+
+[sub_resource type="Resource" id="Resource_6w57u"]
+resource_local_to_scene = true
+script = ExtResource("13_oajbv")
+ai_timer_jump = NodePath("AI_Reset_Timer")
+danger_level = 1
+
 [node name="LeniTest" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 419)
 script = ExtResource("1_skwwk")
@@ -256,10 +241,10 @@ cam_ref = NodePath("mainCam")
 [node name="ColorRect" type="ColorRect" parent="."]
 self_modulate = Color(0, 0.42, 0.42, 1)
 z_index = -10
-offset_left = -5331.0
-offset_top = -2735.0
-offset_right = 5031.0
-offset_bottom = 2351.0
+offset_left = -5247.0
+offset_top = -2788.0
+offset_right = 5115.0
+offset_bottom = 2298.0
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_jx3ls")]
 position = Vector2(1424, -72)
@@ -298,10 +283,11 @@ shape = SubResource("RectangleShape2D_wiu6m")
 position = Vector2(-295, -708)
 
 [node name="load_zone_door_a" parent="." instance=ExtResource("9_5xj7r")]
-position = Vector2(-419, -640)
+position = Vector2(-261, -480)
 target_level = "res://scenes/levels/debug/leni_load_test.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_a"]
+position = Vector2(-45, 0)
 shape = SubResource("RectangleShape2D_o10wt")
 
 [node name="Candy" parent="." instance=ExtResource("11_ug8qb")]
@@ -327,18 +313,8 @@ animation_player = NodePath("../Candy2/AnimationPlayer")
 stream = ExtResource("13_weggt")
 bus = &"Music"
 
-[node name="CiderSpirit" parent="." instance=ExtResource("12_ybcmh")]
-position = Vector2(302, -101)
-jr = SubResource("Resource_dvanr")
-entity_ai = SubResource("Resource_muq6e")
-
-[node name="CiderSpirit2" parent="." instance=ExtResource("12_ybcmh")]
-position = Vector2(631, -86)
-jr = SubResource("Resource_g2rme")
-entity_ai = SubResource("Resource_3si0w")
-
 [node name="witch" parent="." instance=ExtResource("14_w080t")]
-position = Vector2(-74, -94)
+position = Vector2(964, -425)
 entity_ai = SubResource("Resource_virpu")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -346,3 +322,8 @@ scale = Vector2(0.25, 0.25)
 tile_set = SubResource("TileSet_cb7dy")
 format = 2
 layer_0/tile_data = PackedInt32Array(-589829, 1, 0, -524293, 0, 1, -524292, 65536, 1, -524291, 65537, 1, -524290, 65536, 1, -524289, 65536, 1, -589825, 131073, 0, -589826, 65537, 0, -589827, 65536, 0, -589828, 65536, 0, -589819, 1, 2, -589818, 65537, 2, -589817, 65537, 2, -589816, 65537, 2, -589815, 65537, 2, -655355, 0, 1, -655354, 65537, 1, -655353, 65536, 1, -655352, 65536, 1, -655351, 65536, 1, -655350, 131072, 2, -720886, 131072, 0, -720887, 65537, 0, -720888, 65536, 0, -720889, 65536, 0, -720890, 65536, 0, -720891, 1, 0, -458755, 65536, 2, -458756, 65536, 2, -458757, 0, 2, -458754, 65536, 2, -458753, 65536, 2, 15, 0, 2, 16, 2, 2, 18, 65537, 1, 17, 65537, 1, 19, 65536, 1, 20, 65536, 1, 21, 65537, 1, 22, 65536, 1, 23, 65537, 1, 24, 65536, 1, -65512, 65536, 0, -65511, 65537, 0, -65510, 65536, 0, -65509, 65536, 0, -65508, 65536, 0, -65507, 65537, 0, 29, 65537, 1, 30, 65536, 1, 31, 65536, 1, 32, 65537, 1, 33, 65536, 1, 34, 65536, 1, 35, 65536, 1, 36, 65536, 1, 37, 65537, 1, -65499, 65537, 0, -65500, 65536, 0, -65501, 65537, 0, -65502, 65536, 0, -65503, 65537, 0, -65504, 65537, 0, -65505, 65536, 0, -65506, 65537, 0, -65513, 65537, 0, -65514, 65536, 0, -65515, 65536, 0, -65516, 65537, 0, -65517, 65537, 0, -65518, 65537, 0, -65519, 65536, 0, -65520, 65537, 0, -65521, 1, 0, 25, 65537, 1, 26, 65536, 1, 27, 65537, 1, 28, 65537, 1, -65498, 65537, 0, -65497, 65537, 0, -65496, 65537, 0, -65495, 65536, 1, -65494, 65536, 1, -65493, 65536, 1, -131029, 65536, 1, -131030, 65538, 1, -196566, 1, 1, -262102, 0, 1, -327638, 1, 1, -196565, 65536, 1, -262101, 131073, 1, -327637, 131073, 1, -393173, 131073, 1, -458709, 131072, 1, -393174, 0, 1, -458710, 0, 1, -524246, 0, 1, -589782, 1, 1, -655318, 1, 1, -720854, 1, 0, -720853, 131072, 0, -655317, 131072, 1, -589781, 131072, 1, -524245, 131073, 1, -131031, 1, 0, 41, 65537, 1, 42, 65536, 1, 43, 65536, 1, -65492, 131074, 2, -131028, 65536, 1, 44, 131073, 1, 65580, 131072, 2, 65579, 65536, 2, 65578, 65536, 2, 65577, 65536, 2, 40, 65536, 1, 39, 65537, 1, 38, 65537, 1, 65576, 65536, 2, 65575, 65536, 2, 65574, 65536, 2, 65573, 65536, 2, 65572, 65536, 2, 65571, 65536, 2, 65570, 65536, 2, 65569, 65536, 2, 65568, 65536, 2, 65567, 65536, 2, 65566, 65536, 2, 65565, 65536, 2, 65564, 65536, 2, 65563, 65536, 2, 65562, 65536, 2, 65561, 65536, 2, 65560, 65536, 2, 65559, 65536, 2, 65558, 65536, 2, 65557, 65536, 2, 65556, 65536, 2, 65555, 65536, 2, 65554, 65536, 2, 65553, 65536, 2, 65552, 0, 2, -196564, 131072, 0, -65491, 131072, 2, -131027, 131073, 0, -589824, 65537, 0, -589823, 65536, 0, -589822, 131073, 0, -524286, 131072, 2, -524287, 65536, 2, -524288, 65536, 2)
+
+[node name="CiderSpirit" parent="." instance=ExtResource("12_ybcmh")]
+position = Vector2(1175, -102)
+jr = SubResource("Resource_4cwac")
+entity_ai = SubResource("Resource_6w57u")

@@ -5,7 +5,7 @@ extends Resource
 
 class_name EntityAI 
 
-@export var danger_level = 1
+@export var danger_level : int = 1
 
 func get_danger_level()->int:
 	return danger_level
