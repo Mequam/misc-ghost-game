@@ -134,8 +134,11 @@ func plant_tree(normal)->void:
 	
 	inst.scale = self.scale
 
-	if self.possesed and self.ghost_after_effect:
-		self.ghost_after_effect.visible = false
+	if self.possesed:
+		print_debug("adding focus point")
+		get_parent().get_cam_ref().add_node_target(inst,20)
+		if self.ghost_after_effect:
+			self.ghost_after_effect.visible = false
 
 	#just to be safe clear the currently stored inputs
 	self.clear_stored_inputs()
@@ -144,12 +147,14 @@ func plant_tree(normal)->void:
 	inst.global_position = self.global_position
 	inst.pumpkin_reference = self 
 
+
 	#reset our velocity and animations
 	self.state = EntityState.DEFAULT 
 	self.velocity*=0
 
 	get_parent().remove_child(self)
 	inst.rotation = normal.angle()+PI/2
+
 
 	self.update_animation()
 

@@ -6,11 +6,13 @@ class_name PumkinSpawner
 #actual pumpkin
 var pumpkin_reference : RotatingPumpkin = null
 
+
 func on_animation_finished()->void:
 	match $AnimatedSprite2D.animation:
 		"snap":
 			$AnimatedSprite2D.play("die")
 			$grow_sound.stop()
+
 
 			var inst = pumpkin_reference
 			if not inst:
@@ -20,6 +22,10 @@ func on_animation_finished()->void:
 			inst.scale = self.scale
 			inst.global_position = self.global_position+$pumpkin_spawn_location.position
 			get_parent().add_child(inst)
+
+			#if we had focus, remove it
+			get_parent().get_cam_ref().remove_node_target(self)
+
 		"spawn":
 			$AnimatedSprite2D.play("snap")
 			$snap.play()

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://byyct7hmsgc4q"]
+
+[ext_resource type="Script" path="res://scenes/environment/CameraGrabZone/camera_grab_zone.gd" id="1_00jri"]
+
+[node name="CameraGrabZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_00jri")
