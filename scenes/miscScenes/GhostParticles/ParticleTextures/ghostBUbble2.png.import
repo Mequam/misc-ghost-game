@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://f57kf8d4o01j"
-path="res://.godot/imported/ghostBUbble2.png-e62a8f929c7bcee59ff4ed4e7224445e.ctex"
+path="res://.godot/imported/ghostBUbble2.png-9e73bbee9e318485147489f90c31cebd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/GhostParticles/ParticleTextures/ghostBUbble2.png"
-dest_files=["res://.godot/imported/ghostBUbble2.png-e62a8f929c7bcee59ff4ed4e7224445e.ctex"]
+source_file="res://scenes/miscScenes/GhostParticles/ParticleTextures/ghostBUbble2.png"
+dest_files=["res://.godot/imported/ghostBUbble2.png-9e73bbee9e318485147489f90c31cebd.ctex"]
 
 [params]
 

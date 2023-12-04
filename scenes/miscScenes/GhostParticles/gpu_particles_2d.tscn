@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://sm30i1bf2ehe"]
 
-[ext_resource type="Texture2D" uid="uid://dtxgvd5ictoxl" path="res://scenes/GhostParticles/ParticleTextures/ghostBUbble.png" id="1_0q5j3"]
-[ext_resource type="Texture2D" uid="uid://f57kf8d4o01j" path="res://scenes/GhostParticles/ParticleTextures/ghostBUbble2.png" id="2_5ibmm"]
-[ext_resource type="Texture2D" uid="uid://vhj1vorym34t" path="res://scenes/GhostParticles/ParticleTextures/desatBUbble.png" id="3_g7vyo"]
+[ext_resource type="Texture2D" uid="uid://dtxgvd5ictoxl" path="res://scenes/miscScenes/GhostParticles/ParticleTextures/ghostBUbble.png" id="1_0q5j3"]
+[ext_resource type="Texture2D" uid="uid://f57kf8d4o01j" path="res://scenes/miscScenes/GhostParticles/ParticleTextures/ghostBUbble2.png" id="2_5ibmm"]
+[ext_resource type="Texture2D" uid="uid://vhj1vorym34t" path="res://scenes/miscScenes/GhostParticles/ParticleTextures/desatBUbble.png" id="3_g7vyo"]
 
 [sub_resource type="Curve" id="Curve_fbtfm"]
 _data = [Vector2(0.00533808, 0.98773), 0.0, 0.146717, 0, 0, Vector2(1, 0), -3.92342, 0.0, 0, 0]

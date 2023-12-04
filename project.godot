@@ -21,6 +21,21 @@ config/icon="res://icon.png"
 Globals="*res://scenes/singletons/Globals.tscn"
 GameLoader="*res://scenes/singletons/GameLoader.tscn"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "orange",
+"res://project_files/": "pink",
+"res://scenes/": "red",
+"res://scenes/UI/": "green",
+"res://scenes/effects/": "blue",
+"res://scenes/entities/": "orange",
+"res://scenes/environment/": "yellow",
+"res://scenes/levels/": "gray",
+"res://scenes/pickups/": "purple",
+"res://scenes/singletons/": "teal"
+}
+
 [global]
 
 backgorund=false
@@ -75,10 +90,8 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0, 0.15, 0.15, 1)
 viewport/transparent_background=true
 environment/defaults/default_environment="res://default_env.tres"
-environment/default_clear_color=Color(0, 0.1, 0.1, 1)
 environment/default_environment="res://default_env.tres"
 
 [shader_globals]

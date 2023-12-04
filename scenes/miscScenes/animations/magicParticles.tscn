@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtp3n4hd6m41c"]
 
-[ext_resource type="Texture2D" uid="uid://c236wemia8yg6" path="res://assets/images/star/star.png" id="1_8q2bi"]
-[ext_resource type="Script" path="res://assets/scripts/animationScripts/magicParticles.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c236wemia8yg6" path="res://assets/images/star/star.png" id="1_rhjk5"]
+[ext_resource type="Script" path="res://assets/scripts/animationScripts/magicParticles.gd" id="2_tk2ec"]
 
 [sub_resource type="Curve" id="1"]
 _data = [Vector2(0, 0.513804), 0.0, 1.13045, 0, 0, Vector2(1, 0), -1.48372, 0.0, 0, 0]
@@ -18,10 +18,10 @@ scale_curve = SubResource("2")
 
 [node name="magic" type="GPUParticles2D"]
 process_material = SubResource("3")
-texture = ExtResource("1_8q2bi")
+texture = ExtResource("1_rhjk5")
 lifetime = 1.1
 explosiveness = 1.0
-script = ExtResource("2")
+script = ExtResource("2_tk2ec")
 
 [node name="Timer" type="Timer" parent="."]
 

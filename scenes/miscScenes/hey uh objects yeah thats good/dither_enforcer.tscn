@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwfbrncy62oir"]
 
-[ext_resource type="Shader" uid="uid://cqtto66s07wqo" path="res://scenes/hey uh objects yeah thats good/dither_enforcer.tres" id="3_aeg6q"]
+[ext_resource type="Shader" uid="uid://cqtto66s07wqo" path="res://scenes/miscScenes/hey uh objects yeah thats good/dither_enforcer.tres" id="3_aeg6q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sqtg6"]
 shader = ExtResource("3_aeg6q")
