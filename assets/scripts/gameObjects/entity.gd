@@ -454,8 +454,15 @@ func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
 	
 	return ret_val
 
+func on_modulate_timer_out():
+	state = EntityState.DEFAULT
+	collision_layer = saved_col_layer
+	collision_mask = saved_col_mask
+	update_animation()
 
 
 #called when we detect a collision
 func on_col(col):
 	pass
+
+
