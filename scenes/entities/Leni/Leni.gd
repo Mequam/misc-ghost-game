@@ -165,9 +165,12 @@ func set_state(val : int)->void:
 
 #launch ourselfs and prepare to posses
 func posses_attack(vel : Vector2)->void:
+	if $posess_cooldown.time_left >0: return
+
+	$posess_cooldown.start()
 	posses_velocity = vel
 	posses_velocity.y /= 2
-	clear_stored_inputs()
+	#clear_stored_inputs()
 	self.state = LeniState.POSSESING
 	$possesSound.play()
 
@@ -231,7 +234,7 @@ func compute_action(event : InputEvent)->void:
 		LeniState.POSSESING:
 			#while we are possesing we do NOT
 			#update player input
-			pass
+			super.compute_action(event)
 		_:
 			super.compute_action(event)
 
@@ -259,6 +262,7 @@ func on_col(col)->void:
 func _on_posses_timer_timeout():
 	posses_velocity = Vector2(0,0)
 	if state != EntityState.BRICK:
+		self.state = EntityState.DEFAULT
 		$Sprite2D.custom_play("posses_end")
 
 func _on_sprite_2d_animation_finished():
@@ -268,7 +272,7 @@ func _on_sprite_2d_animation_finished():
 		"posses":
 			pass
 		"posses_launch":
-			pass #handled in sprite2d
+			pass
 		"die":
 			GameLoader.load_save()
 		_:

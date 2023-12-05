@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnoukjnux3vku"]
+[gd_scene load_steps=9 format=3 uid="uid://cnoukjnux3vku"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.gd" id="1_qvm8x"]
 [ext_resource type="PackedScene" uid="uid://c7m0xnxd6um22" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumkion_sprite.tscn" id="1_wm434"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8dcq2"]
 radius = 95.1893
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vymo4"]
+resource_local_to_scene = true
+size = Vector2(150, 134)
 
 [node name="rollingPumpkinEntity" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 position = Vector2(0, 1)
@@ -42,6 +46,9 @@ shape = SubResource("CircleShape2D_8dcq2")
 [node name="GroundTester" parent="." instance=ExtResource("4_lg7dy")]
 position = Vector2(9, -8)
 scale = Vector2(0.5, 0.08)
+
+[node name="CollisionShape2D" parent="GroundTester" index="0"]
+shape = SubResource("RectangleShape2D_vymo4")
 
 [node name="modulate_timer" type="Timer" parent="."]
 

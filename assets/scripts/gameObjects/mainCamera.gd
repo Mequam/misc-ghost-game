@@ -68,7 +68,6 @@ func _process(_delta):
 		for node in self.target_node2d_dict:
 			target_points.append([self.target_node2d_dict[node],node.global_position])
 
-		print_debug(target_points)
 		
 		if result:
 			target_points = target_points + [[5,result["position"]]]

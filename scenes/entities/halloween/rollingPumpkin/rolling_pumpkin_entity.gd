@@ -141,7 +141,7 @@ func plant_tree(normal)->void:
 			self.ghost_after_effect.visible = false
 
 	#just to be safe clear the currently stored inputs
-	self.clear_stored_inputs()
+	#self.clear_stored_inputs()
 
 	get_parent().add_child(inst)
 	inst.global_position = self.global_position
@@ -166,7 +166,6 @@ func main_ready()->void:
 	self.tree_entered.connect(on_tree_entered)
 
 func on_tree_entered()->void:
-	self.clear_stored_inputs()
 	self.update_animation()
 	self.get_sprite2D().play("RESET")
 	self.get_sprite2D().reset_scale()

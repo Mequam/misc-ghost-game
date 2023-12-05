@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=16 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -20,6 +20,9 @@ size = Vector2(953, 526)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gp7qh"]
 size = Vector2(137, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5ee1"]
+size = Vector2(871, 1028)
 
 [node name="LeniTest" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 419)
@@ -144,3 +147,16 @@ shape = SubResource("RectangleShape2D_gp7qh")
 
 [node name="pumpkin_tree_spawner" parent="." instance=ExtResource("11_rb6g4")]
 position = Vector2(3419, 240)
+
+[node name="CameraGrabZone2" parent="." node_paths=PackedStringArray("focus") instance=ExtResource("9_hkyub")]
+position = Vector2(940, -566)
+focus_weight = 4.0
+focus = NodePath("Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraGrabZone2"]
+position = Vector2(397.5, 504)
+shape = SubResource("RectangleShape2D_y5ee1")
+debug_color = Color(0.94902, 0, 0.894118, 0.419608)
+
+[node name="Node2D" type="Node2D" parent="CameraGrabZone2"]
+position = Vector2(437, 972)
