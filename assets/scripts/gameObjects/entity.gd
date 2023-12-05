@@ -165,6 +165,10 @@ enum EntityState {
 	DAZED
 }
 
+#gets the load path from the parent of the respawn lamp
+func get_level_path()->String:
+	return self.get_parent().load_path
+
 #state variable used in all entities
 var state : int = EntityState.DEFAULT : set = set_state, get = get_state
 func set_state(val : int)->void:
@@ -179,7 +183,8 @@ func set_state(val : int)->void:
 			saved_col_mask = collision_mask
 			collision_layer = 0
 			collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
-			get_sprite2D().custom_play("damage")
+			if get_sprite2D():
+				get_sprite2D().custom_play("damage")
 			if $modulate_timer:
 				$modulate_timer.start()
 	state = val
@@ -449,11 +454,6 @@ func shoot(proj : PackedScene,global_pos : Vector2,velocity : Vector2):
 	
 	return ret_val
 
-func on_modulate_timer_out():
-	state = EntityState.DEFAULT
-	collision_layer = saved_col_layer
-	collision_mask = saved_col_mask
-	update_animation()
 
 
 #called when we detect a collision

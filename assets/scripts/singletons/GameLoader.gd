@@ -50,7 +50,10 @@ func load_save()->void:
 	leni.respawn_point = lamp 
 	leni.ghost_after_effect = get_level_container().get_node("AfterImageMesh")
 
+
 	lvl.add_child(leni) #add leni as a child of the level
+
+	leni.health = lamp.get_start_health(leni)
 	lamp.posses_by(leni) #ensure that we are possesing the lamp
 
 

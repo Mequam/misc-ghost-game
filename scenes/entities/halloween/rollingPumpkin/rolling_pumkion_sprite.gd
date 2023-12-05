@@ -24,7 +24,10 @@ var rolling : bool = false
 #scale modifications
 func reset_scale()->void:
 	self.scale = Vector2(1,1)
-
+func reset_animation()->void:
+	animation_player.play("RESET") #reset everything
+	animation_player.stop()
+	self.play("eye_roll")
 func custom_play(animation : StringName  = "idle",backwards : bool = false)->void:
 	match animation:
 		"RESET":

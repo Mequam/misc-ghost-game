@@ -40,7 +40,7 @@ position = Vector2(34, -193)
 pumkin_entity = NodePath("../../../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -106)
+position = Vector2(-1, -95)
 shape = SubResource("CircleShape2D_8dcq2")
 
 [node name="GroundTester" parent="." instance=ExtResource("4_lg7dy")]

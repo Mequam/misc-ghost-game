@@ -45,6 +45,7 @@ _data = {
 size = Vector2(199, 86)
 
 [node name="Candy" type="Area2D" node_paths=PackedStringArray("animation_player")]
+scale = Vector2(0.25, 0.25)
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_yxjt7")

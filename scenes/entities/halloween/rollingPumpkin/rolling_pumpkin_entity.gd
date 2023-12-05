@@ -70,6 +70,7 @@ func on_action_press(action : String)->void:
 	if action == "JUMP" and self.onground:
 		#we jump higher if we move FASTER
 		#give up control for height
+		print_debug("trying to jump")
 		self.velocity.y = -clamp(self.jump_speed*abs(self.velocity.x),jump_min,jump_max) 
 	elif action == "ATTACK":
 		self.get_sprite2D().custom_play("expload")
@@ -126,6 +127,7 @@ func _physics_process(delta)->void:
 func cycle_size()->void:
 	size = ((size + 1) % len(Size.values()))
 	self.rotation_radius = sqrt(self.scale.x*self.scale.y)*2
+
 func plant_tree(normal)->void:
 #var tree_spawner_packed_scene  : PackedScene = 
 	var inst = load("res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn").instantiate()
@@ -156,7 +158,7 @@ func plant_tree(normal)->void:
 	inst.rotation = normal.angle()+PI/2
 
 
-	self.update_animation()
+	self.get_sprite2D().reset_animation()
 
 
 func main_ready()->void:
@@ -166,7 +168,7 @@ func main_ready()->void:
 	self.tree_entered.connect(on_tree_entered)
 
 func on_tree_entered()->void:
-	self.update_animation()
+	self.get_sprite2D().reset_animation()
 	self.get_sprite2D().play("RESET")
 	self.get_sprite2D().reset_scale()
 	if self.possesed and self.ghost_after_effect:

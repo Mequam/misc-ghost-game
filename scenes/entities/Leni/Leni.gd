@@ -6,6 +6,7 @@ extends TiredFlightEntity
 class_name Leni
 
 #the hp that the player starts with, saved for when we die
+#hp we spawn with
 @export var start_hp : int = 5
 
 @export var invensible_timer : Timer
@@ -32,6 +33,7 @@ func store_aggro(host):
 #leni dies AFTER we finish the die animation
 #so hijak die and call super.die when the anim finishes
 func die():
+	self.state = EntityState.BRICK
 	$Sprite2D.custom_play("die")
 
 #convinence function to ensure that we are the object
@@ -40,8 +42,6 @@ func grab_aggro():
 	store_aggro(self)
 func take_damage(dmg : int = 1, src = null)->void:
 	
-	print_debug(src)
-	print_debug(str(src))
 
 	if (invensible_timer.time_left <= 0 and self.get_sprite2D().animation != "posses") or str(src) == "exorcize": #we take no damage while possesing
 		super.take_damage(dmg,src)
