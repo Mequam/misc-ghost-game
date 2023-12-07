@@ -83,5 +83,6 @@ backstack = NodePath("../../../../..")
 
 [node name="back_header" parent="." instance=ExtResource("13_rmr37")]
 layout_mode = 1
+mouse_filter = 2
 
 [editable path="back_header"]

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bdxsba1gjh45"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bdxsba1gjh45"]
 
 [ext_resource type="FontVariation" uid="uid://bplh0qhuaiirg" path="res://assets/ui/fonts/yakin/yakin_font_variation.tres" id="1_ycvbc"]
 
@@ -23,38 +23,29 @@ bg_color = Color(0, 1, 1, 0)
 border_color = Color(0, 0, 0, 1)
 corner_detail = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em53a"]
-bg_color = Color(0.735, 1, 0.47, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03e64"]
+bg_color = Color(0.501961, 1, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjhds"]
-bg_color = Color(1, 0.231373, 0.231373, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqb1e"]
+bg_color = Color(0.5, 0, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aorld"]
-bg_color = Color(1, 0.25, 0.25, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovyud"]
+bg_color = Color(0.5, 0, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdvcw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho8fb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc4va"]
 bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_right = 5
+border_color = Color(0, 0.09, 0.09, 1)
 
 [resource]
 default_font = ExtResource("1_ycvbc")
 default_font_size = 21
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/styles/normal = SubResource("StyleBoxFlat_bylj6")
-Label/colors/font_color = Color(0, 0, 0, 1)
+ButtonLabel/base_type = &"Label"
+ButtonLabel/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 Label/constants/line_spacing = 3
@@ -66,8 +57,7 @@ Label/styles/normal = SubResource("StyleBoxEmpty_xq6hp")
 Panel/styles/panel = SubResource("StyleBoxFlat_c5rn7")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_flufw")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_g6870")
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_em53a")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_mjhds")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_aorld")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_pdvcw")
-VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_ho8fb")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_03e64")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_tqb1e")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_ovyud")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_uc4va")

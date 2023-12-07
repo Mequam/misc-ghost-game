@@ -17,6 +17,9 @@ grow_vertical = 2
 [node name="handDrawnLabel" parent="." instance=ExtResource("5_ololw")]
 layout_mode = 1
 
+[node name="Label" parent="handDrawnLabel/CenterContainer" index="0"]
+theme = ExtResource("2_h1trr")
+
 [node name="CenteredTextBox" type="TextEdit" parent="." node_paths=PackedStringArray("txtlbl", "textureRect", "cursor_timer")]
 layout_mode = 1
 anchors_preset = 15
