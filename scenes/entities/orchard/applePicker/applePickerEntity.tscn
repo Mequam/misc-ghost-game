@@ -37,7 +37,7 @@ apple_projectile_speed = Vector2(20, 2)
 run_speed = Vector2(5, 1.5)
 entity_ai = SubResource("Resource_gg8tm")
 heart_text = Array[Texture2D]([ExtResource("3_51mym"), ExtResource("4_hqwjl"), ExtResource("5_7f7f0")])
-speed = Vector2(100, 100)
+speed = Vector2(200, 200)
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_mohwp")]
 
@@ -56,7 +56,7 @@ shape = SubResource("RectangleShape2D_l15j4")
 position = Vector2(0, -272)
 
 [node name="flight_timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.6
 
 [node name="apple_detector" type="Area2D" parent="."]
 collision_layer = 0
