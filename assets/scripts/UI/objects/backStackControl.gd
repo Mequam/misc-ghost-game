@@ -9,6 +9,7 @@ class_name BackStackControl
 @export var back_button : TextureButton
 @export var container : Control
 
+
 #ensures that the visibility of the back button makes sense
 func update_visibility()->void:
 	container.visible = len(stack) != 0

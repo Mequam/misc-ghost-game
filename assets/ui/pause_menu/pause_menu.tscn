@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://clhg1a3i8b2ty"]
+[gd_scene load_steps=12 format=3 uid="uid://clhg1a3i8b2ty"]
 
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_gmv6b"]
-[ext_resource type="Script" path="res://assets/scripts/UI/objects/backStackControl.gd" id="1_jluuo"]
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_w7mve"]
+[ext_resource type="Script" path="res://assets/ui/pause_menu/pause_menu.gd" id="2_xe0w8"]
 [ext_resource type="PackedScene" uid="uid://b2ii50rt12ywk" path="res://scenes/UI/back_header/back_header.tscn" id="3_voycp"]
 [ext_resource type="Texture2D" uid="uid://n33bf6fxcn1w" path="res://assets/ui/buttons/btnResume/btnResume0001.png" id="4_kad02"]
 [ext_resource type="Texture2D" uid="uid://d2h24vixdpftv" path="res://assets/ui/buttons/btnResume/btnResume0003.png" id="5_q1uvl"]
@@ -11,20 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://8rufa4hdd46n" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0001.png" id="9_6xee2"]
 [ext_resource type="Texture2D" uid="uid://dhunsmg6uf4wp" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0003.png" id="10_y2f0p"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("back_button", "container", "replacement")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("resume_button", "back_button", "container")]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jluuo")
+theme = ExtResource("1_w7mve")
+script = ExtResource("2_xe0w8")
+resume_button = NodePath("Panel/HBoxContainer/VBoxGhostContainer/btnResume")
 back_button = NodePath("back_header/HBoxContainer/TextureButton")
-container = NodePath("back_header")
-replacement = NodePath("Panel")
+container = NodePath("back_header/HBoxContainer")
 
 [node name="Panel" type="Panel" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,8 +52,10 @@ texture_normal = ExtResource("7_gdqxy")
 texture_pressed = ExtResource("4_kad02")
 texture_hover = ExtResource("5_q1uvl")
 
-[node name="btnOptions" parent="Panel/HBoxContainer/VBoxGhostContainer" instance=ExtResource("6_6wnga")]
+[node name="btnOptions" parent="Panel/HBoxContainer/VBoxGhostContainer" node_paths=PackedStringArray("destination", "backstack") instance=ExtResource("6_6wnga")]
 layout_mode = 2
+destination = NodePath("../../..")
+backstack = NodePath("../../../..")
 
 [node name="btnQuit" type="TextureButton" parent="Panel/HBoxContainer/VBoxGhostContainer"]
 layout_mode = 2
