@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=23 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://kd3f4rg6axyb" path="res://scenes/pickups/candy/watermelcandycorn/watermeloncandycorn.tscn" id="12_cr4xh"]
 [ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="12_ybcmh"]
 [ext_resource type="Script" path="res://assets/resources/jump_resource.gd" id="13_bhsbd"]
+[ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/AICiderSpiritJumpOver/AICiderSpirit_JumpOver.gd" id="13_o4q0x"]
 [ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="13_weggt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk62p"]
@@ -25,19 +26,36 @@ size = Vector2(587, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
 size = Vector2(90.5, 157)
 
-[sub_resource type="Resource" id="Resource_hsq4u"]
+[sub_resource type="Resource" id="Resource_jx0ei"]
 resource_local_to_scene = true
 script = ExtResource("13_bhsbd")
 jump_height = 101.01
 jump_up_time = 0.01
 jump_down_time = 0.01
 
-[sub_resource type="Resource" id="Resource_ew7iv"]
+[sub_resource type="Resource" id="Resource_a5je6"]
+resource_local_to_scene = true
+script = ExtResource("13_o4q0x")
+ai_timer_jump = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":5.0,"one_shot":true,"autostart":false,"script":null)
+
+danger_level = 1
+
+[sub_resource type="Resource" id="Resource_sh84c"]
 resource_local_to_scene = true
 script = ExtResource("13_bhsbd")
 jump_height = 101.01
 jump_up_time = 0.01
 jump_down_time = 0.01
+
+[sub_resource type="Resource" id="Resource_nss8a"]
+resource_local_to_scene = true
+script = ExtResource("13_o4q0x")
+ai_timer_jump = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":5.0,"one_shot":true,"autostart":false,"script":null)
+
+danger_level = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rc7a3"]
+size = Vector2(112, 213)
 
 [node name="LeniTest" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 419)
@@ -181,8 +199,18 @@ bus = &"Music"
 
 [node name="CiderSpirit" parent="." instance=ExtResource("12_ybcmh")]
 position = Vector2(282, -15)
-jr = SubResource("Resource_hsq4u")
+jr = SubResource("Resource_jx0ei")
+entity_ai = SubResource("Resource_a5je6")
 
 [node name="CiderSpirit2" parent="." instance=ExtResource("12_ybcmh")]
 position = Vector2(550, -26)
-jr = SubResource("Resource_ew7iv")
+jr = SubResource("Resource_sh84c")
+entity_ai = SubResource("Resource_nss8a")
+
+[node name="tutorial door" parent="." instance=ExtResource("9_5xj7r")]
+position = Vector2(-876, -86)
+target_level = "res://scenes/levels/orchard/Tutorial/tutorial.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tutorial door"]
+position = Vector2(29, -39.5)
+shape = SubResource("RectangleShape2D_rc7a3")
