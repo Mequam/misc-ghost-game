@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=22 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://assets/scripts/gameObjects/dummy_entity.gd" id="14_w8165"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
-size = Vector2(51, 1291)
+size = Vector2(51, 648)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qevv7"]
 size = Vector2(953, 526)
@@ -40,6 +40,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpapu"]
+size = Vector2(107, 514)
 
 [node name="LeniTest" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 419)
@@ -65,7 +68,7 @@ offset_right = 1790.0
 offset_bottom = 416.0
 
 [node name="ColorRect3" type="ColorRect" parent="."]
-self_modulate = Color(0, 0.42, 0.42, 1)
+self_modulate = Color(0, 0.419608, 0.419608, 1)
 z_index = -10
 offset_left = 762.0
 offset_top = -928.0
@@ -106,7 +109,7 @@ position = Vector2(128, -329)
 target_level = "res://scenes/levels/debug/leni_load_test.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_a"]
-position = Vector2(-35.5, 55.5)
+position = Vector2(-35.5, -266)
 shape = SubResource("RectangleShape2D_o10wt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -221,3 +224,11 @@ sprite_frames = SubResource("SpriteFrames_vxjsu")
 
 [node name="unposSpot" type="Node2D" parent="KinColObject"]
 position = Vector2(12, -3)
+
+[node name="tutorial door" parent="." instance=ExtResource("9_5xj7r")]
+position = Vector2(116, 92)
+target_level = "res://scenes/levels/orchard/Tutorial/tutorial.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tutorial door"]
+position = Vector2(38.5, -73)
+shape = SubResource("RectangleShape2D_vpapu")
