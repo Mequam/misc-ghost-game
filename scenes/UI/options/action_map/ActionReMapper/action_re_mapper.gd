@@ -31,6 +31,7 @@ func set_action(action : StringName,action_remapper : InputNamer)->bool:
 	if len(events) < 1:
 		btnActionEvent.label.text = "unset"
 		return false
+	
 	btnActionEvent.label.text = action_renamer.event2string(events[0])
 
 
@@ -52,7 +53,9 @@ func on_reset_click()->void:
 	#update the action display
 	var settings : GlobalGameSettings = get_game_settings()
 	settings.remove_remap(self.action)
+	settings.save_settings()
 
+	#update the button displays
 	self.set_action(self.action,self.action_renamer)
 
 func _ready()->void:
