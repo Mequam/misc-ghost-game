@@ -28,8 +28,6 @@ func _ready():
 	update_visibility()
 	back_button.pressed.connect(on_back_button_pressed)
 
-	var settings = GlobalGameSettings.load_settings()
-	settings.sync_input_map_to_settings()
 
 func on_back_button_pressed()->void:
 	print("the back button was pressed!")
