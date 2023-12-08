@@ -7,7 +7,23 @@ extends Resource
 class_name GlobalGameSettings
 
 @export var control_remaps : Dictionary
+@export var bus_vol_db : Dictionary
 
+#sets the audio bus from a linear vol
+#note that linear_vol ranges from 0 to 1
+func set_audio_vol_from_linear(audio_bus : int, linear_vol : float)->void:
+	var db_vol = linear_to_db(linear_vol)
+	AudioServer.set_bus_volume_db(audio_bus,db_vol)
+	bus_vol_db[AudioServer.get_bus_name(audio_bus)] = db_vol
+
+#syncs the live state of the game to that of the resource
+func sync_settings()->void:
+	self.sync_audio_to_settings()
+	self.sync_input_map_to_settings()
+
+func sync_audio_to_settings()->void:
+	for bus_name in self.bus_vol_db:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name),self.bus_vol_db[bus_name])
 
 #syncs the stored input map to the game input map
 func sync_input_map_to_settings()->void:

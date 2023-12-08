@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bacdulpgcb7ik"]
 
-[ext_resource type="Script" path="res://assets/scripts/UI/objects/backStackControl.gd" id="1_1gvup"]
+[ext_resource type="Script" path="res://scenes/UI/GameStart.gd" id="1_wqnwp"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_g4o6m"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="2_o0eyq"]
 [ext_resource type="PackedScene" uid="uid://dtrrpcifoy0hk" path="res://scenes/UI/buttons/start_button.tscn" id="3_l3epg"]
@@ -24,7 +24,7 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1gvup")
+script = ExtResource("1_wqnwp")
 back_button = NodePath("back_header/HBoxContainer/TextureButton")
 container = NodePath("back_header")
 replacement = NodePath("SceneContainer")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4d4qebutmeqf"]
+[gd_scene load_steps=6 format=3 uid="uid://d4d4qebutmeqf"]
 
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_cuur1"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_il8sc"]
 [ext_resource type="Script" path="res://assets/ui/BackStackSwitcher.gd" id="3_66s20"]
 [ext_resource type="PackedScene" uid="uid://4vgx3apyifiv" path="res://scenes/UI/options/action_map/action_options.tscn" id="4_7sgl8"]
+[ext_resource type="PackedScene" uid="uid://bts3rlhar7rs6" path="res://scenes/UI/options/audio/audio_settings.tscn" id="5_76mkr"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -39,6 +40,11 @@ layout_mode = 2
 
 [node name="Label" parent="VBoxGhostContainer/btnSound/CenterContainer" index="0"]
 text = "Music And Sound"
+
+[node name="BackStackSwitcher" type="Node" parent="VBoxGhostContainer/btnSound" node_paths=PackedStringArray("replace_container")]
+script = ExtResource("3_66s20")
+next = ExtResource("5_76mkr")
+replace_container = NodePath("../../..")
 
 [node name="btnGraphics" parent="VBoxGhostContainer" instance=ExtResource("1_cuur1")]
 layout_mode = 2

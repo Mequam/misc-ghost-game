@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://chdycsa1av7no"]
+
+[ext_resource type="Script" path="res://scenes/UI/options/audio/audio_slider.gd" id="1_60b32"]
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_d20i7"]
+
+[node name="AudioSlider" type="Control" node_paths=PackedStringArray("lblName", "lblPerc", "audioSlider")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_d20i7")
+script = ExtResource("1_60b32")
+lblName = NodePath("Label")
+lblPerc = NodePath("HsliderAudio/lblPercent")
+audioSlider = NodePath("HsliderAudio")
+
+[node name="HsliderAudio" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d20i7")
+
+[node name="lblPercent" type="Label" parent="HsliderAudio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "mute"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Audio Bus
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="drag_ended" from="HsliderAudio" to="." method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="HsliderAudio" to="." method="_on_hslider_audio_value_changed"]

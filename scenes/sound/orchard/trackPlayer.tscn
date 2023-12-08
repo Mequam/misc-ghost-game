@@ -145,6 +145,7 @@ initial_db = 12.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Default"]
 stream = ExtResource("4_tahjm")
+bus = &"Music"
 
 [node name="Battle" type="Node" parent="."]
 script = ExtResource("5_bd2ff")
@@ -158,6 +159,7 @@ audio_stream = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/wind march"]
 stream = ExtResource("5_3s5bx")
+bus = &"Music"
 
 [node name="chilly wind" type="Node" parent="Battle"]
 script = ExtResource("2_thmwg")
@@ -165,6 +167,7 @@ transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_v27m3"), SubR
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/chilly wind"]
 stream = ExtResource("6_xncjr")
+bus = &"Music"
 
 [node name="souls song" type="Node" parent="Battle"]
 script = ExtResource("2_thmwg")
@@ -172,12 +175,14 @@ transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_kpyxr")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/souls song"]
 stream = ExtResource("7_g7cu6")
+bus = &"Music"
 
 [node name="souls warning" type="Node" parent="Battle"]
 script = ExtResource("2_thmwg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/souls warning"]
 stream = ExtResource("8_d3v0g")
+bus = &"Music"
 
 [node name="scarry wind" type="Node" parent="Battle"]
 script = ExtResource("2_thmwg")
@@ -185,6 +190,7 @@ transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_a5pyr")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/scarry wind"]
 stream = ExtResource("9_rr21p")
+bus = &"Music"
 
 [node name="battle drums" type="Node" parent="Battle"]
 script = ExtResource("2_thmwg")
@@ -192,6 +198,7 @@ play_amount = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/battle drums"]
 stream = ExtResource("10_3chq3")
+bus = &"Music"
 
 [node name="wind gust" type="Node" parent="Battle"]
 script = ExtResource("2_thmwg")
@@ -199,6 +206,7 @@ transitions = Array[ExtResource("3_u2brb")]([SubResource("Resource_j2tp3")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/wind gust"]
 stream = ExtResource("11_xes4f")
+bus = &"Music"
 
 [node name="wisk" type="Node" parent="Battle"]
 script = ExtResource("2_thmwg")
@@ -206,3 +214,4 @@ script = ExtResource("2_thmwg")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Battle/wisk"]
 stream = ExtResource("12_8p1gy")
 volume_db = 7.2
+bus = &"Music"
