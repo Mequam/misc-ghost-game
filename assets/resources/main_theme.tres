@@ -36,10 +36,10 @@ border_width_bottom = 5
 border_color = Color(0, 0.0901961, 0.0901961, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dx8gm"]
-bg_color = Color(1, 0.219608, 0.219608, 1)
+bg_color = Color(0.22, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qpkt"]
-bg_color = Color(1, 0.219608, 0.219608, 1)
+bg_color = Color(0.22, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7nby"]
 bg_color = Color(0, 0.0901961, 0.0901961, 1)
@@ -121,4 +121,4 @@ VScrollBar/styles/grabber = SubResource("StyleBoxFlat_03e64")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_tqb1e")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_ovyud")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_uc4va")
-lblTitle/colors/font_color = Color(0.735, 1, 0.47, 1)
+lblTitle/colors/font_color = Color(0.733333, 1, 0.470588, 1)

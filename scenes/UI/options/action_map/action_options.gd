@@ -17,6 +17,7 @@ func add_section(header : String, filter : Callable = func(action_name) : return
 
 	var lblSectionHeading = Label.new()
 	lblSectionHeading.text = header
+	lblSectionHeading.add_theme_color_override("font_color",Color.html("#bbff78"))
 	
 	reMapperContainer.add_child(lblSectionHeading)
 
