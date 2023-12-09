@@ -332,26 +332,38 @@ func on_unposses(_host)->void:
 	self.health = self.health
 	update_animation()
 
+
+#returns true if unpossessing this entity will NOT
+#send Leni into some terrain
+func is_clear_to_unposses(offset : Vector2)->bool:
+	var target_position : Vector2 = unposses_position(offset)
+	var space_state =  get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position,target_position,ColMath.ConstLayer.TILE_BORDER)
+	query.exlude = [self]
+	return not space_state.intersect_ray(query)
+
 #clears our possesion	
 func exorcize(offset : Vector2 = Vector2(0,0))->void:
-	if self.possesed:
-		if self.possesed_entity != null:
-			if self.possesed_entity.ghost_after_effect:
-				self.possesed_entity.ghost_after_effect.the_sprite = self.possesed_entity.get_sprite2D()
+	if not self.possesed: return
+	if not self.is_clear_to_unposses(offset): return
 
-			get_parent().add_child(self.possesed_entity)	
+	if self.possesed_entity != null:
+		if self.possesed_entity.ghost_after_effect:
+			self.possesed_entity.ghost_after_effect.the_sprite = self.possesed_entity.get_sprite2D()
 
-			possesed_entity.global_position  = unposses_position()+offset*unposses_radius
-			self.possesed_entity.process_mode = Node.PROCESS_MODE_INHERIT
-			self.possesed_entity.on_unposses(self)
-			self.possesed_entity = null
+		get_parent().add_child(self.possesed_entity)	
 
-		self.collision_layer = gen_col_layer()
-		self.collision_mask = gen_col_mask()
+		possesed_entity.global_position  = unposses_position(offset)
+		self.possesed_entity.process_mode = Node.PROCESS_MODE_INHERIT
+		self.possesed_entity.on_unposses(self)
+		self.possesed_entity = null
 
-		if $dazed_timer:
-			self.state = EntityState.DAZED
-		self.possesed = false
+	self.collision_layer = gen_col_layer()
+	self.collision_mask = gen_col_mask()
+
+	if $dazed_timer:
+		self.state = EntityState.DAZED
+	self.possesed = false
 
 #runs the AI if acceptable
 func run_AI(player_enemy)->void:
@@ -409,9 +421,9 @@ func main_input(event)->void:
 #unposseses the entity
 #defaults to the entities position if no position
 #is given
-func unposses_position()->Vector2:
+func unposses_position(offset : Vector2 = Vector2(0,0))->Vector2:
 	if $unposSpot is Node2D:
-		return $unposSpot.global_position
+		return $unposSpot.global_position + offset * self.unposses_radius
 	return position
 
 func _input(event):
