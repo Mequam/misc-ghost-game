@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clhg1a3i8b2ty"]
+[gd_scene load_steps=13 format=3 uid="uid://clhg1a3i8b2ty"]
 
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_gmv6b"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_w7mve"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dc2pf7rnem3rt" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0000.png" id="8_cf6pb"]
 [ext_resource type="Texture2D" uid="uid://8rufa4hdd46n" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0001.png" id="9_6xee2"]
 [ext_resource type="Texture2D" uid="uid://dhunsmg6uf4wp" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0003.png" id="10_y2f0p"]
+[ext_resource type="Script" path="res://assets/ui/pause_menu/btnQuit.gd" id="11_eljpv"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("resume_button", "back_button", "container")]
 process_mode = 2
@@ -62,6 +63,7 @@ layout_mode = 2
 texture_normal = ExtResource("8_cf6pb")
 texture_pressed = ExtResource("9_6xee2")
 texture_hover = ExtResource("10_y2f0p")
+script = ExtResource("11_eljpv")
 
 [node name="back_header" parent="." instance=ExtResource("3_voycp")]
 layout_mode = 1

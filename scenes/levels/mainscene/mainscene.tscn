@@ -603,11 +603,11 @@ nodes/fragment/connections = PackedInt32Array(6, 0, 5, 1, 10, 0, 11, 0, 11, 0, 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l1mui"]
 shader = SubResource("VisualShader_05oad")
 shader_parameter/active = true
-shader_parameter/ColorRotation = Color(1, 0, 0, 1)
+shader_parameter/ColorRotation = Color(0, 1, 1, 1)
 shader_parameter/red_map = Color(1, 0, 0, 1)
-shader_parameter/yg_map = Color(0, 1, 0.0166667, 1)
+shader_parameter/yg_map = Color(0.5, 1, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
-shader_parameter/IC2 = Color(0.5, 1, 0, 1)
+shader_parameter/IC2 = Color(0.501961, 1, 0, 1)
 
 [node name="Main" type="Control" node_paths=PackedStringArray("heart_tracker", "music_system", "pause_menu", "level_container")]
 layout_mode = 3
