@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bacdulpgcb7ik"]
+[gd_scene load_steps=19 format=3 uid="uid://bacdulpgcb7ik"]
 
 [ext_resource type="Script" path="res://scenes/UI/GameStart.gd" id="1_wqnwp"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_g4o6m"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://ccdtgmoqo74mv" path="res://scenes/UI/game_loader.tscn" id="7_q6whe"]
 [ext_resource type="PackedScene" uid="uid://cjv61agvk3nih" path="res://scenes/UI/buttons/btn_options.tscn" id="13_dijyx"]
 [ext_resource type="PackedScene" uid="uid://b2ii50rt12ywk" path="res://scenes/UI/back_header/back_header.tscn" id="13_rmr37"]
+[ext_resource type="Texture2D" uid="uid://c4xj1cpjp82jk" path="res://assets/ui/buttons/btnQuit/btnQuit0000.png" id="14_k2nxx"]
+[ext_resource type="Texture2D" uid="uid://da1drank87xd3" path="res://assets/ui/buttons/btnQuit/btnQuit0001.png" id="15_yjycu"]
+[ext_resource type="Texture2D" uid="uid://c0o8h2htejocd" path="res://assets/ui/buttons/btnQuit/btnQuit0003.png" id="16_1xl2y"]
+[ext_resource type="Script" path="res://scenes/UI/buttons/btnQuit.gd" id="17_bm373"]
 
 [node name="GameStart" type="Control" node_paths=PackedStringArray("back_button", "container", "replacement")]
 layout_mode = 3
@@ -80,6 +84,13 @@ backstack = NodePath("../../../../..")
 layout_mode = 2
 destination = NodePath("../../../..")
 backstack = NodePath("../../../../..")
+
+[node name="TextureButton3" type="TextureButton" parent="SceneContainer/CustomCenter/HBoxContainer/VBoxGhostContainer"]
+layout_mode = 2
+texture_normal = ExtResource("14_k2nxx")
+texture_pressed = ExtResource("15_yjycu")
+texture_hover = ExtResource("16_1xl2y")
+script = ExtResource("17_bm373")
 
 [node name="back_header" parent="." instance=ExtResource("13_rmr37")]
 layout_mode = 1
