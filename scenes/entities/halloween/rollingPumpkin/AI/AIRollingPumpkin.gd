@@ -8,7 +8,6 @@ class_name AIPumpkinFollow
 
 #move twoards the player
 func tick(player : Entity)->void:
-	print_debug(abs(player.global_position.y - self.caller.global_position.y))
 	if player.global_position.distance_squared_to(self.caller.global_position) < self.aggro_range*self.aggro_range \
 			and abs(player.global_position.y - self.caller.global_position.y) < self.aggro_height:
 		if player.global_position.x < self.caller.global_position.x:

@@ -57,6 +57,11 @@ static func zero_bit(bits : int,idx : int)->int:
 static func strip_bits(bits : int,to_strip : int)->int:
 	return bits & (~to_strip)
 
+#convinence function to remove all bits from a collision
+#map that deal with stationary, non moving collision objects
+static func strip_stationary_bits(bits : int)->int:
+	return strip_bits(bits,Layer.TERRAIN | ConstLayer.TILE_BORDER)
+
 #collision layer definitions
 
 #These are the collision layers

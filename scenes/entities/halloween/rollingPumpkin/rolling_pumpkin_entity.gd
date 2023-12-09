@@ -15,6 +15,15 @@ class_name RotatingPumpkin
 @export var jump_max : float  
 @export var jump_min : float 
 
+#when we detect something we should damage
+#how much does it need to be in phase with the velocity
+#to take a hit?
+#ranges from 0, directly in phase, to 4, completely out of phase
+#so with a direction threshold of 4, WE ARE LAVA and all will take damage
+@export var damage_direction_threshold : float = 1.5
+#how fast do we have to be going to deal damage?
+@export var damage_speed_threshold : float = 2
+
 
 @export var size : Size = Size.MEDIUM :
 	set (val):
@@ -53,9 +62,11 @@ func posses_by(entity)->void:
 	super.posses_by(entity)
 	if entity.ghost_after_effect:
 		self.ghost_after_effect = entity.ghost_after_effect 
+	$damage_zone.collision_mask = ColMath.strip_stationary_bits(entity.gen_col_mask())
 func exorcize(offset : Vector2 = Vector2(0,0)):
 	super.exorcize(offset)
 	self.ghost_after_effect = null #clear out the reference to the after effect
+	$damage_zone.collision_mask = ColMath.strip_stationary_bits(self.gen_col_mask())
 
 #adds a force to the object
 func add_impulse(force : Vector2)->void:
@@ -116,12 +127,6 @@ func _physics_process(delta)->void:
 
 	if self.state == RotatingPumkinState.LAUNCHING:
 		self.plant_tree(normal)
-	
-	if self.velocity.length() < 50: return 
-
-	var collider = col.get_collider()
-	if collider.has_method("take_damage"):
-		collider.take_damage()
 
 #goes from one size to the next size
 func cycle_size()->void:
@@ -168,7 +173,21 @@ func main_ready()->void:
 	#make sure the size of the pumpkin is synced
 	self.size = size
 	self.tree_entered.connect(on_tree_entered)
+	$damage_zone.collision_mask = ColMath.strip_stationary_bits(self.gen_col_mask())
+	$damage_zone.body_entered.connect(self.on_damage_zone_entered)
+func on_damage_zone_entered(body)->void:
+	if self.velocity.length_squared() < self.damage_speed_threshold * self.damage_speed_threshold: return
+	if not body.has_method("take_damage"): return
 
+	#ensure that we are moving TWARDS the body
+	#we do not deal damage if the body sneaks up on us
+	var body_delta = (body.global_position - self.global_position).normalized()
+	print_debug((body_delta - self.velocity.normalized()).length_squared())
+	
+	if (body_delta - self.velocity.normalized()).length_squared() > self.damage_direction_threshold: return
+
+
+	body.take_damage(self.size,self)
 func on_tree_entered()->void:
 	self.get_sprite2D().reset_animation()
 	self.get_sprite2D().play("RESET")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnoukjnux3vku"]
+[gd_scene load_steps=10 format=3 uid="uid://cnoukjnux3vku"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.gd" id="1_qvm8x"]
 [ext_resource type="PackedScene" uid="uid://c7m0xnxd6um22" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumkion_sprite.tscn" id="1_wm434"]
@@ -14,6 +14,9 @@ radius = 95.1893
 resource_local_to_scene = true
 size = Vector2(150, 134)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y262t"]
+radius = 103.097
+
 [node name="rollingPumpkinEntity" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 position = Vector2(0, 1)
 script = ExtResource("1_qvm8x")
@@ -24,6 +27,7 @@ friction = Vector2(0.2, 0)
 jump_speed = 2.0
 jump_max = 20.0
 jump_min = 5.0
+damage_direction_threshold = 1.75
 size_scales = Array[Vector2]([Vector2(0.1, 0.1), Vector2(0.5, 0.5), Vector2(1, 1)])
 sprite = NodePath("Sprite2D/body_prop/rotation_bone/rollingPumkinRoot/rollingPumkionSprite")
 heart_text = Array[Texture2D]([ExtResource("2_slbf4"), ExtResource("3_lw1q3"), ExtResource("4_s7mky")])
@@ -51,6 +55,14 @@ scale = Vector2(0.5, 0.08)
 shape = SubResource("RectangleShape2D_vymo4")
 
 [node name="modulate_timer" type="Timer" parent="."]
+
+[node name="damage_zone" type="Area2D" parent="."]
+position = Vector2(0, -95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_y262t")
+debug_color = Color(0.95, 0, 0, 0.419608)
 
 [editable path="Sprite2D"]
 [editable path="GroundTester"]
