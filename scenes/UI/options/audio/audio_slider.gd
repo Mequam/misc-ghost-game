@@ -5,6 +5,8 @@ extends Control
 
 @export var audioSlider : HSlider
 
+@export var sliderLenis : Array[Texture2D]
+
 
 var audio_settings : GlobalGameSettings
 
@@ -35,13 +37,19 @@ func _on_h_slider_drag_ended(changed : bool)->void:
 	audio_settings.save_settings()
 	audio_settings = null
 
+func get_appropriate_slider_leni()->Texture2D:
+	var x = int((len(sliderLenis)-1)*(audioSlider.value+10)/100)
+	return sliderLenis[x if x < len(sliderLenis) else len(sliderLenis)-1]
+
+
 func sync_display()->void:
-	print_debug(self.get_linear_vol())
-	self.lblPerc.text = "%d"%(self.get_linear_vol())+"%"
+	audioSlider.add_theme_icon_override("grabber",get_appropriate_slider_leni())
+	audioSlider.add_theme_icon_override("grabber_highlight",get_appropriate_slider_leni())
+	self.lblPerc.text = "%d"%(2*self.get_linear_vol())+"%"
+	lblPerc.add_theme_color_override("background_color",Color.WHITE if audioSlider.value < 49 else Color.BLACK)
 
 
 func _on_hslider_audio_value_changed(value : float)->void:
 	if audio_settings:
-		print_debug("updating audio settings from moving slider!")
 		audio_settings.set_audio_vol_from_linear(self.audio_bus,self.audioSlider.value/100)
 	self.sync_display()

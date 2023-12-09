@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://chdycsa1av7no"]
+[gd_scene load_steps=8 format=3 uid="uid://chdycsa1av7no"]
 
 [ext_resource type="Script" path="res://scenes/UI/options/audio/audio_slider.gd" id="1_60b32"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_d20i7"]
+[ext_resource type="Texture2D" uid="uid://dmixnkfx46t48" path="res://assets/ui/Slider Lenis/0001.png" id="3_7awxu"]
+[ext_resource type="Texture2D" uid="uid://dd8u7tj6b2brx" path="res://assets/ui/Slider Lenis/0002.png" id="4_kei3f"]
+[ext_resource type="Texture2D" uid="uid://d1w1dq5wjiqhl" path="res://ghost_small_icon.png" id="5_fwsx0"]
+[ext_resource type="Texture2D" uid="uid://01r2gvplb2e4" path="res://assets/ui/Slider Lenis/0003.png" id="6_45ik7"]
+[ext_resource type="Texture2D" uid="uid://d0pclvwlu0kjd" path="res://assets/ui/Slider Lenis/0004.png" id="7_68yqt"]
 
 [node name="AudioSlider" type="Control" node_paths=PackedStringArray("lblName", "lblPerc", "audioSlider")]
 layout_mode = 3
@@ -16,6 +21,7 @@ script = ExtResource("1_60b32")
 lblName = NodePath("Label")
 lblPerc = NodePath("HsliderAudio/lblPercent")
 audioSlider = NodePath("HsliderAudio")
+sliderLenis = Array[Texture2D]([ExtResource("3_7awxu"), ExtResource("4_kei3f"), ExtResource("5_fwsx0"), ExtResource("6_45ik7"), ExtResource("7_68yqt")])
 
 [node name="HsliderAudio" type="HSlider" parent="."]
 layout_mode = 1
@@ -34,6 +40,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "mute"
 horizontal_alignment = 1
 vertical_alignment = 1
