@@ -339,7 +339,7 @@ func is_clear_to_unposses(offset : Vector2)->bool:
 	var target_position : Vector2 = unposses_position(offset)
 	var space_state =  get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(global_position,target_position,ColMath.ConstLayer.TILE_BORDER)
-	query.exlude = [self]
+	query.exclude = [self]
 	return not space_state.intersect_ray(query)
 
 #clears our possesion	

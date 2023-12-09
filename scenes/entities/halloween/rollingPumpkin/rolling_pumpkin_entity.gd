@@ -165,6 +165,8 @@ func main_ready()->void:
 	self.get_sprite2D().animation_finished.connect(self.anim_finished)
 	super.main_ready()
 
+	#make sure the size of the pumpkin is synced
+	self.size = size
 	self.tree_entered.connect(on_tree_entered)
 
 func on_tree_entered()->void:
