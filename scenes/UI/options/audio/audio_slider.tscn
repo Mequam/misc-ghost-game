@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chdycsa1av7no"]
+[gd_scene load_steps=9 format=3 uid="uid://chdycsa1av7no"]
 
 [ext_resource type="Script" path="res://scenes/UI/options/audio/audio_slider.gd" id="1_60b32"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_d20i7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d1w1dq5wjiqhl" path="res://ghost_small_icon.png" id="5_fwsx0"]
 [ext_resource type="Texture2D" uid="uid://01r2gvplb2e4" path="res://assets/ui/Slider Lenis/0003.png" id="6_45ik7"]
 [ext_resource type="Texture2D" uid="uid://d0pclvwlu0kjd" path="res://assets/ui/Slider Lenis/0004.png" id="7_68yqt"]
+[ext_resource type="AudioStream" uid="uid://d1llyyet5uqly" path="res://assets/sound/effects/Misc/ghost_posses.wav" id="8_8vhfi"]
 
 [node name="AudioSlider" type="Control" node_paths=PackedStringArray("lblName", "lblPerc", "audioSlider")]
 layout_mode = 3
@@ -57,6 +58,10 @@ text = "Audio Bus
 "
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8vhfi")
+volume_db = 10.0
 
 [connection signal="drag_ended" from="HsliderAudio" to="." method="_on_h_slider_drag_ended"]
 [connection signal="value_changed" from="HsliderAudio" to="." method="_on_hslider_audio_value_changed"]
