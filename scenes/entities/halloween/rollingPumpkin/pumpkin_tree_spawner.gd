@@ -20,8 +20,8 @@ func on_animation_finished()->void:
 				var pumpkin_scene = load("res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn") 
 				inst = pumpkin_scene.instantiate()
 			inst.scale = self.scale
-			inst.global_position = self.global_position+$pumpkin_spawn_location.position
 			get_parent().add_child(inst)
+			inst.global_position = $pumpkin_spawn_location.global_position
 
 			#if we had focus, remove it
 			get_parent().get_cam_ref().remove_node_target(self)

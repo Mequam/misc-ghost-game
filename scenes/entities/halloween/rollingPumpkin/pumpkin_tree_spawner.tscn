@@ -106,4 +106,4 @@ volume_db = 6.0
 bus = &"Sound Effects"
 
 [node name="pumpkin_spawn_location" type="Node2D" parent="."]
-position = Vector2(-6, -410)
+position = Vector2(13, -17)

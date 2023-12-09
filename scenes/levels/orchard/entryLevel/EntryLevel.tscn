@@ -185,7 +185,7 @@ position = Vector2(50.5, 2)
 shape = SubResource("RectangleShape2D_gp7qh")
 
 [node name="pumpkin_tree_spawner" parent="." instance=ExtResource("11_rb6g4")]
-position = Vector2(3419, 240)
+position = Vector2(3436, 233)
 
 [node name="CameraGrabZone2" parent="." node_paths=PackedStringArray("focus") instance=ExtResource("9_hkyub")]
 position = Vector2(940, -566)
