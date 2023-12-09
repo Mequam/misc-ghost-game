@@ -317,11 +317,14 @@ position = Vector2(0, 1)
 target_level = "res://scenes/levels/debug/leni_load_test.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_b"]
-position = Vector2(134, -955)
+position = Vector2(448, 441)
 shape = SubResource("RectangleShape2D_2bx8c")
 
 [node name="spawn_light" parent="." instance=ExtResource("5_sarvu")]
 position = Vector2(1418, 471)
+max_leni_life = null
+heart_text = null
+speed = null
 
 [node name="StaticBody2D" parent="." instance=ExtResource("13_aeggs")]
 position = Vector2(-387, 638)

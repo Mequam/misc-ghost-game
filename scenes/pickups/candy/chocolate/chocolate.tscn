@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr1c6twv8ln1k"]
+[gd_scene load_steps=8 format=3 uid="uid://dr1c6twv8ln1k"]
 
 [ext_resource type="Texture2D" uid="uid://d3qqb3b5pmjr8" path="res://assets/images/candy/chocolet.png" id="1_fpy2n"]
 [ext_resource type="Script" path="res://scenes/pickups/candy/chocolate/chocolate.gd" id="1_yxjt7"]
+[ext_resource type="Script" path="res://assets/scripts/gameObjects/LiveRemover.gd" id="3_rcdlg"]
 
 [sub_resource type="Animation" id="Animation_3dp3k"]
 length = 0.001
@@ -65,3 +66,6 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.5, 2)
 shape = SubResource("RectangleShape2D_dcuug")
+
+[node name="LiveRemover" type="Node" parent="."]
+script = ExtResource("3_rcdlg")

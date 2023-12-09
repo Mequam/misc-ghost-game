@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://kd3f4rg6axyb"]
+[gd_scene load_steps=8 format=3 uid="uid://kd3f4rg6axyb"]
 
 [ext_resource type="Script" path="res://scenes/pickups/candy/chocolate/chocolate.gd" id="1_mypox"]
 [ext_resource type="Texture2D" uid="uid://8linr0yqyyoj" path="res://assets/images/candy/watermellon_candy_corn.png" id="2_4s4p1"]
+[ext_resource type="Script" path="res://assets/scripts/gameObjects/LiveRemover.gd" id="3_jt3w0"]
 
 [sub_resource type="Animation" id="Animation_3dp3k"]
 length = 0.001
@@ -65,3 +66,6 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dcuug")
+
+[node name="LiveRemover" type="Node" parent="."]
+script = ExtResource("3_jt3w0")

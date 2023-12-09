@@ -12,4 +12,5 @@ func _ready():
 func on_body_entered(bod)->void:
 	if bod is Leni:
 		bod.health += self.heal_amount 
+		$LiveRemover.mark_removal()
 		queue_free()

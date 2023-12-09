@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyopds84d0uy4"]
+[gd_scene load_steps=15 format=3 uid="uid://cyopds84d0uy4"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_6imxg"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_fvbsk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="6_g1mlr"]
 [ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/ai/AIApplePicker.gd" id="7_3ysjk"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="7_yn8hi"]
+[ext_resource type="PackedScene" uid="uid://dr1c6twv8ln1k" path="res://scenes/pickups/candy/chocolate/chocolate.tscn" id="8_634sa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0pq"]
 texture = ExtResource("2_fvbsk")
@@ -335,6 +336,9 @@ shape = SubResource("RectangleShape2D_wksji")
 
 [node name="spawn_light" parent="." instance=ExtResource("7_yn8hi")]
 position = Vector2(1180, 386)
+max_leni_life = null
+heart_text = null
+speed = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1092, 585)
@@ -387,5 +391,8 @@ offset_bottom = 16.0
 [node name="applePicker" parent="." instance=ExtResource("6_g1mlr")]
 position = Vector2(-267, 524)
 entity_ai = SubResource("Resource_hauqw")
+
+[node name="Candy" parent="." instance=ExtResource("8_634sa")]
+position = Vector2(1119, 508)
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

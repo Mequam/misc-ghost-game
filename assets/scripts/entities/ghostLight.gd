@@ -12,5 +12,6 @@ func get_start_health(leni : Leni)->int:
 
 func posses_by(entity)->void:
 	GameLoader.save_game_from_lamp(self)
+	get_main().runtime_variables.clear()
 	super.posses_by(entity)
 

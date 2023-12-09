@@ -16,6 +16,11 @@ class_name MainScene
 #refernece to the container that the levels are run on
 @export var level_container : Node2D
 
+#runtime variables that are not saved
+#this is for things like enemies remembering their deaths, 
+#and powerups staying removed between scenes
+var runtime_variables : Dictionary
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#we need to load the last save if this is our first time loading the main scene

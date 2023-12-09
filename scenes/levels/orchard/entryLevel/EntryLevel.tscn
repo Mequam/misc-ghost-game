@@ -99,10 +99,15 @@ editor_draw_drag_margin = true
 [node name="firstLight" parent="." instance=ExtResource("6_5g2bp")]
 position = Vector2(956, -471)
 max_leni_life = false
+heart_text = null
 health = 4
+speed = null
 
 [node name="spawn_light" parent="." instance=ExtResource("6_5g2bp")]
 position = Vector2(3049, -426)
+max_leni_life = null
+heart_text = null
+speed = null
 
 [node name="load_zone_door_a" parent="." instance=ExtResource("9_5xj7r")]
 position = Vector2(128, -329)

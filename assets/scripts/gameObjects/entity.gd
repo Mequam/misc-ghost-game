@@ -31,6 +31,14 @@ func get_sprite2D()->AnimatedSprite2D:
 	if sprite != null: return sprite 
 	return $Sprite2D
 
+#traverse the tree to get to the main scene of the entire game
+func get_main()->MainScene:
+	var main = get_parent()
+	while not main is MainScene:
+		main = main.get_parent()
+	return main
+
+
 #returns a measure of how dangerous this entity is,
 #used for dynamic music and threat detection
 func get_danger_level()->int:
