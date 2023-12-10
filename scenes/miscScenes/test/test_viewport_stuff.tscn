@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg55limokhlh2"]
+
+[ext_resource type="Shader" uid="uid://7mk8np5ceib2" path="res://assets/shaders/slide_reveal.tres" id="1_0m1i5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jy2df"]
+shader = ExtResource("1_0m1i5")
+shader_parameter/rotation = 2.475
+shader_parameter/reveal_amount = -0.29
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_woads"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(615, 308)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+gui_snap_controls_to_pixels = false
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "
+
+
+                                                   [tornado freq=10] tornawow OWO[/tornado]"
+
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jy2df")
+texture = SubResource("ViewportTexture_woads")
+metadata/_edit_lock_ = true

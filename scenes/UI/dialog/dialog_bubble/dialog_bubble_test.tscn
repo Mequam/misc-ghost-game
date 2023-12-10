@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfafea4bmbxk2"]
+
+[ext_resource type="Script" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble_test.gd" id="1_3gyf5"]
+[ext_resource type="PackedScene" uid="uid://llvxc6qbd58b" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.tscn" id="1_rta0y"]
+[ext_resource type="Texture2D" uid="uid://bqv5lkjxcpg3" path="res://assets/ui/dialog_boxex/bubble0003.png" id="2_fbaim"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gyf5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dialogBubble" parent="." instance=ExtResource("1_rta0y")]
+visible = false
+layout_mode = 1
+offset_right = -566.0
+offset_bottom = -312.0
+
+[node name="container" parent="dialogBubble" index="0"]
+anchors_preset = 15
+
+[node name="RichTextLabel" parent="dialogBubble/container/VBoxContainer" index="0"]
+theme_override_font_sizes/normal_font_size = 30
+text = "
+
+
+[center][tornado]woooow, shouldn't have eaten that apple ~.~[/tornado][/center]
+
+
+
+"
+
+[node name="dialogBubble2" parent="dialogBubble" instance=ExtResource("1_rta0y")]
+visible = false
+layout_mode = 1
+offset_left = 502.0
+offset_top = 243.0
+offset_right = 502.0
+offset_bottom = 243.0
+
+[node name="container" parent="dialogBubble/dialogBubble2" index="0"]
+anchors_preset = 15
+
+[node name="TextureRect" parent="dialogBubble/dialogBubble2/container" index="0"]
+texture = ExtResource("2_fbaim")
+
+[node name="RichTextLabel" parent="dialogBubble/dialogBubble2/container/VBoxContainer" index="0"]
+text = "
+
+[center][shake]nope definitly not >.<[/shake][/center]
+
+
+"
+
+[editable path="dialogBubble"]
+[editable path="dialogBubble/dialogBubble2"]
