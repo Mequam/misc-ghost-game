@@ -45,7 +45,7 @@ func unpause()->void:
 	self.pause_menu.visible = false 
 	self.heart_tracker.visible = true 
 	#clear the players current inputs
-	get_level().player_entity.clear_stored_inputs()
+	get_level().player_entity.sync_stored_inputs()
 	get_tree().paused = false
 
 func get_level()->Level:
