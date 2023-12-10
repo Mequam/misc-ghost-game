@@ -109,11 +109,11 @@ max_leni_life = null
 heart_text = null
 speed = null
 
-[node name="load_zone_door_a" parent="." instance=ExtResource("9_5xj7r")]
+[node name="entery_level_exit_hard" parent="." instance=ExtResource("9_5xj7r")]
 position = Vector2(128, -329)
-target_level = "res://scenes/levels/debug/leni_load_test.tscn"
+target_level = "res://scenes/levels/orchard/pumpkin_trial/pumpkin_trial.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_a"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entery_level_exit_hard"]
 position = Vector2(-35.5, -266)
 shape = SubResource("RectangleShape2D_o10wt")
 
@@ -230,10 +230,10 @@ sprite_frames = SubResource("SpriteFrames_vxjsu")
 [node name="unposSpot" type="Node2D" parent="KinColObject"]
 position = Vector2(12, -3)
 
-[node name="tutorial door" parent="." instance=ExtResource("9_5xj7r")]
+[node name="entry_level_exit_easy" parent="." instance=ExtResource("9_5xj7r")]
 position = Vector2(116, 92)
-target_level = "res://scenes/levels/orchard/Tutorial/tutorial.tscn"
+target_level = "res://scenes/levels/orchard/pumpkin_trial/pumpkin_trial.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tutorial door"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entry_level_exit_easy"]
 position = Vector2(38.5, -73)
 shape = SubResource("RectangleShape2D_vpapu")
