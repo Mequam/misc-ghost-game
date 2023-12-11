@@ -95,12 +95,13 @@ var can_teleport : bool
 func can_jump()->bool:
 	return $jump_timer.time_left == 0 and self.can_teleport #we can jump if the timer is NOT running
 
+@export var teleport_distance : float = 1
 #performs the jump gaurenteed
 #no questions ask, teleport go brrrr
 #teleports leni if it is acceptable
 func jump()->void:
 	#we teleport VERY far after unpossesing
-	var computed_vel = (self.compute_velocity(self.velocity))
+	var computed_vel = (self.compute_velocity(self.velocity)).normalized() * teleport_distance
 	computed_vel *= (Vector2(100,40) if $unpos_buff_timer.time_left == 0 else Vector2(100,80))
 
 	

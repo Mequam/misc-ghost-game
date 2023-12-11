@@ -12,7 +12,7 @@
 size = Vector2(27.125, 29.625)
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(17, 72.5)
+size = Vector2(17, 93.25)
 
 [node name="Leni" type="CharacterBody2D" node_paths=PackedStringArray("invensible_timer")]
 position = Vector2(0, -1)
@@ -20,7 +20,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_v1hk0")
 invensible_timer = NodePath("invencible_timer")
-downwards_pull = 1.8
+downwards_pull = 2.0
 heart_text = Array[Texture2D]([ExtResource("2_wh2ov"), ExtResource("3_g304m"), ExtResource("4_4qf68")])
 max_health = 8
 health = 8
@@ -36,11 +36,11 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_lcfmd")
 
 [node name="flight_timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="posses_timer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.1
 one_shot = true
 
 [node name="GroundTester" type="Area2D" parent="."]
@@ -48,7 +48,7 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTester"]
-position = Vector2(-0.5, 55)
+position = Vector2(-0.5, 65.375)
 shape = SubResource("2")
 
 [node name="modulate_timer" type="Timer" parent="."]

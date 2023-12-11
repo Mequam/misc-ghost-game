@@ -227,7 +227,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"posses_launch",
-"speed": 12.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
