@@ -36,11 +36,11 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_lcfmd")
 
 [node name="flight_timer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.1
 one_shot = true
 
 [node name="posses_timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="GroundTester" type="Area2D" parent="."]

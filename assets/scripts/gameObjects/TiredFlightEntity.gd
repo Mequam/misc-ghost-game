@@ -14,7 +14,8 @@ var tired : bool = true :
 	set(mod_value):
 		tired = mod_value
 		update_animation()
-
+func get_running()->bool:
+	return super.get_running() and not self.tired
 func get_tired()->bool:
 	return tired
 

@@ -4,7 +4,11 @@ extends Npc
 
 class_name FlightEntity
 
-var running : bool = true
+var running : bool = true : set = set_running, get = get_running
+func set_running (x):
+	running = x
+func get_running()->bool:
+	return running
 
 @export var run_speed : Vector2 = Vector2(2,1.5)
 func on_action_double_press(act : String)->void:
@@ -21,7 +25,7 @@ func compute_velocity(vel : Vector2)->Vector2:
 	for key in pressed_inputs:
 		if pressed_inputs[key]:
 			vel += action2velocity(key)
-	if running:
+	if self.running:
 		vel.x *= run_speed.x
 	else:
 		vel.y *= run_speed.y
@@ -39,7 +43,7 @@ func update_animation()->void:
 			if vel == Vector2(0,0):
 				get_sprite2D().custom_play("idle")
 			elif abs(vel.y) < abs(vel.x)*2:
-				if running:
+				if self.running:
 					get_sprite2D().custom_play("zoom")
 				else:
 					get_sprite2D().custom_play("run")
