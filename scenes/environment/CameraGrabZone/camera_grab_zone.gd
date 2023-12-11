@@ -15,12 +15,10 @@ class_name CameraGrabZone
 func get_cam_ref()->Camera2D:
 	return get_parent().get_cam_ref()
 func on_body_entered(body : Node2D)->void:
-	print_debug("grabing focus!")
 	if body is Entity and body.possesed:
 		get_cam_ref().add_node_target(self.focus,self.focus_weight)
 
 func on_body_exited (body : Node2D)->void:
-	print_debug("grabing focus!")
 	if body is Entity and body.possesed:
 		get_cam_ref().remove_node_target(self.focus)
 

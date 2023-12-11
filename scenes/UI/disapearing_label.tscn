@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://u7srcg8y4yf8"]
+
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_rd28b"]
+
+[sub_resource type="Animation" id="Animation_s77jb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisapearingLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m2cph"]
+resource_name = "TutorialText"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisapearingLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t7cpn"]
+_data = {
+"RESET": SubResource("Animation_s77jb"),
+"TutorialText": SubResource("Animation_m2cph")
+}
+
+[node name="DisapearingLabel" type="Label"]
+use_parent_material = true
+offset_left = -110.0
+offset_top = -368.0
+offset_right = 449.0
+offset_bottom = -201.0
+scale = Vector2(1e-05, 1e-05)
+theme = ExtResource("1_rd28b")
+theme_override_font_sizes/font_size = 60
+text = "Press Any Direction
+To Unposses A Lamp"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_t7cpn")
+}
