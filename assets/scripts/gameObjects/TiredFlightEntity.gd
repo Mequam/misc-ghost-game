@@ -5,6 +5,8 @@ extends FlightEntity
 
 class_name TiredFlightEntity
 
+@export var downwards_pull : float
+
 #we can only fly for so long before we get tired
 var tired : bool = true :
 	get:
@@ -34,7 +36,7 @@ func compute_velocity(vel : Vector2)->Vector2:
 	match state:
 		EntityState.DEFAULT:
 			if tired:
-				vel.y += 1.2
+				vel.y += downwards_pull
 			return super.compute_velocity(vel)
 	return super.compute_velocity(vel)	
 

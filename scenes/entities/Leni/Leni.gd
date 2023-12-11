@@ -91,9 +91,9 @@ func main_ready():
 	possesed = true #make sure we start as possesed
 	$unpos_buff_timer.timeout.connect(self.on_unpos_buff_timer_stop)
 
-
+var can_teleport : bool
 func can_jump()->bool:
-	return $jump_timer.time_left == 0 #we can jump if the timer is NOT running
+	return $jump_timer.time_left == 0 and self.can_teleport #we can jump if the timer is NOT running
 
 #performs the jump gaurenteed
 #no questions ask, teleport go brrrr
@@ -108,6 +108,7 @@ func jump()->void:
 	self.collision_mask = ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
 	self.singal_move_and_collide(computed_vel)
 	self.collision_mask = self.gen_col_mask()
+	self.can_teleport = false
 	$TeleportSound.play()
 	
 	#self.global_position = result.
@@ -241,6 +242,7 @@ func compute_action(event : InputEvent)->void:
 func main_process(delta):
 	#Leni does NOTHING if he is not possesed
 	if possesed:
+		self.can_teleport = self.can_teleport or self.onground
 		super.main_process(delta)
 	#if possesed_entity:
 	#	$mainCam.global_position = possesed_entity.global_position

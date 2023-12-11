@@ -157,7 +157,7 @@ default_input_values = [0, 0.25, 1, 4.0]
 
 [resource]
 code = "shader_type canvas_item;
-render_mode blend_mix;
+render_mode blend_mul;
 
 uniform sampler2D ScreenTexture : hint_screen_texture;
 
@@ -367,8 +367,8 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(1446.37, 260.224)
 mode = 1
+modes/blend = 3
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2940, 300)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorFunc_ddhk7")

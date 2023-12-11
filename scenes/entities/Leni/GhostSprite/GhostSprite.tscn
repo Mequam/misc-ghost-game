@@ -225,9 +225,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("30_agtnp")
 }],
-"loop": true,
+"loop": false,
 "name": &"posses_launch",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -277,7 +277,8 @@ animations = [{
 
 [node name="ghostSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("1")
-animation = &"damage"
+animation = &"posses_launch"
+frame = 4
 frame_progress = 1.0
 speed_scale = 1.5
 script = ExtResource("12")
