@@ -674,6 +674,7 @@ anchor_right = 0.5
 anchor_bottom = 0.122
 
 [node name="ColorRect" parent="UILayer" instance=ExtResource("10_p30ux")]
+z_index = 600
 material = SubResource("ShaderMaterial_l1mui")
 offset_left = 1.0
 offset_right = 1.0
