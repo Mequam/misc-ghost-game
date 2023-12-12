@@ -28,6 +28,10 @@ func get_cam_ref()->Camera2D:
 @export 
 var allow_escape : bool = false
 
+@export var color_rotation : Color = Color.WHITE
+@export var red_map : Color = Color.RED
+@export var ygreen_map : Color = Color.GREEN
+
 var cam_limit_left = -908
 func set_cam_limit()->void:
 	cam_ref.limit_left = -908
@@ -48,6 +52,13 @@ func _ready():
 	ai_timer.wait_time = ai_timeout 
 	ai_timer.connect("timeout",Callable(self,"on_ai_timeout"))
 	ai_timer.start()
+
+	#sync up the color of the main display to this levels mapping colors
+	var color_mat = get_main().color_container.material
+	color_mat.set_shader_parameter("ColorRotation",self.color_rotation)
+	color_mat.set_shader_parameter("red_map",self.red_map)
+	color_mat.set_shader_parameter("yg_map",self.ygreen_map)
+		
 
 	cam_ref.limit_left = cam_limit_left
 

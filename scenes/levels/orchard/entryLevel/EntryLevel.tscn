@@ -59,6 +59,8 @@ script = ExtResource("1_skwwk")
 ai_timeout = 0.25
 load_path = "res://scenes/levels/orchard/entryLevel/EntryLevel.tscn"
 cam_ref = NodePath("mainCam")
+red_map = Color(1, 0.283333, 0, 1)
+ygreen_map = Color(0, 1, 0.416667, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 self_modulate = Color(0, 0.42, 0.42, 1)

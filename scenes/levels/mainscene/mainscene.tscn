@@ -489,13 +489,14 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(4483.38, -362.733)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2960, 20)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_jleen")
 nodes/fragment/3/position = Vector2(300, -60)
 nodes/fragment/4/node = SubResource("VisualShaderNodeInput_ea558")
-nodes/fragment/4/position = Vector2(-40, 20)
+nodes/fragment/4/position = Vector2(0, -160)
 nodes/fragment/5/node = SubResource("VisualShaderNodeTransformCompose_ujj0w")
 nodes/fragment/5/position = Vector2(1220, 340)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorCompose_b5ufy")
@@ -609,7 +610,7 @@ shader_parameter/yg_map = Color(1, 0.517647, 0, 1)
 shader_parameter/IC1 = Color(1, 0, 0, 1)
 shader_parameter/IC2 = Color(0.501961, 1, 0, 1)
 
-[node name="Main" type="Control" node_paths=PackedStringArray("heart_tracker", "music_system", "pause_menu", "level_container")]
+[node name="Main" type="Control" node_paths=PackedStringArray("heart_tracker", "music_system", "pause_menu", "level_container", "color_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -625,6 +626,7 @@ heart_tracker = NodePath("UILayer/hud/HeartTracker")
 music_system = NodePath("SoundSystem/Music")
 pause_menu = NodePath("UILayer/PauseMenu")
 level_container = NodePath("LevelContainer")
+color_container = NodePath("UILayer/ColorRect")
 
 [node name="background" type="ColorRect" parent="."]
 z_index = -4096
