@@ -55,6 +55,9 @@ enum RotatingPumkinState {
 }
 
 
+func get_entity_type()->String:
+	return "RotatingPumpkin"  
+
 func get_size_scale(size : Size)->Vector2:
 	return self.size_scales[size]
 

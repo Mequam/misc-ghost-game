@@ -11,6 +11,8 @@ class_name Witch
 
 var ai_ticks : int = 0
 
+func get_entity_type()->String:
+	return "Witch"
 func perform_action(act : String,pressed : bool,double_press : bool = false,echo : bool = false)->void:
 	super.perform_action(act,
 		pressed,

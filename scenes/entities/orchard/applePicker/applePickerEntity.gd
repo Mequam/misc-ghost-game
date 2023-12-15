@@ -1,6 +1,9 @@
 extends TiredFlightEntity
 
+#this class represents an entity that picks apples and shoots them
+
 class_name ApplePicker 
+
 @export var apple_detector : Area2D
 #represents how many apples we currently have
 @export var max_apple_count : int = 3
@@ -28,6 +31,8 @@ enum ApplePickerState {
 	PICKING
 }
 
+func get_entity_type()->String:
+	return "ApplePicker"
 func gen_col_mask()->int:
 	return ColMath.Layer.PLAYER | ColMath.Layer.TERRAIN | ColMath.ConstLayer.TILE_BORDER 
 func gen_col_layer()->int:

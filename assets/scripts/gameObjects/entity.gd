@@ -15,6 +15,8 @@ class_name Entity
 #null indicates no action
 @export var entity_ai : EntityAI
 
+func get_entity_type()->String:
+	return "Entity"
 
 #we can store values in this array to indicate what images the game
 #should use for hearts of this entity when loading hp from an entity,

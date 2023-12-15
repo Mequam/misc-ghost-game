@@ -5,6 +5,9 @@ extends TiredFlightEntity
 
 class_name Leni
 
+func get_entity_type()->String:
+	return "Leni"
+
 #the hp that the player starts with, saved for when we die
 #hp we spawn with
 @export var start_hp : int = 5

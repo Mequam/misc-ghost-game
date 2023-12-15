@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxxagsads1p0r"]
+[gd_scene load_steps=14 format=3 uid="uid://bxxagsads1p0r"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ivt8b"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_g3kmq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="5_sarvu"]
 [ext_resource type="PackedScene" uid="uid://cnoukjnux3vku" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn" id="7_7jn7o"]
 [ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/AI/AIRollingPumpkin.gd" id="8_r0c4b"]
+[ext_resource type="PackedScene" uid="uid://c8flqa3dxkhof" path="res://scenes/environment/InteractionZone/interaction_zone.tscn" id="9_al4oe"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="13_aeggs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0pq"]
@@ -322,9 +323,6 @@ shape = SubResource("RectangleShape2D_2bx8c")
 
 [node name="spawn_light" parent="." instance=ExtResource("5_sarvu")]
 position = Vector2(1418, 471)
-max_leni_life = null
-heart_text = null
-speed = null
 
 [node name="StaticBody2D" parent="." instance=ExtResource("13_aeggs")]
 position = Vector2(-387, 638)
@@ -332,3 +330,13 @@ position = Vector2(-387, 638)
 [node name="rollingPumpkinEntity" parent="." instance=ExtResource("7_7jn7o")]
 position = Vector2(732, 106)
 entity_ai = SubResource("Resource_njl6m")
+
+[node name="Interaction Zone" parent="." instance=ExtResource("9_al4oe")]
+position = Vector2(834, 573)
+entity_filter = "RotatingPumpkin"
+
+[node name="CollisionShape2D" parent="Interaction Zone" index="0"]
+position = Vector2(0, 18.6562)
+
+[editable path="Interaction Zone"]
+[editable path="Interaction Zone/Interaction Text/Control/DisapearingLabel"]
