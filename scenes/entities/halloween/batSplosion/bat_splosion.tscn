@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://coel2q7oiemnj"]
+
+[ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/bat_splosion.gd" id="1_6n2qj"]
+[ext_resource type="PackedScene" uid="uid://dppqq653q0gqy" path="res://scenes/entities/halloween/batSplosion/bat_splosion_sprite.tscn" id="1_gkmrn"]
+[ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="3_635rr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6uog"]
+radius = 63.0
+height = 158.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uptx0"]
+resource_local_to_scene = true
+size = Vector2(121, 199.5)
+
+[node name="batSplosion" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_6n2qj")
+run_speed = Vector2(5, 1.5)
+sprite = NodePath("BatSplosionSprite/Sprite Skeleton/AnimatedSprite2D")
+speed = Vector2(100, 60)
+
+[node name="BatSplosionSprite" parent="." instance=ExtResource("1_gkmrn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_v6uog")
+
+[node name="flight_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="GroundTester" parent="." instance=ExtResource("3_635rr")]
+
+[node name="CollisionShape2D" parent="GroundTester" index="0"]
+position = Vector2(-4, 219.75)
+shape = SubResource("RectangleShape2D_uptx0")
+
+[editable path="BatSplosionSprite"]
+[editable path="GroundTester"]

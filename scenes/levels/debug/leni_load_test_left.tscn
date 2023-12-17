@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxxagsads1p0r"]
+[gd_scene load_steps=15 format=3 uid="uid://bxxagsads1p0r"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ivt8b"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_g3kmq"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cnoukjnux3vku" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn" id="7_7jn7o"]
 [ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/AI/AIRollingPumpkin.gd" id="8_r0c4b"]
 [ext_resource type="PackedScene" uid="uid://c8flqa3dxkhof" path="res://scenes/environment/InteractionZone/interaction_zone.tscn" id="9_al4oe"]
+[ext_resource type="PackedScene" uid="uid://coel2q7oiemnj" path="res://scenes/entities/halloween/batSplosion/bat_splosion.tscn" id="10_l5a6i"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="13_aeggs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0pq"]
@@ -314,11 +315,11 @@ layer_0/tile_data = PackedInt32Array(393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 3
 [node name="mainCam" parent="." instance=ExtResource("3_0iecr")]
 
 [node name="load_zone_door_b" parent="." instance=ExtResource("4_diuxi")]
-position = Vector2(0, 1)
+position = Vector2(-638, 576)
 target_level = "res://scenes/levels/debug/leni_load_test.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="load_zone_door_b"]
-position = Vector2(448, 441)
+position = Vector2(53, -17)
 shape = SubResource("RectangleShape2D_2bx8c")
 
 [node name="spawn_light" parent="." instance=ExtResource("5_sarvu")]
@@ -337,6 +338,11 @@ entity_filter = "RotatingPumpkin"
 
 [node name="CollisionShape2D" parent="Interaction Zone" index="0"]
 position = Vector2(0, 18.6562)
+
+[node name="batSplosion" parent="." instance=ExtResource("10_l5a6i")]
+position = Vector2(1196, 515)
+run_speed = Vector2(2, 1.5)
+speed = Vector2(50, 50)
 
 [editable path="Interaction Zone"]
 [editable path="Interaction Zone/Interaction Text/Control/DisapearingLabel"]
