@@ -13,14 +13,22 @@ resource_local_to_scene = true
 size = Vector2(121, 199.5)
 
 [node name="batSplosion" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
-position = Vector2(0, -1)
+position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_6n2qj")
 run_speed = Vector2(5, 1.5)
 sprite = NodePath("BatSplosionSprite/Sprite Skeleton/AnimatedSprite2D")
-speed = Vector2(100, 60)
+unposses_radius = null
+heart_text = null
+max_health = null
+health = null
+speed = Vector2(300, 300)
 
 [node name="BatSplosionSprite" parent="." instance=ExtResource("1_gkmrn")]
+
+[node name="AnimatedSprite2D" parent="BatSplosionSprite/Sprite Skeleton" index="0"]
+position = Vector2(0, -3)
+animation = &"expload"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -34,6 +42,9 @@ wait_time = 0.2
 [node name="CollisionShape2D" parent="GroundTester" index="0"]
 position = Vector2(-4, 219.75)
 shape = SubResource("RectangleShape2D_uptx0")
+
+[node name="unposSpot" type="Node2D" parent="."]
+position = Vector2(0, -150)
 
 [editable path="BatSplosionSprite"]
 [editable path="GroundTester"]

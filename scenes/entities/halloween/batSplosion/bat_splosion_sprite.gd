@@ -1,29 +1,49 @@
 extends AnimatedSprite2D
 
 
-#store wether or not we need to transition
-#into an exploasion
-var set_expload : bool = false
 
 #this is for things like shaking and positional movement
 #that we want to interpolate
 @export var animation_player : AnimationPlayer
 
+func get_entity_parent()->Entity:
+	var p = get_parent()
+	while not p is Entity:
+		p = p.get_parent()
+	return p
+
+#returns true if the parent wishes to expload currently
+func check_parent_expload()->bool:
+	return get_entity_parent().pressed_inputs["ATTACK"]
+
+var exploading : bool
 func custom_play(anim : String)->void:
-	match anim:
-		"expload":
-			animation_player.play("expload")
-			self.set_expload = true
-		"idle":
-			self.play(anim)
+	if animation == "no_return": return
+
+	exploading = anim == "expload"
+	if animation == "expload":
+		var current_frame = self.frame
+		match anim:
+			"unexpload":
+				self.play_backwards("expload")
+				self.frame = current_frame
+			"expload":
+				animation_player.play("expload2")
+				self.play("expload")
+				self.frame = current_frame
+	else:
+		self.play(anim)
 
 func _ready()->void:
+	self.animation_finished.connect(self.on_anim_finished)
 	self.animation_looped.connect(self.on_anim_looped)
-
 func on_anim_looped()->void:
-	print_debug("looped animation!")
-	match self.animation:
-		"idle":
-			if self.set_expload:
-				self.play("expload")
+	pass 
 
+#make sure that we play the correct animation after exploading
+func on_anim_finished()->void:
+	if not self.check_parent_expload() and self.animation == "expload":
+		animation_player.stop()
+		self.play("idle")
+	else:
+		self.play("no_return")

@@ -23,7 +23,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_3l7mt"]
 animations = [{
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": ExtResource("5_twu78")
 }, {
 "duration": 2.0,
@@ -34,20 +34,8 @@ animations = [{
 }, {
 "duration": 2.0,
 "texture": ExtResource("8_51gfy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_1cr14")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_8eorg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_anbwn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_5dbnv")
 }],
-"loop": true,
+"loop": false,
 "name": &"expload",
 "speed": 12.0
 }, {
@@ -93,7 +81,39 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("9_1cr14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8eorg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_anbwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5dbnv")
+}],
+"loop": false,
+"name": &"no_return",
+"speed": 13.0
 }]
+
+[sub_resource type="Animation" id="Animation_vula8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite Skeleton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_0ua85"]
 resource_name = "expload"
@@ -110,21 +130,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-10, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_vula8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite Skeleton:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0p68s"]
@@ -156,11 +161,9 @@ _data = {
 [node name="Sprite Skeleton" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite Skeleton" node_paths=PackedStringArray("animation_player")]
-position = Vector2(0, -1)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_3l7mt")
-animation = &"idle"
-frame_progress = 0.143441
+animation = &"no_return"
 script = ExtResource("1_7gb7g")
 animation_player = NodePath("../../AnimationPlayer")
 

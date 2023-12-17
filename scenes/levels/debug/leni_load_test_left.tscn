@@ -341,8 +341,10 @@ position = Vector2(0, 18.6562)
 
 [node name="batSplosion" parent="." instance=ExtResource("10_l5a6i")]
 position = Vector2(1196, 515)
-run_speed = Vector2(2, 1.5)
-speed = Vector2(50, 50)
+unposses_radius = null
+heart_text = null
+max_health = null
+health = null
 
 [editable path="Interaction Zone"]
 [editable path="Interaction Zone/Interaction Text/Control/DisapearingLabel"]
