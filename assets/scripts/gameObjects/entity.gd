@@ -304,7 +304,6 @@ func on_posses(posesee):
 	pass
 #something wants to posses us
 func posses_by(entity)->void:
-
 	#clear out the existing possesed entity
 	if self.possesed:
 		exorcize()

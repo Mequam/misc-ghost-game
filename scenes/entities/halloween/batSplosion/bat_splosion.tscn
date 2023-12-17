@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://coel2q7oiemnj"]
+[gd_scene load_steps=8 format=3 uid="uid://coel2q7oiemnj"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/bat_splosion.gd" id="1_6n2qj"]
 [ext_resource type="PackedScene" uid="uid://dppqq653q0gqy" path="res://scenes/entities/halloween/batSplosion/bat_splosion_sprite.tscn" id="1_gkmrn"]
@@ -12,39 +12,71 @@ height = 158.0
 resource_local_to_scene = true
 size = Vector2(121, 199.5)
 
-[node name="batSplosion" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5alw"]
+radius = 290.489
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyrho"]
+radius = 62.0
+height = 268.0
+
+[node name="batSplosion" type="CharacterBody2D" node_paths=PackedStringArray("hang_feet", "damage_zone", "sprite")]
 position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_6n2qj")
+hang_distance = 500.0
+hang_feet = NodePath("hang_feet")
+damage_zone = NodePath("damage_zone")
 run_speed = Vector2(5, 1.5)
 sprite = NodePath("BatSplosionSprite/Sprite Skeleton/AnimatedSprite2D")
-unposses_radius = null
-heart_text = null
-max_health = null
-health = null
+max_health = 2
+health = 2
 speed = Vector2(300, 300)
 
 [node name="BatSplosionSprite" parent="." instance=ExtResource("1_gkmrn")]
+position = Vector2(2, -70)
 
 [node name="AnimatedSprite2D" parent="BatSplosionSprite/Sprite Skeleton" index="0"]
 position = Vector2(0, -3)
-animation = &"expload"
+animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+[node name="collision_shape_small" type="CollisionShape2D" parent="."]
+position = Vector2(2, -86)
 shape = SubResource("CapsuleShape2D_v6uog")
 
 [node name="flight_timer" type="Timer" parent="."]
 wait_time = 0.2
 
 [node name="GroundTester" parent="." instance=ExtResource("3_635rr")]
+position = Vector2(12, -126)
 
 [node name="CollisionShape2D" parent="GroundTester" index="0"]
 position = Vector2(-4, 219.75)
 shape = SubResource("RectangleShape2D_uptx0")
 
+[node name="unpos_normal" type="Node2D" parent="."]
+position = Vector2(2, -220)
+
+[node name="damage_zone" type="Area2D" parent="."]
+position = Vector2(2, -70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
+position = Vector2(4, 2)
+shape = SubResource("CircleShape2D_l5alw")
+debug_color = Color(0.701961, 0, 0, 0.419608)
+
+[node name="hang_feet" type="Node2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="collision_shape_big" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -144)
+shape = SubResource("CapsuleShape2D_iyrho")
+disabled = true
+
+[node name="unpos_hanging" type="Node2D" parent="."]
+position = Vector2(2, 2)
+
 [node name="unposSpot" type="Node2D" parent="."]
-position = Vector2(0, -150)
+position = Vector2(-6, -142)
 
 [editable path="BatSplosionSprite"]
 [editable path="GroundTester"]

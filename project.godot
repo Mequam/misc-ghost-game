@@ -24,7 +24,7 @@ GameLoader="*res://scenes/singletons/GameLoader.tscn"
 [file_customization]
 
 folder_colors={
-"res://assets/": "orange",
+"res://assets/": "purple",
 "res://project_files/": "pink",
 "res://scenes/": "red",
 "res://scenes/UI/": "green",
@@ -32,7 +32,7 @@ folder_colors={
 "res://scenes/entities/": "orange",
 "res://scenes/environment/": "yellow",
 "res://scenes/levels/": "gray",
-"res://scenes/pickups/": "purple",
+"res://scenes/pickups/": "pink",
 "res://scenes/singletons/": "teal"
 }
 

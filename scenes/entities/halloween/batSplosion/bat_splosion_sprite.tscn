@@ -63,7 +63,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
-"speed": 10.0
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_h88ug")
+}],
+"loop": true,
+"name": &"hang",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -163,7 +171,9 @@ _data = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite Skeleton" node_paths=PackedStringArray("animation_player")]
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_3l7mt")
-animation = &"no_return"
+animation = &"fall"
+frame = 6
+frame_progress = 1.0
 script = ExtResource("1_7gb7g")
 animation_player = NodePath("../../AnimationPlayer")
 
