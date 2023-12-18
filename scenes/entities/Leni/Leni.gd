@@ -14,6 +14,10 @@ func get_entity_type()->String:
 
 @export var invensible_timer : Timer
 
+@export var teleport_speed_ratio : float = 100
+@export var teleport_direction_speed : Vector2 = Vector2(100,40)
+@export var teleport_direction_speed_buffed : Vector2 = Vector2(200,80)
+
 #resets the player health for the level
 #as well as doing any other action that needs to be done
 #checked health reset
@@ -103,8 +107,10 @@ func can_jump()->bool:
 #teleports leni if it is acceptable
 func jump()->void:
 	#we teleport VERY far after unpossesing
-	var computed_vel = (self.compute_velocity(self.velocity))
-	computed_vel *= (Vector2(100,40) if $unpos_buff_timer.time_left == 0 else Vector2(100,80))
+	var computed_vel = (self.compute_velocity(self.velocity)).normalized()*self.teleport_speed_ratio
+	
+	computed_vel *= (self.teleport_direction_speed if $unpos_buff_timer.time_left == 0 \
+								else self.teleport_direction_speed_buffed)
 
 	
 	#breifly change our collision mask for the teleport

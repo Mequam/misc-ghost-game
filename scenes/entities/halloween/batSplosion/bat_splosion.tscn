@@ -10,7 +10,7 @@ height = 158.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uptx0"]
 resource_local_to_scene = true
-size = Vector2(121, 199.5)
+size = Vector2(36, 199.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5alw"]
 radius = 290.489
@@ -23,7 +23,7 @@ height = 268.0
 position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_6n2qj")
-hang_distance = 500.0
+hang_distance = 250.0
 hang_feet = NodePath("hang_feet")
 damage_zone = NodePath("damage_zone")
 run_speed = Vector2(5, 1.5)
@@ -38,6 +38,8 @@ position = Vector2(2, -70)
 [node name="AnimatedSprite2D" parent="BatSplosionSprite/Sprite Skeleton" index="0"]
 position = Vector2(0, -3)
 animation = &"idle"
+frame = 0
+frame_progress = 0.0
 
 [node name="collision_shape_small" type="CollisionShape2D" parent="."]
 position = Vector2(2, -86)
@@ -47,10 +49,10 @@ shape = SubResource("CapsuleShape2D_v6uog")
 wait_time = 0.2
 
 [node name="GroundTester" parent="." instance=ExtResource("3_635rr")]
-position = Vector2(12, -126)
+position = Vector2(28, -128)
 
 [node name="CollisionShape2D" parent="GroundTester" index="0"]
-position = Vector2(-4, 219.75)
+position = Vector2(-28, 219.75)
 shape = SubResource("RectangleShape2D_uptx0")
 
 [node name="unpos_normal" type="Node2D" parent="."]
@@ -60,7 +62,7 @@ position = Vector2(2, -220)
 position = Vector2(2, -70)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
-position = Vector2(4, 2)
+position = Vector2(18, -2)
 shape = SubResource("CircleShape2D_l5alw")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 

@@ -42,6 +42,7 @@ func hang()->void:
 		$collision_shape_big.disabled = false
 		self.sync_uposess_spot()
 func unhang()->void:
+	#self.tired = false
 	self.state = EntityState.DEFAULT
 	self.get_sprite2D().custom_play("fall")
 	$collision_shape_small.disabled = false
