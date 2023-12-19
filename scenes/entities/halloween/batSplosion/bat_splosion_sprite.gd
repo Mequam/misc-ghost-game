@@ -19,7 +19,7 @@ func check_parent_expload()->bool:
 var exploading : bool
 func custom_play(anim : String)->void:
 	if animation == "no_return": return
-	if animation == "fall": return
+	if animation == "fall" and get_entity_parent().state == BatSplosion.BatSplosionState.HANGING: return
 	if anim == "hang":
 		self.play_backwards("fall")
 		return
@@ -43,9 +43,13 @@ func custom_play(anim : String)->void:
 func _ready()->void:
 	self.animation_finished.connect(self.on_anim_finished)
 	self.animation_looped.connect(self.on_anim_looped)
+	self.animation_player.animation_finished.connect(self.on_player_finished)
 func on_anim_looped()->void:
 	pass 
-
+func on_player_finished(anim : StringName)->void:
+	match anim:
+		"bigsplosion":
+			self.get_entity_parent().die()
 #make sure that we play the correct animation after exploading
 func on_anim_finished()->void:
 	if not self.check_parent_expload() and self.animation == "expload":
@@ -58,3 +62,5 @@ func on_anim_finished()->void:
 			self.play("idle")
 		else:
 			self.play("hang")
+	elif self.animation == "no_return":
+		self.animation_player.play("bigsplosion")

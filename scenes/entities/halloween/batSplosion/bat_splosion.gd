@@ -24,6 +24,7 @@ enum BatSplosionState {
 
 #attempts to hang us on an above surface
 func hang()->void:
+	if $hang_cooldown.time_left > 0: return
 	#perform a raycast to determine if we can hang
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(self.global_position,\
@@ -42,12 +43,14 @@ func hang()->void:
 		$collision_shape_big.disabled = false
 		self.sync_uposess_spot()
 func unhang()->void:
-	#self.tired = false
+	#energize so we can fly again
+	self.un_tired()
 	self.state = EntityState.DEFAULT
 	self.get_sprite2D().custom_play("fall")
 	$collision_shape_small.disabled = false
 	$collision_shape_big.disabled = true
 	self.sync_uposess_spot()
+	$hang_cooldown.start()
 func sync_uposess_spot()->void:
 	if self.state == BatSplosionState.HANGING:
 		$unposSpot.global_position = $unpos_hanging.global_position
@@ -97,10 +100,14 @@ func get_exploasion_speed_modifier()->float:
 		return 5*get_sprite2D().frame+1
 	return 1
 
+func get_hang_speed_modifier()->Vector2:
+	if $hang_cooldown.time_left > 0:
+		return Vector2(1.5,2.5)
+	return Vector2(1,1)
 func compute_velocity(vel : Vector2)->Vector2:
 	if self.get_sprite2D().animation == "no_return" or self.state == BatSplosionState.HANGING:
 		return Vector2(0,0)
-	return super.compute_velocity(vel)/self.get_exploasion_speed_modifier()
+	return super.compute_velocity(vel)/self.get_exploasion_speed_modifier()*self.get_hang_speed_modifier()
 
 func sync_damage_collision_mask()->void:
 	self.damage_zone.collision_mask = ColMath.strip_stationary_bits(self.collision_mask)
@@ -126,5 +133,4 @@ func on_anim_finished():
 				for body in self.damage_zone.get_overlapping_bodies():
 					if body is Entity:
 						body.take_damage(self.explosion_damage,self)
-				self.die()
 			self.dying = true
