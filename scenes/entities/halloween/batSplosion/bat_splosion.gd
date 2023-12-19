@@ -111,6 +111,8 @@ func main_ready()->void:
 	self.sync_damage_collision_mask()
 	self.get_sprite2D().play("idle")
 	self.get_sprite2D().animation_finished.connect(on_anim_finished)
+	self.update_animation()
+	self.state = EntityState.DEFAULT
 func update_animation()->void:
 	if self.state == BatSplosionState.HANGING: return 
 	super.update_animation()
