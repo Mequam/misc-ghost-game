@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxxagsads1p0r"]
+[gd_scene load_steps=17 format=3 uid="uid://bxxagsads1p0r"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ivt8b"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_g3kmq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/AI/AIRollingPumpkin.gd" id="8_r0c4b"]
 [ext_resource type="PackedScene" uid="uid://c8flqa3dxkhof" path="res://scenes/environment/InteractionZone/interaction_zone.tscn" id="9_al4oe"]
 [ext_resource type="PackedScene" uid="uid://coel2q7oiemnj" path="res://scenes/entities/halloween/batSplosion/bat_splosion.tscn" id="10_l5a6i"]
+[ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/ai/AI_bat_splosion.gd" id="11_fmx7s"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="13_aeggs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0pq"]
@@ -289,6 +290,11 @@ aggro_range = 800.0
 aggro_height = 100.0
 danger_level = 1
 
+[sub_resource type="Resource" id="Resource_2h1b2"]
+script = ExtResource("11_fmx7s")
+start_hung = true
+danger_level = null
+
 [node name="load_testleft" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 script = ExtResource("1_ivt8b")
 ai_timeout = 0.25
@@ -340,7 +346,8 @@ entity_filter = "RotatingPumpkin"
 position = Vector2(0, 18.6562)
 
 [node name="batSplosion" parent="." instance=ExtResource("10_l5a6i")]
-position = Vector2(1196, 515)
+position = Vector2(1062, 501)
+entity_ai = SubResource("Resource_2h1b2")
 
 [editable path="Interaction Zone"]
 [editable path="Interaction Zone/Interaction Text/Control/DisapearingLabel"]
