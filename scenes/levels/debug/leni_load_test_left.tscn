@@ -293,7 +293,12 @@ danger_level = 1
 [sub_resource type="Resource" id="Resource_2h1b2"]
 script = ExtResource("11_fmx7s")
 start_hung = true
-danger_level = null
+aggro_distance = 300.0
+speed_limit = 1.5
+will_aggro_distance = 100.0
+explosion_distance = 100.0
+de_aggro_distance = 400.0
+danger_level = 1
 
 [node name="load_testleft" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 script = ExtResource("1_ivt8b")
@@ -346,7 +351,8 @@ entity_filter = "RotatingPumpkin"
 position = Vector2(0, 18.6562)
 
 [node name="batSplosion" parent="." instance=ExtResource("10_l5a6i")]
-position = Vector2(1062, 501)
+position = Vector2(757, 364)
+run_speed = Vector2(2, 1.5)
 entity_ai = SubResource("Resource_2h1b2")
 
 [editable path="Interaction Zone"]
