@@ -1,10 +1,13 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bdxsba1gjh45"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://bdxsba1gjh45"]
 
 [ext_resource type="Texture2D" uid="uid://d1w1dq5wjiqhl" path="res://ghost_small_icon.png" id="1_j3liw"]
 [ext_resource type="Texture2D" uid="uid://bd65slqfw16gu" path="res://assets/ui/check box/checkbox0001.png" id="1_v13j3"]
 [ext_resource type="FontVariation" uid="uid://bplh0qhuaiirg" path="res://assets/ui/fonts/yakin/yakin_font_variation.tres" id="1_ycvbc"]
 [ext_resource type="Texture2D" uid="uid://dmixnkfx46t48" path="res://assets/ui/Slider Lenis/0001.png" id="2_c3jsl"]
 [ext_resource type="Texture2D" uid="uid://cctwoj7kq6pp7" path="res://assets/ui/check box/checkbox0002.png" id="2_tdusu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0wv7"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bylj6"]
 bg_color = Color(0.32, 1, 1, 1)
@@ -96,12 +99,18 @@ border_color = Color(0, 0.0901961, 0.0901961, 1)
 default_font = ExtResource("1_ycvbc")
 default_font_size = 21
 Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_d0wv7")
 Button/styles/normal = SubResource("StyleBoxFlat_bylj6")
 ButtonLabel/base_type = &"Label"
 ButtonLabel/colors/font_color = Color(0, 0, 0, 1)
 ButtonLabel/colors/font_outline_color = Color(1, 1, 1, 1)
 CheckBox/icons/checked = ExtResource("1_v13j3")
 CheckBox/icons/unchecked = ExtResource("2_tdusu")
+ColorPicker/constants/center_slider_grabbers = 1
+ColorPicker/constants/h_width = 30
+ColorPickerButton/colors/font_color = Color(0, 0, 0, 1)
+ColorPickerButton/colors/font_disabled_color = Color(1, 1, 1, 1)
+ColorPickerButton/constants/h_separation = 15
 HScrollBar/styles/grabber = SubResource("StyleBoxFlat_tyymu")
 HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_i4sem")
 HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_21hpu")

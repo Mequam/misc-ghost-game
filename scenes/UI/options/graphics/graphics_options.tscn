@@ -54,7 +54,13 @@ can_add_swatches = false
 
 [node name="ColorPicker3" type="ColorPicker" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("1_mrnd4")
 edit_alpha = false
 color_mode = 1
-picker_shape = 1
+picker_shape = 2
 can_add_swatches = false
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_mrnd4")

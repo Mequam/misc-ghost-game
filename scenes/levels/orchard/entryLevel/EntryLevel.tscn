@@ -45,7 +45,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpapu"]
-size = Vector2(107, 514)
+size = Vector2(285, 514)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbvrt"]
 size = Vector2(223, 208.5)
@@ -257,7 +257,7 @@ position = Vector2(116, 92)
 target_level = "res://scenes/levels/orchard/pumpkin_trial/pumpkin_trial.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="entry_level_exit_easy"]
-position = Vector2(38.5, -73)
+position = Vector2(71, -84)
 shape = SubResource("RectangleShape2D_vpapu")
 
 [node name="run explanation" parent="." instance=ExtResource("17_ck3cw")]

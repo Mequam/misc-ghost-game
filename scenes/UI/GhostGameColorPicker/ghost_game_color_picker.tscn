@@ -1,0 +1,135 @@
+[gd_scene load_steps=16 format=3 uid="uid://dj7uauo2kb5y0"]
+
+[ext_resource type="PackedScene" uid="uid://bd0djxkt7ig64" path="res://scenes/UI/GhostGameColorPicker/ColorSlider/gradient_slider.tscn" id="1_blb51"]
+[ext_resource type="Texture2D" uid="uid://f8poanloa35e" path="res://assets/ui/slider_marker/color_slider.png" id="1_od3mh"]
+[ext_resource type="Script" path="res://scenes/UI/GhostGameColorPicker/ggColorSlider.gd" id="2_3jl1h"]
+[ext_resource type="Shader" uid="uid://c31f6hemn6n8c" path="res://scenes/UI/GhostGameColorPicker/ColorSlider/ghost_game_color_picker.tres" id="2_dtmbj"]
+
+[sub_resource type="Image" id="Image_y4fmy"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 49, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 90, 255, 255, 255, 77, 255, 255, 255, 49, 255, 255, 255, 9, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 77, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 76, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 89, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 8, 255, 255, 255, 48, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 89, 255, 255, 255, 76, 255, 255, 255, 48, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_1ae8a"]
+image = SubResource("Image_y4fmy")
+
+[sub_resource type="Image" id="Image_upoju"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_dmcat"]
+image = SubResource("Image_upoju")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fbw32"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqvmf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iv27k"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_lij2x"]
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = ExtResource("1_od3mh")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_1ae8a")
+HSlider/icons/grabber_highlight = ExtResource("1_od3mh")
+HSlider/icons/tick = SubResource("ImageTexture_dmcat")
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_fbw32")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_jqvmf")
+HSlider/styles/slider = SubResource("StyleBoxFlat_iv27k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mb0e"]
+shader = ExtResource("2_dtmbj")
+shader_parameter/val = false
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = false
+shader_parameter/valf = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vvd0"]
+shader = ExtResource("2_dtmbj")
+shader_parameter/val = null
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = true
+shader_parameter/valf = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfjro"]
+shader = ExtResource("2_dtmbj")
+shader_parameter/val = true
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = null
+shader_parameter/valf = null
+
+[node name="GhostGameColorPicker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_lij2x")
+
+[node name="hsvSlideBox" type="VBoxContainer" parent="." node_paths=PackedStringArray("hue_slider", "sat_slider", "val_slider")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("2_3jl1h")
+hue_slider = NodePath("ColorRect/HSlider3")
+sat_slider = NodePath("ColorRect3/HSlider3")
+val_slider = NodePath("ColorRect2/HSlider3")
+
+[node name="ColorRect" parent="hsvSlideBox" instance=ExtResource("1_blb51")]
+material = SubResource("ShaderMaterial_0mb0e")
+layout_mode = 2
+
+[node name="HSlider3" parent="hsvSlideBox/ColorRect" index="0"]
+offset_top = 1.0
+offset_bottom = 1.0
+
+[node name="ColorRect3" type="ColorRect" parent="hsvSlideBox"]
+material = SubResource("ShaderMaterial_2vvd0")
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSlider3" type="HSlider" parent="hsvSlideBox/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="hsvSlideBox"]
+material = SubResource("ShaderMaterial_qfjro")
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSlider3" type="HSlider" parent="hsvSlideBox/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[editable path="hsvSlideBox/ColorRect"]
