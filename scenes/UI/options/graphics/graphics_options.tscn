@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkxovpccp385y"]
+[gd_scene load_steps=3 format=3 uid="uid://bkxovpccp385y"]
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_mrnd4"]
+[ext_resource type="PackedScene" uid="uid://bskxggqirbxih" path="res://scenes/UI/options/graphics/color_map_adder.tscn" id="2_p1h1d"]
 
 [node name="Graphics Options" type="Control"]
 layout_mode = 3
@@ -21,8 +22,9 @@ grow_vertical = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.031
+anchor_right = 0.969
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -30,6 +32,12 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 34
+
+[node name="seperator" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -37,30 +45,84 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Color Overides"
+size_flags_horizontal = 3
+text = "do color changes: "
+horizontal_alignment = 2
 
 [node name="CheckBox" type="CheckBox" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="ColorPicker2" type="ColorPicker" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-edit_alpha = false
-color_mode = 1
-picker_shape = 1
-can_add_swatches = false
-
-[node name="ColorPicker3" type="ColorPicker" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme = ExtResource("1_mrnd4")
-edit_alpha = false
-color_mode = 1
-picker_shape = 2
-can_add_swatches = false
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("1_mrnd4")
+text = "Resolution: "
+horizontal_alignment = 2
+
+[node name="Outer Resolution" type="Control" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Resolution Margin" type="Control" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/Outer Resolution"]
+layout_mode = 1
+anchor_left = 0.33
+anchor_top = 0.33
+anchor_right = 0.66
+anchor_bottom = 0.66
+offset_left = -158.34
+offset_right = -158.34
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/Outer Resolution/Resolution Margin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.333
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/Outer Resolution/Resolution Margin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333
+anchor_right = 0.667
+anchor_bottom = 1.0
+size_flags_vertical = 1
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox2" type="SpinBox" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/Outer Resolution/Resolution Margin"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.667
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="color_map_header" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Color Remap Rules"
+vertical_alignment = 2
+
+[node name="color_map_adder" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_p1h1d")]
+layout_mode = 2
+
+[node name="seperator2" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="seperator3" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
