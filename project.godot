@@ -21,6 +21,12 @@ config/icon="res://ghost_small_icon.png"
 Globals="*res://scenes/singletons/Globals.tscn"
 GameLoader="*res://scenes/singletons/GameLoader.tscn"
 
+[display]
+
+window/size/initial_position_type=3
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [file_customization]
 
 folder_colors={

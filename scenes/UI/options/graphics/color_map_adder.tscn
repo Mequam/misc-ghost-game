@@ -37,6 +37,6 @@ z_index = 1
 
 [node name="Label" parent="Control/handDrawnLabel/CenterContainer" index="0"]
 z_index = 1
-text = "+ add a color rule"
+text = "+ add a color translation"
 
 [editable path="Control/handDrawnLabel"]

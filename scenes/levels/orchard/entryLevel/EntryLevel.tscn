@@ -104,6 +104,7 @@ texture = ExtResource("2_yg6ni")
 
 [node name="mainCam" parent="." instance=ExtResource("5_pwvrf")]
 position = Vector2(1751, -435)
+zoom = Vector2(0.75, 0.75)
 limit_left = -100000000
 editor_draw_limits = true
 editor_draw_drag_margin = true

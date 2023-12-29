@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://assets/scripts/gameObjects/mainCamera.gd" id="1_sqm8o"]
 
 [node name="mainCam" type="Camera2D"]
+zoom = Vector2(0.75, 0.75)
 drag_left_margin = 0.41
 drag_right_margin = 0.41
 drag_bottom_margin = 0.89

@@ -8,6 +8,12 @@ class_name GlobalGameSettings
 
 @export var control_remaps : Dictionary
 @export var bus_vol_db : Dictionary
+@export var screen_resolution : Vector2i
+
+#stores and syncs the given resolution
+func set_screen_resolution(screen_resolution : Vector2i,tree : SceneTree)->void:
+	self.screen_resolution = screen_resolution
+	self.sync_resoution_to_settings(tree)
 
 #sets the audio bus from a linear vol
 #note that linear_vol ranges from 0 to 1
@@ -17,13 +23,22 @@ func set_audio_vol_from_linear(audio_bus : int, linear_vol : float)->void:
 	bus_vol_db[AudioServer.get_bus_name(audio_bus)] = db_vol
 
 #syncs the live state of the game to that of the resource
-func sync_settings()->void:
+#the one exception to this are settings that are used when the main
+#game scene is loaded, those need to be set in that scene on load
+func sync_settings(tree : SceneTree)->void:
 	self.sync_audio_to_settings()
 	self.sync_input_map_to_settings()
+	self.sync_resoution_to_settings(tree)
 
+#syncs audio settings to the ones on disc
 func sync_audio_to_settings()->void:
 	for bus_name in self.bus_vol_db:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name),self.bus_vol_db[bus_name])
+
+#syncs the game resolution to the one stored in the settings
+func sync_resoution_to_settings(tree : SceneTree)->void:
+	tree.get_root().content_scale_size = self.screen_resolution
+	print_debug("res : " + str(tree.get_root().content_scale_size))
 
 #syncs the stored input map to the game input map
 func sync_input_map_to_settings()->void:
@@ -50,8 +65,6 @@ func remove_remap(action : String)->void:
 	var events = ProjectSettings.get_setting("input/" + action)["events"]
 	for event in events:
 		InputMap.action_add_event(action,event)
-
-
 
 #saves the current global settings to disk
 func save_settings()->void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkxovpccp385y"]
+[gd_scene load_steps=4 format=3 uid="uid://bkxovpccp385y"]
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_mrnd4"]
 [ext_resource type="PackedScene" uid="uid://bskxggqirbxih" path="res://scenes/UI/options/graphics/color_map_adder.tscn" id="2_p1h1d"]
+[ext_resource type="PackedScene" uid="uid://cc26aq40bj2s" path="res://scenes/UI/options/graphics/resolution_control/game_resolution_control.tscn" id="2_ps7hq"]
 
 [node name="Graphics Options" type="Control"]
 layout_mode = 3
@@ -33,7 +34,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 34
+theme_override_constants/separation = 40
 
 [node name="seperator" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -54,67 +55,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 button_pressed = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="game_resolution_control" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_ps7hq")]
 layout_mode = 2
-alignment = 1
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="header_padding" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Resolution: "
-horizontal_alignment = 2
+size_flags_vertical = 3
 
-[node name="Outer Resolution" type="Control" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Resolution Margin" type="Control" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/Outer Resolution"]
-layout_mode = 1
-anchor_left = 0.33
-anchor_top = 0.33
-anchor_right = 0.66
-anchor_bottom = 0.66
-offset_left = -158.34
-offset_right = -158.34
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-
-[node name="SpinBox" type="SpinBox" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/Outer Resolution/Resolution Margin"]
+[node name="color_map_header" type="Label" parent="Panel/ScrollContainer/VBoxContainer/header_padding"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.333
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Label2" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/Outer Resolution/Resolution Margin"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.333
-anchor_right = 0.667
-anchor_bottom = 1.0
-size_flags_vertical = 1
-text = "X"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SpinBox2" type="SpinBox" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/Outer Resolution/Resolution Margin"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.667
+anchor_left = 0.05
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+size_flags_vertical = 3
+theme = ExtResource("1_mrnd4")
+theme_type_variation = &"lblTitle"
+theme_override_colors/font_color = Color(0.733333, 1, 0.470588, 1)
+text = "Color Remap Rules"
 
-[node name="color_map_header" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+[node name="Color Description" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Color Remap Rules"
-vertical_alignment = 2
+
+[node name="description" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Color Description"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Color Translations Map One Color To Another you can add them here for accesability :)"
+horizontal_alignment = 1
 
 [node name="color_map_adder" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("2_p1h1d")]
 layout_mode = 2

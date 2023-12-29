@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4d4qebutmeqf"]
+[gd_scene load_steps=7 format=3 uid="uid://d4d4qebutmeqf"]
 
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_cuur1"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_il8sc"]
 [ext_resource type="Script" path="res://assets/ui/BackStackSwitcher.gd" id="3_66s20"]
 [ext_resource type="PackedScene" uid="uid://4vgx3apyifiv" path="res://scenes/UI/options/action_map/action_options.tscn" id="4_7sgl8"]
 [ext_resource type="PackedScene" uid="uid://bts3rlhar7rs6" path="res://scenes/UI/options/audio/audio_settings.tscn" id="5_76mkr"]
+[ext_resource type="PackedScene" uid="uid://bkxovpccp385y" path="res://scenes/UI/options/graphics/graphics_options.tscn" id="6_vvvs8"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -51,6 +52,11 @@ layout_mode = 2
 
 [node name="Label" parent="VBoxGhostContainer/btnGraphics/CenterContainer" index="0"]
 text = "Graphics"
+
+[node name="BackStackSwitcher" type="Node" parent="VBoxGhostContainer/btnGraphics" node_paths=PackedStringArray("replace_container")]
+script = ExtResource("3_66s20")
+next = ExtResource("6_vvvs8")
+replace_container = NodePath("../../..")
 
 [editable path="VBoxGhostContainer/btnGamePlay"]
 [editable path="VBoxGhostContainer/btnSound"]
