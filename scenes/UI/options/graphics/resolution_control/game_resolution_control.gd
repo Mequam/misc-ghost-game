@@ -3,24 +3,56 @@ extends HBoxContainer
 @export var width_control : SpinBox
 @export var height_control : SpinBox
 @export var btn_save : Button
+@export var btn_restore : Button
 @export var btn_reset : Button
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+#reference to an item list containing different resolution presents
+@export var resolution_presents : ItemList
+
+func sync_spin_boxes()->void:
 	var size : Vector2i = get_tree().get_root().content_scale_size
 	width_control.value = size.x
 	height_control.value = size.y
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.sync_spin_boxes()
+
+	var size : Vector2i = get_tree().get_root().content_scale_size
+	
+	#ensure that if we are using a present we indicate that to the user
+	for i in range(resolution_presents.item_count):
+		if get_resolution_present(i) == size:
+			resolution_presents.select(i)
 
 	width_control.value_changed.connect(self.on_width_control_changed)
 	height_control.value_changed.connect(self.on_height_control_changed)
 
 	btn_save.pressed.connect(on_btn_save_pressed)
-	btn_reset.pressed.connect(on_btn_reset_pressed)
+	btn_restore.pressed.connect(on_btn_restore_pressed)
+	resolution_presents.item_selected.connect(self.on_present_selected)
 
-func on_btn_reset_pressed()->void:
-	var size : Vector2i = get_tree().get_root().content_scale_size
-	width_control.value = size.x
-	height_control.value = size.y
+	self.sync_spin_boxes()
+
+
+func get_resolution_present(idx : int)->Vector2i:
+	if resolution_presents.item_count <= idx: return Vector2i(0,0)
+	var split_data = resolution_presents.get_item_text(idx).split(" ")
+	var present : Vector2i = Vector2i(int(split_data[0]),int(split_data[2]))
+	return present
+func on_present_selected(idx : int)->void:
+	var present = get_resolution_present(idx)
+	#create and save the game resolution settings!
+	var settings : GlobalGameSettings = GlobalGameSettings.load_settings()
+	settings.set_screen_resolution(present,get_tree())
+	settings.save_settings()
+
+	self.sync_spin_boxes()
+
+func on_btn_restore_pressed()->void:
+	self.sync_spin_boxes()
+	
 	#ensure that we can see (or not see) the save button
 	update_save_visibility()
 
@@ -37,6 +69,7 @@ func update_save_visibility()->void:
 	var resolution : Vector2i = get_tree().get_root().content_scale_size
 	print_debug(width_control.value == resolution.x or height_control.value == resolution.y)
 	btn_save.visible = (width_control.value != resolution.x or height_control.value != resolution.y)
+	btn_restore.visible = btn_save.visible
 
 func on_width_control_changed(_value : float)->void:
 	update_save_visibility()

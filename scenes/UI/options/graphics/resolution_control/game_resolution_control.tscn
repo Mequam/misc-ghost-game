@@ -1,37 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc26aq40bj2s"]
+[gd_scene load_steps=6 format=3 uid="uid://cc26aq40bj2s"]
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_m8wmp"]
 [ext_resource type="Script" path="res://scenes/UI/options/graphics/resolution_control/game_resolution_control.gd" id="2_aeyhm"]
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="2_vd5w3"]
 [ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="4_al77i"]
+[ext_resource type="Script" path="res://scenes/UI/cropper.gd" id="5_1r3mj"]
 
-[node name="game_resolution_control" type="HBoxContainer" node_paths=PackedStringArray("width_control", "height_control", "btn_save", "btn_reset")]
+[node name="VBoxContainer" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_m8wmp")
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="game_resolution_control" type="HBoxContainer" parent="." node_paths=PackedStringArray("width_control", "height_control", "btn_save", "btn_restore", "btn_reset", "resolution_presents")]
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("1_m8wmp")
 alignment = 1
 script = ExtResource("2_aeyhm")
 width_control = NodePath("Outer Resolution/Resolution Margin/spnWidth")
 height_control = NodePath("Outer Resolution/Resolution Margin/spnHeight")
 btn_save = NodePath("Outer Resolution/btnContainer/btnSave")
+btn_restore = NodePath("Outer Resolution/btnContainer/btnRestore")
 btn_reset = NodePath("Outer Resolution/btnContainer/btnReset")
+resolution_presents = NodePath("../presents/Control/cropper/ItemList")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="game_resolution_control"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Resolution: "
 horizontal_alignment = 2
 
-[node name="Outer Resolution" type="Control" parent="."]
+[node name="Outer Resolution" type="Control" parent="game_resolution_control"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Resolution Margin" type="Control" parent="Outer Resolution"]
+[node name="Resolution Margin" type="Control" parent="game_resolution_control/Outer Resolution"]
 layout_mode = 1
 anchor_left = 0.33
 anchor_top = 0.33
@@ -43,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="spnWidth" type="SpinBox" parent="Outer Resolution/Resolution Margin"]
+[node name="spnWidth" type="SpinBox" parent="game_resolution_control/Outer Resolution/Resolution Margin"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.333
@@ -53,7 +61,7 @@ grow_vertical = 2
 max_value = 9999.0
 alignment = 1
 
-[node name="Label2" type="Label" parent="Outer Resolution/Resolution Margin"]
+[node name="Label2" type="Label" parent="game_resolution_control/Outer Resolution/Resolution Margin"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +73,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="spnHeight" type="SpinBox" parent="Outer Resolution/Resolution Margin"]
+[node name="spnHeight" type="SpinBox" parent="game_resolution_control/Outer Resolution/Resolution Margin"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.667
@@ -76,32 +84,84 @@ grow_vertical = 2
 max_value = 9999.0
 alignment = 1
 
-[node name="btnContainer" type="HBoxContainer" parent="Outer Resolution"]
+[node name="btnContainer" type="HBoxContainer" parent="game_resolution_control/Outer Resolution"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
+anchor_left = 0.429
 anchor_top = 0.44
-anchor_right = 0.867
+anchor_right = 1.0
 anchor_bottom = 0.56
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="btnSave" parent="Outer Resolution/btnContainer" instance=ExtResource("2_vd5w3")]
+[node name="btnSave" parent="game_resolution_control/Outer Resolution/btnContainer" instance=ExtResource("2_vd5w3")]
 visible = false
 layout_mode = 2
 
-[node name="Label" parent="Outer Resolution/btnContainer/btnSave/CenterContainer" index="0"]
+[node name="Label" parent="game_resolution_control/Outer Resolution/btnContainer/btnSave/CenterContainer" index="0"]
 text = "Save"
 
-[node name="btnReset" parent="Outer Resolution/btnContainer" instance=ExtResource("2_vd5w3")]
+[node name="btnRestore" parent="game_resolution_control/Outer Resolution/btnContainer" instance=ExtResource("2_vd5w3")]
+visible = false
 layout_mode = 2
 default_texture = ExtResource("4_al77i")
 
-[node name="TextureRect" parent="Outer Resolution/btnContainer/btnReset" index="0"]
+[node name="TextureRect" parent="game_resolution_control/Outer Resolution/btnContainer/btnRestore" index="0"]
 texture = ExtResource("4_al77i")
 
-[node name="Label" parent="Outer Resolution/btnContainer/btnReset/CenterContainer" index="0"]
-text = "reset"
+[node name="Label" parent="game_resolution_control/Outer Resolution/btnContainer/btnRestore/CenterContainer" index="0"]
+text = "restore"
 
-[editable path="Outer Resolution/btnContainer/btnSave"]
-[editable path="Outer Resolution/btnContainer/btnReset"]
+[node name="btnReset" parent="game_resolution_control/Outer Resolution/btnContainer" instance=ExtResource("2_vd5w3")]
+layout_mode = 2
+
+[node name="Label" parent="game_resolution_control/Outer Resolution/btnContainer/btnReset/CenterContainer" index="0"]
+text = "Reset"
+
+[node name="presents" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="presents"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Presents:"
+horizontal_alignment = 2
+
+[node name="Control" type="Control" parent="presents"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="cropper" type="Control" parent="presents/Control"]
+layout_mode = 1
+anchor_left = 0.03
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_1r3mj")
+do_cropp = false
+
+[node name="ItemList" type="ItemList" parent="presents/Control/cropper"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.765
+anchor_bottom = 1.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+item_count = 5
+same_column_width = true
+item_0/text = "1024 x 786 [4:3]"
+item_1/text = "1366 x 768 [16:9]"
+item_2/text = "1360 x 768 [16:9]"
+item_3/text = "1280 x 768 [5:3]"
+item_4/text = "1229 x 768 [16:10]"
+
+[editable path="game_resolution_control/Outer Resolution/btnContainer/btnSave"]
+[editable path="game_resolution_control/Outer Resolution/btnContainer/btnRestore"]
+[editable path="game_resolution_control/Outer Resolution/btnContainer/btnReset"]

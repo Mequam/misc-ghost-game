@@ -34,7 +34,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 40
+theme_override_constants/separation = 93
 
 [node name="seperator" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -61,6 +61,7 @@ layout_mode = 2
 [node name="header_padding" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="color_map_header" type="Label" parent="Panel/ScrollContainer/VBoxContainer/header_padding"]
 layout_mode = 1
@@ -79,6 +80,7 @@ text = "Color Remap Rules"
 [node name="Color Description" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="description" type="Label" parent="Panel/ScrollContainer/VBoxContainer/Color Description"]
 layout_mode = 1
