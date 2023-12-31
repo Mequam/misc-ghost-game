@@ -114,6 +114,10 @@ text = "restore"
 
 [node name="btnReset" parent="game_resolution_control/Outer Resolution/btnContainer" instance=ExtResource("2_vd5w3")]
 layout_mode = 2
+default_texture = ExtResource("4_al77i")
+
+[node name="TextureRect" parent="game_resolution_control/Outer Resolution/btnContainer/btnReset" index="0"]
+texture = ExtResource("4_al77i")
 
 [node name="Label" parent="game_resolution_control/Outer Resolution/btnContainer/btnReset/CenterContainer" index="0"]
 text = "Reset"
@@ -145,7 +149,7 @@ script = ExtResource("5_1r3mj")
 do_cropp = false
 
 [node name="ItemList" type="ItemList" parent="presents/Control/cropper"]
-custom_minimum_size = Vector2(0, 175)
+custom_minimum_size = Vector2(206, 175)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.765
