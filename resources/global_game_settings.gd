@@ -9,6 +9,8 @@ class_name GlobalGameSettings
 @export var control_remaps : Dictionary
 @export var bus_vol_db : Dictionary
 @export var screen_resolution : Vector2i
+@export var color_remaps : Dictionary #mapping from one color to another color
+
 
 #stores and syncs the given resolution
 func set_screen_resolution(screen_resolution : Vector2i,tree : SceneTree)->void:
