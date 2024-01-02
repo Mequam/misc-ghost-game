@@ -18,6 +18,8 @@ func get_entity_type()->String:
 @export var teleport_direction_speed : Vector2 = Vector2(100,40)
 @export var teleport_direction_speed_buffed : Vector2 = Vector2(200,80)
 
+@export var posses_speed : float = 5
+
 #resets the player health for the level
 #as well as doing any other action that needs to be done
 #checked health reset
@@ -131,7 +133,7 @@ func safe_jump()->void:
 
 func on_action_press(act : String)->void:
 	if act == "ATTACK":
-		posses_attack(compute_velocity(velocity).normalized()*5)
+		posses_attack(compute_velocity(velocity).normalized()*self.posses_speed)
 	if act == "JUMP":
 		self.safe_jump()	
 	super.on_action_press(act)
@@ -174,12 +176,19 @@ func set_state(val : int)->void:
 
 #launch ourselfs and prepare to posses
 func posses_attack(vel : Vector2)->void:
-	if $posess_cooldown.time_left >0: return
+	if $posess_cooldown.time_left > 0: return
 
 	$posess_cooldown.start()
 	posses_velocity = vel
 	posses_velocity.y /= 2
-	#clear_stored_inputs()
+
+	#if they are not moving intialy, we will preload their speed for them
+	if posses_velocity.length_squared() == 0:
+		posses_velocity.x = self.posses_speed
+
+		if self.get_sprite2D().flip_h:
+			posses_velocity.x *= -1
+
 	self.state = LeniState.POSSESING
 	$possesSound.play()
 
