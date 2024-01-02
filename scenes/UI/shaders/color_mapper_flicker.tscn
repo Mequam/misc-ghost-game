@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1j4odxydici4"]
 
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="1_vtcul"]
-[ext_resource type="Shader" uid="uid://dux1oiect4l53" path="res://assets/shaders/color_mapper_flicker.tres" id="2_2tmbq"]
+[ext_resource type="Shader" uid="uid://dux1oiect4l53" path="res://assets/shaders/color_mapper_flicker.tres" id="2_bmeu2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3utx"]
-shader = ExtResource("2_2tmbq")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_458lh"]
+shader = ExtResource("2_bmeu2")
 shader_parameter/input_color_1 = Color(1, 0, 0, 1)
 shader_parameter/input_color_2 = Color(0, 1, 0, 1)
 shader_parameter/input_color_3 = Color(0, 0, 1, 1)
-shader_parameter/re_distrobution_color_1 = Color(0.639216, 0.564706, 0, 1)
-shader_parameter/re_distrobution_color_2 = Color(0.94902, 0.85098, 0.227451, 1)
+shader_parameter/re_distrobution_color_1 = Color(1, 0, 0, 1)
+shader_parameter/re_distrobution_color_2 = Color(0, 1, 0, 1)
 shader_parameter/re_distrobution_color_3 = Color(0, 0, 1, 1)
 
 [node name="Control" type="Control"]
@@ -31,7 +31,7 @@ texture = ExtResource("1_vtcul")
 expand_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_q3utx")
+material = SubResource("ShaderMaterial_458lh")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

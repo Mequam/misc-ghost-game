@@ -62,7 +62,7 @@ op_type = 4
 [sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_5gl5t"]
 
 [sub_resource type="VisualShaderNodeCompare" id="VisualShaderNodeCompare_uv35n"]
-default_input_values = [0, 0.0, 1, 3.355, 2, 1e-05]
+default_input_values = [0, 0.0, 1, 3.14, 2, 1e-05]
 function = 2
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_sq82i"]
@@ -234,7 +234,7 @@ void fragment() {
 
 
 // Compare:40
-	float n_in40p1 = 3.35500;
+	float n_in40p1 = 3.14000;
 	bool n_out40p0 = n_out41p0 > n_in40p1;
 
 
@@ -280,7 +280,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(2072.7, -645.759)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2120, -200)
@@ -291,19 +290,19 @@ nodes/fragment/5/position = Vector2(60, 240)
 nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_7867n")
 nodes/fragment/6/position = Vector2(380, 220)
 nodes/fragment/9/node = SubResource("VisualShaderNodeColorParameter_si4aw")
-nodes/fragment/9/position = Vector2(100, -420)
+nodes/fragment/9/position = Vector2(140, -540)
 nodes/fragment/10/node = SubResource("VisualShaderNodeColorParameter_1o272")
 nodes/fragment/10/position = Vector2(-120, -160)
 nodes/fragment/11/node = SubResource("VisualShaderNodeColorParameter_jy4nx")
-nodes/fragment/11/position = Vector2(100, -320)
+nodes/fragment/11/position = Vector2(120, -400)
 nodes/fragment/12/node = SubResource("VisualShaderNodeColorParameter_6ijkt")
-nodes/fragment/12/position = Vector2(140, -200)
+nodes/fragment/12/position = Vector2(120, -260)
 nodes/fragment/13/node = SubResource("VisualShaderNodeColorParameter_uttqr")
 nodes/fragment/13/position = Vector2(-100, -20)
 nodes/fragment/14/node = SubResource("VisualShaderNodeColorParameter_jomn4")
 nodes/fragment/14/position = Vector2(-120, 100)
 nodes/fragment/15/node = SubResource("VisualShaderNodeTransformCompose_j2kvg")
-nodes/fragment/15/position = Vector2(400, -300)
+nodes/fragment/15/position = Vector2(340, -220)
 nodes/fragment/16/node = SubResource("VisualShaderNodeTransformCompose_bcbp1")
 nodes/fragment/16/position = Vector2(760, 0)
 nodes/fragment/17/node = SubResource("VisualShaderNodeTransformFunc_bjw3m")
