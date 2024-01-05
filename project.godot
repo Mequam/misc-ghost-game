@@ -25,7 +25,6 @@ GameLoader="*res://scenes/singletons/GameLoader.tscn"
 
 window/size/initial_position_type=3
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
 
 [file_customization]
 
