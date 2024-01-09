@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bskxggqirbxih"]
+
+[ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_drgav"]
+[ext_resource type="Script" path="res://scenes/UI/options/graphics/color_map_adder.gd" id="1_pxxqn"]
+[ext_resource type="PackedScene" uid="uid://dqqjm62njto1p" path="res://scenes/UI/options/graphics/color_mapper_adder.tscn" id="2_68dmv"]
+
+[node name="Control2" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+
+[node name="color_map_adder" type="VBoxContainer" parent="." node_paths=PackedStringArray("btn_add_color_map_rule")]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+script = ExtResource("1_pxxqn")
+gg_color_mapper = ExtResource("2_68dmv")
+btn_add_color_map_rule = NodePath("../Control/handDrawnLabel")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="handDrawnLabel" parent="Control" instance=ExtResource("1_drgav")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.6
+
+[node name="TextureRect" parent="Control/handDrawnLabel" index="0"]
+z_index = 1
+
+[node name="Label" parent="Control/handDrawnLabel/CenterContainer" index="0"]
+z_index = 1
+text = "+ add a color translation"
+
+[editable path="Control/handDrawnLabel"]

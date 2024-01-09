@@ -8,11 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://51m4y68yahht" path="res://assets/ui/hearts/rolly_pumpkin/big.png" id="4_s7mky"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8dcq2"]
-radius = 95.1893
+radius = 107.019
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vymo4"]
 resource_local_to_scene = true
-size = Vector2(150, 134)
+size = Vector2(150, 187)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y262t"]
 radius = 103.097
@@ -44,7 +44,7 @@ position = Vector2(34, -193)
 pumkin_entity = NodePath("../../../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -95)
+position = Vector2(11, -104)
 shape = SubResource("CircleShape2D_8dcq2")
 
 [node name="GroundTester" parent="." instance=ExtResource("4_lg7dy")]
@@ -52,6 +52,7 @@ position = Vector2(9, -8)
 scale = Vector2(0.5, 0.08)
 
 [node name="CollisionShape2D" parent="GroundTester" index="0"]
+position = Vector2(-10, 81.5)
 shape = SubResource("RectangleShape2D_vymo4")
 
 [node name="modulate_timer" type="Timer" parent="."]
@@ -60,7 +61,7 @@ shape = SubResource("RectangleShape2D_vymo4")
 position = Vector2(0, -95)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
-position = Vector2(0, -1)
+position = Vector2(8, -5)
 shape = SubResource("CircleShape2D_y262t")
 debug_color = Color(0.95, 0, 0, 0.419608)
 

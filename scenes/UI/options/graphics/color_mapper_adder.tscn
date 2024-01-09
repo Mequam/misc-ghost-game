@@ -1,0 +1,143 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqqjm62njto1p"]
+
+[ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_jnwlx"]
+[ext_resource type="PackedScene" uid="uid://dj7uauo2kb5y0" path="res://scenes/UI/GhostGameColorPicker/ghost_game_color_picker.tscn" id="1_joe8u"]
+[ext_resource type="Shader" uid="uid://c31f6hemn6n8c" path="res://scenes/UI/GhostGameColorPicker/ColorSlider/ghost_game_color_picker.tres" id="3_6m5ma"]
+[ext_resource type="Texture2D" uid="uid://hb2vsvlkmphd" path="res://assets/ui/images/arrow.png" id="4_5tmee"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wdwa"]
+shader = ExtResource("3_6m5ma")
+shader_parameter/val = null
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = false
+shader_parameter/valf = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_topnl"]
+resource_local_to_scene = true
+shader = ExtResource("3_6m5ma")
+shader_parameter/val = null
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = true
+shader_parameter/valf = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onhnj"]
+shader = ExtResource("3_6m5ma")
+shader_parameter/val = true
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = false
+shader_parameter/valf = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwgyr"]
+shader = ExtResource("3_6m5ma")
+shader_parameter/val = null
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = false
+shader_parameter/valf = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7myd"]
+resource_local_to_scene = true
+shader = ExtResource("3_6m5ma")
+shader_parameter/val = null
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = true
+shader_parameter/valf = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6e2o"]
+shader = ExtResource("3_6m5ma")
+shader_parameter/val = true
+shader_parameter/huef = null
+shader_parameter/satf = null
+shader_parameter/sat = false
+shader_parameter/valf = null
+
+[node name="ColorMapAdder" type="Control"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_jnwlx")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_right = 0.55
+anchor_bottom = 0.45
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+text = "Becomes"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_right = 0.55
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_5tmee")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="GhostGameColorPicker" parent="." instance=ExtResource("1_joe8u")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_right = 0.45
+
+[node name="ColorRect3" parent="GhostGameColorPicker/colorVBox/HBoxContainer2" index="1"]
+material = SubResource("ShaderMaterial_6wdwa")
+
+[node name="ColorRect3" parent="GhostGameColorPicker/colorVBox/HBoxContainer3" index="1"]
+material = SubResource("ShaderMaterial_topnl")
+
+[node name="ColorRect3" parent="GhostGameColorPicker/colorVBox/HBoxContainer4" index="1"]
+material = SubResource("ShaderMaterial_onhnj")
+
+[node name="GhostGameColorPicker2" parent="." instance=ExtResource("1_joe8u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55
+anchor_right = 0.98
+
+[node name="ColorRect3" parent="GhostGameColorPicker2/colorVBox/HBoxContainer2" index="1"]
+material = SubResource("ShaderMaterial_pwgyr")
+
+[node name="ColorRect3" parent="GhostGameColorPicker2/colorVBox/HBoxContainer3" index="1"]
+material = SubResource("ShaderMaterial_y7myd")
+
+[node name="ColorRect3" parent="GhostGameColorPicker2/colorVBox/HBoxContainer4" index="1"]
+material = SubResource("ShaderMaterial_j6e2o")
+
+[editable path="GhostGameColorPicker"]
+[editable path="GhostGameColorPicker/colorVBox/HBoxContainer2"]
+[editable path="GhostGameColorPicker/colorVBox/HBoxContainer3"]
+[editable path="GhostGameColorPicker/colorVBox/HBoxContainer4"]
+[editable path="GhostGameColorPicker2"]
+[editable path="GhostGameColorPicker2/colorVBox/HBoxContainer2"]
+[editable path="GhostGameColorPicker2/colorVBox/HBoxContainer3"]
+[editable path="GhostGameColorPicker2/colorVBox/HBoxContainer4"]

@@ -15,6 +15,8 @@ class_name Entity
 #null indicates no action
 @export var entity_ai : EntityAI
 
+func get_entity_type()->String:
+	return "Entity"
 
 #we can store values in this array to indicate what images the game
 #should use for hearts of this entity when loading hp from an entity,
@@ -302,7 +304,6 @@ func on_posses(posesee):
 	pass
 #something wants to posses us
 func posses_by(entity)->void:
-
 	#clear out the existing possesed entity
 	if self.possesed:
 		exorcize()
@@ -418,6 +419,19 @@ func gen_col_layer()->int:
 	return ColMath.Layer.NON_PLAYER_ENTITY
 func gen_col_mask()->int:
 	return ColMath.Layer.TERRAIN | ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.PLAYER
+
+#calls for syncing the pressed actions to the players current controls
+#syncs the pressed actions to the players current controls
+func sync_stored_inputs()->void:
+	#there is NO need to run this function
+	#if we are not possesed, as the stored inputs 
+	#are entirely generated from the AI
+	if not self.possesed: return
+
+	for act in self.pressed_inputs:
+		self.pressed_inputs[act] = Input.is_action_pressed(act)
+
+
 
 func main_input(event)->void:
 	#we only care about inputs if we are possesed, otherwise we

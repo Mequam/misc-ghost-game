@@ -55,6 +55,9 @@ enum RotatingPumkinState {
 }
 
 
+func get_entity_type()->String:
+	return "RotatingPumpkin"  
+
 func get_size_scale(size : Size)->Vector2:
 	return self.size_scales[size]
 
@@ -81,14 +84,12 @@ func on_action_press(action : String)->void:
 	if action == "JUMP" and self.onground:
 		#we jump higher if we move FASTER
 		#give up control for height
-		print_debug("trying to jump")
 		self.velocity.y = -clamp(self.jump_speed*abs(self.velocity.x),jump_min,jump_max) 
 	elif action == "ATTACK":
 		self.get_sprite2D().custom_play("expload")
 		self.state = RotatingPumkinState.EXPLOADING
 		self.velocity *= 0
 	super.on_action_press(action)
-
 #uses player input to compute net force on the body
 func compute_force()->Vector2:
 	var ret_val : Vector2 = Vector2(0,0)
@@ -192,6 +193,7 @@ func on_tree_entered()->void:
 	self.get_sprite2D().reset_animation()
 	self.get_sprite2D().play("RESET")
 	self.get_sprite2D().reset_scale()
+	self.sync_stored_inputs()
 	if self.possesed and self.ghost_after_effect:
 		self.ghost_after_effect.visible = true
 

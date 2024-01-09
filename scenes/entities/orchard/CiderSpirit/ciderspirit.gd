@@ -21,6 +21,8 @@ class_name CiderSpirit
 @export var follower_mug_ps : PackedScene 
 var follower_mug : FollowerMug
 
+func get_entity_type()->String:
+	return "CiderSpirit"
 func die()->void:
 	follower_mug.queue_free() 
 	await follower_mug.tree_exited

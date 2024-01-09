@@ -19,6 +19,13 @@ func get_tired()->bool:
 func main_ready():
 	$flight_timer.connect("timeout",Callable(self,"_on_flight_timer_timeout"))
 	super.main_ready()
+#make it so we are not tired, basically
+#reset the timer on bieng tired
+func un_tired()->void:
+	self.tired=false 
+	#ensure we still watch if they can fly
+	$flight_timer.stop()
+	$flight_timer.start()
 
 func on_ground_changed(val : int)->void:
 	super.on_ground_changed(val)

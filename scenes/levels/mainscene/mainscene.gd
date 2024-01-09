@@ -15,6 +15,8 @@ class_name MainScene
 @export var pause_menu : Control
 #refernece to the container that the levels are run on
 @export var level_container : Node2D
+#reference to the color node that we use for all the smancy colors
+@export var color_container : ColorRect
 
 #runtime variables that are not saved
 #this is for things like enemies remembering their deaths, 
@@ -45,7 +47,7 @@ func unpause()->void:
 	self.pause_menu.visible = false 
 	self.heart_tracker.visible = true 
 	#clear the players current inputs
-	get_level().player_entity.clear_stored_inputs()
+	get_level().player_entity.sync_stored_inputs()
 	get_tree().paused = false
 
 func get_level()->Level:
