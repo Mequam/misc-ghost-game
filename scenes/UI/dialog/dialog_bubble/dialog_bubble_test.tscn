@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfafea4bmbxk2"]
+[gd_scene load_steps=7 format=3 uid="uid://dfafea4bmbxk2"]
 
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble_test.gd" id="1_3gyf5"]
 [ext_resource type="PackedScene" uid="uid://llvxc6qbd58b" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.tscn" id="1_rta0y"]
-[ext_resource type="Script" path="res://scenes/UI/dialog/linear_dialog_display/linear_dialog_display.gd" id="2_s8kig"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/dialog_hopper.gd" id="2_tuo53"]
 [ext_resource type="Texture2D" uid="uid://bqv5lkjxcpg3" path="res://assets/ui/dialog_boxex/bubble0003.png" id="3_lkek4"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/linear_dialog_display/linear_dialog_display.gd" id="3_o73ri"]
 [ext_resource type="Texture2D" uid="uid://dbxwdd8bndbpr" path="res://assets/ui/dialog_boxex/bubble0005.png" id="4_waofd"]
 
 [node name="Control" type="Control"]
@@ -15,14 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3gyf5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="dialogContainer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -30,48 +23,182 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_s8kig")
+script = ExtResource("2_tuo53")
 
-[node name="dialogBubble" parent="dialogContainer" instance=ExtResource("1_rta0y")]
+[node name="LinearDialogContainer" type="Control" parent="dialogContainer"]
+visible = false
 layout_mode = 1
-offset_right = -672.0
-offset_bottom = -360.0
-text = "[center]Oh No! What am I going to do?[/center]"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_o73ri")
 
-[node name="dialogBubble2" parent="dialogContainer" instance=ExtResource("1_rta0y")]
+[node name="dialogBubble" parent="dialogContainer/LinearDialogContainer" instance=ExtResource("1_rta0y")]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.83
-anchor_bottom = 0.772
-offset_left = 516.0
-offset_top = 186.0
-offset_right = 107.84
-offset_bottom = -6.25601
+offset_right = -725.0
+offset_bottom = -341.0
+text = "[center]Look at this![/center]"
+
+[node name="dialogBubble2" parent="dialogContainer/LinearDialogContainer" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+offset_left = 27.0
+offset_top = 370.0
+offset_right = -615.0
+offset_bottom = -43.0
 text = "[center][shake]SO MUCH DIALOG[/shake][/center]"
 
-[node name="Control" parent="dialogContainer/dialogBubble2" index="0"]
+[node name="Control" parent="dialogContainer/LinearDialogContainer/dialogBubble2" index="0"]
 offset_left = -6.0
 offset_top = -117.0
 offset_right = -6.0
 offset_bottom = -117.0
 
-[node name="TextureRect" parent="dialogContainer/dialogBubble2/Control/container" index="0"]
+[node name="TextureRect" parent="dialogContainer/LinearDialogContainer/dialogBubble2/Control/container" index="0"]
 texture = ExtResource("3_lkek4")
 
-[node name="dialogBubble3" parent="dialogContainer" instance=ExtResource("1_rta0y")]
+[node name="dialogBubble3" parent="dialogContainer/LinearDialogContainer" instance=ExtResource("1_rta0y")]
 layout_mode = 1
-offset_left = 132.0
-offset_top = 378.0
-offset_right = -590.0
-offset_bottom = -30.0
+offset_left = 417.0
+offset_top = 432.0
+offset_right = -330.0
+offset_bottom = 10.0
 text = "[center]
 [wave freq=10]Whatever.....[/wave]
-
 [/center]"
 
-[node name="TextureRect" parent="dialogContainer/dialogBubble3/Control/container" index="0"]
+[node name="TextureRect" parent="dialogContainer/LinearDialogContainer/dialogBubble3/Control/container" index="0"]
+modulate = Color(0, 1, 1, 1)
 texture = ExtResource("4_waofd")
 
-[editable path="dialogContainer/dialogBubble"]
-[editable path="dialogContainer/dialogBubble2"]
-[editable path="dialogContainer/dialogBubble3"]
+[node name="LinearDialogContainer2" type="Control" parent="dialogContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_o73ri")
+
+[node name="dialogBubble" parent="dialogContainer/LinearDialogContainer2" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.246
+anchor_bottom = 0.719
+offset_left = 308.608
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = -178.912
+text = "[center] but what'r ya gonna do with this much dialog? [/center]"
+
+[node name="TextureRect" parent="dialogContainer/LinearDialogContainer2/dialogBubble/Control/container" index="0"]
+modulate = Color(0.5, 1, 0, 1)
+
+[node name="dialogBubble2" parent="dialogContainer/LinearDialogContainer2" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+offset_left = 512.0
+offset_top = 202.0
+offset_right = -121.0
+offset_bottom = -162.0
+text = "[center]you just gotta roll with the punches ya know[/center]"
+
+[node name="dialogBubble3" parent="dialogContainer/LinearDialogContainer2" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 447.0
+offset_right = -671.0
+offset_bottom = 7.0
+text = "
+[center][shake][tornado freq=10.0]AND READ THEM ALL![/tornado][/shake][/center]
+"
+
+[node name="TextureRect" parent="dialogContainer/LinearDialogContainer2/dialogBubble3/Control/container" index="0"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("3_lkek4")
+
+[node name="LinearDialogContainer3" type="Control" parent="dialogContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_o73ri")
+
+[node name="dialogBubble" parent="dialogContainer/LinearDialogContainer3" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+offset_right = -902.0
+offset_bottom = -492.0
+text = "[center][shake]talk talk talk talk[/shake][/center]"
+
+[node name="TextureRect" parent="dialogContainer/LinearDialogContainer3/dialogBubble/Control/container" index="0"]
+modulate = Color(1, 0, 0, 1)
+
+[node name="RichTextLabel" parent="dialogContainer/LinearDialogContainer3/dialogBubble/Control/container/VBoxContainer" index="0"]
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 13
+
+[node name="typingTimer" parent="dialogContainer/LinearDialogContainer3/dialogBubble/Control" index="2"]
+wait_time = 0.01
+
+[node name="dialogBubble2" parent="dialogContainer/LinearDialogContainer3" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+offset_left = 143.0
+offset_top = 246.0
+offset_right = -686.0
+offset_bottom = -216.0
+text = "[center][shake]talk talk talk[/shake][/center]"
+
+[node name="TextureRect" parent="dialogContainer/LinearDialogContainer3/dialogBubble2/Control/container" index="0"]
+modulate = Color(1, 0, 0, 1)
+
+[node name="typingTimer" parent="dialogContainer/LinearDialogContainer3/dialogBubble2/Control" index="2"]
+wait_time = 0.01
+
+[node name="dialogBubble3" parent="dialogContainer/LinearDialogContainer3" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+offset_left = 481.0
+offset_top = 87.0
+offset_right = -208.0
+offset_bottom = -373.0
+text = "[center][shake]talk talk talk[/shake][/center]"
+
+[node name="TextureRect" parent="dialogContainer/LinearDialogContainer3/dialogBubble3/Control/container" index="0"]
+modulate = Color(1, 0, 0, 1)
+
+[node name="typingTimer" parent="dialogContainer/LinearDialogContainer3/dialogBubble3/Control" index="2"]
+wait_time = 0.01
+
+[node name="dialogBubble4" parent="dialogContainer/LinearDialogContainer3" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+offset_left = 601.0
+offset_top = 432.0
+offset_right = -325.0
+offset_bottom = -8.0
+text = "[center][shake]talk talk talk[/shake][/center]"
+
+[node name="TextureRect" parent="dialogContainer/LinearDialogContainer3/dialogBubble4/Control/container" index="0"]
+modulate = Color(1, 0, 0, 1)
+
+[node name="VBoxContainer" parent="dialogContainer/LinearDialogContainer3/dialogBubble4/Control/container" index="1"]
+offset_left = 0.0839996
+offset_right = 6.464
+
+[node name="RichTextLabel" parent="dialogContainer/LinearDialogContainer3/dialogBubble4/Control/container/VBoxContainer" index="0"]
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 12
+
+[node name="typingTimer" parent="dialogContainer/LinearDialogContainer3/dialogBubble4/Control" index="2"]
+wait_time = 0.01
+
+[editable path="dialogContainer/LinearDialogContainer/dialogBubble"]
+[editable path="dialogContainer/LinearDialogContainer/dialogBubble2"]
+[editable path="dialogContainer/LinearDialogContainer/dialogBubble3"]
+[editable path="dialogContainer/LinearDialogContainer2/dialogBubble"]
+[editable path="dialogContainer/LinearDialogContainer2/dialogBubble3"]
+[editable path="dialogContainer/LinearDialogContainer3/dialogBubble"]
+[editable path="dialogContainer/LinearDialogContainer3/dialogBubble2"]
+[editable path="dialogContainer/LinearDialogContainer3/dialogBubble3"]
+[editable path="dialogContainer/LinearDialogContainer3/dialogBubble4"]

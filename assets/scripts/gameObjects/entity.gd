@@ -27,7 +27,8 @@ func get_entity_type()->String:
 var home_level : String 
 var home_name : String
 
-signal died
+signal sig_died
+signal sig_possesed_by
 
 func get_sprite2D()->AnimatedSprite2D:
 	if sprite != null: return sprite 
@@ -129,7 +130,7 @@ func get_health()->int:
 
 #used when we want do more than just remove_at ourselfs from the scene
 func die():
-	emit_signal("die")
+	self.sig_died.emit(self)
 	var damage_entity = null
 	
 	if self.possesed:
@@ -302,12 +303,12 @@ func compute_action(event : InputEvent)->void:
 #called when we posses another entity
 func on_posses(posesee):
 	pass
+
 #something wants to posses us
 func posses_by(entity)->void:
 	#clear out the existing possesed entity
 	if self.possesed:
 		exorcize()
-
 
 	#if the entity has an after effect, apply it to ourselfs
 	if entity.ghost_after_effect:
@@ -333,6 +334,8 @@ func posses_by(entity)->void:
 	#update the health dispaly
 	self.health = self.health
 
+	#alert others that we have been possesed
+	sig_possesed_by.emit(self,entity)
 	grab_camera()
 
 #called on the entity we exorcize when removing it
