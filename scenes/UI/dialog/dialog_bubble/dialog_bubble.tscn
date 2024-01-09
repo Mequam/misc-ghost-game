@@ -165,8 +165,11 @@ alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/container/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
 theme_override_font_sizes/normal_font_size = 35
 bbcode_enabled = true
+text = "Testing123 abc"
 fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]

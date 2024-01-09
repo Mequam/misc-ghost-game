@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfafea4bmbxk2"]
+[gd_scene load_steps=6 format=3 uid="uid://dfafea4bmbxk2"]
 
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble_test.gd" id="1_3gyf5"]
 [ext_resource type="PackedScene" uid="uid://llvxc6qbd58b" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.tscn" id="1_rta0y"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/linear_dialog_display/linear_dialog_display.gd" id="2_s8kig"]
 [ext_resource type="Texture2D" uid="uid://bqv5lkjxcpg3" path="res://assets/ui/dialog_boxex/bubble0003.png" id="3_lkek4"]
 [ext_resource type="Texture2D" uid="uid://dbxwdd8bndbpr" path="res://assets/ui/dialog_boxex/bubble0005.png" id="4_waofd"]
 
@@ -22,40 +23,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="dialogBubble" parent="." instance=ExtResource("1_rta0y")]
-visible = false
+[node name="dialogContainer" type="Control" parent="."]
 layout_mode = 1
-offset_right = -698.0
-offset_bottom = -399.0
-text = "[center][tornado]I shouldn't have eaten that apple[/tornado][/center]
-"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_s8kig")
 
-[node name="dialogBubble2" parent="dialogBubble" instance=ExtResource("1_rta0y")]
-visible = false
+[node name="dialogBubble" parent="dialogContainer" instance=ExtResource("1_rta0y")]
 layout_mode = 1
-offset_left = 427.0
-offset_top = 150.0
-offset_right = 427.0
-offset_bottom = 150.0
-text = "
-[center][shake]my stomach![/shake][/center]
-"
+offset_right = -672.0
+offset_bottom = -360.0
+text = "[center]Oh No! What am I going to do?[/center]"
 
-[node name="TextureRect" parent="dialogBubble/dialogBubble2/Control/container" index="0"]
+[node name="dialogBubble2" parent="dialogContainer" instance=ExtResource("1_rta0y")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.83
+anchor_bottom = 0.772
+offset_left = 516.0
+offset_top = 186.0
+offset_right = 107.84
+offset_bottom = -6.25601
+text = "[center][shake]SO MUCH DIALOG[/shake][/center]"
+
+[node name="Control" parent="dialogContainer/dialogBubble2" index="0"]
+offset_left = -6.0
+offset_top = -117.0
+offset_right = -6.0
+offset_bottom = -117.0
+
+[node name="TextureRect" parent="dialogContainer/dialogBubble2/Control/container" index="0"]
 texture = ExtResource("3_lkek4")
 
-[node name="dialogBubble" parent="dialogBubble/dialogBubble2" instance=ExtResource("1_rta0y")]
-visible = false
+[node name="dialogBubble3" parent="dialogContainer" instance=ExtResource("1_rta0y")]
 layout_mode = 1
-offset_left = -372.0
-offset_top = 222.0
-offset_right = -372.0
-offset_bottom = 222.0
-text = "[center][wave]regreting my decisions....[/wave][/center]"
+offset_left = 132.0
+offset_top = 378.0
+offset_right = -590.0
+offset_bottom = -30.0
+text = "[center]
+[wave freq=10]Whatever.....[/wave]
 
-[node name="TextureRect" parent="dialogBubble/dialogBubble2/dialogBubble/Control/container" index="0"]
+[/center]"
+
+[node name="TextureRect" parent="dialogContainer/dialogBubble3/Control/container" index="0"]
 texture = ExtResource("4_waofd")
 
-[editable path="dialogBubble"]
-[editable path="dialogBubble/dialogBubble2"]
-[editable path="dialogBubble/dialogBubble2/dialogBubble"]
+[editable path="dialogContainer/dialogBubble"]
+[editable path="dialogContainer/dialogBubble2"]
+[editable path="dialogContainer/dialogBubble3"]
