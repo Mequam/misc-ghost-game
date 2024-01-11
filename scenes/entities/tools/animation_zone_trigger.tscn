@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cplvmi3c4nx3x"]
+
+[ext_resource type="Script" path="res://scenes/entities/tools/AnimationZoneTrigger.gd" id="1_cuhk3"]
+
+[node name="AnimationZoneTrigger" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_cuhk3")
+play_on_enter = "turn"
+play_on_exit = "hammer"
+ready_animation = "hammer"
+
+[node name="interaction_timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

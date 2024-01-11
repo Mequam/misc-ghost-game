@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=35 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -19,7 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://bxn1oo31udgxe" path="res://scenes/UI/explanation_zone.tscn" id="17_ck3cw"]
 [ext_resource type="PackedScene" uid="uid://dalvr81o80x4w" path="res://scenes/environment/orchard/pumpkin_blocker.tscn" id="18_4w2y5"]
 [ext_resource type="PackedScene" uid="uid://b6mnkh4550x3t" path="res://scenes/entities/npc/artist_ghost/artist_ghost.tscn" id="19_4vttw"]
-[ext_resource type="Script" path="res://scenes/entities/tools/AnimationZoneTrigger.gd" id="20_s7qom"]
+[ext_resource type="PackedScene" uid="uid://cplvmi3c4nx3x" path="res://scenes/entities/tools/animation_zone_trigger.tscn" id="20_l70ul"]
+[ext_resource type="Script" path="res://scenes/entities/tools/dialog_zone.gd" id="21_u3jtk"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/dialog_hopper.gd" id="22_53t1k"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/line_dialog_bubble_container.gd" id="23_vup70"]
+[ext_resource type="PackedScene" uid="uid://llvxc6qbd58b" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.tscn" id="24_cfnuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
 size = Vector2(51, 648)
@@ -53,8 +57,11 @@ size = Vector2(223, 208.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwmxe"]
 size = Vector2(254, 211.25)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_doeuj"]
-size = Vector2(976, 427)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cry2f"]
+size = Vector2(1454, 476)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6b8c"]
+size = Vector2(826, 440)
 
 [node name="LeniTest" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 419)
@@ -279,21 +286,63 @@ position = Vector2(3697, 192)
 [node name="artist_ghost" parent="." instance=ExtResource("19_4vttw")]
 position = Vector2(3289, 248)
 
-[node name="AnimationZoneTrigger" type="Area2D" parent="artist_ghost"]
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("20_s7qom")
-play_on_enter = "turn"
-play_on_exit = "hammer"
-ready_animation = "hammer"
+[node name="AnimationZoneTrigger" parent="artist_ghost" instance=ExtResource("20_l70ul")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="artist_ghost/AnimationZoneTrigger"]
-position = Vector2(58, -218.5)
-shape = SubResource("RectangleShape2D_doeuj")
+position = Vector2(-9, -228)
+shape = SubResource("RectangleShape2D_cry2f")
+debug_color = Color(0.643137, 0.701961, 0, 0.419608)
 
-[node name="interaction_timer" type="Timer" parent="artist_ghost/AnimationZoneTrigger"]
-wait_time = 0.05
-one_shot = true
+[node name="dialog zone" type="Area2D" parent="artist_ghost"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("21_u3jtk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="artist_ghost/dialog zone"]
+position = Vector2(-13, -210)
+shape = SubResource("RectangleShape2D_w6b8c")
+debug_color = Color(0.501961, 1, 0, 0.392157)
+
+[node name="DialogHopper" type="Control" parent="artist_ghost/dialog zone"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("22_53t1k")
+
+[node name="LinearDialogContainer" type="Control" parent="artist_ghost/dialog zone/DialogHopper" node_paths=PackedStringArray("entry_positition")]
+anchors_preset = 0
+offset_left = -270.0
+offset_top = -522.0
+offset_right = 554.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+line_ordering = 0
+entry_positition = NodePath("../../../mouth")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogHopper/LinearDialogContainer" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -338.0
+offset_top = -236.0
+offset_right = -756.0
+offset_bottom = -454.0
+text = "[center]hello there little ghost[/center]"
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogHopper/LinearDialogContainer" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -38.0
+offset_top = -440.0
+offset_right = -384.0
+offset_bottom = -670.0
+text = "[center]do you appriciate modern art?[/center]"
+
+[node name="mouth" type="Control" parent="artist_ghost"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -26.0
+offset_top = -320.0
+offset_right = 14.0
+offset_bottom = -280.0
 
 [editable path="second_light/DisapearingLabel"]
 [editable path="run explanation"]

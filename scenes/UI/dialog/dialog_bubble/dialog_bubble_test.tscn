@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfafea4bmbxk2"]
+[gd_scene load_steps=8 format=3 uid="uid://dfafea4bmbxk2"]
 
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble_test.gd" id="1_3gyf5"]
 [ext_resource type="PackedScene" uid="uid://llvxc6qbd58b" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.tscn" id="1_rta0y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqv5lkjxcpg3" path="res://assets/ui/dialog_boxex/bubble0003.png" id="3_lkek4"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/linear_dialog_display/linear_dialog_display.gd" id="3_o73ri"]
 [ext_resource type="Texture2D" uid="uid://dbxwdd8bndbpr" path="res://assets/ui/dialog_boxex/bubble0005.png" id="4_waofd"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/line_dialog_bubble_container.gd" id="7_1hfrl"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_3gyf5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,15 +82,15 @@ text = "[center]
 modulate = Color(0, 1, 1, 1)
 texture = ExtResource("4_waofd")
 
-[node name="LinearDialogContainer2" type="Control" parent="dialogContainer"]
-visible = false
+[node name="LinearDialogContainer2" type="Control" parent="dialogContainer" node_paths=PackedStringArray("entry_positition")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_o73ri")
+script = ExtResource("7_1hfrl")
+entry_positition = NodePath("../../dialog_start")
 
 [node name="dialogBubble" parent="dialogContainer/LinearDialogContainer2" instance=ExtResource("1_rta0y")]
 layout_mode = 1
@@ -127,6 +129,7 @@ modulate = Color(1, 0, 0, 1)
 texture = ExtResource("3_lkek4")
 
 [node name="LinearDialogContainer3" type="Control" parent="dialogContainer"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -200,6 +203,13 @@ theme_override_font_sizes/normal_font_size = 12
 
 [node name="typingTimer" parent="dialogContainer/LinearDialogContainer3/dialogBubble4/Control" index="2"]
 wait_time = 0.01
+
+[node name="dialog_start" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 92.0
+offset_right = 176.0
+offset_bottom = 92.0
 
 [editable path="dialogContainer/LinearDialogContainer/dialogBubble"]
 [editable path="dialogContainer/LinearDialogContainer/dialogBubble2"]
