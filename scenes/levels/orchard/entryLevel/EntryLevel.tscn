@@ -291,7 +291,8 @@ ready_animation = "hammer"
 position = Vector2(58, -218.5)
 shape = SubResource("RectangleShape2D_doeuj")
 
-[node name="interaction_buffer" type="Timer" parent="artist_ghost/AnimationZoneTrigger"]
+[node name="interaction_timer" type="Timer" parent="artist_ghost/AnimationZoneTrigger"]
+wait_time = 0.05
 one_shot = true
 
 [editable path="second_light/DisapearingLabel"]
