@@ -1,4 +1,4 @@
-extends Npc
+extends Entity
 
 class_name LRJEntity #Left Right Jump Entity
 

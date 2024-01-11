@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6mnkh4550x3t"]
+
+[ext_resource type="Script" path="res://scenes/entities/npc/artist_ghost/artist_ghost.gd" id="1_jot35"]
+[ext_resource type="PackedScene" uid="uid://cgeo3an5t6hdu" path="res://scenes/entities/npc/artist_ghost/artist_ghost_sprite.tscn" id="1_kembv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugdws"]
+size = Vector2(150, 364)
+
+[node name="artist_ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_jot35")
+sprite = NodePath("artist_ghost_sprite")
+
+[node name="artist_ghost_sprite" parent="." instance=ExtResource("1_kembv")]
+position = Vector2(-18, -220)
+animation = &"turn"
+frame = 1
+frame_progress = 0.27645
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -191)
+shape = SubResource("RectangleShape2D_ugdws")
+
+[node name="unposSpot" type="Node2D" parent="."]
+position = Vector2(-6, -434)

@@ -1,0 +1,79 @@
+[gd_scene load_steps=15 format=3 uid="uid://cgeo3an5t6hdu"]
+
+[ext_resource type="Texture2D" uid="uid://pj7j8jlgo4rn" path="res://assets/animations/npc/ghost artist/ghost_artist0003.png" id="1_5r66i"]
+[ext_resource type="Texture2D" uid="uid://216ue14ias61" path="res://assets/animations/npc/ghost artist/ghost_artist0004.png" id="2_me3yk"]
+[ext_resource type="Texture2D" uid="uid://cl5ytjr363h3m" path="res://assets/animations/npc/ghost artist/ghost_artist0005.png" id="3_narmf"]
+[ext_resource type="Texture2D" uid="uid://dm6rc5cci80dq" path="res://assets/animations/npc/ghost artist/ghost_artist0006.png" id="4_a6q5y"]
+[ext_resource type="Texture2D" uid="uid://bb4ibjogk66wl" path="res://assets/animations/npc/ghost artist/ghost_artist0011.png" id="5_bcnve"]
+[ext_resource type="Texture2D" uid="uid://dy874mr6i1aiv" path="res://assets/animations/npc/ghost artist/ghost_artist0020.png" id="5_hqepa"]
+[ext_resource type="Texture2D" uid="uid://norh24texk1i" path="res://assets/animations/npc/ghost artist/ghost_artist0012.png" id="6_dwwc8"]
+[ext_resource type="Texture2D" uid="uid://m4xktnsobidi" path="res://assets/animations/npc/ghost artist/ghost_artist0013.png" id="7_h6v5d"]
+[ext_resource type="Texture2D" uid="uid://m3xgpr8it3v3" path="res://assets/animations/npc/ghost artist/ghost_artist0014.png" id="8_clb31"]
+[ext_resource type="Texture2D" uid="uid://dqcvy7itbg6ss" path="res://assets/animations/npc/ghost artist/ghost_artist0015.png" id="9_v43uu"]
+[ext_resource type="Texture2D" uid="uid://dy5dwbiwwndsk" path="res://assets/animations/npc/ghost artist/ghost_artist0016.png" id="10_b4olj"]
+[ext_resource type="Texture2D" uid="uid://bfhivkyjhe2kb" path="res://assets/animations/npc/ghost artist/ghost_artist0017.png" id="11_ycfqk"]
+[ext_resource type="Script" path="res://scenes/entities/npc/artist_ghost/artist_ghost_sprite.gd" id="13_o6t2n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bxfsq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5r66i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_me3yk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_narmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a6q5y")
+}],
+"loop": true,
+"name": &"hammer",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hqepa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ycfqk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("5_bcnve")
+}, {
+"duration": 4.0,
+"texture": ExtResource("6_dwwc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h6v5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_clb31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v43uu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b4olj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ycfqk")
+}],
+"loop": false,
+"name": &"turn",
+"speed": 10.0
+}]
+
+[node name="artist_ghost_sprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_bxfsq")
+animation = &"idle"
+script = ExtResource("13_o6t2n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

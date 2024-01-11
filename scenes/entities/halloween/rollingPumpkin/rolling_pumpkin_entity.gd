@@ -1,4 +1,4 @@
-extends Npc
+extends Entity
 
 #this class represents the rotating pumkin enemy
 

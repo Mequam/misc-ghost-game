@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=30 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://assets/scripts/gameObjects/dummy_entity.gd" id="14_w8165"]
 [ext_resource type="PackedScene" uid="uid://bxn1oo31udgxe" path="res://scenes/UI/explanation_zone.tscn" id="17_ck3cw"]
 [ext_resource type="PackedScene" uid="uid://dalvr81o80x4w" path="res://scenes/environment/orchard/pumpkin_blocker.tscn" id="18_4w2y5"]
+[ext_resource type="PackedScene" uid="uid://b6mnkh4550x3t" path="res://scenes/entities/npc/artist_ghost/artist_ghost.tscn" id="19_4vttw"]
+[ext_resource type="Script" path="res://scenes/entities/tools/AnimationZoneTrigger.gd" id="20_s7qom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
 size = Vector2(51, 648)
@@ -50,6 +52,9 @@ size = Vector2(223, 208.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwmxe"]
 size = Vector2(254, 211.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doeuj"]
+size = Vector2(976, 427)
 
 [node name="LeniTest" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 position = Vector2(22, 419)
@@ -270,6 +275,24 @@ position = Vector2(1041, 359)
 
 [node name="pumpkinBlocker3" parent="." instance=ExtResource("18_4w2y5")]
 position = Vector2(3697, 192)
+
+[node name="artist_ghost" parent="." instance=ExtResource("19_4vttw")]
+position = Vector2(3289, 248)
+
+[node name="AnimationZoneTrigger" type="Area2D" parent="artist_ghost"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("20_s7qom")
+play_on_enter = "turn"
+play_on_exit = "hammer"
+ready_animation = "hammer"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="artist_ghost/AnimationZoneTrigger"]
+position = Vector2(58, -218.5)
+shape = SubResource("RectangleShape2D_doeuj")
+
+[node name="interaction_buffer" type="Timer" parent="artist_ghost/AnimationZoneTrigger"]
+one_shot = true
 
 [editable path="second_light/DisapearingLabel"]
 [editable path="run explanation"]
