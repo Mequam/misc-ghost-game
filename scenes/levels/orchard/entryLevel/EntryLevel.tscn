@@ -317,7 +317,6 @@ offset_top = -522.0
 offset_right = 554.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-line_ordering = 0
 entry_positition = NodePath("../../../mouth")
 
 [node name="dialogBubble" parent="artist_ghost/dialog zone/DialogHopper/LinearDialogContainer" instance=ExtResource("24_cfnuc")]
@@ -339,10 +338,10 @@ text = "[center]do you appriciate modern art?[/center]"
 [node name="mouth" type="Control" parent="artist_ghost"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -26.0
-offset_top = -320.0
-offset_right = 14.0
-offset_bottom = -280.0
+offset_left = -28.0
+offset_top = -370.0
+offset_right = 12.0
+offset_bottom = -330.0
 
 [editable path="second_light/DisapearingLabel"]
 [editable path="run explanation"]

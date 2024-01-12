@@ -13,10 +13,30 @@ class_name ComicBubbleContainer
 #to draw a line to the speaker if set
 @export var entry_positition : Control = null
 
+#if set to true the node tries to account for the global scale of
+#node 2D elements that are connected to it
+@export var correct_scale : bool = true
+
+#attempts to get a node2d ancestor if one exists
+func get_node2d_parent()->Node2D:
+	var p = get_parent()
+	for i in range(100):
+		if p is Node2D:
+			return p
+		p = p.get_parent()
+	return null
+
 func add_line(from ,too )->void:
 		var l = Line2D.new()
-		l.add_point(too.size/(2*get_parent().scale))
-		l.add_point((from.global_position - too.global_position + from.size/2)/get_parent().scale)
+		l.add_point(too.size/(2))
+		
+		#attempt and get a correction scale from the highest node2D
+		var correction_scale : Vector2 = Vector2(1,1)
+		if correct_scale:
+			var n = get_node2d_parent()
+			correction_scale = n.global_scale
+
+		l.add_point((from.global_position - too.global_position)/correction_scale+from.size/2)
 		l.modulate = line_color
 		l.z_index = line_ordering
 		too.add_child(l)
