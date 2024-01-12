@@ -23,6 +23,7 @@ func _ready():
 	#we do NOT start off as displayed
 	if not self.auto_display: self.undisplay()
 	typeing_timer.timeout.connect(self.type_letter)
+	animation_player.animation_finished.connect(on_anim_finished)
 
 func displayed()->bool:
 	return super.displayed() and lblRich.text == text
@@ -52,10 +53,22 @@ func display()->void:
 	text_idx = 0
 	lblRich.text = ""
 	typeing_timer.start() #begin typing
-	animation_player.play("apear")
+	animation_player.play("apear",1,1,true)
 	visible = true
+
 func undisplay()->void:
 	text_idx = 0
 	typeing_timer.stop()
-	super.undisplay()
+	#clear out the text
+	lblRich.text = ""
+	#play the animation backwords so we disapear
+	disapear = true #mark that we do not want to appear when the anim finishes
+	animation_player.play("apear",1,-2,true)
+
+#indicates that we do not want to be visible after an animation
+var disapear = false
+func on_anim_finished(anim_name : StringName)->void:
+	if disapear:
+		super.undisplay()
+		disapear = false
 

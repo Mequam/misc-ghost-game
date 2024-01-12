@@ -91,6 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_1hfrl")
 entry_positition = NodePath("../../dialog_start")
+correct_scale = false
 
 [node name="dialogBubble" parent="dialogContainer/LinearDialogContainer2" instance=ExtResource("1_rta0y")]
 layout_mode = 1

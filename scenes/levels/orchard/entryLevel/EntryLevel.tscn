@@ -240,6 +240,7 @@ text = "Double Tap To Run"
 position = Vector2(2900, -161)
 
 [node name="DisapearingLabel" parent="run explanation2" index="0"]
+z_index = 1
 offset_left = -54.0
 offset_top = 264.0
 offset_right = 686.0

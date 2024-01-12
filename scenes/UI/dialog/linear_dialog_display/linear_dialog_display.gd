@@ -14,6 +14,12 @@ func _ready()->void:
 
 func on_child_displayed(child):
 	self.display()
-		
+
+#let each of the children run their undisplay functions
+#that way we can get those sweet sweet animations
+func undisplay()->void:
+	for child in get_children():
+		if child is DialogComponent:
+			child.undisplay()
 
 

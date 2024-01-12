@@ -31,32 +31,31 @@ func check_displayed()->void:
 	return
 
 
-func display()->void:
-	print_debug(next_idx)
 
+
+func get_selected_component()->Control:
+	if next_idx - 1 >= 0: return get_child(next_idx -1)
+	return get_child(get_child_count()-1)
+func get_next_component()->Control:
+	return get_child(next_idx)
+
+
+func increment_selection()->void:
+	get_selected_component().undisplay()
+	get_next_component().display()
+	next_idx += 1
+	next_idx %= get_child_count()
+
+func display()->void:
 	if next_idx >= get_child_count():
 		print_debug("no next component!")
 		#recuuuursion babyeeeeee
 		check_displayed()
 		return
-	
-	#undisplay the current index
-	var next_component = get_child(next_idx)
+	#move onto the next object
+	increment_selection()
 
-	
-	print_debug(next_component.name)
-	#hide the previous if applicable
-	if next_idx - 1 >= 0:
-		get_child(next_idx - 1).undisplay()
-	else:
-		#loop around again if we are negative
-		var node = get_child(get_child_count()-1)
-		print_debug(node.name)
-		get_child(get_child_count()-1).undisplay()
-
-	
-	next_component.display()
-	next_idx += 1
-	next_idx %= get_child_count() #loop back around
-
+func undisplay()->void:
+	#hide the current index
+	get_selected_component().undisplay()
 

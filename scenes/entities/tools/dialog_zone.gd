@@ -9,6 +9,11 @@ class_name DialogZone
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.body_entered.connect(self.on_body_entered)
+	self.body_exited.connect(self.on_body_exited)
+func on_body_exited(body)->void:
+	for child in get_children():
+		if child is DialogComponent:
+			child.undisplay()
 
 func on_body_entered(body)->void:
 	for child in get_children():
