@@ -7,9 +7,18 @@
 size = Vector2(150, 364)
 
 [node name="artist_ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+z_index = -1
+position = Vector2(0, 2)
 scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_jot35")
 sprite = NodePath("artist_ghost_sprite")
+unposses_radius = null
+heart_text = null
+max_health = null
+health = null
+speed = null
 
 [node name="artist_ghost_sprite" parent="." instance=ExtResource("1_kembv")]
 position = Vector2(-18, -220)

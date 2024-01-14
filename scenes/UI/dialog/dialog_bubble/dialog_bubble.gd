@@ -26,7 +26,7 @@ func _ready():
 	animation_player.animation_finished.connect(on_anim_finished)
 
 func displayed()->bool:
-	return super.displayed() and lblRich.text == text
+	return super.displayed() and typeing_timer.time_left == 0
 
 
 #types a single letter out into the dialog bubble
@@ -50,6 +50,13 @@ func type_letter()->void:
 	text_idx += 1
 
 func display()->void:
+	#if we get asked to display while typing,
+	#just finish typing
+	if self.typeing_timer.time_left > 0:
+		lblRich.text = self.text
+		self.typeing_timer.stop()
+		on_displayed.emit(self) #tell the parent that we are displayed
+		return
 	text_idx = 0
 	lblRich.text = ""
 	typeing_timer.start() #begin typing
@@ -69,6 +76,7 @@ func undisplay()->void:
 var disapear = false
 func on_anim_finished(anim_name : StringName)->void:
 	if disapear:
+		self.visible = false
 		super.undisplay()
 		disapear = false
 

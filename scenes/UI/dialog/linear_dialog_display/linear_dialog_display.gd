@@ -13,6 +13,7 @@ func _ready()->void:
 			child.on_displayed.connect(self.on_child_displayed)
 
 func on_child_displayed(child):
+	print_debug(self.name + " child displayed: " + child.name)
 	self.display()
 
 #let each of the children run their undisplay functions

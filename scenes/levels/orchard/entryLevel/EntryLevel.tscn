@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=38 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -21,9 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://b6mnkh4550x3t" path="res://scenes/entities/npc/artist_ghost/artist_ghost.tscn" id="19_4vttw"]
 [ext_resource type="PackedScene" uid="uid://cplvmi3c4nx3x" path="res://scenes/entities/tools/animation_zone_trigger.tscn" id="20_l70ul"]
 [ext_resource type="Script" path="res://scenes/entities/tools/dialog_zone.gd" id="21_u3jtk"]
-[ext_resource type="Script" path="res://scenes/UI/dialog/dialog_hopper.gd" id="22_53t1k"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/DialogClicker.gd" id="22_w5gks"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/dialog_hopper.gd" id="23_fc7o4"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/line_dialog_bubble_container.gd" id="23_vup70"]
 [ext_resource type="PackedScene" uid="uid://llvxc6qbd58b" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.tscn" id="24_cfnuc"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble_container.gd" id="24_xth7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
 size = Vector2(51, 648)
@@ -50,6 +52,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpapu"]
 size = Vector2(222.5, 514)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3o3i6"]
+size = Vector2(483, 122.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbvrt"]
 size = Vector2(223, 208.5)
@@ -236,6 +241,11 @@ offset_right = 366.0
 offset_bottom = 338.0
 text = "Double Tap To Run"
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="run explanation"]
+position = Vector2(39.5, 192.25)
+shape = SubResource("RectangleShape2D_3o3i6")
+debug_color = Color(0, 0.643137, 0.278431, 0.419608)
+
 [node name="run explanation2" parent="." instance=ExtResource("17_ck3cw")]
 position = Vector2(2900, -161)
 
@@ -288,6 +298,7 @@ position = Vector2(3697, 192)
 position = Vector2(3289, 248)
 
 [node name="AnimationZoneTrigger" parent="artist_ghost" instance=ExtResource("20_l70ul")]
+position = Vector2(4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="artist_ghost/AnimationZoneTrigger"]
 position = Vector2(-9, -228)
@@ -304,37 +315,193 @@ position = Vector2(-13, -210)
 shape = SubResource("RectangleShape2D_w6b8c")
 debug_color = Color(0.501961, 1, 0, 0.392157)
 
-[node name="DialogHopper" type="Control" parent="artist_ghost/dialog zone"]
+[node name="DialogClicker" type="Control" parent="artist_ghost/dialog zone"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("22_53t1k")
+script = ExtResource("22_w5gks")
+enabled = null
 
-[node name="LinearDialogContainer" type="Control" parent="artist_ghost/dialog zone/DialogHopper" node_paths=PackedStringArray("entry_positition")]
+[node name="main_dialog_loop" type="Control" parent="artist_ghost/dialog zone/DialogClicker"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_fc7o4")
+loop = false
+hide_children = false
+
+[node name="DialogHopper" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_fc7o4")
+
+[node name="first_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 42.0
+offset_bottom = 46.0
+script = ExtResource("24_xth7s")
+
+[node name="pumpkinsDontLikeArt" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/first_monolog" node_paths=PackedStringArray("entry_positition")]
+visible = false
 anchors_preset = 0
 offset_left = -270.0
 offset_top = -522.0
 offset_right = 554.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-entry_positition = NodePath("../../../mouth")
+entry_positition = NodePath("../../../../../../mouth")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogHopper/LinearDialogContainer" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -338.0
 offset_top = -236.0
 offset_right = -756.0
 offset_bottom = -454.0
-text = "[center]hello there little ghost[/center]"
+text = "[center]hello there little [tornado freq=3]ghooost[/tornado][/center]"
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogHopper/LinearDialogContainer" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -38.0
 offset_top = -440.0
 offset_right = -384.0
 offset_bottom = -670.0
 text = "[center]do you appriciate modern art?[/center]"
+
+[node name="dialogBubble3" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -580.0
+offset_top = -618.0
+offset_right = -814.0
+offset_bottom = -852.0
+text = "[center]The pumpkin spirits don't seem to[/center]"
+
+[node name="dont_absorb" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/first_monolog" node_paths=PackedStringArray("entry_positition")]
+visible = false
+layout_mode = 1
+anchor_left = -6.0
+anchor_top = -3.7
+offset_left = -144.0
+offset_top = -288.0
+offset_right = 388.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+entry_positition = NodePath("../pumpkinsDontLikeArt/dialogBubble3")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/first_monolog/dont_absorb" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = 156.0
+offset_top = -804.0
+offset_right = -108.0
+offset_bottom = -1004.0
+text = "[center]They allways take a closer look[/center]"
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/first_monolog/dont_absorb" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = 516.0
+offset_top = -544.0
+offset_right = 316.0
+offset_bottom = -668.0
+text = "[center]But they never really [tornado freq=5]experience[/tornado] the piece[/center]"
+
+[node name="second_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
+visible = false
+anchors_preset = 0
+offset_left = -520.0
+offset_top = -316.0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+entry_positition = NodePath("../../../../../mouth")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/second_monolog" instance=ExtResource("24_cfnuc")]
+visible = false
+layout_mode = 1
+offset_left = 602.0
+offset_top = -306.0
+offset_right = 602.0
+offset_bottom = -306.0
+text = "[center]One day I will change that[/center]"
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/second_monolog" instance=ExtResource("24_cfnuc")]
+visible = false
+layout_mode = 1
+offset_left = 138.0
+offset_top = -634.0
+offset_right = 248.0
+offset_bottom = -522.0
+text = "
+[center]I just [tornado freq=5]KNOOOOOW[/tornado] it[/center]
+
+
+"
+
+[node name="third_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
+visible = false
+anchors_preset = 0
+offset_left = -512.0
+offset_top = -320.0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+entry_positition = NodePath("../../../../../mouth")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/third_monolog" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -68.0
+offset_top = -268.0
+offset_right = -68.0
+offset_bottom = -268.0
+text = "[center]Anyways enjoy whatever it is that your [tornado freq=2]dooooing[/tornado][/center]
+
+"
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/third_monolog" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = 304.0
+offset_top = -552.0
+offset_right = 304.0
+offset_bottom = -552.0
+text = "[center]I have peices to attend to[/center]"
+
+[node name="fourth_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
+visible = false
+layout_mode = 1
+anchor_left = -3.606
+anchor_top = -3.323
+offset_left = -297.76
+offset_top = -119.08
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+entry_positition = NodePath("../../../../../mouth")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/fourth_monolog" instance=ExtResource("24_cfnuc")]
+visible = false
+layout_mode = 1
+offset_left = -80.0
+offset_top = -512.0
+offset_right = 36.0
+offset_bottom = -370.0
+text = "
+
+[center]and [tornado]besiiiides[/tornado][/center]
+
+
+"
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/fourth_monolog" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = 1170.0
+offset_top = -1080.0
+offset_right = 1170.0
+offset_bottom = -1080.0
+text = "[center]don't ghosts have [tornado freq=30 radius=0.5]lhamps[/tornado] to fiind?[/center]"
 
 [node name="mouth" type="Control" parent="artist_ghost"]
 layout_mode = 3

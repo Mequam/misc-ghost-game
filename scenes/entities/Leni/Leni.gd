@@ -138,39 +138,36 @@ func on_action_press(act : String)->void:
 		self.safe_jump()	
 	super.on_action_press(act)
 
-#func set_possesed(val : bool)->void:
-#	if not possesed and val:
-#		visible = true
-#		collision_layer = gen_col_layer()
-#		collision_mask = gen_col_mask()
-#		state = EntityState.DEFAULT
-#		$mainCam.position = Vector2(0,0)
-#	elif not val:
-#		$Sprite2D.stop()
-#		visible = false
-#		collision_layer = 0
-#		collision_mask = 0
-#
-#	super.set_possesed(val)
-
 #runs whenever state is set and ensures the
 #state machine functions properly
 func set_state(val : int)->void:
 	match val:
 		LeniState.POSSESING:
+			#start the timer indicating an attack started
 			$posses_timer.start()
-			
-			if $Sprite2D.flip_h:
-				$Sprite2D.rotation = (-posses_velocity).angle()
+			self.collision_mask |= ColMath.Layer.SIMPLE_ENTITY
+			#if they are not moving intialy, we will preload their speed for them
+			if posses_velocity.length_squared() == 0:
+				posses_velocity.x = self.posses_speed
+				if self.get_sprite2D().flip_h:
+					posses_velocity.x *= -1
+			#update the rotation of the sprite for the attack
+			if self.get_sprite2D().flip_h:
+				self.get_sprite2D().rotation = (-posses_velocity).angle()
 			else:
-				$Sprite2D.rotation = posses_velocity.angle()
-
-			$Sprite2D.custom_play("posses_launch")
+				self.get_sprite2D().rotation = posses_velocity.angle()
+		
+			#start the animation for the posses attack
+			self.get_sprite2D().custom_play("posses_launch")
+			$possesSound.play() #TODO: this could be moved into the animation sprite
 		LeniState.POSSESING_ENTITY:
 			#make us unexist
 			visible = false
 			collision_layer = 0
 			collision_mask = 0
+		EntityState.DEFAULT:
+			#remove the simple entity collision when we go back to default state
+			self.collision_mask = ColMath.strip_bits(self.collision_mask,ColMath.Layer.SIMPLE_ENTITY)
 
 	super.set_state(val)
 
@@ -178,19 +175,13 @@ func set_state(val : int)->void:
 func posses_attack(vel : Vector2)->void:
 	if $posess_cooldown.time_left > 0: return
 
-	$posess_cooldown.start()
+	#store our current velocity into the posses_velocity
 	posses_velocity = vel
 	posses_velocity.y /= 2
 
-	#if they are not moving intialy, we will preload their speed for them
-	if posses_velocity.length_squared() == 0:
-		posses_velocity.x = self.posses_speed
-
-		if self.get_sprite2D().flip_h:
-			posses_velocity.x *= -1
-
+	#set the state to possesing (note that this is a setter that does a ton of state stuff)
+	#update our state through the setter function
 	self.state = LeniState.POSSESING
-	$possesSound.play()
 
 #leni is a ghost, you cant posses a ghost (at least until I get around to adding it :p)
 func exorcize(offset : Vector2 = Vector2(0,0)):
@@ -205,37 +196,8 @@ func save_at_light(ghostLight : RespawnLamp)->void:
 						get_parent(),
 						ghostLight)
 
-#actually posses an entity
-#func posses(entity)->void:
-#
-#	#clear out the existing possesed entity
-#	if possesed_entity:
-#		unposses()
-#	
-#	#swap the possesion around
-#	self.possesed = false
-#	entity.possesed = true
-#
-#	ghost_after_effect.the_sprite = entity.get_node("Sprite2D")
-#
-#	if (entity is RespawnLamp):
-#		respawn_point = entity
-#		save_at_light(entity)
-#	else:
-#		#update the collision layer and mask of the entity
-#		entity.collision_layer = ColMath.strip_bits(entity.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
-#		entity.collision_layer |= ColMath.Layer.PLAYER
-#	
-#		#update the collision mask of the entity
-#		entity.collision_mask = ColMath.strip_bits(entity.collision_mask,ColMath.Layer.PLAYER)
-#		entity.collision_mask |= ColMath.Layer.NON_PLAYER_ENTITY
-	
-	#save a reference to the possesed entity
-#	possesed_entity = entity
-#	possesed_entity.connect("die",Callable(self,"on_possesed_die"))
-#	process_mode = Node.PROCESS_MODE_DISABLED
 
-func compute_velocity(vel : Vector2)->Vector2:	
+func compute_velocity(vel : Vector2)->Vector2:
 	if not possesed:
 		return Vector2(0,0)
 	match state:
@@ -243,25 +205,13 @@ func compute_velocity(vel : Vector2)->Vector2:
 			return super.compute_velocity(vel)
 		LeniState.POSSESING:
 			return posses_velocity
-	
 	#just in case
 	return super.compute_velocity(vel)
-
-func compute_action(event : InputEvent)->void:
-	match state:
-		LeniState.POSSESING:
-			#while we are possesing we do NOT
-			#update player input
-			super.compute_action(event)
-		_:
-			super.compute_action(event)
 
 func main_process(delta):
 	#Leni does NOTHING if he is not possesed
 	if possesed:
 		super.main_process(delta)
-	#if possesed_entity:
-	#	$mainCam.global_position = possesed_entity.global_position
 
 #overload the usual input
 #because Leni ALWAYS listens to input

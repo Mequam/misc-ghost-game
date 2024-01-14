@@ -16,6 +16,9 @@ func on_body_exited(body)->void:
 			child.undisplay()
 
 func on_body_entered(body)->void:
+	#we do not talk when the player posseses us
+	if body is Npc:
+		return
 	for child in get_children():
 		if child is DialogComponent:
 			child.next()

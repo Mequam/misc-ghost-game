@@ -70,8 +70,8 @@ enum Layer {
 	NON_PLAYER_ENTITY = 16,
 	PICKUP = 32,
 	TERRAIN = 64,
-	HAZARD = 128,
-	PROJECTILES = 256
+	SIMPLE_ENTITY = 128,
+	PROJECTILES = 256,
 }
 #these are the layers that don't shift or have super classes
 enum ConstLayer {

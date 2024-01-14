@@ -12,9 +12,9 @@ class_name DialogContainer
 #we are displayed ONLY if ALL children are displayed
 func displayed()->bool:
 	if not self.visible: return false
-
 	for child in get_children():
-		if child is DialogBubble and not child.displayed():
+		if child is DialogComponent and not child.displayed():
+			print_debug(self.name + " is not displayed because of " + child.name)
 			return false
 	return true
 
@@ -31,9 +31,7 @@ func undisplay()->void:
 
 #when we are displayed we display only the first undisplayed child
 func display()->void:
-	#store if we are displayed enough for the rising edge
-	var displayed = self.displayed()
-
+	var displayed_var = self.displayed()
 	self.visible = true
 
 	for node in get_children():
@@ -42,6 +40,7 @@ func display()->void:
 			break
 
 	#detect the rising edge of display
-	if not displayed and self.displayed():
+	if self.displayed():
+		print_debug(self.name + "emiting that we are displayed!")
 		on_displayed.emit(self)
 

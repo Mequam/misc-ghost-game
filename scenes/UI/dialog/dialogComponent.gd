@@ -14,19 +14,26 @@ signal on_displayed
 #the function that we use to get the next component of dialog
 func get_next_component()->Node:
 	if next_component != null: return next_component
-	return get_child(1)
+	elif get_child(0) is DialogComponent: return get_child(0)
+	return null
 
 #called to display this section of dialog
 func display()->void:
+	self.visible = true
 	on_displayed.emit(self)
 
 #indicator if we are displayed to the player
 func displayed()->bool:
 	return self.visible
+#tells any of our children that they need to undisplay themselfs
+func chain_undisplay()->void:
+	if self.get_next_component() is DialogComponent:
+		self.get_next_component().undisplay()
 
 #performs any actions necessary to hide the component
 func undisplay()->void:
-	self.visible = false
+	self.chain_undisplay()
+
 
 #show the next component in the chain, can be
 #called from ANY bubble in the chain and still

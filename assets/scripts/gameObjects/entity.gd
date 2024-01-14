@@ -2,6 +2,9 @@ extends KinColObject
 
 class_name Entity
 
+#TODO: the health code should probably be moved to another set of entites, 
+#just because the NPC's don't deal with health or AI
+
 #this is the generic entity script that all
 #collision game objects are inteanded to draw from
 
