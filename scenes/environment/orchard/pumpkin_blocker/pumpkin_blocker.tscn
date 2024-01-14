@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dalvr81o80x4w"]
+
+[ext_resource type="PackedScene" uid="uid://o4yk4wp80114" path="res://scenes/environment/orchard/pumpkin_blocker/pumpkin_blocker_sprite.tscn" id="1_mdi2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfpxm"]
+size = Vector2(401, 169)
+
+[node name="pumpkinBlocker" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, -10.5)
+shape = SubResource("RectangleShape2D_rfpxm")
+
+[node name="pumpkin_blocker_sprite" parent="." instance=ExtResource("1_mdi2e")]

@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name InteractionZone
+
 var interacter : Entity = null
 
 signal interacted_with
@@ -24,6 +26,7 @@ func _ready():
 	if len(actions) > 0:
 		information_label.text = actions[0].as_text()
 
+
 func on_body_entered(body)->void:
 	if not self.filter(body): return
 
@@ -43,10 +46,8 @@ func on_anim_finished(anim)->void:
 
 func _input(event):
 	if Input.is_action_just_pressed("INTERACT") and interacter != null:
+		$idicator.play("indication")
 		interacted_with.emit(interacter)
-
-		print_debug(interacter.get_class())
-		print_debug("interacting!")
 
 func filter(body : Entity)->bool:
 	return self.entity_filter == "" or body.get_entity_type() == self.entity_filter

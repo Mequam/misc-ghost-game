@@ -3,8 +3,9 @@ extends Area2D
 #with entities that enter it
 class_name Hazzard
 
+#TODO: change this
 func gen_col_layer()->int:
-	return ColMath.Layer.HAZARD
+	return ColMath.Layer.TERRAIN
 func gen_col_mask()->int:
 	return ColMath.Layer.NON_PLAYER_ENTITY | ColMath.ConstLayer.PLAYER
 

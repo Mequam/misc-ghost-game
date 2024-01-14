@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8flqa3dxkhof"]
+[gd_scene load_steps=11 format=3 uid="uid://c8flqa3dxkhof"]
 
 [ext_resource type="Script" path="res://scenes/environment/InteractionZone/interaction_zone.gd" id="1_yowkd"]
 [ext_resource type="PackedScene" uid="uid://u7srcg8y4yf8" path="res://scenes/UI/disapearing_label.tscn" id="2_g6swe"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wjbd"]
-size = Vector2(324.75, 45.375)
 
 [sub_resource type="Animation" id="Animation_nb3im"]
 length = 0.001
@@ -233,16 +230,49 @@ _data = {
 "reveal": SubResource("Animation_n335k")
 }
 
+[sub_resource type="Animation" id="Animation_v5eml"]
+resource_name = "indication"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interaction Text:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r5r7d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interaction Text:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wl4bt"]
+_data = {
+"RESET": SubResource("Animation_r5r7d"),
+"indication": SubResource("Animation_v5eml")
+}
+
 [node name="Interaction Zone" type="Area2D" node_paths=PackedStringArray("information_label")]
 position = Vector2(0, 1)
 collision_layer = 0
 collision_mask = 10
 script = ExtResource("1_yowkd")
 information_label = NodePath("Interaction Text/Control/DisapearingLabel")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_5wjbd")
-debug_color = Color(0.701961, 0.431373, 0, 0.419608)
 
 [node name="Interaction Text" type="Node2D" parent="."]
 
@@ -279,6 +309,11 @@ root_node = NodePath("../../..")
 [node name="Bobber" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_r5oiv")
+}
+
+[node name="idicator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wl4bt")
 }
 
 [editable path="Interaction Text/Control/DisapearingLabel"]
