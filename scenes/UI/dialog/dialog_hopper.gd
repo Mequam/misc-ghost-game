@@ -15,18 +15,20 @@ class_name DialogHopper
 
 #the current dialog element that we are looking at
 #when this hits the last element then we are done
-var next_idx : int = 0
+var idx : int = 0
 
 func displayed()->bool:
-	return super.displayed() and not self.loop and self.next_idx >= self.get_child_count()
+	return not self.loop and self.idx >= self.get_child_count()-1
 
 func check_displayed()->void:
-	if not self.loop: 
+	if self.displayed():
 		on_displayed.emit(self)
-		return 
 	
+	if not self.loop:
+		return
+
 	#actually do the looping
-	next_idx = 0
+	idx = 0
 	self.display()
 	return
 
@@ -34,32 +36,45 @@ func check_displayed()->void:
 
 
 func get_selected_component()->Control:
-	if next_idx - 1 >= 0: return get_child(next_idx -1)
-	return get_child(get_child_count()-1)
+	if idx >= get_child_count(): 
+			return get_child(get_child_count()-1)
+	return get_child(idx)
+
+
 func get_next_component()->Control:
-	return get_child(next_idx)
+	if idx >= get_child_count()-1:
+		if not self.loop:
+			return get_selected_component()
+		return get_child(0)
+	return get_child(idx+1)
 
 
 func increment_selection()->void:
 	if self.hide_previous:
 		get_selected_component().undisplay()
 	get_next_component().display()
-	next_idx += 1
-	next_idx %= get_child_count()
+	
+	self.check_displayed()
+	
+	if not self.loop and idx == get_child_count()-1:
+		return
+	
+	idx += 1
+	idx %= get_child_count()
 
 func display()->void:
+	if self.displayed():
+		return
 	#if the currently selected component is not displayed, display it
 	if get_selected_component() and not get_selected_component().displayed():
-		print_debug("displaying the currently selected component")
 		get_selected_component().display()
 		return
-
 	super.display()
-	if next_idx >= get_child_count():
-		print_debug("no next component!")
-		#recuuuursion babyeeeeee
-		check_displayed()
+	
+	#theres no need to incriment if we are looped
+	if not self.loop and idx == get_child_count()-1:
 		return
+
 	#move onto the next object
 	increment_selection()
 

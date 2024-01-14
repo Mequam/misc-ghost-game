@@ -336,6 +336,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_fc7o4")
+loop = false
 
 [node name="first_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper"]
 visible = false
@@ -435,11 +436,7 @@ offset_left = 138.0
 offset_top = -634.0
 offset_right = 248.0
 offset_bottom = -522.0
-text = "
-[center]I just [tornado freq=5]KNOOOOOW[/tornado] it[/center]
-
-
-"
+text = "[center]I just [tornado freq=5]KNOOOOOW[/tornado] it[/center]"
 
 [node name="third_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
 visible = false
@@ -488,12 +485,7 @@ offset_left = -80.0
 offset_top = -512.0
 offset_right = 36.0
 offset_bottom = -370.0
-text = "
-
-[center]and [tornado]besiiiides[/tornado][/center]
-
-
-"
+text = "[center]and [tornado]besiiiides[/tornado][/center]"
 
 [node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/fourth_monolog" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
@@ -502,6 +494,23 @@ offset_top = -1080.0
 offset_right = 1170.0
 offset_bottom = -1080.0
 text = "[center]don't ghosts have [tornado freq=30 radius=0.5]lhamps[/tornado] to fiind?[/center]"
+
+[node name="Control" type="Control" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop" node_paths=PackedStringArray("entry_positition")]
+anchors_preset = 0
+offset_left = -564.0
+offset_top = -454.0
+offset_right = 506.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+entry_positition = NodePath("../../../../mouth")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/Control" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = 496.0
+offset_top = -194.0
+offset_right = 18.0
+offset_bottom = -394.0
+text = "[center]I [tornado]thoought[/tornado] I told you to let me work[/center]"
 
 [node name="mouth" type="Control" parent="artist_ghost"]
 layout_mode = 3
