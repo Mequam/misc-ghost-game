@@ -454,9 +454,7 @@ offset_left = -68.0
 offset_top = -268.0
 offset_right = -68.0
 offset_bottom = -268.0
-text = "[center]Anyways enjoy whatever it is that your [tornado freq=2]dooooing[/tornado][/center]
-
-"
+text = "[center]Anyways enjoy whatever it is that your [tornado freq=2]dooooing[/tornado][/center]"
 
 [node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/main_dialog_loop/DialogHopper/third_monolog" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
