@@ -145,6 +145,7 @@ func set_state(val : int)->void:
 		LeniState.POSSESING:
 			#start the timer indicating an attack started
 			$posses_timer.start()
+			$posess_cooldown.start()
 			self.collision_mask |= ColMath.Layer.SIMPLE_ENTITY
 			#if they are not moving intialy, we will preload their speed for them
 			if posses_velocity.length_squared() == 0:
