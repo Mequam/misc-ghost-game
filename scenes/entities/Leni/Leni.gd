@@ -21,13 +21,13 @@ func get_entity_type()->String:
 @export var posses_speed : float = 5
 
 #the number of jumps we can make while tired
-@export var tired_jumps = 1
+@export var tired_jumps = 2
 #the current number of jumps we have left while tired
 var saved_jump : int = 1
 
 func set_tired(val)->void:
 	super.set_tired(val)
-	if not val:
+	if not val and $posess_cooldown.time_left <= 0:
 		self.saved_jump = self.tired_jumps
 
 
@@ -62,8 +62,6 @@ func die():
 func grab_aggro():
 	store_aggro(self)
 func take_damage(dmg : int = 1, src = null)->void:
-	
-
 	if (invensible_timer.time_left <= 0 and self.get_sprite2D().animation != "posses") or str(src) == "exorcize": #we take no damage while possesing
 		super.take_damage(dmg,src)
 
@@ -111,7 +109,11 @@ func main_ready():
 
 	possesed = true #make sure we start as possesed
 	$unpos_buff_timer.timeout.connect(self.on_unpos_buff_timer_stop)
+	$posess_cooldown.timeout.connect(self.on_posses_cooldown_stop)
 
+func on_posses_cooldown_stop()->void:
+	if not self.tired:
+		self.saved_jump = self.tired_jumps
 
 func can_jump()->bool:
 	return $jump_timer.time_left == 0 #we can jump if the timer is NOT running
@@ -158,11 +160,11 @@ func set_state(val : int)->void:
 	match val:
 		LeniState.POSSESING:
 			#you cannot posses up while tired
-			if self.tired and self.saved_jump <= 0: return
+			if self.saved_jump <= 0: return
 
 			#start the timer indicating an attack started
 			$posses_timer.start()
-			$posess_cooldown.start()
+
 			self.collision_mask |= ColMath.Layer.SIMPLE_ENTITY
 			#if they are not moving intialy, we will preload their speed for them
 			if posses_velocity.length_squared() == 0:
@@ -175,10 +177,11 @@ func set_state(val : int)->void:
 			else:
 				self.get_sprite2D().rotation = posses_velocity.angle()
 			
-			#we are about to posses, lets make sure to decriment the saved jump
-			#counter
-			if self.tired: self.saved_jump -= 1
-		
+			#decriment the number of times that we can posses without cooldown
+			self.saved_jump -= 1
+			if self.saved_jump <= 0:
+				$posess_cooldown.start()
+
 			#start the animation for the posses attack
 			self.get_sprite2D().custom_play("posses_launch")
 			$possesSound.play() #TODO: this could be moved into the animation sprite
