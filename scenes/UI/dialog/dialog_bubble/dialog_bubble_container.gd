@@ -14,7 +14,6 @@ func displayed()->bool:
 	if not self.visible: return false
 	for child in get_children():
 		if child is DialogComponent and not child.displayed():
-			print_debug(self.name + " is not displayed because of " + child.name)
 			return false
 	return true
 
@@ -41,6 +40,5 @@ func display()->void:
 
 	#detect the rising edge of display
 	if self.displayed():
-		print_debug(self.name + "emiting that we are displayed!")
 		on_displayed.emit(self)
 

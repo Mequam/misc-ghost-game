@@ -46,8 +46,6 @@ func _ready():
 		add_line(get_child(i),get_child(i+1))
 	
 	if entry_positition:
-		print_debug(entry_positition.global_position)
-		print_debug(entry_positition.size)
 		add_line(entry_positition,get_child(0))
 	
 	super._ready()

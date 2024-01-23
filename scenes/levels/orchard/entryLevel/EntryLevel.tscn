@@ -310,6 +310,11 @@ position = Vector2(3697, 192)
 
 [node name="artist_ghost" parent="." instance=ExtResource("19_4vttw")]
 position = Vector2(3289, 248)
+unposses_radius = 100.0
+heart_text = Array[Texture2D]([])
+max_health = 7
+health = 7
+speed = Vector2(50, 50)
 
 [node name="AnimationZoneTrigger" parent="artist_ghost" instance=ExtResource("20_l70ul")]
 position = Vector2(4, 0)

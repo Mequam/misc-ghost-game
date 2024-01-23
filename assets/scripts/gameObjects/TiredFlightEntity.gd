@@ -6,16 +6,12 @@ extends FlightEntity
 class_name TiredFlightEntity
 
 #we can only fly for so long before we get tired
-var tired : bool = true :
-	get:
-		return tired # TODOConverter40 Copy here content of get_tired
-	set(mod_value):
+var tired : bool = true : set = set_tired, get=get_tired
+func get_tired():
+		return tired
+func set_tired(mod_value):
 		tired = mod_value
 		update_animation()
-
-func get_tired()->bool:
-	return tired
-
 func main_ready():
 	$flight_timer.connect("timeout",Callable(self,"_on_flight_timer_timeout"))
 	super.main_ready()

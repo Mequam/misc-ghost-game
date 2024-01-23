@@ -419,7 +419,15 @@ func action2velocity(action : String)->Vector2:
 		"DOWN":
 			return Vector2(0,1)
 	return Vector2(0,0)
-	
+
+#gets the direction currently bieng pressed by the entity/ player
+func get_pressed_direction()->Vector2:
+	var ret_val = Vector2(0,0)
+	for act in self.pressed_inputs:
+		if self.pressed_inputs[act]:
+			ret_val += self.action2velocity(act)
+	return ret_val
+
 #default collision generators
 func gen_col_layer()->int:
 	return ColMath.Layer.NON_PLAYER_ENTITY

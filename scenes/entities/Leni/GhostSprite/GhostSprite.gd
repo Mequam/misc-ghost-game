@@ -79,5 +79,3 @@ func _on_animation_finished():
 	match animation:
 		"posses_launch":
 			custom_play("posses")
-		"posses_end":
-			custom_play("idle")

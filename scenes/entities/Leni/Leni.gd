@@ -20,6 +20,18 @@ func get_entity_type()->String:
 
 @export var posses_speed : float = 5
 
+#the number of jumps we can make while tired
+@export var tired_jumps = 1
+#the current number of jumps we have left while tired
+var saved_jump : int = 1
+
+func set_tired(val)->void:
+	super.set_tired(val)
+	if not val:
+		self.saved_jump = self.tired_jumps
+
+
+
 #resets the player health for the level
 #as well as doing any other action that needs to be done
 #checked health reset
@@ -138,11 +150,16 @@ func on_action_press(act : String)->void:
 		self.safe_jump()	
 	super.on_action_press(act)
 
+
+
 #runs whenever state is set and ensures the
 #state machine functions properly
 func set_state(val : int)->void:
 	match val:
 		LeniState.POSSESING:
+			#you cannot posses up while tired
+			if self.tired and self.saved_jump <= 0: return
+
 			#start the timer indicating an attack started
 			$posses_timer.start()
 			$posess_cooldown.start()
@@ -157,6 +174,10 @@ func set_state(val : int)->void:
 				self.get_sprite2D().rotation = (-posses_velocity).angle()
 			else:
 				self.get_sprite2D().rotation = posses_velocity.angle()
+			
+			#we are about to posses, lets make sure to decriment the saved jump
+			#counter
+			if self.tired: self.saved_jump -= 1
 		
 			#start the animation for the posses attack
 			self.get_sprite2D().custom_play("posses_launch")
@@ -172,13 +193,18 @@ func set_state(val : int)->void:
 
 	super.set_state(val)
 
+func compute_posses_velocity()->Vector2:
+	var ret_val = self.get_pressed_direction()*self.posses_speed
+	#if self.tired and ret_val.y < 0:
+	#	ret_val.y = 0
+	ret_val.y /= 2
+	return ret_val
 #launch ourselfs and prepare to posses
 func posses_attack(vel : Vector2)->void:
 	if $posess_cooldown.time_left > 0: return
 
 	#store our current velocity into the posses_velocity
-	posses_velocity = vel
-	posses_velocity.y /= 2
+	posses_velocity = self.compute_posses_velocity()
 
 	#set the state to possesing (note that this is a setter that does a ton of state stuff)
 	#update our state through the setter function
@@ -242,6 +268,9 @@ func _on_sprite_2d_animation_finished():
 			pass
 		"posses_launch":
 			pass
+		"posses_end":
+			self.update_animation()
+			self.state = EntityState.DEFAULT
 		"die":
 			GameLoader.load_save()
 		_:
