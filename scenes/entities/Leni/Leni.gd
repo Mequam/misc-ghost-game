@@ -22,13 +22,35 @@ func get_entity_type()->String:
 
 #the number of jumps we can make while tired
 @export var tired_jumps = 2
+
+#the squred theshold that indicates if our previous posses_dir is too close to our current posses
+#dir
+@export var posses_threshold : float = 1
+
+#the last direction that we possesed in, 0 bieng no tp
+var last_posses_dir : Vector2 = Vector2(0,0)
+
 #the current number of jumps we have left while tired
-var saved_jump : int = 1
+var saved_jump : int = 1 :
+	get:
+		return saved_jump
+	set(val):
+		if val < self.tired_jumps:
+			print_debug("decrimenting saved_jump")
+		else:
+			print_debug("reseting saved jump")
+		saved_jump = val
+		if saved_jump <= 0:
+			print_debug("starting posses cooldown")
+			$posess_cooldown.start()
+			saved_jump = 0
 
 func set_tired(val)->void:
 	super.set_tired(val)
-	if not val and $posess_cooldown.time_left <= 0:
+	if self.reset_on_tired:
+		self.reset_on_tired = false
 		self.saved_jump = self.tired_jumps
+		self.last_posses_dir = Vector2(0,0)
 
 
 
@@ -66,6 +88,8 @@ func take_damage(dmg : int = 1, src = null)->void:
 		super.take_damage(dmg,src)
 
 func on_unpos_buff_timer_stop():
+	#reset the tired_jumps to the start
+	self.tired_jumps = 2
 	super.on_ground_changed(0) #indicate that we need to check if we are flying
 
 #called on the entity we exorcize when removing it
@@ -77,10 +101,20 @@ func on_unposses(host)->void:
 	
 	grab_camera()
 	grab_aggro() #ensure that leni is targeted
+	self.sync_stored_inputs()
+
 	invensible_timer.start()
 
 	self.tired = false #we get fly even higher after coming out of possesion
-	
+	self.tired_jumps = 3
+
+	#var temp_time = $posess_cooldown.wait_time
+	#$posess_cooldown.wait_time = 0
+	#$posess_cooldown.start() #we can now teleport again
+	#$posess_cooldown.wait_time = temp_time
+
+	$posess_cooldown.stop()
+	$posess_cooldown.timeout.emit()
 	$unpos_buff_timer.start() #we get buffed for a time after we posses something
 	$flight_timer.stop() #no need to worry about flight for the time bieng
 	
@@ -111,12 +145,17 @@ func main_ready():
 	$unpos_buff_timer.timeout.connect(self.on_unpos_buff_timer_stop)
 	$posess_cooldown.timeout.connect(self.on_posses_cooldown_stop)
 
+#indicates if we are ready to reset the jump count
+var reset_on_tired : bool = false
 func on_posses_cooldown_stop()->void:
 	if not self.tired:
 		self.saved_jump = self.tired_jumps
+		self.last_posses_dir = Vector2(0,0)
+	else:
+		reset_on_tired = true
 
 func can_jump()->bool:
-	return $jump_timer.time_left == 0 #we can jump if the timer is NOT running
+	return $jump_timer.is_stopped() #we can jump if the timer is NOT running
 
 #performs the jump gaurenteed
 #no questions ask, teleport go brrrr
@@ -143,7 +182,7 @@ func jump()->void:
 func safe_jump()->void:
 	if self.can_jump():
 		self.jump()
-		$jump_timer.start()	
+		$jump_timer.start()
 
 func on_action_press(act : String)->void:
 	if act == "ATTACK":
@@ -162,15 +201,30 @@ func set_state(val : int)->void:
 			#you cannot posses up while tired
 			if self.saved_jump <= 0: return
 
+			if posses_velocity.length_squared() == 0:
+				posses_velocity.x = self.posses_speed
+				if self.get_sprite2D().flip_h:
+					posses_velocity.x *= -1
+			
+			var normalized_dir = posses_velocity.normalized()
+
+			if self.saved_jump != self.tired_jumps:
+				#if we are in a given jump sequence we cannot go the same way twice in a row
+				print_debug(normalized_dir.distance_squared_to(self.last_posses_dir))
+				if normalized_dir.distance_squared_to(self.last_posses_dir) < posses_threshold*posses_threshold:
+					self.last_posses_dir = normalized_dir
+					self.saved_jump -= 1
+					return
+			else:
+				print_debug("first in chain")
+					#update for the next possesion time
+			self.last_posses_dir = normalized_dir
+
 			#start the timer indicating an attack started
 			$posses_timer.start()
 
 			self.collision_mask |= ColMath.Layer.SIMPLE_ENTITY
 			#if they are not moving intialy, we will preload their speed for them
-			if posses_velocity.length_squared() == 0:
-				posses_velocity.x = self.posses_speed
-				if self.get_sprite2D().flip_h:
-					posses_velocity.x *= -1
 			#update the rotation of the sprite for the attack
 			if self.get_sprite2D().flip_h:
 				self.get_sprite2D().rotation = (-posses_velocity).angle()
@@ -179,8 +233,6 @@ func set_state(val : int)->void:
 			
 			#decriment the number of times that we can posses without cooldown
 			self.saved_jump -= 1
-			if self.saved_jump <= 0:
-				$posess_cooldown.start()
 
 			#start the animation for the posses attack
 			self.get_sprite2D().custom_play("posses_launch")
@@ -201,10 +253,11 @@ func compute_posses_velocity()->Vector2:
 	#if self.tired and ret_val.y < 0:
 	#	ret_val.y = 0
 	ret_val.y /= 2
-	return ret_val
+	return ret_val 
+
 #launch ourselfs and prepare to posses
 func posses_attack(vel : Vector2)->void:
-	if $posess_cooldown.time_left > 0: return
+	if not $posess_cooldown.is_stopped(): return
 
 	#store our current velocity into the posses_velocity
 	posses_velocity = self.compute_posses_velocity()
