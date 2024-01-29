@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0dw72xenvtsp"]
+
+[ext_resource type="PackedScene" uid="uid://3wsojh42eujd" path="res://scenes/environment/orchard/decorations/curve_grass.tscn" id="1_gbh5p"]
+
+[node name="combo_curve_grass" type="Node2D"]
+
+[node name="curve_grass" parent="." instance=ExtResource("1_gbh5p")]
+position = Vector2(-11, 0)
+
+[node name="curve_grass2" parent="." instance=ExtResource("1_gbh5p")]
+position = Vector2(2.00012, -1.00006)
+rotation = 0.349266
+
+[node name="curve_grass3" parent="." instance=ExtResource("1_gbh5p")]
+z_index = 1
+position = Vector2(4.00012, -5)
+rotation = 3.12173
+scale = Vector2(0.285, -0.385)
