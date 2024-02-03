@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjija5h8lbr2g"]
+[gd_scene load_steps=3 format=3 uid="uid://bjija5h8lbr2g"]
 
 [ext_resource type="Script" path="res://assets/scripts/gameObjects/mainCamera.gd" id="1_sqm8o"]
+[ext_resource type="PackedScene" uid="uid://blwbpxtealqke" path="res://scenes/miscScenes/screenshot/screenshot_node.tscn" id="2_26wmx"]
 
 [node name="mainCam" type="Camera2D"]
 zoom = Vector2(0.75, 0.75)
@@ -8,3 +9,5 @@ drag_left_margin = 0.41
 drag_right_margin = 0.41
 drag_bottom_margin = 0.89
 script = ExtResource("1_sqm8o")
+
+[node name="screenshot_node" parent="." instance=ExtResource("2_26wmx")]

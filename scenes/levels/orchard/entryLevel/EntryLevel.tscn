@@ -1,8 +1,7 @@
-[gd_scene load_steps=49 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=48 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
-[ext_resource type="Script" path="res://scenes/mainCamera.gd" id="3_8vbqb"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="5_pwvrf"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="6_5g2bp"]
 [ext_resource type="Script" path="res://scenes/levels/orchard/entryLevel/entryLamp.gd" id="6_kxbvy"]
@@ -100,7 +99,6 @@ position = Vector2(10294, -520.75)
 limit_left = -100000000
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource("3_8vbqb")
 
 [node name="rocky grass" parent="." instance=ExtResource("13_h3k0h")]
 position = Vector2(10981, -267.75)

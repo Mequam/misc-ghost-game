@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blwbpxtealqke"]
+
+[ext_resource type="Script" path="res://scenes/miscScenes/screenshot/screenshot_node.gd" id="1_mon7p"]
+
+[node name="screenshot_node" type="Node"]
+script = ExtResource("1_mon7p")

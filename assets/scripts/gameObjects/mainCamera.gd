@@ -72,3 +72,7 @@ func _process(_delta):
 		var new_target = get_weighted_sum(target_points)-Vector2.DOWN*200
 
 		global_position = global_position.lerp(new_target,_delta*5)
+
+func _input(event : InputEvent)->void:
+	if Input.is_action_just_pressed("SCREENSHOT"):
+		$screenshot_node.screenshot()
