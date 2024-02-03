@@ -1,5 +1,7 @@
 extends Camera2D
 
+class_name MainCamera
+
 #simple script that gets the Camera2D to
 #follow a given target
 
@@ -39,12 +41,6 @@ func get_weighted_sum(w_array):
 
 	return total / amount
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass # Replace with function body.
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 
 	var test = [1,2,3]
