@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=55 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://cwak0ne13ppw8" path="res://assets/images/orchard/background/orchard_background_clif1.png" id="34_threq"]
 [ext_resource type="Texture2D" uid="uid://cgfoecrtgp5oi" path="res://assets/images/orchard/background/orchard_background_cliff2_stones_bright.png" id="35_yu7gr"]
 [ext_resource type="Texture2D" uid="uid://bx5baptem453q" path="res://assets/images/orchard/background/orchard_background_cliff3.png" id="37_8gbib"]
+[ext_resource type="PackedScene" uid="uid://34pi3hab2itm" path="res://scenes/environment/orchard/sky/stars.tscn" id="38_11vld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
 size = Vector2(51, 648)
@@ -764,7 +765,19 @@ scale = Vector2(1.46615, 1.2)
 texture = ExtResource("34_threq")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="decorations/ParallaxBackground"]
+z_index = -1000
 motion_scale = Vector2(0.25, 1)
+
+[node name="yellow" type="Node2D" parent="decorations/ParallaxBackground/ParallaxLayer3"]
+modulate = Color(0.77, 1, 0.54, 1)
+
+[node name="Node10" parent="decorations/ParallaxBackground/ParallaxLayer3/yellow" instance=ExtResource("38_11vld")]
+position = Vector2(3311, -483)
+amount = 256
+
+[node name="Node11" parent="decorations/ParallaxBackground/ParallaxLayer3/yellow" instance=ExtResource("38_11vld")]
+position = Vector2(3281, 665)
+amount = 256
 
 [node name="GgMoon" type="Sprite2D" parent="decorations/ParallaxBackground/ParallaxLayer3"]
 position = Vector2(2954, -822)
