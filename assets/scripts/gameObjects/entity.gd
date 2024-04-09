@@ -32,6 +32,7 @@ var home_name : String
 
 signal sig_died
 signal sig_possesed_by
+signal sig_unpossesed_by
 
 func get_sprite2D()->AnimatedSprite2D:
 	if sprite != null: return sprite 
@@ -371,6 +372,7 @@ func exorcize(offset : Vector2 = Vector2(0,0))->void:
 		possesed_entity.global_position  = unposses_position(offset)
 		self.possesed_entity.process_mode = Node.PROCESS_MODE_INHERIT
 		self.possesed_entity.on_unposses(self)
+		sig_unpossesed_by.emit(self,self.possesed_entity)
 		self.possesed_entity = null
 
 	self.collision_layer = gen_col_layer()

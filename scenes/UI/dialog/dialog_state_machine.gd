@@ -1,5 +1,9 @@
 extends DialogComponent
 
+#this class represents a state machine selction of dialog,
+#like an if statement in the dialog tree
+
+
 class_name DialogStateMachine
 
 @export var selection : int = 0:

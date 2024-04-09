@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=58 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://assets/scripts/gameObjects/dummy_entity.gd" id="14_w8165"]
 [ext_resource type="PackedScene" uid="uid://bxn1oo31udgxe" path="res://scenes/UI/explanation_zone.tscn" id="17_ck3cw"]
 [ext_resource type="PackedScene" uid="uid://dalvr81o80x4w" path="res://scenes/environment/orchard/pumpkin_blocker/pumpkin_blocker.tscn" id="18_4w2y5"]
+[ext_resource type="Script" path="res://scenes/UI/dialog/dialog_posses_state.gd" id="18_l02wm"]
 [ext_resource type="PackedScene" uid="uid://b6mnkh4550x3t" path="res://scenes/entities/npc/artist_ghost/artist_ghost.tscn" id="19_4vttw"]
 [ext_resource type="PackedScene" uid="uid://cplvmi3c4nx3x" path="res://scenes/entities/tools/animation_zone_trigger.tscn" id="20_l70ul"]
 [ext_resource type="Script" path="res://scenes/entities/tools/dialog_zone.gd" id="21_u3jtk"]
@@ -25,7 +26,9 @@
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_hopper.gd" id="23_fc7o4"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/line_dialog_bubble_container.gd" id="23_vup70"]
 [ext_resource type="PackedScene" uid="uid://llvxc6qbd58b" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.tscn" id="24_cfnuc"]
+[ext_resource type="Texture2D" uid="uid://dihbd63jh2lvu" path="res://assets/ui/dialog_boxex/bubble0006.png" id="24_xgriw"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble_container.gd" id="24_xth7s"]
+[ext_resource type="Texture2D" uid="uid://dbxwdd8bndbpr" path="res://assets/ui/dialog_boxex/bubble0005.png" id="25_2uam6"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_state_machine_zone.gd" id="28_qtu6o"]
 [ext_resource type="PackedScene" uid="uid://c8flqa3dxkhof" path="res://scenes/environment/InteractionZone/interaction_zone.tscn" id="29_urnjs"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_interaction_zone.gd" id="30_q3wm7"]
@@ -218,27 +221,33 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("22_tsk8j")
 
-[node name="dialog_state_machine" type="Control" parent="artist_ghost/dialog zone/DialogClicker"]
+[node name="dialog_posses_state" type="Control" parent="artist_ghost/dialog zone/DialogClicker"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_l02wm")
+
+[node name="dialog_state_machine" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_ettrr")
 
-[node name="main_dialog_loop" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine"]
+[node name="main_dialog_loop" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_fc7o4")
 loop = false
 
-[node name="DialogHopper" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop"]
+[node name="DialogHopper" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_fc7o4")
 loop = false
 
-[node name="first_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper"]
+[node name="first_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -248,7 +257,7 @@ offset_right = 42.0
 offset_bottom = 46.0
 script = ExtResource("24_xth7s")
 
-[node name="pumpkinsDontLikeArt" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog" node_paths=PackedStringArray("entry_positition")]
+[node name="pumpkinsDontLikeArt" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog" node_paths=PackedStringArray("entry_positition")]
 visible = false
 anchors_preset = 0
 offset_left = -270.0
@@ -256,9 +265,9 @@ offset_top = -522.0
 offset_right = 554.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-entry_positition = NodePath("../../../../../../../mouth")
+entry_positition = NodePath("../../../../../../../../mouth")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -338.0
 offset_top = -236.0
@@ -266,7 +275,7 @@ offset_right = -756.0
 offset_bottom = -454.0
 text = "[center]hello there little [tornado freq=3]ghooost[/tornado][/center]"
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -38.0
 offset_top = -440.0
@@ -274,7 +283,7 @@ offset_right = -384.0
 offset_bottom = -670.0
 text = "[center]do you appriciate modern art?[/center]"
 
-[node name="dialogBubble3" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble3" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/pumpkinsDontLikeArt" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -580.0
 offset_top = -618.0
@@ -282,7 +291,7 @@ offset_right = -814.0
 offset_bottom = -852.0
 text = "[center]The pumpkin spirits don't seem to[/center]"
 
-[node name="dont_absorb" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog" node_paths=PackedStringArray("entry_positition")]
+[node name="dont_absorb" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog" node_paths=PackedStringArray("entry_positition")]
 visible = false
 layout_mode = 1
 anchor_left = -6.0
@@ -294,7 +303,7 @@ offset_bottom = 40.0
 script = ExtResource("23_vup70")
 entry_positition = NodePath("../pumpkinsDontLikeArt/dialogBubble3")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/dont_absorb" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/dont_absorb" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = 156.0
 offset_top = -804.0
@@ -302,7 +311,7 @@ offset_right = -108.0
 offset_bottom = -1004.0
 text = "[center]They allways take a closer look[/center]"
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/dont_absorb" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/first_monolog/dont_absorb" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = 516.0
 offset_top = -544.0
@@ -310,7 +319,7 @@ offset_right = 316.0
 offset_bottom = -668.0
 text = "[center]But they never really [tornado freq=5]experience[/tornado] the piece[/center]"
 
-[node name="second_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
+[node name="second_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
 visible = false
 anchors_preset = 0
 offset_left = -520.0
@@ -318,9 +327,9 @@ offset_top = -316.0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-entry_positition = NodePath("../../../../../../mouth")
+entry_positition = NodePath("../../../../../../../mouth")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/second_monolog" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/second_monolog" instance=ExtResource("24_cfnuc")]
 visible = false
 layout_mode = 1
 offset_left = 602.0
@@ -329,7 +338,7 @@ offset_right = 602.0
 offset_bottom = -306.0
 text = "[center]One day I will change that[/center]"
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/second_monolog" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/second_monolog" instance=ExtResource("24_cfnuc")]
 visible = false
 layout_mode = 1
 offset_left = 138.0
@@ -338,7 +347,7 @@ offset_right = 248.0
 offset_bottom = -522.0
 text = "[center]I just [tornado freq=5]KNOOOOOW[/tornado] it[/center]"
 
-[node name="third_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
+[node name="third_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
 visible = false
 anchors_preset = 0
 offset_left = -512.0
@@ -346,9 +355,9 @@ offset_top = -320.0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-entry_positition = NodePath("../../../../../../mouth")
+entry_positition = NodePath("../../../../../../../mouth")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/third_monolog" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/third_monolog" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -68.0
 offset_top = -268.0
@@ -356,7 +365,7 @@ offset_right = -68.0
 offset_bottom = -268.0
 text = "[center]Anyways enjoy whatever it is that your [tornado freq=2]dooooing[/tornado][/center]"
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/third_monolog" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/third_monolog" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = 304.0
 offset_top = -552.0
@@ -364,7 +373,7 @@ offset_right = 304.0
 offset_bottom = -552.0
 text = "[center]I have peices to attend to[/center]"
 
-[node name="fourth_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
+[node name="fourth_monolog" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper" node_paths=PackedStringArray("entry_positition")]
 visible = false
 layout_mode = 1
 anchor_left = -3.606
@@ -374,9 +383,9 @@ offset_top = -119.08
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-entry_positition = NodePath("../../../../../../mouth")
+entry_positition = NodePath("../../../../../../../mouth")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/fourth_monolog" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/fourth_monolog" instance=ExtResource("24_cfnuc")]
 visible = false
 layout_mode = 1
 offset_left = -80.0
@@ -385,7 +394,7 @@ offset_right = 36.0
 offset_bottom = -370.0
 text = "[center]and [tornado]besiiiides[/tornado][/center]"
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/DialogHopper/fourth_monolog" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/DialogHopper/fourth_monolog" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = 1170.0
 offset_top = -1080.0
@@ -393,16 +402,16 @@ offset_right = 1170.0
 offset_bottom = -1080.0
 text = "[center]don't ghosts have [tornado freq=30 radius=0.5]lhamps[/tornado] to fiind?[/center]"
 
-[node name="Control" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop" node_paths=PackedStringArray("entry_positition")]
+[node name="Control" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop" node_paths=PackedStringArray("entry_positition")]
 anchors_preset = 0
 offset_left = -564.0
 offset_top = -454.0
 offset_right = 506.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-entry_positition = NodePath("../../../../../mouth")
+entry_positition = NodePath("../../../../../../mouth")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/main_dialog_loop/Control" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop/Control" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = 496.0
 offset_top = -194.0
@@ -410,22 +419,22 @@ offset_right = 18.0
 offset_bottom = -394.0
 text = "[center]I [tornado]thoought[/tornado] I told you to let me work[/center]"
 
-[node name="falling_complaints" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine"]
+[node name="falling_complaints" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_fc7o4")
 loop = false
 
-[node name="ComicBubbleContainer" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/falling_complaints" node_paths=PackedStringArray("entry_positition")]
+[node name="ComicBubbleContainer" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/falling_complaints" node_paths=PackedStringArray("entry_positition")]
 anchors_preset = 0
 offset_top = -230.0
 offset_right = 482.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-entry_positition = NodePath("../../../../../mouth")
+entry_positition = NodePath("../../../../../../mouth")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/falling_complaints/ComicBubbleContainer" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/falling_complaints/ComicBubbleContainer" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -446.0
 offset_top = -426.0
@@ -433,7 +442,7 @@ offset_right = -446.0
 offset_bottom = -426.0
 text = "[center]you [tornado freq=10 radius=3]know[/tornado] im tring to [tornado]wooork[/tornado] here[/center]"
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/falling_complaints/ComicBubbleContainer" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/falling_complaints/ComicBubbleContainer" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -70.0
 offset_top = -726.0
@@ -441,7 +450,7 @@ offset_right = 84.0
 offset_bottom = -566.0
 text = "[center]it's quite hard to focus with ghosts [tornado freq=10 radius=3]faaaalling[/tornado] out of the sky[/center]"
 
-[node name="dialogBubble3" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/falling_complaints/ComicBubbleContainer" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble3" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/falling_complaints/ComicBubbleContainer" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = 162.0
 offset_top = -278.0
@@ -449,15 +458,15 @@ offset_right = 162.0
 offset_bottom = -278.0
 text = "[center]wouldn't you [tornado]saaaaay[/tornado][/center]"
 
-[node name="ComicBubbleContainer2" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/falling_complaints" node_paths=PackedStringArray("entry_positition")]
+[node name="ComicBubbleContainer2" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/falling_complaints" node_paths=PackedStringArray("entry_positition")]
 anchors_preset = 0
 offset_top = -178.0
 offset_right = 260.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-entry_positition = NodePath("../../../../../mouth")
+entry_positition = NodePath("../../../../../../mouth")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_state_machine/falling_complaints/ComicBubbleContainer2" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/falling_complaints/ComicBubbleContainer2" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
 offset_left = -222.0
 offset_top = -1166.0
@@ -465,6 +474,79 @@ offset_right = 296.0
 offset_bottom = -960.0
 text = "[center]perhaps try aiming [tornado]hiiiigher[/tornado] when you run accross this time
 [/center]"
+
+[node name="dialog_possesed" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_fc7o4")
+loop = false
+
+[node name="intro" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed" node_paths=PackedStringArray("entry_positition")]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+line_color = Color(0.694118, 0.270588, 1, 1)
+entry_positition = NodePath("../../../../../mouth")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -408.0
+offset_top = -692.5
+offset_right = -4.0
+offset_bottom = -465.5
+text = "[center][tornado freq=5]reaaaaaly[/tornado] your going to posses [tornado freq=5]me[/tornado][/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro/dialogBubble/Control/container" index="0"]
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = 43.0
+texture = ExtResource("24_xgriw")
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -64.0
+offset_top = -968.5
+offset_right = 342.0
+offset_bottom = -691.5
+text = "[center]have access to my inner thoughts I [tornado]supooooose[/tornado][/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro/dialogBubble2/Control/container" index="0"]
+texture = ExtResource("25_2uam6")
+
+[node name="explain" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed" node_paths=PackedStringArray("entry_positition")]
+anchors_preset = 0
+offset_left = -328.0
+offset_top = -606.5
+offset_right = -288.0
+offset_bottom = -566.5
+script = ExtResource("23_vup70")
+line_color = Color(0.694118, 0.270588, 1, 1)
+entry_positition = NodePath("../../../../../mouth")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = 242.0
+offset_top = -214.0
+offset_right = 648.0
+offset_bottom = 36.0
+text = "[center]if it weren't for my [tornado freq=5]masterful[/tornado] training I wouldn't even know I was possesed[/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain/dialogBubble/Control/container" index="0"]
+texture = ExtResource("25_2uam6")
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -164.0
+offset_top = -270.0
+offset_right = 210.0
+offset_bottom = 4.0
+text = "abc"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain/dialogBubble2/Control/container" index="0"]
+texture = ExtResource("24_xgriw")
 
 [node name="mouth" type="Control" parent="artist_ghost"]
 layout_mode = 3
@@ -478,7 +560,7 @@ offset_bottom = -330.0
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("28_qtu6o")
-dialog_state_machine = NodePath("../dialog zone/DialogClicker/dialog_state_machine")
+dialog_state_machine = NodePath("../dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine")
 entry_selection = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="artist_ghost/dialog state machine zone"]
@@ -490,7 +572,7 @@ debug_color = Color(0.701961, 0.690196, 0, 0.419608)
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("28_qtu6o")
-dialog_state_machine = NodePath("../dialog zone/DialogClicker/dialog_state_machine")
+dialog_state_machine = NodePath("../dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="artist_ghost/Area2D"]
 position = Vector2(-656, -232)
@@ -795,6 +877,7 @@ offset = Vector2(-32.38, 0)
 transform = Transform2D(1, 0, 0, 1, -32.38, 0)
 
 [node name="background_rectangles" type="Control" parent="CanvasLayer"]
+visible = false
 modulate = Color(0.521569, 0.521569, 0.521569, 1)
 z_index = -100
 layout_mode = 3
@@ -832,6 +915,10 @@ offset_right = 4666.0
 offset_bottom = -119.0
 
 [editable path="second_light/DisapearingLabel"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro/dialogBubble"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro/dialogBubble2"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain/dialogBubble"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain/dialogBubble2"]
 [editable path="artist_ghost/Interaction Zone"]
 [editable path="artist_ghost/Interaction Zone/Interaction Text/Control/DisapearingLabel"]
 [editable path="run_explanations/run explanation"]

@@ -10,6 +10,7 @@ class_name DialogZone
 func _ready():
 	self.body_entered.connect(self.on_body_entered)
 	self.body_exited.connect(self.on_body_exited)
+
 func on_body_exited(body)->void:
 	for child in get_children():
 		if child is DialogComponent:
