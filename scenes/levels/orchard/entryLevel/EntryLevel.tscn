@@ -26,9 +26,9 @@
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_hopper.gd" id="23_fc7o4"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/line_dialog_bubble_container.gd" id="23_vup70"]
 [ext_resource type="PackedScene" uid="uid://llvxc6qbd58b" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.tscn" id="24_cfnuc"]
-[ext_resource type="Texture2D" uid="uid://dihbd63jh2lvu" path="res://assets/ui/dialog_boxex/bubble0006.png" id="24_xgriw"]
+[ext_resource type="Texture2D" uid="uid://dbxwdd8bndbpr" path="res://assets/ui/dialog_boxex/bubble0005.png" id="24_ft6i6"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble_container.gd" id="24_xth7s"]
-[ext_resource type="Texture2D" uid="uid://dbxwdd8bndbpr" path="res://assets/ui/dialog_boxex/bubble0005.png" id="25_2uam6"]
+[ext_resource type="Texture2D" uid="uid://dihbd63jh2lvu" path="res://assets/ui/dialog_boxex/bubble0006.png" id="25_4t866"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_state_machine_zone.gd" id="28_qtu6o"]
 [ext_resource type="PackedScene" uid="uid://c8flqa3dxkhof" path="res://scenes/environment/InteractionZone/interaction_zone.tscn" id="29_urnjs"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_interaction_zone.gd" id="30_q3wm7"]
@@ -226,6 +226,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("18_l02wm")
+trigger_on_posses = true
 
 [node name="dialog_state_machine" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state"]
 anchors_preset = 0
@@ -403,6 +404,7 @@ offset_bottom = -1080.0
 text = "[center]don't ghosts have [tornado freq=30 radius=0.5]lhamps[/tornado] to fiind?[/center]"
 
 [node name="Control" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/main_dialog_loop" node_paths=PackedStringArray("entry_positition")]
+visible = false
 anchors_preset = 0
 offset_left = -564.0
 offset_top = -454.0
@@ -427,6 +429,7 @@ script = ExtResource("23_fc7o4")
 loop = false
 
 [node name="ComicBubbleContainer" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/falling_complaints" node_paths=PackedStringArray("entry_positition")]
+visible = false
 anchors_preset = 0
 offset_top = -230.0
 offset_right = 482.0
@@ -459,6 +462,7 @@ offset_bottom = -278.0
 text = "[center]wouldn't you [tornado]saaaaay[/tornado][/center]"
 
 [node name="ComicBubbleContainer2" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_state_machine/falling_complaints" node_paths=PackedStringArray("entry_positition")]
+visible = false
 anchors_preset = 0
 offset_top = -178.0
 offset_right = 260.0
@@ -482,71 +486,186 @@ offset_bottom = 40.0
 script = ExtResource("23_fc7o4")
 loop = false
 
-[node name="intro" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed" node_paths=PackedStringArray("entry_positition")]
+[node name="your possesing me" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -662.0
+offset_top = -618.5
+offset_right = -44.0
+offset_bottom = -390.5
+text = "[center][tornado freq=5]reeeeeeeeeeeeaaaaaly[/tornado][/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me/dialogBubble/Control/container" index="0"]
+texture = ExtResource("24_ft6i6")
+
+[node name="typingTimer" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me/dialogBubble/Control" index="2"]
+wait_time = 0.04
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -142.0
+offset_top = -986.5
+offset_right = 124.0
+offset_bottom = -646.5
+text = "[center]your going to posses [tornado freq=10]meeeeeee[/tornado][/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me/dialogBubble2/Control/container" index="0"]
+offset_left = -136.0
+offset_top = 42.0
+offset_right = 158.0
+offset_bottom = -41.0
+texture = ExtResource("24_ft6i6")
+
+[node name="inner thoughts" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/inner thoughts" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = 246.0
+offset_top = -762.5
+offset_right = 594.0
+offset_bottom = -596.5
+text = "[center]well have access to my inner thoughts I [tornado freq=5]suppooose[/tornado][/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/inner thoughts/dialogBubble/Control/container" index="0"]
+offset_left = -82.0
+offset_top = -42.0
+offset_right = 52.0
+offset_bottom = 76.0
+texture = ExtResource("25_4t866")
+
+[node name="VBoxContainer" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/inner thoughts/dialogBubble/Control/container" index="1"]
+offset_left = -47.724
+offset_right = 41.096
+
+[node name="bigthreat" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("24_xth7s")
+
+[node name="training" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -530.0
+offset_top = -744.0
+offset_right = -48.0
+offset_bottom = -478.0
+text = "[center]you know I wouldn't even be able to tell you were possesing me without my [tornado]supeeeerb[/tornado] training[/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training/dialogBubble/Control/container" index="0"]
+offset_left = -156.0
+offset_top = -56.0
+offset_right = 114.0
+offset_bottom = 97.0
+texture = ExtResource("24_ft6i6")
+
+[node name="VBoxContainer" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training/dialogBubble/Control/container" index="1"]
+offset_left = -48.206
+offset_right = 36.124
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training" instance=ExtResource("24_cfnuc")]
+visible = false
+layout_mode = 1
+offset_left = -146.0
+offset_top = -1064.5
+offset_right = 186.0
+offset_bottom = -841.5
+text = "[center]so you better use your powers for good little ghost[/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training/dialogBubble2/Control/container" index="0"]
+offset_left = -82.0
+offset_top = -40.0
+offset_right = 54.0
+offset_bottom = 45.0
+texture = ExtResource("25_4t866")
+
+[node name="VBoxContainer" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training/dialogBubble2/Control/container" index="1"]
+offset_left = -35.756
+offset_top = 8.0
+offset_right = 18.824
+offset_bottom = -30.0
+
+[node name="minithreat" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat" node_paths=PackedStringArray("entry_positition")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_vup70")
-line_color = Color(0.694118, 0.270588, 1, 1)
-entry_positition = NodePath("../../../../../mouth")
+entry_positition = NodePath("../training/dialogBubble2")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble3" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/minithreat" instance=ExtResource("24_cfnuc")]
+visible = false
 layout_mode = 1
-offset_left = -408.0
-offset_top = -692.5
-offset_right = -4.0
-offset_bottom = -465.5
-text = "[center][tornado freq=5]reaaaaaly[/tornado] your going to posses [tornado freq=5]me[/tornado][/center]"
+offset_left = 364.0
+offset_top = -768.0
+offset_right = 818.0
+offset_bottom = -546.0
+text = "[center]because if you [tornado]don't...[/tornado][/center]"
 
-[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro/dialogBubble/Control/container" index="0"]
-offset_top = -8.0
-offset_right = 2.0
-offset_bottom = 43.0
-texture = ExtResource("24_xgriw")
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/minithreat/dialogBubble3/Control/container" index="0"]
+texture = ExtResource("24_ft6i6")
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro" instance=ExtResource("24_cfnuc")]
-layout_mode = 1
-offset_left = -64.0
-offset_top = -968.5
-offset_right = 342.0
-offset_bottom = -691.5
-text = "[center]have access to my inner thoughts I [tornado]supooooose[/tornado][/center]"
-
-[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro/dialogBubble2/Control/container" index="0"]
-texture = ExtResource("25_2uam6")
-
-[node name="explain" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed" node_paths=PackedStringArray("entry_positition")]
+[node name="scarythreat" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat" node_paths=PackedStringArray("entry_positition")]
+visible = false
 anchors_preset = 0
-offset_left = -328.0
-offset_top = -606.5
-offset_right = -288.0
-offset_bottom = -566.5
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("23_vup70")
-line_color = Color(0.694118, 0.270588, 1, 1)
-entry_positition = NodePath("../../../../../mouth")
+entry_positition = NodePath("../minithreat/dialogBubble3")
 
-[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain" instance=ExtResource("24_cfnuc")]
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/scarythreat" instance=ExtResource("24_cfnuc")]
+visible = false
 layout_mode = 1
-offset_left = 242.0
-offset_top = -214.0
-offset_right = 648.0
-offset_bottom = 36.0
-text = "[center]if it weren't for my [tornado freq=5]masterful[/tornado] training I wouldn't even know I was possesed[/center]"
+offset_left = -608.0
+offset_top = -1034.0
+offset_right = 358.0
+offset_bottom = -340.0
+text = "[center][shake]I'll find you[/shake][/center]"
 
-[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain/dialogBubble/Control/container" index="0"]
-texture = ExtResource("25_2uam6")
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/scarythreat/dialogBubble/Control/container" index="0"]
+texture = ExtResource("24_ft6i6")
 
-[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain" instance=ExtResource("24_cfnuc")]
+[node name="ComicBubbleContainer" type="Control" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_vup70")
+
+[node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/ComicBubbleContainer" instance=ExtResource("24_cfnuc")]
 layout_mode = 1
-offset_left = -164.0
-offset_top = -270.0
-offset_right = 210.0
-offset_bottom = 4.0
-text = "abc"
+offset_left = 50.0
+offset_top = -654.5
+offset_right = 554.0
+offset_bottom = -382.5
+text = "[center]aways enjoy poking around in my chranium[/center]"
 
-[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain/dialogBubble2/Control/container" index="0"]
-texture = ExtResource("24_xgriw")
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/ComicBubbleContainer/dialogBubble/Control/container" index="0"]
+texture = ExtResource("25_4t866")
+
+[node name="dialogBubble2" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/ComicBubbleContainer" instance=ExtResource("24_cfnuc")]
+layout_mode = 1
+offset_left = -524.0
+offset_top = -772.5
+offset_right = -132.0
+offset_bottom = -503.5
+text = "[center]tah [tornado freq=10]taaaaaah[/tornado][/center]"
+
+[node name="TextureRect" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/ComicBubbleContainer/dialogBubble2/Control/container" index="0"]
+texture = ExtResource("24_ft6i6")
 
 [node name="mouth" type="Control" parent="artist_ghost"]
 layout_mode = 3
@@ -557,6 +676,7 @@ offset_right = 12.0
 offset_bottom = -330.0
 
 [node name="dialog state machine zone" type="Area2D" parent="artist_ghost" node_paths=PackedStringArray("dialog_state_machine")]
+position = Vector2(-116, -118.5)
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("28_qtu6o")
@@ -877,7 +997,6 @@ offset = Vector2(-32.38, 0)
 transform = Transform2D(1, 0, 0, 1, -32.38, 0)
 
 [node name="background_rectangles" type="Control" parent="CanvasLayer"]
-visible = false
 modulate = Color(0.521569, 0.521569, 0.521569, 1)
 z_index = -100
 layout_mode = 3
@@ -900,10 +1019,10 @@ offset_bottom = 827.0
 self_modulate = Color(0, 0.42, 0.42, 1)
 z_index = -10
 layout_mode = 0
-offset_left = -56772.6
-offset_top = -25920.0
-offset_right = 17378.4
-offset_bottom = 11781.0
+offset_left = -56796.6
+offset_top = -25909.0
+offset_right = 17354.4
+offset_bottom = 11792.0
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer/background_rectangles"]
 self_modulate = Color(0, 0.419608, 0.419608, 1)
@@ -915,10 +1034,15 @@ offset_right = 4666.0
 offset_bottom = -119.0
 
 [editable path="second_light/DisapearingLabel"]
-[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro/dialogBubble"]
-[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/intro/dialogBubble2"]
-[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain/dialogBubble"]
-[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/explain/dialogBubble2"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me/dialogBubble"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me/dialogBubble2"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/inner thoughts/dialogBubble"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training/dialogBubble"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training/dialogBubble2"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/minithreat/dialogBubble3"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/scarythreat/dialogBubble"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/ComicBubbleContainer/dialogBubble"]
+[editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/ComicBubbleContainer/dialogBubble2"]
 [editable path="artist_ghost/Interaction Zone"]
 [editable path="artist_ghost/Interaction Zone/Interaction Text/Control/DisapearingLabel"]
 [editable path="run_explanations/run explanation"]

@@ -6,6 +6,9 @@ extends DialogStateMachine
 
 class_name DialogPossesStateMachine
 
+#if true when our parent is possesed we trigger our next functionality
+@export var trigger_on_posses : bool = false
+
 
 func get_entity_parent()->Entity:
 	var p = get_parent()
@@ -22,6 +25,8 @@ func _ready() -> void:
 
 func on_entity_parent_possesed_by(_posessee,_ghost)->void:
 	self.selection = 1
+	if self.trigger_on_posses:
+		self.next()
 func on_entity_parent_unpossed_by(_posessee,_ghost)->void:
 	self.selection = 0
 
