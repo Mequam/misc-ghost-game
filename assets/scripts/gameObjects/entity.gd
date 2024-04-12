@@ -218,6 +218,8 @@ func clear_stored_inputs():
 	update_animation()
 
 func main_ready():
+	self.add_to_group("Npc")
+
 	self.onground = false
 	if $GroundTester:
 		$GroundTester.connect("body_entered",Callable(self,"_on_GroundTester_body_entered"))

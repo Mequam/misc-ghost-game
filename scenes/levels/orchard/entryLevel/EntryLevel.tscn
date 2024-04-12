@@ -559,6 +559,7 @@ offset_bottom = 40.0
 script = ExtResource("23_vup70")
 
 [node name="dialogBubble" parent="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/bigthreat/training" instance=ExtResource("24_cfnuc")]
+visible = false
 layout_mode = 1
 offset_left = -530.0
 offset_top = -744.0

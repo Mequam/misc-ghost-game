@@ -8,11 +8,14 @@ extends AnimatedSprite2D
 @export var ouch_threshold : float #when we collide harder than this, indicate ouch
 @export var pumkin_entity : RotatingPumpkin
 
+#controls how fast we can be moving before we allow jumpin with w
+@export var rotation_jump_threshold : float = 0.5
+
 var rotation_speed : float :
 	set (val):
 		speed_scale = rotation_speed*eye_rotation_sensativity/2
 		rotation_speed = val 
-		if abs(rotation_speed)  < 0.1:
+		if abs(rotation_speed)  < rotation_jump_threshold:
 			self.rolling = false 
 		elif not self.rolling and abs(rotation_speed) > 0.1:
 			self.custom_play("roll")

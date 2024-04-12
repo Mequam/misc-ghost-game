@@ -141,6 +141,9 @@ func main_ready():
 	grab_camera()
 	super.main_ready()
 
+
+	#Leni is not an npc
+	remove_from_group("Npc")
 	possesed = true #make sure we start as possesed
 	$unpos_buff_timer.timeout.connect(self.on_unpos_buff_timer_stop)
 	$posess_cooldown.timeout.connect(self.on_posses_cooldown_stop)
