@@ -112,20 +112,15 @@ shape = SubResource("CircleShape2D_bw5mg")
 
 [node name="GPUParticles2D" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
 position = Vector2(171, -101)
-emitting = true
 
 [node name="GPUParticles2D2" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
 position = Vector2(-156, -100)
-emitting = true
 
 [node name="GPUParticles2D3" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
 position = Vector2(-133, -251)
-emitting = true
 
 [node name="GPUParticles2D4" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
 position = Vector2(14, -285)
-emitting = true
 
 [node name="GPUParticles2D5" parent="falling_leafs" instance=ExtResource("3_dv7h7")]
 position = Vector2(119, -257)
-emitting = true

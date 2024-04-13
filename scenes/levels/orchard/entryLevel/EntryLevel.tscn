@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=66 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -48,6 +48,9 @@
 [ext_resource type="Texture2D" uid="uid://bmoeduli67rko" path="res://assets/images/orchard/misc_env/0008.png" id="45_mngxc"]
 [ext_resource type="Texture2D" uid="uid://b2q0403rxqqft" path="res://assets/images/orchard/misc_env/0025.png" id="47_hxmhd"]
 [ext_resource type="Texture2D" uid="uid://chkl1g8s2ks5x" path="res://assets/images/orchard/misc_env/0026.png" id="48_5mvaa"]
+[ext_resource type="Texture2D" uid="uid://bu6kt0vicu4yc" path="res://assets/images/orchard/misc_env/tree/side_tree.png" id="49_lh6l4"]
+[ext_resource type="PackedScene" uid="uid://dv88b02qfe8qy" path="res://scenes/environment/orchard/leaf_falling_particles.tscn" id="50_a6vkl"]
+[ext_resource type="PackedScene" uid="uid://yo5qynqrf1p8" path="res://scenes/environment/orchard/decorations/leaf_splosion_area/area_leaf_splosion.tscn" id="51_xiuux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
 size = Vector2(51, 648)
@@ -145,10 +148,10 @@ max_health = 7
 health = 7
 
 [node name="DisapearingLabel" parent="second_light" instance=ExtResource("7_230fg")]
-offset_left = -982.0
-offset_top = 6.0
-offset_right = -165.0
-offset_bottom = 173.0
+offset_left = -1192.0
+offset_top = -288.5
+offset_right = -375.0
+offset_bottom = -121.5
 text = "ghost lights are safe,
 you will now  respawn here"
 
@@ -1046,13 +1049,45 @@ z_index = 1
 position = Vector2(1261, 201.75)
 texture = ExtResource("48_5mvaa")
 
+[node name="SideTree" type="Sprite2D" parent="decorations"]
+z_index = 1
+position = Vector2(3502, -200.25)
+rotation = -0.136768
+scale = Vector2(1, 1)
+texture = ExtResource("49_lh6l4")
+
+[node name="GPUParticles2D4" parent="decorations/SideTree" instance=ExtResource("50_a6vkl")]
+position = Vector2(102.485, -91.885)
+amount = 16
+lifetime = 5.0
+
+[node name="GPUParticles2D5" parent="decorations/SideTree" instance=ExtResource("50_a6vkl")]
+position = Vector2(-19.5768, -11.7792)
+amount = 16
+lifetime = 5.0
+
+[node name="area_leaf_splosion" parent="decorations/SideTree" instance=ExtResource("51_xiuux")]
+position = Vector2(17.4231, 5.42616)
+
+[node name="area_leaf_splosion2" parent="decorations/SideTree" instance=ExtResource("51_xiuux")]
+position = Vector2(-16.1767, -65.8203)
+
+[node name="area_leaf_splosion3" parent="decorations/SideTree" instance=ExtResource("51_xiuux")]
+position = Vector2(80.3816, -99.9742)
+
+[node name="area_leaf_splosion4" parent="decorations/SideTree" instance=ExtResource("51_xiuux")]
+position = Vector2(133.478, -170.392)
+
+[node name="area_leaf_splosion5" parent="decorations/SideTree" instance=ExtResource("51_xiuux")]
+position = Vector2(147.855, -69.49)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
+visible = false
 offset = Vector2(-32.38, 0)
 transform = Transform2D(1, 0, 0, 1, -32.38, 0)
 
 [node name="background_rectangles" type="Control" parent="CanvasLayer"]
-visible = false
 modulate = Color(0.521569, 0.521569, 0.521569, 1)
 z_index = -100
 layout_mode = 3
