@@ -7,5 +7,7 @@
 script = ExtResource("1_q0pmo")
 after_image_frequency = 50.0
 after_image_mesh_scene = ExtResource("2_uav7m")
+color_a = Color(0.735, 1, 0.47, 1)
+color_b = Color(0.62, 1, 0.24, 1)
 after_image_count = 12
 after_scale = Vector2(1.1, 1.1)
