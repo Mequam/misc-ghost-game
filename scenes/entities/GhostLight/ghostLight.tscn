@@ -7,7 +7,10 @@
 size = Vector2(109, 131)
 
 [node name="spawn_light" type="CharacterBody2D"]
+position = Vector2(0, 1)
 scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_l6saw")
 unposses_radius = 150.0
 max_health = 8

@@ -4,6 +4,12 @@ class_name RespawnLamp
 
 
 @export var max_leni_life : bool = true
+
+func gen_col_layer()->int:
+	return ColMath.Layer.SIMPLE_ENTITY
+func gen_col_mask()->int:
+	return ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
+
 #the life that leni respawns in with
 func get_start_health(leni : Leni)->int:
 	if max_leni_life:

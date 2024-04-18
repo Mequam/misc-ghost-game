@@ -111,6 +111,48 @@ load_path = "res://scenes/levels/orchard/entryLevel/EntryLevel.tscn"
 cam_ref = NodePath("mainCam")
 metadata/_edit_vertical_guides_ = [16.0]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+offset = Vector2(-32.38, 0)
+transform = Transform2D(1, 0, 0, 1, -32.38, 0)
+
+[node name="background_rectangles" type="Control" parent="CanvasLayer"]
+modulate = Color(0.521569, 0.521569, 0.521569, 1)
+z_index = -100
+layout_mode = 3
+anchors_preset = 0
+offset_left = 22.0
+offset_top = 419.0
+offset_right = 62.0
+offset_bottom = 459.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/background_rectangles"]
+self_modulate = Color(0, 0.42, 0.42, 1)
+z_index = -10
+layout_mode = 0
+offset_left = 824.0
+offset_top = -2471.0
+offset_right = 4374.0
+offset_bottom = 827.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/background_rectangles"]
+self_modulate = Color(0, 0.42, 0.42, 1)
+z_index = -10
+layout_mode = 0
+offset_left = -56555.6
+offset_top = -26561.0
+offset_right = 17595.4
+offset_bottom = 11140.0
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/background_rectangles"]
+self_modulate = Color(0, 0.419608, 0.419608, 1)
+z_index = -10
+layout_mode = 0
+offset_left = 3872.0
+offset_top = -672.0
+offset_right = 4666.0
+offset_bottom = -119.0
+
 [node name="mainCam" parent="." instance=ExtResource("5_pwvrf")]
 position = Vector2(10294, -520.75)
 limit_left = -100000000
@@ -1155,48 +1197,6 @@ z_index = 1
 position = Vector2(1458, 150.75)
 scale = Vector2(0.572, 0.572)
 texture = ExtResource("52_k3pkq")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -100
-offset = Vector2(-32.38, 0)
-transform = Transform2D(1, 0, 0, 1, -32.38, 0)
-
-[node name="background_rectangles" type="Control" parent="CanvasLayer"]
-modulate = Color(0.521569, 0.521569, 0.521569, 1)
-z_index = -100
-layout_mode = 3
-anchors_preset = 0
-offset_left = 22.0
-offset_top = 419.0
-offset_right = 62.0
-offset_bottom = 459.0
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/background_rectangles"]
-self_modulate = Color(0, 0.42, 0.42, 1)
-z_index = -10
-layout_mode = 0
-offset_left = 824.0
-offset_top = -2471.0
-offset_right = 4374.0
-offset_bottom = 827.0
-
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/background_rectangles"]
-self_modulate = Color(0, 0.42, 0.42, 1)
-z_index = -10
-layout_mode = 0
-offset_left = -56555.6
-offset_top = -26561.0
-offset_right = 17595.4
-offset_bottom = 11140.0
-
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/background_rectangles"]
-self_modulate = Color(0, 0.419608, 0.419608, 1)
-z_index = -10
-layout_mode = 0
-offset_left = 3872.0
-offset_top = -672.0
-offset_right = 4666.0
-offset_bottom = -119.0
 
 [editable path="second_light/DisapearingLabel"]
 [editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me/dialogBubble"]

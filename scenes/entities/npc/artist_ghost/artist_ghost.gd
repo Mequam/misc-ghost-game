@@ -2,10 +2,6 @@ extends Npc
 
 class_name ArtistGhost
 
-func gen_col_layer()->int:
-	return ColMath.Layer.SIMPLE_ENTITY
-func gen_col_mask()->int:
-	return ColMath.ConstLayer.TILE_BORDER | ColMath.Layer.TERRAIN
 
 #we take NO damage
 func take_damage(amount : int = 0, source = null)->void:
