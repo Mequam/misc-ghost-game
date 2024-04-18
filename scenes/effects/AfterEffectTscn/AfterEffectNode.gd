@@ -9,6 +9,10 @@ class_name GhostAfterEffectNode
 		return the_sprite
 @export var after_image_frequency = 4.0
 @export var after_image_mesh_scene : PackedScene
+
+@export var color_a : Color
+@export var color_b : Color
+
 @export_range(1,100,1) var after_image_count = 4:
 	set(n_count):
 		after_image_count = n_count
@@ -90,6 +94,10 @@ func update_after_image():
 		mesh_update_index = (1+mesh_update_index)%len(mesh_array)
 
 		the_mesh_instance.material.set_shader_parameter("Start_Time", Time.get_ticks_usec()/1e+6)
+		print_debug("setting a color!")
+		the_mesh_instance.material.set_shader_parameter("ColorA0", color_a)
+		the_mesh_instance.material.set_shader_parameter("ColorB", color_b)
+
 		the_mesh_instance.texture = the_texture
 		the_mesh.size *= after_scale
 		if the_sprite is AnimatedSprite2D and the_sprite.flip_h:

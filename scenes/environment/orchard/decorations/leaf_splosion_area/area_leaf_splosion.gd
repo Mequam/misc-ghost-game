@@ -10,6 +10,5 @@ func _ready() -> void:
 func on_timeout():
 	get_node("leaf particles").emitting = false
 func on_body_entered(_body):
-	print_debug("we are entereing the body!")
 	get_node("leaf particles").emitting = true
 	get_node("Timer").start()

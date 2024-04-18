@@ -88,7 +88,7 @@ func on_btn_save_pressed()->void:
 
 func update_save_visibility()->void:
 	var resolution : Vector2i = get_tree().get_root().content_scale_size
-	print_debug(width_control.value == resolution.x or height_control.value == resolution.y)
+	#print_debug(width_control.value == resolution.x or height_control.value == resolution.y)
 	btn_save.visible = (width_control.value != resolution.x or height_control.value != resolution.y)
 	btn_restore.visible = btn_save.visible
 

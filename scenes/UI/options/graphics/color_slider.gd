@@ -14,7 +14,7 @@ func _ready():
 
 
 func on_val_changed(val : float)->void:
-	print_debug(h_slider.value/h_slider.max_value)
+	#print_debug(h_slider.value/h_slider.max_value)
 	spin_box.value = int(
 								lerp(
 										float(out_min),

@@ -20,8 +20,24 @@ func get_entity_type()->String:
 
 @export var posses_speed : float = 5
 
+@export var after_effect_color_a : Color
+@export var after_effect_color_b : Color
+
+@export var boosted_after_effect_color_a : Color
+@export var boosted_after_effect_color_b : Color
+
 #the number of jumps we can make while tired
-@export var tired_jumps = 2
+@export var tired_jumps = 2 : 
+	get:
+		return tired_jumps
+	set(val):
+		#make sure to cap the saved_jumps
+		if saved_jump > val:
+			saved_jump = val
+		
+		self.update_follow_color(val > 2)
+
+		tired_jumps = val
 
 #the squred theshold that indicates if our previous posses_dir is too close to our current posses
 #dir
@@ -35,13 +51,8 @@ var saved_jump : int = 1 :
 	get:
 		return saved_jump
 	set(val):
-		if val < self.tired_jumps:
-			print_debug("decrimenting saved_jump")
-		else:
-			print_debug("reseting saved jump")
 		saved_jump = val
 		if saved_jump <= 0:
-			print_debug("starting posses cooldown")
 			$posess_cooldown.start()
 			saved_jump = 0
 
@@ -62,11 +73,16 @@ func reset_health()->void:
 
 #a reference to the lamp that we respawn at
 var respawn_point : RespawnLamp
+@export var ghost_after_effect : GhostAfterEffectNode
 
 
-@export
-var ghost_after_effect : GhostAfterEffectNode
-
+func update_follow_color(boosted : bool)->void:
+	if not boosted:
+		self.ghost_after_effect.color_a = self.after_effect_color_a
+		self.ghost_after_effect.color_b = self.after_effect_color_b
+	else:
+		self.ghost_after_effect.color_a = self.boosted_after_effect_color_a
+		self.ghost_after_effect.color_b = self.boosted_after_effect_color_b
 
 #simple conviennce function to store the current
 #entity as one the game should target
@@ -213,13 +229,10 @@ func set_state(val : int)->void:
 
 			if self.saved_jump != self.tired_jumps:
 				#if we are in a given jump sequence we cannot go the same way twice in a row
-				print_debug(normalized_dir.distance_squared_to(self.last_posses_dir))
 				if normalized_dir.distance_squared_to(self.last_posses_dir) < posses_threshold*posses_threshold:
 					self.last_posses_dir = normalized_dir
 					self.saved_jump -= 1
 					return
-			else:
-				print_debug("first in chain")
 					#update for the next possesion time
 			self.last_posses_dir = normalized_dir
 
@@ -322,6 +335,7 @@ func _on_posses_timer_timeout():
 func _on_sprite_2d_animation_finished():
 	match $Sprite2D.animation:
 		"posses_col":
+			update_follow_color(false) #set default posses color
 			possesed_entity.posses_by(self)
 		"posses":
 			pass

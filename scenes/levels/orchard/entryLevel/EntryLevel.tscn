@@ -226,6 +226,7 @@ shape = SubResource("RectangleShape2D_w6b8c")
 debug_color = Color(0.501961, 1, 0, 0.392157)
 
 [node name="DialogClicker" type="Control" parent="artist_ghost/dialog zone"]
+z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1096,7 +1097,6 @@ texture = ExtResource("48_5mvaa")
 z_index = 1
 position = Vector2(3502, -200.25)
 rotation = -0.136768
-scale = Vector2(1, 1)
 texture = ExtResource("49_lh6l4")
 
 [node name="GPUParticles2D4" parent="decorations/SideTree" instance=ExtResource("50_a6vkl")]
@@ -1184,10 +1184,10 @@ offset_bottom = 827.0
 self_modulate = Color(0, 0.42, 0.42, 1)
 z_index = -10
 layout_mode = 0
-offset_left = -56771.6
-offset_top = -25901.0
-offset_right = 17379.4
-offset_bottom = 11800.0
+offset_left = -56555.6
+offset_top = -26561.0
+offset_right = 17595.4
+offset_bottom = 11140.0
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer/background_rectangles"]
 self_modulate = Color(0, 0.419608, 0.419608, 1)
