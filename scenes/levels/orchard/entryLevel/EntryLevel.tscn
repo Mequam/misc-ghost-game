@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bf6bfmg66u6lf"]
+[gd_scene load_steps=75 format=3 uid="uid://bf6bfmg66u6lf"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_skwwk"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="2_jx3ls"]
@@ -8,15 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://u7srcg8y4yf8" path="res://scenes/UI/disapearing_label.tscn" id="7_230fg"]
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="9_5xj7r"]
 [ext_resource type="PackedScene" uid="uid://byyct7hmsgc4q" path="res://scenes/environment/CameraGrabZone/camera_grab_zone.tscn" id="9_hkyub"]
-[ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="10_lqp3g"]
 [ext_resource type="PackedScene" uid="uid://cjj04dmtykhtj" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn" id="11_rb6g4"]
 [ext_resource type="PackedScene" uid="uid://kd3f4rg6axyb" path="res://scenes/pickups/candy/watermelcandycorn/watermeloncandycorn.tscn" id="12_oiqma"]
+[ext_resource type="Script" path="res://scenes/levels/orchard/entryLevel/weak_lamp.gd" id="12_u8k0v"]
 [ext_resource type="PackedScene" uid="uid://dr1c6twv8ln1k" path="res://scenes/pickups/candy/chocolate/chocolate.tscn" id="13_4oq1a"]
+[ext_resource type="Texture2D" uid="uid://p2asogawiglk" path="res://assets/animations/lights/can light/can_light0001.png" id="13_gifyd"]
 [ext_resource type="PackedScene" uid="uid://dmf154ry3pm5f" path="res://scenes/environment/orchard/tiles/rocky_grass.tscn" id="13_h3k0h"]
 [ext_resource type="AudioStream" uid="uid://b23l6s0ireae6" path="res://assets/sound/music/orchard/orchard_theme.wav" id="13_weggt"]
-[ext_resource type="Script" path="res://assets/scripts/gameObjects/dummy_entity.gd" id="14_w8165"]
+[ext_resource type="Texture2D" uid="uid://djm5336fiwpqr" path="res://assets/animations/lights/can light/can_light0002.png" id="14_73mxf"]
+[ext_resource type="Texture2D" uid="uid://dxvgdjprli3fv" path="res://assets/animations/lights/can light/can_light0004.png" id="16_7feal"]
 [ext_resource type="PackedScene" uid="uid://bxn1oo31udgxe" path="res://scenes/UI/explanation_zone.tscn" id="17_ck3cw"]
+[ext_resource type="Texture2D" uid="uid://ppif5jrp36ts" path="res://assets/animations/lights/can light/can_light0005.png" id="17_p4dmh"]
 [ext_resource type="PackedScene" uid="uid://dalvr81o80x4w" path="res://scenes/environment/orchard/pumpkin_blocker/pumpkin_blocker.tscn" id="18_4w2y5"]
+[ext_resource type="Texture2D" uid="uid://dqgsyrb7lrhiv" path="res://assets/animations/lights/can light/can_light0006.png" id="18_c22vv"]
 [ext_resource type="Script" path="res://scenes/UI/dialog/dialog_posses_state.gd" id="18_l02wm"]
 [ext_resource type="PackedScene" uid="uid://b6mnkh4550x3t" path="res://scenes/entities/npc/artist_ghost/artist_ghost.tscn" id="19_4vttw"]
 [ext_resource type="PackedScene" uid="uid://cplvmi3c4nx3x" path="res://scenes/entities/tools/animation_zone_trigger.tscn" id="20_l70ul"]
@@ -52,6 +56,7 @@
 [ext_resource type="PackedScene" uid="uid://dv88b02qfe8qy" path="res://scenes/environment/orchard/leaf_falling_particles.tscn" id="50_a6vkl"]
 [ext_resource type="PackedScene" uid="uid://yo5qynqrf1p8" path="res://scenes/environment/orchard/decorations/leaf_splosion_area/area_leaf_splosion.tscn" id="51_xiuux"]
 [ext_resource type="Texture2D" uid="uid://lxbv0xudstnc" path="res://assets/images/orchard/misc_env/roots/falling_root1.png" id="52_k3pkq"]
+[ext_resource type="Texture2D" uid="uid://x3peeuumixj2" path="res://assets/images/orchard/hanging_pole.png" id="58_oqp4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o10wt"]
 size = Vector2(51, 648)
@@ -60,17 +65,67 @@ size = Vector2(51, 648)
 size = Vector2(871, 1028)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m58r"]
-size = Vector2(57, 55)
+size = Vector2(57, 141.25)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vxjsu"]
+[sub_resource type="Animation" id="Animation_pgts2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g6prg"]
+resource_name = "sway"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-0.341654, 0.00572807, 0.35311, 0.526801]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jl3kr"]
+_data = {
+"RESET": SubResource("Animation_pgts2"),
+"sway": SubResource("Animation_g6prg")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1aou"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_lqp3g")
+"texture": ExtResource("13_gifyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_73mxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7feal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_p4dmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_c22vv")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cry2f"]
@@ -191,6 +246,7 @@ max_health = 7
 health = 7
 
 [node name="DisapearingLabel" parent="second_light" instance=ExtResource("7_230fg")]
+z_index = 3
 offset_left = -1192.0
 offset_top = -288.5
 offset_right = -375.0
@@ -226,20 +282,32 @@ debug_color = Color(0.94902, 0, 0.894118, 0.419608)
 [node name="Node2D" type="Node2D" parent="CameraGrabZone2"]
 position = Vector2(437, 972)
 
-[node name="weak_lamp" type="CharacterBody2D" parent="."]
+[node name="weak_lamp" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sprite")]
 position = Vector2(11971, -688.75)
-script = ExtResource("14_w8165")
+script = ExtResource("12_u8k0v")
+sprite = NodePath("pivot/Sprite2D")
+health = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="weak_lamp"]
-position = Vector2(9, -4)
+position = Vector2(9, 39.125)
 shape = SubResource("RectangleShape2D_3m58r")
-
-[node name="Sprite2D" type="AnimatedSprite2D" parent="weak_lamp"]
-position = Vector2(8, -3)
-sprite_frames = SubResource("SpriteFrames_vxjsu")
 
 [node name="unposSpot" type="Node2D" parent="weak_lamp"]
 position = Vector2(12, -3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="weak_lamp"]
+libraries = {
+"": SubResource("AnimationLibrary_jl3kr")
+}
+
+[node name="pivot" type="Node2D" parent="weak_lamp"]
+position = Vector2(6, -8.25)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="weak_lamp/pivot"]
+position = Vector2(15, 64)
+scale = Vector2(0.55, 0.5555)
+sprite_frames = SubResource("SpriteFrames_k1aou")
+frame_progress = 0.710645
 
 [node name="artist_ghost" parent="." instance=ExtResource("19_4vttw")]
 position = Vector2(11832, 162.25)
@@ -1197,6 +1265,12 @@ z_index = 1
 position = Vector2(1458, 150.75)
 scale = Vector2(0.572, 0.572)
 texture = ExtResource("52_k3pkq")
+
+[node name="HangingPole" type="Sprite2D" parent="."]
+position = Vector2(12007, -660)
+rotation = -0.541665
+scale = Vector2(0.562, 0.562)
+texture = ExtResource("58_oqp4l")
 
 [editable path="second_light/DisapearingLabel"]
 [editable path="artist_ghost/dialog zone/DialogClicker/dialog_posses_state/dialog_possesed/your possesing me/dialogBubble"]
