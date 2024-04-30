@@ -19,5 +19,11 @@ func get_start_health(leni : Leni)->int:
 func posses_by(entity)->void:
 	GameLoader.save_game_from_lamp(self)
 	get_main().runtime_variables.clear()
+	self.z_index = 0
+
 	super.posses_by(entity)
 	pass
+
+func exorcize(offset : Vector2 = Vector2(0,0))->void:
+	self.z_index = -1
+	super.exorcize(offset)

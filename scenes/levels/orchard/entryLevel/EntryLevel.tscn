@@ -239,6 +239,7 @@ health = 4
 [node name="DisapearingLabel" parent="firstLight" instance=ExtResource("7_230fg")]
 
 [node name="second_light" parent="." instance=ExtResource("6_5g2bp")]
+z_index = -1
 position = Vector2(12449, -478.75)
 script = ExtResource("6_kxbvy")
 unposses_radius = 100.0
@@ -283,6 +284,7 @@ debug_color = Color(0.94902, 0, 0.894118, 0.419608)
 position = Vector2(437, 972)
 
 [node name="weak_lamp" type="CharacterBody2D" parent="." node_paths=PackedStringArray("sprite")]
+z_index = -1
 position = Vector2(11971, -688.75)
 script = ExtResource("12_u8k0v")
 sprite = NodePath("pivot/Sprite2D")
