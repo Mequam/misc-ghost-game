@@ -4,6 +4,7 @@ extends TiredFlightEntity
 
 class_name ApplePicker 
 
+@export var shoot_position : Node2D
 @export var apple_detector : Area2D
 #represents how many apples we currently have
 @export var max_apple_count : int = 3
@@ -84,7 +85,7 @@ func on_anim_finished(anim : StringName):
 		"shoot":
 			self.apple_count -= 1
 			var flip = -1 if self.get_sprite2D().flip_h else 1
-			self.shoot(self.apple_shotgun_projectile,self.global_position,self.apple_projectile_speed * Vector2(flip,-1))
+			self.shoot(self.apple_shotgun_projectile,shoot_position.global_position,self.apple_projectile_speed * Vector2(flip,-1))
 			self.singal_move_and_collide(Vector2.LEFT*flip*self.run_speed.x*60)
 			$shoot.play()
 		"pick":

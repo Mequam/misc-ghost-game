@@ -19,6 +19,7 @@ func _ready()->void:
 	#with our global position
 	await get_tree().process_frame 
 
+	print_debug("FIRE AWAY CAPTAIN")
 	#print(self.velocity)
 	var rotation_step = spread_angle / projectile_count 
 	var start_vector = velocity.rotated(-spread_angle / 2)
