@@ -29,6 +29,7 @@ func collumn_attack()->void:
 	if ($Sprite2D.flip_h and $col_spawn_position.position.x > 0) or (not $Sprite2D.flip_h and $col_spawn_position.position.x < 0):
 		$col_spawn_position.position.x *= -1
 	spawn_object(collumn,$col_spawn_position.global_position + Vector2(0,50))
+
 func get_projectile_launch_velocity()->Vector2:
 	if not self.onground:
 		var ret_val = Vector2(1,0.5)
@@ -81,3 +82,11 @@ func _on_Sprite_animation_finished():
 		if state != EntityState.DAMAGED:
 			state = EntityState.DEFAULT
 			update_animation()
+
+# this code is called on the witch by the projectile
+# when the witch needs to swap positions on hit
+func swap_positions(entity : Entity):
+	var old_pos : Vector2 = global_position 
+	global_position = entity.global_position 
+	entity.global_position = old_pos 
+	pass

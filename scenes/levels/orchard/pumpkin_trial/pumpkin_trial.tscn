@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://poskd5mb1tmk"]
+[gd_scene load_steps=16 format=3 uid="uid://poskd5mb1tmk"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_80p45"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="2_ogy2y"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cjj04dmtykhtj" path="res://scenes/entities/halloween/rollingPumpkin/pumpkin_tree_spawner.tscn" id="8_a5si6"]
 [ext_resource type="PackedScene" uid="uid://cnoukjnux3vku" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn" id="9_y31m2"]
 [ext_resource type="PackedScene" uid="uid://byyct7hmsgc4q" path="res://scenes/environment/CameraGrabZone/camera_grab_zone.tscn" id="10_3trl6"]
+[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="11_wwsgg"]
 
 [sub_resource type="Resource" id="Resource_5sp5d"]
 script = ExtResource("5_xtmqo")
@@ -28,11 +29,11 @@ size = Vector2(1029, 675)
 script = ExtResource("1_80p45")
 ai_timeout = 0.25
 load_path = "res://scenes/levels/orchard/pumpkin_trial/pumpkin_trial.tscn"
+cam_ref = NodePath("mainCam")
 allow_escape = null
 color_rotation = null
 red_map = null
 ygreen_map = null
-cam_ref = NodePath("mainCam")
 
 [node name="mainCam" parent="." instance=ExtResource("2_ogy2y")]
 position = Vector2(-116.75, -484.25)
@@ -96,3 +97,7 @@ position = Vector2(-5418, -331)
 
 [node name="spawn_light2" parent="." instance=ExtResource("6_igx2n")]
 position = Vector2(-5874, -487)
+
+[node name="applePicker" parent="." instance=ExtResource("11_wwsgg")]
+position = Vector2(-4968, -389)
+entity_ai = null

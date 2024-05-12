@@ -1,12 +1,13 @@
 extends AnimatedSprite2D
 
 var initial_scale : Vector2
-
+var initial_position : Vector2
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
 	custom_play("posses_end")
 	initial_scale = scale
+	initial_position = position
 
 var ectoSplosion : PackedScene = load("res://scenes/animations/EctoSplosion.tscn")
 var ghost_run_counter : int = 0
@@ -23,7 +24,7 @@ var up : bool = false :
 		up = mod_value  # TODOConverter40 Copy here content of set_up
 
 func custom_play(anim : StringName = "",backwords : bool = false)->void:
-	position = Vector2(0,0)
+	position = initial_position
 	match anim:
 		"posses_col":
 			speed_scale = 3
@@ -46,9 +47,9 @@ func custom_play(anim : StringName = "",backwords : bool = false)->void:
 
 func set_up(val : bool)->void:
 	if val:
-		position = Vector2(0,turbulance)
+		position = Vector2(0,turbulance)+initial_position
 	else:
-		position = Vector2(0,0)
+		position = initial_position
 	up = val
 func get_up()->bool:
 	return up

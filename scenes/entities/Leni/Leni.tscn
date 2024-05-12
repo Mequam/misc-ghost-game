@@ -14,8 +14,7 @@ size = Vector2(27.125, 29.625)
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(17, 72.5)
 
-[node name="Leni" type="CharacterBody2D" node_paths=PackedStringArray("invensible_timer")]
-position = Vector2(0, -1)
+[node name="Leni" type="CharacterBody2D" node_paths=PackedStringArray("invensible_timer", "sprite")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_v1hk0")
@@ -27,18 +26,21 @@ after_effect_color_b = Color(0.71, 1, 0.42, 1)
 boosted_after_effect_color_a = Color(0.25, 1, 1, 1)
 boosted_after_effect_color_b = Color(0.26, 1, 1, 1)
 posses_threshold = 0.2
+sprite = NodePath("sprite_offset/Sprite2D")
 heart_text = Array[Texture2D]([ExtResource("2_wh2ov"), ExtResource("3_g304m"), ExtResource("4_4qf68")])
 max_health = 8
 health = 8
 speed = Vector2(300, 300)
 
-[node name="Sprite2D" parent="." instance=ExtResource("2")]
+[node name="sprite_offset" type="Node2D" parent="."]
+position = Vector2(0, -48)
+
+[node name="Sprite2D" parent="sprite_offset" instance=ExtResource("2")]
 position = Vector2(-2, 6)
 scale = Vector2(0.3, 0.3)
-frame_progress = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, -35)
 shape = SubResource("RectangleShape2D_lcfmd")
 
 [node name="flight_timer" type="Timer" parent="."]
@@ -50,6 +52,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="GroundTester" type="Area2D" parent="."]
+position = Vector2(1, -39)
 collision_layer = 0
 collision_mask = 0
 
@@ -89,7 +92,7 @@ pitch_scale = 1.5
 wait_time = 0.5
 one_shot = true
 
-[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="sprite_offset/Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="timeout" from="flight_timer" to="." method="_on_flight_timer_timeout"]
 [connection signal="timeout" from="posses_timer" to="." method="_on_posses_timer_timeout"]
 [connection signal="body_entered" from="GroundTester" to="." method="_on_GroundTester_body_entered"]

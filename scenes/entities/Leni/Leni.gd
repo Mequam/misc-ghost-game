@@ -93,7 +93,7 @@ func store_aggro(host):
 #so hijak die and call super.die when the anim finishes
 func die():
 	self.state = EntityState.BRICK
-	$Sprite2D.custom_play("die")
+	get_sprite2D().custom_play("die")
 
 #convinence function to ensure that we are the object
 #that the game targets
@@ -113,7 +113,7 @@ func on_unposses(host)->void:
 	self.state = EntityState.DEFAULT
 	
 	#ensure we have no lingering rotation
-	$Sprite2D.rotation = 0
+	get_sprite2D().rotation = 0
 	
 	grab_camera()
 	grab_aggro() #ensure that leni is targeted
@@ -323,17 +323,17 @@ func on_col(col)->void:
 			if (col.get_collider() is Entity):
 				state = EntityState.BRICK
 				possesed_entity = col.get_collider()
-				$Sprite2D.custom_play("posses_col")
+				get_sprite2D().custom_play("posses_col")
 	super.on_col(col)
 
 func _on_posses_timer_timeout():
 	posses_velocity = Vector2(0,0)
 	if state != EntityState.BRICK:
 		self.state = EntityState.DEFAULT
-		$Sprite2D.custom_play("posses_end")
+		get_sprite2D().custom_play("posses_end")
 
 func _on_sprite_2d_animation_finished():
-	match $Sprite2D.animation:
+	match get_sprite2D().animation:
 		"posses_col":
 			update_follow_color(false) #set default posses color
 			possesed_entity.posses_by(self)
