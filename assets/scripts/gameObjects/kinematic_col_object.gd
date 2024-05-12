@@ -8,12 +8,14 @@ class_name KinColObject
 
 @export var speed : Vector2 = Vector2(50,50)
 
+signal sig_on_col
 
 func singal_move_and_collide(rel_vec : Vector2,test_only : bool = false,sm : float = 0.08,test : bool = false)->KinematicCollision2D:
 	var col = move_and_collide(rel_vec,test_only,sm,test)
 		
 	if col:
 		on_col(col)
+		sig_on_col.emit(col)
 		rel_vec -= rel_vec.project(col.get_normal())
 		move_and_collide(rel_vec,test_only,sm,test)
 

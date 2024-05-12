@@ -516,5 +516,15 @@ func on_modulate_timer_out():
 #called when we detect a collision
 func on_col(col):
 	pass
+	if col.get_collider() is Entity and col.get_normal().y < col.get_normal().x*2:
 
+		var offset = self.global_position.x - col.get_collider().global_position.x
+		
+		if offset >= 0:
+			offset = 1
+		else:
+			offset = -1
+		
+		#move us off of the top based collision
+		move_and_collide(Vector2.RIGHT * offset * 10)
 

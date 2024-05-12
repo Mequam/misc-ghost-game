@@ -28,11 +28,11 @@ size = Vector2(1029, 675)
 script = ExtResource("1_80p45")
 ai_timeout = 0.25
 load_path = "res://scenes/levels/orchard/pumpkin_trial/pumpkin_trial.tscn"
-cam_ref = NodePath("mainCam")
 allow_escape = null
 color_rotation = null
 red_map = null
 ygreen_map = null
+cam_ref = NodePath("mainCam")
 
 [node name="mainCam" parent="." instance=ExtResource("2_ogy2y")]
 position = Vector2(-116.75, -484.25)
