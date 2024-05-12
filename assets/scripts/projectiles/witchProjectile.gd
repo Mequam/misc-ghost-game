@@ -25,7 +25,6 @@ func die():
 	super.die()
 
 func on_col(collider):
-
 	var entity = collider.get_collider()
 	
 	#we can teleport entities and players, that is IT
