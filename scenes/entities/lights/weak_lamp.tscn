@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0mybyi3i8fjq"]
+
+[ext_resource type="Script" path="res://scenes/levels/orchard/entryLevel/weak_lamp.gd" id="1_854j1"]
+[ext_resource type="Texture2D" uid="uid://p2asogawiglk" path="res://assets/animations/lights/can light/can_light0001.png" id="2_hkoda"]
+[ext_resource type="Texture2D" uid="uid://djm5336fiwpqr" path="res://assets/animations/lights/can light/can_light0002.png" id="3_og411"]
+[ext_resource type="Texture2D" uid="uid://dxvgdjprli3fv" path="res://assets/animations/lights/can light/can_light0004.png" id="4_swgp0"]
+[ext_resource type="Texture2D" uid="uid://ppif5jrp36ts" path="res://assets/animations/lights/can light/can_light0005.png" id="5_cyhay"]
+[ext_resource type="Texture2D" uid="uid://dqgsyrb7lrhiv" path="res://assets/animations/lights/can light/can_light0006.png" id="6_k04f8"]
+[ext_resource type="Script" path="res://scenes/entities/custom_play_sprite.gd" id="7_fq7gi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3m58r"]
+size = Vector2(57, 141.25)
+
+[sub_resource type="Animation" id="Animation_pgts2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g6prg"]
+resource_name = "sway"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-0.341654, 0.00572807, 0.35311, 0.526801]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jl3kr"]
+_data = {
+"RESET": SubResource("Animation_pgts2"),
+"sway": SubResource("Animation_g6prg")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1aou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hkoda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_og411")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_swgp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cyhay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k04f8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="weak_lamp" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+z_index = -1
+position = Vector2(11971, -688.75)
+script = ExtResource("1_854j1")
+max_leni_life = false
+sprite = NodePath("pivot/Sprite2D")
+health = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 39.125)
+shape = SubResource("RectangleShape2D_3m58r")
+
+[node name="unposSpot" type="Node2D" parent="."]
+position = Vector2(12, -3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jl3kr")
+}
+
+[node name="pivot" type="Node2D" parent="."]
+position = Vector2(6, -8.25)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="pivot"]
+position = Vector2(15, 64)
+scale = Vector2(0.55, 0.5555)
+sprite_frames = SubResource("SpriteFrames_k1aou")
+frame_progress = 0.710645
+script = ExtResource("7_fq7gi")

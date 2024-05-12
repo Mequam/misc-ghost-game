@@ -1,5 +1,7 @@
 extends RespawnLamp
 
+class_name CanLamp
+
 var forward : bool = true
 
 func _ready()->void:
