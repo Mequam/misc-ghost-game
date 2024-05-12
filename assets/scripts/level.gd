@@ -20,7 +20,6 @@ var cam_ref : Camera2D :
 		cam_ref = mod_value  # TODOConverter40 Copy here content of set_cam_ref
 func set_cam_ref(ref : Camera2D)->void:
 	cam_ref = ref
-	set_cam_limit()
 func get_cam_ref()->Camera2D:
 	return cam_ref 
 
@@ -32,11 +31,6 @@ var allow_escape : bool = false
 @export var red_map : Color = Color.RED
 @export var ygreen_map : Color = Color.GREEN
 
-var cam_limit_left = -908
-func set_cam_limit()->void:
-	cam_ref.limit_left = -908
-	cam_ref.limit_right = 828
-	cam_ref.limit_bottom = 192
 
 #level data loaded in from the disc when we load this level
 var level_data : Dictionary
@@ -59,9 +53,6 @@ func _ready():
 	color_mat.set_shader_parameter("red_map",self.red_map)
 	color_mat.set_shader_parameter("yg_map",self.ygreen_map)
 		
-
-	cam_ref.limit_left = cam_limit_left
-
 	#start out grabbing Leni if he is in the tree
 	if $Leni:
 		$Leni.grab_camera()
