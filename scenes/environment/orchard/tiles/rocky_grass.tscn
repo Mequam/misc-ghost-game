@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dmf154ry3pm5f"]
+[gd_scene load_steps=32 format=3 uid="uid://dmf154ry3pm5f"]
 
 [ext_resource type="Texture2D" uid="uid://cifhluq0ge7c0" path="res://assets/images/tilesets/orchard/tile_set3.png" id="1_gb70t"]
 [ext_resource type="Texture2D" uid="uid://die7qeobv5v7x" path="res://assets/images/tilesets/orchard/tile_set4.png" id="2_xbwm6"]
@@ -10,9 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dt3rbgcja2tr8" path="res://assets/images/tilesets/orchard/dark_transitions_corners.png" id="6_dltah"]
 [ext_resource type="Texture2D" uid="uid://drrwpsp6kgexn" path="res://assets/images/tilesets/orchard/background/tiled_back_test_1.png" id="6_gk7m8"]
 [ext_resource type="Texture2D" uid="uid://dxtrjpr38pe0p" path="res://assets/images/tilesets/orchard/tile_set3_rework.png" id="6_rwwwe"]
-[ext_resource type="PackedScene" uid="uid://dukttrjdfl4vq" path="res://scenes/environment/orchard/decorations/lilrock.tscn" id="7_28x8h"]
 [ext_resource type="Texture2D" uid="uid://6hfxq0mjwdgj" path="res://assets/images/tilesets/orchard/background/tiled_back_test_2.png" id="7_80f26"]
-[ext_resource type="PackedScene" uid="uid://3wsojh42eujd" path="res://scenes/environment/orchard/decorations/curve_grass.tscn" id="8_n4c4j"]
+[ext_resource type="Texture2D" uid="uid://pby53yqui4u2" path="res://assets/images/nothing.png" id="7_og7y2"]
 [ext_resource type="Texture2D" uid="uid://cypgf3xc3d778" path="res://assets/images/tilesets/orchard/background/tiled_back_test_3.png" id="8_rhmlu"]
 [ext_resource type="Texture2D" uid="uid://6vpvugdeekjr" path="res://assets/images/tilesets/orchard/background/rocky_back_transition.png" id="9_8ouit"]
 [ext_resource type="Texture2D" uid="uid://b8ufvtkmj6oys" path="res://assets/images/tilesets/orchard/corners_rework.png" id="10_up8rr"]
@@ -506,9 +505,36 @@ texture_region_size = Vector2i(166, 166)
 2:2/0/terrains_peering_bit/top_side = 3
 2:2/0/terrains_peering_bit/top_right_corner = 3
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oflbp"]
-scenes/0/scene = ExtResource("7_28x8h")
-scenes/1/scene = ExtResource("8_n4c4j")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mo6bk"]
+texture = ExtResource("7_og7y2")
+texture_region_size = Vector2i(166, 166)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrnlm"]
 texture = ExtResource("3_vhlw2")
@@ -1138,7 +1164,7 @@ sources/8 = SubResource("TileSetAtlasSource_ya7xo")
 sources/11 = SubResource("TileSetAtlasSource_2a4rh")
 sources/12 = SubResource("TileSetAtlasSource_lwjh3")
 sources/13 = SubResource("TileSetAtlasSource_ugisy")
-sources/14 = SubResource("TileSetScenesCollectionSource_oflbp")
+sources/15 = SubResource("TileSetAtlasSource_mo6bk")
 
 [node name="rocky grass" type="TileMap"]
 scale = Vector2(0.25, 0.25)
