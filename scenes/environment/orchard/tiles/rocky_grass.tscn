@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dmf154ry3pm5f"]
+[gd_scene load_steps=35 format=3 uid="uid://dmf154ry3pm5f"]
 
 [ext_resource type="Texture2D" uid="uid://cifhluq0ge7c0" path="res://assets/images/tilesets/orchard/tile_set3.png" id="1_gb70t"]
 [ext_resource type="Texture2D" uid="uid://die7qeobv5v7x" path="res://assets/images/tilesets/orchard/tile_set4.png" id="2_xbwm6"]
@@ -115,6 +115,12 @@ texture_region_size = Vector2i(166, 166)
 2:2/0/terrains_peering_bit/top_left_corner = 3
 2:2/0/terrains_peering_bit/top_side = 3
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ld6wi"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jc0qw"]
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqdyp"]
 texture = ExtResource("2_xbwm6")
 texture_region_size = Vector2i(166, 166)
@@ -127,6 +133,7 @@ texture_region_size = Vector2i(166, 166)
 0:0/0/terrains_peering_bit/right_side = 3
 0:0/0/terrains_peering_bit/bottom_right_corner = 3
 0:0/0/terrains_peering_bit/bottom_side = 3
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ld6wi")
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrain = 3
@@ -138,6 +145,7 @@ texture_region_size = Vector2i(166, 166)
 1:0/0/terrains_peering_bit/bottom_side = 3
 1:0/0/terrains_peering_bit/bottom_left_corner = 3
 1:0/0/terrains_peering_bit/left_side = 3
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ld6wi")
 2:0/0 = 0
 2:0/0/terrain_set = 0
 2:0/0/terrain = 3
@@ -147,6 +155,7 @@ texture_region_size = Vector2i(166, 166)
 2:0/0/terrains_peering_bit/bottom_side = 3
 2:0/0/terrains_peering_bit/bottom_left_corner = 3
 2:0/0/terrains_peering_bit/left_side = 3
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jc0qw")
 0:1/0 = 0
 0:1/0/terrain_set = 0
 0:1/0/terrain = 3
@@ -158,10 +167,12 @@ texture_region_size = Vector2i(166, 166)
 0:1/0/terrains_peering_bit/bottom_side = 3
 0:1/0/terrains_peering_bit/top_side = 3
 0:1/0/terrains_peering_bit/top_right_corner = 3
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ld6wi")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-83, -83, 83, -83, 83, 83, -83, 83)
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ld6wi")
 2:1/0 = 0
 2:1/0/terrain_set = 0
 2:1/0/terrain = 3
@@ -173,6 +184,7 @@ texture_region_size = Vector2i(166, 166)
 2:1/0/terrains_peering_bit/left_side = 3
 2:1/0/terrains_peering_bit/top_left_corner = 3
 2:1/0/terrains_peering_bit/top_side = 3
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ld6wi")
 0:2/0 = 0
 0:2/0/terrain_set = 0
 0:2/0/terrain = 3
@@ -182,6 +194,7 @@ texture_region_size = Vector2i(166, 166)
 0:2/0/terrains_peering_bit/right_side = 3
 0:2/0/terrains_peering_bit/top_side = 3
 0:2/0/terrains_peering_bit/top_right_corner = 3
+0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ld6wi")
 1:2/0 = 0
 1:2/0/terrain_set = 0
 1:2/0/terrain = 3
@@ -193,6 +206,7 @@ texture_region_size = Vector2i(166, 166)
 1:2/0/terrains_peering_bit/top_left_corner = 3
 1:2/0/terrains_peering_bit/top_side = 3
 1:2/0/terrains_peering_bit/top_right_corner = 3
+1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ld6wi")
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/terrain = 3
@@ -202,6 +216,7 @@ texture_region_size = Vector2i(166, 166)
 2:2/0/terrains_peering_bit/left_side = 3
 2:2/0/terrains_peering_bit/top_left_corner = 3
 2:2/0/terrains_peering_bit/top_side = 3
+2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ld6wi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2qrr"]
 texture = ExtResource("3_suicm")
@@ -505,36 +520,20 @@ texture_region_size = Vector2i(166, 166)
 2:2/0/terrains_peering_bit/top_side = 3
 2:2/0/terrains_peering_bit/top_right_corner = 3
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mo6bk"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_hjkqn"]
+vertices = PackedVector2Array(83, 83, -83, 83, -83, -83, 83, -83)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-83, -83, 83, -83, 83, 83, -83, 83)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r1qkp"]
 texture = ExtResource("7_og7y2")
 texture_region_size = Vector2i(166, 166)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
-2:1/0 = 0
-2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:1/0/physics_layer_0/angular_velocity = 0.0
-0:2/0 = 0
-0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:2/0/physics_layer_0/angular_velocity = 0.0
-1:2/0 = 0
-1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:2/0/physics_layer_0/angular_velocity = 0.0
-2:2/0 = 0
-2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:2/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_hjkqn")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrnlm"]
 texture = ExtResource("3_vhlw2")
@@ -1150,6 +1149,7 @@ terrain_set_0/terrain_3/name = "dark"
 terrain_set_0/terrain_3/color = Color(0.231373, 0, 0.0627451, 1)
 terrain_set_0/terrain_4/name = "lils"
 terrain_set_0/terrain_4/color = Color(0.28125, 0.5, 0.25, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_sbbgl")
 sources/1 = SubResource("TileSetAtlasSource_vqdyp")
 sources/2 = SubResource("TileSetAtlasSource_wrnlm")
@@ -1164,7 +1164,7 @@ sources/8 = SubResource("TileSetAtlasSource_ya7xo")
 sources/11 = SubResource("TileSetAtlasSource_2a4rh")
 sources/12 = SubResource("TileSetAtlasSource_lwjh3")
 sources/13 = SubResource("TileSetAtlasSource_ugisy")
-sources/15 = SubResource("TileSetAtlasSource_mo6bk")
+sources/15 = SubResource("TileSetAtlasSource_r1qkp")
 
 [node name="rocky grass" type="TileMap"]
 scale = Vector2(0.25, 0.25)

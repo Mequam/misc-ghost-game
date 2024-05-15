@@ -38,7 +38,8 @@ folder_colors={
 "res://scenes/environment/": "yellow",
 "res://scenes/levels/": "gray",
 "res://scenes/pickups/": "pink",
-"res://scenes/singletons/": "teal"
+"res://scenes/singletons/": "teal",
+"res://scenes/tools/": "blue"
 }
 
 [global]
