@@ -21,7 +21,7 @@ size = Vector2(150.5, 301)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l15j4"]
 resource_local_to_scene = true
-size = Vector2(150, 134)
+size = Vector2(130, 134)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhfdn"]
 radius = 233.684
@@ -52,7 +52,7 @@ shape = SubResource("RectangleShape2D_ppar1")
 position = Vector2(10, -286)
 
 [node name="CollisionShape2D" parent="GroundTester" index="0"]
-position = Vector2(-9, 215)
+position = Vector2(-7, 215)
 shape = SubResource("RectangleShape2D_l15j4")
 
 [node name="unposSpot" type="Node2D" parent="."]
