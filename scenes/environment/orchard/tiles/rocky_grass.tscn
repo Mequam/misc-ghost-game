@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dmf154ry3pm5f"]
+[gd_scene load_steps=36 format=3 uid="uid://dmf154ry3pm5f"]
 
 [ext_resource type="Texture2D" uid="uid://cifhluq0ge7c0" path="res://assets/images/tilesets/orchard/tile_set3.png" id="1_gb70t"]
 [ext_resource type="Texture2D" uid="uid://die7qeobv5v7x" path="res://assets/images/tilesets/orchard/tile_set4.png" id="2_xbwm6"]
@@ -520,7 +520,14 @@ texture_region_size = Vector2i(166, 166)
 2:2/0/terrains_peering_bit/top_side = 3
 2:2/0/terrains_peering_bit/top_right_corner = 3
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_hjkqn"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yfyte"]
+vertices = PackedVector2Array(83, 83, -83, 83, -83, -83, 83, -83)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-83, -83, 83, -83, 83, 83, -83, 83)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ch52l"]
 vertices = PackedVector2Array(83, 83, -83, 83, -83, -83, 83, -83)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-83, -83, 83, -83, 83, 83, -83, 83)])
@@ -533,7 +540,11 @@ texture_region_size = Vector2i(166, 166)
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_hjkqn")
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_yfyte")
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ch52l")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrnlm"]
 texture = ExtResource("3_vhlw2")

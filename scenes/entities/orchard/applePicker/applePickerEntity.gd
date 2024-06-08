@@ -100,10 +100,3 @@ func main_ready()->void:
 	get_sprite2D().get_node("AnimationTree").animation_finished.connect(self.on_anim_finished)
 	super.main_ready()
 	self.possesed = false
-
-func on_col(col)->void:
-	if not self.possesed:
-		self.entity_ai.ai_on_col(col)
-	super.on_col(col)
-
-
