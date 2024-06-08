@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bionk35y3u22r"]
+
+[ext_resource type="PackedScene" uid="uid://tyt07kbx5nj" path="res://scenes/tools/tilenaver/tilenaver.tscn" id="1_07nm1"]
+
+[node name="apple_picker_tile_nav" type="Node"]
+
+[node name="tilenav" parent="." instance=ExtResource("1_07nm1")]
+target_layer = 1
+jump_height = 4
+x_offset = 5
+ciel_height = 3
