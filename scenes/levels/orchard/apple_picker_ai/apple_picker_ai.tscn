@@ -1,23 +1,28 @@
-[gd_scene load_steps=15 format=3 uid="uid://b66j85put7yxc"]
+[gd_scene load_steps=17 format=3 uid="uid://b66j85put7yxc"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ttb33"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="2_g781n"]
 [ext_resource type="PackedScene" uid="uid://dmf154ry3pm5f" path="res://scenes/environment/orchard/tiles/rocky_grass.tscn" id="3_gif65"]
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="4_0xcra"]
 [ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="5_rqjuv"]
+[ext_resource type="Script" path="res://scenes/entities/general_ai/sub_ai/navigation_routine/nav_motion_resource.gd" id="5_rstex"]
 [ext_resource type="Script" path="res://scenes/entities/general_ai/sub_ai/navigation_routine/nav_routine.gd" id="5_shpbc"]
 [ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/ai/AIApplePicker.gd" id="6_et0qo"]
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="7_evana"]
 [ext_resource type="PackedScene" uid="uid://tyt07kbx5nj" path="res://scenes/tools/tilenaver/tilenaver.tscn" id="8_jyb7t"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="9_7gihv"]
 
+[sub_resource type="Resource" id="Resource_mo13a"]
+script = ExtResource("5_rstex")
+closeness_threshold = 50.0
+move_threshold = Vector2(10, 10)
+sprint_threshold = Vector2(300, 800)
+collision_bias_weight = 50.0
+
 [sub_resource type="Resource" id="Resource_xd3jy"]
 script = ExtResource("5_shpbc")
-closeness_threshold = 50.0
-sprint_threshold = Vector2(600, 600)
-move_threshold = Vector2(10, 10)
 update_target_threshold = 10.0
-collision_bias_weight = 50.0
+follow_technique = SubResource("Resource_mo13a")
 danger_level = 1
 
 [sub_resource type="Resource" id="Resource_oaiom"]
