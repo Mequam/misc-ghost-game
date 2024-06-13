@@ -10,7 +10,7 @@ class_name SubAINavigationStraight
 var last_target_position : Vector2 = Vector2(0,0)
 var nav_agent : NavigationAgent2D = null
 
-@export_flags_2d_navigation var navigation_layers : int
+@export_flags_2d_navigation var navigation_layers : int = 1
 
 func set_target(target_position : Vector2)->void:
 	if target_position.distance_squared_to((last_target_position)) <= update_target_threshold: return
