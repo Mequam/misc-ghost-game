@@ -64,7 +64,6 @@ func caller_collided(col):
 	if parent_resource.caller.global_position.distance_squared_to(last_collision_position) < 10:
 		var normal : Vector2 = col.get_normal()
 		var target_direction = (parent_resource.last_target_position-parent_resource.caller.global_position).normalized()
-		print(target_direction.dot(normal))
 		if target_direction.dot(normal) < -0.1:
 			bias = -target_direction*collision_bias_weight
 	

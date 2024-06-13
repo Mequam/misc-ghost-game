@@ -10,6 +10,8 @@ class_name SubAINavigationStraight
 var last_target_position : Vector2 = Vector2(0,0)
 var nav_agent : NavigationAgent2D = null
 
+@export_flags_2d_navigation var navigation_layers : int
+
 func set_target(target_position : Vector2)->void:
 	if target_position.distance_squared_to((last_target_position)) <= update_target_threshold: return
 	nav_agent.target_position = target_position
@@ -44,6 +46,7 @@ func setup(caller : Entity)->void:
 	
 	#set up the navigation
 	nav_agent = NavigationAgent2D.new()
+	nav_agent.navigation_layers = navigation_layers
 	caller.add_child(nav_agent)
 	caller.sig_on_col.connect(follow_technique.caller_collided)
 

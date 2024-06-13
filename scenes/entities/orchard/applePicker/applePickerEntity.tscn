@@ -13,6 +13,7 @@
 [sub_resource type="Resource" id="Resource_gg8tm"]
 resource_local_to_scene = true
 script = ExtResource("3_bjqf2")
+aggro_threshold = 600
 shoot_threshold = 300
 danger_level = 1
 
@@ -81,5 +82,8 @@ bus = &"Sound Effects"
 
 [node name="shootlocation" type="Node2D" parent="."]
 position = Vector2(4, -156)
+
+[node name="ai_eyes" type="Node2D" parent="."]
+position = Vector2(4, -242)
 
 [editable path="GroundTester"]

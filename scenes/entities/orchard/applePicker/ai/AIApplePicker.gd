@@ -54,14 +54,17 @@ func aggro(player : Entity)->void:
 		self.navigation_resource.set_target(player.global_position)
 		self.navigation_resource.tick(player)
 
-var is_aggro : bool = false
+var is_aggro : bool = true
 
 func tick(player : Entity)->void:
-	can_see_player(player)
+	#print_debug(is_aggro)
+	print_debug(can_see_player(player))
 	if caller.apple_count > 0:
-		if player.global_position.distance_squared_to(caller.global_position) < 600:
-			pass
-		aggro(player)
+		if is_aggro:
+			print_debug("aggro hunting the player!")
+			aggro(player)
+		elif player.global_position.distance_squared_to(caller.global_position) < 600*600 and can_see_player(player):
+			is_aggro = true #we hunt the player down
 	else:
 		if ai_apple_target == null:
 			self.ai_apple_target = self.ai_get_apple_target()

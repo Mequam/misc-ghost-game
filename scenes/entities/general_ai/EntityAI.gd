@@ -33,16 +33,21 @@ func tick(_player_location : Entity)->void:
 #uses entity collision mask to see if we can hit them
 func can_see_player(player : Entity, visibility_distance : float = 600)->bool:
 	var space_state = caller.get_world_2d().direct_space_state
+	
+	var look_position : Vector2 = caller.global_position
+	if caller.get_node("ai_eyes"):
+		look_position = caller.get_node("ai_eyes").global_position
+
 	# use global coordinates, not local to node
 	var query = PhysicsRayQueryParameters2D.create(caller.global_position,
-			(player.global_position - caller.global_position).normalized()*visibility_distance,
+			(player.global_position - look_position).normalized()*visibility_distance,
 			caller.gen_col_mask()
 		)
 	
 	var result = space_state.intersect_ray(query)
 	
-	if result:
-		print(result["collider"].name)
+	#if result:
+	#	print(result["collider"].name)
 
 	return not result.is_empty() and result["collider"] == player
 
