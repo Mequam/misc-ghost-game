@@ -59,6 +59,9 @@ func _ready():
 		player_entity = $Leni 
 	RenderingServer.set_default_clear_color(Color.from_hsv(0,100,100))
 
+	#set up entities under us that are from the array
+	populate_alien_entities()
+
 func _on_tree_entered()->void:
 	print("level entered tree!")
 
@@ -85,8 +88,39 @@ func _process(_delta):
 func on_ai_timeout():
 	call_ai(player_entity)
 
+#returns true if we have a forieng entity
+func has_alien_entities()->bool:
+	return self.load_path in get_main().runtime_variables["llp"]
+
+#returns null or an array of entities that are foregn to this level
+func get_alien_entities()->Array:
+	if not self.has_alien_entities(): return []
+
+	var aliens = get_main().runtime_variables["llp"][self.load_path]
+	var ret_val = []
+
+	for a in aliens:
+		ret_val.append(a[0])
+
+	return ret_val
+
+#make sure that the alien entities are not in the tree when we are queue freed
+#be careful calling this as it could cause memory leaks
+func remove_alien_children()->void:
+	for entity in get_alien_entities():
+		entity.get_parent().remove_child(entity)
+
+#goes through each entity that is positioned in this level globally and
+#adds them to this level
+func populate_alien_entities()->void:
+	if self.has_alien_entities():
+		for entity in self.get_alien_entities():
+			add_child(entity)
+
+
+
 #after we finish loading, allow the player to escape
-func on_load(persist_objects,caller)->void:
+func after_load(persist_objects,caller)->void:
 	#make sure to wait for the game to update positions
 	await get_tree().create_timer(0.5).timeout
 	self.allow_escape = true

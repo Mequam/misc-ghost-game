@@ -130,10 +130,10 @@ offset_bottom = 827.0
 self_modulate = Color(0, 0.42, 0.42, 1)
 z_index = -10
 layout_mode = 0
-offset_left = -56897.6
-offset_top = -26441.0
-offset_right = 17253.4
-offset_bottom = 11260.0
+offset_left = -56976.6
+offset_top = -27019.0
+offset_right = 17174.4
+offset_bottom = 10682.0
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer/background_rectangles"]
 self_modulate = Color(0, 0.419608, 0.419608, 1)
@@ -750,7 +750,7 @@ position = Vector2(56, -132)
 
 [node name="entry_level_exit_easy" parent="." instance=ExtResource("9_5xj7r")]
 position = Vector2(9451, 198.25)
-target_level = &"res://scenes/levels/orchard/apple_picker_ai/apple_picker_ai.tscn"
+target_level = "res://scenes/levels/orchard/apple_picker_ai/apple_picker_ai.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="entry_level_exit_easy"]
 position = Vector2(-111, -104)

@@ -33,6 +33,7 @@ var home_name : String
 signal sig_died
 signal sig_possesed_by
 signal sig_unpossesed_by
+signal sig_after_load
 
 func get_sprite2D()->AnimatedSprite2D:
 	if sprite != null: return sprite 
@@ -53,15 +54,20 @@ func get_danger_level()->int:
 		return self.entity_ai.danger_level
 	return 0
 				
-#called when we are loaded into the scene
-func on_load(level)->void:
+#this function is called after we have entered the scene as the player
+#possesed entity
+func after_load(level)->void:
 	grab_camera()
 	if entity_ai:
 		entity_ai.caller = self
+	
+	#let anyone else who is interested in level loading know
+	sig_after_load.emit(level)
 
 #this function is inteanded to be overloaded
 #and is called any time that an entity is moved into a loaded level
-#via door code
+#via door code from the GameLoader singleton
+#note that it is called BEFORE the entity is added to the tree
 func on_level_load(_lvl)->void:
 	#make sure that the entity_ai still knows who it's calling from
 	if _lvl.load_path == self.home_level:

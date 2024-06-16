@@ -23,6 +23,8 @@ func get_level_node()->Level:
 func clear_level()->void:
 	var old_lvl = get_level_node()
 	if old_lvl:
+		if old_lvl is Level:
+			old_lvl.remove_alien_children()
 		old_lvl.queue_free()
 
 
@@ -93,9 +95,20 @@ func load_level(level,_caller,persist_obj=[]):
 			obj.on_level_load(loaded_lvl)
 		loaded_lvl.add_child(obj)
 	
-	if _caller.has_method("update_load"):
-		_caller.update_load(loaded_lvl,persist_obj)
+	if len(persist_obj) > 0:
+		loaded_lvl.player_entity = persist_obj[0]
+		
+		#tell the loaded object that it needs to update
+		if persist_obj[0].has_method("after_load"):
+			persist_obj[0].after_load(loaded_lvl)
+
+		var sibling_door = loaded_lvl.get_node(NodePath(_caller.name)) 
+
+		print( self.name + " selected sibling door: " + str(sibling_door.name))
+		if sibling_door:
+			sibling_door.disabled = true
+			persist_obj[0].global_position = sibling_door.global_position
 
 	#call a little bit later to ensure that the level knows AFTER everything has been loaded
-	loaded_lvl.call_deferred("on_load",persist_obj,_caller)
+	loaded_lvl.call_deferred("after_load",persist_obj,_caller)
 	return loaded_lvl

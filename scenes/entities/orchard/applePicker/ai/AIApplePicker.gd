@@ -57,11 +57,9 @@ func aggro(player : Entity)->void:
 var is_aggro : bool = true
 
 func tick(player : Entity)->void:
-	#print_debug(is_aggro)
-	print_debug(can_see_player(player))
 	if caller.apple_count > 0:
 		if is_aggro:
-			print_debug("aggro hunting the player!")
+			#print_debug("aggro hunting the player!")
 			aggro(player)
 		elif player.global_position.distance_squared_to(caller.global_position) < 600*600 and can_see_player(player):
 			is_aggro = true #we hunt the player down

@@ -17,15 +17,23 @@ func get_main()->MainScene:
 func get_level()->Level:
 	return recursive_getter(func (x) : return x is Level)
 
+@export var target : Node = null :
+	set(val):
+		target = val
+	get:
+		if target == null: return get_parent()
+		return target
+
 
 func get_runtime_path(level : Level)->String:
 	return level.load_path + "/removals"
+
 func _ready()->void:
 	var level = get_level()
 	var main = get_main()
 	if main.runtime_variables.has(get_runtime_path(level)) \
-			and get_parent().name in main.runtime_variables[get_runtime_path(level)]: 
-		get_parent().queue_free()
+			and self.target.name in main.runtime_variables[get_runtime_path(level)]: 
+		self.target.queue_free()
 
 #marks that we are to be removed on scene load in the runtime variables
 func mark_removal()->void:
@@ -37,11 +45,16 @@ func mark_removal()->void:
 		main.runtime_variables[get_runtime_path(level)] = []
 
 	#no reason to 
-	if get_parent().name in main.runtime_variables[get_runtime_path(level)]: return
+	if self.target.name in main.runtime_variables[get_runtime_path(level)]: return
 
-	main.runtime_variables[get_runtime_path(level)].append(get_parent().name)
+	main.runtime_variables[get_runtime_path(level)].append(self.target.name)
 
-
-
-
-
+func unmark_removal()->void:
+	var level = get_level()
+	var main = get_main()
+	
+	#no need to unmark what is not already marked
+	if not main.runtime_variables.has(get_runtime_path(level)):
+		return
+	
+	main.runtime_variables[get_runtime_path(level)].erase(self.target.name)

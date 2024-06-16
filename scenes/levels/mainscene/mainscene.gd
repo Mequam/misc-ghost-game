@@ -21,14 +21,19 @@ class_name MainScene
 #runtime variables that are not saved
 #this is for things like enemies remembering their deaths, 
 #and powerups staying removed between scenes
-var runtime_variables : Dictionary
+var runtime_variables : Dictionary = {}
+
+#clear the runtime variables but maintain important dictionary
+#structure
+func clear_runtime_variables()->void:
+	runtime_variables = {}
+	runtime_variables["llp"] = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	runtime_variables["llp"] = {}
 	#we need to load the last save if this is our first time loading the main scene
 	GameLoader.load_save()
-
-
 	#start the sound system playing
 	music_system.play()
 
