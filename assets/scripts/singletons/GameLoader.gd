@@ -10,6 +10,8 @@ func remove_objects_from_tree(persist_obj):
 	#note this keeps them loaded
 	for obj in persist_obj:
 		if obj.get_parent():
+			#alert the object before we are removing it
+			if obj.has_method("before_load"): obj.before_load()
 			obj.get_parent().remove_child(obj)
 
 func get_level_container()->Node2D:

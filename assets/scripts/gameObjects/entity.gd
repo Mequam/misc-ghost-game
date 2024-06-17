@@ -34,6 +34,7 @@ signal sig_died
 signal sig_possesed_by
 signal sig_unpossesed_by
 signal sig_after_load
+signal sig_before_load
 
 func get_sprite2D()->AnimatedSprite2D:
 	if sprite != null: return sprite 
@@ -64,15 +65,21 @@ func after_load(level)->void:
 	#let anyone else who is interested in level loading know
 	sig_after_load.emit(level)
 
+#called before we are removed from the tree for loading
+func before_load()->void:
+	#this signal is grabed by the llp.gd node
+	#to mark us as bieng absent
+	sig_before_load.emit()
+
+
 #this function is inteanded to be overloaded
 #and is called any time that an entity is moved into a loaded level
 #via door code from the GameLoader singleton
 #note that it is called BEFORE the entity is added to the tree
+#so you can think about it as a place to put extra hooks that any given entity
+#needs to run before loading
 func on_level_load(_lvl)->void:
-	#make sure that the entity_ai still knows who it's calling from
-	if _lvl.load_path == self.home_level:
-		var node = _lvl.get_node(NodePath(self.home_name)) 
-		if node: node.queue_free() #THERE MAY ONLY BE ONE 💀
+	pass
 
 
 #reference to the entity we are currently possesing

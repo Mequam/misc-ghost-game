@@ -58,7 +58,6 @@ func _ready():
 		$Leni.grab_camera()
 		player_entity = $Leni 
 	RenderingServer.set_default_clear_color(Color.from_hsv(0,100,100))
-
 	#set up entities under us that are from the array
 	populate_alien_entities()
 
@@ -108,7 +107,8 @@ func get_alien_entities()->Array:
 #be careful calling this as it could cause memory leaks
 func remove_alien_children()->void:
 	for entity in get_alien_entities():
-		entity.get_parent().remove_child(entity)
+		if entity.get_parent():
+			entity.get_parent().remove_child(entity)
 
 #goes through each entity that is positioned in this level globally and
 #adds them to this level
