@@ -250,7 +250,9 @@ func main_ready():
 		$dazed_timer.one_shot = true 
 	
 	if entity_ai:
-		entity_ai.setup(self)
+		var persistence = get_node("LiveLevalPersistanceNode")
+		if not (persistence and persistence.is_marked_for_removal()):
+			entity_ai.setup(self)
 	
 	self.home_level = get_parent().load_path 
 	#name can get changed between loading, so we need

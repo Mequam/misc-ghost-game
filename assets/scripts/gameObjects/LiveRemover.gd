@@ -35,6 +35,15 @@ func _ready()->void:
 			and self.target.name in main.runtime_variables[get_runtime_path(level)]: 
 		self.target.queue_free()
 
+#gets the name of the thing that we want to mark removal
+func get_target_name()->String:
+	return self.target.name
+func is_marked_for_removal()->bool:
+	var level = get_level()
+	var main = get_main()
+
+	return main.runtime_variables.has(get_runtime_path(level)) and get_target_name() in main.runtime_variables[get_runtime_path(level)]
+
 #marks that we are to be removed on scene load in the runtime variables
 func mark_removal()->void:
 	var level = get_level()
@@ -45,9 +54,9 @@ func mark_removal()->void:
 		main.runtime_variables[get_runtime_path(level)] = []
 
 	#no reason to 
-	if self.target.name in main.runtime_variables[get_runtime_path(level)]: return
+	if get_target_name() in main.runtime_variables[get_runtime_path(level)]: return
 
-	main.runtime_variables[get_runtime_path(level)].append(self.target.name)
+	main.runtime_variables[get_runtime_path(level)].append(get_target_name())
 
 func unmark_removal()->void:
 	var level = get_level()
@@ -57,4 +66,4 @@ func unmark_removal()->void:
 	if not main.runtime_variables.has(get_runtime_path(level)):
 		return
 	
-	main.runtime_variables[get_runtime_path(level)].erase(self.target.name)
+	main.runtime_variables[get_runtime_path(level)].erase(get_target_name())

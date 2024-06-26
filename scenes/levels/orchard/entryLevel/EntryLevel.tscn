@@ -150,9 +150,6 @@ limit_left = -100000000
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="apple tree" parent="." instance=ExtResource("2_jx3ls")]
-position = Vector2(10249, -295.75)
-
 [node name="firstLight" parent="." instance=ExtResource("6_5g2bp")]
 position = Vector2(10128, -546.75)
 script = ExtResource("6_kxbvy")
@@ -178,6 +175,9 @@ offset_right = -375.0
 offset_bottom = -121.5
 text = "ghost lights are safe,
 you will now  respawn here"
+
+[node name="apple tree" parent="." instance=ExtResource("2_jx3ls")]
+position = Vector2(10249, -295.75)
 
 [node name="entery_level_exit_hard" parent="." instance=ExtResource("9_5xj7r")]
 position = Vector2(9300, -404.75)

@@ -18,7 +18,6 @@ func on_body_exited(_body):
 	disabled = disabled and not do_disable_toggle
 
 func on_body_entered(body):
-	print("someone entered me! " + self.name + "@" + get_parent().name)
 	if used or disabled or not get_parent().allow_escape: return 
 	used = true 
 	#start the load

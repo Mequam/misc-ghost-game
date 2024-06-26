@@ -99,7 +99,7 @@ func get_alien_entities()->Array:
 	var ret_val = []
 
 	for a in aliens:
-		ret_val.append(a[0])
+		ret_val.append(a)
 
 	return ret_val
 

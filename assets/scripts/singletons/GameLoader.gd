@@ -106,7 +106,6 @@ func load_level(level,_caller,persist_obj=[]):
 
 		var sibling_door = loaded_lvl.get_node(NodePath(_caller.name)) 
 
-		print( self.name + " selected sibling door: " + str(sibling_door.name))
 		if sibling_door:
 			sibling_door.disabled = true
 			persist_obj[0].global_position = sibling_door.global_position
