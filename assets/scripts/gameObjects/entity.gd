@@ -530,8 +530,7 @@ func on_modulate_timer_out():
 
 #called when we detect a collision
 func on_col(col):
-	pass
-	if col.get_collider() is Entity and col.get_normal().y < col.get_normal().x*2:
+	if col and col.get_collider() is Entity and col.get_normal().y < col.get_normal().x*2:
 
 		var offset = self.global_position.x - col.get_collider().global_position.x
 		

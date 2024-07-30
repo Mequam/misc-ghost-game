@@ -21,6 +21,12 @@ var target_array = []
 @export 
 var target_node2d_dict : Dictionary = {}
 
+func _ready() -> void:
+	#scale the camera according to the game resolution so we allways look the same
+	var settings = GlobalGameSettings.load_settings()
+	#self.scale *= Vector2.ONE * settings.get_resolution_scale()
+
+
 func add_node_target(node : Node2D,weight : float)->void:
 	if not target_node2d_dict.has(node):
 		target_node2d_dict[node] = weight

@@ -61,3 +61,5 @@ func get_level()->Level:
 func _process(_delta : float)->void:
 	if Input.is_action_just_pressed("PAUSE"):
 		self.pause()
+	elif Input.is_action_just_pressed("BREAKPOINT"):
+		breakpoint

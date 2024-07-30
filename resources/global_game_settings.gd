@@ -17,6 +17,10 @@ func set_screen_resolution(screen_resolution : Vector2i,tree : SceneTree)->void:
 	self.screen_resolution = screen_resolution
 	self.sync_resoution_to_settings(tree)
 
+func get_resolution_scale()->float:
+	var development_resolution = Vector2i(1152,648)
+	return development_resolution.x / self.screen_resolution.x
+
 #sets the audio bus from a linear vol
 #note that linear_vol ranges from 0 to 1
 func set_audio_vol_from_linear(audio_bus : int, linear_vol : float)->void:
@@ -40,6 +44,12 @@ func sync_audio_to_settings()->void:
 #syncs the game resolution to the one stored in the settings
 func sync_resoution_to_settings(tree : SceneTree)->void:
 	tree.get_root().content_scale_size = self.screen_resolution
+
+	print_debug(tree.get_root().content_scale_factor)
+	
+	var dev_dimensions = Vector2i(1152, 648)
+	#tree.get_root().content_scale_factor = (self.screen_resolution.x*self.screen_resolution.y)/float(dev_dimensions.x*dev_dimensions.y)
+
 	print_debug("res : " + str(tree.get_root().content_scale_size))
 
 #syncs the stored input map to the game input map

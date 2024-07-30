@@ -38,11 +38,19 @@ var jump_time : float = 0
 var jump_distance : float = 0
 var jump_height : float = 0
 
+#indicates that we are currently running animations to prep for jumping
+var prepping_jump : bool = false
+
 var do_jump_parabola : bool = false  :
 	set(val):
+		print_debug("setting do_jump_parabola")
 		do_jump_parabola = val 
+
+		if self.prepping_jump: return #we do NOT touch these if we are waiting on animations
+												#to finish
 		jump_time        = 0
 		self.state       = CiderSpiritState.PARABALA
+		self.prepping_jump = false
 		queue_redraw()
 	get:
 		return do_jump_parabola
@@ -57,9 +65,11 @@ func on_ground_changed(val : int)->void:
 var wants_to_combine = false
 
 func jump()->void:
+	print_debug("jumping!")
 	if not (self.state == CiderSpiritState.LAUNCHED or self.state == CiderSpiritState.SPLASHED):
 		self.do_jump_parabola = true 
 	else:
+		print_debug("summoning mug")
 		summon_mug()
 
 func on_level_load(lvl)->void:
@@ -74,8 +84,12 @@ func on_level_load(lvl)->void:
 #this function launches us along the trajectory indicated by the parabala that we drew
 func follow_trajectory()->void:
 	if self.do_jump_parabola:
+		print_debug("following trajectory!")
+
 		self.do_jump_parabola = false
 		var total_jump_time : float = jump_distance / jump_speed
+		
+
 		self.gravity = jump_height*4/(total_jump_time**2)/(2*speed.y)
 		self.velocity.y = -4*jump_height/abs(total_jump_time)/(2*speed.y)
 		self.velocity.x = jump_speed /(2*speed.x)
@@ -95,13 +109,27 @@ func follow_trajectory()->void:
 		follower_mug.unhide_self(self.get_sprite2D().tail)
 		#the follower mug is NOT the player, so they do not get the player bit if that bit is set
 		self.sync_mug_collision()
+		
 		if self.gravity < 5: self.gravity = 5
+	
+	#after following the trajectory we are no longer prepping jumps
+	self.prepping_jump = false
 
+#var release_breakpoint : int = 0
 func on_action_released(act : String)->void:
+	
+	#if release_breakpoint >= 2:
+	#	release_breakpoint = 0
+	#	breakpoint
+	#else:
+	#	release_breakpoint += 1
+
 	#super.on_action_released(act)
 	if do_jump_parabola and (act == "JUMP" or act == "ATTACK"):
 		#prepare to follow trajectory
+		self.prepping_jump = true
 		get_sprite2D().custom_play("launch")
+
 	if (self.state == CiderSpiritState.LAUNCHED or self.state == CiderSpiritState.SPLASHED) and (act == "JUMP" or act == "ATTACK"):
 		wants_to_combine = false
 
@@ -152,6 +180,9 @@ func set_state(val)->void:
 		#reset the sprite rotation when we default our state
 		self.get_sprite2D().rotation = 0
 		self.velocity.x = 0
+	#were JUMPIN'
+	if val == CiderSpiritState.LAUNCHED:
+		self.prepping_jump = false
 	super.set_state(val)
 
 
@@ -165,6 +196,9 @@ func summon_mug()->void:
 	var old_position             = follower_mug.global_position
 	follower_mug.freeze          = false 
 	follower_mug.global_position = old_position
+
+	self.prepping_jump = false #if we are summoning the mug we are NOT prepping jump
+
 
 
 func main_ready()->void:
@@ -182,6 +216,8 @@ func main_ready()->void:
 func sync_mug_collision()->void:
 	follower_mug.collision_layer = ColMath.strip_bits(self.collision_layer,ColMath.ConstLayer.PLAYER) 
 	follower_mug.collision_mask  = self.collision_mask
+
+	self.prepping_jump = false
 
 
 #ensure that we snyc the collision of the mug when leni posseses in and out
@@ -211,6 +247,11 @@ func sigmoid(x)->float:
 	return ex / (ex+1)
 
 func main_process(delta):
+
+	#breakpoints for debugging
+	if Input.is_action_just_pressed("BREAKPOINT"):
+		breakpoint
+
 	if wants_to_combine and follower_mug.position.distance_squared_to(position) < combination_threshold**2:
 		hide_follower_mug()
 	
@@ -237,7 +278,14 @@ func get_parabola_height(x,distance,max_height)->float:
 func get_parabola_derivative(x,distance,max_height)->float:
 	return 4*max_height*(2*x-distance)/( distance*distance )
 
+#var press_breakpoint : int = 0
 func on_action_press(action : String)->void:
+#	if press_breakpoint >= 2:
+#		press_breakpoint = 0
+#		breakpoint
+#	else:
+#		press_breakpoint += 1
+
 	if action == "LEFT" or action == "RIGHT":
 		hop_dir = action 	
 	if action == "ATTACK":
