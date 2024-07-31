@@ -43,7 +43,6 @@ var prepping_jump : bool = false
 
 var do_jump_parabola : bool = false  :
 	set(val):
-		print_debug("setting do_jump_parabola")
 		do_jump_parabola = val 
 
 		if self.prepping_jump: return #we do NOT touch these if we are waiting on animations
@@ -65,16 +64,12 @@ func on_ground_changed(val : int)->void:
 var wants_to_combine = false
 
 func jump()->void:
-	print_debug("jumping!")
 	if not (self.state == CiderSpiritState.LAUNCHED or self.state == CiderSpiritState.SPLASHED):
 		self.do_jump_parabola = true 
 	else:
-		print_debug("summoning mug")
 		summon_mug()
 
 func on_level_load(lvl)->void:
-	print("hello from cider spirit loading the level")
-
 	#ensure the follower mug follows us
 	self.follower_mug.get_parent().remove_child(self.follower_mug)
 	lvl.add_child(follower_mug)
@@ -84,7 +79,6 @@ func on_level_load(lvl)->void:
 #this function launches us along the trajectory indicated by the parabala that we drew
 func follow_trajectory()->void:
 	if self.do_jump_parabola:
-		print_debug("following trajectory!")
 
 		self.do_jump_parabola = false
 		var total_jump_time : float = jump_distance / jump_speed
@@ -115,15 +109,8 @@ func follow_trajectory()->void:
 	#after following the trajectory we are no longer prepping jumps
 	self.prepping_jump = false
 
-#var release_breakpoint : int = 0
 func on_action_released(act : String)->void:
 	
-	#if release_breakpoint >= 2:
-	#	release_breakpoint = 0
-	#	breakpoint
-	#else:
-	#	release_breakpoint += 1
-
 	#super.on_action_released(act)
 	if do_jump_parabola and (act == "JUMP" or act == "ATTACK"):
 		#prepare to follow trajectory
@@ -152,6 +139,11 @@ func on_col(col : KinematicCollision2D)->void:
 			self.get_sprite2D().rotation = PI/2 if self.velocity.x > 0 else -PI /2
 		self.velocity.x = 0 #we hit the ground
 		update_animation()
+	elif self.state == CiderSpiritState.SPLASHED and col:
+		print_debug("splash rotating")
+		print_debug(self.get_sprite2D().flip_h)
+		var normal = col.get_normal()
+		self.get_sprite2D().rotation = normal.angle() + (PI if not self.get_sprite2D().flip_h else 0.0)
 	super.on_col(col)
 
 func on_anim_finished():
@@ -247,11 +239,6 @@ func sigmoid(x)->float:
 	return ex / (ex+1)
 
 func main_process(delta):
-
-	#breakpoints for debugging
-	if Input.is_action_just_pressed("BREAKPOINT"):
-		breakpoint
-
 	if wants_to_combine and follower_mug.position.distance_squared_to(position) < combination_threshold**2:
 		hide_follower_mug()
 	
@@ -278,14 +265,7 @@ func get_parabola_height(x,distance,max_height)->float:
 func get_parabola_derivative(x,distance,max_height)->float:
 	return 4*max_height*(2*x-distance)/( distance*distance )
 
-#var press_breakpoint : int = 0
 func on_action_press(action : String)->void:
-#	if press_breakpoint >= 2:
-#		press_breakpoint = 0
-#		breakpoint
-#	else:
-#		press_breakpoint += 1
-
 	if action == "LEFT" or action == "RIGHT":
 		hop_dir = action 	
 	if action == "ATTACK":
@@ -308,7 +288,7 @@ func draw_parabala(
 		if  abs(fmod(i*seg_length-window,w_size))  < w_size/5:
 			var current_point : Vector2 = Vector2(i*seg_length,get_parabola_height(i,distance,height)) + offset
 			var next_point : Vector2 = Vector2((i+1)*seg_length,get_parabola_height(i,distance,height)) + offset 
-			var squishification : float =get_parabola_derivative(i*seg_length,distance,height) #derivative for squishing line
+			var squishification : float = get_parabola_derivative(i*seg_length,distance,height) #derivative for squishing line
 			
 			draw_line(
 				current_point,
