@@ -9,6 +9,9 @@ func get_ai_timer()->Timer:
 	return self.caller.get_node(ai_timer_jump)
 
 func tick(player)->void:
+	#make sure we are on the ground before jumping
+	if not self.caller.onground: return
+
 	#print("running cider spirit AI for " + str(self.caller.position))
 	if not self.get_ai_timer().wait_time <= 0 and caller.pressed_inputs["JUMP"] and caller.state == caller.EntityState.DEFAULT:
 		caller.perform_action("JUMP",false)

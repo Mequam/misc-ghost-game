@@ -205,6 +205,14 @@ func update_collision()->void:
 			get_node("mainCollision").disabled = false
 			splash_collision.disabled = true
 			#get_node("launchCollision").disabled = true
+
+#updates our collision layer so we can only be hit with possesion
+#for use when we are splashed
+func set_only_posses_collision()->void:
+	self.collision_layer = ColMath.strip_bits(self.collision_layer,ColMath.Layer.NON_PLAYER_ENTITY)
+	self.collision_layer |= ColMath.Layer.SIMPLE_ENTITY
+	self.collision_mask = ColMath.strip_bits(self.collision_mask,ColMath.Layer.PLAYER)
+
 func set_state(val)->void:
 	#reset the position of the sprite in case some extra animations need to happen
 	self.get_sprite2D().position = self.original_sprite_position
@@ -218,6 +226,14 @@ func set_state(val)->void:
 	#were JUMPIN'
 	if val == CiderSpiritState.LAUNCHED:
 		self.prepping_jump = false
+	
+	if val == CiderSpiritState.SPLASHED:
+		#when splashed we can be possesed, but not collided with
+		self.set_only_posses_collision()
+	elif self.state != CiderSpiritState.LAUNCHED:
+		self.collision_layer = self.gen_col_layer()
+		self.collision_mask = self.gen_col_mask()
+
 	super.set_state(val)
 	
 	#ensure that our hitbox matches the sprite
@@ -267,9 +283,15 @@ func posses_by(other):
 		self.state = EntityState.DEFAULT
 	self.clear_stored_inputs()
 	sync_mug_collision()
+
 func exorcize(offset : Vector2 = Vector2(0,0))->void:
-	super.exorcize(offset) 
+	super.exorcize(offset)
+	
 	sync_mug_collision()
+	
+	if self.state == CiderSpiritState.SPLASHED:
+		self.set_only_posses_collision()
+
 
 var hop_dir : String = ""
 func hop()->void:

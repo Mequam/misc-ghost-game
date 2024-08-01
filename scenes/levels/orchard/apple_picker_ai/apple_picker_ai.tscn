@@ -111,4 +111,3 @@ navigation_polygon = SubResource("NavigationPolygon_be3ue")
 [node name="CiderSpirit" parent="." instance=ExtResource("13_4axml")]
 position = Vector2(764, 28)
 jr = SubResource("Resource_ls1ot")
-entity_ai = null
