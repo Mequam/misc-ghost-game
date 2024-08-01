@@ -20,6 +20,7 @@ class_name CiderSpirit
 
 @export var follower_mug_ps : PackedScene 
 var follower_mug : FollowerMug
+var original_sprite_position : Vector2
 
 func get_entity_type()->String:
 	return "CiderSpirit"
@@ -125,6 +126,20 @@ func on_transform_animation_finished(anim):
 	if anim == "walk_right":
 		hop()
 		
+#used to indicate how we need to offset the sprite to make
+#the splash on the collision point
+@export var splash_location : Node2D
+
+#ensures that our splash sprite is rotated correctly after a collision
+func rotate_sprite_for_collision(col : KinematicCollision2D)->void:
+	var normal = col.get_normal()
+	
+	#ensure that our sprite is located at the given global position
+	var angle : float = normal.angle()
+	self.get_sprite2D().rotation = angle + (PI if not self.get_sprite2D().flip_h else 0.0)
+	
+	#since we have an oblong sprite, we need to adjust it slightly on collision to ensure everything lines up
+	self.get_sprite2D().position = self.original_sprite_position + normal * (1-cos(angle + PI/2))*50
 
 func on_col(col : KinematicCollision2D)->void:
 	if self.state == CiderSpiritState.LAUNCHED:
@@ -133,17 +148,13 @@ func on_col(col : KinematicCollision2D)->void:
 
 			if col.get_collider().has_method("take_damage"):
 				col.get_collider().take_damage(1)
-			var normal = col.get_normal()
-			self.get_sprite2D().rotation = normal.angle() + (PI if self.velocity.x > 0 else 0.0)
+			self.rotate_sprite_for_collision(col)
 		else:
 			self.get_sprite2D().rotation = PI/2 if self.velocity.x > 0 else -PI /2
 		self.velocity.x = 0 #we hit the ground
 		update_animation()
 	elif self.state == CiderSpiritState.SPLASHED and col:
-		print_debug("splash rotating")
-		print_debug(self.get_sprite2D().flip_h)
-		var normal = col.get_normal()
-		self.get_sprite2D().rotation = normal.angle() + (PI if not self.get_sprite2D().flip_h else 0.0)
+		self.rotate_sprite_for_collision(col)
 	super.on_col(col)
 
 func on_anim_finished():
@@ -165,9 +176,41 @@ func hide_follower_mug()->void:
 	self.state = EntityState.DEFAULT 
 	self.velocity = Vector2(0,0)
 	self.update_animation()
-	
+
+#collision shape that gets toggled when 
+#we enter splash mode
+@export var splash_collision : CollisionShape2D
+
+
+func ensure_collision_rotation():
+	pass
+	#splash_collision.global_rotation = self.get_sprite2D().global_rotation - PI/2
+#ensures that we have the correct
+#collision shapes disabled or enabled
+#for a given ciderspriit state
+func update_collision()->void:
+	#don't set anything until after we have setup the class
+	if not splash_collision: return
+
+	match self.state:
+		CiderSpiritState.SPLASHED:
+			#make sure that we are aligned to the sprite
+			#self.ensure_collision_rotation()
+
+			get_node("mainCollision").disabled = true
+			splash_collision.disabled = false
+			#get_node("launchCollision").disabled = true
+
+		_:
+			get_node("mainCollision").disabled = false
+			splash_collision.disabled = true
+			#get_node("launchCollision").disabled = true
 func set_state(val)->void:
+	#reset the position of the sprite in case some extra animations need to happen
+	self.get_sprite2D().position = self.original_sprite_position
+
 	if val == EntityState.DAMAGED: return
+
 	if val == EntityState.DEFAULT:
 		#reset the sprite rotation when we default our state
 		self.get_sprite2D().rotation = 0
@@ -176,6 +219,9 @@ func set_state(val)->void:
 	if val == CiderSpiritState.LAUNCHED:
 		self.prepping_jump = false
 	super.set_state(val)
+	
+	#ensure that our hitbox matches the sprite
+	self.update_collision()
 
 
 func summon_mug()->void:
@@ -200,6 +246,7 @@ func main_ready()->void:
 	follower_mug = self.follower_mug_ps.instantiate()
 	follower_mug.ciderSpirit = self
 	await get_tree().physics_frame 
+	self.original_sprite_position = self.get_sprite2D().position
 	sync_mug_collision()
 	add_sibling(follower_mug)
 	hide_follower_mug()

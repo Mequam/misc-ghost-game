@@ -92,7 +92,7 @@ ciel_height = 2
 x_cut = 0
 
 [node name="spawn_light" parent="." instance=ExtResource("9_7gihv")]
-position = Vector2(989, -1799)
+position = Vector2(516, -127)
 
 [node name="rocky grass" parent="." instance=ExtResource("3_gif65")]
 layer_0/name = "navigation tool output"
@@ -109,6 +109,6 @@ layer_1/tile_data = PackedInt32Array(65535, 65540, 1, -1, 65544, 0, -65536, 6554
 navigation_polygon = SubResource("NavigationPolygon_be3ue")
 
 [node name="CiderSpirit" parent="." instance=ExtResource("13_4axml")]
-position = Vector2(745, -1118)
+position = Vector2(764, 28)
 jr = SubResource("Resource_ls1ot")
 entity_ai = null
