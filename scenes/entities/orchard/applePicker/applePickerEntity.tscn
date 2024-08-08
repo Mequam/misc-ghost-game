@@ -86,4 +86,8 @@ position = Vector2(4, -156)
 [node name="ai_eyes" type="Node2D" parent="."]
 position = Vector2(4, -242)
 
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [editable path="GroundTester"]

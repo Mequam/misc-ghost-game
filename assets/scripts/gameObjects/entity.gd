@@ -110,7 +110,6 @@ func set_possesed(val : bool)->void:
 func get_possesed()->bool:
 	return (self.possesed_entity != null) || possesed
 
-
 func on_ground_changed(val : int)->void:
 	pass
 

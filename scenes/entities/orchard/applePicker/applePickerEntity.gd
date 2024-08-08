@@ -50,6 +50,11 @@ func pick()->void:
 	self.state = ApplePickerState.PICKING
 	self.get_sprite2D().custom_play("pick")
 func start_shooting_apples()->void:
+	
+	#make sure we handle the attack cooldown properly
+	if $attack_cooldown.time_left > 0: return
+	$attack_cooldown.start()
+
 	if get_sprite2D().get_node("apples").visible:
 		self.state = ApplePickerState.SHOOTING
 		self.get_sprite2D().custom_play("shoot")
@@ -77,7 +82,7 @@ func update_animation()->void:
 	#make sure that our sub sprite also flips when we flip
 	get_sprite2D().get_node("apples").flip_h = get_sprite2D().flip_h
 func main_process(delta)->void:
-	if self.state != ApplePickerState.SHOOTING:
+	if  self.state != ApplePickerState.SHOOTING or self.tired:
 		super.main_process(delta)
 func on_anim_finished(anim : StringName):
 	match anim:

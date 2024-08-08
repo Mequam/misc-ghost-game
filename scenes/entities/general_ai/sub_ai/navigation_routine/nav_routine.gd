@@ -31,10 +31,7 @@ func stop_moving():
 	if caller.pressed_inputs["DOWN"]:
 		perform_action("DOWN",false)
 
-
 func tick(_player : Entity)->void:
-	#print_debug(nav_agent.get_next_path_position())
-	#print_debug(nav_agent.get_current_navigation_result().path)
 	var current_target : Vector2 = nav_agent.get_next_path_position()
 	follow_technique.move_to_point(current_target)
 
