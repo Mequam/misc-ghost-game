@@ -36,10 +36,12 @@ func on_drag_started()->void:
 func get_linear_vol()->float:
 	return audioSlider.max_value*db_to_linear(AudioServer.get_bus_volume_db(audio_bus))/self.audio_overkill_perc 
 
-func _on_h_slider_drag_ended(changed : bool)->void:
+func _on_h_slider_drag_ended(_changed : bool)->void:
 	#save the settings back out to the disk
 	audio_settings.save_settings()
 	audio_settings = null
+	
+	$AudioStreamPlayer.volume_db = db_to_linear(self.audio_overkill_perc * self.audioSlider.value/self.audioSlider.max_value)
 	$AudioStreamPlayer.play()
 
 func get_appropriate_slider_leni()->Texture2D:

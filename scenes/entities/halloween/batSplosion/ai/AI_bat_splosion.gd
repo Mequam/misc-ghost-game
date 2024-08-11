@@ -15,6 +15,8 @@ class_name AIBatSplosion
 @export var explosion_distance : float = 200
 #how far away do you need to go to un aggro us?
 @export var de_aggro_distance : float = 400
+#when we get this close to the player we stop chasing them
+@export var chase_threshold : float = 100
 
 func ai_hang()->void:
 	perform_action("JUMP",true)
@@ -66,7 +68,11 @@ func tick(player : Entity)->void:
 		self.aggro = true
 
 	if self.aggro:
-		self.ai_sprint_at_player(player)
-		if self.test_for_exploasion(player):
+		if caller.global_position.distance_squared_to(player.global_position) > self.chase_threshold*self.chase_threshold:
+			self.ai_sprint_at_player(player)
+		else:
+			self.release_input_array(["LEFT","RIGHT"])
+
+		if self.test_for_exploasion(player) and not caller.pressed_inputs["ATTACK"]:
 			perform_action("ATTACK",true)
 

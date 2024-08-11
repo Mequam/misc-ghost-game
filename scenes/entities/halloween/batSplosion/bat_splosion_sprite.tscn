@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dppqq653q0gqy"]
+[gd_scene load_steps=30 format=3 uid="uid://dppqq653q0gqy"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/bat_splosion_sprite.gd" id="1_7gb7g"]
 [ext_resource type="Texture2D" uid="uid://c3adfvdeuuj1r" path="res://assets/animations/kamakazi_fly/kamakazi_fly0001.png" id="1_l32vg"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://cnqgvfm6w4gm8" path="res://assets/animations/kamakazi_fly/fall/kamakazi_fly_fall0018.png" id="17_rpgtd"]
 [ext_resource type="Texture2D" uid="uid://cp47vfcwg572q" path="res://assets/animations/kamakazi_fly/fall/kamakazi_fly_fall0019.png" id="18_6ri46"]
 [ext_resource type="Texture2D" uid="uid://n453pw235jsu" path="res://assets/animations/kamakazi_fly/heart_splosion.png" id="18_xswp5"]
+[ext_resource type="AudioStream" uid="uid://ckrtrmp13oixe" path="res://assets/sound/effects/batSplosion/finished_explosion.wav" id="20_7w3ed"]
+[ext_resource type="AudioStream" uid="uid://pkodsb5ob7x" path="res://assets/sound/effects/batSplosion/bubble_fast.wav" id="21_h5nen"]
+[ext_resource type="AudioStream" uid="uid://cndhm8hsvsbqy" path="res://assets/sound/effects/batSplosion/batSplosionStart.wav" id="22_yw7gl"]
+[ext_resource type="AudioStream" uid="uid://c0ybop307u3ci" path="res://assets/sound/effects/batSplosion/noSplode.wav" id="23_1qdas"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3l7mt"]
 animations = [{
@@ -198,7 +202,7 @@ _data = {
 
 [node name="Sprite Skeleton" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite Skeleton" node_paths=PackedStringArray("animation_player")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite Skeleton" node_paths=PackedStringArray("animation_player", "sound_effects")]
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_3l7mt")
 animation = &"no_return"
@@ -206,6 +210,31 @@ frame = 3
 frame_progress = 1.0
 script = ExtResource("1_7gb7g")
 animation_player = NodePath("../../AnimationPlayer")
+sound_effects = NodePath("soundEffects")
+
+[node name="soundEffects" type="Node2D" parent="Sprite Skeleton/AnimatedSprite2D"]
+
+[node name="explosionEffect" type="AudioStreamPlayer2D" parent="Sprite Skeleton/AnimatedSprite2D/soundEffects"]
+rotation = 3.14159
+scale = Vector2(1, -1)
+stream = ExtResource("20_7w3ed")
+volume_db = -6.0
+bus = &"Sound Effects"
+
+[node name="bubbleEffect" type="AudioStreamPlayer2D" parent="Sprite Skeleton/AnimatedSprite2D/soundEffects"]
+stream = ExtResource("21_h5nen")
+volume_db = -6.0
+bus = &"Sound Effects"
+
+[node name="fuseEffect" type="AudioStreamPlayer2D" parent="Sprite Skeleton/AnimatedSprite2D/soundEffects"]
+stream = ExtResource("22_yw7gl")
+volume_db = -6.0
+bus = &"Sound Effects"
+
+[node name="hissEffect" type="AudioStreamPlayer2D" parent="Sprite Skeleton/AnimatedSprite2D/soundEffects"]
+stream = ExtResource("23_1qdas")
+volume_db = -6.0
+bus = &"Sound Effects"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

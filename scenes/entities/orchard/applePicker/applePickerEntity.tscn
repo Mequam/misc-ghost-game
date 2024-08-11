@@ -13,8 +13,9 @@
 [sub_resource type="Resource" id="Resource_gg8tm"]
 resource_local_to_scene = true
 script = ExtResource("3_bjqf2")
-aggro_threshold = 600
-shoot_threshold = 300
+aggro_threshold = 600.0
+shoot_threshold = 300.0
+vertical_threshold = 50.0
 danger_level = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppar1"]

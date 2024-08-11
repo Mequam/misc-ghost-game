@@ -179,7 +179,8 @@ var pressed_inputs : Dictionary = {
 	"DOWN":false,
 	"ATTACK":false,
 	"JUMP":false,
-	"UNPOSSES":false
+	"UNPOSSES":false,
+	"BARK":false #just a fun input for making noise
 }
 
 #used for making new enumerators in child classes
@@ -272,6 +273,10 @@ func on_action_double_press(action : String)->void:
 func on_action_press(action : String)->void:
 	if self.possesed and action == "UNPOSSES":
 		exorcize(get_stored_action_velocity())
+	
+	if action == "BARK" and get_node("bark"):
+		print_debug("barking!")
+		get_node("bark").play()
 
 #runs only when the action is released
 func on_action_released(action : String)->void:

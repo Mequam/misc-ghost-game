@@ -7,6 +7,11 @@ class_name EntityAI
 
 @export var danger_level : int = 1
 
+#convinence reference to the parent that is using us, we could
+#make this a node, but the convinence of recourses for AI makes it easaier
+#to develop in the editor, plus its minimal concideration for performance either way
+var caller : Entity = null
+
 func get_danger_level()->int:
 	return danger_level
 
@@ -18,10 +23,17 @@ double_press : bool = false,
 echo : bool = false)->void:
 	#print("ENTITY AI CALLING")
 	caller.perform_action(act,pressed,double_press,echo)
-#convinence reference to the parent that is using us, we could
-#make this a node, but the convinence of recourses for AI makes it easaier
-#to develop in the editor, plus its minimal concideration for performance either way
-var caller : Entity = null
+
+#convinence function that unpresses all down inputs
+func release_all_inputs()->void:
+	for action in caller.pressed_inputs:
+		if caller.pressed_inputs[action]:
+			perform_action(action,false)
+
+#convinence function to release all inputs given in an array
+func release_input_array(inputs : Array[String] )->void:
+	for input in inputs:
+		self.perform_action(input,false)
 
 #this function is called when the ai wants to run
 #with the player location

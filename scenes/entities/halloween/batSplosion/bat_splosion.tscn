@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://coel2q7oiemnj"]
+[gd_scene load_steps=9 format=3 uid="uid://coel2q7oiemnj"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/bat_splosion.gd" id="1_6n2qj"]
 [ext_resource type="PackedScene" uid="uid://dppqq653q0gqy" path="res://scenes/entities/halloween/batSplosion/bat_splosion_sprite.tscn" id="1_gkmrn"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="3_635rr"]
+[ext_resource type="AudioStream" uid="uid://dk8uykyn1arrd" path="res://assets/sound/effects/batSplosion/batSplosionGrowl.wav" id="4_hai11"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6uog"]
 radius = 63.0
@@ -31,6 +32,12 @@ sprite = NodePath("BatSplosionSprite/Sprite Skeleton/AnimatedSprite2D")
 max_health = 2
 health = 2
 speed = Vector2(300, 300)
+
+[node name="bark" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(6, -70)
+stream = ExtResource("4_hai11")
+volume_db = -5.0
+bus = &"Sound Effects"
 
 [node name="BatSplosionSprite" parent="." instance=ExtResource("1_gkmrn")]
 position = Vector2(2, -70)
