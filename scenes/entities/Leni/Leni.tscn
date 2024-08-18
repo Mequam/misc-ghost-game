@@ -87,6 +87,7 @@ bus = &"Sound Effects"
 stream = ExtResource("7_jv76g")
 volume_db = 5.0
 pitch_scale = 1.5
+bus = &"Sound Effects"
 
 [node name="posess_cooldown" type="Timer" parent="."]
 wait_time = 0.5

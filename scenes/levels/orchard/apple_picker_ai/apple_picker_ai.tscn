@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b66j85put7yxc"]
+[gd_scene load_steps=15 format=3 uid="uid://b66j85put7yxc"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ttb33"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="2_g781n"]
@@ -8,10 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="7_evana"]
 [ext_resource type="PackedScene" uid="uid://tyt07kbx5nj" path="res://scenes/tools/tilenaver/tilenaver.tscn" id="8_jyb7t"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="9_7gihv"]
-[ext_resource type="PackedScene" uid="uid://coel2q7oiemnj" path="res://scenes/entities/halloween/batSplosion/bat_splosion.tscn" id="9_d3b7f"]
+[ext_resource type="PackedScene" uid="uid://cnoukjnux3vku" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn" id="10_c1q2k"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="11_6v7n0"]
-[ext_resource type="Script" path="res://scenes/entities/tools/llpStateMachine/llpnode.gd" id="11_xubka"]
-[ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/witchAI_shoot_run.gd" id="12_ux4fi"]
+[ext_resource type="Script" path="res://scenes/entities/halloween/rollingPumpkin/AI/AIRollingPumpkin.gd" id="11_u5k1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5ex8"]
 size = Vector2(166, 154)
@@ -21,9 +20,10 @@ vertices = PackedVector2Array(840, -1650, 1484, -1629, 1484, -1546, 820, -1546, 
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(4, 3, 6, 7, 8, 9), PackedInt32Array(7, 10, 11, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 15, 19, 20, 21), PackedInt32Array(21, 20, 22, 23, 24, 25), PackedInt32Array(24, 23, 26, 27, 28, 29), PackedInt32Array(27, 30, 31), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(34, 33, 35, 36, 37, 38), PackedInt32Array(36, 39, 40, 41), PackedInt32Array(42, 43, 44, 45, 46), PackedInt32Array(46, 45, 47, 48, 49, 50), PackedInt32Array(48, 51, 52, 53, 54, 49), PackedInt32Array(53, 52, 55, 56, 57, 58), PackedInt32Array(59, 60, 61, 62), PackedInt32Array(62, 63, 64, 65), PackedInt32Array(57, 56, 59, 62, 65, 66), PackedInt32Array(65, 67, 68, 66), PackedInt32Array(68, 69, 70, 71), PackedInt32Array(70, 72, 73), PackedInt32Array(74, 75, 76, 77), PackedInt32Array(76, 78, 79, 77), PackedInt32Array(80, 81, 82), PackedInt32Array(82, 83, 84, 85), PackedInt32Array(84, 86, 87, 88), PackedInt32Array(89, 90, 91, 92), PackedInt32Array(92, 93, 94, 95, 96), PackedInt32Array(89, 92, 96), PackedInt32Array(97, 89, 96, 98), PackedInt32Array(99, 97, 98, 100), PackedInt32Array(99, 100, 101, 88), PackedInt32Array(102, 103, 104, 105, 106), PackedInt32Array(105, 104, 107, 108, 109, 110), PackedInt32Array(109, 108, 111, 112, 113), PackedInt32Array(114, 115, 116, 117, 118), PackedInt32Array(119, 120, 121, 122), PackedInt32Array(122, 123, 124, 125), PackedInt32Array(124, 126, 125), PackedInt32Array(125, 127, 128), PackedInt32Array(122, 125, 128), PackedInt32Array(122, 128, 129, 130), PackedInt32Array(119, 122, 130, 116), PackedInt32Array(116, 130, 131, 117), PackedInt32Array(131, 132, 133, 117), PackedInt32Array(117, 134, 135, 118), PackedInt32Array(114, 118, 136, 112), PackedInt32Array(136, 137, 138, 139), PackedInt32Array(112, 136, 139), PackedInt32Array(112, 139, 113), PackedInt32Array(102, 106, 140, 101), PackedInt32Array(84, 88, 101, 140, 85), PackedInt32Array(82, 85, 141, 80), PackedInt32Array(141, 142, 143, 144), PackedInt32Array(141, 144, 145, 146, 80), PackedInt32Array(146, 147, 71, 70, 73), PackedInt32Array(71, 148, 66, 68), PackedInt32Array(53, 149, 54), PackedInt32Array(54, 150, 49), PackedInt32Array(46, 151, 42), PackedInt32Array(152, 153, 154, 37), PackedInt32Array(34, 155, 28, 27, 31), PackedInt32Array(21, 156, 17), PackedInt32Array(17, 157, 18), PackedInt32Array(18, 158, 16, 15), PackedInt32Array(16, 159, 160, 13), PackedInt32Array(160, 161, 162), PackedInt32Array(163, 164, 165), PackedInt32Array(165, 166, 167), PackedInt32Array(167, 168, 169, 170, 171), PackedInt32Array(171, 172, 173, 167), PackedInt32Array(173, 174, 175, 167), PackedInt32Array(165, 167, 175, 176, 177, 163), PackedInt32Array(162, 163, 177, 178, 179), PackedInt32Array(177, 180, 181, 178), PackedInt32Array(1, 0, 182, 183, 184), PackedInt32Array(183, 185, 186, 184), PackedInt32Array(8, 7, 12), PackedInt32Array(8, 12, 179, 178), PackedInt32Array(162, 179, 13, 160), PackedInt32Array(42, 152, 37, 43), PackedInt32Array(74, 77, 187, 188), PackedInt32Array(189, 188, 187, 80), PackedInt32Array(37, 36, 41, 43), PackedInt32Array(146, 73, 189), PackedInt32Array(146, 189, 80), PackedInt32Array(190, 191, 192, 193), PackedInt32Array(194, 195, 196, 197), PackedInt32Array(198, 199, 200, 201, 202), PackedInt32Array(200, 203, 204, 201), PackedInt32Array(198, 202, 205, 206, 207), PackedInt32Array(208, 209, 210, 211), PackedInt32Array(212, 213, 214, 215), PackedInt32Array(216, 217, 218, 219), PackedInt32Array(220, 216, 219, 221), PackedInt32Array(221, 222, 223, 224), PackedInt32Array(220, 221, 224, 225), PackedInt32Array(226, 220, 225, 227), PackedInt32Array(228, 229, 230, 231), PackedInt32Array(230, 232, 233, 234), PackedInt32Array(233, 235, 234), PackedInt32Array(234, 236, 237), PackedInt32Array(230, 234, 237), PackedInt32Array(230, 237, 238, 231), PackedInt32Array(231, 239, 240, 228), PackedInt32Array(240, 241, 228), PackedInt32Array(242, 243, 244, 245), PackedInt32Array(244, 246, 247, 248, 249, 245), PackedInt32Array(248, 247, 250, 251, 252), PackedInt32Array(251, 253, 254, 252), PackedInt32Array(245, 255, 256, 242), PackedInt32Array(256, 257, 242), PackedInt32Array(258, 259, 260, 261), PackedInt32Array(260, 262, 263, 264, 265), PackedInt32Array(263, 266, 267, 268, 264), PackedInt32Array(267, 269, 270, 271), PackedInt32Array(271, 272, 268), PackedInt32Array(267, 271, 268), PackedInt32Array(260, 265, 261), PackedInt32Array(258, 261, 273, 274), PackedInt32Array(273, 275, 274), PackedInt32Array(276, 258, 274, 277)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
-[sub_resource type="Resource" id="Resource_okohl"]
-resource_local_to_scene = true
-script = ExtResource("12_ux4fi")
+[sub_resource type="Resource" id="Resource_8ydjy"]
+script = ExtResource("11_u5k1b")
+aggro_range = 800.0
+aggro_height = 100.0
 danger_level = 1
 
 [node name="apple_picker_ai" type="Node2D" node_paths=PackedStringArray("cam_ref")]
@@ -39,7 +39,7 @@ texture = ExtResource("2_p8ouo")
 
 [node name="mainCam" parent="." instance=ExtResource("2_g781n")]
 
-[node name="StaticBody2D" parent="." instance=ExtResource("4_0xcra")]
+[node name="tree" parent="." instance=ExtResource("4_0xcra")]
 position = Vector2(634, 100)
 
 [node name="entry_level_exit_easy" parent="." instance=ExtResource("7_evana")]
@@ -57,7 +57,7 @@ ciel_height = 2
 x_cut = 0
 
 [node name="spawn_light" parent="." instance=ExtResource("9_7gihv")]
-position = Vector2(66, -1637)
+position = Vector2(473, -191)
 
 [node name="rocky grass" parent="." instance=ExtResource("3_gif65")]
 layer_0/name = "navigation tool output"
@@ -72,21 +72,10 @@ layer_1/tile_data = PackedInt32Array(65535, 65540, 1, -1, 65544, 0, -65536, 6554
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="nav regions"]
 navigation_polygon = SubResource("NavigationPolygon_be3ue")
 
-[node name="batSplosion" parent="." instance=ExtResource("9_d3b7f")]
-position = Vector2(628, -1697)
-
-[node name="LiveLevalPersistanceNode" type="Node" parent="batSplosion"]
-script = ExtResource("11_xubka")
-
-[node name="batSplosion2" parent="." instance=ExtResource("9_d3b7f")]
-position = Vector2(1311, -1141)
-
-[node name="batSplosion3" parent="." instance=ExtResource("9_d3b7f")]
-position = Vector2(735, -1109)
-
-[node name="batSplosion4" parent="." instance=ExtResource("9_d3b7f")]
-position = Vector2(1731, -888)
-
 [node name="witch" parent="." instance=ExtResource("11_6v7n0")]
-position = Vector2(692, 38)
-entity_ai = SubResource("Resource_okohl")
+position = Vector2(326, -1405)
+entity_ai = null
+
+[node name="rollingPumpkinEntity" parent="." instance=ExtResource("10_c1q2k")]
+position = Vector2(780, -1067)
+entity_ai = SubResource("Resource_8ydjy")

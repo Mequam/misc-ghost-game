@@ -300,7 +300,7 @@ one_shot = true
 position = Vector2(0, -176)
 
 [node name="Bwingwing" parent="." instance=ExtResource("48_45rfs")]
-volume_db = 24.0
+volume_db = 18.0
 bus = &"Sound Effects"
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
