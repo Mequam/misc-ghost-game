@@ -11,7 +11,7 @@ var btnContainer : LeniGarnish
 signal game_select
 
 #these are the buttons that we store to start the game!
-var hand_drawn_button = preload("res://scenes/UI/btnHandDrawn.tscn")
+var hand_drawn_button = preload("res://scenes/UI/game_control_options.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,11 +21,12 @@ func _ready():
 	btnContainer.add_child(padding)
 
 	for save in GameSaveResource.list_game_saves():
-		var b : BtnHandDrawn = hand_drawn_button.instantiate()
+		var custom_load_button = hand_drawn_button.instantiate()
+		var b : BtnHandDrawn = custom_load_button.get_node("btnLoad")
 		b.label.text = save
 		b.size_flags_vertical = SIZE_FILL 
 		b.size_flags_horizontal = SIZE_FILL
-		btnContainer.add_child(b)
+		btnContainer.add_child(custom_load_button)
 		b.pressed.connect(on_save_selected.bindv([b]))
 	
 	#append padding at the end for spacing

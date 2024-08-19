@@ -23,8 +23,8 @@ btnContainer = NodePath("Control/ScrollContainer/VBoxGhostContainer")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.2
-anchor_right = 0.8
+anchor_left = 0.1
+anchor_right = 0.9
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
