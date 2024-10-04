@@ -2,13 +2,15 @@ extends VBoxContainer
 
 class_name LeniGarnish
 
+func register_garnish(garnish)->void:
+	garnish.focus_entered.connect(move_leni.bindv([garnish]))
+	garnish.mouse_entered.connect(move_leni.bindv([garnish]))
 
 
 func register_buttons():
 	for n in get_children():
 		if n is Button or n is TextureButton:
-			n.focus_entered.connect(move_leni.bindv([n]))
-			n.mouse_entered.connect(move_leni.bindv([n]))
+			register_garnish(n)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

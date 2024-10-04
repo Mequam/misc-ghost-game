@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkv3hqlmk3a34"]
+[gd_scene load_steps=21 format=3 uid="uid://bkv3hqlmk3a34"]
 
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_1kr5f"]
 [ext_resource type="Script" path="res://scenes/UI/game_control_buttons/game_control_options.gd" id="1_wr8m3"]
 [ext_resource type="Script" path="res://scenes/UI/buttons/delete/bntDelete.gd" id="2_jnp28"]
 [ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="2_ow65j"]
 [ext_resource type="Texture2D" uid="uid://cy8ihpit5skdv" path="res://assets/animations/ghost/pain/pain0120.png" id="3_qoo16"]
+[ext_resource type="Script" path="res://assets/scripts/UI/leniGarnishRegister.gd" id="3_s6i2s"]
 [ext_resource type="Texture2D" uid="uid://cadvtsn2h16bo" path="res://assets/animations/ghost/pain/pain0121.png" id="4_36gog"]
 [ext_resource type="Texture2D" uid="uid://0qw1vcfww3rk" path="res://assets/animations/ghost/pain/pain0122.png" id="5_5cfep"]
 [ext_resource type="Texture2D" uid="uid://8715p1hx7t6s" path="res://assets/animations/ghost/pain/pain0123.png" id="6_1i4o5"]
@@ -250,6 +251,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.6
 
+[node name="LeniGarnishRegister" type="Node" parent="Padding/btnLoad"]
+script = ExtResource("3_s6i2s")
+
 [node name="btnDelete" parent="Padding" instance=ExtResource("1_1kr5f")]
 layout_mode = 1
 anchors_preset = -1
@@ -293,5 +297,8 @@ volume_db = -20.8
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Padding/btnDelete"]
 stream = ExtResource("16_s17dn")
+
+[node name="LeniGarnishRegister" type="Node" parent="Padding/btnDelete"]
+script = ExtResource("3_s6i2s")
 
 [editable path="Padding/btnDelete"]

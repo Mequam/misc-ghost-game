@@ -39,18 +39,18 @@ func on_anim_finished():
 
 #gets the position that we are aiming for
 func get_target_position()->Vector2:
-	return target.position+target.size/2
+	return target.global_position+target.size/2
 
 #returns true if we hit the target
 func hit_target()->bool:
-	var new_chord : Vector2 = (position - target.position)
+	var new_chord : Vector2 = (global_position - target.global_position)
 	return (new_chord.x > 0) and (new_chord.y > 0) and (new_chord.x < target.size.x) and (new_chord.y < target.size.y)
 # Called every frame. 'delta' is the elapsed time since the previous sframe.
 func _process(delta):
 	if (seek and visible and not hit_target()):
-		velocity += (get_target_position()-position).normalized()*speed 
+		velocity += (get_target_position()-global_position).normalized()*speed 
 		rotation = velocity.angle()
-		position += velocity*delta 
+		global_position += velocity*delta 
 		speed+=delta*chaos_speed
 	elif seek and visible:
 		play("posses")
