@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2sb7o8vt8tkb"]
+[gd_scene load_steps=20 format=3 uid="uid://bkv3hqlmk3a34"]
 
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_1kr5f"]
+[ext_resource type="Script" path="res://scenes/UI/game_control_buttons/game_control_options.gd" id="1_wr8m3"]
 [ext_resource type="Script" path="res://scenes/UI/buttons/delete/bntDelete.gd" id="2_jnp28"]
 [ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="2_ow65j"]
 [ext_resource type="Texture2D" uid="uid://cy8ihpit5skdv" path="res://assets/animations/ghost/pain/pain0120.png" id="3_qoo16"]
@@ -13,78 +14,27 @@
 [ext_resource type="Texture2D" uid="uid://cj5nany7id2s7" path="res://assets/animations/ghost/pain/pain0129.png" id="11_gy4cb"]
 [ext_resource type="Texture2D" uid="uid://lhykt0e13k4x" path="res://assets/animations/ghost/pain/pain0128.png" id="11_xv71k"]
 [ext_resource type="Texture2D" uid="uid://ca3alcbii5uc8" path="res://assets/animations/ghost/pain/pain0130.png" id="12_e008t"]
-
-[sub_resource type="Animation" id="Animation_0i2fk"]
-resource_name = "delete_warning"
-length = 10.0
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("btnDelete/warning:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4, 5.5, 6, 6.5, 7, 7.5, 8.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("3_qoo16"), ExtResource("4_36gog"), ExtResource("5_5cfep"), ExtResource("6_1i4o5"), ExtResource("7_5c78p"), ExtResource("8_3mnqv"), ExtResource("10_smos0"), ExtResource("11_xv71k"), ExtResource("11_gy4cb"), ExtResource("12_e008t"), null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("btnDelete/TextureRect:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("btnDelete/TextureRect:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("btnDelete/TextureRect:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.25, 2.5, 3, 3.25, 3.5, 4.25, 4.5, 5, 5.25, 5.5, 5.75, 6, 6.25, 6.5, 6.75, 7, 7.25, 7.5, 7.75, 8, 8.25, 8.5, 8.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(0, 0), Vector2(33.8, -5), Vector2(0, 0), Vector2(-45.2, 77), Vector2(0, 0), Vector2(-51.2, 5), Vector2(33.8, -5), Vector2(0, 0), Vector2(-45.2, 77), Vector2(0, 0), Vector2(33.8, -5), Vector2(-81.2, -48), Vector2(33.8, -5), Vector2(-45.2, 77), Vector2(0, 0), Vector2(-45.2, 77), Vector2(0, 0), Vector2(73.8, 44), Vector2(0, 0), Vector2(-45.2, 77), Vector2(0, 0), Vector2(3.79999, -19), Vector2(0, 0), Vector2(-45.2, 77), Vector2(62.8, 3), Vector2(188.8, -7), Vector2(-123.2, -3), Vector2(45.8, -225)]
-}
+[ext_resource type="AudioStream" uid="uid://cslih7objiwih" path="res://assets/sound/effects/scary_ui.wav" id="15_gtrba"]
+[ext_resource type="AudioStream" uid="uid://dswus8kq88hbt" path="res://assets/sound/effects/delete_save.wav" id="16_s17dn"]
 
 [sub_resource type="Animation" id="Animation_utctr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("btnDelete/warning:texture")
+tracks/0/path = NodePath("Padding/btnDelete/warning:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [ExtResource("3_qoo16")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("btnDelete/TextureRect:rotation")
+tracks/1/path = NodePath("Padding/btnDelete/TextureRect:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -96,19 +46,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("btnDelete/TextureRect:scale")
+tracks/2/path = NodePath("Padding/btnDelete/warning:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("btnDelete/TextureRect:position")
+tracks/3/path = NodePath("Padding/btnDelete/TextureRect:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -117,6 +67,155 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Padding/btnDelete/AudioStreamPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-20.8]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Padding/btnDelete/AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Padding/btnDelete/AudioStreamPlayer2:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Padding/btnDelete/TextureRect:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0i2fk"]
+resource_name = "delete_warning"
+length = 7.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Padding/btnDelete/warning:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5.5, 6, 6.5, 7, 7.5, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("3_qoo16"), ExtResource("4_36gog"), ExtResource("5_5cfep"), ExtResource("6_1i4o5"), ExtResource("7_5c78p"), ExtResource("8_3mnqv"), ExtResource("10_smos0"), ExtResource("11_xv71k"), ExtResource("11_gy4cb"), ExtResource("12_e008t"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Padding/btnDelete/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Padding/btnDelete/warning:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Padding/btnDelete/TextureRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.25, 2.5, 3, 3.25, 3.5, 4.25, 4.5, 5, 5.25, 5.5, 5.75, 6, 6.5, 6.75, 7.25, 7.5, 7.75, 8, 8.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(33.8, -5), Vector2(0, 0), Vector2(-45.2, 77), Vector2(0, 0), Vector2(-51.2, 5), Vector2(33.8, -5), Vector2(0, 0), Vector2(-45.2, 77), Vector2(0, 0), Vector2(33.8, -5), Vector2(-81.2, -48), Vector2(33.8, -5), Vector2(-45.2, 77), Vector2(0, 0), Vector2(-45.2, 77), Vector2(45.8, -5), Vector2(33.8, -5), Vector2(-81.2, -48), Vector2(33.8, -5), Vector2(-45.2, 77), Vector2(0, 0), Vector2(-45.2, 77), Vector2(45.8, -5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Padding/btnDelete/AudioStreamPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-20.8, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Padding/btnDelete/AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Padding/btnDelete/AudioStreamPlayer2:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Padding/btnDelete/TextureRect:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mpxwj"]
 _data = {
@@ -124,49 +223,75 @@ _data = {
 "delete_warning": SubResource("Animation_0i2fk")
 }
 
-[node name="gameControlOptions" type="Control"]
+[node name="gameControlOptions" type="Control" node_paths=PackedStringArray("btn_load", "btn_delete")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 1.84998
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 17.0
+script = ExtResource("1_wr8m3")
+btn_load = NodePath("Padding/btnLoad")
+btn_delete = NodePath("Padding/btnDelete")
 
-[node name="btnLoad" parent="." instance=ExtResource("1_1kr5f")]
+[node name="Padding" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.724
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btnLoad" parent="Padding" instance=ExtResource("1_1kr5f")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.6
 
-[node name="btnDelete" parent="." instance=ExtResource("1_1kr5f")]
+[node name="btnDelete" parent="Padding" instance=ExtResource("1_1kr5f")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6
 script = ExtResource("2_jnp28")
-hover_texture = null
-default_texture = null
+default_texture = ExtResource("2_ow65j")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="btnDelete"]
-root_node = NodePath("../..")
+[node name="TextureRect" parent="Padding/btnDelete" index="0"]
+texture = ExtResource("2_ow65j")
+
+[node name="Label" parent="Padding/btnDelete/CenterContainer" index="0"]
+text = "delete"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Padding/btnDelete"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_mpxwj")
 }
 speed_scale = 2.5
 
-[node name="TextureRect" parent="btnDelete" index="1"]
-texture = ExtResource("2_ow65j")
-
-[node name="warning" type="TextureRect" parent="btnDelete"]
+[node name="warning" type="TextureRect" parent="Padding/btnDelete"]
+visible = false
+z_index = 6
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.324
+anchor_top = 0.284
+anchor_right = 0.699
+anchor_bottom = 0.756
+offset_left = -77.4992
+offset_top = -66.6196
+offset_right = 61.7008
+offset_bottom = 47.3085
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_qoo16")
 
-[node name="Label" parent="btnDelete/CenterContainer" index="0"]
-text = "delete"
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Padding/btnDelete"]
+stream = ExtResource("15_gtrba")
+volume_db = -20.8
 
-[editable path="btnDelete"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Padding/btnDelete"]
+stream = ExtResource("16_s17dn")
+
+[editable path="Padding/btnDelete"]

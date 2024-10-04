@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccdtgmoqo74mv"]
+[gd_scene load_steps=6 format=3 uid="uid://ccdtgmoqo74mv"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/LevelLoader.gd" id="1_4uavq"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_e2c5f"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="2_dua60"]
+[ext_resource type="AudioStream" uid="uid://dswus8kq88hbt" path="res://assets/sound/effects/delete_save.wav" id="4_rm50l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omijd"]
 bg_color = Color(0.28, 0.1148, 0.1148, 1)
@@ -23,8 +24,8 @@ btnContainer = NodePath("Control/ScrollContainer/VBoxGhostContainer")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.1
-anchor_right = 0.9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -47,3 +48,6 @@ scroll_deadzone = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="GameDeleteSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rm50l")

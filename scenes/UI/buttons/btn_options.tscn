@@ -6,11 +6,9 @@
 [ext_resource type="Script" path="res://assets/scripts/UI/objects/btnLoadUI.gd" id="4_gv7p4"]
 [ext_resource type="PackedScene" uid="uid://d4d4qebutmeqf" path="res://scenes/UI/options/options_menu.tscn" id="5_ex05g"]
 
-[node name="btnOptions" type="TextureButton" node_paths=PackedStringArray("destination", "backstack")]
+[node name="btnOptions" type="TextureButton"]
 texture_normal = ExtResource("1_wjasl")
 texture_pressed = ExtResource("2_wiqhq")
 texture_hover = ExtResource("3_ylrwl")
 script = ExtResource("4_gv7p4")
-destination = NodePath("")
 target = ExtResource("5_ex05g")
-backstack = NodePath("")

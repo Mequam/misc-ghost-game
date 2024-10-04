@@ -72,3 +72,33 @@ static func load_game_gn(gameName : String)->GameSaveResource:
 func load_game()->GameSaveResource:
 	self.ensure_save_dir()
 	return ResourceLoader.load(self.get_save_path())
+
+#convinence function to recursivly delete files from a given folder
+#just in case we want nested file structures for saves in the future
+static func recursive_directory_delete(directory : DirAccess):
+	if directory:
+		directory.list_dir_begin()
+		var file_name = directory.get_next()
+		while file_name != "":
+			if directory.current_is_dir():
+				#remove all files from that directory
+				GameSaveResource.recursive_directory_delete(DirAccess.open(file_name))
+			else:
+				#delete the weak files
+				directory.remove(file_name)
+			file_name = directory.get_next()
+		directory.remove("") #purge the directory that we are currently on
+
+#delete ourselfs
+#goodbye, world
+func delete()->void:
+	GameSaveResource.delete_game_gn(self.game_name)
+
+#deletes a given game from the game name
+static func delete_game_gn(gameName : String)->void:
+	var dir : = DirAccess.open(GameSaveResource.get_save_folder_path_gn(gameName))
+	if dir:
+		GameSaveResource.recursive_directory_delete(dir)
+
+
+
