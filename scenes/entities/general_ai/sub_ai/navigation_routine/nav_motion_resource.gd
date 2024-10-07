@@ -31,6 +31,8 @@ func stop_moving():
 
 
 func move_to_point(point : Vector2)->void:
+	print_debug("parent_resource.caller.global_position " + str(parent_resource.caller.global_position))
+	print_debug("point " + str(point))
 	var delta = point - parent_resource.caller.global_position 
 	
 	stop_moving()

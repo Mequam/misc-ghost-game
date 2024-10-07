@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://k48him1e0fcp"]
+[gd_scene load_steps=53 format=3 uid="uid://k48him1e0fcp"]
 
 [ext_resource type="PackedScene" uid="uid://bvd2hb13cvw3d" path="res://scenes/entities/halloween/witch/witchSprite/witchSprite.tscn" id="1"]
 [ext_resource type="Script" path="res://assets/scripts/entities/witch.gd" id="2"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://assets/shaders/alphaKiller.gdshader" id="3"]
 [ext_resource type="PackedScene" uid="uid://icrh4nsgwpee" path="res://scenes/entities/halloween/witch/projectileAttack/witchProjectile.tscn" id="3_8y0ab"]
 [ext_resource type="Script" path="res://assets/resources/resource_scripts/jump_resource.gd" id="4_kjh21"]
-[ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/witchAI_shoot_run.gd" id="5_ji8a8"]
 [ext_resource type="Texture2D" uid="uid://d1e5irqqnemtj" path="res://assets/animations/witch/attack_color/attack0034.png" id="5_rjses"]
 [ext_resource type="Texture2D" uid="uid://6wl2vxdoucp1" path="res://assets/ui/hearts/witch/witchHeart0003.png" id="6_kdcru"]
 [ext_resource type="Texture2D" uid="uid://cf0j667k4pnpm" path="res://assets/animations/witch/attack_color/attack0035.png" id="6_ldjw2"]
@@ -55,11 +54,6 @@ script = ExtResource("4_kjh21")
 jump_height = 2.0
 jump_up_time = 0.1
 jump_down_time = 0.1
-
-[sub_resource type="Resource" id="Resource_w1do7"]
-resource_local_to_scene = true
-script = ExtResource("5_ji8a8")
-danger_level = 1
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("3")
@@ -267,7 +261,6 @@ bwingwing = NodePath("Bwingwing")
 jr = SubResource("Resource_6ohhy")
 walk_speed = Vector2(10, 1)
 run_modifier = 2.0
-entity_ai = SubResource("Resource_w1do7")
 heart_text = Array[Texture2D]([ExtResource("6_kdcru"), ExtResource("7_32k8t"), ExtResource("8_mttl6")])
 speed = Vector2(40, 40)
 

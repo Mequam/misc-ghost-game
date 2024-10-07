@@ -16,7 +16,16 @@ class_name Entity
 #this is a variable to an AI resource
 #that tells us how to run when not possesed
 #null indicates no action
-@export var entity_ai : EntityAI
+var entity_ai : EntityAI :
+	#setter getter used to work with older code, and for
+	#convinence
+	set(val):
+		pass
+	get:
+		for child in get_children():
+			if child is EntityAI:
+				return child
+		return null
 
 func get_entity_type()->String:
 	return "Entity"

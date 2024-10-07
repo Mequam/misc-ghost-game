@@ -13,6 +13,7 @@ var nav_agent : NavigationAgent2D = null
 @export_flags_2d_navigation var navigation_layers : int = 1
 
 func set_target(target_position : Vector2)->void:
+	print_debug("setting target: " + str(target_position))
 	if target_position.distance_squared_to((last_target_position)) <= update_target_threshold: return
 	nav_agent.target_position = target_position
 
