@@ -76,7 +76,6 @@ func tick(player : Entity)->void:
 				if caller.pressed_inputs["ATTACK"]:
 					caller.perform_action("ATTACK",false) #release our attack and idle
 				return #if it is still null no need to continue
-			breakpoint
 			self.navigation_resource.set_target(self.ai_apple_target.global_position)
 		else:
 			if caller.global_position.distance_squared_to(self.ai_apple_target.global_position) < 100**2:

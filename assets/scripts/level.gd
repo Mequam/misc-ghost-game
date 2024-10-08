@@ -40,13 +40,6 @@ var level_data : Dictionary
 var player_entity : Entity 
 
 func _ready():
-	#set up the timer that will run the ai for the game
-	var ai_timer = Timer.new()
-	add_child(ai_timer)
-	ai_timer.wait_time = ai_timeout 
-	ai_timer.connect("timeout",Callable(self,"on_ai_timeout"))
-	ai_timer.start()
-
 	#sync up the color of the main display to this levels mapping colors
 	var color_mat = get_main().color_container.material
 	color_mat.set_shader_parameter("ColorRotation",self.color_rotation)
@@ -82,10 +75,6 @@ func _process(_delta):
 	else:
 		get_main().music_system.set_flag("battle")
 		get_main().music_system.unset_flag("safe")
-
-
-func on_ai_timeout():
-	call_ai(player_entity)
 
 #returns true if we have a forieng entity
 func has_alien_entities()->bool:

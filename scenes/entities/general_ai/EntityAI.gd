@@ -30,6 +30,7 @@ func _ready()->void:
 	self.caller = get_parent()
 
 func timer_tick()->void:
+	if self.caller.possesed: return
 	self.tick(self.get_player())
 #convinence reference to the parent that is using us, we could
 #make this a node, but the convinence of recourses for AI makes it easaier
