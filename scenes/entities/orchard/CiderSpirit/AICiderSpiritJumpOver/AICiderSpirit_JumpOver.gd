@@ -3,10 +3,9 @@ extends LRJEntityAI
 class_name AICiderSpirit_JumpOver
 
 
-#controls the frequency that we jump at the player
-@export var ai_timer_jump : NodePath 
+@export var ai_timer_jump : Timer
 func get_ai_timer()->Timer:
-	return self.caller.get_node(ai_timer_jump)
+	return ai_timer_jump
 
 func tick(player)->void:
 	#make sure we are on the ground before jumping
@@ -33,3 +32,12 @@ func ai_jump_past_player(player,error : float=100)->void:
 	if (caller.jump_distance  < target + error and caller.jump_distance > target - error):
 		#we are at a valid distance, jump!
 		caller.perform_action("JUMP",false)
+func _ready()->void:
+	var timer : Timer = Timer.new()
+	timer.wait_time = 0.5
+	add_child(timer)
+	timer.start()
+	print_debug("adding timer!")
+	ai_timer_jump = timer
+
+	super._ready()

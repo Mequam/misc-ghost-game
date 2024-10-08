@@ -554,4 +554,3 @@ func on_col(col):
 		
 		#move us off of the top based collision
 		move_and_collide(Vector2.RIGHT * offset * 10)
-
