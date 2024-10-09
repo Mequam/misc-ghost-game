@@ -47,6 +47,8 @@ func can_hit(player : Entity,distance_squared_to_player : float)->bool:
 				  caller.get_node("attack_cooldown").time_left <= 0 #make sure we can attack
 #called when we have apples
 func aggro(player : Entity)->void:
+	if player == null: return
+
 	var distance_squared_to_player = caller.global_position.distance_squared_to(player.global_position)
 	if self.can_hit(player,distance_squared_to_player):
 		#shoot the apples at the player

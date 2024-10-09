@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://coel2q7oiemnj"]
+[gd_scene load_steps=12 format=3 uid="uid://coel2q7oiemnj"]
 
 [ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/bat_splosion.gd" id="1_6n2qj"]
 [ext_resource type="PackedScene" uid="uid://dppqq653q0gqy" path="res://scenes/entities/halloween/batSplosion/bat_splosion_sprite.tscn" id="1_gkmrn"]
+[ext_resource type="Texture2D" uid="uid://bixic6dsnrs0p" path="res://assets/animations/kamakazi_fly/entity_heart/kamakazi_fly_heart0022.png" id="2_6a8wd"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="3_635rr"]
+[ext_resource type="Texture2D" uid="uid://bobmo58jecuns" path="res://assets/animations/kamakazi_fly/entity_heart/kamakazi_fly_heart0023.png" id="3_q4la2"]
 [ext_resource type="AudioStream" uid="uid://dk8uykyn1arrd" path="res://assets/sound/effects/batSplosion/batSplosionGrowl.wav" id="4_hai11"]
+[ext_resource type="Texture2D" uid="uid://x5kxj8vkjopw" path="res://assets/animations/kamakazi_fly/entity_heart/kamakazi_fly_heart0024.png" id="4_o0uk0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6uog"]
 radius = 63.0
@@ -29,6 +32,7 @@ hang_feet = NodePath("hang_feet")
 damage_zone = NodePath("damage_zone")
 run_speed = Vector2(5, 1.5)
 sprite = NodePath("BatSplosionSprite/Sprite Skeleton/AnimatedSprite2D")
+heart_text = Array[Texture2D]([ExtResource("4_o0uk0"), ExtResource("3_q4la2"), ExtResource("2_6a8wd")])
 max_health = 2
 health = 2
 speed = Vector2(300, 300)
