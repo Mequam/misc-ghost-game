@@ -11,6 +11,8 @@ class_name CiderSpirit
 @export var parabola_position : Node2D 
 @export var parabala_target_speed : float = 100
 
+@export var initial_gravity : float = 1000
+
 
 #controls how many different segments of the parabola that we draw
 @export var parabala_segments : int = 4
@@ -223,6 +225,7 @@ func set_state(val)->void:
 		#reset the sprite rotation when we default our state
 		self.get_sprite2D().rotation = 0
 		self.velocity.x = 0
+		self.gravity = self.initial_gravity
 	#were JUMPIN'
 	if val == CiderSpiritState.LAUNCHED:
 		self.prepping_jump = false
@@ -263,6 +266,7 @@ func main_ready()->void:
 	follower_mug.ciderSpirit = self
 	await get_tree().physics_frame 
 	self.original_sprite_position = self.get_sprite2D().position
+	self.gravity = self.initial_gravity
 	sync_mug_collision()
 	add_sibling(follower_mug)
 	hide_follower_mug()
