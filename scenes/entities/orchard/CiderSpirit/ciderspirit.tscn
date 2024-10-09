@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bkfoptt80pgom" path="res://scenes/entities/orchard/CiderSpirit/mugFollower/follwer_mug.tscn" id="2_aqgfs"]
 [ext_resource type="Script" path="res://assets/resources/resource_scripts/jump_resource.gd" id="3_3awvy"]
 [ext_resource type="PackedScene" uid="uid://byekeag2ch0em" path="res://scenes/entities/orchard/CiderSpirit/ciderspiritsprite.tscn" id="4_bi3ix"]
+[ext_resource type="Texture2D" uid="uid://tl5u6qy6a8hk" path="res://assets/animations/cider spirit/hearts/heartbetter0003.png" id="4_o0aml"]
+[ext_resource type="Texture2D" uid="uid://nrra6ydtbtbe" path="res://assets/animations/cider spirit/hearts/heartbetter0002.png" id="5_5m0xx"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="5_d5wc2"]
-[ext_resource type="Texture2D" uid="uid://7vlb75eg46do" path="res://assets/animations/cider spirit/hearts/dead.png" id="5_of1oy"]
-[ext_resource type="Texture2D" uid="uid://cebqy7m83b3t6" path="res://assets/animations/cider spirit/hearts/empty.png" id="6_snwuv"]
-[ext_resource type="Texture2D" uid="uid://d00etvbqa8b54" path="res://assets/animations/cider spirit/hearts/full.png" id="7_ytv73"]
+[ext_resource type="Texture2D" uid="uid://gjq541ubg121" path="res://assets/animations/cider spirit/hearts/heartbetter0001.png" id="6_1q2gn"]
 [ext_resource type="AudioStream" uid="uid://b78cwufee84rm" path="res://assets/sound/effects/Misc/big_splash.wav" id="10_audu5"]
 
 [sub_resource type="Resource" id="Resource_475e5"]
@@ -104,9 +104,8 @@ walk_speed = Vector2(1, 1)
 run_modifier = 1.0
 do_fast_fall = false
 sprite = NodePath("bone/Sprite2D")
-heart_text = Array[Texture2D]([ExtResource("5_of1oy"), ExtResource("6_snwuv"), ExtResource("7_ytv73")])
+heart_text = Array[Texture2D]([ExtResource("4_o0aml"), ExtResource("5_5m0xx"), ExtResource("6_1q2gn")])
 speed = Vector2(0.1, 1)
-metadata/_edit_lock_ = true
 
 [node name="bone" type="Marker2D" parent="."]
 
