@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b66j85put7yxc"]
+[gd_scene load_steps=17 format=3 uid="uid://b66j85put7yxc"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ttb33"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="2_g781n"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="7_evana"]
 [ext_resource type="PackedScene" uid="uid://tyt07kbx5nj" path="res://scenes/tools/tilenaver/tilenaver.tscn" id="8_jyb7t"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="9_7gihv"]
+[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="12_ibn2l"]
+[ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/AIwitch_shoot.gd" id="13_mscko"]
 [ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="15_hirpx"]
 [ext_resource type="Script" path="res://assets/resources/resource_scripts/jump_resource.gd" id="16_2tqbp"]
 [ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/AICiderSpiritJumpOver/AICiderSpirit_JumpOver.gd" id="17_3orkl"]
@@ -58,7 +60,7 @@ ciel_height = 2
 x_cut = 0
 
 [node name="spawn_light" parent="." instance=ExtResource("9_7gihv")]
-position = Vector2(553, -1191)
+position = Vector2(676, -1318)
 
 [node name="rocky grass" parent="." instance=ExtResource("3_gif65")]
 layer_0/name = "navigation tool output"
@@ -74,9 +76,15 @@ layer_1/tile_data = PackedInt32Array(65535, 65540, 1, -1, 65544, 0, -65536, 6554
 navigation_polygon = SubResource("NavigationPolygon_be3ue")
 
 [node name="CiderSpirit" parent="." instance=ExtResource("15_hirpx")]
-position = Vector2(1153, -1013)
+position = Vector2(1020, -1047)
 jr = SubResource("Resource_neudf")
 
 [node name="AICiderSpirit_JumpOver" type="Node" parent="CiderSpirit"]
 script = ExtResource("17_3orkl")
 update_speed = 0.5
+
+[node name="witch" parent="." instance=ExtResource("12_ibn2l")]
+position = Vector2(496, -1049)
+
+[node name="WitchShootAI" type="Node" parent="witch"]
+script = ExtResource("13_mscko")

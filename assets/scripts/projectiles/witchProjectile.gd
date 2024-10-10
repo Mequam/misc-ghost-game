@@ -28,7 +28,7 @@ func on_col(collider):
 	var entity = collider.get_collider()
 	
 	#we can teleport entities and players, that is IT
-	if not entity is TileMap and entity.collision_layer & (ColMath.Layer.NON_PLAYER_ENTITY | ColMath.Layer.PLAYER) != 0: 
+	if entity is Entity and not entity is TileMap and entity.collision_layer & (ColMath.Layer.NON_PLAYER_ENTITY | ColMath.Layer.PLAYER) != 0: 
 		#swap the position of us and the entitiy on collision
 		witch.swap_positions(entity)
 		#play the bwingwing teleport noise

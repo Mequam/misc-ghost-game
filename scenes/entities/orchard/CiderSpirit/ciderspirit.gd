@@ -233,7 +233,7 @@ func set_state(val)->void:
 	if val == CiderSpiritState.SPLASHED:
 		#when splashed we can be possesed, but not collided with
 		self.set_only_posses_collision()
-	elif self.state != CiderSpiritState.LAUNCHED:
+	elif self.state != CiderSpiritState.LAUNCHED and not self.possesed:
 		self.collision_layer = self.gen_col_layer()
 		self.collision_mask = self.gen_col_mask()
 
