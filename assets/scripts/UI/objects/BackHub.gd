@@ -19,6 +19,11 @@ func next(next_control : Control,replace : Control = replacement)->void:
 	stack.append([replace.get_child(0),replace])
 	replace(next_control,replace)
 
+#continually pops from the stack until there are no
+#controls left
+func purge_stack()->void:
+	while len(stack) != 0:
+		self.back()
 #moves back to the last scene in the stack
 func back()->void:
 	var to_replace = stack.pop_back()

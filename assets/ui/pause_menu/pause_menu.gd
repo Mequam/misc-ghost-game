@@ -20,6 +20,7 @@ func on_resume_pressed()->void:
 
 func _process(delta : float)->void:
 	if can_unpause and Input.is_action_pressed("PAUSE"):
+		self.purge_stack() #go back to the first scene
 		main_scene.unpause()
 	if Input.is_action_just_released("PAUSE"):
 		can_unpause = true
