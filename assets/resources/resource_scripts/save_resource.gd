@@ -9,3 +9,5 @@ class_name SaveResource
 @export var spawn_light : String
 #a dictionary that scenes use to write data to for each individual scene
 @export var level_data : Dictionary
+#represents the name of entities that we have unlocked to be able to spawn in
+@export var unlocked_spawn_entities : Array[String]
