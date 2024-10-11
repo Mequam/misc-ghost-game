@@ -112,6 +112,7 @@ speed = Vector2(0.1, 1)
 [node name="Sprite2D" parent="bone" node_paths=PackedStringArray("transform_animator") instance=ExtResource("4_bi3ix")]
 position = Vector2(5, -51)
 scale = Vector2(0.21975, 0.21975)
+animation = &"idle"
 transform_animator = NodePath("../../AnimationPlayer")
 
 [node name="splash_location" type="Node2D" parent="bone/Sprite2D"]

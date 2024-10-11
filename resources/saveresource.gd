@@ -20,6 +20,10 @@ var game_variables : Dictionary  = {}
 @export 
 var game_name : String = "game 0"
 
+#summons that the player can perform
+@export
+var unlocked_summons : Array[String]
+
 
 #convinence function to get the packed scene of a game save
 func get_packed_scene()->PackedScene:

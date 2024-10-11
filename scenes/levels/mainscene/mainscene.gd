@@ -17,6 +17,8 @@ class_name MainScene
 @export var level_container : Node2D
 #reference to the color node that we use for all the smancy colors
 @export var color_container : ColorRect
+#menu that we use to summon in new entities
+@export var summon_menu : SummonMenu
 
 #runtime variables that are not saved
 #this is for things like enemies remembering their deaths, 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b66j85put7yxc"]
+[gd_scene load_steps=24 format=3 uid="uid://b66j85put7yxc"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ttb33"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="2_g781n"]
@@ -10,9 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="9_7gihv"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="12_ibn2l"]
 [ext_resource type="Script" path="res://scenes/entities/halloween/witch/ai/AIwitch_shoot.gd" id="13_mscko"]
+[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="14_3trfg"]
+[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/ai/AIApplePicker.gd" id="15_gmjws"]
 [ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="15_hirpx"]
 [ext_resource type="Script" path="res://assets/resources/resource_scripts/jump_resource.gd" id="16_2tqbp"]
+[ext_resource type="Script" path="res://scenes/entities/general_ai/sub_ai/navigation_routine/nav_routine.gd" id="16_wv5w1"]
 [ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/AICiderSpiritJumpOver/AICiderSpirit_JumpOver.gd" id="17_3orkl"]
+[ext_resource type="Script" path="res://scenes/entities/general_ai/sub_ai/navigation_routine/nav_motion_resource.gd" id="17_tmj65"]
+[ext_resource type="PackedScene" uid="uid://coel2q7oiemnj" path="res://scenes/entities/halloween/batSplosion/bat_splosion.tscn" id="18_p7365"]
+[ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/ai/AI_bat_splosion.gd" id="19_2emt5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5ex8"]
 size = Vector2(166, 154)
@@ -28,6 +34,13 @@ script = ExtResource("16_2tqbp")
 jump_height = 101.01
 jump_up_time = 0.01
 jump_down_time = 0.01
+
+[sub_resource type="Resource" id="Resource_r8n8j"]
+script = ExtResource("17_tmj65")
+closeness_threshold = 50.0
+move_threshold = Vector2(10, 10)
+sprint_threshold = Vector2(100, 100)
+collision_bias_weight = 50.0
 
 [node name="apple_picker_ai" type="Node2D" node_paths=PackedStringArray("cam_ref")]
 script = ExtResource("1_ttb33")
@@ -59,8 +72,13 @@ x_offset = 5
 ciel_height = 2
 x_cut = 0
 
-[node name="spawn_light" parent="." instance=ExtResource("9_7gihv")]
+[node name="spawn_light" parent="." node_paths=PackedStringArray("summon_location") instance=ExtResource("9_7gihv")]
 position = Vector2(676, -1318)
+summon_location = NodePath("SummonLocation")
+
+[node name="SummonLocation" type="Node2D" parent="spawn_light"]
+position = Vector2(-192, 476)
+scale = Vector2(2, 2)
 
 [node name="rocky grass" parent="." instance=ExtResource("3_gif65")]
 layer_0/name = "navigation tool output"
@@ -76,7 +94,7 @@ layer_1/tile_data = PackedInt32Array(65535, 65540, 1, -1, 65544, 0, -65536, 6554
 navigation_polygon = SubResource("NavigationPolygon_be3ue")
 
 [node name="CiderSpirit" parent="." instance=ExtResource("15_hirpx")]
-position = Vector2(1020, -1047)
+position = Vector2(904, -580)
 jr = SubResource("Resource_neudf")
 
 [node name="AICiderSpirit_JumpOver" type="Node" parent="CiderSpirit"]
@@ -84,7 +102,26 @@ script = ExtResource("17_3orkl")
 update_speed = 0.5
 
 [node name="witch" parent="." instance=ExtResource("12_ibn2l")]
-position = Vector2(496, -1049)
+position = Vector2(473, -514)
 
 [node name="WitchShootAI" type="Node" parent="witch"]
 script = ExtResource("13_mscko")
+
+[node name="applePicker" parent="." instance=ExtResource("14_3trfg")]
+position = Vector2(935, 60)
+
+[node name="AIApplePickerFindShoot" type="Node" parent="applePicker" node_paths=PackedStringArray("navigation_resource")]
+script = ExtResource("15_gmjws")
+navigation_resource = NodePath("../SubAINavigationStraight")
+
+[node name="SubAINavigationStraight" type="Node" parent="applePicker"]
+script = ExtResource("16_wv5w1")
+follow_technique = SubResource("Resource_r8n8j")
+
+[node name="batSplosion" parent="." instance=ExtResource("18_p7365")]
+position = Vector2(1014, -1243)
+
+[node name="AIBatSplosion" type="Node" parent="batSplosion"]
+script = ExtResource("19_2emt5")
+start_hung = true
+update_speed = 0.2

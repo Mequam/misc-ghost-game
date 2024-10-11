@@ -1,25 +1,132 @@
-[gd_scene format=3 uid="uid://cjl8fnj6yr4s3"]
+[gd_scene load_steps=24 format=3 uid="uid://cjl8fnj6yr4s3"]
 
-[node name="SummonMenu" type="Control"]
+[ext_resource type="Script" path="res://scenes/UI/SummonMenu/summon_menu.gd" id="1_asfvd"]
+[ext_resource type="Texture2D" uid="uid://cixvie4gb20gc" path="res://assets/ui/hearts/witch/witchHeart0001.png" id="1_y2kx7"]
+[ext_resource type="Shader" uid="uid://cnw52f38xqu2p" path="res://scenes/effects/silloette_shader.tres" id="2_1x8gx"]
+[ext_resource type="Texture2D" uid="uid://bixic6dsnrs0p" path="res://assets/animations/kamakazi_fly/entity_heart/kamakazi_fly_heart0022.png" id="2_e6jp1"]
+[ext_resource type="Script" path="res://scenes/UI/SummonMenu/summoningPip.gd" id="2_mcmdq"]
+[ext_resource type="Texture2D" uid="uid://gjq541ubg121" path="res://assets/animations/cider spirit/hearts/heartbetter0001.png" id="3_mmk8p"]
+[ext_resource type="Texture2D" uid="uid://cdoq5b7xnrm5i" path="res://assets/animations/apple picker ghost/hearts/full_apple.png" id="4_uk3v1"]
+[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="6_ilceq"]
+[ext_resource type="Texture2D" uid="uid://dov7ja5sb24fe" path="res://assets/animations/witch/witch_color_damage/0043.png" id="6_wvhk7"]
+[ext_resource type="Texture2D" uid="uid://c3adfvdeuuj1r" path="res://assets/animations/kamakazi_fly/kamakazi_fly0001.png" id="8_ej2mw"]
+[ext_resource type="Texture2D" uid="uid://21iixupgrguj" path="res://assets/animations/apple picker ghost/applePicker0001.png" id="8_wvabc"]
+[ext_resource type="PackedScene" uid="uid://coel2q7oiemnj" path="res://scenes/entities/halloween/batSplosion/bat_splosion.tscn" id="9_10ruo"]
+[ext_resource type="Texture2D" uid="uid://cadiswusln4x" path="res://assets/animations/cider spirit/0006.png" id="10_t4xuw"]
+[ext_resource type="Texture2D" uid="uid://djliw41u8h0us" path="res://assets/animations/rolling_pumpkin/rolly pumpkin explosion/rolinsplosin0001.png" id="11_errnm"]
+[ext_resource type="Texture2D" uid="uid://51m4y68yahht" path="res://assets/ui/hearts/rolly_pumpkin/big.png" id="11_yotvx"]
+[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="12_up6ft"]
+[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="15_0fhar"]
+[ext_resource type="PackedScene" uid="uid://cnoukjnux3vku" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn" id="18_iewcj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2wdr"]
+shader = ExtResource("2_1x8gx")
+shader_parameter/doSilloette = false
+shader_parameter/Silloette_Color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hk56m"]
+shader = ExtResource("2_1x8gx")
+shader_parameter/doSilloette = null
+shader_parameter/Silloette_Color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6bfx"]
+shader = ExtResource("2_1x8gx")
+shader_parameter/doSilloette = false
+shader_parameter/Silloette_Color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1714q"]
+shader = ExtResource("2_1x8gx")
+shader_parameter/doSilloette = false
+shader_parameter/Silloette_Color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nnrt"]
+shader = ExtResource("2_1x8gx")
+shader_parameter/doSilloette = false
+shader_parameter/Silloette_Color = null
+
+[node name="SummonMenu" type="Control" node_paths=PackedStringArray("summon_indicator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_asfvd")
+summon_indicator = NodePath("ImageDisplay/SummonIndicator")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.2
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.945, 1, 0.89, 1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.422
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00333, 1)
+columns = 5
+
+[node name="TextureRect" type="TextureButton" parent="GridContainer"]
+material = SubResource("ShaderMaterial_r2wdr")
+layout_mode = 2
+texture_normal = ExtResource("1_y2kx7")
+script = ExtResource("2_mcmdq")
+entity_texture = ExtResource("6_wvhk7")
+entity_to_summon = ExtResource("6_ilceq")
+
+[node name="TextureRect5" type="TextureButton" parent="GridContainer"]
+material = SubResource("ShaderMaterial_hk56m")
+layout_mode = 2
+texture_normal = ExtResource("2_e6jp1")
+script = ExtResource("2_mcmdq")
+entity_texture = ExtResource("8_ej2mw")
+entity_to_summon = ExtResource("9_10ruo")
+
+[node name="TextureRect6" type="TextureButton" parent="GridContainer"]
+material = SubResource("ShaderMaterial_k6bfx")
+layout_mode = 2
+texture_normal = ExtResource("4_uk3v1")
+script = ExtResource("2_mcmdq")
+entity_texture = ExtResource("8_wvabc")
+entity_to_summon = ExtResource("12_up6ft")
+
+[node name="TextureRect7" type="TextureButton" parent="GridContainer"]
+material = SubResource("ShaderMaterial_1714q")
+layout_mode = 2
+texture_normal = ExtResource("3_mmk8p")
+script = ExtResource("2_mcmdq")
+entity_texture = ExtResource("10_t4xuw")
+entity_to_summon = ExtResource("15_0fhar")
+
+[node name="TextureRect8" type="TextureButton" parent="GridContainer"]
+material = SubResource("ShaderMaterial_7nnrt")
+layout_mode = 2
+texture_normal = ExtResource("11_yotvx")
+script = ExtResource("2_mcmdq")
+entity_texture = ExtResource("11_errnm")
+entity_to_summon = ExtResource("18_iewcj")
 
 [node name="ImageDisplay" type="Control" parent="."]
 layout_mode = 1
 anchor_right = 1.0
-anchor_bottom = 0.2
+anchor_bottom = 0.422
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SummonIndicator" type="TextureRect" parent="ImageDisplay"]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.6
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 4
