@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://154dfvnj02rk"]
+
+[ext_resource type="Texture2D" uid="uid://bixic6dsnrs0p" path="res://assets/animations/kamakazi_fly/entity_heart/kamakazi_fly_heart0022.png" id="1_7te5s"]
+[ext_resource type="Script" path="res://scenes/pickups/summon_talismin/summon_talismin.gd" id="2_c6j4e"]
+
+[node name="summonTalismin" type="Sprite2D"]
+texture = ExtResource("1_7te5s")
+script = ExtResource("2_c6j4e")

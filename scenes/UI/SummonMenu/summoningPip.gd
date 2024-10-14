@@ -19,8 +19,20 @@ func get_summon_menu()->SummonMenu:
 	return p
 
 
+#determines if this power up is unlocked or not
 func is_unlocked()->bool:
-	return GameLoader.game_data and self.name in GameLoader.game_data.unlocked_summons
+
+	if not GameLoader.game_data: 
+		print_debug("not unlocked")
+		return false
+
+	for game in GameLoader.game_data.unlocked_summons:
+		if game == self.name:
+			print_debug(self.name + " I should be unlocked")
+			return true
+
+	print_debug("not unlocked")
+	return false
 
 #configures our display to match if we are currently unlocked or not
 func display_unlocked()->void:
@@ -38,8 +50,10 @@ func _ready() -> void:
 
 func on_mouse_entered()->void:
 	#indicate that we want to summon this entity
+	if not self.is_unlocked(): return
 	self.get_summon_menu().indicate(self)
 func on_mouse_exited()->void:
 	pass
 func on_pressed()->void:
+	if not self.is_unlocked(): return
 	self.get_summon_menu().summon(self)

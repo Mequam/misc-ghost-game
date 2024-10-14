@@ -27,7 +27,7 @@ func display(summon_location : Vector2)->void:
 	self.summon_location = summon_location
 	
 	#setup the indicators to be synced to the game data
-	for node in summon_indicator.get_children():
+	for node in self.indicator_container.get_children():
 		node.display_unlocked()
 	self.visible = true
 	get_tree().paused = true
@@ -43,7 +43,7 @@ func indicate(menu_indicator)->void:
 #summons an entity at a given location
 func summon(menu_indicator)->void:
 	if is_instance_valid(summoned_entity):
-		summoned_entity.queue_free()
+		summoned_entity.die()
 	var entity = menu_indicator.entity_to_summon.instantiate()
 	get_parent().get_parent().get_level().add_child(entity)
 	entity.global_position = summon_location

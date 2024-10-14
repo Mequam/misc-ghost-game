@@ -44,7 +44,7 @@ shader = ExtResource("2_1x8gx")
 shader_parameter/doSilloette = false
 shader_parameter/Silloette_Color = null
 
-[node name="SummonMenu" type="Control" node_paths=PackedStringArray("summon_indicator")]
+[node name="SummonMenu" type="Control" node_paths=PackedStringArray("summon_indicator", "indicator_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,6 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_asfvd")
 summon_indicator = NodePath("ImageDisplay/SummonIndicator")
+indicator_container = NodePath("GridContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -74,7 +75,7 @@ grow_vertical = 2
 scale = Vector2(1.00333, 1)
 columns = 5
 
-[node name="TextureRect" type="TextureButton" parent="GridContainer"]
+[node name="witch" type="TextureButton" parent="GridContainer"]
 material = SubResource("ShaderMaterial_r2wdr")
 layout_mode = 2
 texture_normal = ExtResource("1_y2kx7")
@@ -82,7 +83,7 @@ script = ExtResource("2_mcmdq")
 entity_texture = ExtResource("6_wvhk7")
 entity_to_summon = ExtResource("6_ilceq")
 
-[node name="TextureRect5" type="TextureButton" parent="GridContainer"]
+[node name="kamakazi" type="TextureButton" parent="GridContainer"]
 material = SubResource("ShaderMaterial_hk56m")
 layout_mode = 2
 texture_normal = ExtResource("2_e6jp1")
@@ -90,7 +91,7 @@ script = ExtResource("2_mcmdq")
 entity_texture = ExtResource("8_ej2mw")
 entity_to_summon = ExtResource("9_10ruo")
 
-[node name="TextureRect6" type="TextureButton" parent="GridContainer"]
+[node name="applePicker" type="TextureButton" parent="GridContainer"]
 material = SubResource("ShaderMaterial_k6bfx")
 layout_mode = 2
 texture_normal = ExtResource("4_uk3v1")
@@ -98,7 +99,7 @@ script = ExtResource("2_mcmdq")
 entity_texture = ExtResource("8_wvabc")
 entity_to_summon = ExtResource("12_up6ft")
 
-[node name="TextureRect7" type="TextureButton" parent="GridContainer"]
+[node name="ciderSpirit" type="TextureButton" parent="GridContainer"]
 material = SubResource("ShaderMaterial_1714q")
 layout_mode = 2
 texture_normal = ExtResource("3_mmk8p")
@@ -106,7 +107,7 @@ script = ExtResource("2_mcmdq")
 entity_texture = ExtResource("10_t4xuw")
 entity_to_summon = ExtResource("15_0fhar")
 
-[node name="TextureRect8" type="TextureButton" parent="GridContainer"]
+[node name="pumpkin" type="TextureButton" parent="GridContainer"]
 material = SubResource("ShaderMaterial_7nnrt")
 layout_mode = 2
 texture_normal = ExtResource("11_yotvx")
