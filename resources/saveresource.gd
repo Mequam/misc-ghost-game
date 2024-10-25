@@ -24,6 +24,9 @@ var game_name : String = "game 0"
 @export
 var unlocked_summons : Array[String]
 
+func unlock_summon(summon : String)->void:
+	if summon in unlocked_summons: return
+	unlocked_summons.append(summon)
 
 #convinence function to get the packed scene of a game save
 func get_packed_scene()->PackedScene:
