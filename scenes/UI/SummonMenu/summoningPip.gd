@@ -46,14 +46,24 @@ func _ready() -> void:
 	self.mouse_entered.connect(self.on_mouse_entered)
 	self.mouse_exited.connect(self.on_mouse_exited)
 	self.pressed.connect(self.on_pressed)
+	get_node("summon_star/AnimationPlayer").animation_finished.connect(self.on_animation_finished)
 
+func on_animation_finished(anim)->void:
+	if anim == "summon_start":
+		get_node("summon_star/AnimationPlayer").play("rotate_star")
 
 func on_mouse_entered()->void:
 	#indicate that we want to summon this entity
 	if not self.is_unlocked(): return
+
 	self.get_summon_menu().indicate(self)
+	get_node("summon_star/AnimationPlayer").play("summon_start")
+
 func on_mouse_exited()->void:
-	pass
+	if not self.is_unlocked(): return
+
+	self.get_summon_menu().unindicate()
+	get_node("summon_star/AnimationPlayer").play("summon_stop")
 func on_pressed()->void:
 	if not self.is_unlocked(): return
 	self.get_summon_menu().summon(self)

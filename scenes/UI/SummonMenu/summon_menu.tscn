@@ -1,46 +1,78 @@
-[gd_scene load_steps=24 format=3 uid="uid://cjl8fnj6yr4s3"]
+[gd_scene load_steps=15 format=3 uid="uid://cjl8fnj6yr4s3"]
 
 [ext_resource type="Script" path="res://scenes/UI/SummonMenu/summon_menu.gd" id="1_asfvd"]
-[ext_resource type="Texture2D" uid="uid://cixvie4gb20gc" path="res://assets/ui/hearts/witch/witchHeart0001.png" id="1_y2kx7"]
-[ext_resource type="Shader" uid="uid://cnw52f38xqu2p" path="res://scenes/effects/silloette_shader.tres" id="2_1x8gx"]
-[ext_resource type="Texture2D" uid="uid://bixic6dsnrs0p" path="res://assets/animations/kamakazi_fly/entity_heart/kamakazi_fly_heart0022.png" id="2_e6jp1"]
-[ext_resource type="Script" path="res://scenes/UI/SummonMenu/summoningPip.gd" id="2_mcmdq"]
-[ext_resource type="Texture2D" uid="uid://gjq541ubg121" path="res://assets/animations/cider spirit/hearts/heartbetter0001.png" id="3_mmk8p"]
-[ext_resource type="Texture2D" uid="uid://cdoq5b7xnrm5i" path="res://assets/animations/apple picker ghost/hearts/full_apple.png" id="4_uk3v1"]
-[ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="6_ilceq"]
-[ext_resource type="Texture2D" uid="uid://dov7ja5sb24fe" path="res://assets/animations/witch/witch_color_damage/0043.png" id="6_wvhk7"]
-[ext_resource type="Texture2D" uid="uid://c3adfvdeuuj1r" path="res://assets/animations/kamakazi_fly/kamakazi_fly0001.png" id="8_ej2mw"]
-[ext_resource type="Texture2D" uid="uid://21iixupgrguj" path="res://assets/animations/apple picker ghost/applePicker0001.png" id="8_wvabc"]
-[ext_resource type="PackedScene" uid="uid://coel2q7oiemnj" path="res://scenes/entities/halloween/batSplosion/bat_splosion.tscn" id="9_10ruo"]
-[ext_resource type="Texture2D" uid="uid://cadiswusln4x" path="res://assets/animations/cider spirit/0006.png" id="10_t4xuw"]
-[ext_resource type="Texture2D" uid="uid://djliw41u8h0us" path="res://assets/animations/rolling_pumpkin/rolly pumpkin explosion/rolinsplosin0001.png" id="11_errnm"]
+[ext_resource type="PackedScene" uid="uid://dtax3uopyvfse" path="res://scenes/UI/SummonMenu/summon_pip/summon_pip.tscn" id="3_s3c7n"]
+[ext_resource type="Texture2D" uid="uid://ddtrfc336vrrq" path="res://assets/animations/rolling_pumpkin/blink.png" id="5_6e2vt"]
 [ext_resource type="Texture2D" uid="uid://51m4y68yahht" path="res://assets/ui/hearts/rolly_pumpkin/big.png" id="11_yotvx"]
-[ext_resource type="PackedScene" uid="uid://cotdsdtg0th0l" path="res://scenes/entities/orchard/applePicker/applePickerEntity.tscn" id="12_up6ft"]
-[ext_resource type="PackedScene" uid="uid://01fi2eykheye" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.tscn" id="15_0fhar"]
 [ext_resource type="PackedScene" uid="uid://cnoukjnux3vku" path="res://scenes/entities/halloween/rollingPumpkin/rolling_pumpkin_entity.tscn" id="18_iewcj"]
+[ext_resource type="Texture2D" uid="uid://cptw8ym44c3q8" path="res://assets/ui/summon_menu/margin_garnish.png" id="19_1f3pt"]
+[ext_resource type="Texture2D" uid="uid://c1n13ruxg5uwl" path="res://assets/ui/summon_menu/summon_seperator.png" id="20_jp4lg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2wdr"]
-shader = ExtResource("2_1x8gx")
-shader_parameter/doSilloette = false
-shader_parameter/Silloette_Color = null
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_2aq8t"]
+parameter_name = "Silloette_Color"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hk56m"]
-shader = ExtResource("2_1x8gx")
-shader_parameter/doSilloette = null
-shader_parameter/Silloette_Color = null
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_4sm8h"]
+default_input_values = [0, false, 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0, 0, 0, 0)]
+op_type = 5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6bfx"]
-shader = ExtResource("2_1x8gx")
-shader_parameter/doSilloette = false
-shader_parameter/Silloette_Color = Color(0, 0, 0, 1)
+[sub_resource type="Texture2DRD" id="Texture2DRD_7ixfq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1714q"]
-shader = ExtResource("2_1x8gx")
-shader_parameter/doSilloette = false
-shader_parameter/Silloette_Color = null
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_t6lll"]
+source = 2
+texture = SubResource("Texture2DRD_7ixfq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nnrt"]
-shader = ExtResource("2_1x8gx")
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_n8edy"]
+parameter_name = "doSilloette"
+
+[sub_resource type="VisualShader" id="VisualShader_emib0"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform bool doSilloette;
+uniform vec4 Silloette_Color : source_color;
+
+
+
+void fragment() {
+// BooleanParameter:5
+	bool n_out5p0 = doSilloette;
+
+
+// ColorParameter:2
+	vec4 n_out2p0 = Silloette_Color;
+
+
+	vec4 n_out4p0;
+// Texture2D:4
+	n_out4p0 = texture(TEXTURE, UV);
+
+
+	vec4 n_out3p0;
+// Switch:3
+	n_out3p0 = mix(n_out4p0, n_out2p0, float(n_out5p0));
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out3p0.xyz);
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(560, 180)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_2aq8t")
+nodes/fragment/2/position = Vector2(-140, 180)
+nodes/fragment/3/node = SubResource("VisualShaderNodeSwitch_4sm8h")
+nodes/fragment/3/position = Vector2(260, 20)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_t6lll")
+nodes/fragment/4/position = Vector2(-80, -40)
+nodes/fragment/5/node = SubResource("VisualShaderNodeBooleanParameter_n8edy")
+nodes/fragment/5/position = Vector2(-100, -200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 1, 4, 0, 3, 2, 3, 0, 0, 0, 5, 0, 3, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8q05g"]
+shader = SubResource("VisualShader_emib0")
 shader_parameter/doSilloette = false
 shader_parameter/Silloette_Color = null
 
@@ -53,7 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_asfvd")
 summon_indicator = NodePath("ImageDisplay/SummonIndicator")
-indicator_container = NodePath("GridContainer")
+indicator_container = NodePath("summon_options/GridContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -62,57 +94,74 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.945, 1, 0.89, 1)
+color = Color(0.219608, 0.219608, 0.219608, 0.584314)
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="garnishes" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.422
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="left_garnish" type="TextureRect" parent="garnishes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+offset_left = -34.8
+offset_right = 34.8
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_1f3pt")
+expand_mode = 4
+flip_h = true
+
+[node name="left_garnish2" type="TextureRect" parent="garnishes"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -34.8
+offset_right = 34.8
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_1f3pt")
+expand_mode = 4
+
+[node name="summon_options" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.2
+anchor_top = 0.589
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="GridContainer" type="GridContainer" parent="summon_options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.4
+offset_right = 12.4
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.00333, 1)
 columns = 5
 
-[node name="witch" type="TextureButton" parent="GridContainer"]
-material = SubResource("ShaderMaterial_r2wdr")
+[node name="witch" parent="summon_options/GridContainer" instance=ExtResource("3_s3c7n")]
 layout_mode = 2
-texture_normal = ExtResource("1_y2kx7")
-script = ExtResource("2_mcmdq")
-entity_texture = ExtResource("6_wvhk7")
-entity_to_summon = ExtResource("6_ilceq")
 
-[node name="kamakazi" type="TextureButton" parent="GridContainer"]
-material = SubResource("ShaderMaterial_hk56m")
-layout_mode = 2
-texture_normal = ExtResource("2_e6jp1")
-script = ExtResource("2_mcmdq")
-entity_texture = ExtResource("8_ej2mw")
-entity_to_summon = ExtResource("9_10ruo")
-
-[node name="applePicker" type="TextureButton" parent="GridContainer"]
-material = SubResource("ShaderMaterial_k6bfx")
-layout_mode = 2
-texture_normal = ExtResource("4_uk3v1")
-script = ExtResource("2_mcmdq")
-entity_texture = ExtResource("8_wvabc")
-entity_to_summon = ExtResource("12_up6ft")
-
-[node name="ciderSpirit" type="TextureButton" parent="GridContainer"]
-material = SubResource("ShaderMaterial_1714q")
-layout_mode = 2
-texture_normal = ExtResource("3_mmk8p")
-script = ExtResource("2_mcmdq")
-entity_texture = ExtResource("10_t4xuw")
-entity_to_summon = ExtResource("15_0fhar")
-
-[node name="pumpkin" type="TextureButton" parent="GridContainer"]
-material = SubResource("ShaderMaterial_7nnrt")
+[node name="pumpkin" parent="summon_options/GridContainer" instance=ExtResource("3_s3c7n")]
+material = SubResource("ShaderMaterial_8q05g")
 layout_mode = 2
 texture_normal = ExtResource("11_yotvx")
-script = ExtResource("2_mcmdq")
-entity_texture = ExtResource("11_errnm")
+entity_texture = ExtResource("5_6e2vt")
 entity_to_summon = ExtResource("18_iewcj")
 
 [node name="ImageDisplay" type="Control" parent="."]
@@ -126,8 +175,24 @@ grow_vertical = 2
 layout_direction = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3
-anchor_right = 0.6
+anchor_left = 0.335
+anchor_right = 0.615
 anchor_bottom = 1.0
 expand_mode = 1
 stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="ImageDisplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 280.0
+offset_top = 138.0
+offset_right = 328.0
+offset_bottom = 464.544
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_jp4lg")
+
+[editable path="summon_options/GridContainer/pumpkin"]

@@ -40,6 +40,10 @@ func undisplay()->void:
 func indicate(menu_indicator)->void:
 	summon_indicator.texture = menu_indicator.entity_texture
 
+#clear out the summon indicator
+func unindicate()->void:
+	summon_indicator.texture = null
+
 #summons an entity at a given location
 func summon(menu_indicator)->void:
 	if is_instance_valid(summoned_entity):
