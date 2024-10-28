@@ -35,6 +35,9 @@ func display(summon_location : Vector2)->void:
 func undisplay()->void:
 	self.visible = false
 
+	#re enable the buffer to prevent immediate undisplay
+	self.can_undisplay = false
+
 	get_tree().paused = false
 #indicate that we want to summon an entity
 func indicate(menu_indicator)->void:
@@ -56,8 +59,14 @@ func summon(menu_indicator)->void:
 	#re-hide as the player already summoned us
 	self.undisplay()
 
+# used to prevent immediate backing out as soon as we open the menu
+var can_undisplay : bool = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("SUMMON"):
-		pass
-		#self.undisplay()
+	if self.visible and (Input.is_action_just_pressed("SUMMON") or Input.is_action_just_pressed("PAUSE")):
+		if not can_undisplay:
+			can_undisplay = true
+			return
+		self.undisplay()
+

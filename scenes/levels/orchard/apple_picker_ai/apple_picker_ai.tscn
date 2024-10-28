@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://coel2q7oiemnj" path="res://scenes/entities/halloween/batSplosion/bat_splosion.tscn" id="18_p7365"]
 [ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/ai/AI_bat_splosion.gd" id="19_2emt5"]
 [ext_resource type="PackedScene" uid="uid://154dfvnj02rk" path="res://scenes/pickups/summon_talismin/summon_talismin.tscn" id="20_v2hu7"]
-[ext_resource type="Texture2D" uid="uid://cixvie4gb20gc" path="res://assets/ui/hearts/witch/witchHeart0001.png" id="21_767l2"]
+[ext_resource type="Texture2D" uid="uid://51m4y68yahht" path="res://assets/ui/hearts/rolly_pumpkin/big.png" id="21_l5ujh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5ex8"]
 size = Vector2(166, 154)
@@ -130,10 +130,11 @@ update_speed = 0.2
 
 [node name="summonTalismin" parent="." instance=ExtResource("20_v2hu7")]
 position = Vector2(711, -1099)
-summon_name = "witch"
+summon_name = "pumpkin"
 
 [node name="WitchHeart0001" type="Sprite2D" parent="summonTalismin/summonSprite" index="0"]
-position = Vector2(-2, -13)
-texture = ExtResource("21_767l2")
+position = Vector2(2, 4)
+scale = Vector2(0.653333, 0.653333)
+texture = ExtResource("21_l5ujh")
 
 [editable path="summonTalismin"]

@@ -25,6 +25,7 @@ class_name MainScene
 #and powerups staying removed between scenes
 var runtime_variables : Dictionary = {}
 
+
 #clear the runtime variables but maintain important dictionary
 #structure
 func clear_runtime_variables()->void:
@@ -38,6 +39,10 @@ func _ready():
 	GameLoader.load_save()
 	#start the sound system playing
 	music_system.play()
+
+#properly displays the summon menu
+func display_summon_menu(summon_location : Vector2)->void:
+	summon_menu.display(summon_location)
 
 #pauses the game and opens appropriate menus
 func pause()->void:

@@ -38,4 +38,4 @@ func exorcize(offset : Vector2 = Vector2(0,0))->void:
 func main_process(delta):
 	super.main_process(delta)
 	if self.possesed and Input.is_action_just_pressed("SUMMON"):
-		self.get_main().summon_menu.display(summon_location.global_position)
+		self.get_main().display_summon_menu(summon_location.global_position)
