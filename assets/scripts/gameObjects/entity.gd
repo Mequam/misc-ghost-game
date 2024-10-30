@@ -12,6 +12,7 @@ class_name Entity
 
 #how far away from the unpos spot can we move up down left or right
 @export var unposses_radius : float  = 100
+@export var unposses_to_level : bool = false
 
 #this is a variable to an AI resource
 #that tells us how to run when not possesed
@@ -105,7 +106,7 @@ var saved_col_mask : int
 
 #grabs the camera to follow this entity
 func grab_camera()->void:
-	var lvlParent = get_parent() as Level
+	var lvlParent = self.get_level()
 	lvlParent.cam_ref.target = self
 
 #wether or not the entity can be possesed by the player
@@ -149,7 +150,7 @@ func set_health(val : int)->void:
 				val = max_health
 			health = val 
 	if self.possesed:
-		get_parent().display_hp(self.health,self.max_health,self.heart_text)
+		get_level().display_hp(self.health,self.max_health,self.heart_text)
 func get_health()->int:
 	return health
 
@@ -160,7 +161,15 @@ func die():
 	
 	if self.possesed:
 		damage_entity = self.possesed_entity
-	
+
+	#if there is an entity underneith us that
+	#is possesed, make sure that Leni gets placed
+	#in a "landing pad" so to speak
+	for node in get_children():
+		if node is Entity and node.possesed:
+			node.unposses_to_level = true
+			node.exorcize()
+
 	exorcize()
 
 	#we need to do this after exorcize in order for the health to
@@ -177,7 +186,7 @@ func die():
 func take_damage(dmg : int = 1, dmg_src = null)->void:
 	self.health -= dmg
 	if self.possesed:
-		self.get_parent().get_main().music_system.set_flag("hit")
+		self.get_main().music_system.set_flag("hit")
 	#if we were hit, enable the battle music
 #stores inputs that are pressed and will remain true
 #for as long as the input is not released
@@ -202,9 +211,16 @@ enum EntityState {
 	DAZED
 }
 
+#returns the current level node
+func get_level()->Level:
+	var p = get_parent()
+	while not (p is Level):
+		p = p.get_parent()
+	return p
+
 #gets the load path from the parent of the respawn lamp
 func get_level_path()->String:
-	return self.get_parent().load_path
+	return self.get_level().load_path
 
 #state variable used in all entities
 var state : int = EntityState.DEFAULT : set = set_state, get = get_state
@@ -263,7 +279,7 @@ func main_ready():
 		if not (persistence and persistence.is_marked_for_removal()):
 			entity_ai.setup(self)
 	
-	self.home_level = get_parent().load_path 
+	self.home_level = get_level().load_path 
 	#name can get changed between loading, so we need
 	#to store it so that it remains constant
 	self.home_name = self.name
@@ -360,7 +376,7 @@ func posses_by(entity)->void:
 	#save a reference to the possesed entity
 	self.possesed_entity = entity
 	
-	get_parent().remove_child(entity)
+	entity.get_parent().remove_child(entity)
 	#prevent the entity from processing anything
 	entity.process_mode = Node.PROCESS_MODE_DISABLED
 	clear_stored_inputs() #clear up the stored inputs
@@ -388,6 +404,12 @@ func is_clear_to_unposses(offset : Vector2)->bool:
 	query.exclude = [self]
 	return not space_state.intersect_ray(query)
 
+#gets the node that we place the spirit under
+func get_spirit_parent()->Node2D:
+	if self.unposses_to_level:
+		return get_level()
+	return get_parent()
+
 #clears our possesion	
 func exorcize(offset : Vector2 = Vector2(0,0))->void:
 	if not self.possesed: return
@@ -397,7 +419,7 @@ func exorcize(offset : Vector2 = Vector2(0,0))->void:
 		if self.possesed_entity.ghost_after_effect:
 			self.possesed_entity.ghost_after_effect.the_sprite = self.possesed_entity.get_sprite2D()
 
-		get_parent().add_child(self.possesed_entity)	
+		get_spirit_parent().add_child(self.possesed_entity)	
 
 		possesed_entity.global_position  = unposses_position(offset)
 		self.possesed_entity.process_mode = Node.PROCESS_MODE_INHERIT

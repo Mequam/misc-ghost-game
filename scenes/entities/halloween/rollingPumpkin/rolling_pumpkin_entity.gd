@@ -144,7 +144,7 @@ func plant_tree(normal)->void:
 
 	if self.possesed:
 		print_debug("adding focus point")
-		get_parent().get_cam_ref().add_node_target(inst,20)
+		get_level().get_cam_ref().add_node_target(inst,20)
 		if self.ghost_after_effect:
 			self.ghost_after_effect.visible = false
 

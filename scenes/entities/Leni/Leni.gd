@@ -87,7 +87,7 @@ func update_follow_color(boosted : bool)->void:
 #simple conviennce function to store the current
 #entity as one the game should target
 func store_aggro(host):
-	get_parent().player_entity = host 
+	get_level().player_entity = host 
 
 #leni dies AFTER we finish the die animation
 #so hijak die and call super.die when the anim finishes
@@ -292,7 +292,7 @@ func posses_by(entity):
 #convinence function that saves the game at the given ghost light
 func save_at_light(ghostLight : RespawnLamp)->void:
 	SaveUtils.save_game(Globals.game_name,
-						get_parent(),
+						get_level(),
 						ghostLight)
 
 

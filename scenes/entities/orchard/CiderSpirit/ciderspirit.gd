@@ -102,7 +102,7 @@ func follow_trajectory()->void:
 
 		follower_mug.global_position = global_position 
 		if follower_mug:
-			follower_mug.rotation = self.get_sprite2D().rotation
+			follower_mug.global_rotation = self.get_sprite2D().global_rotation
 		follower_mug.unhide_self(self.get_sprite2D().tail)
 		#the follower mug is NOT the player, so they do not get the player bit if that bit is set
 		self.sync_mug_collision()
@@ -138,7 +138,7 @@ func rotate_sprite_for_collision(col : KinematicCollision2D)->void:
 	
 	#ensure that our sprite is located at the given global position
 	var angle : float = normal.angle()
-	self.get_sprite2D().rotation = angle + (PI if not self.get_sprite2D().flip_h else 0.0)
+	self.get_sprite2D().global_rotation = angle + (PI if not self.get_sprite2D().flip_h else 0.0)
 	
 	#since we have an oblong sprite, we need to adjust it slightly on collision to ensure everything lines up
 	self.get_sprite2D().position = self.original_sprite_position + normal * (1-cos(angle + PI/2))*50

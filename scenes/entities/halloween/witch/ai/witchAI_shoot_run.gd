@@ -27,17 +27,17 @@ func ai_shoot_projectile_dir(dir : String)->void:
 	perform_action(dir,false)
 
 func ai_shoot_projectile(player):
-	if player.position.x < caller.position.x:
+	if player.global_position.x < caller.global_position.x:
 		ai_shoot_projectile_dir("LEFT")
 	else:
 		ai_shoot_projectile_dir("RIGHT")
 	
 func tick(player : Entity)->void:
 	if caller.run:
-		if abs(player.position.x - caller.position.x) > 200:
+		if abs(player.global_position.x - caller.global_position.x) > 200:
 			perform_action("LEFT",false)
 			perform_action("RIGHT",false)
-	elif abs(player.position.x - caller.position.x) < abs(caller.get_node("col_spawn_position").position.x):
+	elif abs(player.global_position.x - caller.global_position.x) < abs(caller.get_node("col_spawn_position").global_position.x):
 		ai_shoot_col(player)
 		ai_run_away(player)
 	else:

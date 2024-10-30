@@ -24,4 +24,4 @@ func unhide_self(tail : String)->void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	self.constant_force = Vector2(0,-1000)
-	self.constant_force = (ciderSpirit.position - self.position).normalized()*attaction 
+	self.constant_force = (ciderSpirit.global_position - self.global_position).normalized()*attaction 
