@@ -30,3 +30,9 @@ func on_action_released(act : String)->void:
 
 func _process(delta)->void:
 	path_follow.progress_ratio += path_velocity*path_speed_multiplier*delta/100
+	
+
+	if path_follow.progress_ratio < 0:
+		path_follow.progress_ratio = 0
+	elif path_follow.progress_ratio > 1:
+		path_follow.progress_ratio = 1

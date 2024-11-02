@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b66j85put7yxc"]
+[gd_scene load_steps=30 format=3 uid="uid://b66j85put7yxc"]
 
 [ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ttb33"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="2_g781n"]
@@ -7,9 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://ds1ye8pl5xns3" path="res://scenes/environment/orchard/appleTree/appleTree.tscn" id="4_0xcra"]
 [ext_resource type="PackedScene" uid="uid://dn7oskg4r226c" path="res://scenes/environment/zone_changer/zone_changer.tscn" id="7_evana"]
 [ext_resource type="PackedScene" uid="uid://tyt07kbx5nj" path="res://scenes/tools/tilenaver/tilenaver.tscn" id="8_jyb7t"]
-[ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="9_3ghdr"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="9_7gihv"]
 [ext_resource type="Script" path="res://scenes/entities/misc/pathFollow/path_follow_entity.gd" id="9_a7bum"]
+[ext_resource type="Texture2D" uid="uid://nqnirgb6mvwp" path="res://assets/animations/line_follow_fly/down/0017.png" id="10_7umjb"]
+[ext_resource type="Texture2D" uid="uid://sknci32yo5ls" path="res://assets/animations/line_follow_fly/left_right/0002.png" id="10_xrli6"]
+[ext_resource type="Texture2D" uid="uid://dwp5djixq267" path="res://assets/animations/line_follow_fly/down/0018.png" id="11_au18c"]
+[ext_resource type="Texture2D" uid="uid://bq64ngha8lqi0" path="res://assets/animations/line_follow_fly/left_right/0003.png" id="11_eivtx"]
+[ext_resource type="Texture2D" uid="uid://c325ftq2ua70c" path="res://assets/animations/line_follow_fly/left_right/0004.png" id="12_8bke5"]
+[ext_resource type="Texture2D" uid="uid://ckh86jcm7cv6m" path="res://assets/animations/line_follow_fly/down/0019.png" id="12_ytiuf"]
+[ext_resource type="Texture2D" uid="uid://d4ig1khvj1505" path="res://assets/animations/line_follow_fly/left_right/0005.png" id="13_4vw5u"]
+[ext_resource type="Texture2D" uid="uid://bfdj0ocged8qt" path="res://assets/animations/line_follow_fly/left_right/0006.png" id="14_lp7fn"]
+[ext_resource type="Texture2D" uid="uid://dqb3mdbpd6kiy" path="res://assets/animations/line_follow_fly/left_right/0007.png" id="15_xq74l"]
+[ext_resource type="Texture2D" uid="uid://c2gruqotjsv4h" path="res://assets/animations/line_follow_fly/left_right/0008.png" id="16_fmh7o"]
+[ext_resource type="Texture2D" uid="uid://drukf3w8p8ph0" path="res://assets/animations/line_follow_fly/left_right/0009.png" id="17_11u1k"]
+[ext_resource type="Texture2D" uid="uid://cwv8bdnwci6aw" path="res://assets/animations/line_follow_fly/up/0011.png" id="18_ad285"]
+[ext_resource type="Texture2D" uid="uid://ch15rf73rbwsw" path="res://assets/animations/line_follow_fly/up/0012.png" id="19_si5gq"]
+[ext_resource type="Texture2D" uid="uid://cxxjrq5gnh7t7" path="res://assets/animations/line_follow_fly/up/0013.png" id="20_qc8u2"]
+[ext_resource type="Script" path="res://scenes/entities/misc/pathFollow/path_eye_sprite.gd" id="24_2il3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5ex8"]
 size = Vector2(166, 154)
@@ -21,18 +35,67 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="Curve2D" id="Curve2D_t1lql"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -196, 41, 0, 0, 0, 0, -148, -64, 0, 0, 0, 0, -735, -38, 0, 0, 0, 0, -98, 128, 0, 0, 0, 0, 180, -118, 0, 0, 0, 0, 40, -232, 0, 0, 0, 0, -299, -217, 0, 0, 0, 0, -584, -161, 0, 0, 0, 0, -975, 38)
+"points": PackedVector2Array(0, 0, 0, 0, -116, -219, 0, 0, 0, 0, -111, -45, 0, 0, 0, 0, -109, 57, 0, 0, 0, 0, -113, 167, 0, 0, 0, 0, -116, 283, 0, 0, 0, 0, 210, 272, 0, 0, 0, 0, 506, 284, 0, 0, 0, 0, 778, -34, 0, 0, 0, 0, 1002, 300, 0, 0, 0, 0, 766, 514, 0, 0, 0, 0, 506, 286, 0, 0, 0, 0, -114, 284, 0, 0, 0, 0, -130, -232)
 }
-point_count = 9
+point_count = 13
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7n2me"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_3ghdr")
+"texture": ExtResource("10_7umjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_au18c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ytiuf")
 }],
 "loop": true,
-"name": &"default",
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_xrli6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eivtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8bke5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4vw5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lp7fn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_xq74l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fmh7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_11u1k")
+}],
+"loop": true,
+"name": &"left_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ad285")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_si5gq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_qc8u2")
+}],
+"loop": true,
+"name": &"up",
 "speed": 5.0
 }]
 
@@ -95,21 +158,33 @@ position = Vector2(1575, -1119)
 curve = SubResource("Curve2D_t1lql")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-196, 41)
-rotation = 1.00541
-rotates = false
+position = Vector2(-116, -219)
+rotation = 1.54207
 loop = false
 
 [node name="pathFollowEntity" type="CharacterBody2D" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("path_follow", "sprite")]
 rotation = -1.00086
 script = ExtResource("9_a7bum")
-path_speed_multiplier = 80.0
+path_speed_multiplier = 20.0
 path_follow = NodePath("..")
 sprite = NodePath("AnimatedSprite2D")
 unposses_to_level = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/pathFollowEntity"]
+position = Vector2(5.3158, -0.861731)
+rotation = 0.917516
+scale = Vector2(0.182306, 0.182306)
 sprite_frames = SubResource("SpriteFrames_7n2me")
+animation = &"left_right"
+frame_progress = 0.0234519
+speed_scale = 2.0
+script = ExtResource("24_2il3y")
+
+[node name="top" type="Node2D" parent="Path2D/PathFollow2D/pathFollowEntity/AnimatedSprite2D"]
+position = Vector2(-53.8259, -219.075)
+
+[node name="eye" type="Node2D" parent="Path2D/PathFollow2D/pathFollowEntity/AnimatedSprite2D"]
+position = Vector2(-137.853, 74.137)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/pathFollowEntity"]
 position = Vector2(1.26666, 0.803833)
