@@ -1,0 +1,109 @@
+[gd_scene load_steps=19 format=3 uid="uid://dq4q1gb6x85ry"]
+
+[ext_resource type="Script" path="res://scenes/entities/misc/pathFollow/path_follow_entity.gd" id="1_x8xqa"]
+[ext_resource type="Texture2D" uid="uid://nqnirgb6mvwp" path="res://assets/animations/line_follow_fly/down/0017.png" id="2_f228n"]
+[ext_resource type="Texture2D" uid="uid://dwp5djixq267" path="res://assets/animations/line_follow_fly/down/0018.png" id="3_tuycb"]
+[ext_resource type="Texture2D" uid="uid://ckh86jcm7cv6m" path="res://assets/animations/line_follow_fly/down/0019.png" id="4_6p20c"]
+[ext_resource type="Texture2D" uid="uid://sknci32yo5ls" path="res://assets/animations/line_follow_fly/left_right/0002.png" id="5_wtfff"]
+[ext_resource type="Texture2D" uid="uid://bq64ngha8lqi0" path="res://assets/animations/line_follow_fly/left_right/0003.png" id="6_okmkg"]
+[ext_resource type="Texture2D" uid="uid://c325ftq2ua70c" path="res://assets/animations/line_follow_fly/left_right/0004.png" id="7_7b8lb"]
+[ext_resource type="Texture2D" uid="uid://d4ig1khvj1505" path="res://assets/animations/line_follow_fly/left_right/0005.png" id="8_rvx88"]
+[ext_resource type="Texture2D" uid="uid://bfdj0ocged8qt" path="res://assets/animations/line_follow_fly/left_right/0006.png" id="9_tywef"]
+[ext_resource type="Texture2D" uid="uid://dqb3mdbpd6kiy" path="res://assets/animations/line_follow_fly/left_right/0007.png" id="10_jm4ls"]
+[ext_resource type="Texture2D" uid="uid://c2gruqotjsv4h" path="res://assets/animations/line_follow_fly/left_right/0008.png" id="11_b5sjw"]
+[ext_resource type="Texture2D" uid="uid://drukf3w8p8ph0" path="res://assets/animations/line_follow_fly/left_right/0009.png" id="12_di4xa"]
+[ext_resource type="Texture2D" uid="uid://cwv8bdnwci6aw" path="res://assets/animations/line_follow_fly/up/0011.png" id="13_mmt24"]
+[ext_resource type="Texture2D" uid="uid://ch15rf73rbwsw" path="res://assets/animations/line_follow_fly/up/0012.png" id="14_3pv4l"]
+[ext_resource type="Texture2D" uid="uid://cxxjrq5gnh7t7" path="res://assets/animations/line_follow_fly/up/0013.png" id="15_ga6dj"]
+[ext_resource type="Script" path="res://scenes/entities/misc/pathFollow/path_eye_sprite.gd" id="16_ltns6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7n2me"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f228n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tuycb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6p20c")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wtfff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_okmkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7b8lb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rvx88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tywef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jm4ls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b5sjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_di4xa")
+}],
+"loop": true,
+"name": &"left_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_mmt24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3pv4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ga6dj")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8jdi"]
+radius = 37.0135
+
+[node name="pathFollowEntity" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_x8xqa")
+path_speed_multiplier = 20.0
+sprite = NodePath("AnimatedSprite2D")
+unposses_to_level = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6.86123, 1.70955)
+scale = Vector2(0.224282, 0.224282)
+sprite_frames = SubResource("SpriteFrames_7n2me")
+animation = &"left_right"
+frame_progress = 0.851274
+speed_scale = 2.0
+script = ExtResource("16_ltns6")
+
+[node name="top" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(-53.8259, -219.075)
+
+[node name="eye" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(-137.853, 74.137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 15)
+shape = SubResource("CircleShape2D_j8jdi")
+
+[node name="unposSpot" type="Node2D" parent="."]
+position = Vector2(-0.300297, -65.9993)

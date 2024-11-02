@@ -28,6 +28,16 @@ func on_action_released(act : String)->void:
 	path_velocity -= direction.x
 	super.on_action_released(act)
 
+#just to be safe zero out the path velocity between possesion
+func posess_by(entity)->void:
+	super.posses_by(entity)
+	self.path_velocity = 0
+
+func exorcize(offset : Vector2 = Vector2(0,0))->void:
+	super.exorcize(offset)
+	self.path_velocity = 0
+	self.clear_stored_inputs()
+
 func _process(delta)->void:
 	path_follow.progress_ratio += path_velocity*path_speed_multiplier*delta/100
 	
@@ -36,3 +46,9 @@ func _process(delta)->void:
 		path_follow.progress_ratio = 0
 	elif path_follow.progress_ratio > 1:
 		path_follow.progress_ratio = 1
+	
+	# this is NOT the correct way to do this, but it works
+	# and deals with legacy input systems that could
+	# probably be better designed
+	if abs(path_velocity) > 1:
+		path_velocity = abs(path_velocity) / path_velocity

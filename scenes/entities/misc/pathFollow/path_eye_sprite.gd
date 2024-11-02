@@ -1,6 +1,9 @@
 extends AnimatedSprite2D
 
-
+# sprite logic for the path follow entity eye
+# path follow is agnostic to the art attached to it
+# (as other entities SHOULD be honestly) so we move the logic
+# here
 
 @export var flip_slope : float = 2
 var last_position : Vector2 = Vector2(0,0)
@@ -31,6 +34,8 @@ func orientate_sprite(velocity : Vector2)->void:
 			#look where were going
 			self.global_rotation = velocity.angle()
 			self.custom_play("left_right")
+	elif self.animation == "up" or self.animation == "down":
+		self.custom_play("left_right")
 
 		self.flip_h = (velocity.x < 0) != (orientation.y > 0)
 
