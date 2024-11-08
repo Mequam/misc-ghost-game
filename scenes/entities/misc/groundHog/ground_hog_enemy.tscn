@@ -1,18 +1,241 @@
-[gd_scene load_steps=4 format=3 uid="uid://1m6jtm3r2yym"]
+[gd_scene load_steps=44 format=3 uid="uid://1m6jtm3r2yym"]
 
 [ext_resource type="Shader" uid="uid://bdi8500nhngre" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.tres" id="1_lkk5r"]
+[ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.gd" id="1_v3ges"]
 [ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="2_h458k"]
+[ext_resource type="Texture2D" uid="uid://dmmoc50u27lb0" path="res://assets/animations/witch/witch0001.png" id="3_xc5g5"]
+[ext_resource type="Texture2D" uid="uid://bxlvy32d7h1is" path="res://assets/animations/witch/witch0002.png" id="4_a75f8"]
+[ext_resource type="Texture2D" uid="uid://c06f0fbxopqd3" path="res://assets/animations/witch/witch0003.png" id="5_ks0u7"]
+[ext_resource type="Texture2D" uid="uid://di7rs3jcr2u6c" path="res://assets/animations/witch/witch0004.png" id="6_i6wt1"]
+[ext_resource type="Texture2D" uid="uid://id2yo2e74t5c" path="res://assets/animations/witch/witch0005.png" id="7_xe3x2"]
+[ext_resource type="Texture2D" uid="uid://cb10qbrenahym" path="res://assets/animations/witch/witch0006.png" id="8_f4wot"]
+[ext_resource type="Texture2D" uid="uid://dkar4uycat5he" path="res://assets/animations/witch/witch0007.png" id="9_3vq2d"]
+[ext_resource type="Texture2D" uid="uid://b2n3t6hmqd8cp" path="res://assets/animations/witch/witch0008.png" id="10_4rraa"]
+[ext_resource type="Texture2D" uid="uid://c1tsgx7hu3isg" path="res://assets/animations/witch/witch0009.png" id="11_e4o2s"]
+[ext_resource type="Texture2D" uid="uid://dfb6hfqh25jxy" path="res://assets/animations/witch/witch0010.png" id="12_wxqng"]
+[ext_resource type="Texture2D" uid="uid://c5iyrtjvotlux" path="res://assets/animations/witch/witch0011.png" id="13_njk58"]
+[ext_resource type="Texture2D" uid="uid://i1an2mvkbxwp" path="res://assets/animations/witch/witch0012.png" id="14_v1bq3"]
+[ext_resource type="Texture2D" uid="uid://tl1mkmuyobv1" path="res://assets/animations/witch/witch0013.png" id="15_64h4c"]
+[ext_resource type="Texture2D" uid="uid://c8hhr584xsfut" path="res://assets/animations/witch/witch0014.png" id="16_dg1ai"]
+[ext_resource type="Texture2D" uid="uid://xbidilhklury" path="res://assets/animations/witch/witch0015.png" id="17_molfg"]
+[ext_resource type="Texture2D" uid="uid://c36f28j38g1d" path="res://assets/animations/witch/witch0016.png" id="18_e4ab4"]
+[ext_resource type="Texture2D" uid="uid://d2tkk5e8ccyjl" path="res://assets/animations/witch/witch0017.png" id="19_qlx0w"]
+[ext_resource type="Texture2D" uid="uid://bmxedg0mpnog5" path="res://assets/animations/witch/witch0018.png" id="20_bcnyr"]
+[ext_resource type="Texture2D" uid="uid://f3wk4ix5l833" path="res://assets/animations/witch/witch0019.png" id="21_y3n5a"]
+[ext_resource type="Texture2D" uid="uid://wsgin4t0bjrh" path="res://assets/animations/witch/witch0020.png" id="22_fkecr"]
+[ext_resource type="Texture2D" uid="uid://d30m250owy11e" path="res://assets/animations/witch/witch0021.png" id="23_3vr07"]
+[ext_resource type="Texture2D" uid="uid://7wdlbl0v5x2c" path="res://assets/animations/witch/witch0022.png" id="24_vtr0w"]
+[ext_resource type="Texture2D" uid="uid://13u8k5xokc04" path="res://assets/animations/witch/witch0023.png" id="25_cxh6h"]
+[ext_resource type="Texture2D" uid="uid://pc85goq8msba" path="res://assets/animations/witch/witch0024.png" id="26_r6flr"]
+[ext_resource type="Texture2D" uid="uid://b4dxouo8xqtfn" path="res://assets/animations/witch/witch0025.png" id="27_bx0he"]
+[ext_resource type="Texture2D" uid="uid://c8ryn4gnddg1b" path="res://assets/animations/witch/witch0026.png" id="28_hwmf3"]
+[ext_resource type="Texture2D" uid="uid://cpe6g2gad3cgq" path="res://assets/animations/witch/witch0027.png" id="29_5kth6"]
+[ext_resource type="Texture2D" uid="uid://dkgot7drsy4qd" path="res://assets/animations/witch/witch0028.png" id="30_y55il"]
+[ext_resource type="Texture2D" uid="uid://d24pf3ms1b3q0" path="res://assets/animations/witch/witch0029.png" id="31_bf63h"]
+[ext_resource type="Texture2D" uid="uid://catbt3t4g6m03" path="res://assets/animations/witch/witch0030.png" id="32_tcwh8"]
+[ext_resource type="Texture2D" uid="uid://dunqh85i268xe" path="res://assets/animations/witch/witch0031.png" id="33_ukx1x"]
+[ext_resource type="Texture2D" uid="uid://bi44c310kgv8y" path="res://assets/animations/witch/witch0032.png" id="34_0iyof"]
+[ext_resource type="Texture2D" uid="uid://cirotfvx87qdu" path="res://assets/animations/witch/witch0033.png" id="35_olgos"]
+[ext_resource type="Texture2D" uid="uid://8nynsptgphxg" path="res://assets/animations/witch/witch_damage.png" id="36_wit87"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4wkn"]
+size = Vector2(43, 565.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mluuy"]
 shader = ExtResource("1_lkk5r")
-shader_parameter/revealed_perc = 0.56
+shader_parameter/scale = 1.0
+shader_parameter/revealed_perc = 1.0
 shader_parameter/Texture2DParameter = ExtResource("2_h458k")
 
-[node name="groundHogEnemy" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wp0ki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xc5g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a75f8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ks0u7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i6wt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xe3x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f4wot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3vq2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4rraa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_e4o2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wxqng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_njk58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_v1bq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_64h4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dg1ai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_molfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_e4ab4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qlx0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bcnyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_y3n5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_fkecr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_3vr07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_vtr0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_cxh6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_r6flr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_bx0he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_hwmf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_5kth6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_y55il")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_bf63h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_tcwh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ukx1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0iyof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_olgos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_wit87")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[sub_resource type="Animation" id="Animation_uf4hp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/ColorRect:material:shader_parameter/scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3goae"]
+resource_name = "test"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/ColorRect:material:shader_parameter/scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6ukf"]
+_data = {
+"RESET": SubResource("Animation_uf4hp"),
+"test": SubResource("Animation_3goae")
+}
+
+[node name="groundHogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_v3ges")
+sprite = NodePath("Node2D/ColorRect")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -281)
+shape = SubResource("RectangleShape2D_x4wkn")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ColorRect" type="AnimatedSprite2D" parent="Node2D"]
 material = SubResource("ShaderMaterial_mluuy")
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 80.0
-offset_bottom = 2152.0
+position = Vector2(-1, -190)
+scale = Vector2(0.355, 1)
+sprite_frames = SubResource("SpriteFrames_wp0ki")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j6ukf")
+}
