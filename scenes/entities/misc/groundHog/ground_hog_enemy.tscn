@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://1m6jtm3r2yym"]
+[gd_scene load_steps=46 format=3 uid="uid://1m6jtm3r2yym"]
 
 [ext_resource type="Shader" uid="uid://bdi8500nhngre" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.tres" id="1_lkk5r"]
 [ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.gd" id="1_v3ges"]
-[ext_resource type="Texture2D" uid="uid://b7gc8lcwi3ap8" path="res://icon.png" id="2_h458k"]
+[ext_resource type="Texture2D" uid="uid://cqprt2dcqpah" path="res://assets/animations/ground_hog_ghost/0015.png" id="3_l6d0s"]
 [ext_resource type="Texture2D" uid="uid://dmmoc50u27lb0" path="res://assets/animations/witch/witch0001.png" id="3_xc5g5"]
 [ext_resource type="Texture2D" uid="uid://bxlvy32d7h1is" path="res://assets/animations/witch/witch0002.png" id="4_a75f8"]
+[ext_resource type="Texture2D" uid="uid://sqve0qm56546" path="res://assets/animations/ground_hog_ghost/0001.png" id="4_rw2iy"]
 [ext_resource type="Texture2D" uid="uid://c06f0fbxopqd3" path="res://assets/animations/witch/witch0003.png" id="5_ks0u7"]
 [ext_resource type="Texture2D" uid="uid://di7rs3jcr2u6c" path="res://assets/animations/witch/witch0004.png" id="6_i6wt1"]
 [ext_resource type="Texture2D" uid="uid://id2yo2e74t5c" path="res://assets/animations/witch/witch0005.png" id="7_xe3x2"]
@@ -37,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://bi44c310kgv8y" path="res://assets/animations/witch/witch0032.png" id="34_0iyof"]
 [ext_resource type="Texture2D" uid="uid://cirotfvx87qdu" path="res://assets/animations/witch/witch0033.png" id="35_olgos"]
 [ext_resource type="Texture2D" uid="uid://8nynsptgphxg" path="res://assets/animations/witch/witch_damage.png" id="36_wit87"]
+[ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_sprite.gd" id="39_yw7s3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4wkn"]
 size = Vector2(43, 565.25)
@@ -45,7 +47,8 @@ size = Vector2(43, 565.25)
 shader = ExtResource("1_lkk5r")
 shader_parameter/scale = 1.0
 shader_parameter/revealed_perc = 1.0
-shader_parameter/Texture2DParameter = ExtResource("2_h458k")
+shader_parameter/Texture2DParameter3 = ExtResource("4_rw2iy")
+shader_parameter/Texture2DParameter = ExtResource("3_l6d0s")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wp0ki"]
 animations = [{
@@ -162,7 +165,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:scale")
+tracks/0/path = NodePath("SpriteBone:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -174,7 +177,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/ColorRect:material:shader_parameter/scale")
+tracks/1/path = NodePath("SpriteBone/Sprite2D:material:shader_parameter/scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -191,26 +194,26 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:scale")
+tracks/0/path = NodePath("SpriteBone:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0333333, 1.33333, 3.94999),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/ColorRect:material:shader_parameter/scale")
+tracks/1/path = NodePath("SpriteBone/Sprite2D:material:shader_parameter/scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.66667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0999999, 1.3, 3.94999),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [0.0, 1.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6ukf"]
@@ -219,21 +222,27 @@ _data = {
 "test": SubResource("Animation_3goae")
 }
 
-[node name="groundHogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="groundHogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_bone", "sprite", "unpos_spot")]
 script = ExtResource("1_v3ges")
-sprite = NodePath("Node2D/ColorRect")
+sprite_bone = NodePath("SpriteBone")
+sprite = NodePath("SpriteBone/Sprite2D")
+unpos_spot = NodePath("SpriteBone/unPosLocation")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -281)
 shape = SubResource("RectangleShape2D_x4wkn")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="SpriteBone" type="Node2D" parent="."]
 
-[node name="ColorRect" type="AnimatedSprite2D" parent="Node2D"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="SpriteBone"]
 material = SubResource("ShaderMaterial_mluuy")
-position = Vector2(-1, -190)
-scale = Vector2(0.355, 1)
+position = Vector2(0, -298)
+scale = Vector2(0.255, 1.465)
 sprite_frames = SubResource("SpriteFrames_wp0ki")
+script = ExtResource("39_yw7s3")
+
+[node name="unPosLocation" type="Node2D" parent="SpriteBone"]
+position = Vector2(0, -566)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

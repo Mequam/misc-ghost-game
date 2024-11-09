@@ -507,11 +507,15 @@ func main_input(event)->void:
 	if possesed and event.is_action_type():
 		compute_action(event)
 
+@export var unpos_spot : Node2D = null
+
 #gets the position that Leni needs to go to when he
 #unposseses the entity
 #defaults to the entities position if no position
 #is given
 func unposses_position(offset : Vector2 = Vector2(0,0))->Vector2:
+	if unpos_spot: 
+		return unpos_spot.global_position + offset * self.unposses_radius
 	if $unposSpot is Node2D:
 		return $unposSpot.global_position + offset * self.unposses_radius
 	return position
