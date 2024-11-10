@@ -45,8 +45,7 @@ size = Vector2(43, 565.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mluuy"]
 shader = ExtResource("1_lkk5r")
-shader_parameter/scale = 1.0
-shader_parameter/revealed_perc = 1.0
+shader_parameter/scale = 0.1
 shader_parameter/Texture2DParameter3 = ExtResource("4_rw2iy")
 shader_parameter/Texture2DParameter = ExtResource("3_l6d0s")
 
@@ -162,59 +161,11 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_uf4hp"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteBone:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteBone/Sprite2D:material:shader_parameter/scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
 
 [sub_resource type="Animation" id="Animation_3goae"]
 resource_name = "test"
 length = 5.0
 loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteBone:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 1.33333, 3.94999),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteBone/Sprite2D:material:shader_parameter/scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0999999, 1.3, 3.94999),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6ukf"]
 _data = {
@@ -233,11 +184,12 @@ position = Vector2(-2, -281)
 shape = SubResource("RectangleShape2D_x4wkn")
 
 [node name="SpriteBone" type="Node2D" parent="."]
+scale = Vector2(1, 1.00136e-05)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="SpriteBone"]
 material = SubResource("ShaderMaterial_mluuy")
-position = Vector2(0, -298)
-scale = Vector2(0.255, 1.465)
+position = Vector2(0, -1.66774e+07)
+scale = Vector2(0.255, 83386.7)
 sprite_frames = SubResource("SpriteFrames_wp0ki")
 script = ExtResource("39_yw7s3")
 
