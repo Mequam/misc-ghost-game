@@ -6,4 +6,4 @@ func custom_play(anim)->void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.material.set_shader_parameter("scale",self.global_scale.y)
+	self.material.set_shader_parameter("scale",self.global_scale.y/5)
