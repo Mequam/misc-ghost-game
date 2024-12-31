@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://evxm213l8npl" path="res://assets/animations/ground_hog_ghost/0007.png" id="5_dask5"]
 [ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_sprite.gd" id="39_yw7s3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4wkn"]
-size = Vector2(43, 385.625)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mluuy"]
 shader = ExtResource("1_lkk5r")
 shader_parameter/scale = 0.125
@@ -28,24 +25,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="groundHogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_bone", "sprite", "unpos_spot")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4wkn"]
+size = Vector2(43, 464)
+
+[node name="groundHogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("collision_shape", "sprite_bone", "sprite", "unpos_spot")]
 script = ExtResource("1_v3ges")
-sprite_bone = NodePath("SpriteBone")
-sprite = NodePath("SpriteBone/Sprite2D")
-unpos_spot = NodePath("SpriteBone/unPosLocation")
+collision_shape = NodePath("CollisionShape2D")
+sprite_bone = NodePath("")
+sprite = NodePath("Sprite2D")
+unpos_spot = NodePath("unPosLocation")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -191.188)
-shape = SubResource("RectangleShape2D_x4wkn")
-
-[node name="SpriteBone" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="AnimatedSprite2D" parent="SpriteBone"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_mluuy")
-position = Vector2(3.00001, -924.667)
-scale = Vector2(0.206, 3.70133)
+position = Vector2(0, -250)
+scale = Vector2(0.206, 1)
 sprite_frames = SubResource("SpriteFrames_wp0ki")
 script = ExtResource("39_yw7s3")
 
-[node name="unPosLocation" type="Node2D" parent="SpriteBone"]
-position = Vector2(4, -400)
+[node name="unPosLocation" type="Node2D" parent="."]
+position = Vector2(-2, -491.57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -235)
+shape = SubResource("RectangleShape2D_x4wkn")

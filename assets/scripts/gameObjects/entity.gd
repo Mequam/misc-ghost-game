@@ -400,9 +400,25 @@ func on_unposses(_host)->void:
 func is_clear_to_unposses(offset : Vector2)->bool:
 	var target_position : Vector2 = unposses_position(offset)
 	var space_state =  get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(global_position,target_position,ColMath.ConstLayer.TILE_BORDER)
-	query.exclude = [self]
-	return not space_state.intersect_ray(query)
+	
+	var shape_query = PhysicsShapeQueryParameters2D.new()
+	var rectangle = RectangleShape2D.new()
+	
+	#these dimensions are coming from leni's tscn file
+	rectangle.size.x = 27.125
+	rectangle.size.y = 29.625
+
+
+	shape_query.set_shape(rectangle)
+	shape_query.collision_mask = ColMath.ConstLayer.TILE_BORDER
+	shape_query.transform.origin = self.unposses_position()
+	shape_query.exclude = [self]
+	
+	return not space_state.intersect_shape(shape_query)
+
+	#var query = PhysicsRayQueryParameters2D.create(global_position,target_position,ColMath.ConstLayer.TILE_BORDER)
+	#query.exclude = [self]
+	#return not space_state.intersect_ray(query)
 
 #gets the node that we place the spirit under
 func get_spirit_parent()->Node2D:
