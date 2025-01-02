@@ -1,7 +1,10 @@
-[gd_scene load_steps=57 format=3 uid="uid://1m6jtm3r2yym"]
+[gd_scene load_steps=63 format=3 uid="uid://1m6jtm3r2yym"]
 
 [ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.gd" id="1_v3ges"]
+[ext_resource type="Texture2D" uid="uid://dll4x0uf4n7tr" path="res://assets/animations/ground_hog_ghost/0005.png" id="4_cjk8y"]
 [ext_resource type="Texture2D" uid="uid://evxm213l8npl" path="res://assets/animations/ground_hog_ghost/0007.png" id="5_dask5"]
+[ext_resource type="Texture2D" uid="uid://bmtprn8mf5nqm" path="res://assets/animations/ground_hog_ghost/0002.png" id="5_gcvuy"]
+[ext_resource type="Texture2D" uid="uid://dxof6ryh44y08" path="res://assets/animations/ground_hog_ghost/0004.png" id="6_3due5"]
 [ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_sprite.gd" id="39_yw7s3"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ih2ov"]
@@ -423,21 +426,65 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_ro30t"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 1, 1.2, 1.33333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_sirso"), ExtResource("4_cjk8y"), SubResource("CompressedTexture2D_sirso"), ExtResource("4_cjk8y"), SubResource("CompressedTexture2D_sirso"), ExtResource("5_gcvuy"), SubResource("CompressedTexture2D_sirso"), ExtResource("6_3due5"), SubResource("CompressedTexture2D_sirso")]
+}
+
+[sub_resource type="Animation" id="Animation_rn2r4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_sirso")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gr4ka"]
+_data = {
+"RESET": SubResource("Animation_rn2r4"),
+"idle": SubResource("Animation_ro30t")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4wkn"]
 size = Vector2(43, 464)
 
-[node name="groundHogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite_bone", "sprite", "unpos_spot")]
+[node name="groundHogEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "unpos_spot")]
 script = ExtResource("1_v3ges")
-sprite_bone = NodePath("")
 sprite = NodePath("Sprite2D")
+after_effect_scale = Vector2(1.3, 1.3)
 unpos_spot = NodePath("unPosLocation")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("animation_player")]
 material = SubResource("ShaderMaterial_stc8n")
 position = Vector2(0, -250)
 scale = Vector2(0.206, 1)
 sprite_frames = SubResource("SpriteFrames_wp0ki")
 script = ExtResource("39_yw7s3")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_gr4ka")
+}
 
 [node name="unPosLocation" type="Node2D" parent="."]
 position = Vector2(-2, -491.57)
@@ -445,3 +492,6 @@ position = Vector2(-2, -491.57)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -235)
 shape = SubResource("RectangleShape2D_x4wkn")
+
+[node name="cameraPos" type="Node2D" parent="."]
+position = Vector2(-2, -459)

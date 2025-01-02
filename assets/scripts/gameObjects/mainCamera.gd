@@ -48,13 +48,6 @@ func get_weighted_sum(w_array):
 	return total / amount
 
 func _process(_delta):
-
-	var test = [1,2,3]
-	var test2 = [4,5,6]
-	var out = test + test2
-	out[0] = 100
-	
-
 	if target:
 		var space_state = get_world_2d().direct_space_state
 		var query = PhysicsRayQueryParameters2D.create( 

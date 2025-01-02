@@ -36,6 +36,8 @@ func set_the_after_image_count(n_count):
 var time = 0.0
 var mesh_update_index = 0
 var mesh_array : Array
+var offset : Vector2 = Vector2(0,0) #offset for the after image for jank setups
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.after_image_count = after_image_count
@@ -90,6 +92,8 @@ func update_after_image():
 			the_mesh_instance.global_position = the_sprite.global_position+the_sprite.size/2
 		else:
 			the_mesh_instance.global_position = the_sprite.global_position+the_sprite.size/2
+
+		the_mesh_instance.global_position += self.offset
 
 		mesh_update_index = (1+mesh_update_index)%len(mesh_array)
 

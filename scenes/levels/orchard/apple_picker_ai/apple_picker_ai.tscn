@@ -96,9 +96,18 @@ update_speed = 0.01
 [node name="entity transform" type="Node2D" parent="."]
 
 [node name="groundHogEnemy" parent="." instance=ExtResource("11_wdakr")]
-position = Vector2(928, -1009)
-scale = Vector2(1, 0.51)
+position = Vector2(2642, -809)
+rotation = 0.924436
+scale = Vector2(1, 1.42)
 
 [node name="groundHogEnemy2" parent="." instance=ExtResource("11_wdakr")]
 position = Vector2(1729, -1547)
 rotation = 3.14159
+
+[node name="groundHogEnemy3" parent="." instance=ExtResource("11_wdakr")]
+position = Vector2(3212, -1476)
+rotation = -0.523698
+
+[node name="groundHogEnemy4" parent="." instance=ExtResource("11_wdakr")]
+position = Vector2(2896, -2064)
+rotation = 1.29378

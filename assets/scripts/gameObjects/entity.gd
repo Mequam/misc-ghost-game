@@ -107,7 +107,10 @@ var saved_col_mask : int
 #grabs the camera to follow this entity
 func grab_camera()->void:
 	var lvlParent = self.get_level()
-	lvlParent.cam_ref.target = self
+	if self.get_node("cameraPos"):
+		lvlParent.cam_ref.target = self.get_node("cameraPos")
+	else:
+		lvlParent.cam_ref.target = self
 
 #wether or not the entity can be possesed by the player
 var can_posses : bool = true
@@ -354,6 +357,9 @@ func compute_action(event : InputEvent)->void:
 func on_posses(posesee):
 	pass
 
+@export var after_effect_offset : Vector2 = Vector2(0,0)
+@export var after_effect_scale : Vector2 = Vector2(1,1)
+
 #something wants to posses us
 func posses_by(entity)->void:
 	#clear out the existing possesed entity
@@ -363,6 +369,8 @@ func posses_by(entity)->void:
 	#if the entity has an after effect, apply it to ourselfs
 	if entity.ghost_after_effect:
 		entity.ghost_after_effect.the_sprite = get_sprite2D()
+		entity.ghost_after_effect.offset = self.after_effect_offset
+		entity.ghost_after_effect.after_scale = self.after_effect_scale
 	if entity.has_method("on_posses"):
 		entity.on_posses(self)
 	#update the collision layer and mask of the self

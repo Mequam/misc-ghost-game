@@ -58,6 +58,8 @@ input_name = "time"
 
 [resource]
 code = "shader_type canvas_item;
+render_mode blend_mix;
+
 uniform float Start_Time;
 uniform float SlightDelay;
 uniform float Lifetime;
@@ -113,14 +115,7 @@ void fragment() {
 	float n_out43p0;
 // Switch:43
 	float n_in43p1 = 1.00000;
-	if(n_out44p0)
-	{
-		n_out43p0 = n_in43p1;
-	}
-	else
-	{
-		n_out43p0 = n_out10p0;
-	}
+	n_out43p0 = mix(n_out10p0, n_in43p1, float(n_out44p0));
 
 
 // FloatFunc:24
@@ -134,7 +129,7 @@ void fragment() {
 
 // UVFunc:41
 	vec2 n_in41p2 = vec2(0.50000, 0.50000);
-	vec2 n_out41p0 = fma((n_out40p0 - n_in41p2), vec2(n_out42p0), n_in41p2);
+	vec2 n_out41p0 = (n_out40p0 - n_in41p2) * vec2(n_out42p0) + n_in41p2;
 
 
 	vec4 n_out3p0;
@@ -161,7 +156,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-431.492, 127.238)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1480, 560)
@@ -199,4 +193,4 @@ nodes/fragment/43/node = SubResource("VisualShaderNodeSwitch_l0a8t")
 nodes/fragment/43/position = Vector2(-40, 220)
 nodes/fragment/44/node = SubResource("VisualShaderNodeCompare_03rcu")
 nodes/fragment/44/position = Vector2(-220, 100)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 6, 0, 10, 0, 3, 0, 12, 0, 11, 0, 10, 2, 7, 0, 6, 0, 12, 3, 23, 1, 35, 0, 6, 1, 36, 0, 35, 1, 5, 0, 35, 0, 3, 0, 0, 0, 40, 0, 41, 0, 24, 0, 42, 1, 42, 0, 41, 1, 41, 0, 3, 0, 23, 0, 0, 1, 44, 0, 43, 0, 43, 0, 24, 0, 10, 0, 44, 0, 10, 0, 43, 2)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 6, 0, 10, 0, 3, 0, 12, 0, 11, 0, 10, 2, 7, 0, 6, 0, 12, 3, 23, 1, 35, 0, 6, 1, 36, 0, 35, 1, 5, 0, 35, 0, 3, 0, 0, 0, 40, 0, 41, 0, 24, 0, 42, 1, 42, 0, 41, 1, 41, 0, 3, 0, 44, 0, 43, 0, 43, 0, 24, 0, 10, 0, 44, 0, 10, 0, 43, 2, 23, 0, 0, 1)
