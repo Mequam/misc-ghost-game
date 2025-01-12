@@ -33,3 +33,10 @@ func _process(_delta: float) -> void:
 	#without it the bubble animation gets all wonky as we ground hog up and down
 	#the constants were just fuzzed out to what looked good
 	self.material.set_shader_parameter("scale",self.global_scale.y/5)
+	
+	if get_parent().pressed_inputs["UP"]:
+		self.custom_play("up")
+	elif get_parent().pressed_inputs["DOWN"]:
+		self.custom_play("down")
+	elif not $AnimationPlayer.is_playing():
+		self.custom_play("idle")

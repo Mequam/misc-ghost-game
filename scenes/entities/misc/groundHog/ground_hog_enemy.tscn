@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://1m6jtm3r2yym"]
+[gd_scene load_steps=76 format=3 uid="uid://1m6jtm3r2yym"]
 
 [ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.gd" id="1_v3ges"]
 [ext_resource type="Texture2D" uid="uid://dll4x0uf4n7tr" path="res://assets/animations/ground_hog_ghost/0005.png" id="4_cjk8y"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c2vt7fohmgbio" path="res://assets/animations/ground_hog_ghost/0033.png" id="12_wxusj"]
 [ext_resource type="Texture2D" uid="uid://dwnu6rleqcml0" path="res://assets/animations/ground_hog_ghost/0034.png" id="13_pqxcl"]
 [ext_resource type="Texture2D" uid="uid://ivtq87wuqv5v" path="res://assets/animations/ground_hog_ghost/0035.png" id="14_1suof"]
+[ext_resource type="Texture2D" uid="uid://celuwyqgjh3ok" path="res://assets/animations/ground_hog_ghost/0025.png" id="15_0slu0"]
+[ext_resource type="Texture2D" uid="uid://bcnadgmp1pl4i" path="res://assets/animations/ground_hog_ghost/0026.png" id="16_43ebp"]
 [ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_sprite.gd" id="39_yw7s3"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ih2ov"]
@@ -481,11 +483,45 @@ tracks/0/keys = {
 "values": [ExtResource("7_cqxxx"), ExtResource("8_8vrnv"), ExtResource("9_0dl6v"), ExtResource("10_rv40a"), ExtResource("11_e6mjw"), ExtResource("12_wxusj"), ExtResource("13_pqxcl"), ExtResource("14_1suof")]
 }
 
+[sub_resource type="Animation" id="Animation_mcu4l"]
+resource_name = "up"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_0slu0")]
+}
+
+[sub_resource type="Animation" id="Animation_weypg"]
+resource_name = "down"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_43ebp")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gr4ka"]
 _data = {
 "RESET": SubResource("Animation_rn2r4"),
+"down": SubResource("Animation_weypg"),
 "eye_replace": SubResource("Animation_d4smk"),
-"idle": SubResource("Animation_ro30t")
+"idle": SubResource("Animation_ro30t"),
+"up": SubResource("Animation_mcu4l")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4wkn"]
