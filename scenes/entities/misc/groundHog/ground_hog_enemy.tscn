@@ -1,10 +1,18 @@
-[gd_scene load_steps=63 format=3 uid="uid://1m6jtm3r2yym"]
+[gd_scene load_steps=72 format=3 uid="uid://1m6jtm3r2yym"]
 
 [ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.gd" id="1_v3ges"]
 [ext_resource type="Texture2D" uid="uid://dll4x0uf4n7tr" path="res://assets/animations/ground_hog_ghost/0005.png" id="4_cjk8y"]
 [ext_resource type="Texture2D" uid="uid://evxm213l8npl" path="res://assets/animations/ground_hog_ghost/0007.png" id="5_dask5"]
 [ext_resource type="Texture2D" uid="uid://bmtprn8mf5nqm" path="res://assets/animations/ground_hog_ghost/0002.png" id="5_gcvuy"]
 [ext_resource type="Texture2D" uid="uid://dxof6ryh44y08" path="res://assets/animations/ground_hog_ghost/0004.png" id="6_3due5"]
+[ext_resource type="Texture2D" uid="uid://cfjmamclk7gw3" path="res://assets/animations/ground_hog_ghost/0028.png" id="7_cqxxx"]
+[ext_resource type="Texture2D" uid="uid://ts7i84vsdk3b" path="res://assets/animations/ground_hog_ghost/0029.png" id="8_8vrnv"]
+[ext_resource type="Texture2D" uid="uid://d3l48pa6023di" path="res://assets/animations/ground_hog_ghost/0030.png" id="9_0dl6v"]
+[ext_resource type="Texture2D" uid="uid://c0xoutae7jhjf" path="res://assets/animations/ground_hog_ghost/0031.png" id="10_rv40a"]
+[ext_resource type="Texture2D" uid="uid://bbtkw1afwona0" path="res://assets/animations/ground_hog_ghost/0032.png" id="11_e6mjw"]
+[ext_resource type="Texture2D" uid="uid://c2vt7fohmgbio" path="res://assets/animations/ground_hog_ghost/0033.png" id="12_wxusj"]
+[ext_resource type="Texture2D" uid="uid://dwnu6rleqcml0" path="res://assets/animations/ground_hog_ghost/0034.png" id="13_pqxcl"]
+[ext_resource type="Texture2D" uid="uid://ivtq87wuqv5v" path="res://assets/animations/ground_hog_ghost/0035.png" id="14_1suof"]
 [ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_sprite.gd" id="39_yw7s3"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ih2ov"]
@@ -426,23 +434,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_ro30t"]
-resource_name = "idle"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/head")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 1, 1.2, 1.33333, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [SubResource("CompressedTexture2D_sirso"), ExtResource("4_cjk8y"), SubResource("CompressedTexture2D_sirso"), ExtResource("4_cjk8y"), SubResource("CompressedTexture2D_sirso"), ExtResource("5_gcvuy"), SubResource("CompressedTexture2D_sirso"), ExtResource("6_3due5"), SubResource("CompressedTexture2D_sirso")]
-}
-
 [sub_resource type="Animation" id="Animation_rn2r4"]
 length = 0.001
 tracks/0/type = "value"
@@ -458,9 +449,42 @@ tracks/0/keys = {
 "values": [SubResource("CompressedTexture2D_sirso")]
 }
 
+[sub_resource type="Animation" id="Animation_ro30t"]
+resource_name = "idle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 1, 1.2, 1.33333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_sirso"), ExtResource("4_cjk8y"), SubResource("CompressedTexture2D_sirso"), ExtResource("4_cjk8y"), SubResource("CompressedTexture2D_sirso"), ExtResource("5_gcvuy"), SubResource("CompressedTexture2D_sirso"), ExtResource("6_3due5"), SubResource("CompressedTexture2D_sirso")]
+}
+
+[sub_resource type="Animation" id="Animation_d4smk"]
+resource_name = "eye_replace"
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/head")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_cqxxx"), ExtResource("8_8vrnv"), ExtResource("9_0dl6v"), ExtResource("10_rv40a"), ExtResource("11_e6mjw"), ExtResource("12_wxusj"), ExtResource("13_pqxcl"), ExtResource("14_1suof")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gr4ka"]
 _data = {
 "RESET": SubResource("Animation_rn2r4"),
+"eye_replace": SubResource("Animation_d4smk"),
 "idle": SubResource("Animation_ro30t")
 }
 
