@@ -14,6 +14,9 @@ class_name Entity
 @export var unposses_radius : float  = 100
 @export var unposses_to_level : bool = false
 
+#if true, other entities can teleport this entity around
+@export var can_be_teleported : bool = true
+
 #this is a variable to an AI resource
 #that tells us how to run when not possesed
 #null indicates no action

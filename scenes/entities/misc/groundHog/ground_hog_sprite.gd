@@ -15,7 +15,6 @@ func _ready() -> void:
 
 
 func on_animation_player_finished(anim)->void:
-	print_debug("hello from the signal")
 	match anim:
 		"idle":
 			default_animation_amount += 1

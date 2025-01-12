@@ -85,6 +85,7 @@ script = ExtResource("1_x8xqa")
 path_speed_multiplier = 20.0
 sprite = NodePath("AnimatedSprite2D")
 unposses_to_level = true
+can_be_teleported = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(6.86123, 1.70955)
@@ -107,3 +108,11 @@ shape = SubResource("CircleShape2D_j8jdi")
 
 [node name="unposSpot" type="Node2D" parent="."]
 position = Vector2(-0.300297, -65.9993)
+
+[node name="modulate_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="dazed_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

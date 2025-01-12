@@ -1,7 +1,7 @@
 extends Entity
 
 # this script represents an enemy that grows out of the ground
-# the current art looks like grape soda :>
+# the current art looks like grape soda :>)
 
 class_name GroundHogEnemy
 
@@ -29,6 +29,7 @@ func align_after_image_mesh()->void:
 		self.possesed_entity.ghost_after_effect.after_image_frequency = lerpf(5,100,self.height / self.max_growth)
 
 func _ready() -> void:
+	super._ready()
 	if self.set_max_growth:
 		self.max_growth = self.height
 
@@ -55,9 +56,12 @@ func exorcize(offset : Vector2 = Vector2(0,0))->void:
 
 	super.exorcize(offset)
 
+func on_modulate_timer_out()->void:
+	super.on_modulate_timer_out()
+	print_debug("ouch! -grape soda ghost")
 
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	print_debug(self.state)
 	if self.pressed_inputs["UP"] and self.max_growth >= self.height:
 		self.height += self.growth_speed
 	if self.pressed_inputs["DOWN"] and self.height >= 0:
