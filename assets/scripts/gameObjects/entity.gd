@@ -303,7 +303,7 @@ func on_action_double_press(action : String)->void:
 #runs only when the action is just pressed
 func on_action_press(action : String)->void:
 	if self.possesed and action == "UNPOSSES":
-		exorcize(get_stored_action_velocity())
+		exorcize(self.get_pressed_direction())
 	
 	if action == "BARK" and get_node("bark"):
 		print_debug("barking!")
@@ -479,24 +479,11 @@ func main_process(delta):
 		singal_move_and_collide(speed*delta*compute_velocity(velocity))
 
 
-#returns the velocity represented by currently pressed inputs
-func get_stored_action_velocity()->Vector2:
-	var ret_val : Vector2 = Vector2(0,0)
-	for act in self.pressed_inputs:
-		if self.pressed_inputs[act]:
-			ret_val += self.action2velocity(act)
-	return ret_val
 
 #returns input normalized into the identity matrix,
 #so that y equates to local up and x local right
 func local_player_input_direction()->Vector2:
-	var direction_buffer : Vector2 = Vector2(0,0)
-	
-	for input in self.pressed_inputs:
-		if self.pressed_inputs[input]:
-			direction_buffer += self.action2velocity(input)
-	
-	return self.global_transform.basis_xform_inv(direction_buffer)
+	return self.global_transform.basis_xform_inv(self.get_pressed_direction())
 
 #this is a utility function that converts an event into a direction
 #in the game
