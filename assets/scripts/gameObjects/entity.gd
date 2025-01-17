@@ -487,6 +487,17 @@ func get_stored_action_velocity()->Vector2:
 			ret_val += self.action2velocity(act)
 	return ret_val
 
+#returns input normalized into the identity matrix,
+#so that y equates to local up and x local right
+func local_player_input_direction()->Vector2:
+	var direction_buffer : Vector2 = Vector2(0,0)
+	
+	for input in self.pressed_inputs:
+		if self.pressed_inputs[input]:
+			direction_buffer += self.action2velocity(input)
+	
+	return self.global_transform.basis_xform_inv(direction_buffer)
+
 #this is a utility function that converts an event into a direction
 #in the game
 func action2velocity(action : String)->Vector2:

@@ -60,11 +60,13 @@ func on_modulate_timer_out()->void:
 	super.on_modulate_timer_out()
 	print_debug("ouch! -grape soda ghost")
 
+
 func _process(_delta: float) -> void:
-	print_debug(self.state)
-	if self.pressed_inputs["UP"] and self.max_growth >= self.height:
+	var input_direction : Vector2 = self.local_player_input_direction()
+
+	if input_direction.y < 0 and self.max_growth >= self.height:
 		self.height += self.growth_speed
-	if self.pressed_inputs["DOWN"] and self.height >= 0:
+	if input_direction.y > 0 and self.height >= 0:
 		self.height -= self.growth_speed
 
 	#collision_shape.shape.size.y = self.height
