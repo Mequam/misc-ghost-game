@@ -1,0 +1,71 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://wt22pcx57fhy"]
+
+[ext_resource type="Texture2D" uid="uid://k8yr1qrr1fkn" path="res://assets/animations/environment/river/fast/result/fast-river-sprite-sheet.png" id="1_lw7p5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jr6f"]
+texture = ExtResource("1_lw7p5")
+texture_region_size = Vector2i(500, 500)
+0:0/animation_columns = 1
+0:0/animation_mode = 1
+0:0/animation_frame_0/duration = 0.1
+0:0/animation_frame_1/duration = 0.1
+0:0/animation_frame_2/duration = 0.1
+0:0/animation_frame_3/duration = 0.1
+0:0/animation_frame_4/duration = 0.1
+0:0/animation_frame_5/duration = 0.1
+0:0/animation_frame_6/duration = 0.1
+0:0/animation_frame_7/duration = 0.1
+0:0/animation_frame_8/duration = 0.1
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+1:0/animation_columns = 1
+1:0/animation_mode = 1
+1:0/animation_frame_0/duration = 0.1
+1:0/animation_frame_1/duration = 0.1
+1:0/animation_frame_2/duration = 0.1
+1:0/animation_frame_3/duration = 0.1
+1:0/animation_frame_4/duration = 0.1
+1:0/animation_frame_5/duration = 0.1
+1:0/animation_frame_6/duration = 0.1
+1:0/animation_frame_7/duration = 0.1
+1:0/animation_frame_8/duration = 0.1
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/animation_columns = 1
+2:0/animation_mode = 1
+2:0/animation_frame_0/duration = 0.1
+2:0/animation_frame_1/duration = 0.1
+2:0/animation_frame_2/duration = 0.1
+2:0/animation_frame_3/duration = 0.1
+2:0/animation_frame_4/duration = 0.1
+2:0/animation_frame_5/duration = 0.1
+2:0/animation_frame_6/duration = 0.1
+2:0/animation_frame_7/duration = 0.1
+2:0/animation_frame_8/duration = 0.1
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/right_side = 0
+2:0/0/terrains_peering_bit/bottom_right_corner = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+
+[resource]
+tile_size = Vector2i(500, 500)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "river"
+terrain_set_0/terrain_0/color = Color(0.103047, 0.22417, 1, 1)
+sources/0 = SubResource("TileSetAtlasSource_1jr6f")
