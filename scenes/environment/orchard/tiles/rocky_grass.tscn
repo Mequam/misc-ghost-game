@@ -7,7 +7,7 @@ scale = Vector2(0.25, 0.25)
 tile_set = ExtResource("1_8xol4")
 format = 2
 
-[node name="Layer0" type="TileMapLayer" parent="."]
+[node name="Layer1" type="TileMapLayer" parent="."]
 z_index = -1
 use_parent_material = true
 tile_set = ExtResource("1_8xol4")

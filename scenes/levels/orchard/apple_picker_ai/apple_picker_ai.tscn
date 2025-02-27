@@ -118,3 +118,7 @@ rotation = 1.43458
 [node name="groundHogEnemy4" parent="." instance=ExtResource("11_wdakr")]
 position = Vector2(2720, -296)
 rotation = 3.07373
+
+[node name="groundHogEnemy6" parent="." instance=ExtResource("11_wdakr")]
+position = Vector2(941, -991)
+scale = Vector2(0.997156, 2)
