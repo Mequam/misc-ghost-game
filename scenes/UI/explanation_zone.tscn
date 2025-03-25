@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxn1oo31udgxe"]
 
 [ext_resource type="PackedScene" uid="uid://u7srcg8y4yf8" path="res://scenes/UI/disapearing_label.tscn" id="1_p7poq"]
-[ext_resource type="Script" path="res://scenes/UI/explanation_zone.gd" id="1_thsdf"]
+[ext_resource type="Script" uid="uid://cbb7b8yegtj03" path="res://scenes/UI/explanation_zone.gd" id="1_thsdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6topl"]
 size = Vector2(482, 227)

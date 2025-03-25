@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://01fi2eykheye"]
 
-[ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.gd" id="1_xb488"]
+[ext_resource type="Script" uid="uid://ddgusnmm0sth" path="res://scenes/entities/orchard/CiderSpirit/ciderspirit.gd" id="1_xb488"]
 [ext_resource type="PackedScene" uid="uid://bkfoptt80pgom" path="res://scenes/entities/orchard/CiderSpirit/mugFollower/follwer_mug.tscn" id="2_aqgfs"]
-[ext_resource type="Script" path="res://assets/resources/resource_scripts/jump_resource.gd" id="3_3awvy"]
+[ext_resource type="Script" uid="uid://dry32eh0go2lg" path="res://assets/resources/resource_scripts/jump_resource.gd" id="3_3awvy"]
 [ext_resource type="PackedScene" uid="uid://byekeag2ch0em" path="res://scenes/entities/orchard/CiderSpirit/ciderspiritsprite.tscn" id="4_bi3ix"]
 [ext_resource type="Texture2D" uid="uid://tl5u6qy6a8hk" path="res://assets/animations/cider spirit/hearts/heartbetter0003.png" id="4_o0aml"]
 [ext_resource type="Texture2D" uid="uid://nrra6ydtbtbe" path="res://assets/animations/cider spirit/hearts/heartbetter0002.png" id="5_5m0xx"]
@@ -82,8 +82,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mxmti"]
 _data = {
-"RESET": SubResource("Animation_m07p3"),
-"walk_right": SubResource("Animation_5dv12")
+&"RESET": SubResource("Animation_m07p3"),
+&"walk_right": SubResource("Animation_5dv12")
 }
 
 [node name="CiderSpirit" type="CharacterBody2D" node_paths=PackedStringArray("transform_animation", "parabola_position", "splash_location", "splash_collision", "sprite")]

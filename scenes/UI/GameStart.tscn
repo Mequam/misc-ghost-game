@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bacdulpgcb7ik"]
 
-[ext_resource type="Script" path="res://scenes/UI/GameStart.gd" id="1_wqnwp"]
+[ext_resource type="Script" uid="uid://k4c8rv0dhd2b" path="res://scenes/UI/GameStart.gd" id="1_wqnwp"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_g4o6m"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="2_o0eyq"]
 [ext_resource type="PackedScene" uid="uid://dtrrpcifoy0hk" path="res://scenes/UI/buttons/start_button.tscn" id="3_l3epg"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c4xj1cpjp82jk" path="res://assets/ui/buttons/btnQuit/btnQuit0000.png" id="14_k2nxx"]
 [ext_resource type="Texture2D" uid="uid://da1drank87xd3" path="res://assets/ui/buttons/btnQuit/btnQuit0001.png" id="15_yjycu"]
 [ext_resource type="Texture2D" uid="uid://c0o8h2htejocd" path="res://assets/ui/buttons/btnQuit/btnQuit0003.png" id="16_1xl2y"]
-[ext_resource type="Script" path="res://scenes/UI/buttons/btnQuit.gd" id="17_bm373"]
+[ext_resource type="Script" uid="uid://cj8ao23wlaoj3" path="res://scenes/UI/buttons/btnQuit.gd" id="17_bm373"]
 
 [node name="GameStart" type="Control" node_paths=PackedStringArray("back_button", "container", "replacement")]
 layout_mode = 3

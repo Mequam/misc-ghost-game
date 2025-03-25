@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://kd3f4rg6axyb"]
 
-[ext_resource type="Script" path="res://scenes/pickups/candy/chocolate/chocolate.gd" id="1_mypox"]
+[ext_resource type="Script" uid="uid://dp0e3dtiny5tj" path="res://scenes/pickups/candy/chocolate/chocolate.gd" id="1_mypox"]
 [ext_resource type="Texture2D" uid="uid://8linr0yqyyoj" path="res://assets/images/candy/watermellon_candy_corn.png" id="2_4s4p1"]
-[ext_resource type="Script" path="res://assets/scripts/gameObjects/LiveRemover.gd" id="3_jt3w0"]
+[ext_resource type="Script" uid="uid://dpixodoiiaoni" path="res://assets/scripts/gameObjects/LiveRemover.gd" id="3_jt3w0"]
 
 [sub_resource type="Animation" id="Animation_3dp3k"]
 length = 0.001
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qhb6u"]
 _data = {
-"RESET": SubResource("Animation_3dp3k"),
-"default": SubResource("Animation_56h4u")
+&"RESET": SubResource("Animation_3dp3k"),
+&"default": SubResource("Animation_56h4u")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcuug"]

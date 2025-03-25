@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bskxggqirbxih"]
 
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_drgav"]
-[ext_resource type="Script" path="res://scenes/UI/options/graphics/color_map_adder.gd" id="1_pxxqn"]
+[ext_resource type="Script" uid="uid://btmp2cvcuawlo" path="res://scenes/UI/options/graphics/color_map_adder.gd" id="1_pxxqn"]
 [ext_resource type="PackedScene" uid="uid://dqqjm62njto1p" path="res://scenes/UI/options/graphics/color_mapper_adder.tscn" id="2_68dmv"]
 
 [node name="Control2" type="VBoxContainer"]

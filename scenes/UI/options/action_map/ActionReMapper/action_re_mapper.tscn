@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_7ca0d"]
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_vgrsw"]
-[ext_resource type="Script" path="res://scenes/UI/options/action_map/ActionReMapper/action_re_mapper.gd" id="2_nayfu"]
+[ext_resource type="Script" uid="uid://bu64c08wje3qt" path="res://scenes/UI/options/action_map/ActionReMapper/action_re_mapper.gd" id="2_nayfu"]
 [ext_resource type="Texture2D" uid="uid://bgq3jx7ukkqba" path="res://assets/ui/buttons/empty_button/button_outline.png" id="4_4pb0q"]
 
 [node name="ActionReMapper" type="Control" node_paths=PackedStringArray("lblActionName", "btnActionEvent", "btnReset")]

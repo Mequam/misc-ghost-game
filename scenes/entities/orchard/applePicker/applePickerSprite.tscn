@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bwjchvg2o3g5r" path="res://assets/animations/apple picker ghost/applePicker0011.png" id="29_ftn8p"]
 [ext_resource type="Texture2D" uid="uid://c2mitf5eaqk4k" path="res://assets/animations/apple picker ghost/applePicker0012.png" id="30_5mwsn"]
 [ext_resource type="Texture2D" uid="uid://c5k3i4yoegrb6" path="res://assets/animations/apple picker ghost/apples/apple0001.png" id="31_uwv67"]
-[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/applePickerSprite.gd" id="31_yx5v0"]
+[ext_resource type="Script" uid="uid://dceeyiotwthod" path="res://scenes/entities/orchard/applePicker/applePickerSprite.gd" id="31_yx5v0"]
 [ext_resource type="Texture2D" uid="uid://tm56h13ix2dk" path="res://assets/animations/apple picker ghost/apples/apple0002.png" id="32_87y2x"]
 [ext_resource type="Texture2D" uid="uid://bpr2g5h0w81j7" path="res://assets/animations/apple picker ghost/apples/apple0003.png" id="33_eryg0"]
 [ext_resource type="Texture2D" uid="uid://dcd3amgt2162r" path="res://assets/animations/apple picker ghost/apples/apple0004.png" id="34_svaxu"]
@@ -1233,21 +1233,21 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jpafj"]
 _data = {
-"RESET": SubResource("Animation_76nk8"),
-"damage": SubResource("Animation_nlxpi"),
-"fall": SubResource("Animation_c66bv"),
-"fall_prep": SubResource("Animation_3qrch"),
-"fly_up": SubResource("Animation_6n6p6"),
-"fly_up_prep": SubResource("Animation_g51w6"),
-"idle": SubResource("Animation_adlhd"),
-"pick": SubResource("Animation_dyhon"),
-"run": SubResource("Animation_1i7gc"),
-"run_prep": SubResource("Animation_wnuwb"),
-"shoot": SubResource("Animation_41dw2"),
-"shoot_end": SubResource("Animation_qg00p"),
-"shoot_prep": SubResource("Animation_vu7a1"),
-"shoot_prep_back": SubResource("Animation_uxd56"),
-"walk": SubResource("Animation_86fjd")
+&"RESET": SubResource("Animation_76nk8"),
+&"damage": SubResource("Animation_nlxpi"),
+&"fall": SubResource("Animation_c66bv"),
+&"fall_prep": SubResource("Animation_3qrch"),
+&"fly_up": SubResource("Animation_6n6p6"),
+&"fly_up_prep": SubResource("Animation_g51w6"),
+&"idle": SubResource("Animation_adlhd"),
+&"pick": SubResource("Animation_dyhon"),
+&"run": SubResource("Animation_1i7gc"),
+&"run_prep": SubResource("Animation_wnuwb"),
+&"shoot": SubResource("Animation_41dw2"),
+&"shoot_end": SubResource("Animation_qg00p"),
+&"shoot_prep": SubResource("Animation_vu7a1"),
+&"shoot_prep_back": SubResource("Animation_uxd56"),
+&"walk": SubResource("Animation_86fjd")
 }
 
 [node name="ApplePickerSprite" type="AnimatedSprite2D" node_paths=PackedStringArray("anim_tree")]

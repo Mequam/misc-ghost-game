@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c8flqa3dxkhof"]
 
-[ext_resource type="Script" path="res://scenes/environment/InteractionZone/interaction_zone.gd" id="1_yowkd"]
+[ext_resource type="Script" uid="uid://bpfa07syssbw1" path="res://scenes/environment/InteractionZone/interaction_zone.gd" id="1_yowkd"]
 [ext_resource type="PackedScene" uid="uid://u7srcg8y4yf8" path="res://scenes/UI/disapearing_label.tscn" id="2_g6swe"]
 
 [sub_resource type="Animation" id="Animation_nb3im"]
@@ -224,10 +224,10 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r5oiv"]
 _data = {
-"RESET": SubResource("Animation_nb3im"),
-"bob": SubResource("Animation_en57n"),
-"hide": SubResource("Animation_kq0jg"),
-"reveal": SubResource("Animation_n335k")
+&"RESET": SubResource("Animation_nb3im"),
+&"bob": SubResource("Animation_en57n"),
+&"hide": SubResource("Animation_kq0jg"),
+&"reveal": SubResource("Animation_n335k")
 }
 
 [sub_resource type="Animation" id="Animation_r5r7d"]
@@ -263,8 +263,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wl4bt"]
 _data = {
-"RESET": SubResource("Animation_r5r7d"),
-"indication": SubResource("Animation_v5eml")
+&"RESET": SubResource("Animation_r5r7d"),
+&"indication": SubResource("Animation_v5eml")
 }
 
 [node name="Interaction Zone" type="Area2D" node_paths=PackedStringArray("information_label")]

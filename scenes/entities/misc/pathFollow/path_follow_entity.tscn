@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dq4q1gb6x85ry"]
 
-[ext_resource type="Script" path="res://scenes/entities/misc/pathFollow/path_follow_entity.gd" id="1_x8xqa"]
+[ext_resource type="Script" uid="uid://ccmtinjs8uor" path="res://scenes/entities/misc/pathFollow/path_follow_entity.gd" id="1_x8xqa"]
 [ext_resource type="Texture2D" uid="uid://nqnirgb6mvwp" path="res://assets/animations/line_follow_fly/down/0017.png" id="2_f228n"]
 [ext_resource type="Texture2D" uid="uid://dwp5djixq267" path="res://assets/animations/line_follow_fly/down/0018.png" id="3_tuycb"]
 [ext_resource type="Texture2D" uid="uid://ckh86jcm7cv6m" path="res://assets/animations/line_follow_fly/down/0019.png" id="4_6p20c"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cwv8bdnwci6aw" path="res://assets/animations/line_follow_fly/up/0011.png" id="13_mmt24"]
 [ext_resource type="Texture2D" uid="uid://ch15rf73rbwsw" path="res://assets/animations/line_follow_fly/up/0012.png" id="14_3pv4l"]
 [ext_resource type="Texture2D" uid="uid://cxxjrq5gnh7t7" path="res://assets/animations/line_follow_fly/up/0013.png" id="15_ga6dj"]
-[ext_resource type="Script" path="res://scenes/entities/misc/pathFollow/path_eye_sprite.gd" id="16_ltns6"]
+[ext_resource type="Script" uid="uid://7s0rio7rnhs4" path="res://scenes/entities/misc/pathFollow/path_eye_sprite.gd" id="16_ltns6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7n2me"]
 animations = [{

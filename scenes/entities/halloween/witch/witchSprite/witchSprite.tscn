@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://ck1bi8yu0rg12" path="res://assets/animations/witch/idle_long_color/idle0014.png" id="23_87ox1"]
 [ext_resource type="Texture2D" uid="uid://wamb0pdvcpf3" path="res://assets/animations/witch/idle_long_color/idle0015.png" id="24_ydj35"]
 [ext_resource type="Texture2D" uid="uid://dn65pieqcjg64" path="res://assets/animations/witch/idle_long_color/idle0016.png" id="25_1klm7"]
-[ext_resource type="Script" path="res://assets/scripts/animationScripts/witchSprite.gd" id="26"]
+[ext_resource type="Script" uid="uid://cw5bmk3fwmcqm" path="res://assets/scripts/animationScripts/witchSprite.gd" id="26"]
 [ext_resource type="Texture2D" uid="uid://bdag00qwgy6av" path="res://assets/animations/witch/jump_color/0025.png" id="26_1w5ic"]
 [ext_resource type="Texture2D" uid="uid://uqq7h1qeve4u" path="res://assets/animations/witch/walk_color/idle0019.png" id="28_qi1he"]
 [ext_resource type="Texture2D" uid="uid://cat2om7bcbgy3" path="res://assets/animations/witch/jump_color/0026.png" id="28_rgb2i"]

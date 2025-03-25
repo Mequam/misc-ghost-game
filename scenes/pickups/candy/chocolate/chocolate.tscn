@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dr1c6twv8ln1k"]
 
 [ext_resource type="Texture2D" uid="uid://d3qqb3b5pmjr8" path="res://assets/images/candy/chocolet.png" id="1_fpy2n"]
-[ext_resource type="Script" path="res://scenes/pickups/candy/chocolate/chocolate.gd" id="1_yxjt7"]
-[ext_resource type="Script" path="res://assets/scripts/gameObjects/LiveRemover.gd" id="3_rcdlg"]
+[ext_resource type="Script" uid="uid://dp0e3dtiny5tj" path="res://scenes/pickups/candy/chocolate/chocolate.gd" id="1_yxjt7"]
+[ext_resource type="Script" uid="uid://dpixodoiiaoni" path="res://assets/scripts/gameObjects/LiveRemover.gd" id="3_rcdlg"]
 
 [sub_resource type="Animation" id="Animation_3dp3k"]
 length = 0.001
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qhb6u"]
 _data = {
-"RESET": SubResource("Animation_3dp3k"),
-"default": SubResource("Animation_56h4u")
+&"RESET": SubResource("Animation_3dp3k"),
+&"default": SubResource("Animation_56h4u")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcuug"]

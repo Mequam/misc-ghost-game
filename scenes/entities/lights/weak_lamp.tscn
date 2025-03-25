@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://d0mybyi3i8fjq"]
 
-[ext_resource type="Script" path="res://scenes/levels/orchard/entryLevel/weak_lamp.gd" id="1_854j1"]
+[ext_resource type="Script" uid="uid://bp6hy8l2otanl" path="res://scenes/levels/orchard/entryLevel/weak_lamp.gd" id="1_854j1"]
 [ext_resource type="Texture2D" uid="uid://p2asogawiglk" path="res://assets/animations/lights/can light/can_light0001.png" id="2_hkoda"]
 [ext_resource type="Texture2D" uid="uid://djm5336fiwpqr" path="res://assets/animations/lights/can light/can_light0002.png" id="3_og411"]
 [ext_resource type="Texture2D" uid="uid://dxvgdjprli3fv" path="res://assets/animations/lights/can light/can_light0004.png" id="4_swgp0"]
 [ext_resource type="Texture2D" uid="uid://ppif5jrp36ts" path="res://assets/animations/lights/can light/can_light0005.png" id="5_cyhay"]
 [ext_resource type="Texture2D" uid="uid://dqgsyrb7lrhiv" path="res://assets/animations/lights/can light/can_light0006.png" id="6_k04f8"]
-[ext_resource type="Script" path="res://scenes/entities/custom_play_sprite.gd" id="7_fq7gi"]
+[ext_resource type="Script" uid="uid://f15lv7kr3ctr" path="res://scenes/entities/custom_play_sprite.gd" id="7_fq7gi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m58r"]
 size = Vector2(57, 141.25)
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jl3kr"]
 _data = {
-"RESET": SubResource("Animation_pgts2"),
-"sway": SubResource("Animation_g6prg")
+&"RESET": SubResource("Animation_pgts2"),
+&"sway": SubResource("Animation_g6prg")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k1aou"]

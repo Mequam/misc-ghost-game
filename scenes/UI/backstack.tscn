@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkqcymu7b2x2v"]
 
-[ext_resource type="Script" path="res://assets/scripts/UI/objects/BackHub.gd" id="1_vse3m"]
+[ext_resource type="Script" uid="uid://c1sa0hwl7jltr" path="res://assets/scripts/UI/objects/BackHub.gd" id="1_vse3m"]
 
 [node name="BackStack" type="Control" node_paths=PackedStringArray("replacement")]
 layout_mode = 3

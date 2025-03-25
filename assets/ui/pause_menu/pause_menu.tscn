@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_gmv6b"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_w7mve"]
-[ext_resource type="Script" path="res://assets/ui/pause_menu/pause_menu.gd" id="2_xe0w8"]
+[ext_resource type="Script" uid="uid://ct16d1s4rrrh5" path="res://assets/ui/pause_menu/pause_menu.gd" id="2_xe0w8"]
 [ext_resource type="PackedScene" uid="uid://b2ii50rt12ywk" path="res://scenes/UI/back_header/back_header.tscn" id="3_voycp"]
 [ext_resource type="Texture2D" uid="uid://n33bf6fxcn1w" path="res://assets/ui/buttons/btnResume/btnResume0001.png" id="4_kad02"]
 [ext_resource type="Texture2D" uid="uid://d2h24vixdpftv" path="res://assets/ui/buttons/btnResume/btnResume0003.png" id="5_q1uvl"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dc2pf7rnem3rt" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0000.png" id="8_cf6pb"]
 [ext_resource type="Texture2D" uid="uid://8rufa4hdd46n" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0001.png" id="9_6xee2"]
 [ext_resource type="Texture2D" uid="uid://dhunsmg6uf4wp" path="res://assets/ui/buttons/quit_to_main_button/btnQuitToMain0003.png" id="10_y2f0p"]
-[ext_resource type="Script" path="res://assets/ui/pause_menu/btnQuit.gd" id="11_eljpv"]
+[ext_resource type="Script" uid="uid://0qpcdbqej40i" path="res://assets/ui/pause_menu/btnQuit.gd" id="11_eljpv"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("resume_button", "back_button", "container")]
 process_mode = 2

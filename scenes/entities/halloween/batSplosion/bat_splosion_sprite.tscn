@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://dppqq653q0gqy"]
 
-[ext_resource type="Script" path="res://scenes/entities/halloween/batSplosion/bat_splosion_sprite.gd" id="1_7gb7g"]
+[ext_resource type="Script" uid="uid://dlo670r10c8uj" path="res://scenes/entities/halloween/batSplosion/bat_splosion_sprite.gd" id="1_7gb7g"]
 [ext_resource type="Texture2D" uid="uid://c3adfvdeuuj1r" path="res://assets/animations/kamakazi_fly/kamakazi_fly0001.png" id="1_l32vg"]
 [ext_resource type="Texture2D" uid="uid://bvqq1wmliojad" path="res://assets/animations/kamakazi_fly/kamakazi_fly0002.png" id="2_g4587"]
 [ext_resource type="Texture2D" uid="uid://c6g1cjmssheuh" path="res://assets/animations/kamakazi_fly/kamakazi_fly0003.png" id="3_8frkp"]
@@ -192,10 +192,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uvkly"]
 _data = {
-"RESET": SubResource("Animation_vula8"),
-"bigsplosion": SubResource("Animation_u60eu"),
-"expload": SubResource("Animation_0ua85"),
-"expload2": SubResource("Animation_0p68s")
+&"RESET": SubResource("Animation_vula8"),
+&"bigsplosion": SubResource("Animation_u60eu"),
+&"expload": SubResource("Animation_0ua85"),
+&"expload2": SubResource("Animation_0p68s")
 }
 
 [node name="BatSplosionSprite" type="Node2D"]

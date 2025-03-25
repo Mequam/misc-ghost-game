@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjija5h8lbr2g"]
 
-[ext_resource type="Script" path="res://assets/scripts/gameObjects/mainCamera.gd" id="1_sqm8o"]
+[ext_resource type="Script" uid="uid://bla2pg5o0pr67" path="res://assets/scripts/gameObjects/mainCamera.gd" id="1_sqm8o"]
 [ext_resource type="PackedScene" uid="uid://blwbpxtealqke" path="res://scenes/miscScenes/screenshot/screenshot_node.tscn" id="2_26wmx"]
 
 [node name="mainCam" type="Camera2D"]

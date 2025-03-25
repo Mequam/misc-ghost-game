@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwcsn0nvsctq0"]
 
-[ext_resource type="Script" path="res://scenes/UI/dialog/linear_dialog_display/linear_dialog_display.gd" id="1_eu2v8"]
+[ext_resource type="Script" uid="uid://c25tumha25kok" path="res://scenes/UI/dialog/linear_dialog_display/linear_dialog_display.gd" id="1_eu2v8"]
 
 [node name="linear_dialog_display" type="Control"]
 layout_mode = 3

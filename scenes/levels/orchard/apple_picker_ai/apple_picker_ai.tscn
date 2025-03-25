@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://b66j85put7yxc"]
 
-[ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_ttb33"]
+[ext_resource type="Script" uid="uid://c7kmkvfycy64r" path="res://assets/scripts/level.gd" id="1_ttb33"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="2_g781n"]
 [ext_resource type="Texture2D" uid="uid://b7vaqcudknksp" path="res://assets/misc/debug_texture.png" id="2_p8ouo"]
 [ext_resource type="PackedScene" uid="uid://dmf154ry3pm5f" path="res://scenes/environment/orchard/tiles/rocky_grass.tscn" id="3_gif65"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://tyt07kbx5nj" path="res://scenes/tools/tilenaver/tilenaver.tscn" id="8_jyb7t"]
 [ext_resource type="PackedScene" uid="uid://cschnsinlm0q2" path="res://scenes/entities/GhostLight/ghostLight.tscn" id="9_7gihv"]
 [ext_resource type="PackedScene" uid="uid://dq4q1gb6x85ry" path="res://scenes/entities/misc/pathFollow/path_follow_entity.tscn" id="9_irsmb"]
-[ext_resource type="Script" path="res://scenes/entities/misc/pathFollow/ai/ai_path_follow.gd" id="10_xgl4r"]
+[ext_resource type="Script" uid="uid://cgy3w5bc51hoa" path="res://scenes/entities/misc/pathFollow/ai/ai_path_follow.gd" id="10_xgl4r"]
 [ext_resource type="PackedScene" uid="uid://1m6jtm3r2yym" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.tscn" id="11_wdakr"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="12_u8p5k"]
 

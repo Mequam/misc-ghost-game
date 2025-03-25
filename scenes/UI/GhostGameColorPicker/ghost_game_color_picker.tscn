@@ -1,35 +1,35 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj7uauo2kb5y0"]
 
 [ext_resource type="Theme" uid="uid://biml8lshm8h6s" path="res://assets/resources/ghost_game_color_picker_theme.tres" id="1_u0rqr"]
-[ext_resource type="Script" path="res://scenes/UI/GhostGameColorPicker/ggColorSlider.gd" id="2_3jl1h"]
+[ext_resource type="Script" uid="uid://km1tcxiifqcw" path="res://scenes/UI/GhostGameColorPicker/ggColorSlider.gd" id="2_3jl1h"]
 [ext_resource type="Shader" uid="uid://c31f6hemn6n8c" path="res://scenes/UI/GhostGameColorPicker/ColorSlider/ghost_game_color_picker.tres" id="2_dtmbj"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="3_m27n5"]
 [ext_resource type="PackedScene" uid="uid://cnydhkm7ebjuj" path="res://scenes/UI/options/graphics/color_slider.tscn" id="6_t1c16"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4v7gi"]
 shader = ExtResource("2_dtmbj")
-shader_parameter/val = null
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/val = false
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = false
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dgm3e"]
 resource_local_to_scene = true
 shader = ExtResource("2_dtmbj")
-shader_parameter/val = null
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/val = false
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = true
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n6vpu"]
 shader = ExtResource("2_dtmbj")
 shader_parameter/val = true
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = false
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [node name="GhostGameColorPicker" type="Control"]
 custom_minimum_size = Vector2(0, 600)

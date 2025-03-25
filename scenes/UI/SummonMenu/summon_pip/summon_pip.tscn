@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://cnw52f38xqu2p" path="res://scenes/effects/silloette_shader.tres" id="1_g3443"]
 [ext_resource type="Texture2D" uid="uid://cixvie4gb20gc" path="res://assets/ui/hearts/witch/witchHeart0001.png" id="2_sm0wj"]
-[ext_resource type="Script" path="res://scenes/UI/SummonMenu/summoningPip.gd" id="3_jfk5a"]
+[ext_resource type="Script" uid="uid://klbp0bi4ci0y" path="res://scenes/UI/SummonMenu/summoningPip.gd" id="3_jfk5a"]
 [ext_resource type="Texture2D" uid="uid://dov7ja5sb24fe" path="res://assets/animations/witch/witch_color_damage/0043.png" id="4_hckms"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="5_ffjks"]
 [ext_resource type="Texture2D" uid="uid://c8kba0v0xewo1" path="res://assets/ui/summon_menu/pentagon.png" id="6_1883o"]
@@ -11,7 +11,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r2wdr"]
 shader = ExtResource("1_g3443")
 shader_parameter/doSilloette = false
-shader_parameter/Silloette_Color = null
+shader_parameter/Silloette_Color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_ksnkh"]
 length = 0.001
@@ -151,10 +151,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ik0fm"]
 _data = {
-"RESET": SubResource("Animation_ksnkh"),
-"rotate_star": SubResource("Animation_rp4ik"),
-"summon_start": SubResource("Animation_gaf0v"),
-"summon_stop": SubResource("Animation_fs401")
+&"RESET": SubResource("Animation_ksnkh"),
+&"rotate_star": SubResource("Animation_rp4ik"),
+&"summon_start": SubResource("Animation_gaf0v"),
+&"summon_stop": SubResource("Animation_fs401")
 }
 
 [node name="witch" type="TextureButton"]

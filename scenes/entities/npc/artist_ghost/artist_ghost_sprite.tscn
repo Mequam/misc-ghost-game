@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dqcvy7itbg6ss" path="res://assets/animations/npc/ghost artist/ghost_artist0015.png" id="9_v43uu"]
 [ext_resource type="Texture2D" uid="uid://dy5dwbiwwndsk" path="res://assets/animations/npc/ghost artist/ghost_artist0016.png" id="10_b4olj"]
 [ext_resource type="Texture2D" uid="uid://bfhivkyjhe2kb" path="res://assets/animations/npc/ghost artist/ghost_artist0017.png" id="11_ycfqk"]
-[ext_resource type="Script" path="res://scenes/entities/npc/artist_ghost/artist_ghost_sprite.gd" id="13_o6t2n"]
+[ext_resource type="Script" uid="uid://db7oxgts38uqj" path="res://scenes/entities/npc/artist_ghost/artist_ghost_sprite.gd" id="13_o6t2n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bxfsq"]
 animations = [{

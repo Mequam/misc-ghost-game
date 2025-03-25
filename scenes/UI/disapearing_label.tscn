@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t7cpn"]
 _data = {
-"RESET": SubResource("Animation_s77jb"),
-"TutorialText": SubResource("Animation_m2cph")
+&"RESET": SubResource("Animation_s77jb"),
+&"TutorialText": SubResource("Animation_m2cph")
 }
 
 [node name="DisapearingLabel" type="Label"]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dlqe7yot8ohqv" path="res://assets/images/orchard/misc_env/0003.png" id="1_prmx0"]
 [ext_resource type="Texture2D" uid="uid://dxx46w45t6rpn" path="res://assets/images/orchard/misc_env/0001.png" id="2_vg204"]
 [ext_resource type="Texture2D" uid="uid://bjutkb3ppormw" path="res://assets/images/orchard/misc_env/0002.png" id="3_sbwv4"]
-[ext_resource type="Script" path="res://scenes/environment/orchard/decorations/shake_zone.gd" id="4_osxr3"]
+[ext_resource type="Script" uid="uid://dme0tp0hx6gcp" path="res://scenes/environment/orchard/decorations/shake_zone.gd" id="4_osxr3"]
 
 [sub_resource type="Animation" id="Animation_h3kfc"]
 length = 0.001
@@ -159,8 +159,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v74nf"]
 _data = {
-"RESET": SubResource("Animation_h3kfc"),
-"rustle": SubResource("Animation_bqdo5")
+&"RESET": SubResource("Animation_h3kfc"),
+&"rustle": SubResource("Animation_bqdo5")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccnq5"]

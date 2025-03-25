@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://yo5qynqrf1p8"]
 
-[ext_resource type="Script" path="res://scenes/environment/orchard/decorations/leaf_splosion_area/area_leaf_splosion.gd" id="1_yammj"]
+[ext_resource type="Script" uid="uid://cllpsueqnb1p7" path="res://scenes/environment/orchard/decorations/leaf_splosion_area/area_leaf_splosion.gd" id="1_yammj"]
 [ext_resource type="PackedScene" uid="uid://bjpuwdaqpylkx" path="res://scenes/environment/orchard/leaf_particles.tscn" id="2_wck2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80fly"]

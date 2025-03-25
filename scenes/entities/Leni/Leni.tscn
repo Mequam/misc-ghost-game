@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://da1lthymliys6"]
 
-[ext_resource type="Script" path="res://scenes/entities/Leni/Leni.gd" id="1_v1hk0"]
+[ext_resource type="Script" uid="uid://d1ljnbsbpw8l5" path="res://scenes/entities/Leni/Leni.gd" id="1_v1hk0"]
 [ext_resource type="PackedScene" uid="uid://c22xqm54cs50" path="res://scenes/entities/Leni/GhostSprite/GhostSprite.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://d1ijavcsugyxu" path="res://assets/ui/hearts/basic ghost/dead.png" id="2_wh2ov"]
 [ext_resource type="Texture2D" uid="uid://ccpts3yanytgf" path="res://assets/ui/hearts/basic ghost/ghost_heart0002.png" id="3_g304m"]

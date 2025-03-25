@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://154dfvnj02rk"]
 
-[ext_resource type="Script" path="res://scenes/pickups/summon_talismin/summon_talismin.gd" id="2_c6j4e"]
+[ext_resource type="Script" uid="uid://dmqc0dxqp41s5" path="res://scenes/pickups/summon_talismin/summon_talismin.gd" id="2_c6j4e"]
 [ext_resource type="Texture2D" uid="uid://c236wemia8yg6" path="res://assets/images/star/star.png" id="2_s5bep"]
 
 [sub_resource type="Curve" id="Curve_kt5da"]
@@ -80,8 +80,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1d5ak"]
 _data = {
-"RESET": SubResource("Animation_45ut6"),
-"idle": SubResource("Animation_wubed")
+&"RESET": SubResource("Animation_45ut6"),
+&"idle": SubResource("Animation_wubed")
 }
 
 [node name="summonTalismin" type="Area2D"]

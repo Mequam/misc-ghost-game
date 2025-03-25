@@ -7,53 +7,53 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6wdwa"]
 shader = ExtResource("3_6m5ma")
-shader_parameter/val = null
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/val = false
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = false
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_topnl"]
 resource_local_to_scene = true
 shader = ExtResource("3_6m5ma")
-shader_parameter/val = null
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/val = false
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = true
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_onhnj"]
 shader = ExtResource("3_6m5ma")
 shader_parameter/val = true
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = false
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pwgyr"]
 shader = ExtResource("3_6m5ma")
-shader_parameter/val = null
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/val = false
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = false
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y7myd"]
 resource_local_to_scene = true
 shader = ExtResource("3_6m5ma")
-shader_parameter/val = null
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/val = false
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = true
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6e2o"]
 shader = ExtResource("3_6m5ma")
 shader_parameter/val = true
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = false
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [node name="ColorMapAdder" type="Control"]
 custom_minimum_size = Vector2(0, 600)

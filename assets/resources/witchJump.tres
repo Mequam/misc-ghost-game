@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="JumpResource" load_steps=2 format=3 uid="uid://1qlqc0pvdamb"]
 
-[ext_resource type="Script" path="res://assets/resources/resource_scripts/jump_resource.gd" id="1"]
+[ext_resource type="Script" uid="uid://dry32eh0go2lg" path="res://assets/resources/resource_scripts/jump_resource.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 jump_height = 1.0
 jump_up_time = 0.15
 jump_down_time = 0.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cotdsdtg0th0l"]
 
-[ext_resource type="Script" path="res://scenes/entities/orchard/applePicker/applePickerEntity.gd" id="1_7awqf"]
+[ext_resource type="Script" uid="uid://bbenb41ipp5h1" path="res://scenes/entities/orchard/applePicker/applePickerEntity.gd" id="1_7awqf"]
 [ext_resource type="PackedScene" uid="uid://cv1ocywmuqlwo" path="res://scenes/entities/orchard/applePicker/applePickerSprite.tscn" id="1_mohwp"]
 [ext_resource type="PackedScene" uid="uid://djfoqtks0nlpg" path="res://scenes/entities/orchard/applePicker/appleProjectile/apple_shotgun_blast.tscn" id="2_5wg2i"]
 [ext_resource type="PackedScene" uid="uid://d1it1sqxelhs5" path="res://scenes/miscScenes/ground_tester.tscn" id="3_0sj1q"]

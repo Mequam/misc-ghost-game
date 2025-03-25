@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://b7sc72hnxgg4x"]
 
-[ext_resource path="res://assets/scripts/tools/jumpTarget.gd" type="Script" id=2]
+[ext_resource type="Script" uid="uid://cw42nlokf6hvq" path="res://assets/scripts/tools/jumpTarget.gd" id="2"]
 
 [node name="jumpHelper" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="Line2D" type="Line2D" parent="."]

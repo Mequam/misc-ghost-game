@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cp2risrq7srhh" path="res://assets/animations/ghost_light/ghost_light0008.png" id="6_2t8gp"]
 [ext_resource type="Texture2D" uid="uid://b1kevgm2835qh" path="res://assets/animations/ghost_light/ghost_light0009.png" id="7_a0mck"]
 [ext_resource type="Texture2D" uid="uid://crtr8ysssxj03" path="res://assets/animations/ghost_light/ghost_light0010.png" id="8_qvpui"]
-[ext_resource type="Script" path="res://assets/scripts/animationScripts/ghostLightSprite.gd" id="9_o674s"]
+[ext_resource type="Script" uid="uid://bmg5ypb11lqp0" path="res://assets/scripts/animationScripts/ghostLightSprite.gd" id="9_o674s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aip55"]
 animations = [{

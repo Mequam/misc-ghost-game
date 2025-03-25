@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ckoseeg5rrsoo" path="res://assets/ui/buttons/start_button/start.png" id="1_ht5uf"]
 [ext_resource type="Texture2D" uid="uid://c6yusfmdtcc74" path="res://assets/ui/buttons/start_button/start_pressed.png" id="2_osyqr"]
 [ext_resource type="Texture2D" uid="uid://51qoa8kn6oyp" path="res://assets/ui/buttons/start_button/start_hover.png" id="3_4wfgk"]
-[ext_resource type="Script" path="res://assets/scripts/UI/objects/btnLoadUI.gd" id="4_xm6eh"]
+[ext_resource type="Script" uid="uid://br65ro22065d3" path="res://assets/scripts/UI/objects/btnLoadUI.gd" id="4_xm6eh"]
 
 [node name="btnLoadUIScene" type="TextureButton"]
 texture_normal = ExtResource("1_ht5uf")

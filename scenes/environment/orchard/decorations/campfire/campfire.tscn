@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvoait6totshn"]
 
-[ext_resource type="Script" path="res://scenes/environment/orchard/decorations/campfire/campfire.gd" id="1_r2whs"]
+[ext_resource type="Script" uid="uid://bjhf0eubc5lb5" path="res://scenes/environment/orchard/decorations/campfire/campfire.gd" id="1_r2whs"]
 [ext_resource type="Texture2D" uid="uid://qf6ax3yks2d0" path="res://assets/images/orchard/misc_env/0012.png" id="1_tu468"]
 [ext_resource type="Texture2D" uid="uid://b0xe6722pjm5l" path="res://assets/images/orchard/misc_env/0013.png" id="2_f8ye4"]
 [ext_resource type="Texture2D" uid="uid://ov678r1dbakd" path="res://assets/images/orchard/misc_env/0014.png" id="3_w8crs"]

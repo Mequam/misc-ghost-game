@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnydhkm7ebjuj"]
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_dhbfb"]
-[ext_resource type="Script" path="res://scenes/UI/options/graphics/color_slider.gd" id="1_wjsco"]
+[ext_resource type="Script" uid="uid://c7iiiapnet7g4" path="res://scenes/UI/options/graphics/color_slider.gd" id="1_wjsco"]
 [ext_resource type="Shader" uid="uid://c31f6hemn6n8c" path="res://scenes/UI/GhostGameColorPicker/ColorSlider/ghost_game_color_picker.tres" id="2_g0247"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2x7cm"]
 resource_local_to_scene = true
 shader = ExtResource("2_g0247")
-shader_parameter/val = null
-shader_parameter/huef = null
-shader_parameter/satf = null
+shader_parameter/val = false
+shader_parameter/huef = 0.0
+shader_parameter/satf = 0.0
 shader_parameter/sat = true
-shader_parameter/valf = null
+shader_parameter/valf = 0.0
 
 [node name="HBoxContainer2" type="Control" node_paths=PackedStringArray("h_slider", "spin_box")]
 layout_mode = 3

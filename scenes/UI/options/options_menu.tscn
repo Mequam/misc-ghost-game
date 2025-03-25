@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="1_cuur1"]
 [ext_resource type="PackedScene" uid="uid://de0o3d0tigk40" path="res://scenes/UI/LeniGarnish/leni_garnish.tscn" id="1_il8sc"]
-[ext_resource type="Script" path="res://assets/ui/BackStackSwitcher.gd" id="3_66s20"]
+[ext_resource type="Script" uid="uid://3ii8jqw37c21" path="res://assets/ui/BackStackSwitcher.gd" id="3_66s20"]
 [ext_resource type="PackedScene" uid="uid://4vgx3apyifiv" path="res://scenes/UI/options/action_map/action_options.tscn" id="4_7sgl8"]
 [ext_resource type="PackedScene" uid="uid://bts3rlhar7rs6" path="res://scenes/UI/options/audio/audio_settings.tscn" id="5_76mkr"]
 [ext_resource type="PackedScene" uid="uid://bkxovpccp385y" path="res://scenes/UI/options/graphics/graphics_options.tscn" id="6_vvvs8"]

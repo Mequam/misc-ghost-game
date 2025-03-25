@@ -1,6 +1,6 @@
 [gd_scene load_steps=76 format=3 uid="uid://1m6jtm3r2yym"]
 
-[ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.gd" id="1_v3ges"]
+[ext_resource type="Script" uid="uid://cdtkwrojhverp" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.gd" id="1_v3ges"]
 [ext_resource type="Texture2D" uid="uid://dll4x0uf4n7tr" path="res://assets/animations/ground_hog_ghost/0005.png" id="4_cjk8y"]
 [ext_resource type="Texture2D" uid="uid://evxm213l8npl" path="res://assets/animations/ground_hog_ghost/0007.png" id="5_dask5"]
 [ext_resource type="Texture2D" uid="uid://bmtprn8mf5nqm" path="res://assets/animations/ground_hog_ghost/0002.png" id="5_gcvuy"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ivtq87wuqv5v" path="res://assets/animations/ground_hog_ghost/0035.png" id="14_1suof"]
 [ext_resource type="Texture2D" uid="uid://celuwyqgjh3ok" path="res://assets/animations/ground_hog_ghost/0025.png" id="15_0slu0"]
 [ext_resource type="Texture2D" uid="uid://bcnadgmp1pl4i" path="res://assets/animations/ground_hog_ghost/0026.png" id="16_43ebp"]
-[ext_resource type="Script" path="res://scenes/entities/misc/groundHog/ground_hog_sprite.gd" id="39_yw7s3"]
+[ext_resource type="Script" uid="uid://cudcrqo7iyj7l" path="res://scenes/entities/misc/groundHog/ground_hog_sprite.gd" id="39_yw7s3"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ih2ov"]
 default_input_values = [0, 0.0, 1, 2.0]
@@ -421,8 +421,8 @@ load_path = "res://.godot/imported/0001.png-b53691b39c9ade7cca7f7b4c75e95fa4.cte
 resource_local_to_scene = true
 shader = SubResource("VisualShader_khb1w")
 shader_parameter/scale = 0.125
-shader_parameter/sprite_amount = 17
 shader_parameter/head = SubResource("CompressedTexture2D_sirso")
+shader_parameter/sprite_amount = 17
 shader_parameter/body = SubResource("CompressedTexture2D_6q5g5")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wp0ki"]
@@ -517,11 +517,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gr4ka"]
 _data = {
-"RESET": SubResource("Animation_rn2r4"),
-"down": SubResource("Animation_weypg"),
-"eye_replace": SubResource("Animation_d4smk"),
-"idle": SubResource("Animation_ro30t"),
-"up": SubResource("Animation_mcu4l")
+&"RESET": SubResource("Animation_rn2r4"),
+&"down": SubResource("Animation_weypg"),
+&"eye_replace": SubResource("Animation_d4smk"),
+&"idle": SubResource("Animation_ro30t"),
+&"up": SubResource("Animation_mcu4l")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4wkn"]

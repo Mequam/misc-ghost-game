@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://cw5tajtig0ox" path="res://assets/animations/cider spirit/launch/launch10033.png" id="33_enid0"]
 [ext_resource type="Texture2D" uid="uid://c2wkvi6aoou1p" path="res://assets/animations/cider spirit/launch/launch10034.png" id="34_n2i5p"]
 [ext_resource type="Texture2D" uid="uid://36kuv8hetdtb" path="res://assets/animations/cider spirit/launch/launch10035.png" id="35_i35c7"]
-[ext_resource type="Script" path="res://scenes/entities/orchard/CiderSpirit/ciderspiritsprite.gd" id="36_v652m"]
+[ext_resource type="Script" uid="uid://cnslagdq03hyi" path="res://scenes/entities/orchard/CiderSpirit/ciderspiritsprite.gd" id="36_v652m"]
 [ext_resource type="AudioStream" uid="uid://yn5o0vpx6cs6" path="res://assets/sound/effects/Misc/small_splash.wav" id="37_p6y6n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uvigh"]

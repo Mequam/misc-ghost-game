@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dlo35ftubtrii"]
 
-[ext_resource type="Script" path="res://assets/scripts/UI/objects/centered_text_box.gd" id="1_k6oqm"]
+[ext_resource type="Script" uid="uid://bw2cvf00o6c5f" path="res://assets/scripts/UI/objects/centered_text_box.gd" id="1_k6oqm"]
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="2_h1trr"]
 [ext_resource type="Texture2D" uid="uid://wkwntoaalhpf" path="res://assets/ui/buttons/empty_button/button_outline_focus.png" id="4_ek10y"]
 [ext_resource type="PackedScene" uid="uid://bjkvvlt2vndoq" path="res://scenes/UI/btnHandDrawn.tscn" id="5_ololw"]

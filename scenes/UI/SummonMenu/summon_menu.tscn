@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cjl8fnj6yr4s3"]
 
-[ext_resource type="Script" path="res://scenes/UI/SummonMenu/summon_menu.gd" id="1_asfvd"]
+[ext_resource type="Script" uid="uid://d2qps4g1n0qy1" path="res://scenes/UI/SummonMenu/summon_menu.gd" id="1_asfvd"]
 [ext_resource type="PackedScene" uid="uid://dtax3uopyvfse" path="res://scenes/UI/SummonMenu/summon_pip/summon_pip.tscn" id="3_s3c7n"]
 [ext_resource type="Texture2D" uid="uid://ddtrfc336vrrq" path="res://assets/animations/rolling_pumpkin/blink.png" id="5_6e2vt"]
 [ext_resource type="Texture2D" uid="uid://51m4y68yahht" path="res://assets/ui/hearts/rolly_pumpkin/big.png" id="11_yotvx"]
@@ -74,7 +74,7 @@ nodes/fragment/connections = PackedInt32Array(2, 0, 3, 1, 4, 0, 3, 2, 3, 0, 0, 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8q05g"]
 shader = SubResource("VisualShader_emib0")
 shader_parameter/doSilloette = false
-shader_parameter/Silloette_Color = null
+shader_parameter/Silloette_Color = Color(0, 0, 0, 1)
 
 [node name="SummonMenu" type="Control" node_paths=PackedStringArray("summon_indicator", "indicator_container")]
 layout_mode = 3

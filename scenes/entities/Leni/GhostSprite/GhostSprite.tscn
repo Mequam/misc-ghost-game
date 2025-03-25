@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://blaixs6kj7rkt" path="res://assets/animations/ghost/crop-derp.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://8c4dau2oxvn2" path="res://assets/animations/ghost/ghost_color_idle/0026.png" id="11_knhbp"]
 [ext_resource type="Texture2D" uid="uid://lhykt0e13k4x" path="res://assets/animations/ghost/pain/pain0128.png" id="11_ygkf4"]
-[ext_resource type="Script" path="res://scenes/entities/Leni/GhostSprite/GhostSprite.gd" id="12"]
+[ext_resource type="Script" uid="uid://de7s261xkexti" path="res://scenes/entities/Leni/GhostSprite/GhostSprite.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://conqiwfur48xl" path="res://assets/animations/ghost/ghost_color_idle/0027.png" id="12_wn2nn"]
 [ext_resource type="Texture2D" uid="uid://cj5nany7id2s7" path="res://assets/animations/ghost/pain/pain0129.png" id="12_xxpi7"]
 [ext_resource type="Texture2D" uid="uid://k4maefudk4kg" path="res://assets/animations/ghost/ghost_color_idle/0028.png" id="13_1eayx"]

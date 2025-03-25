@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b3shuwdsy3po6" path="res://assets/animations/witchProjectile/color/witchProjectile0047.png" id="4_8jdft"]
 [ext_resource type="Texture2D" uid="uid://beluywu1sqo18" path="res://assets/animations/witchProjectile/color/witchProjectile0048.png" id="5_x5crs"]
 [ext_resource type="Texture2D" uid="uid://dmh5drm2pkcee" path="res://assets/animations/witchProjectile/color/witchProjectile0049.png" id="6_djtfn"]
-[ext_resource type="Script" path="res://assets/scripts/animationScripts/witchProjSprite.gd" id="7_qfgiw"]
+[ext_resource type="Script" uid="uid://denv3hilrkkou" path="res://assets/scripts/animationScripts/witchProjSprite.gd" id="7_qfgiw"]
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{

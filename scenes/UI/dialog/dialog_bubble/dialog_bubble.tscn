@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bdxsba1gjh45" path="res://assets/resources/main_theme.tres" id="1_mo1rf"]
 [ext_resource type="Texture2D" uid="uid://bnx24jp706g0r" path="res://assets/ui/dialog_boxex/bubble0001.png" id="1_t5x72"]
-[ext_resource type="Script" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.gd" id="2_qulnn"]
+[ext_resource type="Script" uid="uid://ifxc8v81dgmn" path="res://scenes/UI/dialog/dialog_bubble/dialog_bubble.gd" id="2_qulnn"]
 
 [sub_resource type="Animation" id="Animation_u1yk1"]
 length = 0.001
@@ -110,8 +110,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4a0mp"]
 _data = {
-"RESET": SubResource("Animation_u1yk1"),
-"apear": SubResource("Animation_vf3f4")
+&"RESET": SubResource("Animation_u1yk1"),
+&"apear": SubResource("Animation_vf3f4")
 }
 
 [node name="dialogBubble" type="Control" node_paths=PackedStringArray("animation_player", "typeing_timer", "lblRich")]
