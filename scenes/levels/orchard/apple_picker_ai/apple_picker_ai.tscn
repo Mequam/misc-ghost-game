@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b66j85put7yxc"]
+[gd_scene load_steps=17 format=3 uid="uid://b66j85put7yxc"]
 
 [ext_resource type="Script" uid="uid://c7kmkvfycy64r" path="res://assets/scripts/level.gd" id="1_ttb33"]
 [ext_resource type="PackedScene" uid="uid://bjija5h8lbr2g" path="res://scenes/mainCamera.tscn" id="2_g781n"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cgy3w5bc51hoa" path="res://scenes/entities/misc/pathFollow/ai/ai_path_follow.gd" id="10_xgl4r"]
 [ext_resource type="PackedScene" uid="uid://1m6jtm3r2yym" path="res://scenes/entities/misc/groundHog/ground_hog_enemy.tscn" id="11_wdakr"]
 [ext_resource type="PackedScene" uid="uid://k48him1e0fcp" path="res://scenes/entities/halloween/witch/witch.tscn" id="12_u8p5k"]
+[ext_resource type="Script" uid="uid://vnfkhxch26w" path="res://scenes/entities/misc/groundHog/AI/ground_hog_position_ai.gd" id="13_tm7re"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5ex8"]
 size = Vector2(166, 154)
@@ -96,29 +97,18 @@ update_speed = 0.01
 
 [node name="entity transform" type="Node2D" parent="."]
 
-[node name="groundHogEnemy5" parent="." instance=ExtResource("11_wdakr")]
-position = Vector2(2206, -1434)
-rotation = 2.12807
-scale = Vector2(1, 1.47)
-
 [node name="witch" parent="." instance=ExtResource("12_u8p5k")]
 position = Vector2(600, -1060)
 
-[node name="groundHogEnemy" parent="." instance=ExtResource("11_wdakr")]
-position = Vector2(1988, -624)
-
-[node name="groundHogEnemy2" parent="." instance=ExtResource("11_wdakr")]
-position = Vector2(2788, -840)
-rotation = -2.3674
-
-[node name="groundHogEnemy3" parent="." instance=ExtResource("11_wdakr")]
-position = Vector2(2016, -212)
-rotation = 1.43458
-
-[node name="groundHogEnemy4" parent="." instance=ExtResource("11_wdakr")]
-position = Vector2(2720, -296)
-rotation = 3.07373
-
 [node name="groundHogEnemy6" parent="." instance=ExtResource("11_wdakr")]
 position = Vector2(941, -991)
+rotation = 1.13304
 scale = Vector2(0.997156, 2)
+growth_speed = 0.1
+
+[node name="GroundHogPositionAI" type="Node" parent="groundHogEnemy6"]
+script = ExtResource("13_tm7re")
+movement_wait_ticks = 10
+movement_tick_offset = 1
+height_targets = Array[float]([1.8, 0.1])
+metadata/_custom_type_script = "uid://vnfkhxch26w"
