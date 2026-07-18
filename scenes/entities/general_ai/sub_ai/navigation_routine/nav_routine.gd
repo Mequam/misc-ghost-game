@@ -8,9 +8,12 @@ class_name SubAINavigationStraight
 @export var follow_technique : AINavigationFollowTechnique
 
 var last_target_position : Vector2 = Vector2(0,0)
-var nav_agent : NavigationAgent2D = null
+@export var nav_agent : NavigationAgent2D = null
 
 @export_flags_2d_navigation var navigation_layers : int = 1
+
+func _ready()->void:
+	self.follow_technique.parent_resource = self
 
 func set_target(target_position : Vector2)->void:
 	print_debug("setting target: " + str(target_position))
@@ -35,17 +38,3 @@ func stop_moving():
 func tick(_player : Entity)->void:
 	var current_target : Vector2 = nav_agent.get_next_path_position()
 	follow_technique.move_to_point(current_target)
-
-		
-
-
-func setup(caller : Entity)->void:
-	super.setup(caller)
-	
-	#set up the navigation
-	nav_agent = NavigationAgent2D.new()
-	nav_agent.navigation_layers = navigation_layers
-	caller.add_child(nav_agent)
-	caller.sig_on_col.connect(follow_technique.caller_collided)
-
-	follow_technique.parent_resource = self

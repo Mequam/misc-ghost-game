@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://wt22pcx57fhy"]
+[gd_resource type="TileSet" format=3 uid="uid://wt22pcx57fhy"]
 
 [ext_resource type="Texture2D" uid="uid://k8yr1qrr1fkn" path="res://assets/animations/environment/river/fast/result/fast-river-sprite-sheet.png" id="1_lw7p5"]
 

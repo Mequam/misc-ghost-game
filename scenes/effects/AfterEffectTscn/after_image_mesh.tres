@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=37 format=3 uid="uid://dhlnophyos2jw"]
+[gd_resource type="VisualShader" format=3 uid="uid://dhlnophyos2jw"]
 
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_kgdaf"]
 default_input_values = [1, 0.0, 2, 0.25, 3, 0.0, 4, 1.0]
@@ -118,104 +118,6 @@ function = 1
 input_name = "uv"
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform float Start_Time;
-uniform float SlightDelay;
-uniform float Lifetime;
-
-
-// GlobalExpression:0
-	global uniform float COOLTIME;
-	//global uniform int COOLTEST;
-
-void fragment() {
-// Input:25
-	vec2 n_out25p0 = UV;
-
-
-// UVFunc:26
-	vec2 n_in26p1 = vec2(1.00000, 1.00000);
-	vec2 n_in26p2 = vec2(-0.50000, -0.50000);
-	vec2 n_out26p0 = n_in26p2 * n_in26p1 + n_out25p0;
-
-
-// VectorDecompose:28
-	float n_out28p0 = vec3(n_out26p0, 0.0).x;
-	float n_out28p1 = vec3(n_out26p0, 0.0).y;
-	float n_out28p2 = vec3(n_out26p0, 0.0).z;
-
-
-// FloatOp:27
-	float n_out27p0 = atan(n_out28p1, n_out28p0);
-
-
-	float n_out29p0;
-// Remap:29
-	float n_in29p1 = -3.14200;
-	float n_in29p2 = 3.14200;
-	float n_in29p3 = 0.00000;
-	float n_in29p4 = 1.00000;
-	{
-		float __input_range = n_in29p2 - n_in29p1;
-		float __output_range = n_in29p4 - n_in29p3;
-		n_out29p0 = n_in29p3 + __output_range * ((n_out27p0 - n_in29p1) / __input_range);
-	}
-
-
-// Input:7
-	float n_out7p0 = TIME;
-
-
-// FloatParameter:5
-	float n_out5p0 = Start_Time;
-
-
-// FloatParameter:36
-	float n_out36p0 = SlightDelay;
-
-
-// FloatOp:35
-	float n_out35p0 = n_out5p0 - n_out36p0;
-
-
-// FloatOp:6
-	float n_out6p0 = n_out7p0 - n_out35p0;
-
-
-// FloatParameter:11
-	float n_out11p0 = Lifetime;
-
-
-	float n_out10p0;
-// Remap:10
-	float n_in10p1 = 0.00000;
-	float n_in10p3 = 0.00000;
-	float n_in10p4 = 1.00000;
-	{
-		float __input_range = n_out11p0 - n_in10p1;
-		float __output_range = n_in10p4 - n_in10p3;
-		n_out10p0 = n_in10p3 + __output_range * ((n_out6p0 - n_in10p1) / __input_range);
-	}
-
-
-// FloatOp:37
-	float n_in37p1 = 0.00000;
-	float n_out37p0 = n_out10p0 + n_in37p1;
-
-
-// Compare:30
-	bool n_out30p0 = n_out29p0 <= n_out37p0;
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out30p0 ? 1.0 : 0.0);
-	COLOR.a = (n_out30p0 ? 1.0 : 0.0);
-
-
-}
-"
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(3080, 520)

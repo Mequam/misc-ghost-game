@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=18 format=3 uid="uid://depaccnh5ys4v"]
+[gd_resource type="VisualShader" format=3 uid="uid://depaccnh5ys4v"]
 
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_kgdaf"]
 default_input_values = [1, 0.0, 2, 0.25, 3, 0.0, 4, 1.0]
@@ -57,105 +57,6 @@ operator = 1
 input_name = "time"
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform float Start_Time;
-uniform float SlightDelay;
-uniform float Lifetime;
-
-
-
-void fragment() {
-// Input:40
-	vec2 n_out40p0 = UV;
-
-
-// Input:7
-	float n_out7p0 = TIME;
-
-
-// FloatParameter:5
-	float n_out5p0 = Start_Time;
-
-
-// FloatParameter:36
-	float n_out36p0 = SlightDelay;
-
-
-// FloatOp:35
-	float n_out35p0 = n_out5p0 - n_out36p0;
-
-
-// FloatOp:6
-	float n_out6p0 = n_out7p0 - n_out35p0;
-
-
-// FloatParameter:11
-	float n_out11p0 = Lifetime;
-
-
-	float n_out10p0;
-// Remap:10
-	float n_in10p1 = 0.00000;
-	float n_in10p3 = 0.00000;
-	float n_in10p4 = 1.00000;
-	{
-		float __input_range = n_out11p0 - n_in10p1;
-		float __output_range = n_in10p4 - n_in10p3;
-		n_out10p0 = n_in10p3 + __output_range * ((n_out6p0 - n_in10p1) / __input_range);
-	}
-
-
-// Compare:44
-	float n_in44p1 = 1.00000;
-	bool n_out44p0 = n_out10p0 > n_in44p1;
-
-
-	float n_out43p0;
-// Switch:43
-	float n_in43p1 = 1.00000;
-	n_out43p0 = mix(n_out10p0, n_in43p1, float(n_out44p0));
-
-
-// FloatFunc:24
-	float n_out24p0 = 1.0 - n_out43p0;
-
-
-// FloatOp:42
-	float n_in42p0 = 1.00000;
-	float n_out42p0 = n_in42p0 / n_out24p0;
-
-
-// UVFunc:41
-	vec2 n_in41p2 = vec2(0.50000, 0.50000);
-	vec2 n_out41p0 = (n_out40p0 - n_in41p2) * vec2(n_out42p0) + n_in41p2;
-
-
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = texture(TEXTURE, n_out41p0);
-
-
-// VectorDecompose:12
-	float n_out12p0 = n_out3p0.x;
-	float n_out12p1 = n_out3p0.y;
-	float n_out12p2 = n_out3p0.z;
-	float n_out12p3 = n_out3p0.w;
-
-
-// FloatOp:23
-	float n_in23p0 = 1.00000;
-	float n_out23p0 = n_in23p0 * n_out12p3;
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out3p0.xyz);
-	COLOR.a = n_out23p0;
-
-
-}
-"
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(1480, 560)

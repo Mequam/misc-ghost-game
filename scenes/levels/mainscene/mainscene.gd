@@ -63,7 +63,7 @@ func unpause()->void:
 	get_tree().paused = false
 
 func get_level()->Level:
-	return level_container.get_child(1)
+	return level_container.get_child(1) as Level
 
 func _process(_delta : float)->void:
 	if Input.is_action_just_pressed("PAUSE"):

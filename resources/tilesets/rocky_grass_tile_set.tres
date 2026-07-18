@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=42 format=3 uid="uid://bu7srjugfxscw"]
+[gd_resource type="TileSet" format=3 uid="uid://bu7srjugfxscw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ukfw7"]
 load_path = "res://.godot/imported/tile_set3.png-e8f4b67f8d0f83154fa4dacc8d5c8824.ctex"

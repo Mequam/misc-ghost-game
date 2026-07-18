@@ -20,7 +20,7 @@ func get_level_container()->Node2D:
 #returns a reference to the currently loaded level node
 func get_level_node()->Level:
 	var container = get_level_container()
-	return container.get_child(container.get_child_count() - 1)
+	return container.get_child(container.get_child_count() - 1) as Level
 
 func clear_level()->void:
 	var old_lvl = get_level_node()
