@@ -9,9 +9,11 @@ class_name GroundHogEnemy
 #the highest we can grow too
 @export var max_growth : float = 100.0
 #the lowest we can grow to
-@export var min_growth : float = 10.0
+@export var min_growth : float = 0
 #if true we set max growth from the current scale of the entity on ready
 @export var set_max_growth : bool = true
+
+@export var starting_height : float = 1.0
 
 @export var sprite_bone : Node2D
 var height : float :
@@ -32,6 +34,8 @@ func _ready() -> void:
 	super._ready()
 	if self.set_max_growth:
 		self.max_growth = self.height
+
+	self.height = self.starting_height
 
 #storage for the previous after image nodes we change
 var previous_offset : Vector2
@@ -64,9 +68,16 @@ func on_modulate_timer_out()->void:
 func _process(_delta: float) -> void:
 	var input_direction : Vector2 = self.local_player_input_direction()
 
-	if input_direction.y < 0 and self.max_growth >= self.height:
+	if (input_direction.y < 0 or self.pressed_inputs["JUMP"]) and self.max_growth >= self.height:
 		self.height += self.growth_speed
-	if input_direction.y > 0 and self.height >= 0:
+	if (input_direction.y > 0 or self.pressed_inputs["ATTACK"]) and self.height >= 0:
 		self.height -= self.growth_speed
+	
+	if (self.height <= self.min_growth):
+		self.height = self.min_growth + 0.001
+	elif self.height > self.max_growth:
+		self.height = self.max_growth - 0.001
+
+
 
 	#collision_shape.shape.size.y = self.height

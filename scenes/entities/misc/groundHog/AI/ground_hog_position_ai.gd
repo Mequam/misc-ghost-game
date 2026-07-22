@@ -23,16 +23,26 @@ func _ready() -> void:
 	caller.sig_unpossesed_by.connect(self.on_caller_unposses)
 
 func get_error()->float:
+	if caller.name == 'groundHogEnemy3':
+		print((caller as GroundHogEnemy).height)
 	return (caller as GroundHogEnemy).height - self.height_targets[self.height_target_pointer]
 
 func is_moving()->bool:
-	return caller.pressed_inputs["DOWN"] or caller.pressed_inputs["UP"]
+	return caller.pressed_inputs["ATTACK"] or caller.pressed_inputs["JUMP"]
 
 func correct_error()->void:
+	if caller.name == 'groundHogEnemy3':
+		print(self.height_targets[self.height_target_pointer])
+		print(self.get_error())
+
 	if self.get_error() > 0:
-		self.perform_action("DOWN",true)
+		if caller.name == 'groundHogEnemy3':
+			print("GOING ATTACK")
+		self.perform_action("ATTACK",true)
 	else:
-		self.perform_action("UP",true)
+		if caller.name == 'groundHogEnemy3':
+			print("GOING JUMP")
+		self.perform_action("JUMP",true)
 
 func tick(_player_location : Entity)->void:
 	tick_timer += 1
@@ -51,5 +61,3 @@ func _process(_delta: float) -> void:
 		self.release_all_inputs()
 
 		height_target_pointer = (height_target_pointer + 1) % len(height_targets) # move to the next target
-
-

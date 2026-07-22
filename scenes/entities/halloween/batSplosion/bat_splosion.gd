@@ -121,7 +121,7 @@ func main_ready()->void:
 	self.get_sprite2D().animation_finished.connect(on_anim_finished)
 	self.update_animation()
 func update_animation()->void:
-	if self.state == BatSplosionState.HANGING: return 
+	if self.state == BatSplosionState.HANGING: return
 	super.update_animation()
 func on_anim_finished():
 	#if we ever get to the point where we expload, we DIE

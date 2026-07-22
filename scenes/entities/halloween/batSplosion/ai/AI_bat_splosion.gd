@@ -48,9 +48,11 @@ func test_for_aggro(player : Entity)->bool:
 	#OR they get too close to us
 
 	return (
+			player.global_position.y > caller.global_position.y  \
+			and \
 			player.global_position.distance_squared_to(caller.global_position) \
 					< aggro_distance*aggro_distance  \
-				and \
+			and \
 			player.compute_velocity(player.velocity).length_squared() \
 					>  self.speed_limit * self.speed_limit
 				) or player.global_position.distance_squared_to(caller.global_position)  \
@@ -60,6 +62,7 @@ func test_for_exploasion(player : Entity)->bool:
 			< self.explosion_distance*self.explosion_distance
 
 func tick(player : Entity)->void:
+	#TODO: make this not suck (use ready code not infinit check)
 	if self.start_hung:
 		ai_hang()
 		self.start_hung = false

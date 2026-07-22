@@ -6,7 +6,8 @@ class_name WitchColumn
 @export var magic_particles : PackedScene 
 func on_body_entered(body)->void:
 	super.on_body_entered(body)
-	body.position += Vector2(0,-50)
+	if body is Entity and body.can_be_teleported:
+		body.position += Vector2(0,-50)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var mp = magic_particles.instantiate()
