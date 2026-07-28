@@ -288,8 +288,8 @@ func posses_by(other):
 	self.clear_stored_inputs()
 	sync_mug_collision()
 
-func exorcize(offset : Vector2 = Vector2(0,0))->void:
-	super.exorcize(offset)
+func exorcize(offset : Vector2 = Vector2(0,0),eject : bool = false)->void:
+	super.exorcize(offset,eject)
 	
 	sync_mug_collision()
 	

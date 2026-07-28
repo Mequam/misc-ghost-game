@@ -50,15 +50,14 @@ func posses_by(entity)->void:
 	
 	self.align_after_image_mesh()
 
-func exorcize(offset : Vector2 = Vector2(0,0))->void:
+func exorcize(offset : Vector2 = Vector2(0,0),eject : bool = true)->void:
 	if self.possesed and self.possesed_entity.ghost_after_effect:
 		#re-align the mesh
-		print_debug("re-aligning the mesh")
 		self.possesed_entity.ghost_after_effect.offset = previous_offset
 		self.possesed_entity.ghost_after_effect.after_scale = previous_scale
 		self.possesed_entity.ghost_after_effect.after_image_frequency = previous_frequency
 
-	super.exorcize(offset)
+	super.exorcize(offset,eject)
 
 func on_modulate_timer_out()->void:
 	super.on_modulate_timer_out()

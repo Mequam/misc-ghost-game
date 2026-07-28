@@ -66,8 +66,8 @@ func posses_by(entity)->void:
 	if entity.ghost_after_effect:
 		self.ghost_after_effect = entity.ghost_after_effect 
 	$damage_zone.collision_mask = ColMath.strip_stationary_bits(entity.gen_col_mask())
-func exorcize(offset : Vector2 = Vector2(0,0)):
-	super.exorcize(offset)
+func exorcize(offset : Vector2 = Vector2(0,0),eject : bool = false):
+	super.exorcize(offset,eject)
 	self.ghost_after_effect = null #clear out the reference to the after effect
 	$damage_zone.collision_mask = ColMath.strip_stationary_bits(self.gen_col_mask())
 

@@ -176,7 +176,7 @@ func die():
 			node.unposses_to_level = true
 			node.exorcize()
 
-	exorcize()
+	exorcize(Vector2(0,0),true)
 
 	#we need to do this after exorcize in order for the health to
 	#update and display properly
@@ -409,7 +409,6 @@ func on_unposses(_host)->void:
 #returns true if unpossessing this entity will NOT
 #send Leni into some terrain
 func is_clear_to_unposses(offset : Vector2)->bool:
-	var target_position : Vector2 = unposses_position(offset)
 	var space_state =  get_world_2d().direct_space_state
 	
 	var shape_query = PhysicsShapeQueryParameters2D.new()
@@ -422,7 +421,7 @@ func is_clear_to_unposses(offset : Vector2)->bool:
 
 	shape_query.set_shape(rectangle)
 	shape_query.collision_mask = ColMath.ConstLayer.TILE_BORDER
-	shape_query.transform.origin = self.unposses_position()
+	shape_query.transform.origin = self.unposses_position(offset)
 	shape_query.exclude = [self]
 	
 	return not space_state.intersect_shape(shape_query)
@@ -437,10 +436,39 @@ func get_spirit_parent()->Node2D:
 		return get_level()
 	return get_parent()
 
+#attempt to find an unposses location AT ALL COSTS
+func get_manditory_unposses_offset(offset : Vector2 = Vector2(0,0)):
+	var radius : int = 1
+	const SAMPLE_COUNT : int = 5
+	const RADIUS_STEP : int = 1
+	
+
+	var lowestPoint : Vector2 = Vector2(INF,INF)
+	var lowestDistance : float = INF
+	var space_state = get_world_2d().direct_space_state
+
+	while radius < 1000:
+		for i in range(SAMPLE_COUNT):
+			var testOffset = offset + (Vector2.from_angle(PI*2/SAMPLE_COUNT*i))*RADIUS_STEP*radius
+			
+			var q = PhysicsRayQueryParameters2D.create(global_position,global_position+testOffset)
+			q.exclude = [self]
+			q.collision_mask = ColMath.Layer.TERRAIN
+			if self.is_clear_to_unposses(testOffset) and not space_state.intersect_ray(q):
+				var dist = testOffset.distance_squared_to(offset)
+				if dist < lowestDistance:
+					lowestDistance = dist
+					lowestPoint = testOffset
+		radius += 1
+
+	return lowestPoint
+
 #clears our possesion	
-func exorcize(offset : Vector2 = Vector2(0,0))->void:
+func exorcize(offset : Vector2 = Vector2(0,0),eject : bool = false)->void:
 	if not self.possesed: return
-	if not self.is_clear_to_unposses(offset): return
+	if not eject and not self.is_clear_to_unposses(offset): return
+	
+	if eject: offset = get_manditory_unposses_offset(offset)
 
 	if self.possesed_entity != null:
 		if self.possesed_entity.ghost_after_effect:

@@ -40,6 +40,13 @@ metadata/_custom_type_script = "uid://d3lh1h1vbsnow"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6okd"]
 size = Vector2(78.5, 548)
 
+[sub_resource type="Resource" id="Resource_av8he"]
+resource_local_to_scene = true
+script = ExtResource("25_av8he")
+jump_height = 101.01
+jump_up_time = 0.01
+jump_down_time = 0.01
+
 [sub_resource type="Resource" id="Resource_pri5r"]
 resource_local_to_scene = true
 script = ExtResource("25_av8he")
@@ -47,14 +54,7 @@ jump_height = 101.01
 jump_up_time = 0.01
 jump_down_time = 0.01
 
-[sub_resource type="Resource" id="Resource_yr3ew"]
-resource_local_to_scene = true
-script = ExtResource("25_av8he")
-jump_height = 101.01
-jump_up_time = 0.01
-jump_down_time = 0.01
-
-[sub_resource type="Resource" id="Resource_av8he"]
+[sub_resource type="Resource" id="Resource_eyqua"]
 resource_local_to_scene = true
 script = ExtResource("25_av8he")
 jump_height = 101.01
@@ -115,7 +115,7 @@ x_cut = 0
 metadata/_custom_type_script = "uid://grv07d1j3g2e"
 
 [node name="spawn_light" parent="." unique_id=361247949 node_paths=PackedStringArray("summon_location") instance=ExtResource("7_mi210")]
-position = Vector2(-88, -408)
+position = Vector2(-2967, 656)
 summon_location = NodePath("../spawnLight/leniSummonLocation")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2136008064]
@@ -143,10 +143,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -37937.0
-offset_top = -38828.0
-offset_right = 40911.0
-offset_bottom = 40524.0
+offset_left = -38238.0
+offset_top = -38993.0
+offset_right = 40610.0
+offset_bottom = 40359.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -420,7 +420,7 @@ update_speed = 0.3
 metadata/_custom_type_script = "uid://bqy4smxwm5as4"
 
 [node name="batSplosion2" parent="caveHoles/bigCavern/batAttack" unique_id=1328955447 instance=ExtResource("12_7u4qd")]
-position = Vector2(961, -430)
+position = Vector2(961, -423)
 
 [node name="AIBatSplosion" type="Node" parent="caveHoles/bigCavern/batAttack/batSplosion2" unique_id=1370078801]
 script = ExtResource("13_f8e21")
@@ -546,8 +546,8 @@ starting_height = 6.72
 position = Vector2(-207, -1828)
 
 [node name="CiderSpirit" parent="cider hall" unique_id=331327018 instance=ExtResource("24_yr3ew")]
-position = Vector2(-573, 283)
-jr = SubResource("Resource_pri5r")
+position = Vector2(-578, 280)
+jr = SubResource("Resource_av8he")
 
 [node name="AICiderSpirit_JumpOver" type="Node" parent="cider hall/CiderSpirit" unique_id=719040241]
 script = ExtResource("26_av8he")
@@ -555,7 +555,7 @@ metadata/_custom_type_script = "uid://bis61g0djd2x1"
 
 [node name="CiderSpirit2" parent="cider hall" unique_id=304311383 instance=ExtResource("24_yr3ew")]
 position = Vector2(614, 263)
-jr = SubResource("Resource_yr3ew")
+jr = SubResource("Resource_pri5r")
 
 [node name="AICiderSpirit_JumpOver" type="Node" parent="cider hall/CiderSpirit2" unique_id=1470458500]
 script = ExtResource("26_av8he")
@@ -563,7 +563,7 @@ metadata/_custom_type_script = "uid://bis61g0djd2x1"
 
 [node name="CiderSpirit3" parent="cider hall" unique_id=1806285295 instance=ExtResource("24_yr3ew")]
 position = Vector2(-62, 255)
-jr = SubResource("Resource_av8he")
+jr = SubResource("Resource_eyqua")
 
 [node name="AICiderSpirit_JumpOver" type="Node" parent="cider hall/CiderSpirit3" unique_id=82347988]
 script = ExtResource("26_av8he")

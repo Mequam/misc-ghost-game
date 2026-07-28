@@ -30,7 +30,7 @@ func posses_by(entity)->void:
 	super.posses_by(entity)
 	pass
 
-func exorcize(offset : Vector2 = Vector2(0,0))->void:
+func exorcize(offset : Vector2 = Vector2(0,0),_eject : bool = false)->void:
 	self.z_index = self.background_z_index
 	super.exorcize(offset)
 
