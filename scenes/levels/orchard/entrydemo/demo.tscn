@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://yo5qynqrf1p8" path="res://scenes/environment/orchard/decorations/leaf_splosion_area/area_leaf_splosion.tscn" id="33_fo256"]
 [ext_resource type="Texture2D" uid="uid://bu6kt0vicu4yc" path="res://assets/images/orchard/misc_env/tree/side_tree.png" id="34_1fx1v"]
 [ext_resource type="Texture2D" uid="uid://cuqe3l07dwgkg" path="res://assets/images/orchard/misc_env/0007.png" id="35_goe6w"]
+[ext_resource type="Shader" uid="uid://ci0lyl6bx8vo5" path="res://resources/shaders/colorRotation.tres" id="37_aqia0"]
 [ext_resource type="Texture2D" uid="uid://2r18prhnwonr" path="res://assets/images/orchard/misc_env/0009.png" id="37_m1qfc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c6okd"]
@@ -53,21 +54,26 @@ metadata/_custom_type_script = "uid://d3lh1h1vbsnow"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6okd"]
 size = Vector2(78.5, 548)
 
-[sub_resource type="Resource" id="Resource_av8he"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1qfc"]
+resource_local_to_scene = true
+shader = ExtResource("37_aqia0")
+shader_parameter/hueRotationAmount = 0.25
+
+[sub_resource type="Resource" id="Resource_aqia0"]
 resource_local_to_scene = true
 script = ExtResource("25_av8he")
 jump_height = 101.01
 jump_up_time = 0.01
 jump_down_time = 0.01
 
-[sub_resource type="Resource" id="Resource_pri5r"]
+[sub_resource type="Resource" id="Resource_cjebb"]
 resource_local_to_scene = true
 script = ExtResource("25_av8he")
 jump_height = 101.01
 jump_up_time = 0.01
 jump_down_time = 0.01
 
-[sub_resource type="Resource" id="Resource_eyqua"]
+[sub_resource type="Resource" id="Resource_5q1xi"]
 resource_local_to_scene = true
 script = ExtResource("25_av8he")
 jump_height = 101.01
@@ -773,7 +779,10 @@ script = ExtResource("16_7qxb4")
 metadata/_custom_type_script = "uid://bl645rtdkoupj"
 
 [node name="friendlyWitch" parent="caveHoles/bigCavern/witchHole" unique_id=649143742 instance=ExtResource("14_awm5g")]
-position = Vector2(329.99997, 923.0001)
+position = Vector2(181.00003, 920.0001)
+
+[node name="Sprite2D" parent="caveHoles/bigCavern/witchHole/friendlyWitch" index="0" unique_id=1105358320]
+material = SubResource("ShaderMaterial_m1qfc")
 
 [node name="rollingPumpkinEntity" parent="caveHoles/bigCavern/witchHole" unique_id=1822334624 instance=ExtResource("8_do2fc")]
 position = Vector2(-402, -317)
@@ -794,7 +803,7 @@ position = Vector2(-207, -1828)
 
 [node name="CiderSpirit" parent="cider hall" unique_id=331327018 instance=ExtResource("24_yr3ew")]
 position = Vector2(-578, 280)
-jr = SubResource("Resource_av8he")
+jr = SubResource("Resource_aqia0")
 
 [node name="AICiderSpirit_JumpOver" type="Node" parent="cider hall/CiderSpirit" unique_id=719040241]
 script = ExtResource("26_av8he")
@@ -802,7 +811,7 @@ metadata/_custom_type_script = "uid://bis61g0djd2x1"
 
 [node name="CiderSpirit2" parent="cider hall" unique_id=304311383 instance=ExtResource("24_yr3ew")]
 position = Vector2(614, 263)
-jr = SubResource("Resource_pri5r")
+jr = SubResource("Resource_cjebb")
 
 [node name="AICiderSpirit_JumpOver" type="Node" parent="cider hall/CiderSpirit2" unique_id=1470458500]
 script = ExtResource("26_av8he")
@@ -810,7 +819,7 @@ metadata/_custom_type_script = "uid://bis61g0djd2x1"
 
 [node name="CiderSpirit3" parent="cider hall" unique_id=1806285295 instance=ExtResource("24_yr3ew")]
 position = Vector2(-62, 255)
-jr = SubResource("Resource_eyqua")
+jr = SubResource("Resource_5q1xi")
 
 [node name="AICiderSpirit_JumpOver" type="Node" parent="cider hall/CiderSpirit3" unique_id=82347988]
 script = ExtResource("26_av8he")
